@@ -1,0 +1,9 @@
+{
+	"name":				"Emoji Keyboard",
+	"width":				764,
+	"height":				240,
+	"protocol":			"app",
+	"protocol_call":		"app_call",
+	"html_url":			".\\wwwassets\\index.html",
+	"NavComplete_call":	"app_page"
+}

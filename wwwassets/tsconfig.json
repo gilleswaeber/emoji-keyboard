@@ -1,0 +1,13 @@
+{
+	"compileOnSave": true,
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "script/script.js",
+        "sourceMap": true,
+        "target": "es5",
+        "watch": true,
+        "lib": ["dom", "es5", "es2015.promise"]
+    }
+}
