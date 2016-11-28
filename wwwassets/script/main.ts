@@ -17,10 +17,15 @@ class Main{
 	input(key: number){
 		this.view.input(key);
 	}
+
+	setKeymap(keymap: string){
+		this.view.setKeymap(keymap);
+	}
 }
 
 
 var main: Main;
-$(document).ready(()=>main = new Main(document.querySelector('main') as HTMLElement));
-
-document.ahk = {input: (key: number)=>main.input(key)};
+$(document).ready(()=>{
+	main = document.ahk = new Main(document.querySelector('main') as HTMLElement);
+	setTimeout(()=>AHK("Ready"), 0);
+});

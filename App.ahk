@@ -126,12 +126,9 @@ Toggle(){
 		Show()
 	}
 }
-GetAHK_EnvInfo(){
-	return "AutoHotkey v" . A_AhkVersion . " " . (A_IsUnicode?"Unicode":"ANSI") . " " . (A_PtrSize*8) . "-bit"
-}
-Multiply(a,b) {
-	;MsgBox % a " * " b " = " a*b
-	return a * b
+Ready(){
+	global j
+	getDOM().document.ahk.setKeymap(j.keymap)
 }
 
 #If vVisible

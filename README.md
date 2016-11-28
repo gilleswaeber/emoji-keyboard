@@ -1,6 +1,6 @@
 Emoji Keyboard
 ==============
-![Screenshot](http://img15.hostingpics.net/pics/608809sshot1.png)
+![Screenshot](http://i.imgur.com/5D68pDe.png)
 
 Copyright (c) 2016 [Gilles Waeber](http://www.gilleswaeber.ch), under MIT License
 
@@ -16,3 +16,14 @@ Use the shown keyboard keys to navigate between the categories and type the Emoj
 To exit completely, do a right click on the tray icon and choose Exit.
 
 You can save your preferred size in the webapp.json file. Just change the values next to width and height.
+
+Keymaps
+-------
+If you use an other keymap, you can also define it in the webapp.json file under keymap. Below are the currently supported keymaps. Changing the keymap requires a restart.
+
+Group  | Keymaps
+-------|--------
+QWERTY | en-US
+QWERTZ | de-DE, de-CH, fr-CH
+AZERTY | fr-FR
+others | en-DVORAK
