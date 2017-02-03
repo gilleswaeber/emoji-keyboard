@@ -10,7 +10,6 @@ body, html{
 main{
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	cursor: default;
 }
 
@@ -20,7 +19,6 @@ main > section{
 }
 .keyboard{
 	line-height: 0;
-	padding: .7vw 0 0 0;
 	text-align: center;
 }
 .keyboard .key{
@@ -29,16 +27,15 @@ main > section{
 	padding: .3vw;
 	background-color: #333333;
 	width: 6.4vw;
-	height: 21vh;
 	overflow: hidden;
-	margin-right: 4px;
+	margin: 2px;
 	position: relative;
 	align-items: center;
 	transition: ease .05s;
 }
 .keyboard .row{
 	display: inline-flex;
-	margin-bottom: 4px;
+	height: 25vh;
 }
 
 .key .symbol{
