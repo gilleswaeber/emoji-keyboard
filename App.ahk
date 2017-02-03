@@ -4,11 +4,13 @@ SendMode Input
 
 Menu, Tray, Icon, assets/keyboard.ico, 1, 1
 Menu, Tray, Tip, Emoji Keyboard
-Menu, Tray, Add
 Menu, Tray, Add, &Show, Toggle
 Menu, Tray, Add
 Menu, Tray, Add, Emoji &Keyboard by Gilles Waeber, Credits
+Menu, Tray, Add
+Menu, Tray, Add, E&xit, Exit 
 Menu, Tray, Default, &Show
+Menu, Tray, NoStandard
 
 #Include assets\JSON_ToObj.ahk
 #Include assets\Webapp.ahk
