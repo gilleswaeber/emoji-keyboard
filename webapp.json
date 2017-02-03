@@ -2,6 +2,7 @@
 	"name":				"Emoji Keyboard",
 	"width":			764,
 	"height":			240,
+	"monitor":			1,
 	"keymap":			"en-US",
 	"style":			"light",
 	"protocol":			"app",
