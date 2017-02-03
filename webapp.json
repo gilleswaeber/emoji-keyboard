@@ -3,8 +3,9 @@
 	"width":			764,
 	"height":			240,
 	"keymap":			"en-US",
+	"style":			"light",
 	"protocol":			"app",
 	"protocol_call":	"app_call",
-	"html_url":			".\\wwwassets\\index.html",
+	"html_url":			".\\wwwassets\\",
 	"NavComplete_call":	"app_page"
 }

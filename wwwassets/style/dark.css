@@ -1,0 +1,88 @@
+
+body, html{
+	margin: 0;
+	padding: 0;
+	font-family: 'Segoe UI Emoji', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 1.8vw;
+	background-color: #1a1a1a;
+}
+
+main{
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	cursor: default;
+}
+
+main > section{
+	flex: 1;
+	overflow: auto;
+}
+.keyboard{
+	line-height: 0;
+	padding: .7vw 0 0 0;
+	text-align: center;
+}
+.keyboard .key{
+	display: inline-flex;
+	list-style: none;
+	padding: .3vw;
+	background-color: #333333;
+	width: 6.4vw;
+	height: 6.4vw;
+	/*height: 20vh;*/
+	overflow: hidden;
+	margin-right: .3vw;
+	position: relative;
+	align-items: center;
+	transition: ease .05s;
+}
+.keyboard .row{
+	display: block;
+	margin-bottom: .3vw;
+}
+
+.key .symbol{
+	font-size: 3.6vw;
+	text-align: center;
+	flex: 1;
+}
+
+.key .keyname{
+	position: absolute;
+	top: .2vw;
+	left: .2vw;
+	font-variant: small-caps;
+	line-height: 1em;
+	color: white;
+	transition: ease .05s;
+}
+
+.key .name{
+	font-size: 1.4vw;
+	color: white;
+	line-height: 1.2vw;
+	text-align: right;
+	position: absolute;
+	bottom: .2vw;
+	right: .2vw;
+	left: .2vw;
+	font-variant: small-caps;
+	text-shadow: .1vw .1vw 0 black, .1vw -.1vw 0 black, -.1vw .1vw 0 black, -.1vw -.1vw 0 black;
+	opacity: .3;
+	transition: ease .05s;
+}
+
+.key:hover {
+	background-color: #e5e5e5;
+}
+
+.key:hover .keyname{
+	color: black;
+}
+
+.key:hover .name{
+	color: black;
+	text-shadow: .1vw .1vw 0 white, .1vw -.1vw 0 white, -.1vw .1vw 0 white, -.1vw -.1vw 0 white;
+	opacity: .8;
+}
