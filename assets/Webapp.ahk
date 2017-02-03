@@ -78,6 +78,7 @@ while __Webapp_wb.readystate != 4 or __Webapp_wb.busy
 ;Check if display monitor exists
 SysGet, monitorCount, MonitorCount
 
+if (__Webapp_monitor > monitorCount) {
 	__Webapp_monitor := monitorCount
 }
 
@@ -95,7 +96,7 @@ windowX += workAreaLeft
 windowY := workAreaBottom - __Webapp_height - 32 ;-32 because titlebar doesn't count towards window height?
 
 ;Show Gui
-Gui __Webapp_:Show, x%windowX% y%windowY% w%__Webapp_Width% h%__Webapp_height%, %__Webapp_Name%
+Gui __Webapp_:Show, x%windowX% y%windowY% w%__Webapp_Width% h%__Webapp_height% Hide, %__Webapp_Name%
 Gui __Webapp_:Default
 
 if (__Webapp_transparent == "true") {

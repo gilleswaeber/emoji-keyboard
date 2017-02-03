@@ -23,7 +23,7 @@ __Webapp_AppStart:
 ;             not focusable
 Gui __Webapp_:+E0x08000000 +AlwaysOnTop -MaximizeBox -MinimizeBox ; +E0x40000 +ToolWindow ;  -Caption
 OnMessage(0x112, "WM_SYSCOMMAND")
-WinSet, Transparent, 230
+
 
 WM_SYSCOMMAND(wParam)
 {
