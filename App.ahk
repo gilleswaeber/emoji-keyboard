@@ -59,6 +59,8 @@ app_page(NewURL) {
 }
 
 Gui __Webapp_:Hide
+Return
+
 
 ~LAlt::	; <-- OPEN with double left alt key
 	global vVisible
