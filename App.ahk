@@ -62,18 +62,13 @@ Gui __Webapp_:Hide
 Return
 
 
-~LAlt::	; <-- OPEN with double left alt key
+Capslock::	; <-- OPEN with double left alt key
 	global vVisible
-	if (A_PriorHotkey <> "~LAlt" or A_TimeSincePriorHotkey > 400) {
-		if(vVisible){
-			vVisible := false
-			Hide()
-			KeyWait, LAlt
-			Send, {LAlt}
-		}
-		return
+	if(vVisible){
+		vVisible := false
+		Hide()
+		Return
 	}
-	KeyWait, LAlt
 	Show()
 Return
 
