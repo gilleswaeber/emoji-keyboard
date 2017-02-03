@@ -75,6 +75,12 @@ while __Webapp_wb.readystate != 4 or __Webapp_wb.busy
 	sleep 10
 	
 
+;Check if display monitor exists
+SysGet, monitorCount, MonitorCount
+
+	__Webapp_monitor := monitorCount
+}
+
 ;Position emoji keyboard in the bottom middle of the primary screen
 SysGet, workArea, MonitorWorkArea, %__Webapp_monitor%
 
