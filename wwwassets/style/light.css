@@ -42,6 +42,10 @@ main > section{
 	flex: 1;
 }
 
+.key.empty{
+	opacity: 0.5;
+}
+
 .key .keyname{
 	position: absolute;
 	top: .2vw;
@@ -62,6 +66,10 @@ main > section{
 	text-shadow: .1vw .1vw 0 white, .1vw -.1vw 0 white, -.1vw .1vw 0 white, -.1vw -.1vw 0 white;
 	opacity: .3;
 	transition: opacity ease .5s;
+}
+
+.key.back .name{
+	display: none;
 }
 
 .key:hover .name{

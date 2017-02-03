@@ -162,7 +162,7 @@ module Workers{
 
 	export class BackKey extends ActionKey{
 		constructor(){
-			super('back', 'ESC');
+			super('back', '←');
 		}
 
 		act(view: View.IViewKey){

@@ -42,6 +42,11 @@ main > section{
 	font-size: 3.6vw;
 	text-align: center;
 	flex: 1;
+	color: white;
+}
+
+.key.empty{
+	background-color: #252525;
 }
 
 .key .keyname{
@@ -67,6 +72,10 @@ main > section{
 	text-shadow: .1vw .1vw 0 black, .1vw -.1vw 0 black, -.1vw .1vw 0 black, -.1vw -.1vw 0 black;
 	opacity: .3;
 	transition: ease .05s;
+}
+
+.key.back .name{
+	display: none;
 }
 
 .key:hover {
