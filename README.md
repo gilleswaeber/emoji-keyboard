@@ -17,6 +17,8 @@ To exit completely, do a right click on the tray icon and choose Exit.
 
 You can save your preferred size in the webapp.json file. Just change the values next to width and height.
 
+You can also change between different keyboard styles there. Currently there is the default "light" style and a "dark" style similar to the Windows 10 touch keyboard.
+
 Keymaps
 -------
 If you use an other keymap, you can also define it in the webapp.json file under keymap. Below are the currently supported keymaps. Changing the keymap requires a restart.
