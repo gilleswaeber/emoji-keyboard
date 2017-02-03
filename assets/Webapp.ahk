@@ -34,6 +34,7 @@ try {
 	__Webapp_Width := __Webapp_DefaultVar(j.width,640)
 	__Webapp_height := __Webapp_DefaultVar(j.height,480)
 	__Webapp_monitor := __Webapp_DefaultVar(j.monitor,1)
+	__Webapp_transparent := __Webapp_DefaultVar(j.transparent,"true")
 	__Webapp_style := __Webapp_DefaultVar(j.style,"light")
 	__Webapp_protocol := __Webapp_DefaultVar(j.protocol,"app")
 	__Webapp_protocol_call := __Webapp_DefaultVar(j.protocol_call,"app_call")
@@ -90,6 +91,11 @@ windowY := workAreaBottom - __Webapp_height - 32 ;-32 because titlebar doesn't c
 ;Show Gui
 Gui __Webapp_:Show, x%windowX% y%windowY% w%__Webapp_Width% h%__Webapp_height%, %__Webapp_Name%
 Gui __Webapp_:Default
+
+if (__Webapp_transparent == "true") {
+	WinSet, Transparent, 230
+}
+
 goto,__Webapp_AppStart
 return
 
