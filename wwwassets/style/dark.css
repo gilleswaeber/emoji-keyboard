@@ -29,17 +29,16 @@ main > section{
 	padding: .3vw;
 	background-color: #333333;
 	width: 6.4vw;
-	height: 6.4vw;
-	/*height: 20vh;*/
+	height: 21vh;
 	overflow: hidden;
-	margin-right: .3vw;
+	margin-right: 4px;
 	position: relative;
 	align-items: center;
 	transition: ease .05s;
 }
 .keyboard .row{
-	display: block;
-	margin-bottom: .3vw;
+	display: inline-flex;
+	margin-bottom: 4px;
 }
 
 .key .symbol{

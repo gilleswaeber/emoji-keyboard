@@ -28,15 +28,15 @@ main > section{
 	padding: .3vw;
 	border: solid .1vw #888;
 	width: 6.4vw;
-	height: 6.4vw;
+	height: 21vh;
 	overflow: hidden;
-	margin-right: .3vw;
+	margin-right: 4px;
 	position: relative;
 	align-items: center;
 }
 .keyboard .row{
-	display: block;
-	margin-bottom: .3vw;
+	display: inline-flex;
+	margin-bottom: 4px;
 }
 
 .key .symbol{
