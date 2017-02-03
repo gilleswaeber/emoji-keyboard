@@ -5,7 +5,7 @@
 	"monitor":			1,
 	"keymap":			"en-US",
 	"style":			"light",
-	"transparent":		"false",
+	"transparent":		"true",
 	"protocol":			"app",
 	"protocol_call":	"app_call",
 	"html_url":			".\\wwwassets\\",
