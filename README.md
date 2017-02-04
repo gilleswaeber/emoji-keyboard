@@ -1,6 +1,6 @@
 Emoji Keyboard
 ==============
-![Screenshot](http://i.imgur.com/5D68pDe.png)
+![Screenshot](https://abload.de/img/awsmi9w4kcn.png)
 
 Copyright (c) 2016 [Gilles Waeber](http://www.gilleswaeber.ch), under MIT License
 
