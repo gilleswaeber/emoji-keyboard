@@ -67,7 +67,7 @@ main > section{
 	right: .2vw;
 	left: .2vw;
 	font-variant: small-caps;
-	opacity: .3;
+	opacity: .4;
 	transition: ease .05s;
 }
 
@@ -80,5 +80,5 @@ main > section{
 }
 
 .key:hover .symbol{
-	transform: scale(1.8) rotate(7deg);
+	transform: translateY(-4px) translateX(.1vh) scale(1.8) rotate(7deg);
 }

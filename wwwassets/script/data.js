@@ -208,7 +208,7 @@ data.emojis = [
 	{"symbol":"👣","group":"Smileys & People","subGroup":"body","fullName":"FOOTPRINTS","keywords":["body","clothing","footprint","print"]},
 	{"symbol":"👀","group":"Smileys & People","subGroup":"body","fullName":"EYES","keywords":["body","eye","face"]},
 	{"symbol":"👁","group":"Smileys & People","subGroup":"body","fullName":"EYE","keywords":["body","eye"]},
-	{"symbol":"👁‍🗨","group":"Smileys & People","subGroup":"body","fullName":"EYE, LEFT SPEECH BUBBLE","keywords":["bubble","eye","speech","witness"]},
+	{"symbol":"👁‍🗨","group":"Smileys & People","subGroup":"body","fullName":"EYE, LEFT SPEECH BUBBLE","keywords":["bubble","eye","speech","witness"],"fallbackIcon":true},
 	{"symbol":"👅","group":"Smileys & People","subGroup":"body","fullName":"TONGUE","keywords":["body","tongue"]},
 	{"symbol":"👄","group":"Smileys & People","subGroup":"body","fullName":"MOUTH","keywords":["body","lips","mouth"]},
 	{"symbol":"💋","group":"Smileys & People","subGroup":"emotion","fullName":"KISS MARK","keywords":["heart","kiss","lips","mark","romance"]},
@@ -1406,15 +1406,15 @@ data.emojis = [
 
 	{"symbol":"🇽🇪","group":"Flags","subGroup":"non-standard","fullName":"REGIONAL INDICATOR SYMBOL LETTER X, REGIONAL INDICATOR SYMBOL LETTER E","name":"*England","keywords":["flag","england","non standard"]},
 	{"symbol":"🇽🇸","group":"Flags","subGroup":"non-standard","fullName":"REGIONAL INDICATOR SYMBOL LETTER X, REGIONAL INDICATOR SYMBOL LETTER S","name":"*Scotland","keywords":["flag","scotland","non standard"]},
-	{"symbol":"🏳️‍🌈","group":"Flags","subGroup":"non-standard","fullName":"WAVING WHITE FLAG, RAINBOW","name":"*Rainbow flag","keywords":["flag","rainbow","non standard"]},
-	{"symbol":"🏴‍☠️","group":"Flags","subGroup":"non-standard","fullName":"WAVING BLACK FLAG, SKULL AND CROSSBONES","name":"*Pirate flag","keywords":["flag","pirate","skull","non standard"]}
+	{"symbol":"🏳️‍🌈","group":"Flags","subGroup":"non-standard","fullName":"WAVING WHITE FLAG, RAINBOW","name":"*Rainbow flag","keywords":["flag","rainbow","non standard"],"fallbackIcon":true},
+	{"symbol":"🏴‍☠️","group":"Flags","subGroup":"non-standard","fullName":"WAVING BLACK FLAG, SKULL AND CROSSBONES","name":"*Pirate flag","keywords":["flag","pirate","skull","non standard"],"fallbackIcon":true}
 ];
 data.keyboards = [
-	{"name":"Happy & Unhappy", "symbol":"😀", "content":[
+	{"name":"(Un)Happy", "symbol":"😀", "content":[
 		{"group":"Smileys & People", "subGroup":"face-happy"},
 		{"group":"Smileys & People", "subGroup":"face-unhappy"},
 		{"group":"Smileys & People", "subGroup":"face-sick"},
-	]},{"name":"Neutral, roles, sick, creatures", "symbol":"😐", "content":[
+	]},{"name":"Neutral", "symbol":"😐", "content":[
 		{"group":"Smileys & People", "subGroup":"face-neutral"},
 		{"group":"Smileys & People", "subGroup":"face-role"},
 		{"group":"Smileys & People", "subGroup":"creature-face"},
@@ -1425,7 +1425,7 @@ data.keyboards = [
 		{"group":"Smileys & People", "subGroup":"person"},
 		{"group":"Smileys & People", "subGroup":"person-role"},
 		{"group":"Smileys & People", "subGroup":"skin-tone"},
-	]},{"name":"Cat, monkey & emotions", "symbol":"😺", "content":[
+	]},{"name":"Emotions", "symbol":"😺", "content":[
 		{"group":"Smileys & People", "subGroup":"cat-face"},
 		{"group":"Smileys & People", "subGroup":"monkey-face"},
 		{"group":"Smileys & People", "subGroup":"emotion"},
@@ -1445,12 +1445,12 @@ data.keyboards = [
 	]},{"name":"Plants", "symbol":"🌹", "content":[
 		{"group":"Animals & Nature", "subGroup":"plant-flower"},
 		{"group":"Animals & Nature", "subGroup":"plant-other"},
-	]},{"name":"Fruits, vegetables & drinks", "symbol":"🥝", "content":[
+	]},{"name":"Raw food", "symbol":"🥝", "content":[
 		{"group":"Food & Drink", "subGroup":"food-fruit"},
 		{"group":"Food & Drink", "subGroup":"food-vegetable"},
 		{"group":"Food & Drink", "subGroup":"drink"},
 		{"group":"Food & Drink", "subGroup":"dishware"},
-	]},{"name":"Prepared food", "symbol":"🌭", "content":[
+	]},{"name":"Cooked", "symbol":"🌭", "content":[
 		{"group":"Food & Drink", "subGroup":"food-prepared"},
 		{"group":"Food & Drink", "subGroup":"food-asian"},
 		{"group":"Food & Drink", "subGroup":"food-sweet"},
@@ -1462,9 +1462,9 @@ data.keyboards = [
 	]},{"name":"Other places", "symbol":"🎠", "content":[
 		{"group":"Travel & Places", "subGroup":"place-other"},
 		{"group":"Travel & Places", "subGroup":"hotel"},
-	]},{"name":"Ground transport", "symbol":"🚗", "content":[
+	]},{"name":"Vehicles", "symbol":"🚗", "content":[
 		{"group":"Travel & Places", "subGroup":"transport-ground"},
-	]},{"name":"Air & water transport", "symbol":"✈", "content":[
+	]},{"name":"Ships", "symbol":"✈", "content":[
 		{"group":"Travel & Places", "subGroup":"transport-air"},
 		{"group":"Travel & Places", "subGroup":"transport-water"},
 	]},{"name":"Time", "symbol":"⌛", "content":[
@@ -1512,18 +1512,18 @@ data.keyboards = [
 	]},{"name":"Geometric & keys", "symbol":"🔷", "content":[
 		{"group":"Symbols", "subGroup":"keycaps"},
 		{"group":"Symbols", "subGroup":"geometric"},
-	]},{"name":"Flags - Europe", "symbol":"🇪🇺", "fallbackIcon":true, "content":[
+	]},{"name":"Europe", "symbol":"🇪🇺", "fallbackIcon":true, "content":[
 		{"group":"Flags", "subGroup":"country-flag-europe"},
-	]},{"name":"Flags - Africa", "symbol":"🇪🇬", "fallbackIcon":true, "content":[
+	]},{"name":"Africa", "symbol":"🇿🇦", "fallbackIcon":true, "content":[
 		{"group":"Flags", "subGroup":"country-flag-africa"},
-	]},{"name":"Flags - Asia", "symbol":"🇨🇳", "fallbackIcon":true, "content":[
+	]},{"name":"Asia", "symbol":"🇨🇳", "fallbackIcon":true, "content":[
 		{"group":"Flags", "subGroup":"country-flag-asia"},
-	]},{"name":"Flags - North america", "symbol":"🇺🇸", "fallbackIcon":true, "content":[
+	]},{"name":"North america", "symbol":"🇺🇸", "fallbackIcon":true, "content":[
 		{"group":"Flags", "subGroup":"country-flag-north-america"},
-	]},{"name":"Flags - South america & Oceania", "symbol":"🇧🇷", "fallbackIcon":true, "content":[
+	]},{"name":"South america & Oceania", "symbol":"🇧🇷", "fallbackIcon":true, "content":[
 		{"group":"Flags", "subGroup":"country-flag-south-america"},
 		{"group":"Flags", "subGroup":"country-flag-oceania"},
-	]},{"name":"Flags - Others", "symbol":"🏁", "content":[
+	]},{"name":"Flags", "symbol":"🏁", "content":[
 		{"group":"Flags", "subGroup":"country-flag-antarctica"},
 		{"group":"Flags", "subGroup":"flag"},
 		{"group":"Flags", "subGroup":"non-standard"},
