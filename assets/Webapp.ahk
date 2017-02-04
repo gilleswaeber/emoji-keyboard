@@ -35,7 +35,7 @@ try {
 	__Webapp_height := __Webapp_DefaultVar(j.height,480)
 	__Webapp_monitor := __Webapp_DefaultVar(j.monitor,1)
 	__Webapp_transparent := __Webapp_DefaultVar(j.transparent,"true")
-	__Webapp_style := __Webapp_DefaultVar(j.style,"light")
+	__Webapp_theme := __Webapp_DefaultVar(j.theme,"light")
 	__Webapp_protocol := __Webapp_DefaultVar(j.protocol,"app")
 	__Webapp_protocol_call := __Webapp_DefaultVar(j.protocol_call,"app_call")
 		if !IsFunc(__Webapp_protocol_call)
@@ -45,7 +45,7 @@ try {
 		if !IsFunc(__Webapp_NavComplete_call)
 			throw "Function Name '" . __Webapp_NavComplete_call . "' does not exist."
 		__Webapp_NavComplete_call:=Func(__Webapp_NavComplete_call)
-	__Webapp_html_url := __Webapp_DefaultVar(j.html_url . __Webapp_style . ".html","index.html")
+	__Webapp_html_url := __Webapp_DefaultVar(j.html_url . __Webapp_theme . ".html","index.html")
 		if !FileExist(__Webapp_html_url)
 			throw "File '" . __Webapp_html_url . "' does not exist."
 		__Webapp_html_url := getFileFullPath(__Webapp_html_url)
