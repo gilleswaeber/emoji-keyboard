@@ -1,82 +1,22 @@
 
 body, html{
-	margin: 0;
-	padding: 0;
-	font-family: 'Segoe UI Emoji', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-size: 1.8vw;
+	background-color: #f8f8f8;
 }
 
-main{
-	display: flex;
-	flex-direction: column;
-	cursor: default;
-}
-
-main > section{
-	flex: 1;
-	overflow: auto;
-}
-.keyboard{
-	line-height: 0;
-	text-align: center;
-}
-.keyboard .key{
-	display: inline-flex;
-	list-style: none;
-	padding: .3vw;
+.key{
+	background-color: #f4f4f4;
 	border: solid .1vw #888;
-	width: 6.4vw;
-	overflow: hidden;
-	margin: 2px;
-	position: relative;
-	align-items: center;
+	color: #000;
 }
-.keyboard .row{
-	display: inline-flex;
-	height: 25vh;
-}
-
-.key .symbol{
-	font-size: 3.6vw;
-	text-align: center;
-	flex: 1;
-	transition: ease .1s;
-}
-
 .key.empty{
-	opacity: 0.5;
-}
-
-.key .keyname{
-	position: absolute;
-	top: .2vw;
-	left: .2vw;
-	font-variant: small-caps;
-	line-height: 1em;
+	border: solid .1vw #888;
+	color: #888;
 }
 
 .key .name{
-	font-size: 1.4vw;
-	line-height: 1.2vw;
-	text-align: right;
-	position: absolute;
-	bottom: .2vw;
-	right: .2vw;
-	left: .2vw;
-	font-variant: small-caps;
-	text-shadow: .1vw .1vw 0 white, .1vw -.1vw 0 white, -.1vw .1vw 0 white, -.1vw -.1vw 0 white;
-	opacity: .3;
-	transition: opacity ease .5s;
+	text-shadow: .1vw .1vw 0 #fff, .1vw -.1vw 0 #fff, -.1vw .1vw 0 #fff, -.1vw -.1vw 0 #fff;
 }
 
-.key.back .name{
-	display: none;
-}
-
-.key:hover .name{
-	opacity: .8;
-}
-
-.key:hover .symbol{
-	transform: scale(1.8) rotate(7deg);
+.key:not(.empty):hover{
+	color: #000;
 }
