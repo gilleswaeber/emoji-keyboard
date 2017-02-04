@@ -45,6 +45,9 @@ main > section{
 	flex: 1;
 	transition: ease .1s;
 }
+.key .symbol img{
+	height: 3.6vw;
+}
 
 .key .keyname{
 	position: absolute;

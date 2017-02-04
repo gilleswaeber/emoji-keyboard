@@ -1,5 +1,6 @@
 /// <reference path="data.d.ts" />
 /// <reference path="Emojis.ts" />
+/// <reference path="../polyfills/codePoint.ts" />
 
 
 module Workers{
@@ -21,10 +22,10 @@ module Workers{
 		constructor(
 			private name: string,
 			private symbol: string,
-			private keys: Key[]
+			private keys: Key[],
+			private fallbackIcon: boolean = false
 		){
 			this.fixedKeys.push(new BlankKey());
-			console.log(this.keys.length);
 			this.multipage = this.keys.length > 47;
 			if(this.multipage){
 				this.pages = 1;
@@ -52,6 +53,10 @@ module Workers{
 
 		getSymbol(): string{
 			return this.symbol;
+		}
+
+		hasFallbackIcon(): boolean{
+			return this.fallbackIcon;
 		}
 
 		getVisible(): Key[]{
@@ -90,7 +95,7 @@ module Workers{
 					keys.push(new CharKey(char));
 				});
 			});
-			super(kdata.name, kdata.symbol, keys);
+			super(kdata.name, kdata.symbol, keys, kdata.fallbackIcon);
 		}
 
 	}
@@ -109,11 +114,28 @@ module Workers{
 		getSymbol(): string{
 			return this.symbol;
 		}
+		fillSymbol(symbolDiv: HTMLDivElement): HTMLDivElement{
+			$(symbolDiv).text(this.symbol);
+			return symbolDiv;
+		}
 	}
 
 	export class CharKey extends Key{
 		constructor(private char: Data.Emoji){
 			super((char.name || char.fullName).toLowerCase(), char.symbol);
+		}
+
+		fillSymbol(symbolDiv: HTMLDivElement): HTMLDivElement{
+			if(!this.char.fallbackIcon) return super.fillSymbol(symbolDiv);
+			let symbol = this.getSymbol();
+			let name = [];
+			for(var i=0; i<symbol.length; i++){
+				let c = symbol.codePointAt(i).toString(16);
+				if(c != 'fe0f') name.push(c);
+				if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
+			}
+			$(symbolDiv).append($('<img>').attr('src', 'img/'+name.join('-')+'.svg'));
+			return symbolDiv;
 		}
 	}
 
@@ -146,6 +168,19 @@ module Workers{
 		setKeyboard(keyboard: Keyboard){
 			super.setKeyboard(keyboard);
 			this.target.setParent(keyboard);
+		}
+
+		fillSymbol(symbolDiv: HTMLDivElement): HTMLDivElement{
+			if(!this.target.hasFallbackIcon()) return super.fillSymbol(symbolDiv);
+			let symbol = this.getSymbol();
+			let name = [];
+			for(var i=0; i<symbol.length; i++){
+				let c = symbol.codePointAt(i).toString(16);
+				if(c != 'feof') name.push(c);
+				if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
+			}
+			$(symbolDiv).append($('<img>').attr('src', 'img/'+name.join('-')+'.svg'));
+			return symbolDiv;
 		}
 	}
 

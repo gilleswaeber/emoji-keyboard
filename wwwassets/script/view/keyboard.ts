@@ -100,10 +100,14 @@ module View{
 		}
 
 		private showKey(key: Workers.Key): JQuery{
-			return $('<div class="key">')
+			var keyType = " empty";
+			if (key instanceof Workers.CharKey) { var keyType = " char"; }
+			if (key instanceof Workers.ActionKey) { var keyType = " action"; }
+			if (key.getName() == "back") { var keyType = " back"; }
+            return $('<div class="key' + keyType + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
-				.append($('<div class="symbol">').text(key.getSymbol()))
+				.append(key.fillSymbol($('<div class="symbol">').get(0) as HTMLDivElement))
 				.click(()=>{
 					if(key instanceof Workers.ActionKey){
 						key.act(this);

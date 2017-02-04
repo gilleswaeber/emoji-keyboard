@@ -24,6 +24,63 @@ $(document).ready(function () {
     main = document.ahk = new Main(document.querySelector('main'));
     setTimeout(function () { return AHK("Ready"); }, 0);
 });
+if (!String.prototype.codePointAt) {
+    (function () {
+        'use strict';
+        var codePointAt = function (position) {
+            if (this == null) {
+                throw TypeError();
+            }
+            var string = String(this);
+            var size = string.length;
+            var index = position ? Number(position) : 0;
+            if (index != index) {
+                index = 0;
+            }
+            if (index < 0 || index >= size) {
+                return undefined;
+            }
+            var first = string.charCodeAt(index);
+            var second;
+            if (first >= 0xD800 && first <= 0xDBFF &&
+                size > index + 1) {
+                second = string.charCodeAt(index + 1);
+                if (second >= 0xDC00 && second <= 0xDFFF) {
+                    return (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
+                }
+            }
+            return first;
+        };
+        if (Object.defineProperty) {
+            Object.defineProperty(String.prototype, 'codePointAt', {
+                'value': codePointAt,
+                'configurable': true,
+                'writable': true
+            });
+        }
+        else {
+            String.prototype.codePointAt = codePointAt;
+        }
+    }());
+}
+if (!String.prototype.getCodePointLength) {
+    (function () {
+        'use strict';
+        var getCodePointLength = function () {
+            return this.length - this.split(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g).length + 1;
+        };
+        if (Object.defineProperty) {
+            Object.defineProperty(String.prototype, 'getCodePointLength', {
+                'value': getCodePointLength,
+                'configurable': true,
+                'writable': true
+            });
+        }
+        else {
+            String.prototype.getCodePointLength = getCodePointLength;
+        }
+    }());
+}
 var Workers;
 (function (Workers) {
     var Emojis;
@@ -57,16 +114,17 @@ var Workers;
         Keyboards.getMainKeyboard = getMainKeyboard;
     })(Keyboards = Workers.Keyboards || (Workers.Keyboards = {}));
     var Keyboard = (function () {
-        function Keyboard(name, symbol, keys) {
+        function Keyboard(name, symbol, keys, fallbackIcon) {
+            if (fallbackIcon === void 0) { fallbackIcon = false; }
             var _this = this;
             this.name = name;
             this.symbol = symbol;
             this.keys = keys;
+            this.fallbackIcon = fallbackIcon;
             this.page = 0;
             this.fixedKeys = [];
             this.pagedKeys = [];
             this.fixedKeys.push(new BlankKey());
-            console.log(this.keys.length);
             this.multipage = this.keys.length > 47;
             if (this.multipage) {
                 this.pages = 1;
@@ -95,6 +153,9 @@ var Workers;
         };
         Keyboard.prototype.getSymbol = function () {
             return this.symbol;
+        };
+        Keyboard.prototype.hasFallbackIcon = function () {
+            return this.fallbackIcon;
         };
         Keyboard.prototype.getVisible = function () {
             if (this.multipage)
@@ -128,13 +189,15 @@ var Workers;
     var EmojiKeyboard = (function (_super) {
         __extends(EmojiKeyboard, _super);
         function EmojiKeyboard(parent, kdata) {
+            var _this = this;
             var keys = [];
             kdata.content.forEach(function (content) {
                 Workers.Emojis.getSubGroup(content.group, content.subGroup).forEach(function (char) {
                     keys.push(new CharKey(char));
                 });
             });
-            _super.call(this, kdata.name, kdata.symbol, keys);
+            _this = _super.call(this, kdata.name, kdata.symbol, keys, kdata.fallbackIcon) || this;
+            return _this;
         }
         return EmojiKeyboard;
     }(Keyboard));
@@ -150,22 +213,42 @@ var Workers;
         Key.prototype.getSymbol = function () {
             return this.symbol;
         };
+        Key.prototype.fillSymbol = function (symbolDiv) {
+            $(symbolDiv).text(this.symbol);
+            return symbolDiv;
+        };
         return Key;
     }());
     Workers.Key = Key;
     var CharKey = (function (_super) {
         __extends(CharKey, _super);
         function CharKey(char) {
-            _super.call(this, (char.name || char.fullName).toLowerCase(), char.symbol);
-            this.char = char;
+            var _this = _super.call(this, (char.name || char.fullName).toLowerCase(), char.symbol) || this;
+            _this.char = char;
+            return _this;
         }
+        CharKey.prototype.fillSymbol = function (symbolDiv) {
+            if (!this.char.fallbackIcon)
+                return _super.prototype.fillSymbol.call(this, symbolDiv);
+            var symbol = this.getSymbol();
+            var name = [];
+            for (var i = 0; i < symbol.length; i++) {
+                var c = symbol.codePointAt(i).toString(16);
+                if (c != 'fe0f')
+                    name.push(c);
+                if (symbol.charCodeAt(i) != symbol.codePointAt(i))
+                    i++;
+            }
+            $(symbolDiv).append($('<img>').attr('src', 'img/' + name.join('-') + '.svg'));
+            return symbolDiv;
+        };
         return CharKey;
     }(Key));
     Workers.CharKey = CharKey;
     var ActionKey = (function (_super) {
         __extends(ActionKey, _super);
         function ActionKey(name, symbol) {
-            _super.call(this, name, symbol);
+            return _super.call(this, name, symbol) || this;
         }
         ActionKey.prototype.setKeyboard = function (keyboard) {
             this.keyboard = keyboard;
@@ -176,8 +259,9 @@ var Workers;
     var KeyboardKey = (function (_super) {
         __extends(KeyboardKey, _super);
         function KeyboardKey(target) {
-            _super.call(this, target.getName(), target.getSymbol());
-            this.target = target;
+            var _this = _super.call(this, target.getName(), target.getSymbol()) || this;
+            _this.target = target;
+            return _this;
         }
         KeyboardKey.prototype.act = function (view) {
             view.show(this.target);
@@ -186,14 +270,30 @@ var Workers;
             _super.prototype.setKeyboard.call(this, keyboard);
             this.target.setParent(keyboard);
         };
+        KeyboardKey.prototype.fillSymbol = function (symbolDiv) {
+            if (!this.target.hasFallbackIcon())
+                return _super.prototype.fillSymbol.call(this, symbolDiv);
+            var symbol = this.getSymbol();
+            var name = [];
+            for (var i = 0; i < symbol.length; i++) {
+                var c = symbol.codePointAt(i).toString(16);
+                if (c != 'feof')
+                    name.push(c);
+                if (symbol.charCodeAt(i) != symbol.codePointAt(i))
+                    i++;
+            }
+            $(symbolDiv).append($('<img>').attr('src', 'img/' + name.join('-') + '.svg'));
+            return symbolDiv;
+        };
         return KeyboardKey;
     }(ActionKey));
     Workers.KeyboardKey = KeyboardKey;
     var PageKey = (function (_super) {
         __extends(PageKey, _super);
         function PageKey(page) {
-            _super.call(this, 'page ' + (page + 1), '' + (page + 1));
-            this.page = page;
+            var _this = _super.call(this, 'page ' + (page + 1), '' + (page + 1)) || this;
+            _this.page = page;
+            return _this;
         }
         PageKey.prototype.act = function (view) {
             this.keyboard.setPage(this.page);
@@ -205,7 +305,7 @@ var Workers;
     var BackKey = (function (_super) {
         __extends(BackKey, _super);
         function BackKey() {
-            _super.call(this, 'back', '←');
+            return _super.call(this, 'back', '←') || this;
         }
         BackKey.prototype.act = function (view) {
             if (this.keyboard.getParent())
@@ -217,7 +317,7 @@ var Workers;
     var BlankKey = (function (_super) {
         __extends(BlankKey, _super);
         function BlankKey() {
-            _super.call(this, '', '');
+            return _super.call(this, '', '') || this;
         }
         return BlankKey;
     }(Key));
@@ -306,14 +406,20 @@ var View;
         };
         View.prototype.showKey = function (key) {
             var _this = this;
-			var keyType = " empty";
-			if (key instanceof Workers.CharKey) { var keyType = " char"; }
-			if (key instanceof Workers.ActionKey) { var keyType = " action"; }
-			if (key.getName() == "back") { var keyType = " back"; }
-            return $('<div class="key'+keyType+'">')
+            var keyType = " empty";
+            if (key instanceof Workers.CharKey) {
+                var keyType = " char";
+            }
+            if (key instanceof Workers.ActionKey) {
+                var keyType = " action";
+            }
+            if (key.getName() == "back") {
+                var keyType = " back";
+            }
+            return $('<div class="key' + keyType + '">')
                 .append($('<div class="keyname">').text(keysLocale[key.key]))
                 .append($('<div class="name">').text(key.getName()))
-                .append($('<div class="symbol">').text(key.getSymbol()))
+                .append(key.fillSymbol($('<div class="symbol">').get(0)))
                 .click(function () {
                 if (key instanceof Workers.ActionKey) {
                     key.act(_this);

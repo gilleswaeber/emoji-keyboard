@@ -13,12 +13,14 @@ declare module Data{
 		subGroup: string,
 		fullName: string,
 		name?: string,
-		keywords?: string[]
+		keywords?: string[],
+		fallbackIcon?: boolean
 	}
 
 	interface Keyboard{
 		name: string,
 		symbol: string,
+		fallbackIcon?: boolean,
 		content: {
 			group: string,
 			subGroup: string
