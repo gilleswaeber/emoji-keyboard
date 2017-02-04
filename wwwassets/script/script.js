@@ -205,7 +205,7 @@ var Workers;
     var BackKey = (function (_super) {
         __extends(BackKey, _super);
         function BackKey() {
-            _super.call(this, 'back', 'ESC');
+            _super.call(this, 'back', '←');
         }
         BackKey.prototype.act = function (view) {
             if (this.keyboard.getParent())
@@ -306,7 +306,11 @@ var View;
         };
         View.prototype.showKey = function (key) {
             var _this = this;
-            return $('<div class="key">')
+			var keyType = " empty";
+			if (key instanceof Workers.CharKey) { var keyType = " char"; }
+			if (key instanceof Workers.ActionKey) { var keyType = " action"; }
+			if (key.getName() == "back") { var keyType = " back"; }
+            return $('<div class="key'+keyType+'">')
                 .append($('<div class="keyname">').text(keysLocale[key.key]))
                 .append($('<div class="name">').text(key.getName()))
                 .append($('<div class="symbol">').text(key.getSymbol()))

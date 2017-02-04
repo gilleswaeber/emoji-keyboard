@@ -1,14 +1,19 @@
-﻿#SingleInstance on
+﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+#SingleInstance force
 ;#NoTrayIcon
 SendMode Input
 
 Menu, Tray, Icon, assets/keyboard.ico, 1, 1
 Menu, Tray, Tip, Emoji Keyboard
-Menu, Tray, Add
 Menu, Tray, Add, &Show, Toggle
 Menu, Tray, Add
 Menu, Tray, Add, Emoji &Keyboard by Gilles Waeber, Credits
+Menu, Tray, Add
+Menu, Tray, Add, E&xit, Exit 
 Menu, Tray, Default, &Show
+Menu, Tray, NoStandard
 
 #Include assets\JSON_ToObj.ahk
 #Include assets\Webapp.ahk
@@ -18,7 +23,7 @@ __Webapp_AppStart:
 ;             not focusable
 Gui __Webapp_:+E0x08000000 +AlwaysOnTop -MaximizeBox -MinimizeBox ; +E0x40000 +ToolWindow ;  -Caption
 OnMessage(0x112, "WM_SYSCOMMAND")
-WinSet, Transparent, 230
+
 
 WM_SYSCOMMAND(wParam)
 {
@@ -54,19 +59,16 @@ app_page(NewURL) {
 }
 
 Gui __Webapp_:Hide
+Return
 
-~LAlt::	; <-- OPEN with double left alt key
+
+Capslock::	; <-- OPEN with double left alt key
 	global vVisible
-	if (A_PriorHotkey <> "~LAlt" or A_TimeSincePriorHotkey > 400) {
-		if(vVisible){
-			vVisible := false
-			Hide()
-			KeyWait, LAlt
-			Send, {LAlt}
-		}
-		return
+	if(vVisible){
+		vVisible := false
+		Hide()
+		Return
 	}
-	KeyWait, LAlt
 	Show()
 Return
 

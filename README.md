@@ -1,6 +1,6 @@
 Emoji Keyboard
 ==============
-![Screenshot](http://i.imgur.com/5D68pDe.png)
+![Screenshot](https://abload.de/img/awsmi9w4kcn.png)
 
 Copyright (c) 2016 [Gilles Waeber](http://www.gilleswaeber.ch), under MIT License
 
@@ -16,6 +16,8 @@ Use the shown keyboard keys to navigate between the categories and type the Emoj
 To exit completely, do a right click on the tray icon and choose Exit.
 
 You can save your preferred size in the webapp.json file. Just change the values next to width and height.
+
+You can also change between different keyboard styles there. Currently there is the default "light" style and a "dark" style similar to the Windows 10 touch keyboard.
 
 Keymaps
 -------

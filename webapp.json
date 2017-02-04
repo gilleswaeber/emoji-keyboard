@@ -2,9 +2,12 @@
 	"name":				"Emoji Keyboard",
 	"width":			764,
 	"height":			240,
+	"monitor":			1,
 	"keymap":			"en-US",
+	"style":			"light",
+	"transparent":		"true",
 	"protocol":			"app",
 	"protocol_call":	"app_call",
-	"html_url":			".\\wwwassets\\index.html",
+	"html_url":			".\\wwwassets\\",
 	"NavComplete_call":	"app_page"
 }
