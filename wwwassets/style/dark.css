@@ -43,6 +43,7 @@ main > section{
 	text-align: center;
 	flex: 1;
 	color: white;
+	transition: ease .1s;
 }
 
 .key.empty{
@@ -90,4 +91,8 @@ main > section{
 	color: black;
 	text-shadow: .1vw .1vw 0 white, .1vw -.1vw 0 white, -.1vw .1vw 0 white, -.1vw -.1vw 0 white;
 	opacity: .8;
+}
+
+.key:hover .symbol{
+	transform: scale(1.8) rotate(7deg);
 }

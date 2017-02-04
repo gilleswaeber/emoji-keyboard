@@ -40,6 +40,7 @@ main > section{
 	font-size: 3.6vw;
 	text-align: center;
 	flex: 1;
+	transition: ease .1s;
 }
 
 .key.empty{
@@ -74,4 +75,8 @@ main > section{
 
 .key:hover .name{
 	opacity: .8;
+}
+
+.key:hover .symbol{
+	transform: scale(1.8) rotate(7deg);
 }
