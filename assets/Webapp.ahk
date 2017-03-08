@@ -73,7 +73,8 @@ __Webapp_w.AHK := __Webapp_wf
 ;Wait for IE to load the page, before we connect the event handlers
 while __Webapp_wb.readystate != 4 or __Webapp_wb.busy
 	sleep 10
-	
+
+A_Scaling := A_ScreenDPI / 96	
 
 ;Check if display monitor exists
 SysGet, monitorCount, MonitorCount
@@ -86,16 +87,16 @@ if (__Webapp_monitor > monitorCount) {
 SysGet, workArea, MonitorWorkArea, %__Webapp_monitor%
 
 ;x-position
-windowX := (workAreaRight - workAreaLeft - __Webapp_Width) / 2
-
-;The following is done in case the window will be on a non-primary monitor
-;or if the taskbar is anchored on the left side of the screen
-windowX += workAreaLeft
+windowX := workAreaLeft + (workAreaRight - workAreaLeft - (__Webapp_Width + 13) * A_Scaling) / 2 ; 13 because of the shadow
 
 ;y-position
-windowY := workAreaBottom - __Webapp_height - 32 ;-32 because titlebar doesn't count towards window height?
+windowY := workAreaBottom - (__Webapp_height + 32) * A_Scaling ; 32 because of the titlebar + the shadow
+
+__Webapp_Width := __Webapp_Width * A_Scaling
+__Webapp_height := __Webapp_height * A_Scaling
 
 ;Show Gui
+Gui __Webapp_: -DPIScale
 Gui __Webapp_:Show, x%windowX% y%windowY% w%__Webapp_Width% h%__Webapp_height% Hide, %__Webapp_Name%
 Gui __Webapp_:Default
 
