@@ -80,5 +80,5 @@ main > section{
 }
 
 .key:hover .symbol{
-	transform: translateY(-4px) translateX(.1vh) scale(1.8) rotate(7deg);
+	transform: translateY(-4px) scale(1.8) rotate(7deg);
 }

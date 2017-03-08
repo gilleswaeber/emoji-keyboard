@@ -32,4 +32,4 @@ Group  | Keymaps
 QWERTY | en-US
 QWERTZ | de-DE, de-CH, fr-CH
 AZERTY | fr-FR
-others | en-DVORAK
+others | en-DVORAK, blank

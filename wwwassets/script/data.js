@@ -1424,7 +1424,6 @@ data.keyboards = [
 	]},{"name":"Persons", "symbol":"👤", "content":[
 		{"group":"Smileys & People", "subGroup":"person"},
 		{"group":"Smileys & People", "subGroup":"person-role"},
-		{"group":"Smileys & People", "subGroup":"skin-tone"},
 	]},{"name":"Emotions", "symbol":"😺", "content":[
 		{"group":"Smileys & People", "subGroup":"cat-face"},
 		{"group":"Smileys & People", "subGroup":"monkey-face"},

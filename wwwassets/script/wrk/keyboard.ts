@@ -26,13 +26,13 @@ module Workers{
 			private fallbackIcon: boolean = false
 		){
 			this.fixedKeys.push(new BlankKey());
-			this.multipage = this.keys.length > 47;
+			this.multipage = this.keys.length > 46;
 			if(this.multipage){
 				this.pages = 1;
 				while(this.keys.length > this.pages*(45-Math.min(this.pages,10))){
 					this.pages++;
 				}
-				var perpage = 46-Math.min(this.pages,10);
+				var perpage = 45-Math.min(this.pages,10);
 				for(var i=0; i<Math.min(this.pages,10); i++){
 					this.fixedKeys.push(new PageKey(i));
 				}

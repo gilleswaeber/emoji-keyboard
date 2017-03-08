@@ -125,13 +125,13 @@ var Workers;
             this.fixedKeys = [];
             this.pagedKeys = [];
             this.fixedKeys.push(new BlankKey());
-            this.multipage = this.keys.length > 47;
+            this.multipage = this.keys.length > 46;
             if (this.multipage) {
                 this.pages = 1;
                 while (this.keys.length > this.pages * (45 - Math.min(this.pages, 10))) {
                     this.pages++;
                 }
-                var perpage = 46 - Math.min(this.pages, 10);
+                var perpage = 45 - Math.min(this.pages, 10);
                 for (var i = 0; i < Math.min(this.pages, 10); i++) {
                     this.fixedKeys.push(new PageKey(i));
                 }
@@ -351,6 +351,7 @@ var View;
         30: 'a', 31: 'o', 32: 'e', 33: 'u', 34: 'i', 35: 'd', 36: 'h', 37: 't', 38: 'n', 39: 's', 40: '-',
         86: '\\', 44: ';', 45: 'q', 46: 'j', 47: 'k', 48: 'x', 49: 'b', 50: 'm', 51: 'w', 52: 'v', 53: 'z'
     });
+    LOCALES['blank'] = {};
     var keysLocale = LOCALES['en-US'];
     var KEYS = [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
     var KEYMAP = [
