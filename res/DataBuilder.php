@@ -36,7 +36,10 @@ class DataBuilder{
 		foreach ($this->keys as $key) {
 			if($key['Type'] != 'fully-qualified') continue;
 
-			if(isset($emojis[explode(': ', $key['Name'])[0]])){
+			if(
+				isset($emojis[explode(': ', $key['Name'])[0]]) &&
+				(!isset($this->config->nogroup) || !in_array(explode(': ', $key['Name'])[0], $this->config->nogroup))
+			){
 				$base = explode(': ', $key['Name'])[0];
 				if(!isset($emojis[$base]['alternates'])) $emojis[$base]['alternates'] = [];
 				$emojis[$base]['alternates'][] = $key['Symbol'];

@@ -79,6 +79,13 @@
 			}
 		}
 	},
+	"nogroup": {
+		"description": "Disable automatic grouping",
+		"type": "array",
+		"items": {
+			"type": "string"
+		}
+	},
     "required": [
         "keyboards"
     ]

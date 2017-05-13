@@ -29,22 +29,25 @@
             "7\ufe0f\u20e3",
             "8\ufe0f\u20e3",
             "9\ufe0f\u20e3"
-		],
-		"version": 10
+		]
 	},
+	"nogroup": ["family"],
 	"keyboards": [
 		{"name":"(Un)Happy", "symbol":"😀", "content":[
 			{"group":"Smileys & People", "subGroup":"face-positive"},
 			{"group":"Smileys & People", "subGroup":"face-negative"},
 			{"group":"Smileys & People", "subGroup":"face-sick"}
 		]},{"name":"Neutral", "symbol":"😐", "content":[
-			{"group":"Smileys & People", "subGroup":"face-neutral"},
+			{"group":"Smileys & People", "subGroup":"face-neutral"}
+		]},{"name":"Roles", "symbol":"👻", "content":[
 			{"group":"Smileys & People", "subGroup":"face-role"},
 			{"group":"Smileys & People", "subGroup":"face-fantasy"},
 			{"group":"Smileys & People", "subGroup":"person-fantasy"}
 		]},{"name":"Body", "symbol":"👍", "content":[
-			{"group":"Smileys & People", "subGroup":"body"},
-			{"group":"Smileys & People", "subGroup":"person-gesture"}
+			{"group":"Smileys & People", "subGroup":"body"}
+		]},{"name":"Gestures", "symbol":"🙌", "content":[
+			{"group":"Smileys & People", "subGroup":"person-gesture"},
+			{"group":"Smileys & People", "subGroup":"person-activity"}
 		]},{"name":"Persons", "symbol":"👤", "content":[
 			{"group":"Smileys & People", "subGroup":"person"},
 			{"group":"Smileys & People", "subGroup":"person-role"}
@@ -97,7 +100,6 @@
 			{"group":"Activities", "subGroup":"sport"},
 			{"group":"Smileys & People", "subGroup":"person-sport"}
 		]},{"name":"Activities", "symbol":"🎮", "content":[
-			{"group":"Smileys & People", "subGroup":"person-activity"},
 			{"group":"Activities", "subGroup":"event"},
 			{"group":"Activities", "subGroup":"award-medal"},
 			{"group":"Activities", "subGroup":"game"}
@@ -136,7 +138,7 @@
 		]},{"name":"Geometric & keys", "symbol":"🔷", "content":[
 			{"group":"Symbols", "subGroup":"keycap"},
 			{"group":"Symbols", "subGroup":"geometric"}
-		]},{"name":"Country Flags", "symbol":"🌍", "content":[
+		]},{"name":"Country Flags", "symbol":"🌐", "content":[
 			{"group":"Flags", "subGroup":"country-flag"}
 		]},{"name":"Flags", "symbol":"🏁", "content":[
 			{"group":"Flags", "subGroup":"subdivision-flag"},
