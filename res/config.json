@@ -1,0 +1,147 @@
+{
+	"$schema": "./config.schema.json",
+	"addons": [
+		{"symbol":"🐱‍👤","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Ninja cat","keywords":["windows","non standard","ninja","cat"]},
+		{"symbol":"🐱‍👓","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Hipster cat","keywords":["windows","non standard","hipster","ninja","cat"]},
+		{"symbol":"🐱‍💻","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Hacker cat","keywords":["windows","non standard","computer","hacker","ninja","cat"]},
+		{"symbol":"🐱‍🐉","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Dino cat","keywords":["windows","non standard","dino","ninja","cat"]},
+		{"symbol":"🐱‍🏍","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Stunt cat","keywords":["windows","non standard","stunt","ninja","cat"]},
+		{"symbol":"🐱‍🚀","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Astro cat","keywords":["windows","non standard","astronaut","ninja","cat"]},
+
+		{"symbol": "🏴‍☠️", "group": "Flags", "subGroup": "non-standard", "name": "*Pirate flag", "keywords": ["flag", "pirate", "skull", "non standard"]}
+	],
+	"requireFallback": {
+		"characters": [
+			{"from": "🇦", "to": "🇿🇿"},
+			{"from": "\ud83c\udff4", "to": "\ud83c\udff4🇿"}
+		],
+		"sequences": [
+			"🏴‍☠️",
+            "#\ufe0f\u20e3",
+            "*\ufe0f\u20e3",
+            "0\ufe0f\u20e3",
+            "1\ufe0f\u20e3",
+            "2\ufe0f\u20e3",
+            "3\ufe0f\u20e3",
+            "4\ufe0f\u20e3",
+            "5\ufe0f\u20e3",
+            "6\ufe0f\u20e3",
+            "7\ufe0f\u20e3",
+            "8\ufe0f\u20e3",
+            "9\ufe0f\u20e3"
+		],
+		"version": 10
+	},
+	"keyboards": [
+		{"name":"(Un)Happy", "symbol":"😀", "content":[
+			{"group":"Smileys & People", "subGroup":"face-positive"},
+			{"group":"Smileys & People", "subGroup":"face-negative"},
+			{"group":"Smileys & People", "subGroup":"face-sick"}
+		]},{"name":"Neutral", "symbol":"😐", "content":[
+			{"group":"Smileys & People", "subGroup":"face-neutral"},
+			{"group":"Smileys & People", "subGroup":"face-role"},
+			{"group":"Smileys & People", "subGroup":"face-fantasy"},
+			{"group":"Smileys & People", "subGroup":"person-fantasy"}
+		]},{"name":"Body", "symbol":"👍", "content":[
+			{"group":"Smileys & People", "subGroup":"body"},
+			{"group":"Smileys & People", "subGroup":"person-gesture"}
+		]},{"name":"Persons", "symbol":"👤", "content":[
+			{"group":"Smileys & People", "subGroup":"person"},
+			{"group":"Smileys & People", "subGroup":"person-role"}
+		]},{"name":"Emotions", "symbol":"😺", "content":[
+			{"group":"Smileys & People", "subGroup":"cat-face"},
+			{"group":"Smileys & People", "subGroup":"monkey-face"},
+			{"group":"Smileys & People", "subGroup":"emotion"}
+		]},{"name":"Families", "symbol":"👫", "content":[
+			{"group":"Smileys & People", "subGroup":"family"}
+		]},{"name":"Clothing", "symbol":"👖", "content":[
+			{"group":"Smileys & People", "subGroup":"clothing"}
+		]},{"name":"Mammals", "symbol":"🐄", "content":[
+			{"group":"Animals & Nature", "subGroup":"animal-mammal"}
+		]},{"name":"Other animals", "symbol":"🐦", "content":[
+			{"group":"Animals & Nature", "subGroup":"animal-bird"},
+			{"group":"Animals & Nature", "subGroup":"animal-amphibian"},
+			{"group":"Animals & Nature", "subGroup":"animal-reptile"},
+			{"group":"Animals & Nature", "subGroup":"animal-marine"},
+			{"group":"Animals & Nature", "subGroup":"animal-bug"}
+		]},{"name":"Plants", "symbol":"🌹", "content":[
+			{"group":"Animals & Nature", "subGroup":"plant-flower"},
+			{"group":"Animals & Nature", "subGroup":"plant-other"}
+		]},{"name":"Raw food", "symbol":"🥝", "content":[
+			{"group":"Food & Drink", "subGroup":"food-fruit"},
+			{"group":"Food & Drink", "subGroup":"food-vegetable"},
+			{"group":"Food & Drink", "subGroup":"drink"},
+			{"group":"Food & Drink", "subGroup":"dishware"}
+		]},{"name":"Cooked", "symbol":"🌭", "content":[
+			{"group":"Food & Drink", "subGroup":"food-prepared"},
+			{"group":"Food & Drink", "subGroup":"food-asian"},
+			{"group":"Food & Drink", "subGroup":"food-sweet"}
+		]},{"name":"Common places", "symbol":"🏡", "content":[
+			{"group":"Travel & Places", "subGroup":"place-map"},
+			{"group":"Travel & Places", "subGroup":"place-geographic"},
+			{"group":"Travel & Places", "subGroup":"place-building"},
+			{"group":"Travel & Places", "subGroup":"place-religious"}
+		]},{"name":"Other places", "symbol":"🎠", "content":[
+			{"group":"Travel & Places", "subGroup":"place-other"},
+			{"group":"Travel & Places", "subGroup":"hotel"}
+		]},{"name":"Vehicles", "symbol":"🚗", "content":[
+			{"group":"Travel & Places", "subGroup":"transport-ground"}
+		]},{"name":"Ships", "symbol":"✈", "content":[
+			{"group":"Travel & Places", "subGroup":"transport-air"},
+			{"group":"Travel & Places", "subGroup":"transport-water"}
+		]},{"name":"Time", "symbol":"⌛", "content":[
+			{"group":"Travel & Places", "subGroup":"time"}
+		]},{"name":"Weather", "symbol":"⛅", "content":[
+			{"group":"Travel & Places", "subGroup":"sky & weather"}
+		]},{"name":"Sports", "symbol":"🎽", "content":[
+			{"group":"Activities", "subGroup":"sport"},
+			{"group":"Smileys & People", "subGroup":"person-sport"}
+		]},{"name":"Activities", "symbol":"🎮", "content":[
+			{"group":"Smileys & People", "subGroup":"person-activity"},
+			{"group":"Activities", "subGroup":"event"},
+			{"group":"Activities", "subGroup":"award-medal"},
+			{"group":"Activities", "subGroup":"game"}
+		]},{"name":"Sound & light", "symbol":"🎥", "content":[
+			{"group":"Objects", "subGroup":"sound"},
+			{"group":"Objects", "subGroup":"music"},
+			{"group":"Objects", "subGroup":"musical-instrument"},
+			{"group":"Objects", "subGroup":"light & video"}
+		]},{"name":"Informatic & mail", "symbol":"💻", "content":[
+			{"group":"Objects", "subGroup":"phone"},
+			{"group":"Objects", "subGroup":"computer"},
+			{"group":"Objects", "subGroup":"mail"},
+			{"group":"Animals & Nature", "subGroup":"addon-ninja-cat"}
+		]},{"name":"Paper & things", "symbol":"📜", "content":[
+			{"group":"Objects", "subGroup":"book-paper"},
+			{"group":"Objects", "subGroup":"money"},
+			{"group":"Objects", "subGroup":"writing"},
+			{"group":"Objects", "subGroup":"medical"},
+			{"group":"Objects", "subGroup":"other-object"}
+		]},{"name":"Work", "symbol":"💼", "content":[
+			{"group":"Objects", "subGroup":"office"},
+			{"group":"Objects", "subGroup":"lock"},
+			{"group":"Objects", "subGroup":"tool"}
+		]},{"name":"Signs", "symbol":"⛔", "content":[
+			{"group":"Symbols", "subGroup":"transport-sign"},
+			{"group":"Symbols", "subGroup":"warning"},
+			{"group":"Symbols", "subGroup":"zodiac"}
+		]},{"name":"Symbols", "symbol":"⚜", "content":[
+			{"group":"Symbols", "subGroup":"religion"},
+			{"group":"Symbols", "subGroup":"other-symbol"}
+		]},{"name":"Arrows", "symbol":"↕", "content":[
+			{"group":"Symbols", "subGroup":"arrow"},
+			{"group":"Symbols", "subGroup":"av-symbol"}
+		]},{"name":"Alphanum", "symbol":"🔤", "content":[
+			{"group":"Symbols", "subGroup":"alphanum"}
+		]},{"name":"Geometric & keys", "symbol":"🔷", "content":[
+			{"group":"Symbols", "subGroup":"keycap"},
+			{"group":"Symbols", "subGroup":"geometric"}
+		]},{"name":"Country Flags", "symbol":"🌍", "content":[
+			{"group":"Flags", "subGroup":"country-flag"}
+		]},{"name":"Flags", "symbol":"🏁", "content":[
+			{"group":"Flags", "subGroup":"subdivision-flag"},
+			{"group":"Flags", "subGroup":"flag"},
+			{"group":"Flags", "subGroup":"non-standard"}
+		]}
+	]
+}

@@ -1,0 +1,85 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"type": "object",
+	"properties": {
+		"addons":{
+			"description": "Additional charater/sequences to add",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"symbol": {"type": "string"},
+					"group": {"type": "string"},
+					"subGroup": {"type": "string"},
+					"name": {"type": "string"},
+					"keywords": {
+						"type": "array",
+						"items": {"type": "string"}
+					}
+				},
+				"required": ["symbol", "group", "subGroup", "name"]
+			}
+		},
+		"requireFallback": {
+			"type": "object",
+			"properties": {
+				"version": {
+					"type": "number"
+				},
+				"characters": {
+					"type": "array",
+					"items": {
+						"properties": {
+							"from": {"type": ["string", "number"]},
+							"to": {"type": ["string", "number"]}
+						},
+						"required": ["from", "to"]
+					}
+				},
+				"sequences": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"keyboards": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"symbol": {
+						"type": "string"
+					},
+					"fallbackIcon": {
+						"type": "boolean",
+						"default": false
+					},
+					"content":{
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"group": {
+									"type": "string"
+								},
+								"subGroup": {
+									"type": "string"
+								}
+							},
+							"required": ["group", "subGroup"]
+						}
+					}
+				},
+				"required": ["name", "symbol", "content"]
+			}
+		}
+	},
+    "required": [
+        "keyboards"
+    ]
+}
