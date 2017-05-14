@@ -1,8 +1,8 @@
-Emoji Keyboard
+Emoji Keyboard (with Emoji 4.0 support)
 ==============
 ![Screenshot](http://i.imgur.com/LkvfZJI.png)
 
-Copyright (c) 2016 [Gilles Waeber](http://www.gilleswaeber.ch), under MIT License
+Copyright (c) 2017 [Gilles Waeber](http://www.gilleswaeber.ch), under MIT License
 
 How to use
 ----------
@@ -20,6 +20,8 @@ You can save your preferred size in the webapp.json file. Just change the values
 You can also choose on which monitor the keyboard should show with monitor.
 
 There are different available themes. Currently there is the default "light" theme and a "dark" theme similar to the Windows 10 touch keyboard.
+
+To use skinned emojis, first type the emoji and then the skin modifier. This is to be improved in a next version.
 
 Some glyphs can't be shown correctly because they are not part of the Segoe UI Emoji font (e.g. flags) or because they contain ligatures which aren't well handled (e.g. families). For these, we use [Twemoji](https://github.com/twitter/twemoji) as a fallback.
 
