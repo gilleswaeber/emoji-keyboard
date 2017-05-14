@@ -1,6 +1,14 @@
 <?php
 
+include_once 'DataParser.php';
+
 class DataGrabber{
+	private $config;
+
+	function __construct() {
+		$this->config = DataParser::parseConfig();
+	}
+
 	private function err($message){
 		die('[ERROR] '.$message);
 	}
@@ -53,7 +61,8 @@ class DataGrabber{
 	*/
 	function download_cldr(){
 		echo "Grabbing CLDR...\n";
-		$latestcldr = $this->find_latest('ftp://www.unicode.org/Public/cldr');
+		if(isset($this->config->forceVersion->cldr)) $latestcldr = $this->config->forceVersion->cldr;
+		else $latestcldr = $this->find_latest('ftp://www.unicode.org/Public/cldr');
 		$cldrdir = 'data/cldr-'.$latestcldr.'/';
 		$this->create_dir($cldrdir);
 
@@ -75,15 +84,13 @@ class DataGrabber{
 	*/
 	function download_unicode_emoji(){
 		echo "Grabbing Unicode Emoji Data Files...\n";
-		$latestemoji = $this->find_latest('ftp://unicode.org/Public/emoji/');
+		if(isset($this->config->forceVersion->emoji)) $latestemoji = $this->config->forceVersion->emoji;
+		else $latestemoji = $this->find_latest('ftp://unicode.org/Public/emoji/');
 		$emojidir = 'data/emoji-'.$latestemoji.'/';
 		$this->create_dir($emojidir);
 
 		$this->download_file("http://unicode.org/Public/emoji/$latestemoji/emoji-data.txt", $emojidir.'emoji-data.txt');
-		$this->download_file("http://unicode.org/Public/emoji/$latestemoji/emoji-sequences.txt", $emojidir.'emoji-sequences.txt');
 		$this->download_file("http://unicode.org/Public/emoji/$latestemoji/emoji-test.txt", $emojidir.'emoji-test.txt');
-		$this->download_file("http://unicode.org/Public/emoji/$latestemoji/emoji-variation-sequences.txt", $emojidir.'emoji-variation-sequences.txt');
-		$this->download_file("http://unicode.org/Public/emoji/$latestemoji/emoji-zwj-sequences.txt", $emojidir.'emoji-zwj-sequences.txt');
 
 		return $emojidir;
 	}
@@ -93,7 +100,8 @@ class DataGrabber{
 	*/
 	function download_ucd(){
 		echo "Grabbing UCD...\n";
-		$latestucd = $this->find_latest('ftp://www.unicode.org/Public/');
+		if(isset($this->config->forceVersion->ucd)) $latestucd = $this->config->forceVersion->ucd;
+		else $latestucd = $this->find_latest('ftp://www.unicode.org/Public/');
 		$ucddir = 'data/ucd-'.$latestucd.'/';
 		$this->create_dir($ucddir);
 

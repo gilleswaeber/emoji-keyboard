@@ -81,11 +81,11 @@ class DataBuilder{
 			if(!isset($e['keywords']) && isset($this->annotations[$e['code'][0]]['keywords']))
 				$e['keywords'] = $this->annotations[$e['code'][0]]['keywords'];
 
-            if(isset($this->config->requireFallback)){
+            if(isset($this->config->iconFallback)){
                 if(
-                    (isset($this->config->requireFallback->version) && $e['version'] >= $this->config->requireFallback->version) ||
-                    (isset($this->config->requireFallback->sequences) && in_array($e['symbol'], $this->config->requireFallback->sequences)) ||
-                    (isset($this->config->requireFallback->characters) && count(array_filter($this->config->requireFallback->characters, function($c)use($e){
+                    (isset($this->config->iconFallback->version) && $e['version'] >= $this->config->iconFallback->version) ||
+                    (isset($this->config->iconFallback->sequences) && in_array($e['symbol'], $this->config->iconFallback->sequences)) ||
+                    (isset($this->config->iconFallback->characters) && count(array_filter($this->config->iconFallback->characters, function($c)use($e){
                         return $e['symbol'] > $c->from && $e['symbol'] <= $c->to;
                     })) > 0)
                 ) $e['fallbackIcon'] = true;

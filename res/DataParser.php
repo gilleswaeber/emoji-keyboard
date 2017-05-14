@@ -117,8 +117,7 @@ class DataParser{
 		return $unidata;
 	}
 
-	function parseConfig() {
-        $config = json_decode(file_get_contents('config.json'));
-		return $config;
+	static function parseConfig() {
+		return json_decode(file_get_contents('config.json'));
 	}
 }

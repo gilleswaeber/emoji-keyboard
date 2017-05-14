@@ -8,9 +8,15 @@
 		{"symbol":"🐱‍🏍","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Stunt cat","keywords":["windows","non standard","stunt","ninja","cat"]},
 		{"symbol":"🐱‍🚀","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Astro cat","keywords":["windows","non standard","astronaut","ninja","cat"]},
 
-		{"symbol": "🏴‍☠️", "group": "Flags", "subGroup": "non-standard", "name": "*Pirate flag", "keywords": ["flag", "pirate", "skull", "non standard"]}
+		{"symbol": "🏴‍☠️", "group": "Flags", "subGroup": "non-standard", "name": "*Pirate flag", "keywords": ["flag", "pirate", "skull", "non standard"]},
+
+		{"symbol":"🏻","group":"Smileys & People","subGroup":"skin-tone","name":"Skin type-1-2","keywords":["emoji modifier","fitzpatrick","skin","tone"]},
+		{"symbol":"🏼","group":"Smileys & People","subGroup":"skin-tone","name":"Skin type-3","keywords":["emoji modifier","fitzpatrick","skin","tone"]},
+		{"symbol":"🏽","group":"Smileys & People","subGroup":"skin-tone","name":"Skin type-4","keywords":["emoji modifier","fitzpatrick","skin","tone"]},
+		{"symbol":"🏾","group":"Smileys & People","subGroup":"skin-tone","name":"Skin type-5","keywords":["emoji modifier","fitzpatrick","skin","tone"]},
+		{"symbol":"🏿","group":"Smileys & People","subGroup":"skin-tone","name":"Skin type-6","keywords":["emoji modifier","fitzpatrick","skin","tone"]}
 	],
-	"requireFallback": {
+	"iconFallback": {
 		"characters": [
 			{"from": "🇦", "to": "🇿🇿"},
 			{"from": "\ud83c\udff4", "to": "\ud83c\udff4🇿"}
@@ -31,6 +37,9 @@
             "9\ufe0f\u20e3"
 		]
 	},
+	"forceVersion": {
+		"emoji": "4.0"
+	},
 	"nogroup": ["family"],
 	"keyboards": [
 		{"name":"(Un)Happy", "symbol":"😀", "content":[
@@ -41,22 +50,27 @@
 			{"group":"Smileys & People", "subGroup":"face-neutral"}
 		]},{"name":"Roles", "symbol":"👻", "content":[
 			{"group":"Smileys & People", "subGroup":"face-role"},
+			{"group":"Smileys & People", "subGroup":"creature-face"},
 			{"group":"Smileys & People", "subGroup":"face-fantasy"},
 			{"group":"Smileys & People", "subGroup":"person-fantasy"}
 		]},{"name":"Body", "symbol":"👍", "content":[
-			{"group":"Smileys & People", "subGroup":"body"}
+			{"group":"Smileys & People", "subGroup":"body"},
+			{"group":"Smileys & People", "subGroup":"skin-tone"}
 		]},{"name":"Gestures", "symbol":"🙌", "content":[
 			{"group":"Smileys & People", "subGroup":"person-gesture"},
-			{"group":"Smileys & People", "subGroup":"person-activity"}
+			{"group":"Smileys & People", "subGroup":"person-activity"},
+			{"group":"Smileys & People", "subGroup":"skin-tone"}
 		]},{"name":"Persons", "symbol":"👤", "content":[
 			{"group":"Smileys & People", "subGroup":"person"},
-			{"group":"Smileys & People", "subGroup":"person-role"}
+			{"group":"Smileys & People", "subGroup":"person-role"},
+			{"group":"Smileys & People", "subGroup":"skin-tone"}
 		]},{"name":"Emotions", "symbol":"😺", "content":[
 			{"group":"Smileys & People", "subGroup":"cat-face"},
 			{"group":"Smileys & People", "subGroup":"monkey-face"},
 			{"group":"Smileys & People", "subGroup":"emotion"}
 		]},{"name":"Families", "symbol":"👫", "content":[
-			{"group":"Smileys & People", "subGroup":"family"}
+			{"group":"Smileys & People", "subGroup":"family"},
+			{"group":"Smileys & People", "subGroup":"skin-tone"}
 		]},{"name":"Clothing", "symbol":"👖", "content":[
 			{"group":"Smileys & People", "subGroup":"clothing"}
 		]},{"name":"Mammals", "symbol":"🐄", "content":[

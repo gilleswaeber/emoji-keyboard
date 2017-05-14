@@ -20,13 +20,15 @@
 				"required": ["symbol", "group", "subGroup", "name"]
 			}
 		},
-		"requireFallback": {
+		"iconFallback": {
 			"type": "object",
 			"properties": {
 				"version": {
+					"description": "Use fallback icon if character version >= number",
 					"type": "number"
 				},
 				"characters": {
+					"description": "Use fallback icon for a given text range",
 					"type": "array",
 					"items": {
 						"properties": {
@@ -37,12 +39,29 @@
 					}
 				},
 				"sequences": {
+					"description": "Use fallback icon for given sequences or characters",
 					"type": "array",
 					"items": {
 						"type": "string"
 					}
 				}
 			}
+		},
+		"forceVersion":{
+			"description": "Force a version for remote resources. Include trailing zeros.",
+			"type": "object",
+			"properties": {
+				"cldr": {
+					"type": "string"
+				},
+				"emoji": {
+					"type": "string"
+				},
+				"ucd": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
 		},
 		"keyboards": {
 			"type": "array",
