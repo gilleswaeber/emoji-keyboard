@@ -7,7 +7,7 @@ We use 3 different sources to get all the data we need:
 
 How to use
 ==========
-To build the unicode database used by Emoji Keyboard, you need a PHP interpreter. Lauch it with `php build.php` in this folder and you can then copy emojis.json into the data.js file. (Add `var data =` before the file content)
+To build the unicode database used by Emoji Keyboard, you need a PHP interpreter. Lauch it with `php build.php` in this folder. It generates a *data.js* file that you can drop in the *wwwassets/scripts* folder.
 
 Some settings can be customized in the config.json file (Additional Emojis, fallback conditions, icon groups).
 
