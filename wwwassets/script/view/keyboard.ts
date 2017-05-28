@@ -73,11 +73,10 @@ module View{
 			this.refresh();
 		}
 
-		input(key: number): void{
+		input(key: number, shift: boolean): void{
 			if(this.idxKeys[key]){
-				var k = this.idxKeys[key]; 
-				if(k instanceof Workers.ActionKey) k.act(this);
-				else if(k instanceof Workers.CharKey) AHK("Send", k.getSymbol());
+				if(!shift) this.idxKeys[key].act(this);
+				else this.idxKeys[key].actAlternate(this);
 			}
 		}
 
@@ -103,19 +102,19 @@ module View{
 		}
 
 		private showKey(key: Workers.Key): JQuery{
-			var keyType = " empty";
+			var keyType = " action";
 			if (key instanceof Workers.CharKey) { var keyType = " char"; }
-			if (key instanceof Workers.ActionKey) { var keyType = " action"; }
+			if (key instanceof Workers.BlankKey) { var keyType = " empty"; }
 			if (key.getName() == "back") { var keyType = " back"; }
             return $('<div class="key' + keyType + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
-				.append(key.fillSymbol($('<div class="symbol">').get(0) as HTMLDivElement))
+				.append(key.getSymbolDiv())
 				.click(()=>{
-					if(key instanceof Workers.ActionKey){
-						key.act(this);
-					}
-					else if(key instanceof Workers.CharKey) AHK("Send", key.getSymbol());
+					key.act(this);
+				})
+				.contextmenu(()=>{
+					key.actAlternate(this);
 				});
 		}
 	}

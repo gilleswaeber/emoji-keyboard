@@ -14,8 +14,8 @@ class Main{
 		this.view.show(Workers.Keyboards.getMainKeyboard());
 	}
 
-	input(key: number){
-		this.view.input(key);
+	input(key: number, shift: boolean = false){
+		this.view.input(key, shift);
 	}
 
 	setKeymap(keymap: string){

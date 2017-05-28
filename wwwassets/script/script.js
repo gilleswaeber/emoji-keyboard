@@ -11,8 +11,9 @@ var Main = (function () {
         this.view = new View.View(base);
         this.view.show(Workers.Keyboards.getMainKeyboard());
     }
-    Main.prototype.input = function (key) {
-        this.view.input(key);
+    Main.prototype.input = function (key, shift) {
+        if (shift === void 0) { shift = false; }
+        this.view.input(key, shift);
     };
     Main.prototype.setKeymap = function (keymap) {
         this.view.setKeymap(keymap);
@@ -143,9 +144,9 @@ var Workers;
             else {
                 this.fixedKeys = this.fixedKeys.concat(this.keys);
             }
-            this.fixedKeys.forEach(function (k) { if (k instanceof ActionKey)
+            this.fixedKeys.forEach(function (k) { if (k instanceof Key)
                 k.setKeyboard(_this); });
-            this.pagedKeys.forEach(function (p) { return p.forEach(function (k) { if (k instanceof ActionKey)
+            this.pagedKeys.forEach(function (p) { return p.forEach(function (k) { if (k instanceof Key)
                 k.setKeyboard(_this); }); });
         }
         Keyboard.prototype.getName = function () {
@@ -213,9 +214,31 @@ var Workers;
         Key.prototype.getSymbol = function () {
             return this.symbol;
         };
-        Key.prototype.fillSymbol = function (symbolDiv) {
-            $(symbolDiv).text(this.symbol);
-            return symbolDiv;
+        Key.prototype.getSymbolDiv = function (useFallback) {
+            if (useFallback === void 0) { useFallback = false; }
+            var container = $('<div class="symbol">');
+            if (!useFallback)
+                container.text(this.symbol);
+            else {
+                var symbol = this.getSymbol();
+                var name_1 = [];
+                for (var i = 0; i < symbol.length; i++) {
+                    var c = symbol.codePointAt(i).toString(16);
+                    if (c != 'fe0f')
+                        name_1.push(c);
+                    if (symbol.charCodeAt(i) != symbol.codePointAt(i))
+                        i++;
+                }
+                container.append($('<img>').attr('src', 'img/' + name_1.join('-') + '.svg'));
+            }
+            return container.get(0);
+        };
+        Key.prototype.setKeyboard = function (keyboard) {
+            this.keyboard = keyboard;
+        };
+        Key.prototype.act = function (view) {
+        };
+        Key.prototype.actAlternate = function (view) {
         };
         return Key;
     }());
@@ -227,35 +250,15 @@ var Workers;
             _this.char = char;
             return _this;
         }
-        CharKey.prototype.fillSymbol = function (symbolDiv) {
-            if (!this.char.fallbackIcon)
-                return _super.prototype.fillSymbol.call(this, symbolDiv);
-            var symbol = this.getSymbol();
-            var name = [];
-            for (var i = 0; i < symbol.length; i++) {
-                var c = symbol.codePointAt(i).toString(16);
-                if (c != 'fe0f')
-                    name.push(c);
-                if (symbol.charCodeAt(i) != symbol.codePointAt(i))
-                    i++;
-            }
-            $(symbolDiv).append($('<img>').attr('src', 'img/' + name.join('-') + '.svg'));
-            return symbolDiv;
+        CharKey.prototype.getSymbolDiv = function () {
+            return _super.prototype.getSymbolDiv.call(this, this.char.fallbackIcon);
+        };
+        CharKey.prototype.act = function () {
+            AHK("Send", this.getSymbol());
         };
         return CharKey;
     }(Key));
     Workers.CharKey = CharKey;
-    var ActionKey = (function (_super) {
-        __extends(ActionKey, _super);
-        function ActionKey(name, symbol) {
-            return _super.call(this, name, symbol) || this;
-        }
-        ActionKey.prototype.setKeyboard = function (keyboard) {
-            this.keyboard = keyboard;
-        };
-        return ActionKey;
-    }(Key));
-    Workers.ActionKey = ActionKey;
     var KeyboardKey = (function (_super) {
         __extends(KeyboardKey, _super);
         function KeyboardKey(target) {
@@ -270,23 +273,11 @@ var Workers;
             _super.prototype.setKeyboard.call(this, keyboard);
             this.target.setParent(keyboard);
         };
-        KeyboardKey.prototype.fillSymbol = function (symbolDiv) {
-            if (!this.target.hasFallbackIcon())
-                return _super.prototype.fillSymbol.call(this, symbolDiv);
-            var symbol = this.getSymbol();
-            var name = [];
-            for (var i = 0; i < symbol.length; i++) {
-                var c = symbol.codePointAt(i).toString(16);
-                if (c != 'feof')
-                    name.push(c);
-                if (symbol.charCodeAt(i) != symbol.codePointAt(i))
-                    i++;
-            }
-            $(symbolDiv).append($('<img>').attr('src', 'img/' + name.join('-') + '.svg'));
-            return symbolDiv;
+        KeyboardKey.prototype.getSymbolDiv = function () {
+            return _super.prototype.getSymbolDiv.call(this, this.target.hasFallbackIcon());
         };
         return KeyboardKey;
-    }(ActionKey));
+    }(Key));
     Workers.KeyboardKey = KeyboardKey;
     var PageKey = (function (_super) {
         __extends(PageKey, _super);
@@ -300,7 +291,7 @@ var Workers;
             view.refresh();
         };
         return PageKey;
-    }(ActionKey));
+    }(Key));
     Workers.PageKey = PageKey;
     var BackKey = (function (_super) {
         __extends(BackKey, _super);
@@ -312,7 +303,7 @@ var Workers;
                 view.show(this.keyboard.getParent());
         };
         return BackKey;
-    }(ActionKey));
+    }(Key));
     Workers.BackKey = BackKey;
     var BlankKey = (function (_super) {
         __extends(BlankKey, _super);
@@ -373,13 +364,12 @@ var View;
             keyboard.setKeys(KEYS);
             this.refresh();
         };
-        View.prototype.input = function (key) {
+        View.prototype.input = function (key, shift) {
             if (this.idxKeys[key]) {
-                var k = this.idxKeys[key];
-                if (k instanceof Workers.ActionKey)
-                    k.act(this);
-                else if (k instanceof Workers.CharKey)
-                    AHK("Send", k.getSymbol());
+                if (!shift)
+                    this.idxKeys[key].act(this);
+                else
+                    this.idxKeys[key].actAlternate(this);
             }
         };
         View.prototype.setKeymap = function (keymap) {
@@ -407,12 +397,12 @@ var View;
         };
         View.prototype.showKey = function (key) {
             var _this = this;
-            var keyType = " empty";
+            var keyType = " action";
             if (key instanceof Workers.CharKey) {
                 var keyType = " char";
             }
-            if (key instanceof Workers.ActionKey) {
-                var keyType = " action";
+            if (key instanceof Workers.BlankKey) {
+                var keyType = " empty";
             }
             if (key.getName() == "back") {
                 var keyType = " back";
@@ -420,13 +410,12 @@ var View;
             return $('<div class="key' + keyType + '">')
                 .append($('<div class="keyname">').text(keysLocale[key.key]))
                 .append($('<div class="name">').text(key.getName()))
-                .append(key.fillSymbol($('<div class="symbol">').get(0)))
+                .append(key.getSymbolDiv())
                 .click(function () {
-                if (key instanceof Workers.ActionKey) {
-                    key.act(_this);
-                }
-                else if (key instanceof Workers.CharKey)
-                    AHK("Send", key.getSymbol());
+                key.act(_this);
+            })
+                .contextmenu(function () {
+                key.actAlternate(_this);
             });
         };
         return View;

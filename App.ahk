@@ -197,51 +197,51 @@ SC033::getDOM().document.ahk.input(51)   	;	,	,
 SC034::getDOM().document.ahk.input(52)   	;	.	.
 SC035::getDOM().document.ahk.input(53)   	;	/	-
 +SC029::getDOM().document.ahk.input(41)   	;	`	§
-+SC002::getDOM().document.ahk.input(2,1)	;	1	1
-+SC003::getDOM().document.ahk.input(3,1)	;	2	2
-+SC004::getDOM().document.ahk.input(4,1)	;	3	3
-+SC005::getDOM().document.ahk.input(5,1)	;	4	4
-+SC006::getDOM().document.ahk.input(6,1)	;	5	5
-+SC007::getDOM().document.ahk.input(7,1)	;	6	6
-+SC008::getDOM().document.ahk.input(8,1)	;	7	7
-+SC009::getDOM().document.ahk.input(9,1)	;	8	8
-+SC00A::getDOM().document.ahk.input(10,1)	;	9	9
-+SC00B::getDOM().document.ahk.input(11,1)	;	0	0
-+SC00C::getDOM().document.ahk.input(12,1)	;	-	'
-+SC00D::getDOM().document.ahk.input(13,1)	;	=	^
-+SC010::getDOM().document.ahk.input(16,1)	;	q	q
-+SC011::getDOM().document.ahk.input(17,1)	;	w	w
-+SC012::getDOM().document.ahk.input(18,1)	;	e	e
-+SC013::getDOM().document.ahk.input(19,1)	;	r	r
-+SC014::getDOM().document.ahk.input(20,1)	;	t	t
-+SC015::getDOM().document.ahk.input(21,1)	;	y	z
-+SC016::getDOM().document.ahk.input(22,1)	;	u	u
-+SC017::getDOM().document.ahk.input(23,1)	;	i	i
-+SC018::getDOM().document.ahk.input(24,1)	;	o	o
-+SC019::getDOM().document.ahk.input(25,1)	;	p	p
-+SC01A::getDOM().document.ahk.input(26,1)	;	[	è
-+SC01B::getDOM().document.ahk.input(27,1)	;	]	¨
-+SC01E::getDOM().document.ahk.input(30,1)	;	a	a
-+SC01F::getDOM().document.ahk.input(31,1)	;	s	s
-+SC020::getDOM().document.ahk.input(32,1)	;	d	d
-+SC021::getDOM().document.ahk.input(33,1)	;	f	f
-+SC022::getDOM().document.ahk.input(34,1)	;	g	g
-+SC023::getDOM().document.ahk.input(35,1)	;	h	h
-+SC024::getDOM().document.ahk.input(36,1)	;	j	j
-+SC025::getDOM().document.ahk.input(37,1)	;	k	k
-+SC026::getDOM().document.ahk.input(38,1)	;	l	l
-+SC027::getDOM().document.ahk.input(39,1)	;	;	é
-+SC028::getDOM().document.ahk.input(40,1)	;	'	à
-+SC02B::getDOM().document.ahk.input(43,1)	;	\	$
-+SC056::getDOM().document.ahk.input(86,1)	;	\	<
-+SC02C::getDOM().document.ahk.input(44,1)	;	z	y
-+SC02D::getDOM().document.ahk.input(45,1)	;	x	x
-+SC02E::getDOM().document.ahk.input(46,1)	;	c	c
-+SC02F::getDOM().document.ahk.input(47,1)	;	v	v
-+SC030::getDOM().document.ahk.input(48,1)	;	b	b
-+SC031::getDOM().document.ahk.input(49,1)	;	n	n
-+SC032::getDOM().document.ahk.input(50,1)	;	m	m
-+SC033::getDOM().document.ahk.input(51,1)	;	,	,
-+SC034::getDOM().document.ahk.input(52,1)	;	.	.
-+SC035::getDOM().document.ahk.input(53,1)	;	/	-
++SC002::getDOM().document.ahk.input(2, True)	;	1	1
++SC003::getDOM().document.ahk.input(3, True)	;	2	2
++SC004::getDOM().document.ahk.input(4, True)	;	3	3
++SC005::getDOM().document.ahk.input(5, True)	;	4	4
++SC006::getDOM().document.ahk.input(6, True)	;	5	5
++SC007::getDOM().document.ahk.input(7, True)	;	6	6
++SC008::getDOM().document.ahk.input(8, True)	;	7	7
++SC009::getDOM().document.ahk.input(9, True)	;	8	8
++SC00A::getDOM().document.ahk.input(10, True)	;	9	9
++SC00B::getDOM().document.ahk.input(11, True)	;	0	0
++SC00C::getDOM().document.ahk.input(12, True)	;	-	'
++SC00D::getDOM().document.ahk.input(13, True)	;	=	^
++SC010::getDOM().document.ahk.input(16, True)	;	q	q
++SC011::getDOM().document.ahk.input(17, True)	;	w	w
++SC012::getDOM().document.ahk.input(18, True)	;	e	e
++SC013::getDOM().document.ahk.input(19, True)	;	r	r
++SC014::getDOM().document.ahk.input(20, True)	;	t	t
++SC015::getDOM().document.ahk.input(21, True)	;	y	z
++SC016::getDOM().document.ahk.input(22, True)	;	u	u
++SC017::getDOM().document.ahk.input(23, True)	;	i	i
++SC018::getDOM().document.ahk.input(24, True)	;	o	o
++SC019::getDOM().document.ahk.input(25, True)	;	p	p
++SC01A::getDOM().document.ahk.input(26, True)	;	[	è
++SC01B::getDOM().document.ahk.input(27, True)	;	]	¨
++SC01E::getDOM().document.ahk.input(30, True)	;	a	a
++SC01F::getDOM().document.ahk.input(31, True)	;	s	s
++SC020::getDOM().document.ahk.input(32, True)	;	d	d
++SC021::getDOM().document.ahk.input(33, True)	;	f	f
++SC022::getDOM().document.ahk.input(34, True)	;	g	g
++SC023::getDOM().document.ahk.input(35, True)	;	h	h
++SC024::getDOM().document.ahk.input(36, True)	;	j	j
++SC025::getDOM().document.ahk.input(37, True)	;	k	k
++SC026::getDOM().document.ahk.input(38, True)	;	l	l
++SC027::getDOM().document.ahk.input(39, True)	;	;	é
++SC028::getDOM().document.ahk.input(40, True)	;	'	à
++SC02B::getDOM().document.ahk.input(43, True)	;	\	$
++SC056::getDOM().document.ahk.input(86, True)	;	\	<
++SC02C::getDOM().document.ahk.input(44, True)	;	z	y
++SC02D::getDOM().document.ahk.input(45, True)	;	x	x
++SC02E::getDOM().document.ahk.input(46, True)	;	c	c
++SC02F::getDOM().document.ahk.input(47, True)	;	v	v
++SC030::getDOM().document.ahk.input(48, True)	;	b	b
++SC031::getDOM().document.ahk.input(49, True)	;	n	n
++SC032::getDOM().document.ahk.input(50, True)	;	m	m
++SC033::getDOM().document.ahk.input(51, True)	;	,	,
++SC034::getDOM().document.ahk.input(52, True)	;	.	.
++SC035::getDOM().document.ahk.input(53, True)	;	/	-
 #If

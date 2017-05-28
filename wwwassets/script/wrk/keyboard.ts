@@ -43,8 +43,8 @@ module Workers{
 			}else{
 				this.fixedKeys = this.fixedKeys.concat(this.keys);
 			}
-			this.fixedKeys.forEach((k)=>{if(k instanceof ActionKey) k.setKeyboard(this);});
-			this.pagedKeys.forEach((p)=>p.forEach((k)=>{if(k instanceof ActionKey) k.setKeyboard(this);}));
+			this.fixedKeys.forEach((k)=>{if(k instanceof Key) k.setKeyboard(this);});
+			this.pagedKeys.forEach((p)=>p.forEach((k)=>{if(k instanceof Key) k.setKeyboard(this);}));
 		}
 
 		getName(): string{
@@ -102,6 +102,7 @@ module Workers{
 
 	export abstract class Key{
 		public key: number;
+		protected keyboard: Keyboard;
 
 		constructor(
 			private name: string,
@@ -111,12 +112,38 @@ module Workers{
 		getName(): string{
 			return this.name;
 		}
+
 		getSymbol(): string{
 			return this.symbol;
 		}
-		fillSymbol(symbolDiv: HTMLDivElement): HTMLDivElement{
-			$(symbolDiv).text(this.symbol);
-			return symbolDiv;
+
+		getSymbolDiv(useFallback = false): HTMLDivElement{
+			let container = $('<div class="symbol">');
+			if(!useFallback)
+				container.text(this.symbol);
+			else{
+				let symbol = this.getSymbol();
+				let name = [];
+				for(var i=0; i<symbol.length; i++){
+					let c = symbol.codePointAt(i).toString(16);
+					if(c != 'fe0f') name.push(c);
+					if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
+				}
+				container.append($('<img>').attr('src', 'img/'+name.join('-')+'.svg'));
+			}
+			return container.get(0) as HTMLDivElement;
+		}
+		
+		setKeyboard(keyboard: Keyboard){
+			this.keyboard = keyboard;
+		}
+
+		act(view: View.IViewKey): void{
+			// Default: do nothing
+		}
+
+		actAlternate(view: View.IViewKey): void{
+			// Default: do nothing
 		}
 	}
 
@@ -125,38 +152,16 @@ module Workers{
 			super((char.name || char.fullName).toLowerCase(), char.symbol);
 		}
 
-		fillSymbol(symbolDiv: HTMLDivElement): HTMLDivElement{
-			if(!this.char.fallbackIcon) return super.fillSymbol(symbolDiv);
-			let symbol = this.getSymbol();
-			let name = [];
-			for(var i=0; i<symbol.length; i++){
-				let c = symbol.codePointAt(i).toString(16);
-				if(c != 'fe0f') name.push(c);
-				if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
-			}
-			$(symbolDiv).append($('<img>').attr('src', 'img/'+name.join('-')+'.svg'));
-			return symbolDiv;
+		getSymbolDiv(){
+			 return super.getSymbolDiv(this.char.fallbackIcon);
+		}
+
+		act(){
+			AHK("Send", this.getSymbol());
 		}
 	}
 
-	export abstract class ActionKey extends Key{
-		protected keyboard: Keyboard;
-
-		constructor(
-			name: string,
-			symbol: string
-		){
-			super(name, symbol);
-		}
-
-		abstract act(view: View.IViewKey): void;
-
-		setKeyboard(keyboard: Keyboard){
-			this.keyboard = keyboard;
-		}
-	}
-
-	export class KeyboardKey extends ActionKey{
+	export class KeyboardKey extends Key{
 		constructor(private target: Keyboard){
 			super(target.getName(), target.getSymbol());
 		}
@@ -170,21 +175,12 @@ module Workers{
 			this.target.setParent(keyboard);
 		}
 
-		fillSymbol(symbolDiv: HTMLDivElement): HTMLDivElement{
-			if(!this.target.hasFallbackIcon()) return super.fillSymbol(symbolDiv);
-			let symbol = this.getSymbol();
-			let name = [];
-			for(var i=0; i<symbol.length; i++){
-				let c = symbol.codePointAt(i).toString(16);
-				if(c != 'feof') name.push(c);
-				if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
-			}
-			$(symbolDiv).append($('<img>').attr('src', 'img/'+name.join('-')+'.svg'));
-			return symbolDiv;
+		getSymbolDiv(){
+			return super.getSymbolDiv(this.target.hasFallbackIcon());
 		}
 	}
 
-	export class PageKey extends ActionKey{
+	export class PageKey extends Key{
 		constructor(private page: number){
 			super('page '+(page+1), ''+(page+1));
 		}
@@ -195,7 +191,7 @@ module Workers{
 		}
 	}
 
-	export class BackKey extends ActionKey{
+	export class BackKey extends Key{
 		constructor(){
 			super('back', '←');
 		}
