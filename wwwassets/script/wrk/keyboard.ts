@@ -95,9 +95,9 @@ module Workers{
 	}
 
 	export class AlternatesKeyboard extends Keyboard{
-		constructor(parent: Keyboard, base: Data.Emoji, symbols: Data.Emoji[]){
+		constructor(parent: Keyboard, base: Data.Emoji){
 			var keys: CharKey[] = [];
-			symbols.forEach((chr)=>{
+			base.alternates.forEach((chr)=>{
 				keys.push(new CharKey(chr));
 			});
 			super(base.name, base.symbol, keys, base.fallbackIcon);

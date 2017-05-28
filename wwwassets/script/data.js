@@ -21204,95 +21204,79 @@ var data = {
             "code": [
                 128143
             ],
-            "alternates": [
-                {
-                    "symbol": "💏",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "kiss",
-                    "code": [
-                        128143
-                    ],
-                    "fullName": "KISS",
-                    "version": 6,
-                    "keywords": [
-                        "couple"
-                    ]
-                },
-                {
-                    "symbol": "👩‍❤️‍💋‍👨",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "kiss: woman, man",
-                    "code": [
-                        128105,
-                        8205,
-                        10084,
-                        65039,
-                        8205,
-                        128139,
-                        8205,
-                        128104
-                    ],
-                    "fullName": "WOMAN, HEAVY BLACK HEART, KISS MARK, MAN",
-                    "version": 6,
-                    "keywords": [
-                        "firefighter",
-                        "firetruck",
-                        "woman"
-                    ]
-                },
-                {
-                    "symbol": "👨‍❤️‍💋‍👨",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "kiss: man, man",
-                    "code": [
-                        128104,
-                        8205,
-                        10084,
-                        65039,
-                        8205,
-                        128139,
-                        8205,
-                        128104
-                    ],
-                    "fullName": "MAN, HEAVY BLACK HEART, KISS MARK, MAN",
-                    "version": 6,
-                    "keywords": [
-                        "firefighter",
-                        "man",
-                        "firetruck"
-                    ]
-                },
-                {
-                    "symbol": "👩‍❤️‍💋‍👩",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "kiss: woman, woman",
-                    "code": [
-                        128105,
-                        8205,
-                        10084,
-                        65039,
-                        8205,
-                        128139,
-                        8205,
-                        128105
-                    ],
-                    "fullName": "WOMAN, HEAVY BLACK HEART, KISS MARK, WOMAN",
-                    "version": 6,
-                    "keywords": [
-                        "firefighter",
-                        "firetruck",
-                        "woman"
-                    ]
-                }
-            ],
             "fullName": "KISS",
             "version": 6,
             "keywords": [
                 "couple"
+            ]
+        },
+        {
+            "symbol": "👩‍❤️‍💋‍👨",
+            "group": "Smileys & People",
+            "subGroup": "family",
+            "name": "kiss: woman, man",
+            "code": [
+                128105,
+                8205,
+                10084,
+                65039,
+                8205,
+                128139,
+                8205,
+                128104
+            ],
+            "fullName": "WOMAN, HEAVY BLACK HEART, KISS MARK, MAN",
+            "version": 6,
+            "keywords": [
+                "firefighter",
+                "firetruck",
+                "woman"
+            ]
+        },
+        {
+            "symbol": "👨‍❤️‍💋‍👨",
+            "group": "Smileys & People",
+            "subGroup": "family",
+            "name": "kiss: man, man",
+            "code": [
+                128104,
+                8205,
+                10084,
+                65039,
+                8205,
+                128139,
+                8205,
+                128104
+            ],
+            "fullName": "MAN, HEAVY BLACK HEART, KISS MARK, MAN",
+            "version": 6,
+            "keywords": [
+                "firefighter",
+                "man",
+                "firetruck"
+            ]
+        },
+        {
+            "symbol": "👩‍❤️‍💋‍👩",
+            "group": "Smileys & People",
+            "subGroup": "family",
+            "name": "kiss: woman, woman",
+            "code": [
+                128105,
+                8205,
+                10084,
+                65039,
+                8205,
+                128139,
+                8205,
+                128105
+            ],
+            "fullName": "WOMAN, HEAVY BLACK HEART, KISS MARK, WOMAN",
+            "version": 6,
+            "keywords": [
+                "firefighter",
+                "firetruck",
+                "woman"
             ]
         },
         {
@@ -21303,91 +21287,74 @@ var data = {
             "code": [
                 128145
             ],
-            "alternates": [
-                {
-                    "symbol": "💑",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "couple with heart",
-                    "code": [
-                        128145
-                    ],
-                    "fullName": "COUPLE WITH HEART",
-                    "version": 6,
-                    "keywords": [
-                        "couple",
-                        "love"
-                    ]
-                },
-                {
-                    "symbol": "👩‍❤️‍👨",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "couple with heart: woman, man",
-                    "code": [
-                        128105,
-                        8205,
-                        10084,
-                        65039,
-                        8205,
-                        128104
-                    ],
-                    "fullName": "WOMAN, HEAVY BLACK HEART, MAN",
-                    "version": 6,
-                    "keywords": [
-                        "firefighter",
-                        "firetruck",
-                        "woman"
-                    ]
-                },
-                {
-                    "symbol": "👨‍❤️‍👨",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "couple with heart: man, man",
-                    "code": [
-                        128104,
-                        8205,
-                        10084,
-                        65039,
-                        8205,
-                        128104
-                    ],
-                    "fullName": "MAN, HEAVY BLACK HEART, MAN",
-                    "version": 6,
-                    "keywords": [
-                        "firefighter",
-                        "man",
-                        "firetruck"
-                    ]
-                },
-                {
-                    "symbol": "👩‍❤️‍👩",
-                    "group": "Smileys & People",
-                    "subGroup": "family",
-                    "name": "couple with heart: woman, woman",
-                    "code": [
-                        128105,
-                        8205,
-                        10084,
-                        65039,
-                        8205,
-                        128105
-                    ],
-                    "fullName": "WOMAN, HEAVY BLACK HEART, WOMAN",
-                    "version": 6,
-                    "keywords": [
-                        "firefighter",
-                        "firetruck",
-                        "woman"
-                    ]
-                }
-            ],
             "fullName": "COUPLE WITH HEART",
             "version": 6,
             "keywords": [
                 "couple",
                 "love"
+            ]
+        },
+        {
+            "symbol": "👩‍❤️‍👨",
+            "group": "Smileys & People",
+            "subGroup": "family",
+            "name": "couple with heart: woman, man",
+            "code": [
+                128105,
+                8205,
+                10084,
+                65039,
+                8205,
+                128104
+            ],
+            "fullName": "WOMAN, HEAVY BLACK HEART, MAN",
+            "version": 6,
+            "keywords": [
+                "firefighter",
+                "firetruck",
+                "woman"
+            ]
+        },
+        {
+            "symbol": "👨‍❤️‍👨",
+            "group": "Smileys & People",
+            "subGroup": "family",
+            "name": "couple with heart: man, man",
+            "code": [
+                128104,
+                8205,
+                10084,
+                65039,
+                8205,
+                128104
+            ],
+            "fullName": "MAN, HEAVY BLACK HEART, MAN",
+            "version": 6,
+            "keywords": [
+                "firefighter",
+                "man",
+                "firetruck"
+            ]
+        },
+        {
+            "symbol": "👩‍❤️‍👩",
+            "group": "Smileys & People",
+            "subGroup": "family",
+            "name": "couple with heart: woman, woman",
+            "code": [
+                128105,
+                8205,
+                10084,
+                65039,
+                8205,
+                128105
+            ],
+            "fullName": "WOMAN, HEAVY BLACK HEART, WOMAN",
+            "version": 6,
+            "keywords": [
+                "firefighter",
+                "firetruck",
+                "woman"
             ]
         },
         {
@@ -44040,16 +44007,12 @@ var data = {
                 {
                     "group": "Smileys & People",
                     "subGroup": "body"
-                },
-                {
-                    "group": "Smileys & People",
-                    "subGroup": "skin-tone"
                 }
             ]
         },
         {
-            "name": "Gestures",
-            "symbol": "🙌",
+            "name": "Gestures & activities",
+            "symbol": "💃",
             "content": [
                 {
                     "group": "Smileys & People",
@@ -44058,10 +44021,6 @@ var data = {
                 {
                     "group": "Smileys & People",
                     "subGroup": "person-activity"
-                },
-                {
-                    "group": "Smileys & People",
-                    "subGroup": "skin-tone"
                 }
             ]
         },
@@ -44108,10 +44067,6 @@ var data = {
                 {
                     "group": "Smileys & People",
                     "subGroup": "family"
-                },
-                {
-                    "group": "Smileys & People",
-                    "subGroup": "skin-tone"
                 }
             ]
         },

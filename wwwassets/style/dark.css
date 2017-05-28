@@ -11,6 +11,10 @@ body, html{
 	background-color: #252525;
 }
 
+.key.alt{
+	box-shadow: 0 .5vw #FFC83D inset;
+}
+
 .key .name{
 	text-shadow: .1vw .1vw 0 #000, .1vw -.1vw 0 #000, -.1vw .1vw 0 #000, -.1vw -.1vw 0 #000;
 }

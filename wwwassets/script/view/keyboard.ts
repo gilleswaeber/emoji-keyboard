@@ -1,3 +1,6 @@
+/// <reference path="../wrk/keyboard.ts" />
+/// <reference path="../wrk/keys.ts" />
+
 module View{
 	var LOCALES: {[locale: string]: {[id: number]: string}} = {};
 	LOCALES['default'] = {
@@ -102,14 +105,16 @@ module View{
 			if (key instanceof Workers.CharKey) { var keyType = " char"; }
 			if (key instanceof Workers.BlankKey) { var keyType = " empty"; }
 			if (key.getName() == "back") { var keyType = " back"; }
-            return $('<div class="key' + keyType + '">')
+            return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
 				.append(key.getSymbolDiv())
-				.click(()=>{
+				.click((e)=>{
+					e.preventDefault();
 					key.act(this);
 				})
-				.contextmenu(()=>{
+				.contextmenu((e)=>{
+					e.preventDefault();
 					key.actAlternate(this);
 				});
 		}

@@ -21,9 +21,11 @@ You can also choose on which monitor the keyboard should show with monitor.
 
 There are different available themes. Currently there is the default "light" theme and a "dark" theme similar to the Windows 10 touch keyboard.
 
-To use skinned emojis, first type the emoji and then the skin modifier. This is to be improved in a next version.
+Skinnable emojis are signaled by a yellow indicator, right click or use the shift key to see the different skins.
 
 Some glyphs can't be shown correctly because they are not part of the Segoe UI Emoji font (e.g. flags) or because they contain ligatures which aren't well handled (e.g. families). For these, we use [Twemoji](https://github.com/twitter/twemoji) as a fallback.
+
+The flags are currently not supported by Windows. You can still use them in 3rd-party applications like Whatsapp. They are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, between Congo and Côte d'Ivoire.
 
 Keymaps
 -------

@@ -43,7 +43,12 @@ module Workers{
 		}
 
 		actAlternate(view: View.IViewKey): void{
+			this.act(view);
 			// Default: do nothing
+		}
+
+		hasAlternate(): boolean{
+			return false;
 		}
 	}
 
@@ -58,6 +63,17 @@ module Workers{
 
 		act(){
 			AHK("Send", this.getSymbol());
+		}
+
+		actAlternate(view: View.IViewKey){
+			if(!this.hasAlternate()) return this.act();
+			let ak = new AlternatesKeyboard(this.keyboard, this.char);
+			ak.setParent(this.keyboard);
+			view.show(ak);
+		}
+
+		hasAlternate(): boolean{
+			return !!this.char.alternates;
 		}
 	}
 

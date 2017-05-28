@@ -82,137 +82,6 @@ if (!String.prototype.getCodePointLength) {
         }
     }());
 }
-var View;
-(function (View_1) {
-    var LOCALES = {};
-    LOCALES['default'] = {
-        0: '', 1: 'ESC', 59: 'F1', 60: 'F2', 61: 'F3', 62: 'F4', 63: 'F5', 64: 'F6', 65: 'F7', 66: 'F8', 67: 'F9', 68: 'F10', 87: 'F11', 88: 'F12',
-        14: 'BKSP', 15: 'Tab', 58: 'Caps Lk', 28: 'Enter', 42: 'Shift', 29: 'CTRL', 91: 'WIN', 56: 'ALT',
-        41: '`', 2: '1', 3: '2', 4: '3', 5: '4', 6: '5', 7: '6', 8: '7', 9: '8', 10: '9', 11: '0', 12: '-', 13: '=',
-        16: 'q', 17: 'w', 18: 'e', 19: 'r', 20: 't', 21: 'y', 22: 'u', 23: 'i', 24: 'o', 25: 'p', 26: '[', 27: ']', 43: '\\',
-        30: 'a', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: ';', 40: '\'',
-        86: '\\', 44: 'z', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: 'm', 51: ',', 52: '.', 53: '/'
-    };
-    LOCALES['en-US'] = LOCALES['default'];
-    LOCALES['de-DE'] = _.extend({}, LOCALES['default'], { 29: 'STRG', 41: '^', 12: 'ß', 13: '´', 21: 'z', 26: 'ü', 27: '+', 39: 'ö', 40: 'ä', 43: '#', 86: '<', 44: 'y', 51: ',', 52: '.', 53: '-' });
-    LOCALES['de-CH'] = _.extend({}, LOCALES['default'], { 41: '§', 12: '\'', 13: '^', 21: 'z', 26: 'ü', 27: '¨', 39: 'ö', 40: 'ä', 43: '$', 86: '<', 44: 'y', 51: ',', 52: '.', 53: '-' });
-    LOCALES['fr-CH'] = _.extend({}, LOCALES['de-CH'], { 26: 'è', 39: 'é', 40: 'à' });
-    LOCALES['fr-FR'] = _.extend({}, LOCALES['default'], {
-        14: 'Suppr', 15: 'Tab', 58: 'Verr Maj', 28: 'Entrée', 42: 'Maj', 29: 'Ctrl', 91: 'Win', 56: 'Alt',
-        41: '²', 2: '&', 3: 'é', 4: '"', 5: '\'', 6: '(', 7: '-', 8: 'è', 9: '_', 10: 'ç', 11: 'à', 12: ')', 13: '=',
-        16: 'a', 17: 'z', 18: 'e', 19: 'r', 20: 't', 21: 'y', 22: 'u', 23: 'i', 24: 'o', 25: 'p', 26: '^', 27: '$',
-        30: 'q', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: 'm', 40: 'ù', 43: '*',
-        86: '<', 44: 'w', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: ',', 51: ';', 52: ':', 53: '!'
-    });
-    LOCALES['en-DVORAK'] = _.extend({}, LOCALES['default'], {
-        41: '`', 12: '[', 13: ']',
-        16: '\'', 17: ',', 18: '.', 19: 'p', 20: 'y', 21: 'f', 22: 'g', 23: 'c', 24: 'r', 25: 'l', 26: '/', 27: '=', 43: '\\',
-        30: 'a', 31: 'o', 32: 'e', 33: 'u', 34: 'i', 35: 'd', 36: 'h', 37: 't', 38: 'n', 39: 's', 40: '-',
-        86: '\\', 44: ';', 45: 'q', 46: 'j', 47: 'k', 48: 'x', 49: 'b', 50: 'm', 51: 'w', 52: 'v', 53: 'z'
-    });
-    LOCALES['blank'] = {};
-    var keysLocale = LOCALES['en-US'];
-    var KEYS = [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
-    var KEYMAP = [
-        [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-        [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
-        [58, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43],
-        [42, 86, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 0]
-    ];
-    var BLANKKEY = new Workers.BlankKey();
-    var View = (function () {
-        function View(base) {
-            this.base = base;
-            this.jBase = $(base);
-            this.jBase.empty();
-            this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
-        }
-        View.prototype.show = function (keyboard) {
-            this.keyboard = keyboard;
-            keyboard.setKeys(KEYS);
-            this.refresh();
-        };
-        View.prototype.input = function (key, shift) {
-            if (this.idxKeys[key]) {
-                if (!shift)
-                    this.idxKeys[key].act(this);
-                else
-                    this.idxKeys[key].actAlternate(this);
-            }
-        };
-        View.prototype.setKeymap = function (keymap) {
-            if (LOCALES[keymap]) {
-                keysLocale = LOCALES[keymap];
-                this.refresh();
-            }
-            else
-                alert(keymap + " is not a valid keymap!\nValid keymaps are " + _.keys(LOCALES).slice(1).join(", "));
-        };
-        View.prototype.refresh = function () {
-            var _this = this;
-            this.jKeyboard.empty();
-            this.idxKeys = _.indexBy(this.keyboard.getVisible(), function (key) { return key.key; });
-            KEYMAP.forEach(function (row) {
-                var jRow = $('<div class="row">').appendTo(_this.jKeyboard);
-                row.forEach(function (keyCode) {
-                    BLANKKEY.key = keyCode;
-                    if (!_this.idxKeys[keyCode])
-                        jRow.append(_this.showKey(BLANKKEY));
-                    else
-                        jRow.append(_this.showKey(_this.idxKeys[keyCode]));
-                });
-            });
-        };
-        View.prototype.showKey = function (key) {
-            var _this = this;
-            var keyType = " action";
-            if (key instanceof Workers.CharKey) {
-                var keyType = " char";
-            }
-            if (key instanceof Workers.BlankKey) {
-                var keyType = " empty";
-            }
-            if (key.getName() == "back") {
-                var keyType = " back";
-            }
-            return $('<div class="key' + keyType + '">')
-                .append($('<div class="keyname">').text(keysLocale[key.key]))
-                .append($('<div class="name">').text(key.getName()))
-                .append(key.getSymbolDiv())
-                .click(function () {
-                key.act(_this);
-            })
-                .contextmenu(function () {
-                key.actAlternate(_this);
-            });
-        };
-        return View;
-    }());
-    View_1.View = View;
-})(View || (View = {}));
-var Workers;
-(function (Workers) {
-    var Emojis;
-    (function (Emojis) {
-        var indexedEmojis = {};
-        data.emojis.forEach(function (emoji) {
-            if (!indexedEmojis[emoji.group])
-                indexedEmojis[emoji.group] = {};
-            if (!indexedEmojis[emoji.group][emoji.subGroup])
-                indexedEmojis[emoji.group][emoji.subGroup] = [];
-            indexedEmojis[emoji.group][emoji.subGroup].push(emoji);
-        });
-        function getSubGroup(group, subGroup) {
-            if (indexedEmojis[group] && indexedEmojis[group][subGroup]) {
-                return indexedEmojis[group][subGroup];
-            }
-            else {
-                return [];
-            }
-        }
-        Emojis.getSubGroup = getSubGroup;
-    })(Emojis = Workers.Emojis || (Workers.Emojis = {}));
-})(Workers || (Workers = {}));
 var Workers;
 (function (Workers) {
     var Keyboards;
@@ -313,10 +182,10 @@ var Workers;
     Workers.EmojiKeyboard = EmojiKeyboard;
     var AlternatesKeyboard = (function (_super) {
         __extends(AlternatesKeyboard, _super);
-        function AlternatesKeyboard(parent, base, symbols) {
+        function AlternatesKeyboard(parent, base) {
             var _this = this;
             var keys = [];
-            symbols.forEach(function (chr) {
+            base.alternates.forEach(function (chr) {
                 keys.push(new Workers.CharKey(chr));
             });
             _this = _super.call(this, base.name, base.symbol, keys, base.fallbackIcon) || this;
@@ -364,6 +233,10 @@ var Workers;
         Key.prototype.act = function (view) {
         };
         Key.prototype.actAlternate = function (view) {
+            this.act(view);
+        };
+        Key.prototype.hasAlternate = function () {
+            return false;
         };
         return Key;
     }());
@@ -380,6 +253,16 @@ var Workers;
         };
         CharKey.prototype.act = function () {
             AHK("Send", this.getSymbol());
+        };
+        CharKey.prototype.actAlternate = function (view) {
+            if (!this.hasAlternate())
+                return this.act();
+            var ak = new Workers.AlternatesKeyboard(this.keyboard, this.char);
+            ak.setParent(this.keyboard);
+            view.show(ak);
+        };
+        CharKey.prototype.hasAlternate = function () {
+            return !!this.char.alternates;
         };
         return CharKey;
     }(Key));
@@ -438,5 +321,138 @@ var Workers;
         return BlankKey;
     }(Key));
     Workers.BlankKey = BlankKey;
+})(Workers || (Workers = {}));
+var View;
+(function (View_1) {
+    var LOCALES = {};
+    LOCALES['default'] = {
+        0: '', 1: 'ESC', 59: 'F1', 60: 'F2', 61: 'F3', 62: 'F4', 63: 'F5', 64: 'F6', 65: 'F7', 66: 'F8', 67: 'F9', 68: 'F10', 87: 'F11', 88: 'F12',
+        14: 'BKSP', 15: 'Tab', 58: 'Caps Lk', 28: 'Enter', 42: 'Shift', 29: 'CTRL', 91: 'WIN', 56: 'ALT',
+        41: '`', 2: '1', 3: '2', 4: '3', 5: '4', 6: '5', 7: '6', 8: '7', 9: '8', 10: '9', 11: '0', 12: '-', 13: '=',
+        16: 'q', 17: 'w', 18: 'e', 19: 'r', 20: 't', 21: 'y', 22: 'u', 23: 'i', 24: 'o', 25: 'p', 26: '[', 27: ']', 43: '\\',
+        30: 'a', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: ';', 40: '\'',
+        86: '\\', 44: 'z', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: 'm', 51: ',', 52: '.', 53: '/'
+    };
+    LOCALES['en-US'] = LOCALES['default'];
+    LOCALES['de-DE'] = _.extend({}, LOCALES['default'], { 29: 'STRG', 41: '^', 12: 'ß', 13: '´', 21: 'z', 26: 'ü', 27: '+', 39: 'ö', 40: 'ä', 43: '#', 86: '<', 44: 'y', 51: ',', 52: '.', 53: '-' });
+    LOCALES['de-CH'] = _.extend({}, LOCALES['default'], { 41: '§', 12: '\'', 13: '^', 21: 'z', 26: 'ü', 27: '¨', 39: 'ö', 40: 'ä', 43: '$', 86: '<', 44: 'y', 51: ',', 52: '.', 53: '-' });
+    LOCALES['fr-CH'] = _.extend({}, LOCALES['de-CH'], { 26: 'è', 39: 'é', 40: 'à' });
+    LOCALES['fr-FR'] = _.extend({}, LOCALES['default'], {
+        14: 'Suppr', 15: 'Tab', 58: 'Verr Maj', 28: 'Entrée', 42: 'Maj', 29: 'Ctrl', 91: 'Win', 56: 'Alt',
+        41: '²', 2: '&', 3: 'é', 4: '"', 5: '\'', 6: '(', 7: '-', 8: 'è', 9: '_', 10: 'ç', 11: 'à', 12: ')', 13: '=',
+        16: 'a', 17: 'z', 18: 'e', 19: 'r', 20: 't', 21: 'y', 22: 'u', 23: 'i', 24: 'o', 25: 'p', 26: '^', 27: '$',
+        30: 'q', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: 'm', 40: 'ù', 43: '*',
+        86: '<', 44: 'w', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: ',', 51: ';', 52: ':', 53: '!'
+    });
+    LOCALES['en-DVORAK'] = _.extend({}, LOCALES['default'], {
+        41: '`', 12: '[', 13: ']',
+        16: '\'', 17: ',', 18: '.', 19: 'p', 20: 'y', 21: 'f', 22: 'g', 23: 'c', 24: 'r', 25: 'l', 26: '/', 27: '=', 43: '\\',
+        30: 'a', 31: 'o', 32: 'e', 33: 'u', 34: 'i', 35: 'd', 36: 'h', 37: 't', 38: 'n', 39: 's', 40: '-',
+        86: '\\', 44: ';', 45: 'q', 46: 'j', 47: 'k', 48: 'x', 49: 'b', 50: 'm', 51: 'w', 52: 'v', 53: 'z'
+    });
+    LOCALES['blank'] = {};
+    var keysLocale = LOCALES['en-US'];
+    var KEYS = [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
+    var KEYMAP = [
+        [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+        [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+        [58, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43],
+        [42, 86, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 0]
+    ];
+    var BLANKKEY = new Workers.BlankKey();
+    var View = (function () {
+        function View(base) {
+            this.base = base;
+            this.jBase = $(base);
+            this.jBase.empty();
+            this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
+        }
+        View.prototype.show = function (keyboard) {
+            this.keyboard = keyboard;
+            keyboard.setKeys(KEYS);
+            this.refresh();
+        };
+        View.prototype.input = function (key, shift) {
+            if (this.idxKeys[key]) {
+                if (!shift)
+                    this.idxKeys[key].act(this);
+                else
+                    this.idxKeys[key].actAlternate(this);
+            }
+        };
+        View.prototype.setKeymap = function (keymap) {
+            if (LOCALES[keymap]) {
+                keysLocale = LOCALES[keymap];
+                this.refresh();
+            }
+            else
+                alert(keymap + " is not a valid keymap!\nValid keymaps are " + _.keys(LOCALES).slice(1).join(", "));
+        };
+        View.prototype.refresh = function () {
+            var _this = this;
+            this.jKeyboard.empty();
+            this.idxKeys = _.indexBy(this.keyboard.getVisible(), function (key) { return key.key; });
+            KEYMAP.forEach(function (row) {
+                var jRow = $('<div class="row">').appendTo(_this.jKeyboard);
+                row.forEach(function (keyCode) {
+                    BLANKKEY.key = keyCode;
+                    if (!_this.idxKeys[keyCode])
+                        jRow.append(_this.showKey(BLANKKEY));
+                    else
+                        jRow.append(_this.showKey(_this.idxKeys[keyCode]));
+                });
+            });
+        };
+        View.prototype.showKey = function (key) {
+            var _this = this;
+            var keyType = " action";
+            if (key instanceof Workers.CharKey) {
+                var keyType = " char";
+            }
+            if (key instanceof Workers.BlankKey) {
+                var keyType = " empty";
+            }
+            if (key.getName() == "back") {
+                var keyType = " back";
+            }
+            return $('<div class="key' + keyType + (key.hasAlternate() ? ' alt' : '') + '">')
+                .append($('<div class="keyname">').text(keysLocale[key.key]))
+                .append($('<div class="name">').text(key.getName()))
+                .append(key.getSymbolDiv())
+                .click(function (e) {
+                e.preventDefault();
+                key.act(_this);
+            })
+                .contextmenu(function (e) {
+                e.preventDefault();
+                key.actAlternate(_this);
+            });
+        };
+        return View;
+    }());
+    View_1.View = View;
+})(View || (View = {}));
+var Workers;
+(function (Workers) {
+    var Emojis;
+    (function (Emojis) {
+        var indexedEmojis = {};
+        data.emojis.forEach(function (emoji) {
+            if (!indexedEmojis[emoji.group])
+                indexedEmojis[emoji.group] = {};
+            if (!indexedEmojis[emoji.group][emoji.subGroup])
+                indexedEmojis[emoji.group][emoji.subGroup] = [];
+            indexedEmojis[emoji.group][emoji.subGroup].push(emoji);
+        });
+        function getSubGroup(group, subGroup) {
+            if (indexedEmojis[group] && indexedEmojis[group][subGroup]) {
+                return indexedEmojis[group][subGroup];
+            }
+            else {
+                return [];
+            }
+        }
+        Emojis.getSubGroup = getSubGroup;
+    })(Emojis = Workers.Emojis || (Workers.Emojis = {}));
 })(Workers || (Workers = {}));
 //# sourceMappingURL=script.js.map
