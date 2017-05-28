@@ -1675,11 +1675,101 @@ var data = {
                 128102
             ],
             "alternates": [
-                "👦🏻",
-                "👦🏼",
-                "👦🏽",
-                "👦🏾",
-                "👦🏿"
+                {
+                    "symbol": "👦",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "boy",
+                    "code": [
+                        128102
+                    ],
+                    "fullName": "BOY",
+                    "version": 6,
+                    "keywords": [
+                        "boy",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👦🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "boy: light skin tone",
+                    "code": [
+                        128102,
+                        127995
+                    ],
+                    "fullName": "BOY, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "boy",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👦🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "boy: medium-light skin tone",
+                    "code": [
+                        128102,
+                        127996
+                    ],
+                    "fullName": "BOY, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "boy",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👦🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "boy: medium skin tone",
+                    "code": [
+                        128102,
+                        127997
+                    ],
+                    "fullName": "BOY, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "boy",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👦🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "boy: medium-dark skin tone",
+                    "code": [
+                        128102,
+                        127998
+                    ],
+                    "fullName": "BOY, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "boy",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👦🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "boy: dark skin tone",
+                    "code": [
+                        128102,
+                        127999
+                    ],
+                    "fullName": "BOY, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "boy",
+                        "young"
+                    ]
+                }
             ],
             "fullName": "BOY",
             "version": 6,
@@ -1697,11 +1787,107 @@ var data = {
                 128103
             ],
             "alternates": [
-                "👧🏻",
-                "👧🏼",
-                "👧🏽",
-                "👧🏾",
-                "👧🏿"
+                {
+                    "symbol": "👧",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "girl",
+                    "code": [
+                        128103
+                    ],
+                    "fullName": "GIRL",
+                    "version": 6,
+                    "keywords": [
+                        "Virgo",
+                        "young",
+                        "zodiac"
+                    ]
+                },
+                {
+                    "symbol": "👧🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "girl: light skin tone",
+                    "code": [
+                        128103,
+                        127995
+                    ],
+                    "fullName": "GIRL, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "Virgo",
+                        "young",
+                        "zodiac"
+                    ]
+                },
+                {
+                    "symbol": "👧🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "girl: medium-light skin tone",
+                    "code": [
+                        128103,
+                        127996
+                    ],
+                    "fullName": "GIRL, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "Virgo",
+                        "young",
+                        "zodiac"
+                    ]
+                },
+                {
+                    "symbol": "👧🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "girl: medium skin tone",
+                    "code": [
+                        128103,
+                        127997
+                    ],
+                    "fullName": "GIRL, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "Virgo",
+                        "young",
+                        "zodiac"
+                    ]
+                },
+                {
+                    "symbol": "👧🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "girl: medium-dark skin tone",
+                    "code": [
+                        128103,
+                        127998
+                    ],
+                    "fullName": "GIRL, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "Virgo",
+                        "young",
+                        "zodiac"
+                    ]
+                },
+                {
+                    "symbol": "👧🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "girl: dark skin tone",
+                    "code": [
+                        128103,
+                        127999
+                    ],
+                    "fullName": "GIRL, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "Virgo",
+                        "young",
+                        "zodiac"
+                    ]
+                }
             ],
             "fullName": "GIRL",
             "version": 6,
@@ -1720,11 +1906,107 @@ var data = {
                 128104
             ],
             "alternates": [
-                "👨🏻",
-                "👨🏼",
-                "👨🏽",
-                "👨🏾",
-                "👨🏿"
+                {
+                    "symbol": "👨",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "man",
+                    "code": [
+                        128104
+                    ],
+                    "fullName": "MAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "man: light skin tone",
+                    "code": [
+                        128104,
+                        127995
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "man: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "man: medium skin tone",
+                    "code": [
+                        128104,
+                        127997
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "man: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "man: dark skin tone",
+                    "code": [
+                        128104,
+                        127999
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN",
             "version": 6,
@@ -1743,11 +2025,107 @@ var data = {
                 128105
             ],
             "alternates": [
-                "👩🏻",
-                "👩🏼",
-                "👩🏽",
-                "👩🏾",
-                "👩🏿"
+                {
+                    "symbol": "👩",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "woman",
+                    "code": [
+                        128105
+                    ],
+                    "fullName": "WOMAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "woman: light skin tone",
+                    "code": [
+                        128105,
+                        127995
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "woman: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "woman: medium skin tone",
+                    "code": [
+                        128105,
+                        127997
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "woman: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "woman: dark skin tone",
+                    "code": [
+                        128105,
+                        127999
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN",
             "version": 6,
@@ -1766,11 +2144,101 @@ var data = {
                 128116
             ],
             "alternates": [
-                "👴🏻",
-                "👴🏼",
-                "👴🏽",
-                "👴🏾",
-                "👴🏿"
+                {
+                    "symbol": "👴",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old man",
+                    "code": [
+                        128116
+                    ],
+                    "fullName": "OLDER MAN",
+                    "version": 6,
+                    "keywords": [
+                        "man",
+                        "old"
+                    ]
+                },
+                {
+                    "symbol": "👴🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old man: light skin tone",
+                    "code": [
+                        128116,
+                        127995
+                    ],
+                    "fullName": "OLDER MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "man",
+                        "old"
+                    ]
+                },
+                {
+                    "symbol": "👴🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old man: medium-light skin tone",
+                    "code": [
+                        128116,
+                        127996
+                    ],
+                    "fullName": "OLDER MAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "man",
+                        "old"
+                    ]
+                },
+                {
+                    "symbol": "👴🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old man: medium skin tone",
+                    "code": [
+                        128116,
+                        127997
+                    ],
+                    "fullName": "OLDER MAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "man",
+                        "old"
+                    ]
+                },
+                {
+                    "symbol": "👴🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old man: medium-dark skin tone",
+                    "code": [
+                        128116,
+                        127998
+                    ],
+                    "fullName": "OLDER MAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "man",
+                        "old"
+                    ]
+                },
+                {
+                    "symbol": "👴🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old man: dark skin tone",
+                    "code": [
+                        128116,
+                        127999
+                    ],
+                    "fullName": "OLDER MAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "man",
+                        "old"
+                    ]
+                }
             ],
             "fullName": "OLDER MAN",
             "version": 6,
@@ -1788,11 +2256,101 @@ var data = {
                 128117
             ],
             "alternates": [
-                "👵🏻",
-                "👵🏼",
-                "👵🏽",
-                "👵🏾",
-                "👵🏿"
+                {
+                    "symbol": "👵",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old woman",
+                    "code": [
+                        128117
+                    ],
+                    "fullName": "OLDER WOMAN",
+                    "version": 6,
+                    "keywords": [
+                        "old",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👵🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old woman: light skin tone",
+                    "code": [
+                        128117,
+                        127995
+                    ],
+                    "fullName": "OLDER WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "old",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👵🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old woman: medium-light skin tone",
+                    "code": [
+                        128117,
+                        127996
+                    ],
+                    "fullName": "OLDER WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "old",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👵🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old woman: medium skin tone",
+                    "code": [
+                        128117,
+                        127997
+                    ],
+                    "fullName": "OLDER WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "old",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👵🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old woman: medium-dark skin tone",
+                    "code": [
+                        128117,
+                        127998
+                    ],
+                    "fullName": "OLDER WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "old",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👵🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "old woman: dark skin tone",
+                    "code": [
+                        128117,
+                        127999
+                    ],
+                    "fullName": "OLDER WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "old",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "OLDER WOMAN",
             "version": 6,
@@ -1810,11 +2368,101 @@ var data = {
                 128118
             ],
             "alternates": [
-                "👶🏻",
-                "👶🏼",
-                "👶🏽",
-                "👶🏾",
-                "👶🏿"
+                {
+                    "symbol": "👶",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby",
+                    "code": [
+                        128118
+                    ],
+                    "fullName": "BABY",
+                    "version": 6,
+                    "keywords": [
+                        "baby",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👶🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby: light skin tone",
+                    "code": [
+                        128118,
+                        127995
+                    ],
+                    "fullName": "BABY, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "baby",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👶🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby: medium-light skin tone",
+                    "code": [
+                        128118,
+                        127996
+                    ],
+                    "fullName": "BABY, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "baby",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👶🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby: medium skin tone",
+                    "code": [
+                        128118,
+                        127997
+                    ],
+                    "fullName": "BABY, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "baby",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👶🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby: medium-dark skin tone",
+                    "code": [
+                        128118,
+                        127998
+                    ],
+                    "fullName": "BABY, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "baby",
+                        "young"
+                    ]
+                },
+                {
+                    "symbol": "👶🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby: dark skin tone",
+                    "code": [
+                        128118,
+                        127999
+                    ],
+                    "fullName": "BABY, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "baby",
+                        "young"
+                    ]
+                }
             ],
             "fullName": "BABY",
             "version": 6,
@@ -1832,11 +2480,119 @@ var data = {
                 128124
             ],
             "alternates": [
-                "👼🏻",
-                "👼🏼",
-                "👼🏽",
-                "👼🏾",
-                "👼🏿"
+                {
+                    "symbol": "👼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby angel",
+                    "code": [
+                        128124
+                    ],
+                    "fullName": "BABY ANGEL",
+                    "version": 6,
+                    "keywords": [
+                        "angel",
+                        "baby",
+                        "face",
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👼🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby angel: light skin tone",
+                    "code": [
+                        128124,
+                        127995
+                    ],
+                    "fullName": "BABY ANGEL, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "angel",
+                        "baby",
+                        "face",
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👼🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby angel: medium-light skin tone",
+                    "code": [
+                        128124,
+                        127996
+                    ],
+                    "fullName": "BABY ANGEL, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "angel",
+                        "baby",
+                        "face",
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👼🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby angel: medium skin tone",
+                    "code": [
+                        128124,
+                        127997
+                    ],
+                    "fullName": "BABY ANGEL, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "angel",
+                        "baby",
+                        "face",
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👼🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby angel: medium-dark skin tone",
+                    "code": [
+                        128124,
+                        127998
+                    ],
+                    "fullName": "BABY ANGEL, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "angel",
+                        "baby",
+                        "face",
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👼🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person",
+                    "name": "baby angel: dark skin tone",
+                    "code": [
+                        128124,
+                        127999
+                    ],
+                    "fullName": "BABY ANGEL, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "angel",
+                        "baby",
+                        "face",
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                }
             ],
             "fullName": "BABY ANGEL",
             "version": 6,
@@ -1860,11 +2616,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👨🏻‍⚕️",
-                "👨🏼‍⚕️",
-                "👨🏽‍⚕️",
-                "👨🏾‍⚕️",
-                "👨🏿‍⚕️"
+                {
+                    "symbol": "👨‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man health worker",
+                    "code": [
+                        128104,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "MAN, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man health worker: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man health worker: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man health worker: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man health worker: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man health worker: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, STAFF OF AESCULAPIUS",
             "version": 6,
@@ -1886,11 +2756,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👩🏻‍⚕️",
-                "👩🏼‍⚕️",
-                "👩🏽‍⚕️",
-                "👩🏾‍⚕️",
-                "👩🏿‍⚕️"
+                {
+                    "symbol": "👩‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman health worker",
+                    "code": [
+                        128105,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "WOMAN, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman health worker: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman health worker: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman health worker: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman health worker: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍⚕️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman health worker: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        9877,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, STAFF OF AESCULAPIUS",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, STAFF OF AESCULAPIUS",
             "version": 6,
@@ -1911,11 +2895,119 @@ var data = {
                 127891
             ],
             "alternates": [
-                "👨🏻‍🎓",
-                "👨🏼‍🎓",
-                "👨🏽‍🎓",
-                "👨🏾‍🎓",
-                "👨🏿‍🎓"
+                {
+                    "symbol": "👨‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man student",
+                    "code": [
+                        128104,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "MAN, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man student: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man student: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man student: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man student: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man student: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, GRADUATION CAP",
             "version": 6,
@@ -1936,11 +3028,119 @@ var data = {
                 127891
             ],
             "alternates": [
-                "👩🏻‍🎓",
-                "👩🏼‍🎓",
-                "👩🏽‍🎓",
-                "👩🏾‍🎓",
-                "👩🏿‍🎓"
+                {
+                    "symbol": "👩‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman student",
+                    "code": [
+                        128105,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "WOMAN, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman student: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman student: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman student: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman student: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🎓",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman student: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        127891
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, GRADUATION CAP",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, GRADUATION CAP",
             "version": 6,
@@ -1961,11 +3161,119 @@ var data = {
                 127979
             ],
             "alternates": [
-                "👨🏻‍🏫",
-                "👨🏼‍🏫",
-                "👨🏽‍🏫",
-                "👨🏾‍🏫",
-                "👨🏿‍🏫"
+                {
+                    "symbol": "👨‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man teacher",
+                    "code": [
+                        128104,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "MAN, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man teacher: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man teacher: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man teacher: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man teacher: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man teacher: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, SCHOOL",
             "version": 6,
@@ -1986,11 +3294,119 @@ var data = {
                 127979
             ],
             "alternates": [
-                "👩🏻‍🏫",
-                "👩🏼‍🏫",
-                "👩🏽‍🏫",
-                "👩🏾‍🏫",
-                "👩🏿‍🏫"
+                {
+                    "symbol": "👩‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman teacher",
+                    "code": [
+                        128105,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "WOMAN, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman teacher: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman teacher: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman teacher: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman teacher: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🏫",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman teacher: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        127979
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, SCHOOL",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, SCHOOL",
             "version": 6,
@@ -2012,11 +3428,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👨🏻‍⚖️",
-                "👨🏼‍⚖️",
-                "👨🏽‍⚖️",
-                "👨🏾‍⚖️",
-                "👨🏿‍⚖️"
+                {
+                    "symbol": "👨‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man judge",
+                    "code": [
+                        128104,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "MAN, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man judge: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man judge: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man judge: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man judge: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man judge: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, SCALES",
             "version": 6,
@@ -2038,11 +3568,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👩🏻‍⚖️",
-                "👩🏼‍⚖️",
-                "👩🏽‍⚖️",
-                "👩🏾‍⚖️",
-                "👩🏿‍⚖️"
+                {
+                    "symbol": "👩‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman judge",
+                    "code": [
+                        128105,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "WOMAN, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman judge: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman judge: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman judge: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman judge: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍⚖️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman judge: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        9878,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, SCALES",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, SCALES",
             "version": 6,
@@ -2063,11 +3707,119 @@ var data = {
                 127806
             ],
             "alternates": [
-                "👨🏻‍🌾",
-                "👨🏼‍🌾",
-                "👨🏽‍🌾",
-                "👨🏾‍🌾",
-                "👨🏿‍🌾"
+                {
+                    "symbol": "👨‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man farmer",
+                    "code": [
+                        128104,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "MAN, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man farmer: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man farmer: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man farmer: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man farmer: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man farmer: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, EAR OF RICE",
             "version": 6,
@@ -2088,11 +3840,119 @@ var data = {
                 127806
             ],
             "alternates": [
-                "👩🏻‍🌾",
-                "👩🏼‍🌾",
-                "👩🏽‍🌾",
-                "👩🏾‍🌾",
-                "👩🏿‍🌾"
+                {
+                    "symbol": "👩‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman farmer",
+                    "code": [
+                        128105,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "WOMAN, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman farmer: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman farmer: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman farmer: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman farmer: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🌾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman farmer: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        127806
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, EAR OF RICE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, EAR OF RICE",
             "version": 6,
@@ -2113,11 +3973,119 @@ var data = {
                 127859
             ],
             "alternates": [
-                "👨🏻‍🍳",
-                "👨🏼‍🍳",
-                "👨🏽‍🍳",
-                "👨🏾‍🍳",
-                "👨🏿‍🍳"
+                {
+                    "symbol": "👨‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man cook",
+                    "code": [
+                        128104,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "MAN, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man cook: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man cook: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man cook: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man cook: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man cook: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, COOKING",
             "version": 6,
@@ -2138,11 +4106,119 @@ var data = {
                 127859
             ],
             "alternates": [
-                "👩🏻‍🍳",
-                "👩🏼‍🍳",
-                "👩🏽‍🍳",
-                "👩🏾‍🍳",
-                "👩🏿‍🍳"
+                {
+                    "symbol": "👩‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman cook",
+                    "code": [
+                        128105,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "WOMAN, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman cook: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman cook: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman cook: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman cook: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🍳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman cook: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        127859
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, COOKING",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, COOKING",
             "version": 6,
@@ -2163,11 +4239,119 @@ var data = {
                 128295
             ],
             "alternates": [
-                "👨🏻‍🔧",
-                "👨🏼‍🔧",
-                "👨🏽‍🔧",
-                "👨🏾‍🔧",
-                "👨🏿‍🔧"
+                {
+                    "symbol": "👨‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man mechanic",
+                    "code": [
+                        128104,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "MAN, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man mechanic: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man mechanic: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man mechanic: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man mechanic: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man mechanic: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, WRENCH",
             "version": 6,
@@ -2188,11 +4372,119 @@ var data = {
                 128295
             ],
             "alternates": [
-                "👩🏻‍🔧",
-                "👩🏼‍🔧",
-                "👩🏽‍🔧",
-                "👩🏾‍🔧",
-                "👩🏿‍🔧"
+                {
+                    "symbol": "👩‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman mechanic",
+                    "code": [
+                        128105,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "WOMAN, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman mechanic: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman mechanic: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman mechanic: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman mechanic: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🔧",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman mechanic: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        128295
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, WRENCH",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, WRENCH",
             "version": 6,
@@ -2213,11 +4505,119 @@ var data = {
                 127981
             ],
             "alternates": [
-                "👨🏻‍🏭",
-                "👨🏼‍🏭",
-                "👨🏽‍🏭",
-                "👨🏾‍🏭",
-                "👨🏿‍🏭"
+                {
+                    "symbol": "👨‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man factory worker",
+                    "code": [
+                        128104,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "MAN, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man factory worker: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man factory worker: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man factory worker: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man factory worker: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man factory worker: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, FACTORY",
             "version": 6,
@@ -2238,11 +4638,119 @@ var data = {
                 127981
             ],
             "alternates": [
-                "👩🏻‍🏭",
-                "👩🏼‍🏭",
-                "👩🏽‍🏭",
-                "👩🏾‍🏭",
-                "👩🏿‍🏭"
+                {
+                    "symbol": "👩‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman factory worker",
+                    "code": [
+                        128105,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "WOMAN, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman factory worker: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman factory worker: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman factory worker: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman factory worker: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🏭",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman factory worker: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        127981
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, FACTORY",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, FACTORY",
             "version": 6,
@@ -2263,11 +4771,119 @@ var data = {
                 128188
             ],
             "alternates": [
-                "👨🏻‍💼",
-                "👨🏼‍💼",
-                "👨🏽‍💼",
-                "👨🏾‍💼",
-                "👨🏿‍💼"
+                {
+                    "symbol": "👨‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man office worker",
+                    "code": [
+                        128104,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "MAN, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man office worker: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man office worker: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man office worker: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man office worker: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man office worker: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, BRIEFCASE",
             "version": 6,
@@ -2288,11 +4904,119 @@ var data = {
                 128188
             ],
             "alternates": [
-                "👩🏻‍💼",
-                "👩🏼‍💼",
-                "👩🏽‍💼",
-                "👩🏾‍💼",
-                "👩🏿‍💼"
+                {
+                    "symbol": "👩‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman office worker",
+                    "code": [
+                        128105,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "WOMAN, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman office worker: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman office worker: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman office worker: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman office worker: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍💼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman office worker: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        128188
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, BRIEFCASE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, BRIEFCASE",
             "version": 6,
@@ -2313,11 +5037,119 @@ var data = {
                 128300
             ],
             "alternates": [
-                "👨🏻‍🔬",
-                "👨🏼‍🔬",
-                "👨🏽‍🔬",
-                "👨🏾‍🔬",
-                "👨🏿‍🔬"
+                {
+                    "symbol": "👨‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man scientist",
+                    "code": [
+                        128104,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "MAN, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man scientist: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man scientist: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man scientist: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man scientist: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man scientist: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, MICROSCOPE",
             "version": 6,
@@ -2338,11 +5170,119 @@ var data = {
                 128300
             ],
             "alternates": [
-                "👩🏻‍🔬",
-                "👩🏼‍🔬",
-                "👩🏽‍🔬",
-                "👩🏾‍🔬",
-                "👩🏿‍🔬"
+                {
+                    "symbol": "👩‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman scientist",
+                    "code": [
+                        128105,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "WOMAN, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman scientist: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman scientist: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman scientist: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman scientist: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🔬",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman scientist: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        128300
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, MICROSCOPE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, MICROSCOPE",
             "version": 6,
@@ -2363,11 +5303,119 @@ var data = {
                 128187
             ],
             "alternates": [
-                "👨🏻‍💻",
-                "👨🏼‍💻",
-                "👨🏽‍💻",
-                "👨🏾‍💻",
-                "👨🏿‍💻"
+                {
+                    "symbol": "👨‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man technologist",
+                    "code": [
+                        128104,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "MAN, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man technologist: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man technologist: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man technologist: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man technologist: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man technologist: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, PERSONAL COMPUTER",
             "version": 6,
@@ -2388,11 +5436,119 @@ var data = {
                 128187
             ],
             "alternates": [
-                "👩🏻‍💻",
-                "👩🏼‍💻",
-                "👩🏽‍💻",
-                "👩🏾‍💻",
-                "👩🏿‍💻"
+                {
+                    "symbol": "👩‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman technologist",
+                    "code": [
+                        128105,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "WOMAN, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman technologist: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman technologist: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman technologist: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman technologist: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍💻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman technologist: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        128187
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, PERSONAL COMPUTER",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, PERSONAL COMPUTER",
             "version": 6,
@@ -2413,11 +5569,119 @@ var data = {
                 127908
             ],
             "alternates": [
-                "👨🏻‍🎤",
-                "👨🏼‍🎤",
-                "👨🏽‍🎤",
-                "👨🏾‍🎤",
-                "👨🏿‍🎤"
+                {
+                    "symbol": "👨‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man singer",
+                    "code": [
+                        128104,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "MAN, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man singer: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man singer: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man singer: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man singer: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man singer: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, MICROPHONE",
             "version": 6,
@@ -2438,11 +5702,119 @@ var data = {
                 127908
             ],
             "alternates": [
-                "👩🏻‍🎤",
-                "👩🏼‍🎤",
-                "👩🏽‍🎤",
-                "👩🏾‍🎤",
-                "👩🏿‍🎤"
+                {
+                    "symbol": "👩‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman singer",
+                    "code": [
+                        128105,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "WOMAN, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman singer: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman singer: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman singer: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman singer: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🎤",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman singer: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        127908
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, MICROPHONE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, MICROPHONE",
             "version": 6,
@@ -2463,11 +5835,119 @@ var data = {
                 127912
             ],
             "alternates": [
-                "👨🏻‍🎨",
-                "👨🏼‍🎨",
-                "👨🏽‍🎨",
-                "👨🏾‍🎨",
-                "👨🏿‍🎨"
+                {
+                    "symbol": "👨‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man artist",
+                    "code": [
+                        128104,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "MAN, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man artist: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man artist: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man artist: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man artist: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man artist: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, ARTIST PALETTE",
             "version": 6,
@@ -2488,11 +5968,119 @@ var data = {
                 127912
             ],
             "alternates": [
-                "👩🏻‍🎨",
-                "👩🏼‍🎨",
-                "👩🏽‍🎨",
-                "👩🏾‍🎨",
-                "👩🏿‍🎨"
+                {
+                    "symbol": "👩‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman artist",
+                    "code": [
+                        128105,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "WOMAN, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman artist: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman artist: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman artist: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman artist: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🎨",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman artist: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        127912
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, ARTIST PALETTE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, ARTIST PALETTE",
             "version": 6,
@@ -2514,11 +6102,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👨🏻‍✈️",
-                "👨🏼‍✈️",
-                "👨🏽‍✈️",
-                "👨🏾‍✈️",
-                "👨🏿‍✈️"
+                {
+                    "symbol": "👨‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man pilot",
+                    "code": [
+                        128104,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "MAN, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man pilot: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man pilot: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man pilot: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man pilot: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man pilot: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, AIRPLANE",
             "version": 6,
@@ -2540,11 +6242,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👩🏻‍✈️",
-                "👩🏼‍✈️",
-                "👩🏽‍✈️",
-                "👩🏾‍✈️",
-                "👩🏿‍✈️"
+                {
+                    "symbol": "👩‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman pilot",
+                    "code": [
+                        128105,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "WOMAN, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman pilot: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman pilot: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman pilot: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman pilot: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍✈️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman pilot: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        9992,
+                        65039
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, AIRPLANE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, AIRPLANE",
             "version": 6,
@@ -2565,11 +6381,119 @@ var data = {
                 128640
             ],
             "alternates": [
-                "👨🏻‍🚀",
-                "👨🏼‍🚀",
-                "👨🏽‍🚀",
-                "👨🏾‍🚀",
-                "👨🏿‍🚀"
+                {
+                    "symbol": "👨‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man astronaut",
+                    "code": [
+                        128104,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "MAN, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man astronaut: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man astronaut: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man astronaut: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man astronaut: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man astronaut: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, ROCKET",
             "version": 6,
@@ -2590,11 +6514,119 @@ var data = {
                 128640
             ],
             "alternates": [
-                "👩🏻‍🚀",
-                "👩🏼‍🚀",
-                "👩🏽‍🚀",
-                "👩🏾‍🚀",
-                "👩🏿‍🚀"
+                {
+                    "symbol": "👩‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman astronaut",
+                    "code": [
+                        128105,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "WOMAN, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman astronaut: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman astronaut: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman astronaut: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman astronaut: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🚀",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman astronaut: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        128640
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, ROCKET",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, ROCKET",
             "version": 6,
@@ -2615,11 +6647,119 @@ var data = {
                 128658
             ],
             "alternates": [
-                "👨🏻‍🚒",
-                "👨🏼‍🚒",
-                "👨🏽‍🚒",
-                "👨🏾‍🚒",
-                "👨🏿‍🚒"
+                {
+                    "symbol": "👨‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man firefighter",
+                    "code": [
+                        128104,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "MAN, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏻‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man firefighter: light skin tone",
+                    "code": [
+                        128104,
+                        127995,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏼‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man firefighter: medium-light skin tone",
+                    "code": [
+                        128104,
+                        127996,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-3, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏽‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man firefighter: medium skin tone",
+                    "code": [
+                        128104,
+                        127997,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-4, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏾‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man firefighter: medium-dark skin tone",
+                    "code": [
+                        128104,
+                        127998,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-5, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👨🏿‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man firefighter: dark skin tone",
+                    "code": [
+                        128104,
+                        127999,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "MAN, EMOJI MODIFIER FITZPATRICK TYPE-6, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                }
             ],
             "fullName": "MAN, FIRE ENGINE",
             "version": 6,
@@ -2640,11 +6780,119 @@ var data = {
                 128658
             ],
             "alternates": [
-                "👩🏻‍🚒",
-                "👩🏼‍🚒",
-                "👩🏽‍🚒",
-                "👩🏾‍🚒",
-                "👩🏿‍🚒"
+                {
+                    "symbol": "👩‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman firefighter",
+                    "code": [
+                        128105,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "WOMAN, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏻‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman firefighter: light skin tone",
+                    "code": [
+                        128105,
+                        127995,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏼‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman firefighter: medium-light skin tone",
+                    "code": [
+                        128105,
+                        127996,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏽‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman firefighter: medium skin tone",
+                    "code": [
+                        128105,
+                        127997,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏾‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman firefighter: medium-dark skin tone",
+                    "code": [
+                        128105,
+                        127998,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👩🏿‍🚒",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman firefighter: dark skin tone",
+                    "code": [
+                        128105,
+                        127999,
+                        8205,
+                        128658
+                    ],
+                    "fullName": "WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, FIRE ENGINE",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WOMAN, FIRE ENGINE",
             "version": 6,
@@ -2663,11 +6911,113 @@ var data = {
                 128110
             ],
             "alternates": [
-                "👮🏻",
-                "👮🏼",
-                "👮🏽",
-                "👮🏾",
-                "👮🏿"
+                {
+                    "symbol": "👮",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "police officer",
+                    "code": [
+                        128110
+                    ],
+                    "fullName": "POLICE OFFICER",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "police officer: light skin tone",
+                    "code": [
+                        128110,
+                        127995
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "police officer: medium-light skin tone",
+                    "code": [
+                        128110,
+                        127996
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "police officer: medium skin tone",
+                    "code": [
+                        128110,
+                        127997
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "police officer: medium-dark skin tone",
+                    "code": [
+                        128110,
+                        127998
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "police officer: dark skin tone",
+                    "code": [
+                        128110,
+                        127999
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "POLICE OFFICER",
             "version": 6,
@@ -2690,11 +7040,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👮🏻‍♂️",
-                "👮🏼‍♂️",
-                "👮🏽‍♂️",
-                "👮🏾‍♂️",
-                "👮🏿‍♂️"
+                {
+                    "symbol": "👮‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man police officer",
+                    "code": [
+                        128110,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man police officer: light skin tone",
+                    "code": [
+                        128110,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man police officer: medium-light skin tone",
+                    "code": [
+                        128110,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man police officer: medium skin tone",
+                    "code": [
+                        128110,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man police officer: medium-dark skin tone",
+                    "code": [
+                        128110,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man police officer: dark skin tone",
+                    "code": [
+                        128110,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "POLICE OFFICER, MALE SIGN",
             "version": 6,
@@ -2717,11 +7187,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👮🏻‍♀️",
-                "👮🏼‍♀️",
-                "👮🏽‍♀️",
-                "👮🏾‍♀️",
-                "👮🏿‍♀️"
+                {
+                    "symbol": "👮‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman police officer",
+                    "code": [
+                        128110,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman police officer: light skin tone",
+                    "code": [
+                        128110,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman police officer: medium-light skin tone",
+                    "code": [
+                        128110,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman police officer: medium skin tone",
+                    "code": [
+                        128110,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman police officer: medium-dark skin tone",
+                    "code": [
+                        128110,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👮🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman police officer: dark skin tone",
+                    "code": [
+                        128110,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "POLICE OFFICER, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "cop",
+                        "officer",
+                        "police",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "POLICE OFFICER, FEMALE SIGN",
             "version": 6,
@@ -2742,11 +7332,114 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🕵🏻",
-                "🕵🏼",
-                "🕵🏽",
-                "🕵🏾",
-                "🕵🏿"
+                {
+                    "symbol": "🕵️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "detective",
+                    "code": [
+                        128373,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "detective: light skin tone",
+                    "code": [
+                        128373,
+                        127995
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "detective: medium-light skin tone",
+                    "code": [
+                        128373,
+                        127996
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "detective: medium skin tone",
+                    "code": [
+                        128373,
+                        127997
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "detective: medium-dark skin tone",
+                    "code": [
+                        128373,
+                        127998
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "detective: dark skin tone",
+                    "code": [
+                        128373,
+                        127999
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                }
             ],
             "fullName": "SLEUTH OR SPY",
             "version": 7,
@@ -2770,11 +7463,132 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🕵🏻‍♂️",
-                "🕵🏼‍♂️",
-                "🕵🏽‍♂️",
-                "🕵🏾‍♂️",
-                "🕵🏿‍♂️"
+                {
+                    "symbol": "🕵️‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man detective",
+                    "code": [
+                        128373,
+                        65039,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man detective: light skin tone",
+                    "code": [
+                        128373,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man detective: medium-light skin tone",
+                    "code": [
+                        128373,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man detective: medium skin tone",
+                    "code": [
+                        128373,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man detective: medium-dark skin tone",
+                    "code": [
+                        128373,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man detective: dark skin tone",
+                    "code": [
+                        128373,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                }
             ],
             "fullName": "SLEUTH OR SPY, MALE SIGN",
             "version": 7,
@@ -2798,11 +7612,132 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🕵🏻‍♀️",
-                "🕵🏼‍♀️",
-                "🕵🏽‍♀️",
-                "🕵🏾‍♀️",
-                "🕵🏿‍♀️"
+                {
+                    "symbol": "🕵️‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman detective",
+                    "code": [
+                        128373,
+                        65039,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman detective: light skin tone",
+                    "code": [
+                        128373,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman detective: medium-light skin tone",
+                    "code": [
+                        128373,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman detective: medium skin tone",
+                    "code": [
+                        128373,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman detective: medium-dark skin tone",
+                    "code": [
+                        128373,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                },
+                {
+                    "symbol": "🕵🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman detective: dark skin tone",
+                    "code": [
+                        128373,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SLEUTH OR SPY, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "sleuth",
+                        "spy",
+                        "woman",
+                        "detective"
+                    ]
+                }
             ],
             "fullName": "SLEUTH OR SPY, FEMALE SIGN",
             "version": 7,
@@ -2822,11 +7757,101 @@ var data = {
                 128130
             ],
             "alternates": [
-                "💂🏻",
-                "💂🏼",
-                "💂🏽",
-                "💂🏾",
-                "💂🏿"
+                {
+                    "symbol": "💂",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "guard",
+                    "code": [
+                        128130
+                    ],
+                    "fullName": "GUARDSMAN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "guard: light skin tone",
+                    "code": [
+                        128130,
+                        127995
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "guard: medium-light skin tone",
+                    "code": [
+                        128130,
+                        127996
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "guard: medium skin tone",
+                    "code": [
+                        128130,
+                        127997
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "guard: medium-dark skin tone",
+                    "code": [
+                        128130,
+                        127998
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "guard: dark skin tone",
+                    "code": [
+                        128130,
+                        127999
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "GUARDSMAN",
             "version": 6,
@@ -2847,11 +7872,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💂🏻‍♂️",
-                "💂🏼‍♂️",
-                "💂🏽‍♂️",
-                "💂🏾‍♂️",
-                "💂🏿‍♂️"
+                {
+                    "symbol": "💂‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man guard",
+                    "code": [
+                        128130,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man guard: light skin tone",
+                    "code": [
+                        128130,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man guard: medium-light skin tone",
+                    "code": [
+                        128130,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man guard: medium skin tone",
+                    "code": [
+                        128130,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man guard: medium-dark skin tone",
+                    "code": [
+                        128130,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man guard: dark skin tone",
+                    "code": [
+                        128130,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "GUARDSMAN, MALE SIGN",
             "version": 6,
@@ -2872,11 +8005,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💂🏻‍♀️",
-                "💂🏼‍♀️",
-                "💂🏽‍♀️",
-                "💂🏾‍♀️",
-                "💂🏿‍♀️"
+                {
+                    "symbol": "💂‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman guard",
+                    "code": [
+                        128130,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman guard: light skin tone",
+                    "code": [
+                        128130,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman guard: medium-light skin tone",
+                    "code": [
+                        128130,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman guard: medium skin tone",
+                    "code": [
+                        128130,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman guard: medium-dark skin tone",
+                    "code": [
+                        128130,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💂🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman guard: dark skin tone",
+                    "code": [
+                        128130,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GUARDSMAN, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "guard",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "GUARDSMAN, FEMALE SIGN",
             "version": 6,
@@ -2894,11 +8135,107 @@ var data = {
                 128119
             ],
             "alternates": [
-                "👷🏻",
-                "👷🏼",
-                "👷🏽",
-                "👷🏾",
-                "👷🏿"
+                {
+                    "symbol": "👷",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "construction worker",
+                    "code": [
+                        128119
+                    ],
+                    "fullName": "CONSTRUCTION WORKER",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "construction worker: light skin tone",
+                    "code": [
+                        128119,
+                        127995
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "construction worker: medium-light skin tone",
+                    "code": [
+                        128119,
+                        127996
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "construction worker: medium skin tone",
+                    "code": [
+                        128119,
+                        127997
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "construction worker: medium-dark skin tone",
+                    "code": [
+                        128119,
+                        127998
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "construction worker: dark skin tone",
+                    "code": [
+                        128119,
+                        127999
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                }
             ],
             "fullName": "CONSTRUCTION WORKER",
             "version": 6,
@@ -2920,11 +8257,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👷🏻‍♂️",
-                "👷🏼‍♂️",
-                "👷🏽‍♂️",
-                "👷🏾‍♂️",
-                "👷🏿‍♂️"
+                {
+                    "symbol": "👷‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man construction worker",
+                    "code": [
+                        128119,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man construction worker: light skin tone",
+                    "code": [
+                        128119,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man construction worker: medium-light skin tone",
+                    "code": [
+                        128119,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man construction worker: medium skin tone",
+                    "code": [
+                        128119,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man construction worker: medium-dark skin tone",
+                    "code": [
+                        128119,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man construction worker: dark skin tone",
+                    "code": [
+                        128119,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                }
             ],
             "fullName": "CONSTRUCTION WORKER, MALE SIGN",
             "version": 6,
@@ -2946,11 +8397,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👷🏻‍♀️",
-                "👷🏼‍♀️",
-                "👷🏽‍♀️",
-                "👷🏾‍♀️",
-                "👷🏿‍♀️"
+                {
+                    "symbol": "👷‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman construction worker",
+                    "code": [
+                        128119,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman construction worker: light skin tone",
+                    "code": [
+                        128119,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman construction worker: medium-light skin tone",
+                    "code": [
+                        128119,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman construction worker: medium skin tone",
+                    "code": [
+                        128119,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman construction worker: medium-dark skin tone",
+                    "code": [
+                        128119,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                },
+                {
+                    "symbol": "👷🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman construction worker: dark skin tone",
+                    "code": [
+                        128119,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "CONSTRUCTION WORKER, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "construction",
+                        "woman",
+                        "worker"
+                    ]
+                }
             ],
             "fullName": "CONSTRUCTION WORKER, FEMALE SIGN",
             "version": 6,
@@ -2969,11 +8534,101 @@ var data = {
                 128115
             ],
             "alternates": [
-                "👳🏻",
-                "👳🏼",
-                "👳🏽",
-                "👳🏾",
-                "👳🏿"
+                {
+                    "symbol": "👳",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "person wearing turban",
+                    "code": [
+                        128115
+                    ],
+                    "fullName": "MAN WITH TURBAN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "person wearing turban: light skin tone",
+                    "code": [
+                        128115,
+                        127995
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "person wearing turban: medium-light skin tone",
+                    "code": [
+                        128115,
+                        127996
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "person wearing turban: medium skin tone",
+                    "code": [
+                        128115,
+                        127997
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "person wearing turban: medium-dark skin tone",
+                    "code": [
+                        128115,
+                        127998
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "person wearing turban: dark skin tone",
+                    "code": [
+                        128115,
+                        127999
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "MAN WITH TURBAN",
             "version": 6,
@@ -2994,11 +8649,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👳🏻‍♂️",
-                "👳🏼‍♂️",
-                "👳🏽‍♂️",
-                "👳🏾‍♂️",
-                "👳🏿‍♂️"
+                {
+                    "symbol": "👳‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man wearing turban",
+                    "code": [
+                        128115,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man wearing turban: light skin tone",
+                    "code": [
+                        128115,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man wearing turban: medium-light skin tone",
+                    "code": [
+                        128115,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man wearing turban: medium skin tone",
+                    "code": [
+                        128115,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man wearing turban: medium-dark skin tone",
+                    "code": [
+                        128115,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man wearing turban: dark skin tone",
+                    "code": [
+                        128115,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "MAN WITH TURBAN, MALE SIGN",
             "version": 6,
@@ -3019,11 +8782,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👳🏻‍♀️",
-                "👳🏼‍♀️",
-                "👳🏽‍♀️",
-                "👳🏾‍♀️",
-                "👳🏿‍♀️"
+                {
+                    "symbol": "👳‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman wearing turban",
+                    "code": [
+                        128115,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman wearing turban: light skin tone",
+                    "code": [
+                        128115,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman wearing turban: medium-light skin tone",
+                    "code": [
+                        128115,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman wearing turban: medium skin tone",
+                    "code": [
+                        128115,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman wearing turban: medium-dark skin tone",
+                    "code": [
+                        128115,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👳🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "woman wearing turban: dark skin tone",
+                    "code": [
+                        128115,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MAN WITH TURBAN, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "turban",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "MAN WITH TURBAN, FEMALE SIGN",
             "version": 6,
@@ -3041,11 +8912,101 @@ var data = {
                 128113
             ],
             "alternates": [
-                "👱🏻",
-                "👱🏼",
-                "👱🏽",
-                "👱🏾",
-                "👱🏿"
+                {
+                    "symbol": "👱",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired person",
+                    "code": [
+                        128113
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired person: light skin tone",
+                    "code": [
+                        128113,
+                        127995
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired person: medium-light skin tone",
+                    "code": [
+                        128113,
+                        127996
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired person: medium skin tone",
+                    "code": [
+                        128113,
+                        127997
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired person: medium-dark skin tone",
+                    "code": [
+                        128113,
+                        127998
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired person: dark skin tone",
+                    "code": [
+                        128113,
+                        127999
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH BLOND HAIR",
             "version": 6,
@@ -3066,11 +9027,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👱🏻‍♂️",
-                "👱🏼‍♂️",
-                "👱🏽‍♂️",
-                "👱🏾‍♂️",
-                "👱🏿‍♂️"
+                {
+                    "symbol": "👱‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired man",
+                    "code": [
+                        128113,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired man: light skin tone",
+                    "code": [
+                        128113,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired man: medium-light skin tone",
+                    "code": [
+                        128113,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired man: medium skin tone",
+                    "code": [
+                        128113,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired man: medium-dark skin tone",
+                    "code": [
+                        128113,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired man: dark skin tone",
+                    "code": [
+                        128113,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH BLOND HAIR, MALE SIGN",
             "version": 6,
@@ -3091,11 +9160,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "👱🏻‍♀️",
-                "👱🏼‍♀️",
-                "👱🏽‍♀️",
-                "👱🏾‍♀️",
-                "👱🏿‍♀️"
+                {
+                    "symbol": "👱‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired woman",
+                    "code": [
+                        128113,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired woman: light skin tone",
+                    "code": [
+                        128113,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired woman: medium-light skin tone",
+                    "code": [
+                        128113,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired woman: medium skin tone",
+                    "code": [
+                        128113,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired woman: medium-dark skin tone",
+                    "code": [
+                        128113,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👱🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "blond-haired woman: dark skin tone",
+                    "code": [
+                        128113,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BLOND HAIR, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "blonde",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH BLOND HAIR, FEMALE SIGN",
             "version": 6,
@@ -3113,11 +9290,119 @@ var data = {
                 127877
             ],
             "alternates": [
-                "🎅🏻",
-                "🎅🏼",
-                "🎅🏽",
-                "🎅🏾",
-                "🎅🏿"
+                {
+                    "symbol": "🎅",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Santa Claus",
+                    "code": [
+                        127877
+                    ],
+                    "fullName": "FATHER CHRISTMAS",
+                    "version": 6,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "father",
+                        "santa",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🎅🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Santa Claus: light skin tone",
+                    "code": [
+                        127877,
+                        127995
+                    ],
+                    "fullName": "FATHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "father",
+                        "santa",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🎅🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Santa Claus: medium-light skin tone",
+                    "code": [
+                        127877,
+                        127996
+                    ],
+                    "fullName": "FATHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "father",
+                        "santa",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🎅🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Santa Claus: medium skin tone",
+                    "code": [
+                        127877,
+                        127997
+                    ],
+                    "fullName": "FATHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "father",
+                        "santa",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🎅🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Santa Claus: medium-dark skin tone",
+                    "code": [
+                        127877,
+                        127998
+                    ],
+                    "fullName": "FATHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "father",
+                        "santa",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🎅🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Santa Claus: dark skin tone",
+                    "code": [
+                        127877,
+                        127999
+                    ],
+                    "fullName": "FATHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "father",
+                        "santa",
+                        "claus"
+                    ]
+                }
             ],
             "fullName": "FATHER CHRISTMAS",
             "version": 6,
@@ -3138,11 +9423,119 @@ var data = {
                 129334
             ],
             "alternates": [
-                "🤶🏻",
-                "🤶🏼",
-                "🤶🏽",
-                "🤶🏾",
-                "🤶🏿"
+                {
+                    "symbol": "🤶",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Mrs. Claus",
+                    "code": [
+                        129334
+                    ],
+                    "fullName": "MOTHER CHRISTMAS",
+                    "version": 9,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "mother",
+                        "Mrs.",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🤶🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Mrs. Claus: light skin tone",
+                    "code": [
+                        129334,
+                        127995
+                    ],
+                    "fullName": "MOTHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "mother",
+                        "Mrs.",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🤶🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Mrs. Claus: medium-light skin tone",
+                    "code": [
+                        129334,
+                        127996
+                    ],
+                    "fullName": "MOTHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "mother",
+                        "Mrs.",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🤶🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Mrs. Claus: medium skin tone",
+                    "code": [
+                        129334,
+                        127997
+                    ],
+                    "fullName": "MOTHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "mother",
+                        "Mrs.",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🤶🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Mrs. Claus: medium-dark skin tone",
+                    "code": [
+                        129334,
+                        127998
+                    ],
+                    "fullName": "MOTHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "mother",
+                        "Mrs.",
+                        "claus"
+                    ]
+                },
+                {
+                    "symbol": "🤶🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "Mrs. Claus: dark skin tone",
+                    "code": [
+                        129334,
+                        127999
+                    ],
+                    "fullName": "MOTHER CHRISTMAS, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "Christmas",
+                        "celebration",
+                        "mother",
+                        "Mrs.",
+                        "claus"
+                    ]
+                }
             ],
             "fullName": "MOTHER CHRISTMAS",
             "version": 9,
@@ -3163,11 +9556,101 @@ var data = {
                 128120
             ],
             "alternates": [
-                "👸🏻",
-                "👸🏼",
-                "👸🏽",
-                "👸🏾",
-                "👸🏿"
+                {
+                    "symbol": "👸",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "princess",
+                    "code": [
+                        128120
+                    ],
+                    "fullName": "PRINCESS",
+                    "version": 6,
+                    "keywords": [
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👸🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "princess: light skin tone",
+                    "code": [
+                        128120,
+                        127995
+                    ],
+                    "fullName": "PRINCESS, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👸🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "princess: medium-light skin tone",
+                    "code": [
+                        128120,
+                        127996
+                    ],
+                    "fullName": "PRINCESS, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👸🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "princess: medium skin tone",
+                    "code": [
+                        128120,
+                        127997
+                    ],
+                    "fullName": "PRINCESS, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👸🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "princess: medium-dark skin tone",
+                    "code": [
+                        128120,
+                        127998
+                    ],
+                    "fullName": "PRINCESS, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                },
+                {
+                    "symbol": "👸🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "princess: dark skin tone",
+                    "code": [
+                        128120,
+                        127999
+                    ],
+                    "fullName": "PRINCESS, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "fairy tale",
+                        "fantasy"
+                    ]
+                }
             ],
             "fullName": "PRINCESS",
             "version": 6,
@@ -3185,11 +9668,95 @@ var data = {
                 129332
             ],
             "alternates": [
-                "🤴🏻",
-                "🤴🏼",
-                "🤴🏽",
-                "🤴🏾",
-                "🤴🏿"
+                {
+                    "symbol": "🤴",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "prince",
+                    "code": [
+                        129332
+                    ],
+                    "fullName": "PRINCE",
+                    "version": 9,
+                    "keywords": [
+                        "prince"
+                    ]
+                },
+                {
+                    "symbol": "🤴🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "prince: light skin tone",
+                    "code": [
+                        129332,
+                        127995
+                    ],
+                    "fullName": "PRINCE, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "prince"
+                    ]
+                },
+                {
+                    "symbol": "🤴🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "prince: medium-light skin tone",
+                    "code": [
+                        129332,
+                        127996
+                    ],
+                    "fullName": "PRINCE, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "prince"
+                    ]
+                },
+                {
+                    "symbol": "🤴🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "prince: medium skin tone",
+                    "code": [
+                        129332,
+                        127997
+                    ],
+                    "fullName": "PRINCE, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "prince"
+                    ]
+                },
+                {
+                    "symbol": "🤴🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "prince: medium-dark skin tone",
+                    "code": [
+                        129332,
+                        127998
+                    ],
+                    "fullName": "PRINCE, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "prince"
+                    ]
+                },
+                {
+                    "symbol": "🤴🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "prince: dark skin tone",
+                    "code": [
+                        129332,
+                        127999
+                    ],
+                    "fullName": "PRINCE, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "prince"
+                    ]
+                }
             ],
             "fullName": "PRINCE",
             "version": 9,
@@ -3206,11 +9773,107 @@ var data = {
                 128112
             ],
             "alternates": [
-                "👰🏻",
-                "👰🏼",
-                "👰🏽",
-                "👰🏾",
-                "👰🏿"
+                {
+                    "symbol": "👰",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "bride with veil",
+                    "code": [
+                        128112
+                    ],
+                    "fullName": "BRIDE WITH VEIL",
+                    "version": 6,
+                    "keywords": [
+                        "bride",
+                        "veil",
+                        "wedding"
+                    ]
+                },
+                {
+                    "symbol": "👰🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "bride with veil: light skin tone",
+                    "code": [
+                        128112,
+                        127995
+                    ],
+                    "fullName": "BRIDE WITH VEIL, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "bride",
+                        "veil",
+                        "wedding"
+                    ]
+                },
+                {
+                    "symbol": "👰🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "bride with veil: medium-light skin tone",
+                    "code": [
+                        128112,
+                        127996
+                    ],
+                    "fullName": "BRIDE WITH VEIL, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "bride",
+                        "veil",
+                        "wedding"
+                    ]
+                },
+                {
+                    "symbol": "👰🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "bride with veil: medium skin tone",
+                    "code": [
+                        128112,
+                        127997
+                    ],
+                    "fullName": "BRIDE WITH VEIL, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "bride",
+                        "veil",
+                        "wedding"
+                    ]
+                },
+                {
+                    "symbol": "👰🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "bride with veil: medium-dark skin tone",
+                    "code": [
+                        128112,
+                        127998
+                    ],
+                    "fullName": "BRIDE WITH VEIL, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "bride",
+                        "veil",
+                        "wedding"
+                    ]
+                },
+                {
+                    "symbol": "👰🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "bride with veil: dark skin tone",
+                    "code": [
+                        128112,
+                        127999
+                    ],
+                    "fullName": "BRIDE WITH VEIL, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "bride",
+                        "veil",
+                        "wedding"
+                    ]
+                }
             ],
             "fullName": "BRIDE WITH VEIL",
             "version": 6,
@@ -3229,11 +9892,107 @@ var data = {
                 129333
             ],
             "alternates": [
-                "🤵🏻",
-                "🤵🏼",
-                "🤵🏽",
-                "🤵🏾",
-                "🤵🏿"
+                {
+                    "symbol": "🤵",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man in tuxedo",
+                    "code": [
+                        129333
+                    ],
+                    "fullName": "MAN IN TUXEDO",
+                    "version": 9,
+                    "keywords": [
+                        "groom",
+                        "man",
+                        "tuxedo"
+                    ]
+                },
+                {
+                    "symbol": "🤵🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man in tuxedo: light skin tone",
+                    "code": [
+                        129333,
+                        127995
+                    ],
+                    "fullName": "MAN IN TUXEDO, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "groom",
+                        "man",
+                        "tuxedo"
+                    ]
+                },
+                {
+                    "symbol": "🤵🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man in tuxedo: medium-light skin tone",
+                    "code": [
+                        129333,
+                        127996
+                    ],
+                    "fullName": "MAN IN TUXEDO, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "groom",
+                        "man",
+                        "tuxedo"
+                    ]
+                },
+                {
+                    "symbol": "🤵🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man in tuxedo: medium skin tone",
+                    "code": [
+                        129333,
+                        127997
+                    ],
+                    "fullName": "MAN IN TUXEDO, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "groom",
+                        "man",
+                        "tuxedo"
+                    ]
+                },
+                {
+                    "symbol": "🤵🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man in tuxedo: medium-dark skin tone",
+                    "code": [
+                        129333,
+                        127998
+                    ],
+                    "fullName": "MAN IN TUXEDO, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "groom",
+                        "man",
+                        "tuxedo"
+                    ]
+                },
+                {
+                    "symbol": "🤵🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man in tuxedo: dark skin tone",
+                    "code": [
+                        129333,
+                        127999
+                    ],
+                    "fullName": "MAN IN TUXEDO, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "groom",
+                        "man",
+                        "tuxedo"
+                    ]
+                }
             ],
             "fullName": "MAN IN TUXEDO",
             "version": 9,
@@ -3252,11 +10011,101 @@ var data = {
                 129328
             ],
             "alternates": [
-                "🤰🏻",
-                "🤰🏼",
-                "🤰🏽",
-                "🤰🏾",
-                "🤰🏿"
+                {
+                    "symbol": "🤰",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "pregnant woman",
+                    "code": [
+                        129328
+                    ],
+                    "fullName": "PREGNANT WOMAN",
+                    "version": 9,
+                    "keywords": [
+                        "pregnant",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤰🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "pregnant woman: light skin tone",
+                    "code": [
+                        129328,
+                        127995
+                    ],
+                    "fullName": "PREGNANT WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "pregnant",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤰🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "pregnant woman: medium-light skin tone",
+                    "code": [
+                        129328,
+                        127996
+                    ],
+                    "fullName": "PREGNANT WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "pregnant",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤰🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "pregnant woman: medium skin tone",
+                    "code": [
+                        129328,
+                        127997
+                    ],
+                    "fullName": "PREGNANT WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "pregnant",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤰🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "pregnant woman: medium-dark skin tone",
+                    "code": [
+                        129328,
+                        127998
+                    ],
+                    "fullName": "PREGNANT WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "pregnant",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤰🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "pregnant woman: dark skin tone",
+                    "code": [
+                        129328,
+                        127999
+                    ],
+                    "fullName": "PREGNANT WOMAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "pregnant",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PREGNANT WOMAN",
             "version": 9,
@@ -3274,11 +10123,107 @@ var data = {
                 128114
             ],
             "alternates": [
-                "👲🏻",
-                "👲🏼",
-                "👲🏽",
-                "👲🏾",
-                "👲🏿"
+                {
+                    "symbol": "👲",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man with Chinese cap",
+                    "code": [
+                        128114
+                    ],
+                    "fullName": "MAN WITH GUA PI MAO",
+                    "version": 6,
+                    "keywords": [
+                        "gua pi mao",
+                        "hat",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "👲🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man with Chinese cap: light skin tone",
+                    "code": [
+                        128114,
+                        127995
+                    ],
+                    "fullName": "MAN WITH GUA PI MAO, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "gua pi mao",
+                        "hat",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "👲🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man with Chinese cap: medium-light skin tone",
+                    "code": [
+                        128114,
+                        127996
+                    ],
+                    "fullName": "MAN WITH GUA PI MAO, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "gua pi mao",
+                        "hat",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "👲🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man with Chinese cap: medium skin tone",
+                    "code": [
+                        128114,
+                        127997
+                    ],
+                    "fullName": "MAN WITH GUA PI MAO, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "gua pi mao",
+                        "hat",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "👲🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man with Chinese cap: medium-dark skin tone",
+                    "code": [
+                        128114,
+                        127998
+                    ],
+                    "fullName": "MAN WITH GUA PI MAO, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "gua pi mao",
+                        "hat",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "👲🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-role",
+                    "name": "man with Chinese cap: dark skin tone",
+                    "code": [
+                        128114,
+                        127999
+                    ],
+                    "fullName": "MAN WITH GUA PI MAO, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "gua pi mao",
+                        "hat",
+                        "man"
+                    ]
+                }
             ],
             "fullName": "MAN WITH GUA PI MAO",
             "version": 6,
@@ -3297,11 +10242,107 @@ var data = {
                 128589
             ],
             "alternates": [
-                "🙍🏻",
-                "🙍🏼",
-                "🙍🏽",
-                "🙍🏾",
-                "🙍🏿"
+                {
+                    "symbol": "🙍",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person frowning",
+                    "code": [
+                        128589
+                    ],
+                    "fullName": "PERSON FROWNING",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person frowning: light skin tone",
+                    "code": [
+                        128589,
+                        127995
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person frowning: medium-light skin tone",
+                    "code": [
+                        128589,
+                        127996
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person frowning: medium skin tone",
+                    "code": [
+                        128589,
+                        127997
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person frowning: medium-dark skin tone",
+                    "code": [
+                        128589,
+                        127998
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person frowning: dark skin tone",
+                    "code": [
+                        128589,
+                        127999
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON FROWNING",
             "version": 6,
@@ -3323,11 +10364,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙍🏻‍♂️",
-                "🙍🏼‍♂️",
-                "🙍🏽‍♂️",
-                "🙍🏾‍♂️",
-                "🙍🏿‍♂️"
+                {
+                    "symbol": "🙍‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man frowning",
+                    "code": [
+                        128589,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man frowning: light skin tone",
+                    "code": [
+                        128589,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man frowning: medium-light skin tone",
+                    "code": [
+                        128589,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man frowning: medium skin tone",
+                    "code": [
+                        128589,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man frowning: medium-dark skin tone",
+                    "code": [
+                        128589,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man frowning: dark skin tone",
+                    "code": [
+                        128589,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON FROWNING, MALE SIGN",
             "version": 6,
@@ -3349,11 +10504,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙍🏻‍♀️",
-                "🙍🏼‍♀️",
-                "🙍🏽‍♀️",
-                "🙍🏾‍♀️",
-                "🙍🏿‍♀️"
+                {
+                    "symbol": "🙍‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman frowning",
+                    "code": [
+                        128589,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman frowning: light skin tone",
+                    "code": [
+                        128589,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman frowning: medium-light skin tone",
+                    "code": [
+                        128589,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman frowning: medium skin tone",
+                    "code": [
+                        128589,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman frowning: medium-dark skin tone",
+                    "code": [
+                        128589,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙍🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman frowning: dark skin tone",
+                    "code": [
+                        128589,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON FROWNING, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "frowning",
+                        "gesture",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON FROWNING, FEMALE SIGN",
             "version": 6,
@@ -3372,11 +10641,107 @@ var data = {
                 128590
             ],
             "alternates": [
-                "🙎🏻",
-                "🙎🏼",
-                "🙎🏽",
-                "🙎🏾",
-                "🙎🏿"
+                {
+                    "symbol": "🙎",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person pouting",
+                    "code": [
+                        128590
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person pouting: light skin tone",
+                    "code": [
+                        128590,
+                        127995
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person pouting: medium-light skin tone",
+                    "code": [
+                        128590,
+                        127996
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person pouting: medium skin tone",
+                    "code": [
+                        128590,
+                        127997
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person pouting: medium-dark skin tone",
+                    "code": [
+                        128590,
+                        127998
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person pouting: dark skin tone",
+                    "code": [
+                        128590,
+                        127999
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH POUTING FACE",
             "version": 6,
@@ -3398,11 +10763,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙎🏻‍♂️",
-                "🙎🏼‍♂️",
-                "🙎🏽‍♂️",
-                "🙎🏾‍♂️",
-                "🙎🏿‍♂️"
+                {
+                    "symbol": "🙎‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man pouting",
+                    "code": [
+                        128590,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man pouting: light skin tone",
+                    "code": [
+                        128590,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man pouting: medium-light skin tone",
+                    "code": [
+                        128590,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man pouting: medium skin tone",
+                    "code": [
+                        128590,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man pouting: medium-dark skin tone",
+                    "code": [
+                        128590,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man pouting: dark skin tone",
+                    "code": [
+                        128590,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH POUTING FACE, MALE SIGN",
             "version": 6,
@@ -3424,11 +10903,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙎🏻‍♀️",
-                "🙎🏼‍♀️",
-                "🙎🏽‍♀️",
-                "🙎🏾‍♀️",
-                "🙎🏿‍♀️"
+                {
+                    "symbol": "🙎‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman pouting",
+                    "code": [
+                        128590,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman pouting: light skin tone",
+                    "code": [
+                        128590,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman pouting: medium-light skin tone",
+                    "code": [
+                        128590,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman pouting: medium skin tone",
+                    "code": [
+                        128590,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman pouting: medium-dark skin tone",
+                    "code": [
+                        128590,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙎🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman pouting: dark skin tone",
+                    "code": [
+                        128590,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH POUTING FACE, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "pouting",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH POUTING FACE, FEMALE SIGN",
             "version": 6,
@@ -3447,11 +11040,119 @@ var data = {
                 128581
             ],
             "alternates": [
-                "🙅🏻",
-                "🙅🏼",
-                "🙅🏽",
-                "🙅🏾",
-                "🙅🏿"
+                {
+                    "symbol": "🙅",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing NO",
+                    "code": [
+                        128581
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing NO: light skin tone",
+                    "code": [
+                        128581,
+                        127995
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing NO: medium-light skin tone",
+                    "code": [
+                        128581,
+                        127996
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing NO: medium skin tone",
+                    "code": [
+                        128581,
+                        127997
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing NO: medium-dark skin tone",
+                    "code": [
+                        128581,
+                        127998
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing NO: dark skin tone",
+                    "code": [
+                        128581,
+                        127999
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE WITH NO GOOD GESTURE",
             "version": 6,
@@ -3475,11 +11176,137 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙅🏻‍♂️",
-                "🙅🏼‍♂️",
-                "🙅🏽‍♂️",
-                "🙅🏾‍♂️",
-                "🙅🏿‍♂️"
+                {
+                    "symbol": "🙅‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing NO",
+                    "code": [
+                        128581,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing NO: light skin tone",
+                    "code": [
+                        128581,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing NO: medium-light skin tone",
+                    "code": [
+                        128581,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing NO: medium skin tone",
+                    "code": [
+                        128581,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing NO: medium-dark skin tone",
+                    "code": [
+                        128581,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing NO: dark skin tone",
+                    "code": [
+                        128581,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE WITH NO GOOD GESTURE, MALE SIGN",
             "version": 6,
@@ -3503,11 +11330,137 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙅🏻‍♀️",
-                "🙅🏼‍♀️",
-                "🙅🏽‍♀️",
-                "🙅🏾‍♀️",
-                "🙅🏿‍♀️"
+                {
+                    "symbol": "🙅‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing NO",
+                    "code": [
+                        128581,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing NO: light skin tone",
+                    "code": [
+                        128581,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing NO: medium-light skin tone",
+                    "code": [
+                        128581,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing NO: medium skin tone",
+                    "code": [
+                        128581,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing NO: medium-dark skin tone",
+                    "code": [
+                        128581,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙅🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing NO: dark skin tone",
+                    "code": [
+                        128581,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH NO GOOD GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "forbidden",
+                        "gesture| hand",
+                        "no",
+                        "prohibited",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE WITH NO GOOD GESTURE, FEMALE SIGN",
             "version": 6,
@@ -3528,11 +11481,107 @@ var data = {
                 128582
             ],
             "alternates": [
-                "🙆🏻",
-                "🙆🏼",
-                "🙆🏽",
-                "🙆🏾",
-                "🙆🏿"
+                {
+                    "symbol": "🙆",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing OK",
+                    "code": [
+                        128582
+                    ],
+                    "fullName": "FACE WITH OK GESTURE",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing OK: light skin tone",
+                    "code": [
+                        128582,
+                        127995
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing OK: medium-light skin tone",
+                    "code": [
+                        128582,
+                        127996
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing OK: medium skin tone",
+                    "code": [
+                        128582,
+                        127997
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing OK: medium-dark skin tone",
+                    "code": [
+                        128582,
+                        127998
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person gesturing OK: dark skin tone",
+                    "code": [
+                        128582,
+                        127999
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE WITH OK GESTURE",
             "version": 6,
@@ -3554,11 +11603,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙆🏻‍♂️",
-                "🙆🏼‍♂️",
-                "🙆🏽‍♂️",
-                "🙆🏾‍♂️",
-                "🙆🏿‍♂️"
+                {
+                    "symbol": "🙆‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing OK",
+                    "code": [
+                        128582,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing OK: light skin tone",
+                    "code": [
+                        128582,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing OK: medium-light skin tone",
+                    "code": [
+                        128582,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing OK: medium skin tone",
+                    "code": [
+                        128582,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing OK: medium-dark skin tone",
+                    "code": [
+                        128582,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man gesturing OK: dark skin tone",
+                    "code": [
+                        128582,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE WITH OK GESTURE, MALE SIGN",
             "version": 6,
@@ -3580,11 +11743,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙆🏻‍♀️",
-                "🙆🏼‍♀️",
-                "🙆🏽‍♀️",
-                "🙆🏾‍♀️",
-                "🙆🏿‍♀️"
+                {
+                    "symbol": "🙆‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing OK",
+                    "code": [
+                        128582,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing OK: light skin tone",
+                    "code": [
+                        128582,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing OK: medium-light skin tone",
+                    "code": [
+                        128582,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing OK: medium skin tone",
+                    "code": [
+                        128582,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing OK: medium-dark skin tone",
+                    "code": [
+                        128582,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙆🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman gesturing OK: dark skin tone",
+                    "code": [
+                        128582,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE WITH OK GESTURE, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture| hand",
+                        "OK",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE WITH OK GESTURE, FEMALE SIGN",
             "version": 6,
@@ -3603,11 +11880,107 @@ var data = {
                 128129
             ],
             "alternates": [
-                "💁🏻",
-                "💁🏼",
-                "💁🏽",
-                "💁🏾",
-                "💁🏿"
+                {
+                    "symbol": "💁",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person tipping hand",
+                    "code": [
+                        128129
+                    ],
+                    "fullName": "INFORMATION DESK PERSON",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person tipping hand: light skin tone",
+                    "code": [
+                        128129,
+                        127995
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person tipping hand: medium-light skin tone",
+                    "code": [
+                        128129,
+                        127996
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person tipping hand: medium skin tone",
+                    "code": [
+                        128129,
+                        127997
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person tipping hand: medium-dark skin tone",
+                    "code": [
+                        128129,
+                        127998
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person tipping hand: dark skin tone",
+                    "code": [
+                        128129,
+                        127999
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "INFORMATION DESK PERSON",
             "version": 6,
@@ -3629,11 +12002,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💁🏻‍♂️",
-                "💁🏼‍♂️",
-                "💁🏽‍♂️",
-                "💁🏾‍♂️",
-                "💁🏿‍♂️"
+                {
+                    "symbol": "💁‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man tipping hand",
+                    "code": [
+                        128129,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man tipping hand: light skin tone",
+                    "code": [
+                        128129,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man tipping hand: medium-light skin tone",
+                    "code": [
+                        128129,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man tipping hand: medium skin tone",
+                    "code": [
+                        128129,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man tipping hand: medium-dark skin tone",
+                    "code": [
+                        128129,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man tipping hand: dark skin tone",
+                    "code": [
+                        128129,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "INFORMATION DESK PERSON, MALE SIGN",
             "version": 6,
@@ -3655,11 +12142,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💁🏻‍♀️",
-                "💁🏼‍♀️",
-                "💁🏽‍♀️",
-                "💁🏾‍♀️",
-                "💁🏿‍♀️"
+                {
+                    "symbol": "💁‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman tipping hand",
+                    "code": [
+                        128129,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman tipping hand: light skin tone",
+                    "code": [
+                        128129,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman tipping hand: medium-light skin tone",
+                    "code": [
+                        128129,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman tipping hand: medium skin tone",
+                    "code": [
+                        128129,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman tipping hand: medium-dark skin tone",
+                    "code": [
+                        128129,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💁🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman tipping hand: dark skin tone",
+                    "code": [
+                        128129,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "INFORMATION DESK PERSON, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "sassy",
+                        "tipping hand",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "INFORMATION DESK PERSON, FEMALE SIGN",
             "version": 6,
@@ -3678,11 +12279,107 @@ var data = {
                 128587
             ],
             "alternates": [
-                "🙋🏻",
-                "🙋🏼",
-                "🙋🏽",
-                "🙋🏾",
-                "🙋🏿"
+                {
+                    "symbol": "🙋",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person raising hand",
+                    "code": [
+                        128587
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person raising hand: light skin tone",
+                    "code": [
+                        128587,
+                        127995
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person raising hand: medium-light skin tone",
+                    "code": [
+                        128587,
+                        127996
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person raising hand: medium skin tone",
+                    "code": [
+                        128587,
+                        127997
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person raising hand: medium-dark skin tone",
+                    "code": [
+                        128587,
+                        127998
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person raising hand: dark skin tone",
+                    "code": [
+                        128587,
+                        127999
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HAPPY PERSON RAISING ONE HAND",
             "version": 6,
@@ -3704,11 +12401,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙋🏻‍♂️",
-                "🙋🏼‍♂️",
-                "🙋🏽‍♂️",
-                "🙋🏾‍♂️",
-                "🙋🏿‍♂️"
+                {
+                    "symbol": "🙋‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man raising hand",
+                    "code": [
+                        128587,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man raising hand: light skin tone",
+                    "code": [
+                        128587,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man raising hand: medium-light skin tone",
+                    "code": [
+                        128587,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man raising hand: medium skin tone",
+                    "code": [
+                        128587,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man raising hand: medium-dark skin tone",
+                    "code": [
+                        128587,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man raising hand: dark skin tone",
+                    "code": [
+                        128587,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HAPPY PERSON RAISING ONE HAND, MALE SIGN",
             "version": 6,
@@ -3730,11 +12541,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙋🏻‍♀️",
-                "🙋🏼‍♀️",
-                "🙋🏽‍♀️",
-                "🙋🏾‍♀️",
-                "🙋🏿‍♀️"
+                {
+                    "symbol": "🙋‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman raising hand",
+                    "code": [
+                        128587,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman raising hand: light skin tone",
+                    "code": [
+                        128587,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman raising hand: medium-light skin tone",
+                    "code": [
+                        128587,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman raising hand: medium skin tone",
+                    "code": [
+                        128587,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman raising hand: medium-dark skin tone",
+                    "code": [
+                        128587,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙋🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman raising hand: dark skin tone",
+                    "code": [
+                        128587,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAPPY PERSON RAISING ONE HAND, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "gesture",
+                        "raising hand",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HAPPY PERSON RAISING ONE HAND, FEMALE SIGN",
             "version": 6,
@@ -3753,11 +12678,125 @@ var data = {
                 128583
             ],
             "alternates": [
-                "🙇🏻",
-                "🙇🏼",
-                "🙇🏽",
-                "🙇🏾",
-                "🙇🏿"
+                {
+                    "symbol": "🙇",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person bowing",
+                    "code": [
+                        128583
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person bowing: light skin tone",
+                    "code": [
+                        128583,
+                        127995
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person bowing: medium-light skin tone",
+                    "code": [
+                        128583,
+                        127996
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person bowing: medium skin tone",
+                    "code": [
+                        128583,
+                        127997
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person bowing: medium-dark skin tone",
+                    "code": [
+                        128583,
+                        127998
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person bowing: dark skin tone",
+                    "code": [
+                        128583,
+                        127999
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON BOWING DEEPLY",
             "version": 6,
@@ -3782,11 +12821,143 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙇🏻‍♂️",
-                "🙇🏼‍♂️",
-                "🙇🏽‍♂️",
-                "🙇🏾‍♂️",
-                "🙇🏿‍♂️"
+                {
+                    "symbol": "🙇‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man bowing",
+                    "code": [
+                        128583,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man bowing: light skin tone",
+                    "code": [
+                        128583,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man bowing: medium-light skin tone",
+                    "code": [
+                        128583,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man bowing: medium skin tone",
+                    "code": [
+                        128583,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man bowing: medium-dark skin tone",
+                    "code": [
+                        128583,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man bowing: dark skin tone",
+                    "code": [
+                        128583,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON BOWING DEEPLY, MALE SIGN",
             "version": 6,
@@ -3811,11 +12982,143 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🙇🏻‍♀️",
-                "🙇🏼‍♀️",
-                "🙇🏽‍♀️",
-                "🙇🏾‍♀️",
-                "🙇🏿‍♀️"
+                {
+                    "symbol": "🙇‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman bowing",
+                    "code": [
+                        128583,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman bowing: light skin tone",
+                    "code": [
+                        128583,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman bowing: medium-light skin tone",
+                    "code": [
+                        128583,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman bowing: medium skin tone",
+                    "code": [
+                        128583,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman bowing: medium-dark skin tone",
+                    "code": [
+                        128583,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🙇🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman bowing: dark skin tone",
+                    "code": [
+                        128583,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON BOWING DEEPLY, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "apology",
+                        "favor",
+                        "bowing",
+                        "gesture",
+                        "sorry",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON BOWING DEEPLY, FEMALE SIGN",
             "version": 6,
@@ -3837,11 +13140,113 @@ var data = {
                 129318
             ],
             "alternates": [
-                "🤦🏻",
-                "🤦🏼",
-                "🤦🏽",
-                "🤦🏾",
-                "🤦🏿"
+                {
+                    "symbol": "🤦",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person facepalming",
+                    "code": [
+                        129318
+                    ],
+                    "fullName": "FACE PALM",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person facepalming: light skin tone",
+                    "code": [
+                        129318,
+                        127995
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person facepalming: medium-light skin tone",
+                    "code": [
+                        129318,
+                        127996
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person facepalming: medium skin tone",
+                    "code": [
+                        129318,
+                        127997
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person facepalming: medium-dark skin tone",
+                    "code": [
+                        129318,
+                        127998
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person facepalming: dark skin tone",
+                    "code": [
+                        129318,
+                        127999
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE PALM",
             "version": 9,
@@ -3864,11 +13269,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤦🏻‍♂️",
-                "🤦🏼‍♂️",
-                "🤦🏽‍♂️",
-                "🤦🏾‍♂️",
-                "🤦🏿‍♂️"
+                {
+                    "symbol": "🤦‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man facepalming",
+                    "code": [
+                        129318,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man facepalming: light skin tone",
+                    "code": [
+                        129318,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man facepalming: medium-light skin tone",
+                    "code": [
+                        129318,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man facepalming: medium skin tone",
+                    "code": [
+                        129318,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man facepalming: medium-dark skin tone",
+                    "code": [
+                        129318,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man facepalming: dark skin tone",
+                    "code": [
+                        129318,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE PALM, MALE SIGN",
             "version": 9,
@@ -3891,11 +13416,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤦🏻‍♀️",
-                "🤦🏼‍♀️",
-                "🤦🏽‍♀️",
-                "🤦🏾‍♀️",
-                "🤦🏿‍♀️"
+                {
+                    "symbol": "🤦‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman facepalming",
+                    "code": [
+                        129318,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman facepalming: light skin tone",
+                    "code": [
+                        129318,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman facepalming: medium-light skin tone",
+                    "code": [
+                        129318,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman facepalming: medium skin tone",
+                    "code": [
+                        129318,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman facepalming: medium-dark skin tone",
+                    "code": [
+                        129318,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤦🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman facepalming: dark skin tone",
+                    "code": [
+                        129318,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE PALM, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "disbelief",
+                        "exasperation",
+                        "facepalm",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE PALM, FEMALE SIGN",
             "version": 9,
@@ -3915,11 +13560,119 @@ var data = {
                 129335
             ],
             "alternates": [
-                "🤷🏻",
-                "🤷🏼",
-                "🤷🏽",
-                "🤷🏾",
-                "🤷🏿"
+                {
+                    "symbol": "🤷",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person shrugging",
+                    "code": [
+                        129335
+                    ],
+                    "fullName": "SHRUG",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person shrugging: light skin tone",
+                    "code": [
+                        129335,
+                        127995
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person shrugging: medium-light skin tone",
+                    "code": [
+                        129335,
+                        127996
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person shrugging: medium skin tone",
+                    "code": [
+                        129335,
+                        127997
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person shrugging: medium-dark skin tone",
+                    "code": [
+                        129335,
+                        127998
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "person shrugging: dark skin tone",
+                    "code": [
+                        129335,
+                        127999
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SHRUG",
             "version": 9,
@@ -3943,11 +13696,137 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤷🏻‍♂️",
-                "🤷🏼‍♂️",
-                "🤷🏽‍♂️",
-                "🤷🏾‍♂️",
-                "🤷🏿‍♂️"
+                {
+                    "symbol": "🤷‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man shrugging",
+                    "code": [
+                        129335,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SHRUG, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man shrugging: light skin tone",
+                    "code": [
+                        129335,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man shrugging: medium-light skin tone",
+                    "code": [
+                        129335,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man shrugging: medium skin tone",
+                    "code": [
+                        129335,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man shrugging: medium-dark skin tone",
+                    "code": [
+                        129335,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "man shrugging: dark skin tone",
+                    "code": [
+                        129335,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SHRUG, MALE SIGN",
             "version": 9,
@@ -3971,11 +13850,137 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤷🏻‍♀️",
-                "🤷🏼‍♀️",
-                "🤷🏽‍♀️",
-                "🤷🏾‍♀️",
-                "🤷🏿‍♀️"
+                {
+                    "symbol": "🤷‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman shrugging",
+                    "code": [
+                        129335,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SHRUG, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman shrugging: light skin tone",
+                    "code": [
+                        129335,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman shrugging: medium-light skin tone",
+                    "code": [
+                        129335,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman shrugging: medium skin tone",
+                    "code": [
+                        129335,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman shrugging: medium-dark skin tone",
+                    "code": [
+                        129335,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤷🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-gesture",
+                    "name": "woman shrugging: dark skin tone",
+                    "code": [
+                        129335,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SHRUG, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "doubt",
+                        "ignorance",
+                        "indifference",
+                        "shrug",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SHRUG, FEMALE SIGN",
             "version": 9,
@@ -3996,11 +14001,107 @@ var data = {
                 128134
             ],
             "alternates": [
-                "💆🏻",
-                "💆🏼",
-                "💆🏽",
-                "💆🏾",
-                "💆🏿"
+                {
+                    "symbol": "💆",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting massage",
+                    "code": [
+                        128134
+                    ],
+                    "fullName": "FACE MASSAGE",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting massage: light skin tone",
+                    "code": [
+                        128134,
+                        127995
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting massage: medium-light skin tone",
+                    "code": [
+                        128134,
+                        127996
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting massage: medium skin tone",
+                    "code": [
+                        128134,
+                        127997
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting massage: medium-dark skin tone",
+                    "code": [
+                        128134,
+                        127998
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting massage: dark skin tone",
+                    "code": [
+                        128134,
+                        127999
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE MASSAGE",
             "version": 6,
@@ -4022,11 +14123,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💆🏻‍♂️",
-                "💆🏼‍♂️",
-                "💆🏽‍♂️",
-                "💆🏾‍♂️",
-                "💆🏿‍♂️"
+                {
+                    "symbol": "💆‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting massage",
+                    "code": [
+                        128134,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting massage: light skin tone",
+                    "code": [
+                        128134,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting massage: medium-light skin tone",
+                    "code": [
+                        128134,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting massage: medium skin tone",
+                    "code": [
+                        128134,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting massage: medium-dark skin tone",
+                    "code": [
+                        128134,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting massage: dark skin tone",
+                    "code": [
+                        128134,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE MASSAGE, MALE SIGN",
             "version": 6,
@@ -4048,11 +14263,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💆🏻‍♀️",
-                "💆🏼‍♀️",
-                "💆🏽‍♀️",
-                "💆🏾‍♀️",
-                "💆🏿‍♀️"
+                {
+                    "symbol": "💆‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting massage",
+                    "code": [
+                        128134,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting massage: light skin tone",
+                    "code": [
+                        128134,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting massage: medium-light skin tone",
+                    "code": [
+                        128134,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting massage: medium skin tone",
+                    "code": [
+                        128134,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting massage: medium-dark skin tone",
+                    "code": [
+                        128134,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💆🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting massage: dark skin tone",
+                    "code": [
+                        128134,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "FACE MASSAGE, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "face",
+                        "massage",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "FACE MASSAGE, FEMALE SIGN",
             "version": 6,
@@ -4071,11 +14400,101 @@ var data = {
                 128135
             ],
             "alternates": [
-                "💇🏻",
-                "💇🏼",
-                "💇🏽",
-                "💇🏾",
-                "💇🏿"
+                {
+                    "symbol": "💇",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting haircut",
+                    "code": [
+                        128135
+                    ],
+                    "fullName": "HAIRCUT",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting haircut: light skin tone",
+                    "code": [
+                        128135,
+                        127995
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting haircut: medium-light skin tone",
+                    "code": [
+                        128135,
+                        127996
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting haircut: medium skin tone",
+                    "code": [
+                        128135,
+                        127997
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting haircut: medium-dark skin tone",
+                    "code": [
+                        128135,
+                        127998
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person getting haircut: dark skin tone",
+                    "code": [
+                        128135,
+                        127999
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HAIRCUT",
             "version": 6,
@@ -4096,11 +14515,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💇🏻‍♂️",
-                "💇🏼‍♂️",
-                "💇🏽‍♂️",
-                "💇🏾‍♂️",
-                "💇🏿‍♂️"
+                {
+                    "symbol": "💇‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting haircut",
+                    "code": [
+                        128135,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting haircut: light skin tone",
+                    "code": [
+                        128135,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting haircut: medium-light skin tone",
+                    "code": [
+                        128135,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting haircut: medium skin tone",
+                    "code": [
+                        128135,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting haircut: medium-dark skin tone",
+                    "code": [
+                        128135,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man getting haircut: dark skin tone",
+                    "code": [
+                        128135,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HAIRCUT, MALE SIGN",
             "version": 6,
@@ -4121,11 +14648,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "💇🏻‍♀️",
-                "💇🏼‍♀️",
-                "💇🏽‍♀️",
-                "💇🏾‍♀️",
-                "💇🏿‍♀️"
+                {
+                    "symbol": "💇‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting haircut",
+                    "code": [
+                        128135,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting haircut: light skin tone",
+                    "code": [
+                        128135,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting haircut: medium-light skin tone",
+                    "code": [
+                        128135,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting haircut: medium skin tone",
+                    "code": [
+                        128135,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting haircut: medium-dark skin tone",
+                    "code": [
+                        128135,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "💇🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman getting haircut: dark skin tone",
+                    "code": [
+                        128135,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HAIRCUT, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "haircut",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HAIRCUT, FEMALE SIGN",
             "version": 6,
@@ -4143,11 +14778,107 @@ var data = {
                 128694
             ],
             "alternates": [
-                "🚶🏻",
-                "🚶🏼",
-                "🚶🏽",
-                "🚶🏾",
-                "🚶🏿"
+                {
+                    "symbol": "🚶",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person walking",
+                    "code": [
+                        128694
+                    ],
+                    "fullName": "PEDESTRIAN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person walking: light skin tone",
+                    "code": [
+                        128694,
+                        127995
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person walking: medium-light skin tone",
+                    "code": [
+                        128694,
+                        127996
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person walking: medium skin tone",
+                    "code": [
+                        128694,
+                        127997
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person walking: medium-dark skin tone",
+                    "code": [
+                        128694,
+                        127998
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person walking: dark skin tone",
+                    "code": [
+                        128694,
+                        127999
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PEDESTRIAN",
             "version": 6,
@@ -4169,11 +14900,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚶🏻‍♂️",
-                "🚶🏼‍♂️",
-                "🚶🏽‍♂️",
-                "🚶🏾‍♂️",
-                "🚶🏿‍♂️"
+                {
+                    "symbol": "🚶‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man walking",
+                    "code": [
+                        128694,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man walking: light skin tone",
+                    "code": [
+                        128694,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man walking: medium-light skin tone",
+                    "code": [
+                        128694,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man walking: medium skin tone",
+                    "code": [
+                        128694,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man walking: medium-dark skin tone",
+                    "code": [
+                        128694,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man walking: dark skin tone",
+                    "code": [
+                        128694,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PEDESTRIAN, MALE SIGN",
             "version": 6,
@@ -4195,11 +15040,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚶🏻‍♀️",
-                "🚶🏼‍♀️",
-                "🚶🏽‍♀️",
-                "🚶🏾‍♀️",
-                "🚶🏿‍♀️"
+                {
+                    "symbol": "🚶‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman walking",
+                    "code": [
+                        128694,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman walking: light skin tone",
+                    "code": [
+                        128694,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman walking: medium-light skin tone",
+                    "code": [
+                        128694,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman walking: medium skin tone",
+                    "code": [
+                        128694,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman walking: medium-dark skin tone",
+                    "code": [
+                        128694,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚶🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman walking: dark skin tone",
+                    "code": [
+                        128694,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PEDESTRIAN, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hike",
+                        "walk",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PEDESTRIAN, FEMALE SIGN",
             "version": 6,
@@ -4218,11 +15177,113 @@ var data = {
                 127939
             ],
             "alternates": [
-                "🏃🏻",
-                "🏃🏼",
-                "🏃🏽",
-                "🏃🏾",
-                "🏃🏿"
+                {
+                    "symbol": "🏃",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person running",
+                    "code": [
+                        127939
+                    ],
+                    "fullName": "RUNNER",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person running: light skin tone",
+                    "code": [
+                        127939,
+                        127995
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person running: medium-light skin tone",
+                    "code": [
+                        127939,
+                        127996
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person running: medium skin tone",
+                    "code": [
+                        127939,
+                        127997
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person running: medium-dark skin tone",
+                    "code": [
+                        127939,
+                        127998
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "person running: dark skin tone",
+                    "code": [
+                        127939,
+                        127999
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                }
             ],
             "fullName": "RUNNER",
             "version": 6,
@@ -4245,11 +15306,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏃🏻‍♂️",
-                "🏃🏼‍♂️",
-                "🏃🏽‍♂️",
-                "🏃🏾‍♂️",
-                "🏃🏿‍♂️"
+                {
+                    "symbol": "🏃‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man running",
+                    "code": [
+                        127939,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "RUNNER, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man running: light skin tone",
+                    "code": [
+                        127939,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man running: medium-light skin tone",
+                    "code": [
+                        127939,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man running: medium skin tone",
+                    "code": [
+                        127939,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man running: medium-dark skin tone",
+                    "code": [
+                        127939,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man running: dark skin tone",
+                    "code": [
+                        127939,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                }
             ],
             "fullName": "RUNNER, MALE SIGN",
             "version": 6,
@@ -4272,11 +15453,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏃🏻‍♀️",
-                "🏃🏼‍♀️",
-                "🏃🏽‍♀️",
-                "🏃🏾‍♀️",
-                "🏃🏿‍♀️"
+                {
+                    "symbol": "🏃‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman running",
+                    "code": [
+                        127939,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "RUNNER, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman running: light skin tone",
+                    "code": [
+                        127939,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman running: medium-light skin tone",
+                    "code": [
+                        127939,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman running: medium skin tone",
+                    "code": [
+                        127939,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman running: medium-dark skin tone",
+                    "code": [
+                        127939,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏃🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman running: dark skin tone",
+                    "code": [
+                        127939,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "RUNNER, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "marathon",
+                        "running",
+                        "woman",
+                        "racing"
+                    ]
+                }
             ],
             "fullName": "RUNNER, FEMALE SIGN",
             "version": 6,
@@ -4296,11 +15597,101 @@ var data = {
                 128131
             ],
             "alternates": [
-                "💃🏻",
-                "💃🏼",
-                "💃🏽",
-                "💃🏾",
-                "💃🏿"
+                {
+                    "symbol": "💃",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman dancing",
+                    "code": [
+                        128131
+                    ],
+                    "fullName": "DANCER",
+                    "version": 6,
+                    "keywords": [
+                        "woman",
+                        "dancing"
+                    ]
+                },
+                {
+                    "symbol": "💃🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman dancing: light skin tone",
+                    "code": [
+                        128131,
+                        127995
+                    ],
+                    "fullName": "DANCER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "woman",
+                        "dancing"
+                    ]
+                },
+                {
+                    "symbol": "💃🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman dancing: medium-light skin tone",
+                    "code": [
+                        128131,
+                        127996
+                    ],
+                    "fullName": "DANCER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "woman",
+                        "dancing"
+                    ]
+                },
+                {
+                    "symbol": "💃🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman dancing: medium skin tone",
+                    "code": [
+                        128131,
+                        127997
+                    ],
+                    "fullName": "DANCER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "woman",
+                        "dancing"
+                    ]
+                },
+                {
+                    "symbol": "💃🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman dancing: medium-dark skin tone",
+                    "code": [
+                        128131,
+                        127998
+                    ],
+                    "fullName": "DANCER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "woman",
+                        "dancing"
+                    ]
+                },
+                {
+                    "symbol": "💃🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "woman dancing: dark skin tone",
+                    "code": [
+                        128131,
+                        127999
+                    ],
+                    "fullName": "DANCER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "woman",
+                        "dancing"
+                    ]
+                }
             ],
             "fullName": "DANCER",
             "version": 6,
@@ -4318,11 +15709,101 @@ var data = {
                 128378
             ],
             "alternates": [
-                "🕺🏻",
-                "🕺🏼",
-                "🕺🏽",
-                "🕺🏾",
-                "🕺🏿"
+                {
+                    "symbol": "🕺",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man dancing",
+                    "code": [
+                        128378
+                    ],
+                    "fullName": "MAN DANCING",
+                    "version": 9,
+                    "keywords": [
+                        "dance",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "🕺🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man dancing: light skin tone",
+                    "code": [
+                        128378,
+                        127995
+                    ],
+                    "fullName": "MAN DANCING, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "dance",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "🕺🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man dancing: medium-light skin tone",
+                    "code": [
+                        128378,
+                        127996
+                    ],
+                    "fullName": "MAN DANCING, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "dance",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "🕺🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man dancing: medium skin tone",
+                    "code": [
+                        128378,
+                        127997
+                    ],
+                    "fullName": "MAN DANCING, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "dance",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "🕺🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man dancing: medium-dark skin tone",
+                    "code": [
+                        128378,
+                        127998
+                    ],
+                    "fullName": "MAN DANCING, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "dance",
+                        "man"
+                    ]
+                },
+                {
+                    "symbol": "🕺🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man dancing: dark skin tone",
+                    "code": [
+                        128378,
+                        127999
+                    ],
+                    "fullName": "MAN DANCING, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "dance",
+                        "man"
+                    ]
+                }
             ],
             "fullName": "MAN DANCING",
             "version": 9,
@@ -4398,11 +15879,108 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🕴🏻",
-                "🕴🏼",
-                "🕴🏽",
-                "🕴🏾",
-                "🕴🏿"
+                {
+                    "symbol": "🕴️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man in business suit levitating",
+                    "code": [
+                        128372,
+                        65039
+                    ],
+                    "fullName": "MAN IN BUSINESS SUIT LEVITATING",
+                    "version": 7,
+                    "keywords": [
+                        "business",
+                        "man",
+                        "suit"
+                    ]
+                },
+                {
+                    "symbol": "🕴🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man in business suit levitating: light skin tone",
+                    "code": [
+                        128372,
+                        127995
+                    ],
+                    "fullName": "MAN IN BUSINESS SUIT LEVITATING, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "business",
+                        "man",
+                        "suit"
+                    ]
+                },
+                {
+                    "symbol": "🕴🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man in business suit levitating: medium-light skin tone",
+                    "code": [
+                        128372,
+                        127996
+                    ],
+                    "fullName": "MAN IN BUSINESS SUIT LEVITATING, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "business",
+                        "man",
+                        "suit"
+                    ]
+                },
+                {
+                    "symbol": "🕴🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man in business suit levitating: medium skin tone",
+                    "code": [
+                        128372,
+                        127997
+                    ],
+                    "fullName": "MAN IN BUSINESS SUIT LEVITATING, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "business",
+                        "man",
+                        "suit"
+                    ]
+                },
+                {
+                    "symbol": "🕴🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man in business suit levitating: medium-dark skin tone",
+                    "code": [
+                        128372,
+                        127998
+                    ],
+                    "fullName": "MAN IN BUSINESS SUIT LEVITATING, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "business",
+                        "man",
+                        "suit"
+                    ]
+                },
+                {
+                    "symbol": "🕴🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-activity",
+                    "name": "man in business suit levitating: dark skin tone",
+                    "code": [
+                        128372,
+                        127999
+                    ],
+                    "fullName": "MAN IN BUSINESS SUIT LEVITATING, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "business",
+                        "man",
+                        "suit"
+                    ]
+                }
             ],
             "fullName": "MAN IN BUSINESS SUIT LEVITATING",
             "version": 7,
@@ -4486,11 +16064,113 @@ var data = {
                 127943
             ],
             "alternates": [
-                "🏇🏻",
-                "🏇🏼",
-                "🏇🏽",
-                "🏇🏾",
-                "🏇🏿"
+                {
+                    "symbol": "🏇",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "horse racing",
+                    "code": [
+                        127943
+                    ],
+                    "fullName": "HORSE RACING",
+                    "version": 6,
+                    "keywords": [
+                        "horse",
+                        "jockey",
+                        "racehorse",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏇🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "horse racing: light skin tone",
+                    "code": [
+                        127943,
+                        127995
+                    ],
+                    "fullName": "HORSE RACING, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "horse",
+                        "jockey",
+                        "racehorse",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏇🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "horse racing: medium-light skin tone",
+                    "code": [
+                        127943,
+                        127996
+                    ],
+                    "fullName": "HORSE RACING, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "horse",
+                        "jockey",
+                        "racehorse",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏇🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "horse racing: medium skin tone",
+                    "code": [
+                        127943,
+                        127997
+                    ],
+                    "fullName": "HORSE RACING, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "horse",
+                        "jockey",
+                        "racehorse",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏇🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "horse racing: medium-dark skin tone",
+                    "code": [
+                        127943,
+                        127998
+                    ],
+                    "fullName": "HORSE RACING, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "horse",
+                        "jockey",
+                        "racehorse",
+                        "racing"
+                    ]
+                },
+                {
+                    "symbol": "🏇🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "horse racing: dark skin tone",
+                    "code": [
+                        127943,
+                        127999
+                    ],
+                    "fullName": "HORSE RACING, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "horse",
+                        "jockey",
+                        "racehorse",
+                        "racing"
+                    ]
+                }
             ],
             "fullName": "HORSE RACING",
             "version": 6,
@@ -4526,11 +16206,107 @@ var data = {
                 127938
             ],
             "alternates": [
-                "🏂🏻",
-                "🏂🏼",
-                "🏂🏽",
-                "🏂🏾",
-                "🏂🏿"
+                {
+                    "symbol": "🏂",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "snowboarder",
+                    "code": [
+                        127938
+                    ],
+                    "fullName": "SNOWBOARDER",
+                    "version": 6,
+                    "keywords": [
+                        "ski",
+                        "snow",
+                        "snowboard"
+                    ]
+                },
+                {
+                    "symbol": "🏂🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "snowboarder: light skin tone",
+                    "code": [
+                        127938,
+                        127995
+                    ],
+                    "fullName": "SNOWBOARDER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "ski",
+                        "snow",
+                        "snowboard"
+                    ]
+                },
+                {
+                    "symbol": "🏂🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "snowboarder: medium-light skin tone",
+                    "code": [
+                        127938,
+                        127996
+                    ],
+                    "fullName": "SNOWBOARDER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "ski",
+                        "snow",
+                        "snowboard"
+                    ]
+                },
+                {
+                    "symbol": "🏂🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "snowboarder: medium skin tone",
+                    "code": [
+                        127938,
+                        127997
+                    ],
+                    "fullName": "SNOWBOARDER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "ski",
+                        "snow",
+                        "snowboard"
+                    ]
+                },
+                {
+                    "symbol": "🏂🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "snowboarder: medium-dark skin tone",
+                    "code": [
+                        127938,
+                        127998
+                    ],
+                    "fullName": "SNOWBOARDER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "ski",
+                        "snow",
+                        "snowboard"
+                    ]
+                },
+                {
+                    "symbol": "🏂🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "snowboarder: dark skin tone",
+                    "code": [
+                        127938,
+                        127999
+                    ],
+                    "fullName": "SNOWBOARDER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "ski",
+                        "snow",
+                        "snowboard"
+                    ]
+                }
             ],
             "fullName": "SNOWBOARDER",
             "version": 6,
@@ -4550,11 +16326,102 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏌🏻",
-                "🏌🏼",
-                "🏌🏽",
-                "🏌🏾",
-                "🏌🏿"
+                {
+                    "symbol": "🏌️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person golfing",
+                    "code": [
+                        127948,
+                        65039
+                    ],
+                    "fullName": "GOLFER",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person golfing: light skin tone",
+                    "code": [
+                        127948,
+                        127995
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person golfing: medium-light skin tone",
+                    "code": [
+                        127948,
+                        127996
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person golfing: medium skin tone",
+                    "code": [
+                        127948,
+                        127997
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person golfing: medium-dark skin tone",
+                    "code": [
+                        127948,
+                        127998
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person golfing: dark skin tone",
+                    "code": [
+                        127948,
+                        127999
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "GOLFER",
             "version": 7,
@@ -4576,11 +16443,120 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏌🏻‍♂️",
-                "🏌🏼‍♂️",
-                "🏌🏽‍♂️",
-                "🏌🏾‍♂️",
-                "🏌🏿‍♂️"
+                {
+                    "symbol": "🏌️‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man golfing",
+                    "code": [
+                        127948,
+                        65039,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GOLFER, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man golfing: light skin tone",
+                    "code": [
+                        127948,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man golfing: medium-light skin tone",
+                    "code": [
+                        127948,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man golfing: medium skin tone",
+                    "code": [
+                        127948,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man golfing: medium-dark skin tone",
+                    "code": [
+                        127948,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man golfing: dark skin tone",
+                    "code": [
+                        127948,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "GOLFER, MALE SIGN",
             "version": 7,
@@ -4602,11 +16578,120 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏌🏻‍♀️",
-                "🏌🏼‍♀️",
-                "🏌🏽‍♀️",
-                "🏌🏾‍♀️",
-                "🏌🏿‍♀️"
+                {
+                    "symbol": "🏌️‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman golfing",
+                    "code": [
+                        127948,
+                        65039,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GOLFER, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman golfing: light skin tone",
+                    "code": [
+                        127948,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman golfing: medium-light skin tone",
+                    "code": [
+                        127948,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman golfing: medium skin tone",
+                    "code": [
+                        127948,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman golfing: medium-dark skin tone",
+                    "code": [
+                        127948,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏌🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman golfing: dark skin tone",
+                    "code": [
+                        127948,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "GOLFER, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "golf",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "GOLFER, FEMALE SIGN",
             "version": 7,
@@ -4624,11 +16709,101 @@ var data = {
                 127940
             ],
             "alternates": [
-                "🏄🏻",
-                "🏄🏼",
-                "🏄🏽",
-                "🏄🏾",
-                "🏄🏿"
+                {
+                    "symbol": "🏄",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person surfing",
+                    "code": [
+                        127940
+                    ],
+                    "fullName": "SURFER",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person surfing: light skin tone",
+                    "code": [
+                        127940,
+                        127995
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person surfing: medium-light skin tone",
+                    "code": [
+                        127940,
+                        127996
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person surfing: medium skin tone",
+                    "code": [
+                        127940,
+                        127997
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person surfing: medium-dark skin tone",
+                    "code": [
+                        127940,
+                        127998
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person surfing: dark skin tone",
+                    "code": [
+                        127940,
+                        127999
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SURFER",
             "version": 6,
@@ -4649,11 +16824,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏄🏻‍♂️",
-                "🏄🏼‍♂️",
-                "🏄🏽‍♂️",
-                "🏄🏾‍♂️",
-                "🏄🏿‍♂️"
+                {
+                    "symbol": "🏄‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man surfing",
+                    "code": [
+                        127940,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SURFER, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man surfing: light skin tone",
+                    "code": [
+                        127940,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man surfing: medium-light skin tone",
+                    "code": [
+                        127940,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man surfing: medium skin tone",
+                    "code": [
+                        127940,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man surfing: medium-dark skin tone",
+                    "code": [
+                        127940,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man surfing: dark skin tone",
+                    "code": [
+                        127940,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SURFER, MALE SIGN",
             "version": 6,
@@ -4674,11 +16957,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏄🏻‍♀️",
-                "🏄🏼‍♀️",
-                "🏄🏽‍♀️",
-                "🏄🏾‍♀️",
-                "🏄🏿‍♀️"
+                {
+                    "symbol": "🏄‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman surfing",
+                    "code": [
+                        127940,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SURFER, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman surfing: light skin tone",
+                    "code": [
+                        127940,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman surfing: medium-light skin tone",
+                    "code": [
+                        127940,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman surfing: medium skin tone",
+                    "code": [
+                        127940,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman surfing: medium-dark skin tone",
+                    "code": [
+                        127940,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏄🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman surfing: dark skin tone",
+                    "code": [
+                        127940,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SURFER, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "surfing",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SURFER, FEMALE SIGN",
             "version": 6,
@@ -4696,11 +17087,107 @@ var data = {
                 128675
             ],
             "alternates": [
-                "🚣🏻",
-                "🚣🏼",
-                "🚣🏽",
-                "🚣🏾",
-                "🚣🏿"
+                {
+                    "symbol": "🚣",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person rowing boat",
+                    "code": [
+                        128675
+                    ],
+                    "fullName": "ROWBOAT",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person rowing boat: light skin tone",
+                    "code": [
+                        128675,
+                        127995
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person rowing boat: medium-light skin tone",
+                    "code": [
+                        128675,
+                        127996
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person rowing boat: medium skin tone",
+                    "code": [
+                        128675,
+                        127997
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person rowing boat: medium-dark skin tone",
+                    "code": [
+                        128675,
+                        127998
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person rowing boat: dark skin tone",
+                    "code": [
+                        128675,
+                        127999
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "ROWBOAT",
             "version": 6,
@@ -4722,11 +17209,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚣🏻‍♂️",
-                "🚣🏼‍♂️",
-                "🚣🏽‍♂️",
-                "🚣🏾‍♂️",
-                "🚣🏿‍♂️"
+                {
+                    "symbol": "🚣‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man rowing boat",
+                    "code": [
+                        128675,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man rowing boat: light skin tone",
+                    "code": [
+                        128675,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man rowing boat: medium-light skin tone",
+                    "code": [
+                        128675,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man rowing boat: medium skin tone",
+                    "code": [
+                        128675,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man rowing boat: medium-dark skin tone",
+                    "code": [
+                        128675,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man rowing boat: dark skin tone",
+                    "code": [
+                        128675,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "ROWBOAT, MALE SIGN",
             "version": 6,
@@ -4748,11 +17349,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚣🏻‍♀️",
-                "🚣🏼‍♀️",
-                "🚣🏽‍♀️",
-                "🚣🏾‍♀️",
-                "🚣🏿‍♀️"
+                {
+                    "symbol": "🚣‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman rowing boat",
+                    "code": [
+                        128675,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman rowing boat: light skin tone",
+                    "code": [
+                        128675,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman rowing boat: medium-light skin tone",
+                    "code": [
+                        128675,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman rowing boat: medium skin tone",
+                    "code": [
+                        128675,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman rowing boat: medium-dark skin tone",
+                    "code": [
+                        128675,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚣🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman rowing boat: dark skin tone",
+                    "code": [
+                        128675,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "ROWBOAT, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "boat",
+                        "rowboat",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "ROWBOAT, FEMALE SIGN",
             "version": 6,
@@ -4771,11 +17486,101 @@ var data = {
                 127946
             ],
             "alternates": [
-                "🏊🏻",
-                "🏊🏼",
-                "🏊🏽",
-                "🏊🏾",
-                "🏊🏿"
+                {
+                    "symbol": "🏊",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person swimming",
+                    "code": [
+                        127946
+                    ],
+                    "fullName": "SWIMMER",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person swimming: light skin tone",
+                    "code": [
+                        127946,
+                        127995
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person swimming: medium-light skin tone",
+                    "code": [
+                        127946,
+                        127996
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person swimming: medium skin tone",
+                    "code": [
+                        127946,
+                        127997
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person swimming: medium-dark skin tone",
+                    "code": [
+                        127946,
+                        127998
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person swimming: dark skin tone",
+                    "code": [
+                        127946,
+                        127999
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SWIMMER",
             "version": 6,
@@ -4796,11 +17601,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏊🏻‍♂️",
-                "🏊🏼‍♂️",
-                "🏊🏽‍♂️",
-                "🏊🏾‍♂️",
-                "🏊🏿‍♂️"
+                {
+                    "symbol": "🏊‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man swimming",
+                    "code": [
+                        127946,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man swimming: light skin tone",
+                    "code": [
+                        127946,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man swimming: medium-light skin tone",
+                    "code": [
+                        127946,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man swimming: medium skin tone",
+                    "code": [
+                        127946,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man swimming: medium-dark skin tone",
+                    "code": [
+                        127946,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man swimming: dark skin tone",
+                    "code": [
+                        127946,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SWIMMER, MALE SIGN",
             "version": 6,
@@ -4821,11 +17734,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏊🏻‍♀️",
-                "🏊🏼‍♀️",
-                "🏊🏽‍♀️",
-                "🏊🏾‍♀️",
-                "🏊🏿‍♀️"
+                {
+                    "symbol": "🏊‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman swimming",
+                    "code": [
+                        127946,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman swimming: light skin tone",
+                    "code": [
+                        127946,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman swimming: medium-light skin tone",
+                    "code": [
+                        127946,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman swimming: medium skin tone",
+                    "code": [
+                        127946,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman swimming: medium-dark skin tone",
+                    "code": [
+                        127946,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏊🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman swimming: dark skin tone",
+                    "code": [
+                        127946,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "SWIMMER, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "swim",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "SWIMMER, FEMALE SIGN",
             "version": 6,
@@ -4844,11 +17865,102 @@ var data = {
                 65039
             ],
             "alternates": [
-                "⛹🏻",
-                "⛹🏼",
-                "⛹🏽",
-                "⛹🏾",
-                "⛹🏿"
+                {
+                    "symbol": "⛹️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person bouncing ball",
+                    "code": [
+                        9977,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person bouncing ball: light skin tone",
+                    "code": [
+                        9977,
+                        127995
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person bouncing ball: medium-light skin tone",
+                    "code": [
+                        9977,
+                        127996
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person bouncing ball: medium skin tone",
+                    "code": [
+                        9977,
+                        127997
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person bouncing ball: medium-dark skin tone",
+                    "code": [
+                        9977,
+                        127998
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person bouncing ball: dark skin tone",
+                    "code": [
+                        9977,
+                        127999
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH BALL",
             "version": 5.2,
@@ -4870,11 +17982,120 @@ var data = {
                 65039
             ],
             "alternates": [
-                "⛹🏻‍♂️",
-                "⛹🏼‍♂️",
-                "⛹🏽‍♂️",
-                "⛹🏾‍♂️",
-                "⛹🏿‍♂️"
+                {
+                    "symbol": "⛹️‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man bouncing ball",
+                    "code": [
+                        9977,
+                        65039,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, MALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man bouncing ball: light skin tone",
+                    "code": [
+                        9977,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man bouncing ball: medium-light skin tone",
+                    "code": [
+                        9977,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man bouncing ball: medium skin tone",
+                    "code": [
+                        9977,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man bouncing ball: medium-dark skin tone",
+                    "code": [
+                        9977,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man bouncing ball: dark skin tone",
+                    "code": [
+                        9977,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH BALL, MALE SIGN",
             "version": 5.2,
@@ -4896,11 +18117,120 @@ var data = {
                 65039
             ],
             "alternates": [
-                "⛹🏻‍♀️",
-                "⛹🏼‍♀️",
-                "⛹🏽‍♀️",
-                "⛹🏾‍♀️",
-                "⛹🏿‍♀️"
+                {
+                    "symbol": "⛹️‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman bouncing ball",
+                    "code": [
+                        9977,
+                        65039,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, FEMALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman bouncing ball: light skin tone",
+                    "code": [
+                        9977,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman bouncing ball: medium-light skin tone",
+                    "code": [
+                        9977,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman bouncing ball: medium skin tone",
+                    "code": [
+                        9977,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman bouncing ball: medium-dark skin tone",
+                    "code": [
+                        9977,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "⛹🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman bouncing ball: dark skin tone",
+                    "code": [
+                        9977,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON WITH BALL, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 5.2,
+                    "keywords": [
+                        "ball",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH BALL, FEMALE SIGN",
             "version": 5.2,
@@ -4919,11 +18249,102 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏋🏻",
-                "🏋🏼",
-                "🏋🏽",
-                "🏋🏾",
-                "🏋🏿"
+                {
+                    "symbol": "🏋️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person lifting weights",
+                    "code": [
+                        127947,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person lifting weights: light skin tone",
+                    "code": [
+                        127947,
+                        127995
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person lifting weights: medium-light skin tone",
+                    "code": [
+                        127947,
+                        127996
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person lifting weights: medium skin tone",
+                    "code": [
+                        127947,
+                        127997
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person lifting weights: medium-dark skin tone",
+                    "code": [
+                        127947,
+                        127998
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person lifting weights: dark skin tone",
+                    "code": [
+                        127947,
+                        127999
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WEIGHT LIFTER",
             "version": 7,
@@ -4945,11 +18366,120 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏋🏻‍♂️",
-                "🏋🏼‍♂️",
-                "🏋🏽‍♂️",
-                "🏋🏾‍♂️",
-                "🏋🏿‍♂️"
+                {
+                    "symbol": "🏋️‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man lifting weights",
+                    "code": [
+                        127947,
+                        65039,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man lifting weights: light skin tone",
+                    "code": [
+                        127947,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man lifting weights: medium-light skin tone",
+                    "code": [
+                        127947,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man lifting weights: medium skin tone",
+                    "code": [
+                        127947,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man lifting weights: medium-dark skin tone",
+                    "code": [
+                        127947,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man lifting weights: dark skin tone",
+                    "code": [
+                        127947,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WEIGHT LIFTER, MALE SIGN",
             "version": 7,
@@ -4971,11 +18501,120 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏋🏻‍♀️",
-                "🏋🏼‍♀️",
-                "🏋🏽‍♀️",
-                "🏋🏾‍♀️",
-                "🏋🏿‍♀️"
+                {
+                    "symbol": "🏋️‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman lifting weights",
+                    "code": [
+                        127947,
+                        65039,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman lifting weights: light skin tone",
+                    "code": [
+                        127947,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman lifting weights: medium-light skin tone",
+                    "code": [
+                        127947,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman lifting weights: medium skin tone",
+                    "code": [
+                        127947,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman lifting weights: medium-dark skin tone",
+                    "code": [
+                        127947,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🏋🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman lifting weights: dark skin tone",
+                    "code": [
+                        127947,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WEIGHT LIFTER, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 7,
+                    "keywords": [
+                        "weight lifter",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WEIGHT LIFTER, FEMALE SIGN",
             "version": 7,
@@ -4993,11 +18632,113 @@ var data = {
                 128692
             ],
             "alternates": [
-                "🚴🏻",
-                "🚴🏼",
-                "🚴🏽",
-                "🚴🏾",
-                "🚴🏿"
+                {
+                    "symbol": "🚴",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person biking",
+                    "code": [
+                        128692
+                    ],
+                    "fullName": "BICYCLIST",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person biking: light skin tone",
+                    "code": [
+                        128692,
+                        127995
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person biking: medium-light skin tone",
+                    "code": [
+                        128692,
+                        127996
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person biking: medium skin tone",
+                    "code": [
+                        128692,
+                        127997
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person biking: medium-dark skin tone",
+                    "code": [
+                        128692,
+                        127998
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person biking: dark skin tone",
+                    "code": [
+                        128692,
+                        127999
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "BICYCLIST",
             "version": 6,
@@ -5020,11 +18761,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚴🏻‍♂️",
-                "🚴🏼‍♂️",
-                "🚴🏽‍♂️",
-                "🚴🏾‍♂️",
-                "🚴🏿‍♂️"
+                {
+                    "symbol": "🚴‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man biking",
+                    "code": [
+                        128692,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man biking: light skin tone",
+                    "code": [
+                        128692,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man biking: medium-light skin tone",
+                    "code": [
+                        128692,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man biking: medium skin tone",
+                    "code": [
+                        128692,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man biking: medium-dark skin tone",
+                    "code": [
+                        128692,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man biking: dark skin tone",
+                    "code": [
+                        128692,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "BICYCLIST, MALE SIGN",
             "version": 6,
@@ -5047,11 +18908,131 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚴🏻‍♀️",
-                "🚴🏼‍♀️",
-                "🚴🏽‍♀️",
-                "🚴🏾‍♀️",
-                "🚴🏿‍♀️"
+                {
+                    "symbol": "🚴‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman biking",
+                    "code": [
+                        128692,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman biking: light skin tone",
+                    "code": [
+                        128692,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman biking: medium-light skin tone",
+                    "code": [
+                        128692,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman biking: medium skin tone",
+                    "code": [
+                        128692,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman biking: medium-dark skin tone",
+                    "code": [
+                        128692,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚴🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman biking: dark skin tone",
+                    "code": [
+                        128692,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "biking",
+                        "cyclist",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "BICYCLIST, FEMALE SIGN",
             "version": 6,
@@ -5071,11 +19052,125 @@ var data = {
                 128693
             ],
             "alternates": [
-                "🚵🏻",
-                "🚵🏼",
-                "🚵🏽",
-                "🚵🏾",
-                "🚵🏿"
+                {
+                    "symbol": "🚵",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person mountain biking",
+                    "code": [
+                        128693
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person mountain biking: light skin tone",
+                    "code": [
+                        128693,
+                        127995
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person mountain biking: medium-light skin tone",
+                    "code": [
+                        128693,
+                        127996
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person mountain biking: medium skin tone",
+                    "code": [
+                        128693,
+                        127997
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person mountain biking: medium-dark skin tone",
+                    "code": [
+                        128693,
+                        127998
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person mountain biking: dark skin tone",
+                    "code": [
+                        128693,
+                        127999
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "MOUNTAIN BICYCLIST",
             "version": 6,
@@ -5100,11 +19195,143 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚵🏻‍♂️",
-                "🚵🏼‍♂️",
-                "🚵🏽‍♂️",
-                "🚵🏾‍♂️",
-                "🚵🏿‍♂️"
+                {
+                    "symbol": "🚵‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man mountain biking",
+                    "code": [
+                        128693,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man mountain biking: light skin tone",
+                    "code": [
+                        128693,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man mountain biking: medium-light skin tone",
+                    "code": [
+                        128693,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man mountain biking: medium skin tone",
+                    "code": [
+                        128693,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man mountain biking: medium-dark skin tone",
+                    "code": [
+                        128693,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man mountain biking: dark skin tone",
+                    "code": [
+                        128693,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "MOUNTAIN BICYCLIST, MALE SIGN",
             "version": 6,
@@ -5129,11 +19356,143 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🚵🏻‍♀️",
-                "🚵🏼‍♀️",
-                "🚵🏽‍♀️",
-                "🚵🏾‍♀️",
-                "🚵🏿‍♀️"
+                {
+                    "symbol": "🚵‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman mountain biking",
+                    "code": [
+                        128693,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman mountain biking: light skin tone",
+                    "code": [
+                        128693,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman mountain biking: medium-light skin tone",
+                    "code": [
+                        128693,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman mountain biking: medium skin tone",
+                    "code": [
+                        128693,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman mountain biking: medium-dark skin tone",
+                    "code": [
+                        128693,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🚵🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman mountain biking: dark skin tone",
+                    "code": [
+                        128693,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "MOUNTAIN BICYCLIST, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "bicycle",
+                        "cyclist",
+                        "bike",
+                        "biking",
+                        "mountain",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "MOUNTAIN BICYCLIST, FEMALE SIGN",
             "version": 6,
@@ -5186,11 +19545,107 @@ var data = {
                 129336
             ],
             "alternates": [
-                "🤸🏻",
-                "🤸🏼",
-                "🤸🏽",
-                "🤸🏾",
-                "🤸🏿"
+                {
+                    "symbol": "🤸",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person cartwheeling",
+                    "code": [
+                        129336
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person cartwheeling: light skin tone",
+                    "code": [
+                        129336,
+                        127995
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person cartwheeling: medium-light skin tone",
+                    "code": [
+                        129336,
+                        127996
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person cartwheeling: medium skin tone",
+                    "code": [
+                        129336,
+                        127997
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person cartwheeling: medium-dark skin tone",
+                    "code": [
+                        129336,
+                        127998
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person cartwheeling: dark skin tone",
+                    "code": [
+                        129336,
+                        127999
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON DOING CARTWHEEL",
             "version": 9,
@@ -5212,11 +19667,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤸🏻‍♂️",
-                "🤸🏼‍♂️",
-                "🤸🏽‍♂️",
-                "🤸🏾‍♂️",
-                "🤸🏿‍♂️"
+                {
+                    "symbol": "🤸‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man cartwheeling",
+                    "code": [
+                        129336,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man cartwheeling: light skin tone",
+                    "code": [
+                        129336,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man cartwheeling: medium-light skin tone",
+                    "code": [
+                        129336,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man cartwheeling: medium skin tone",
+                    "code": [
+                        129336,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man cartwheeling: medium-dark skin tone",
+                    "code": [
+                        129336,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man cartwheeling: dark skin tone",
+                    "code": [
+                        129336,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON DOING CARTWHEEL, MALE SIGN",
             "version": 9,
@@ -5238,11 +19807,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤸🏻‍♀️",
-                "🤸🏼‍♀️",
-                "🤸🏽‍♀️",
-                "🤸🏾‍♀️",
-                "🤸🏿‍♀️"
+                {
+                    "symbol": "🤸‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman cartwheeling",
+                    "code": [
+                        129336,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman cartwheeling: light skin tone",
+                    "code": [
+                        129336,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman cartwheeling: medium-light skin tone",
+                    "code": [
+                        129336,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman cartwheeling: medium skin tone",
+                    "code": [
+                        129336,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman cartwheeling: medium-dark skin tone",
+                    "code": [
+                        129336,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤸🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman cartwheeling: dark skin tone",
+                    "code": [
+                        129336,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "PERSON DOING CARTWHEEL, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "cartwheel",
+                        "gymnastics",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "PERSON DOING CARTWHEEL, FEMALE SIGN",
             "version": 9,
@@ -5312,11 +19995,101 @@ var data = {
                 129341
             ],
             "alternates": [
-                "🤽🏻",
-                "🤽🏼",
-                "🤽🏽",
-                "🤽🏾",
-                "🤽🏿"
+                {
+                    "symbol": "🤽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing water polo",
+                    "code": [
+                        129341
+                    ],
+                    "fullName": "WATER POLO",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing water polo: light skin tone",
+                    "code": [
+                        129341,
+                        127995
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing water polo: medium-light skin tone",
+                    "code": [
+                        129341,
+                        127996
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing water polo: medium skin tone",
+                    "code": [
+                        129341,
+                        127997
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing water polo: medium-dark skin tone",
+                    "code": [
+                        129341,
+                        127998
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing water polo: dark skin tone",
+                    "code": [
+                        129341,
+                        127999
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WATER POLO",
             "version": 9,
@@ -5337,11 +20110,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤽🏻‍♂️",
-                "🤽🏼‍♂️",
-                "🤽🏽‍♂️",
-                "🤽🏾‍♂️",
-                "🤽🏿‍♂️"
+                {
+                    "symbol": "🤽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing water polo",
+                    "code": [
+                        129341,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing water polo: light skin tone",
+                    "code": [
+                        129341,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing water polo: medium-light skin tone",
+                    "code": [
+                        129341,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing water polo: medium skin tone",
+                    "code": [
+                        129341,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing water polo: medium-dark skin tone",
+                    "code": [
+                        129341,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing water polo: dark skin tone",
+                    "code": [
+                        129341,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WATER POLO, MALE SIGN",
             "version": 9,
@@ -5362,11 +20243,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤽🏻‍♀️",
-                "🤽🏼‍♀️",
-                "🤽🏽‍♀️",
-                "🤽🏾‍♀️",
-                "🤽🏿‍♀️"
+                {
+                    "symbol": "🤽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing water polo",
+                    "code": [
+                        129341,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing water polo: light skin tone",
+                    "code": [
+                        129341,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing water polo: medium-light skin tone",
+                    "code": [
+                        129341,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing water polo: medium skin tone",
+                    "code": [
+                        129341,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing water polo: medium-dark skin tone",
+                    "code": [
+                        129341,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤽🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing water polo: dark skin tone",
+                    "code": [
+                        129341,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "WATER POLO, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "water polo",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "WATER POLO, FEMALE SIGN",
             "version": 9,
@@ -5384,11 +20373,101 @@ var data = {
                 129342
             ],
             "alternates": [
-                "🤾🏻",
-                "🤾🏼",
-                "🤾🏽",
-                "🤾🏾",
-                "🤾🏿"
+                {
+                    "symbol": "🤾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing handball",
+                    "code": [
+                        129342
+                    ],
+                    "fullName": "HANDBALL",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing handball: light skin tone",
+                    "code": [
+                        129342,
+                        127995
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing handball: medium-light skin tone",
+                    "code": [
+                        129342,
+                        127996
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing handball: medium skin tone",
+                    "code": [
+                        129342,
+                        127997
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing handball: medium-dark skin tone",
+                    "code": [
+                        129342,
+                        127998
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person playing handball: dark skin tone",
+                    "code": [
+                        129342,
+                        127999
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HANDBALL",
             "version": 9,
@@ -5409,11 +20488,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤾🏻‍♂️",
-                "🤾🏼‍♂️",
-                "🤾🏽‍♂️",
-                "🤾🏾‍♂️",
-                "🤾🏿‍♂️"
+                {
+                    "symbol": "🤾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing handball",
+                    "code": [
+                        129342,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing handball: light skin tone",
+                    "code": [
+                        129342,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing handball: medium-light skin tone",
+                    "code": [
+                        129342,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing handball: medium skin tone",
+                    "code": [
+                        129342,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing handball: medium-dark skin tone",
+                    "code": [
+                        129342,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man playing handball: dark skin tone",
+                    "code": [
+                        129342,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HANDBALL, MALE SIGN",
             "version": 9,
@@ -5434,11 +20621,119 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤾🏻‍♀️",
-                "🤾🏼‍♀️",
-                "🤾🏽‍♀️",
-                "🤾🏾‍♀️",
-                "🤾🏿‍♀️"
+                {
+                    "symbol": "🤾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing handball",
+                    "code": [
+                        129342,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing handball: light skin tone",
+                    "code": [
+                        129342,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing handball: medium-light skin tone",
+                    "code": [
+                        129342,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing handball: medium skin tone",
+                    "code": [
+                        129342,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing handball: medium-dark skin tone",
+                    "code": [
+                        129342,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤾🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman playing handball: dark skin tone",
+                    "code": [
+                        129342,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "HANDBALL, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "handball",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "HANDBALL, FEMALE SIGN",
             "version": 9,
@@ -5456,11 +20751,107 @@ var data = {
                 129337
             ],
             "alternates": [
-                "🤹🏻",
-                "🤹🏼",
-                "🤹🏽",
-                "🤹🏾",
-                "🤹🏿"
+                {
+                    "symbol": "🤹",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person juggling",
+                    "code": [
+                        129337
+                    ],
+                    "fullName": "JUGGLING",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person juggling: light skin tone",
+                    "code": [
+                        129337,
+                        127995
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person juggling: medium-light skin tone",
+                    "code": [
+                        129337,
+                        127996
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person juggling: medium skin tone",
+                    "code": [
+                        129337,
+                        127997
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person juggling: medium-dark skin tone",
+                    "code": [
+                        129337,
+                        127998
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "person juggling: dark skin tone",
+                    "code": [
+                        129337,
+                        127999
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "JUGGLING",
             "version": 9,
@@ -5482,11 +20873,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤹🏻‍♂️",
-                "🤹🏼‍♂️",
-                "🤹🏽‍♂️",
-                "🤹🏾‍♂️",
-                "🤹🏿‍♂️"
+                {
+                    "symbol": "🤹‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man juggling",
+                    "code": [
+                        129337,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏻‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man juggling: light skin tone",
+                    "code": [
+                        129337,
+                        127995,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏼‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man juggling: medium-light skin tone",
+                    "code": [
+                        129337,
+                        127996,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏽‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man juggling: medium skin tone",
+                    "code": [
+                        129337,
+                        127997,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏾‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man juggling: medium-dark skin tone",
+                    "code": [
+                        129337,
+                        127998,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏿‍♂️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "man juggling: dark skin tone",
+                    "code": [
+                        129337,
+                        127999,
+                        8205,
+                        9794,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "JUGGLING, MALE SIGN",
             "version": 9,
@@ -5508,11 +21013,125 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🤹🏻‍♀️",
-                "🤹🏼‍♀️",
-                "🤹🏽‍♀️",
-                "🤹🏾‍♀️",
-                "🤹🏿‍♀️"
+                {
+                    "symbol": "🤹‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman juggling",
+                    "code": [
+                        129337,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏻‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman juggling: light skin tone",
+                    "code": [
+                        129337,
+                        127995,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏼‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman juggling: medium-light skin tone",
+                    "code": [
+                        129337,
+                        127996,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏽‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman juggling: medium skin tone",
+                    "code": [
+                        129337,
+                        127997,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏾‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman juggling: medium-dark skin tone",
+                    "code": [
+                        129337,
+                        127998,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "🤹🏿‍♀️",
+                    "group": "Smileys & People",
+                    "subGroup": "person-sport",
+                    "name": "woman juggling: dark skin tone",
+                    "code": [
+                        129337,
+                        127999,
+                        8205,
+                        9792,
+                        65039
+                    ],
+                    "fullName": "JUGGLING, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
+                    "version": 9,
+                    "keywords": [
+                        "juggling",
+                        "multitask",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "JUGGLING, FEMALE SIGN",
             "version": 9,
@@ -5586,9 +21205,89 @@ var data = {
                 128143
             ],
             "alternates": [
-                "👩‍❤️‍💋‍👨",
-                "👨‍❤️‍💋‍👨",
-                "👩‍❤️‍💋‍👩"
+                {
+                    "symbol": "💏",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "kiss",
+                    "code": [
+                        128143
+                    ],
+                    "fullName": "KISS",
+                    "version": 6,
+                    "keywords": [
+                        "couple"
+                    ]
+                },
+                {
+                    "symbol": "👩‍❤️‍💋‍👨",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "kiss: woman, man",
+                    "code": [
+                        128105,
+                        8205,
+                        10084,
+                        65039,
+                        8205,
+                        128139,
+                        8205,
+                        128104
+                    ],
+                    "fullName": "WOMAN, HEAVY BLACK HEART, KISS MARK, MAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👨‍❤️‍💋‍👨",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "kiss: man, man",
+                    "code": [
+                        128104,
+                        8205,
+                        10084,
+                        65039,
+                        8205,
+                        128139,
+                        8205,
+                        128104
+                    ],
+                    "fullName": "MAN, HEAVY BLACK HEART, KISS MARK, MAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👩‍❤️‍💋‍👩",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "kiss: woman, woman",
+                    "code": [
+                        128105,
+                        8205,
+                        10084,
+                        65039,
+                        8205,
+                        128139,
+                        8205,
+                        128105
+                    ],
+                    "fullName": "WOMAN, HEAVY BLACK HEART, KISS MARK, WOMAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "KISS",
             "version": 6,
@@ -5605,9 +21304,84 @@ var data = {
                 128145
             ],
             "alternates": [
-                "👩‍❤️‍👨",
-                "👨‍❤️‍👨",
-                "👩‍❤️‍👩"
+                {
+                    "symbol": "💑",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "couple with heart",
+                    "code": [
+                        128145
+                    ],
+                    "fullName": "COUPLE WITH HEART",
+                    "version": 6,
+                    "keywords": [
+                        "couple",
+                        "love"
+                    ]
+                },
+                {
+                    "symbol": "👩‍❤️‍👨",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "couple with heart: woman, man",
+                    "code": [
+                        128105,
+                        8205,
+                        10084,
+                        65039,
+                        8205,
+                        128104
+                    ],
+                    "fullName": "WOMAN, HEAVY BLACK HEART, MAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                },
+                {
+                    "symbol": "👨‍❤️‍👨",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "couple with heart: man, man",
+                    "code": [
+                        128104,
+                        8205,
+                        10084,
+                        65039,
+                        8205,
+                        128104
+                    ],
+                    "fullName": "MAN, HEAVY BLACK HEART, MAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "man",
+                        "firetruck"
+                    ]
+                },
+                {
+                    "symbol": "👩‍❤️‍👩",
+                    "group": "Smileys & People",
+                    "subGroup": "family",
+                    "name": "couple with heart: woman, woman",
+                    "code": [
+                        128105,
+                        8205,
+                        10084,
+                        65039,
+                        8205,
+                        128105
+                    ],
+                    "fullName": "WOMAN, HEAVY BLACK HEART, WOMAN",
+                    "version": 6,
+                    "keywords": [
+                        "firefighter",
+                        "firetruck",
+                        "woman"
+                    ]
+                }
             ],
             "fullName": "COUPLE WITH HEART",
             "version": 6,
@@ -6149,11 +21923,113 @@ var data = {
                 128170
             ],
             "alternates": [
-                "💪🏻",
-                "💪🏼",
-                "💪🏽",
-                "💪🏾",
-                "💪🏿"
+                {
+                    "symbol": "💪",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "flexed biceps",
+                    "code": [
+                        128170
+                    ],
+                    "fullName": "FLEXED BICEPS",
+                    "version": 6,
+                    "keywords": [
+                        "biceps",
+                        "comic",
+                        "flex",
+                        "muscle"
+                    ]
+                },
+                {
+                    "symbol": "💪🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "flexed biceps: light skin tone",
+                    "code": [
+                        128170,
+                        127995
+                    ],
+                    "fullName": "FLEXED BICEPS, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "biceps",
+                        "comic",
+                        "flex",
+                        "muscle"
+                    ]
+                },
+                {
+                    "symbol": "💪🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "flexed biceps: medium-light skin tone",
+                    "code": [
+                        128170,
+                        127996
+                    ],
+                    "fullName": "FLEXED BICEPS, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "biceps",
+                        "comic",
+                        "flex",
+                        "muscle"
+                    ]
+                },
+                {
+                    "symbol": "💪🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "flexed biceps: medium skin tone",
+                    "code": [
+                        128170,
+                        127997
+                    ],
+                    "fullName": "FLEXED BICEPS, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "biceps",
+                        "comic",
+                        "flex",
+                        "muscle"
+                    ]
+                },
+                {
+                    "symbol": "💪🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "flexed biceps: medium-dark skin tone",
+                    "code": [
+                        128170,
+                        127998
+                    ],
+                    "fullName": "FLEXED BICEPS, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "biceps",
+                        "comic",
+                        "flex",
+                        "muscle"
+                    ]
+                },
+                {
+                    "symbol": "💪🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "flexed biceps: dark skin tone",
+                    "code": [
+                        128170,
+                        127999
+                    ],
+                    "fullName": "FLEXED BICEPS, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "biceps",
+                        "comic",
+                        "flex",
+                        "muscle"
+                    ]
+                }
             ],
             "fullName": "FLEXED BICEPS",
             "version": 6,
@@ -6173,11 +22049,107 @@ var data = {
                 129331
             ],
             "alternates": [
-                "🤳🏻",
-                "🤳🏼",
-                "🤳🏽",
-                "🤳🏾",
-                "🤳🏿"
+                {
+                    "symbol": "🤳",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "selfie",
+                    "code": [
+                        129331
+                    ],
+                    "fullName": "SELFIE",
+                    "version": 9,
+                    "keywords": [
+                        "selfie",
+                        "camera",
+                        "phone"
+                    ]
+                },
+                {
+                    "symbol": "🤳🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "selfie: light skin tone",
+                    "code": [
+                        129331,
+                        127995
+                    ],
+                    "fullName": "SELFIE, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "selfie",
+                        "camera",
+                        "phone"
+                    ]
+                },
+                {
+                    "symbol": "🤳🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "selfie: medium-light skin tone",
+                    "code": [
+                        129331,
+                        127996
+                    ],
+                    "fullName": "SELFIE, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "selfie",
+                        "camera",
+                        "phone"
+                    ]
+                },
+                {
+                    "symbol": "🤳🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "selfie: medium skin tone",
+                    "code": [
+                        129331,
+                        127997
+                    ],
+                    "fullName": "SELFIE, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "selfie",
+                        "camera",
+                        "phone"
+                    ]
+                },
+                {
+                    "symbol": "🤳🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "selfie: medium-dark skin tone",
+                    "code": [
+                        129331,
+                        127998
+                    ],
+                    "fullName": "SELFIE, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "selfie",
+                        "camera",
+                        "phone"
+                    ]
+                },
+                {
+                    "symbol": "🤳🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "selfie: dark skin tone",
+                    "code": [
+                        129331,
+                        127999
+                    ],
+                    "fullName": "SELFIE, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "selfie",
+                        "camera",
+                        "phone"
+                    ]
+                }
             ],
             "fullName": "SELFIE",
             "version": 9,
@@ -6196,11 +22168,119 @@ var data = {
                 128072
             ],
             "alternates": [
-                "👈🏻",
-                "👈🏼",
-                "👈🏽",
-                "👈🏾",
-                "👈🏿"
+                {
+                    "symbol": "👈",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing left",
+                    "code": [
+                        128072
+                    ],
+                    "fullName": "WHITE LEFT POINTING BACKHAND INDEX",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👈🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing left: light skin tone",
+                    "code": [
+                        128072,
+                        127995
+                    ],
+                    "fullName": "WHITE LEFT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👈🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing left: medium-light skin tone",
+                    "code": [
+                        128072,
+                        127996
+                    ],
+                    "fullName": "WHITE LEFT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👈🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing left: medium skin tone",
+                    "code": [
+                        128072,
+                        127997
+                    ],
+                    "fullName": "WHITE LEFT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👈🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing left: medium-dark skin tone",
+                    "code": [
+                        128072,
+                        127998
+                    ],
+                    "fullName": "WHITE LEFT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👈🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing left: dark skin tone",
+                    "code": [
+                        128072,
+                        127999
+                    ],
+                    "fullName": "WHITE LEFT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                }
             ],
             "fullName": "WHITE LEFT POINTING BACKHAND INDEX",
             "version": 6,
@@ -6221,11 +22301,119 @@ var data = {
                 128073
             ],
             "alternates": [
-                "👉🏻",
-                "👉🏼",
-                "👉🏽",
-                "👉🏾",
-                "👉🏿"
+                {
+                    "symbol": "👉",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing right",
+                    "code": [
+                        128073
+                    ],
+                    "fullName": "WHITE RIGHT POINTING BACKHAND INDEX",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👉🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing right: light skin tone",
+                    "code": [
+                        128073,
+                        127995
+                    ],
+                    "fullName": "WHITE RIGHT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👉🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing right: medium-light skin tone",
+                    "code": [
+                        128073,
+                        127996
+                    ],
+                    "fullName": "WHITE RIGHT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👉🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing right: medium skin tone",
+                    "code": [
+                        128073,
+                        127997
+                    ],
+                    "fullName": "WHITE RIGHT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👉🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing right: medium-dark skin tone",
+                    "code": [
+                        128073,
+                        127998
+                    ],
+                    "fullName": "WHITE RIGHT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👉🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing right: dark skin tone",
+                    "code": [
+                        128073,
+                        127999
+                    ],
+                    "fullName": "WHITE RIGHT POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                }
             ],
             "fullName": "WHITE RIGHT POINTING BACKHAND INDEX",
             "version": 6,
@@ -6247,11 +22435,120 @@ var data = {
                 65039
             ],
             "alternates": [
-                "☝🏻",
-                "☝🏼",
-                "☝🏽",
-                "☝🏾",
-                "☝🏿"
+                {
+                    "symbol": "☝️",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "index pointing up",
+                    "code": [
+                        9757,
+                        65039
+                    ],
+                    "fullName": "WHITE UP POINTING INDEX",
+                    "version": 1.1,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "☝🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "index pointing up: light skin tone",
+                    "code": [
+                        9757,
+                        127995
+                    ],
+                    "fullName": "WHITE UP POINTING INDEX, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 1.1,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "☝🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "index pointing up: medium-light skin tone",
+                    "code": [
+                        9757,
+                        127996
+                    ],
+                    "fullName": "WHITE UP POINTING INDEX, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 1.1,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "☝🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "index pointing up: medium skin tone",
+                    "code": [
+                        9757,
+                        127997
+                    ],
+                    "fullName": "WHITE UP POINTING INDEX, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 1.1,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "☝🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "index pointing up: medium-dark skin tone",
+                    "code": [
+                        9757,
+                        127998
+                    ],
+                    "fullName": "WHITE UP POINTING INDEX, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 1.1,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "☝🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "index pointing up: dark skin tone",
+                    "code": [
+                        9757,
+                        127999
+                    ],
+                    "fullName": "WHITE UP POINTING INDEX, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 1.1,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                }
             ],
             "fullName": "WHITE UP POINTING INDEX",
             "version": 1.1,
@@ -6272,11 +22569,125 @@ var data = {
                 128070
             ],
             "alternates": [
-                "👆🏻",
-                "👆🏼",
-                "👆🏽",
-                "👆🏾",
-                "👆🏿"
+                {
+                    "symbol": "👆",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing up",
+                    "code": [
+                        128070
+                    ],
+                    "fullName": "WHITE UP POINTING BACKHAND INDEX",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👆🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing up: light skin tone",
+                    "code": [
+                        128070,
+                        127995
+                    ],
+                    "fullName": "WHITE UP POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👆🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing up: medium-light skin tone",
+                    "code": [
+                        128070,
+                        127996
+                    ],
+                    "fullName": "WHITE UP POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👆🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing up: medium skin tone",
+                    "code": [
+                        128070,
+                        127997
+                    ],
+                    "fullName": "WHITE UP POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👆🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing up: medium-dark skin tone",
+                    "code": [
+                        128070,
+                        127998
+                    ],
+                    "fullName": "WHITE UP POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👆🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing up: dark skin tone",
+                    "code": [
+                        128070,
+                        127999
+                    ],
+                    "fullName": "WHITE UP POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point",
+                        "up"
+                    ]
+                }
             ],
             "fullName": "WHITE UP POINTING BACKHAND INDEX",
             "version": 6,
@@ -6298,11 +22709,101 @@ var data = {
                 128405
             ],
             "alternates": [
-                "🖕🏻",
-                "🖕🏼",
-                "🖕🏽",
-                "🖕🏾",
-                "🖕🏿"
+                {
+                    "symbol": "🖕",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "middle finger",
+                    "code": [
+                        128405
+                    ],
+                    "fullName": "REVERSED HAND WITH MIDDLE FINGER EXTENDED",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🖕🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "middle finger: light skin tone",
+                    "code": [
+                        128405,
+                        127995
+                    ],
+                    "fullName": "REVERSED HAND WITH MIDDLE FINGER EXTENDED, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🖕🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "middle finger: medium-light skin tone",
+                    "code": [
+                        128405,
+                        127996
+                    ],
+                    "fullName": "REVERSED HAND WITH MIDDLE FINGER EXTENDED, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🖕🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "middle finger: medium skin tone",
+                    "code": [
+                        128405,
+                        127997
+                    ],
+                    "fullName": "REVERSED HAND WITH MIDDLE FINGER EXTENDED, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🖕🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "middle finger: medium-dark skin tone",
+                    "code": [
+                        128405,
+                        127998
+                    ],
+                    "fullName": "REVERSED HAND WITH MIDDLE FINGER EXTENDED, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🖕🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "middle finger: dark skin tone",
+                    "code": [
+                        128405,
+                        127999
+                    ],
+                    "fullName": "REVERSED HAND WITH MIDDLE FINGER EXTENDED, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand"
+                    ]
+                }
             ],
             "fullName": "REVERSED HAND WITH MIDDLE FINGER EXTENDED",
             "version": 7,
@@ -6320,11 +22821,125 @@ var data = {
                 128071
             ],
             "alternates": [
-                "👇🏻",
-                "👇🏼",
-                "👇🏽",
-                "👇🏾",
-                "👇🏿"
+                {
+                    "symbol": "👇",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing down",
+                    "code": [
+                        128071
+                    ],
+                    "fullName": "WHITE DOWN POINTING BACKHAND INDEX",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "down",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👇🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing down: light skin tone",
+                    "code": [
+                        128071,
+                        127995
+                    ],
+                    "fullName": "WHITE DOWN POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "down",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👇🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing down: medium-light skin tone",
+                    "code": [
+                        128071,
+                        127996
+                    ],
+                    "fullName": "WHITE DOWN POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "down",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👇🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing down: medium skin tone",
+                    "code": [
+                        128071,
+                        127997
+                    ],
+                    "fullName": "WHITE DOWN POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "down",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👇🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing down: medium-dark skin tone",
+                    "code": [
+                        128071,
+                        127998
+                    ],
+                    "fullName": "WHITE DOWN POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "down",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                },
+                {
+                    "symbol": "👇🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "backhand index pointing down: dark skin tone",
+                    "code": [
+                        128071,
+                        127999
+                    ],
+                    "fullName": "WHITE DOWN POINTING BACKHAND INDEX, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "backhand",
+                        "down",
+                        "finger",
+                        "hand",
+                        "index",
+                        "point"
+                    ]
+                }
             ],
             "fullName": "WHITE DOWN POINTING BACKHAND INDEX",
             "version": 6,
@@ -6347,11 +22962,108 @@ var data = {
                 65039
             ],
             "alternates": [
-                "✌🏻",
-                "✌🏼",
-                "✌🏽",
-                "✌🏾",
-                "✌🏿"
+                {
+                    "symbol": "✌️",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "victory hand",
+                    "code": [
+                        9996,
+                        65039
+                    ],
+                    "fullName": "VICTORY HAND",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "v",
+                        "victory"
+                    ]
+                },
+                {
+                    "symbol": "✌🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "victory hand: light skin tone",
+                    "code": [
+                        9996,
+                        127995
+                    ],
+                    "fullName": "VICTORY HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "v",
+                        "victory"
+                    ]
+                },
+                {
+                    "symbol": "✌🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "victory hand: medium-light skin tone",
+                    "code": [
+                        9996,
+                        127996
+                    ],
+                    "fullName": "VICTORY HAND, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "v",
+                        "victory"
+                    ]
+                },
+                {
+                    "symbol": "✌🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "victory hand: medium skin tone",
+                    "code": [
+                        9996,
+                        127997
+                    ],
+                    "fullName": "VICTORY HAND, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "v",
+                        "victory"
+                    ]
+                },
+                {
+                    "symbol": "✌🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "victory hand: medium-dark skin tone",
+                    "code": [
+                        9996,
+                        127998
+                    ],
+                    "fullName": "VICTORY HAND, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "v",
+                        "victory"
+                    ]
+                },
+                {
+                    "symbol": "✌🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "victory hand: dark skin tone",
+                    "code": [
+                        9996,
+                        127999
+                    ],
+                    "fullName": "VICTORY HAND, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "v",
+                        "victory"
+                    ]
+                }
             ],
             "fullName": "VICTORY HAND",
             "version": 1.1,
@@ -6370,11 +23082,113 @@ var data = {
                 129310
             ],
             "alternates": [
-                "🤞🏻",
-                "🤞🏼",
-                "🤞🏽",
-                "🤞🏾",
-                "🤞🏿"
+                {
+                    "symbol": "🤞",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "crossed fingers",
+                    "code": [
+                        129310
+                    ],
+                    "fullName": "HAND WITH INDEX AND MIDDLE FINGERS CROSSED",
+                    "version": 9,
+                    "keywords": [
+                        "cross",
+                        "finger",
+                        "hand",
+                        "luck"
+                    ]
+                },
+                {
+                    "symbol": "🤞🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "crossed fingers: light skin tone",
+                    "code": [
+                        129310,
+                        127995
+                    ],
+                    "fullName": "HAND WITH INDEX AND MIDDLE FINGERS CROSSED, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "cross",
+                        "finger",
+                        "hand",
+                        "luck"
+                    ]
+                },
+                {
+                    "symbol": "🤞🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "crossed fingers: medium-light skin tone",
+                    "code": [
+                        129310,
+                        127996
+                    ],
+                    "fullName": "HAND WITH INDEX AND MIDDLE FINGERS CROSSED, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "cross",
+                        "finger",
+                        "hand",
+                        "luck"
+                    ]
+                },
+                {
+                    "symbol": "🤞🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "crossed fingers: medium skin tone",
+                    "code": [
+                        129310,
+                        127997
+                    ],
+                    "fullName": "HAND WITH INDEX AND MIDDLE FINGERS CROSSED, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "cross",
+                        "finger",
+                        "hand",
+                        "luck"
+                    ]
+                },
+                {
+                    "symbol": "🤞🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "crossed fingers: medium-dark skin tone",
+                    "code": [
+                        129310,
+                        127998
+                    ],
+                    "fullName": "HAND WITH INDEX AND MIDDLE FINGERS CROSSED, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "cross",
+                        "finger",
+                        "hand",
+                        "luck"
+                    ]
+                },
+                {
+                    "symbol": "🤞🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "crossed fingers: dark skin tone",
+                    "code": [
+                        129310,
+                        127999
+                    ],
+                    "fullName": "HAND WITH INDEX AND MIDDLE FINGERS CROSSED, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "cross",
+                        "finger",
+                        "hand",
+                        "luck"
+                    ]
+                }
             ],
             "fullName": "HAND WITH INDEX AND MIDDLE FINGERS CROSSED",
             "version": 9,
@@ -6394,11 +23208,113 @@ var data = {
                 128406
             ],
             "alternates": [
-                "🖖🏻",
-                "🖖🏼",
-                "🖖🏽",
-                "🖖🏾",
-                "🖖🏿"
+                {
+                    "symbol": "🖖",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "vulcan salute",
+                    "code": [
+                        128406
+                    ],
+                    "fullName": "RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "spock",
+                        "vulcan"
+                    ]
+                },
+                {
+                    "symbol": "🖖🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "vulcan salute: light skin tone",
+                    "code": [
+                        128406,
+                        127995
+                    ],
+                    "fullName": "RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "spock",
+                        "vulcan"
+                    ]
+                },
+                {
+                    "symbol": "🖖🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "vulcan salute: medium-light skin tone",
+                    "code": [
+                        128406,
+                        127996
+                    ],
+                    "fullName": "RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "spock",
+                        "vulcan"
+                    ]
+                },
+                {
+                    "symbol": "🖖🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "vulcan salute: medium skin tone",
+                    "code": [
+                        128406,
+                        127997
+                    ],
+                    "fullName": "RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "spock",
+                        "vulcan"
+                    ]
+                },
+                {
+                    "symbol": "🖖🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "vulcan salute: medium-dark skin tone",
+                    "code": [
+                        128406,
+                        127998
+                    ],
+                    "fullName": "RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "spock",
+                        "vulcan"
+                    ]
+                },
+                {
+                    "symbol": "🖖🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "vulcan salute: dark skin tone",
+                    "code": [
+                        128406,
+                        127999
+                    ],
+                    "fullName": "RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "spock",
+                        "vulcan"
+                    ]
+                }
             ],
             "fullName": "RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS",
             "version": 7,
@@ -6418,11 +23334,113 @@ var data = {
                 129304
             ],
             "alternates": [
-                "🤘🏻",
-                "🤘🏼",
-                "🤘🏽",
-                "🤘🏾",
-                "🤘🏿"
+                {
+                    "symbol": "🤘",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "sign of the horns",
+                    "code": [
+                        129304
+                    ],
+                    "fullName": "SIGN OF THE HORNS",
+                    "version": 8,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "horns",
+                        "rock-on"
+                    ]
+                },
+                {
+                    "symbol": "🤘🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "sign of the horns: light skin tone",
+                    "code": [
+                        129304,
+                        127995
+                    ],
+                    "fullName": "SIGN OF THE HORNS, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 8,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "horns",
+                        "rock-on"
+                    ]
+                },
+                {
+                    "symbol": "🤘🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "sign of the horns: medium-light skin tone",
+                    "code": [
+                        129304,
+                        127996
+                    ],
+                    "fullName": "SIGN OF THE HORNS, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 8,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "horns",
+                        "rock-on"
+                    ]
+                },
+                {
+                    "symbol": "🤘🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "sign of the horns: medium skin tone",
+                    "code": [
+                        129304,
+                        127997
+                    ],
+                    "fullName": "SIGN OF THE HORNS, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 8,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "horns",
+                        "rock-on"
+                    ]
+                },
+                {
+                    "symbol": "🤘🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "sign of the horns: medium-dark skin tone",
+                    "code": [
+                        129304,
+                        127998
+                    ],
+                    "fullName": "SIGN OF THE HORNS, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 8,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "horns",
+                        "rock-on"
+                    ]
+                },
+                {
+                    "symbol": "🤘🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "sign of the horns: dark skin tone",
+                    "code": [
+                        129304,
+                        127999
+                    ],
+                    "fullName": "SIGN OF THE HORNS, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 8,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "horns",
+                        "rock-on"
+                    ]
+                }
             ],
             "fullName": "SIGN OF THE HORNS",
             "version": 8,
@@ -6442,11 +23460,101 @@ var data = {
                 129305
             ],
             "alternates": [
-                "🤙🏻",
-                "🤙🏼",
-                "🤙🏽",
-                "🤙🏾",
-                "🤙🏿"
+                {
+                    "symbol": "🤙",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "call me hand",
+                    "code": [
+                        129305
+                    ],
+                    "fullName": "CALL ME HAND",
+                    "version": 9,
+                    "keywords": [
+                        "call",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🤙🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "call me hand: light skin tone",
+                    "code": [
+                        129305,
+                        127995
+                    ],
+                    "fullName": "CALL ME HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "call",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🤙🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "call me hand: medium-light skin tone",
+                    "code": [
+                        129305,
+                        127996
+                    ],
+                    "fullName": "CALL ME HAND, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "call",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🤙🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "call me hand: medium skin tone",
+                    "code": [
+                        129305,
+                        127997
+                    ],
+                    "fullName": "CALL ME HAND, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "call",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🤙🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "call me hand: medium-dark skin tone",
+                    "code": [
+                        129305,
+                        127998
+                    ],
+                    "fullName": "CALL ME HAND, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "call",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "🤙🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "call me hand: dark skin tone",
+                    "code": [
+                        129305,
+                        127999
+                    ],
+                    "fullName": "CALL ME HAND, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "call",
+                        "hand"
+                    ]
+                }
             ],
             "fullName": "CALL ME HAND",
             "version": 9,
@@ -6465,11 +23573,108 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🖐🏻",
-                "🖐🏼",
-                "🖐🏽",
-                "🖐🏾",
-                "🖐🏿"
+                {
+                    "symbol": "🖐️",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand with fingers splayed",
+                    "code": [
+                        128400,
+                        65039
+                    ],
+                    "fullName": "RAISED HAND WITH FINGERS SPLAYED",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "splayed"
+                    ]
+                },
+                {
+                    "symbol": "🖐🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand with fingers splayed: light skin tone",
+                    "code": [
+                        128400,
+                        127995
+                    ],
+                    "fullName": "RAISED HAND WITH FINGERS SPLAYED, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "splayed"
+                    ]
+                },
+                {
+                    "symbol": "🖐🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand with fingers splayed: medium-light skin tone",
+                    "code": [
+                        128400,
+                        127996
+                    ],
+                    "fullName": "RAISED HAND WITH FINGERS SPLAYED, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "splayed"
+                    ]
+                },
+                {
+                    "symbol": "🖐🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand with fingers splayed: medium skin tone",
+                    "code": [
+                        128400,
+                        127997
+                    ],
+                    "fullName": "RAISED HAND WITH FINGERS SPLAYED, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "splayed"
+                    ]
+                },
+                {
+                    "symbol": "🖐🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand with fingers splayed: medium-dark skin tone",
+                    "code": [
+                        128400,
+                        127998
+                    ],
+                    "fullName": "RAISED HAND WITH FINGERS SPLAYED, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "splayed"
+                    ]
+                },
+                {
+                    "symbol": "🖐🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand with fingers splayed: dark skin tone",
+                    "code": [
+                        128400,
+                        127999
+                    ],
+                    "fullName": "RAISED HAND WITH FINGERS SPLAYED, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "finger",
+                        "hand",
+                        "splayed"
+                    ]
+                }
             ],
             "fullName": "RAISED HAND WITH FINGERS SPLAYED",
             "version": 7,
@@ -6488,11 +23693,95 @@ var data = {
                 9995
             ],
             "alternates": [
-                "✋🏻",
-                "✋🏼",
-                "✋🏽",
-                "✋🏾",
-                "✋🏿"
+                {
+                    "symbol": "✋",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand",
+                    "code": [
+                        9995
+                    ],
+                    "fullName": "RAISED HAND",
+                    "version": 6,
+                    "keywords": [
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "✋🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand: light skin tone",
+                    "code": [
+                        9995,
+                        127995
+                    ],
+                    "fullName": "RAISED HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "✋🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand: medium-light skin tone",
+                    "code": [
+                        9995,
+                        127996
+                    ],
+                    "fullName": "RAISED HAND, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "✋🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand: medium skin tone",
+                    "code": [
+                        9995,
+                        127997
+                    ],
+                    "fullName": "RAISED HAND, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "✋🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand: medium-dark skin tone",
+                    "code": [
+                        9995,
+                        127998
+                    ],
+                    "fullName": "RAISED HAND, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "✋🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised hand: dark skin tone",
+                    "code": [
+                        9995,
+                        127999
+                    ],
+                    "fullName": "RAISED HAND, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "hand"
+                    ]
+                }
             ],
             "fullName": "RAISED HAND",
             "version": 6,
@@ -6509,11 +23798,101 @@ var data = {
                 128076
             ],
             "alternates": [
-                "👌🏻",
-                "👌🏼",
-                "👌🏽",
-                "👌🏾",
-                "👌🏿"
+                {
+                    "symbol": "👌",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "OK hand",
+                    "code": [
+                        128076
+                    ],
+                    "fullName": "OK HAND SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "OK"
+                    ]
+                },
+                {
+                    "symbol": "👌🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "OK hand: light skin tone",
+                    "code": [
+                        128076,
+                        127995
+                    ],
+                    "fullName": "OK HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "OK"
+                    ]
+                },
+                {
+                    "symbol": "👌🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "OK hand: medium-light skin tone",
+                    "code": [
+                        128076,
+                        127996
+                    ],
+                    "fullName": "OK HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "OK"
+                    ]
+                },
+                {
+                    "symbol": "👌🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "OK hand: medium skin tone",
+                    "code": [
+                        128076,
+                        127997
+                    ],
+                    "fullName": "OK HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "OK"
+                    ]
+                },
+                {
+                    "symbol": "👌🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "OK hand: medium-dark skin tone",
+                    "code": [
+                        128076,
+                        127998
+                    ],
+                    "fullName": "OK HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "OK"
+                    ]
+                },
+                {
+                    "symbol": "👌🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "OK hand: dark skin tone",
+                    "code": [
+                        128076,
+                        127999
+                    ],
+                    "fullName": "OK HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "OK"
+                    ]
+                }
             ],
             "fullName": "OK HAND SIGN",
             "version": 6,
@@ -6531,11 +23910,113 @@ var data = {
                 128077
             ],
             "alternates": [
-                "👍🏻",
-                "👍🏼",
-                "👍🏽",
-                "👍🏾",
-                "👍🏿"
+                {
+                    "symbol": "👍",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs up",
+                    "code": [
+                        128077
+                    ],
+                    "fullName": "THUMBS UP SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "+1",
+                        "hand",
+                        "thumb",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👍🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs up: light skin tone",
+                    "code": [
+                        128077,
+                        127995
+                    ],
+                    "fullName": "THUMBS UP SIGN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "+1",
+                        "hand",
+                        "thumb",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👍🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs up: medium-light skin tone",
+                    "code": [
+                        128077,
+                        127996
+                    ],
+                    "fullName": "THUMBS UP SIGN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "+1",
+                        "hand",
+                        "thumb",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👍🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs up: medium skin tone",
+                    "code": [
+                        128077,
+                        127997
+                    ],
+                    "fullName": "THUMBS UP SIGN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "+1",
+                        "hand",
+                        "thumb",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👍🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs up: medium-dark skin tone",
+                    "code": [
+                        128077,
+                        127998
+                    ],
+                    "fullName": "THUMBS UP SIGN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "+1",
+                        "hand",
+                        "thumb",
+                        "up"
+                    ]
+                },
+                {
+                    "symbol": "👍🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs up: dark skin tone",
+                    "code": [
+                        128077,
+                        127999
+                    ],
+                    "fullName": "THUMBS UP SIGN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "+1",
+                        "hand",
+                        "thumb",
+                        "up"
+                    ]
+                }
             ],
             "fullName": "THUMBS UP SIGN",
             "version": 6,
@@ -6555,11 +24036,113 @@ var data = {
                 128078
             ],
             "alternates": [
-                "👎🏻",
-                "👎🏼",
-                "👎🏽",
-                "👎🏾",
-                "👎🏿"
+                {
+                    "symbol": "👎",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs down",
+                    "code": [
+                        128078
+                    ],
+                    "fullName": "THUMBS DOWN SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "-1",
+                        "down",
+                        "hand",
+                        "thumb"
+                    ]
+                },
+                {
+                    "symbol": "👎🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs down: light skin tone",
+                    "code": [
+                        128078,
+                        127995
+                    ],
+                    "fullName": "THUMBS DOWN SIGN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "-1",
+                        "down",
+                        "hand",
+                        "thumb"
+                    ]
+                },
+                {
+                    "symbol": "👎🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs down: medium-light skin tone",
+                    "code": [
+                        128078,
+                        127996
+                    ],
+                    "fullName": "THUMBS DOWN SIGN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "-1",
+                        "down",
+                        "hand",
+                        "thumb"
+                    ]
+                },
+                {
+                    "symbol": "👎🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs down: medium skin tone",
+                    "code": [
+                        128078,
+                        127997
+                    ],
+                    "fullName": "THUMBS DOWN SIGN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "-1",
+                        "down",
+                        "hand",
+                        "thumb"
+                    ]
+                },
+                {
+                    "symbol": "👎🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs down: medium-dark skin tone",
+                    "code": [
+                        128078,
+                        127998
+                    ],
+                    "fullName": "THUMBS DOWN SIGN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "-1",
+                        "down",
+                        "hand",
+                        "thumb"
+                    ]
+                },
+                {
+                    "symbol": "👎🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "thumbs down: dark skin tone",
+                    "code": [
+                        128078,
+                        127999
+                    ],
+                    "fullName": "THUMBS DOWN SIGN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "-1",
+                        "down",
+                        "hand",
+                        "thumb"
+                    ]
+                }
             ],
             "fullName": "THUMBS DOWN SIGN",
             "version": 6,
@@ -6579,11 +24162,113 @@ var data = {
                 9994
             ],
             "alternates": [
-                "✊🏻",
-                "✊🏼",
-                "✊🏽",
-                "✊🏾",
-                "✊🏿"
+                {
+                    "symbol": "✊",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised fist",
+                    "code": [
+                        9994
+                    ],
+                    "fullName": "RAISED FIST",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "✊🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised fist: light skin tone",
+                    "code": [
+                        9994,
+                        127995
+                    ],
+                    "fullName": "RAISED FIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "✊🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised fist: medium-light skin tone",
+                    "code": [
+                        9994,
+                        127996
+                    ],
+                    "fullName": "RAISED FIST, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "✊🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised fist: medium skin tone",
+                    "code": [
+                        9994,
+                        127997
+                    ],
+                    "fullName": "RAISED FIST, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "✊🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised fist: medium-dark skin tone",
+                    "code": [
+                        9994,
+                        127998
+                    ],
+                    "fullName": "RAISED FIST, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "✊🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised fist: dark skin tone",
+                    "code": [
+                        9994,
+                        127999
+                    ],
+                    "fullName": "RAISED FIST, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                }
             ],
             "fullName": "RAISED FIST",
             "version": 6,
@@ -6603,11 +24288,113 @@ var data = {
                 128074
             ],
             "alternates": [
-                "👊🏻",
-                "👊🏼",
-                "👊🏽",
-                "👊🏾",
-                "👊🏿"
+                {
+                    "symbol": "👊",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "oncoming fist",
+                    "code": [
+                        128074
+                    ],
+                    "fullName": "FISTED HAND SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "👊🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "oncoming fist: light skin tone",
+                    "code": [
+                        128074,
+                        127995
+                    ],
+                    "fullName": "FISTED HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "👊🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "oncoming fist: medium-light skin tone",
+                    "code": [
+                        128074,
+                        127996
+                    ],
+                    "fullName": "FISTED HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "👊🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "oncoming fist: medium skin tone",
+                    "code": [
+                        128074,
+                        127997
+                    ],
+                    "fullName": "FISTED HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "👊🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "oncoming fist: medium-dark skin tone",
+                    "code": [
+                        128074,
+                        127998
+                    ],
+                    "fullName": "FISTED HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                },
+                {
+                    "symbol": "👊🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "oncoming fist: dark skin tone",
+                    "code": [
+                        128074,
+                        127999
+                    ],
+                    "fullName": "FISTED HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "clenched",
+                        "fist",
+                        "hand",
+                        "punch"
+                    ]
+                }
             ],
             "fullName": "FISTED HAND SIGN",
             "version": 6,
@@ -6627,11 +24414,101 @@ var data = {
                 129307
             ],
             "alternates": [
-                "🤛🏻",
-                "🤛🏼",
-                "🤛🏽",
-                "🤛🏾",
-                "🤛🏿"
+                {
+                    "symbol": "🤛",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "left-facing fist",
+                    "code": [
+                        129307
+                    ],
+                    "fullName": "LEFT-FACING FIST",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "leftwards"
+                    ]
+                },
+                {
+                    "symbol": "🤛🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "left-facing fist: light skin tone",
+                    "code": [
+                        129307,
+                        127995
+                    ],
+                    "fullName": "LEFT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "leftwards"
+                    ]
+                },
+                {
+                    "symbol": "🤛🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "left-facing fist: medium-light skin tone",
+                    "code": [
+                        129307,
+                        127996
+                    ],
+                    "fullName": "LEFT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "leftwards"
+                    ]
+                },
+                {
+                    "symbol": "🤛🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "left-facing fist: medium skin tone",
+                    "code": [
+                        129307,
+                        127997
+                    ],
+                    "fullName": "LEFT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "leftwards"
+                    ]
+                },
+                {
+                    "symbol": "🤛🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "left-facing fist: medium-dark skin tone",
+                    "code": [
+                        129307,
+                        127998
+                    ],
+                    "fullName": "LEFT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "leftwards"
+                    ]
+                },
+                {
+                    "symbol": "🤛🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "left-facing fist: dark skin tone",
+                    "code": [
+                        129307,
+                        127999
+                    ],
+                    "fullName": "LEFT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "leftwards"
+                    ]
+                }
             ],
             "fullName": "LEFT-FACING FIST",
             "version": 9,
@@ -6649,11 +24526,101 @@ var data = {
                 129308
             ],
             "alternates": [
-                "🤜🏻",
-                "🤜🏼",
-                "🤜🏽",
-                "🤜🏾",
-                "🤜🏿"
+                {
+                    "symbol": "🤜",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "right-facing fist",
+                    "code": [
+                        129308
+                    ],
+                    "fullName": "RIGHT-FACING FIST",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "rightwards"
+                    ]
+                },
+                {
+                    "symbol": "🤜🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "right-facing fist: light skin tone",
+                    "code": [
+                        129308,
+                        127995
+                    ],
+                    "fullName": "RIGHT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "rightwards"
+                    ]
+                },
+                {
+                    "symbol": "🤜🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "right-facing fist: medium-light skin tone",
+                    "code": [
+                        129308,
+                        127996
+                    ],
+                    "fullName": "RIGHT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "rightwards"
+                    ]
+                },
+                {
+                    "symbol": "🤜🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "right-facing fist: medium skin tone",
+                    "code": [
+                        129308,
+                        127997
+                    ],
+                    "fullName": "RIGHT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "rightwards"
+                    ]
+                },
+                {
+                    "symbol": "🤜🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "right-facing fist: medium-dark skin tone",
+                    "code": [
+                        129308,
+                        127998
+                    ],
+                    "fullName": "RIGHT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "rightwards"
+                    ]
+                },
+                {
+                    "symbol": "🤜🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "right-facing fist: dark skin tone",
+                    "code": [
+                        129308,
+                        127999
+                    ],
+                    "fullName": "RIGHT-FACING FIST, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "fist",
+                        "rightwards"
+                    ]
+                }
             ],
             "fullName": "RIGHT-FACING FIST",
             "version": 9,
@@ -6671,11 +24638,101 @@ var data = {
                 129306
             ],
             "alternates": [
-                "🤚🏻",
-                "🤚🏼",
-                "🤚🏽",
-                "🤚🏾",
-                "🤚🏿"
+                {
+                    "symbol": "🤚",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised back of hand",
+                    "code": [
+                        129306
+                    ],
+                    "fullName": "RAISED BACK OF HAND",
+                    "version": 9,
+                    "keywords": [
+                        "backhand",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🤚🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised back of hand: light skin tone",
+                    "code": [
+                        129306,
+                        127995
+                    ],
+                    "fullName": "RAISED BACK OF HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 9,
+                    "keywords": [
+                        "backhand",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🤚🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised back of hand: medium-light skin tone",
+                    "code": [
+                        129306,
+                        127996
+                    ],
+                    "fullName": "RAISED BACK OF HAND, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 9,
+                    "keywords": [
+                        "backhand",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🤚🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised back of hand: medium skin tone",
+                    "code": [
+                        129306,
+                        127997
+                    ],
+                    "fullName": "RAISED BACK OF HAND, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 9,
+                    "keywords": [
+                        "backhand",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🤚🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised back of hand: medium-dark skin tone",
+                    "code": [
+                        129306,
+                        127998
+                    ],
+                    "fullName": "RAISED BACK OF HAND, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 9,
+                    "keywords": [
+                        "backhand",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🤚🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raised back of hand: dark skin tone",
+                    "code": [
+                        129306,
+                        127999
+                    ],
+                    "fullName": "RAISED BACK OF HAND, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 9,
+                    "keywords": [
+                        "backhand",
+                        "raised"
+                    ]
+                }
             ],
             "fullName": "RAISED BACK OF HAND",
             "version": 9,
@@ -6693,11 +24750,107 @@ var data = {
                 128075
             ],
             "alternates": [
-                "👋🏻",
-                "👋🏼",
-                "👋🏽",
-                "👋🏾",
-                "👋🏿"
+                {
+                    "symbol": "👋",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "waving hand",
+                    "code": [
+                        128075
+                    ],
+                    "fullName": "WAVING HAND SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "wave",
+                        "waving"
+                    ]
+                },
+                {
+                    "symbol": "👋🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "waving hand: light skin tone",
+                    "code": [
+                        128075,
+                        127995
+                    ],
+                    "fullName": "WAVING HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "wave",
+                        "waving"
+                    ]
+                },
+                {
+                    "symbol": "👋🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "waving hand: medium-light skin tone",
+                    "code": [
+                        128075,
+                        127996
+                    ],
+                    "fullName": "WAVING HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "wave",
+                        "waving"
+                    ]
+                },
+                {
+                    "symbol": "👋🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "waving hand: medium skin tone",
+                    "code": [
+                        128075,
+                        127997
+                    ],
+                    "fullName": "WAVING HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "wave",
+                        "waving"
+                    ]
+                },
+                {
+                    "symbol": "👋🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "waving hand: medium-dark skin tone",
+                    "code": [
+                        128075,
+                        127998
+                    ],
+                    "fullName": "WAVING HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "wave",
+                        "waving"
+                    ]
+                },
+                {
+                    "symbol": "👋🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "waving hand: dark skin tone",
+                    "code": [
+                        128075,
+                        127999
+                    ],
+                    "fullName": "WAVING HAND SIGN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "wave",
+                        "waving"
+                    ]
+                }
             ],
             "fullName": "WAVING HAND SIGN",
             "version": 6,
@@ -6716,11 +24869,101 @@ var data = {
                 128079
             ],
             "alternates": [
-                "👏🏻",
-                "👏🏼",
-                "👏🏽",
-                "👏🏾",
-                "👏🏿"
+                {
+                    "symbol": "👏",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "clapping hands",
+                    "code": [
+                        128079
+                    ],
+                    "fullName": "CLAPPING HANDS SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "clap",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "👏🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "clapping hands: light skin tone",
+                    "code": [
+                        128079,
+                        127995
+                    ],
+                    "fullName": "CLAPPING HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "clap",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "👏🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "clapping hands: medium-light skin tone",
+                    "code": [
+                        128079,
+                        127996
+                    ],
+                    "fullName": "CLAPPING HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "clap",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "👏🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "clapping hands: medium skin tone",
+                    "code": [
+                        128079,
+                        127997
+                    ],
+                    "fullName": "CLAPPING HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "clap",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "👏🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "clapping hands: medium-dark skin tone",
+                    "code": [
+                        128079,
+                        127998
+                    ],
+                    "fullName": "CLAPPING HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "clap",
+                        "hand"
+                    ]
+                },
+                {
+                    "symbol": "👏🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "clapping hands: dark skin tone",
+                    "code": [
+                        128079,
+                        127999
+                    ],
+                    "fullName": "CLAPPING HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "clap",
+                        "hand"
+                    ]
+                }
             ],
             "fullName": "CLAPPING HANDS SIGN",
             "version": 6,
@@ -6739,11 +24982,102 @@ var data = {
                 65039
             ],
             "alternates": [
-                "✍🏻",
-                "✍🏼",
-                "✍🏽",
-                "✍🏾",
-                "✍🏿"
+                {
+                    "symbol": "✍️",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "writing hand",
+                    "code": [
+                        9997,
+                        65039
+                    ],
+                    "fullName": "WRITING HAND",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "write"
+                    ]
+                },
+                {
+                    "symbol": "✍🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "writing hand: light skin tone",
+                    "code": [
+                        9997,
+                        127995
+                    ],
+                    "fullName": "WRITING HAND, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "write"
+                    ]
+                },
+                {
+                    "symbol": "✍🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "writing hand: medium-light skin tone",
+                    "code": [
+                        9997,
+                        127996
+                    ],
+                    "fullName": "WRITING HAND, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "write"
+                    ]
+                },
+                {
+                    "symbol": "✍🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "writing hand: medium skin tone",
+                    "code": [
+                        9997,
+                        127997
+                    ],
+                    "fullName": "WRITING HAND, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "write"
+                    ]
+                },
+                {
+                    "symbol": "✍🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "writing hand: medium-dark skin tone",
+                    "code": [
+                        9997,
+                        127998
+                    ],
+                    "fullName": "WRITING HAND, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "write"
+                    ]
+                },
+                {
+                    "symbol": "✍🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "writing hand: dark skin tone",
+                    "code": [
+                        9997,
+                        127999
+                    ],
+                    "fullName": "WRITING HAND, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 1.1,
+                    "keywords": [
+                        "hand",
+                        "write"
+                    ]
+                }
             ],
             "fullName": "WRITING HAND",
             "version": 1.1,
@@ -6761,11 +25095,101 @@ var data = {
                 128080
             ],
             "alternates": [
-                "👐🏻",
-                "👐🏼",
-                "👐🏽",
-                "👐🏾",
-                "👐🏿"
+                {
+                    "symbol": "👐",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "open hands",
+                    "code": [
+                        128080
+                    ],
+                    "fullName": "OPEN HANDS SIGN",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "open"
+                    ]
+                },
+                {
+                    "symbol": "👐🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "open hands: light skin tone",
+                    "code": [
+                        128080,
+                        127995
+                    ],
+                    "fullName": "OPEN HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "open"
+                    ]
+                },
+                {
+                    "symbol": "👐🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "open hands: medium-light skin tone",
+                    "code": [
+                        128080,
+                        127996
+                    ],
+                    "fullName": "OPEN HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "open"
+                    ]
+                },
+                {
+                    "symbol": "👐🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "open hands: medium skin tone",
+                    "code": [
+                        128080,
+                        127997
+                    ],
+                    "fullName": "OPEN HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "open"
+                    ]
+                },
+                {
+                    "symbol": "👐🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "open hands: medium-dark skin tone",
+                    "code": [
+                        128080,
+                        127998
+                    ],
+                    "fullName": "OPEN HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "open"
+                    ]
+                },
+                {
+                    "symbol": "👐🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "open hands: dark skin tone",
+                    "code": [
+                        128080,
+                        127999
+                    ],
+                    "fullName": "OPEN HANDS SIGN, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "hand",
+                        "open"
+                    ]
+                }
             ],
             "fullName": "OPEN HANDS SIGN",
             "version": 6,
@@ -6783,11 +25207,119 @@ var data = {
                 128588
             ],
             "alternates": [
-                "🙌🏻",
-                "🙌🏼",
-                "🙌🏽",
-                "🙌🏾",
-                "🙌🏿"
+                {
+                    "symbol": "🙌",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raising hands",
+                    "code": [
+                        128588
+                    ],
+                    "fullName": "PERSON RAISING BOTH HANDS IN CELEBRATION",
+                    "version": 6,
+                    "keywords": [
+                        "celebration",
+                        "gesture",
+                        "hand",
+                        "hooray",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🙌🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raising hands: light skin tone",
+                    "code": [
+                        128588,
+                        127995
+                    ],
+                    "fullName": "PERSON RAISING BOTH HANDS IN CELEBRATION, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "celebration",
+                        "gesture",
+                        "hand",
+                        "hooray",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🙌🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raising hands: medium-light skin tone",
+                    "code": [
+                        128588,
+                        127996
+                    ],
+                    "fullName": "PERSON RAISING BOTH HANDS IN CELEBRATION, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "celebration",
+                        "gesture",
+                        "hand",
+                        "hooray",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🙌🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raising hands: medium skin tone",
+                    "code": [
+                        128588,
+                        127997
+                    ],
+                    "fullName": "PERSON RAISING BOTH HANDS IN CELEBRATION, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "celebration",
+                        "gesture",
+                        "hand",
+                        "hooray",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🙌🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raising hands: medium-dark skin tone",
+                    "code": [
+                        128588,
+                        127998
+                    ],
+                    "fullName": "PERSON RAISING BOTH HANDS IN CELEBRATION, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "celebration",
+                        "gesture",
+                        "hand",
+                        "hooray",
+                        "raised"
+                    ]
+                },
+                {
+                    "symbol": "🙌🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "raising hands: dark skin tone",
+                    "code": [
+                        128588,
+                        127999
+                    ],
+                    "fullName": "PERSON RAISING BOTH HANDS IN CELEBRATION, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "celebration",
+                        "gesture",
+                        "hand",
+                        "hooray",
+                        "raised"
+                    ]
+                }
             ],
             "fullName": "PERSON RAISING BOTH HANDS IN CELEBRATION",
             "version": 6,
@@ -6808,11 +25340,137 @@ var data = {
                 128591
             ],
             "alternates": [
-                "🙏🏻",
-                "🙏🏼",
-                "🙏🏽",
-                "🙏🏾",
-                "🙏🏿"
+                {
+                    "symbol": "🙏",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "folded hands",
+                    "code": [
+                        128591
+                    ],
+                    "fullName": "PERSON WITH FOLDED HANDS",
+                    "version": 6,
+                    "keywords": [
+                        "ask",
+                        "bow",
+                        "folded",
+                        "gesture",
+                        "hand",
+                        "please",
+                        "pray",
+                        "thanks"
+                    ]
+                },
+                {
+                    "symbol": "🙏🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "folded hands: light skin tone",
+                    "code": [
+                        128591,
+                        127995
+                    ],
+                    "fullName": "PERSON WITH FOLDED HANDS, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "ask",
+                        "bow",
+                        "folded",
+                        "gesture",
+                        "hand",
+                        "please",
+                        "pray",
+                        "thanks"
+                    ]
+                },
+                {
+                    "symbol": "🙏🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "folded hands: medium-light skin tone",
+                    "code": [
+                        128591,
+                        127996
+                    ],
+                    "fullName": "PERSON WITH FOLDED HANDS, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "ask",
+                        "bow",
+                        "folded",
+                        "gesture",
+                        "hand",
+                        "please",
+                        "pray",
+                        "thanks"
+                    ]
+                },
+                {
+                    "symbol": "🙏🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "folded hands: medium skin tone",
+                    "code": [
+                        128591,
+                        127997
+                    ],
+                    "fullName": "PERSON WITH FOLDED HANDS, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "ask",
+                        "bow",
+                        "folded",
+                        "gesture",
+                        "hand",
+                        "please",
+                        "pray",
+                        "thanks"
+                    ]
+                },
+                {
+                    "symbol": "🙏🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "folded hands: medium-dark skin tone",
+                    "code": [
+                        128591,
+                        127998
+                    ],
+                    "fullName": "PERSON WITH FOLDED HANDS, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "ask",
+                        "bow",
+                        "folded",
+                        "gesture",
+                        "hand",
+                        "please",
+                        "pray",
+                        "thanks"
+                    ]
+                },
+                {
+                    "symbol": "🙏🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "folded hands: dark skin tone",
+                    "code": [
+                        128591,
+                        127999
+                    ],
+                    "fullName": "PERSON WITH FOLDED HANDS, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "ask",
+                        "bow",
+                        "folded",
+                        "gesture",
+                        "hand",
+                        "please",
+                        "pray",
+                        "thanks"
+                    ]
+                }
             ],
             "fullName": "PERSON WITH FOLDED HANDS",
             "version": 6,
@@ -6854,11 +25512,119 @@ var data = {
                 128133
             ],
             "alternates": [
-                "💅🏻",
-                "💅🏼",
-                "💅🏽",
-                "💅🏾",
-                "💅🏿"
+                {
+                    "symbol": "💅",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nail polish",
+                    "code": [
+                        128133
+                    ],
+                    "fullName": "NAIL POLISH",
+                    "version": 6,
+                    "keywords": [
+                        "care",
+                        "cosmetics",
+                        "manicure",
+                        "nail",
+                        "polish"
+                    ]
+                },
+                {
+                    "symbol": "💅🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nail polish: light skin tone",
+                    "code": [
+                        128133,
+                        127995
+                    ],
+                    "fullName": "NAIL POLISH, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "care",
+                        "cosmetics",
+                        "manicure",
+                        "nail",
+                        "polish"
+                    ]
+                },
+                {
+                    "symbol": "💅🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nail polish: medium-light skin tone",
+                    "code": [
+                        128133,
+                        127996
+                    ],
+                    "fullName": "NAIL POLISH, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "care",
+                        "cosmetics",
+                        "manicure",
+                        "nail",
+                        "polish"
+                    ]
+                },
+                {
+                    "symbol": "💅🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nail polish: medium skin tone",
+                    "code": [
+                        128133,
+                        127997
+                    ],
+                    "fullName": "NAIL POLISH, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "care",
+                        "cosmetics",
+                        "manicure",
+                        "nail",
+                        "polish"
+                    ]
+                },
+                {
+                    "symbol": "💅🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nail polish: medium-dark skin tone",
+                    "code": [
+                        128133,
+                        127998
+                    ],
+                    "fullName": "NAIL POLISH, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "care",
+                        "cosmetics",
+                        "manicure",
+                        "nail",
+                        "polish"
+                    ]
+                },
+                {
+                    "symbol": "💅🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nail polish: dark skin tone",
+                    "code": [
+                        128133,
+                        127999
+                    ],
+                    "fullName": "NAIL POLISH, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "care",
+                        "cosmetics",
+                        "manicure",
+                        "nail",
+                        "polish"
+                    ]
+                }
             ],
             "fullName": "NAIL POLISH",
             "version": 6,
@@ -6879,11 +25645,95 @@ var data = {
                 128066
             ],
             "alternates": [
-                "👂🏻",
-                "👂🏼",
-                "👂🏽",
-                "👂🏾",
-                "👂🏿"
+                {
+                    "symbol": "👂",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "ear",
+                    "code": [
+                        128066
+                    ],
+                    "fullName": "EAR",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👂🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "ear: light skin tone",
+                    "code": [
+                        128066,
+                        127995
+                    ],
+                    "fullName": "EAR, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👂🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "ear: medium-light skin tone",
+                    "code": [
+                        128066,
+                        127996
+                    ],
+                    "fullName": "EAR, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👂🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "ear: medium skin tone",
+                    "code": [
+                        128066,
+                        127997
+                    ],
+                    "fullName": "EAR, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👂🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "ear: medium-dark skin tone",
+                    "code": [
+                        128066,
+                        127998
+                    ],
+                    "fullName": "EAR, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👂🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "ear: dark skin tone",
+                    "code": [
+                        128066,
+                        127999
+                    ],
+                    "fullName": "EAR, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                }
             ],
             "fullName": "EAR",
             "version": 6,
@@ -6900,11 +25750,95 @@ var data = {
                 128067
             ],
             "alternates": [
-                "👃🏻",
-                "👃🏼",
-                "👃🏽",
-                "👃🏾",
-                "👃🏿"
+                {
+                    "symbol": "👃",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nose",
+                    "code": [
+                        128067
+                    ],
+                    "fullName": "NOSE",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👃🏻",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nose: light skin tone",
+                    "code": [
+                        128067,
+                        127995
+                    ],
+                    "fullName": "NOSE, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👃🏼",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nose: medium-light skin tone",
+                    "code": [
+                        128067,
+                        127996
+                    ],
+                    "fullName": "NOSE, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👃🏽",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nose: medium skin tone",
+                    "code": [
+                        128067,
+                        127997
+                    ],
+                    "fullName": "NOSE, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👃🏾",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nose: medium-dark skin tone",
+                    "code": [
+                        128067,
+                        127998
+                    ],
+                    "fullName": "NOSE, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                },
+                {
+                    "symbol": "👃🏿",
+                    "group": "Smileys & People",
+                    "subGroup": "body",
+                    "name": "nose: dark skin tone",
+                    "code": [
+                        128067,
+                        127999
+                    ],
+                    "fullName": "NOSE, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "body"
+                    ]
+                }
             ],
             "fullName": "NOSE",
             "version": 6,
@@ -11260,7 +30194,36 @@ var data = {
                 65039
             ],
             "alternates": [
-                "🏠"
+                {
+                    "symbol": "🏘️",
+                    "group": "Travel & Places",
+                    "subGroup": "place-building",
+                    "name": "house",
+                    "code": [
+                        127960,
+                        65039
+                    ],
+                    "fullName": "HOUSE BUILDINGS",
+                    "version": 7,
+                    "keywords": [
+                        "houses"
+                    ]
+                },
+                {
+                    "symbol": "🏠",
+                    "group": "Travel & Places",
+                    "subGroup": "place-building",
+                    "name": "house",
+                    "code": [
+                        127968
+                    ],
+                    "fullName": "HOUSE BUILDING",
+                    "version": 6,
+                    "keywords": [
+                        "home",
+                        "house"
+                    ]
+                }
             ],
             "fullName": "HOUSE BUILDINGS",
             "version": 7,
@@ -12904,11 +31867,101 @@ var data = {
                 128716
             ],
             "alternates": [
-                "🛌🏻",
-                "🛌🏼",
-                "🛌🏽",
-                "🛌🏾",
-                "🛌🏿"
+                {
+                    "symbol": "🛌",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person in bed",
+                    "code": [
+                        128716
+                    ],
+                    "fullName": "SLEEPING ACCOMMODATION",
+                    "version": 7,
+                    "keywords": [
+                        "hotel",
+                        "sleep"
+                    ]
+                },
+                {
+                    "symbol": "🛌🏻",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person in bed: light skin tone",
+                    "code": [
+                        128716,
+                        127995
+                    ],
+                    "fullName": "SLEEPING ACCOMMODATION, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 7,
+                    "keywords": [
+                        "hotel",
+                        "sleep"
+                    ]
+                },
+                {
+                    "symbol": "🛌🏼",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person in bed: medium-light skin tone",
+                    "code": [
+                        128716,
+                        127996
+                    ],
+                    "fullName": "SLEEPING ACCOMMODATION, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 7,
+                    "keywords": [
+                        "hotel",
+                        "sleep"
+                    ]
+                },
+                {
+                    "symbol": "🛌🏽",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person in bed: medium skin tone",
+                    "code": [
+                        128716,
+                        127997
+                    ],
+                    "fullName": "SLEEPING ACCOMMODATION, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 7,
+                    "keywords": [
+                        "hotel",
+                        "sleep"
+                    ]
+                },
+                {
+                    "symbol": "🛌🏾",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person in bed: medium-dark skin tone",
+                    "code": [
+                        128716,
+                        127998
+                    ],
+                    "fullName": "SLEEPING ACCOMMODATION, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 7,
+                    "keywords": [
+                        "hotel",
+                        "sleep"
+                    ]
+                },
+                {
+                    "symbol": "🛌🏿",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person in bed: dark skin tone",
+                    "code": [
+                        128716,
+                        127999
+                    ],
+                    "fullName": "SLEEPING ACCOMMODATION, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 7,
+                    "keywords": [
+                        "hotel",
+                        "sleep"
+                    ]
+                }
             ],
             "fullName": "SLEEPING ACCOMMODATION",
             "version": 7,
@@ -12987,11 +32040,101 @@ var data = {
                 128704
             ],
             "alternates": [
-                "🛀🏻",
-                "🛀🏼",
-                "🛀🏽",
-                "🛀🏾",
-                "🛀🏿"
+                {
+                    "symbol": "🛀",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person taking bath",
+                    "code": [
+                        128704
+                    ],
+                    "fullName": "BATH",
+                    "version": 6,
+                    "keywords": [
+                        "bathtub",
+                        "bath"
+                    ]
+                },
+                {
+                    "symbol": "🛀🏻",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person taking bath: light skin tone",
+                    "code": [
+                        128704,
+                        127995
+                    ],
+                    "fullName": "BATH, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
+                    "version": 6,
+                    "keywords": [
+                        "bathtub",
+                        "bath"
+                    ]
+                },
+                {
+                    "symbol": "🛀🏼",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person taking bath: medium-light skin tone",
+                    "code": [
+                        128704,
+                        127996
+                    ],
+                    "fullName": "BATH, EMOJI MODIFIER FITZPATRICK TYPE-3",
+                    "version": 6,
+                    "keywords": [
+                        "bathtub",
+                        "bath"
+                    ]
+                },
+                {
+                    "symbol": "🛀🏽",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person taking bath: medium skin tone",
+                    "code": [
+                        128704,
+                        127997
+                    ],
+                    "fullName": "BATH, EMOJI MODIFIER FITZPATRICK TYPE-4",
+                    "version": 6,
+                    "keywords": [
+                        "bathtub",
+                        "bath"
+                    ]
+                },
+                {
+                    "symbol": "🛀🏾",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person taking bath: medium-dark skin tone",
+                    "code": [
+                        128704,
+                        127998
+                    ],
+                    "fullName": "BATH, EMOJI MODIFIER FITZPATRICK TYPE-5",
+                    "version": 6,
+                    "keywords": [
+                        "bathtub",
+                        "bath"
+                    ]
+                },
+                {
+                    "symbol": "🛀🏿",
+                    "group": "Travel & Places",
+                    "subGroup": "hotel",
+                    "name": "person taking bath: dark skin tone",
+                    "code": [
+                        128704,
+                        127999
+                    ],
+                    "fullName": "BATH, EMOJI MODIFIER FITZPATRICK TYPE-6",
+                    "version": 6,
+                    "keywords": [
+                        "bathtub",
+                        "bath"
+                    ]
+                }
             ],
             "fullName": "BATH",
             "version": 6,

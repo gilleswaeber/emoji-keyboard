@@ -1,5 +1,3 @@
-
-
 declare module Data{
 	interface DataStatic{
 		emojis: Emoji[];
@@ -14,7 +12,8 @@ declare module Data{
 		fullName: string,
 		name?: string,
 		keywords?: string[],
-		fallbackIcon?: boolean
+		fallbackIcon?: boolean,
+		alternates?: Data.Emoji[]
 	}
 
 	interface Keyboard{
