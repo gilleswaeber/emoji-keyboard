@@ -1,7 +1,3 @@
-/// <reference path="../../lib/jquery/jquery.d.ts" />
-/// <reference path="../wrk/Keyboard.ts" />
-
-
 module View{
 	var LOCALES: {[locale: string]: {[id: number]: string}} = {};
 	LOCALES['default'] = {

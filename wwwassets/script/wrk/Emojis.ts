@@ -1,6 +1,3 @@
-/// <reference path="data.d.ts" />
-/// <reference path="../../lib/underscore/underscore.d.ts" />
-
 module Workers{
 
 	export module Emojis{

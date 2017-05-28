@@ -26,6 +26,6 @@ class Main{
 
 var main: Main;
 $(document).ready(()=>{
-	main = document.ahk = new Main(document.querySelector('main') as HTMLElement);
+	main = (<any>document).ahk = new Main(document.querySelector('main') as HTMLElement);
 	setTimeout(()=>AHK("Ready"), 0);
 });
