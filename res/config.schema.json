@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
 	"properties": {
 		"addons":{
@@ -96,13 +96,38 @@
 				},
 				"required": ["name", "symbol", "content"]
 			}
-		}
-	},
-	"nogroup": {
-		"description": "Disable automatic grouping",
-		"type": "array",
-		"items": {
-			"type": "string"
+		},
+		"nogroup": {
+			"description": "Disable automatic grouping",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"keymaps": {
+			"description": "Additional keymaps",
+			"type": "object",
+			"additionalProperties": {
+				"type": "object",
+				"required": ["name", "keys"],
+				"additionalProperties": false,
+				"properties": {
+					"name": {
+						"description": "Display name",
+						"type": "string"
+					},
+					"keys": {
+						"description": "Use scancode as index",
+						"type": "object",
+						"additionalProperties": false,
+						"patternProperties": {
+							"^[0-9]+$":{
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
 		}
 	},
     "required": [

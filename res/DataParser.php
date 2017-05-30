@@ -78,7 +78,6 @@ class DataParser{
 		$annotations = [];
 
 		$xml = simplexml_load_file($this->cldrdir.'common/annotations/en.xml');
-		$annotations ;
 		foreach ($xml->annotations->annotation as $annotation) {
 			$char = $this->ord($annotation['cp']);
 			if(!isset($annotations[$char])) $annotations[$char] = [];
@@ -115,6 +114,32 @@ class DataParser{
 
 		file_put_contents('data/unidata.json', json_encode($unidata, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
 		return $unidata;
+	}
+
+	function parseKeymaps() {
+		$keymaps = [];
+		$map = [];
+
+		$platform = simplexml_load_file($this->cldrdir.'keyboards/windows/_platform.xml');
+		foreach($platform->hardwareMap->map as $mapping){
+			$map[''.$mapping['iso']] = intval($mapping['keycode']);
+		}
+
+		foreach(scandir($this->cldrdir.'keyboards/windows') as $file){
+			if(!preg_match("#^(.+)-t-k0-windows(-?.*)\.xml$#", $file, $m)) continue;
+			$keys = [];
+			$kbxml = simplexml_load_file($this->cldrdir.'keyboards/windows/'.$file);
+			foreach($kbxml->keyMap[0]->map as $key){
+				$keys[$map[''.$key['iso']]] = ''.$key['to'];
+			}
+			$keymaps[$m[1].$m[2]] = [
+				'name' => ''.$kbxml->names->name['value'],
+				'keys' => $keys
+			];
+		}
+
+		file_put_contents('data/keymaps.json', json_encode($keymaps, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+		return $keymaps;
 	}
 
 	static function parseConfig() {

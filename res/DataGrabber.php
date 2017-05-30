@@ -67,14 +67,26 @@ class DataGrabber{
 		$this->create_dir($cldrdir);
 
 		$this->download_file('http://www.unicode.org/Public/cldr/'.$latestcldr.'/core.zip', $cldrdir.'core.zip');
+		$this->download_file('http://www.unicode.org/Public/cldr/'.$latestcldr.'/keyboards.zip', $cldrdir.'keyboards.zip');
 
 		echo "Extracting required files...";
+
 		$zip = new ZipArchive();
 		$zip->open($cldrdir.'core.zip');
 		if(!$zip->extractTo($cldrdir, [
 			'common/annotations/en.xml',
 		])) $this->err('Could not extract files');
 		$zip->close();
+
+		$zip = new ZipArchive();
+		$zip->open($cldrdir.'keyboards.zip');
+		$zipContent = [];
+		for($i = 0; $i < $zip->numFiles; $i++) $zipContent[] = $zip->getNameIndex($i);
+		if(!$zip->extractTo($cldrdir, 
+			array_values(array_filter($zipContent, function($f){return preg_match('#^keyboards/windows/.+\.xml$#', $f);}))
+		)) $this->err('Could not extract files');
+		$zip->close();
+
 		echo "\n";
 		return $cldrdir;
 	}

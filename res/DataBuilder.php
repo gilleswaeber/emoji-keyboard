@@ -8,6 +8,7 @@ class DataBuilder{
 	private $annotations;
 	private $unidata;
 	private $config;
+	private $keymaps;
 
 	// Don't use these characters as part of the full name
 	private $ignoreList = [
@@ -24,6 +25,7 @@ class DataBuilder{
 		$this->annotations = $dp->parseAnnotations();
 		$this->unidata = $dp->parseUnidata();
 		$this->config = $dp->parseConfig();
+		$this->keymaps = $dp->parseKeymaps();
 	}
 
 	function applySecondPass(&$e, &$groups = []){
@@ -115,14 +117,17 @@ class DataBuilder{
 			}
 		}
 
+		$keymaps = $this->keymaps;
+		if(isset($this->config->keymaps)) $keymaps = array_merge($keymaps, (array) $this->config->keymaps);
+
 		$data = [
 			'emojis' => array_values($emojis),
-			'keyboards' => $keyboards
+			'keyboards' => $keyboards,
+			'keymaps' => $keymaps
 		];
-		file_put_contents('data/emojis.json', json_encode($data, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
-		file_put_contents('data/emojis.min.json', json_encode($data));
-		file_put_contents('data/data.js', "// Use the builder inside the res folder to edit this file\nvar data = ".json_encode($data, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
-		echo "File written in data/emojis.json\n";
+		file_put_contents('data/data.exp.js', "// Use the builder inside the res folder to edit this file\nvar data = ".json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+		file_put_contents('data/data.js', "// Use the builder inside the res folder to edit this file\nvar data = ".json_encode($data, JSON_UNESCAPED_UNICODE));
+		echo "File written in data/data.js\n";
 		return $data;
 	}
 }
