@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var Main = (function () {
     function Main(base) {
         this.base = base;
@@ -102,6 +107,7 @@ var Workers;
             this.page = 0;
             this.fixedKeys = [];
             this.pagedKeys = [];
+            this.pageKeys = {};
             this.fixedKeys.push(new Workers.BlankKey());
             this.multipage = this.keys.length > 46;
             if (this.multipage) {
@@ -111,12 +117,13 @@ var Workers;
                 }
                 var perpage = 45 - Math.min(this.pages, 10);
                 for (var i = 0; i < Math.min(this.pages, 10); i++) {
-                    this.fixedKeys.push(new Workers.PageKey(i));
+                    this.fixedKeys.push(this.pageKeys[i] = new Workers.PageKey(i));
                 }
                 var keysStack = this.keys.slice(0);
                 for (var i = 0; i < this.pages; i++) {
                     this.pagedKeys[i] = keysStack.splice(0, perpage + 1);
                 }
+                this.pageKeys[0].active = true;
             }
             else {
                 this.fixedKeys = this.fixedKeys.concat(this.keys);
@@ -160,6 +167,8 @@ var Workers;
         };
         Keyboard.prototype.setPage = function (page) {
             this.page = page;
+            this.fixedKeys.forEach(function (k) { return k.active = false; });
+            this.pageKeys[page].active = true;
         };
         return Keyboard;
     }());
@@ -201,6 +210,7 @@ var Workers;
         function Key(name, symbol) {
             this.name = name;
             this.symbol = symbol;
+            this.active = false;
         }
         Key.prototype.getName = function () {
             return this.name;
@@ -415,7 +425,7 @@ var View;
             if (key.getName() == "back") {
                 var keyType = " back";
             }
-            return $('<div class="key' + keyType + (key.hasAlternate() ? ' alt' : '') + '">')
+            return $('<div class="key' + keyType + (key.hasAlternate() ? ' alt' : '') + (key.active ? ' active' : '') + '">')
                 .append($('<div class="keyname">').text(keysLocale[key.key]))
                 .append($('<div class="name">').text(key.getName()))
                 .append(key.getSymbolDiv())

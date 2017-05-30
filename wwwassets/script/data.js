@@ -43862,91 +43862,6 @@ var data = {
             "fullName": "WAVING BLACK FLAG, SKULL AND CROSSBONES",
             "version": 7,
             "fallbackIcon": true
-        },
-        {
-            "symbol": "🏻",
-            "group": "Smileys & People",
-            "subGroup": "skin-tone",
-            "name": "Skin type-1-2",
-            "keywords": [
-                "emoji modifier",
-                "fitzpatrick",
-                "skin",
-                "tone"
-            ],
-            "code": [
-                127995
-            ],
-            "fullName": "EMOJI MODIFIER FITZPATRICK TYPE-1-2",
-            "version": 8
-        },
-        {
-            "symbol": "🏼",
-            "group": "Smileys & People",
-            "subGroup": "skin-tone",
-            "name": "Skin type-3",
-            "keywords": [
-                "emoji modifier",
-                "fitzpatrick",
-                "skin",
-                "tone"
-            ],
-            "code": [
-                127996
-            ],
-            "fullName": "EMOJI MODIFIER FITZPATRICK TYPE-3",
-            "version": 8
-        },
-        {
-            "symbol": "🏽",
-            "group": "Smileys & People",
-            "subGroup": "skin-tone",
-            "name": "Skin type-4",
-            "keywords": [
-                "emoji modifier",
-                "fitzpatrick",
-                "skin",
-                "tone"
-            ],
-            "code": [
-                127997
-            ],
-            "fullName": "EMOJI MODIFIER FITZPATRICK TYPE-4",
-            "version": 8
-        },
-        {
-            "symbol": "🏾",
-            "group": "Smileys & People",
-            "subGroup": "skin-tone",
-            "name": "Skin type-5",
-            "keywords": [
-                "emoji modifier",
-                "fitzpatrick",
-                "skin",
-                "tone"
-            ],
-            "code": [
-                127998
-            ],
-            "fullName": "EMOJI MODIFIER FITZPATRICK TYPE-5",
-            "version": 8
-        },
-        {
-            "symbol": "🏿",
-            "group": "Smileys & People",
-            "subGroup": "skin-tone",
-            "name": "Skin type-6",
-            "keywords": [
-                "emoji modifier",
-                "fitzpatrick",
-                "skin",
-                "tone"
-            ],
-            "code": [
-                127999
-            ],
-            "fullName": "EMOJI MODIFIER FITZPATRICK TYPE-6",
-            "version": 8
         }
     ],
     "keyboards": [
@@ -44035,10 +43950,6 @@ var data = {
                 {
                     "group": "Smileys & People",
                     "subGroup": "person-role"
-                },
-                {
-                    "group": "Smileys & People",
-                    "subGroup": "skin-tone"
                 }
             ]
         },

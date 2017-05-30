@@ -17,6 +17,10 @@ body, html{
 	box-shadow: 0 .5vw #FFC83D inset;
 }
 
+.key.active{
+	box-shadow: 0 .5vw #000 inset;
+}
+
 .key .name{
 	text-shadow: .1vw .1vw 0 #fff, .1vw -.1vw 0 #fff, -.1vw .1vw 0 #fff, -.1vw -.1vw 0 #fff;
 }

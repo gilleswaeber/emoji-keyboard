@@ -2,6 +2,7 @@ module Workers{
 
 	export abstract class Key{
 		public key: number;
+		public active: boolean = false;
 		protected keyboard: Keyboard;
 
 		constructor(

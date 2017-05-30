@@ -105,7 +105,7 @@ module View{
 			if (key instanceof Workers.CharKey) { var keyType = " char"; }
 			if (key instanceof Workers.BlankKey) { var keyType = " empty"; }
 			if (key.getName() == "back") { var keyType = " back"; }
-            return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + '">')
+            return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + (key.active?' active':'') + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
 				.append(key.getSymbolDiv())

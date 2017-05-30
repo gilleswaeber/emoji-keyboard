@@ -12,6 +12,7 @@ module Workers{
 		private page: number = 0;
 		private fixedKeys: Key[] = [];
 		private pagedKeys: Key[][] = [];
+		private pageKeys: _.Dictionary<Key> = {};
 		private parent: Keyboard;
 
 		constructor(
@@ -29,12 +30,13 @@ module Workers{
 				}
 				var perpage = 45-Math.min(this.pages,10);
 				for(var i=0; i<Math.min(this.pages,10); i++){
-					this.fixedKeys.push(new PageKey(i));
+					this.fixedKeys.push(this.pageKeys[i] = new PageKey(i));
 				}
 				var keysStack = this.keys.slice(0);
 				for(var i=0; i<this.pages; i++){
 					this.pagedKeys[i] = keysStack.splice(0, perpage+1);
 				}
+				this.pageKeys[0].active = true;
 			}else{
 				this.fixedKeys = this.fixedKeys.concat(this.keys);
 			}
@@ -79,6 +81,8 @@ module Workers{
 
 		setPage(page: number){
 			this.page = page;
+			this.fixedKeys.forEach((k) => k.active = false);
+			this.pageKeys[page].active = true;
 		}
 	}
 
