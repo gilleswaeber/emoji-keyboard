@@ -29,11 +29,5 @@ The flags are currently not supported by Windows. You can still use them in 3rd-
 
 Keymaps
 -------
-If you use an other keymap, you can also define it in the webapp.json file under keymap. Below are the currently supported keymaps. Changing the keymap requires a restart.
-
-Group  | Keymaps
--------|--------
-QWERTY | en-US
-QWERTZ | de-DE, de-CH, fr-CH
-AZERTY | fr-FR
-others | en-DVORAK, blank
+This application supports 209 different keymaps. You can define it in the webapp.json file under keymap. Changing the keymap requires a restart.
+Some keymaps are: en, blank, fr-CH, en-dvorak, uk, etc. See all keymaps in the [keymap file](keymaps.md).

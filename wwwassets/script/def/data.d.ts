@@ -3,6 +3,8 @@ declare module Data{
 		emojis: Emoji[];
 
 		keyboards: Keyboard[];
+
+		keymaps: _.Dictionary<Keymap>
 	}
 
 	interface Emoji{
@@ -24,6 +26,11 @@ declare module Data{
 			group: string,
 			subGroup: string
 		}[]
+	}
+
+	interface Keymap{
+		name: string,
+		keys: _.Dictionary<string>
 	}
 }
 declare var data: Data.DataStatic;

@@ -16,6 +16,12 @@ class DataParser{
 		$this->ucddir = $dataGrabber->download_ucd();
 	}
 
+	// @see https://stackoverflow.com/questions/9361303/can-i-get-the-unicode-value-of-a-character-or-vise-versa-with-php
+	static function chr($code){
+    	return iconv('UCS-4LE', 'UTF-8', pack('V', $code));
+	}
+
+	// @see https://stackoverflow.com/questions/9361303/can-i-get-the-unicode-value-of-a-character-or-vise-versa-with-php
 	static function ord($str){
 		return unpack('V', iconv('UTF-8', 'UCS-4LE', $str))[1];
 	}
@@ -130,7 +136,7 @@ class DataParser{
 			$keys = [];
 			$kbxml = simplexml_load_file($this->cldrdir.'keyboards/windows/'.$file);
 			foreach($kbxml->keyMap[0]->map as $key){
-				$keys[$map[''.$key['iso']]] = ''.$key['to'];
+				$keys[$map[''.$key['iso']]] = preg_replace_callback("#\\\\u\{([0-9A-F]+)\}#", function($m){return self::chr(hexdec($m[1]));}, ''.$key['to']);
 			}
 			$keymaps[$m[1].$m[2]] = [
 				'name' => ''.$kbxml->names->name['value'],
