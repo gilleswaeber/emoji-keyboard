@@ -71,8 +71,12 @@ main > section{
 	transition: ease .05s;
 }
 
-.key.back .name{
+.key.char .name{
 	display: none;
+}
+
+.key.char .symbol{
+	transform: scale(1.2);
 }
 
 .key:hover .name{

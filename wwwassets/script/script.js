@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var Main = (function () {
     function Main(base) {
         this.base = base;
@@ -349,6 +354,7 @@ var View;
     var View = (function () {
         function View(base) {
             this.base = base;
+            this.title = "Emoji Keyboard";
             this.jBase = $(base);
             this.jBase.empty();
             this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
@@ -357,6 +363,9 @@ var View;
             this.keyboard = keyboard;
             keyboard.setKeys(KEYS);
             this.refresh();
+            this.title = "Emoji Keyboard - " + this.toTitleCase(keyboard.getName());
+            document.title = this.title;
+            AHK("SetTitle", this.title);
         };
         View.prototype.input = function (key, shift) {
             if (this.idxKeys[key]) {
@@ -389,6 +398,16 @@ var View;
                 });
             });
         };
+        View.prototype.showStatus = function (str) {
+            if (!str.length)
+                return this.hideStatus();
+            document.title = this.title + ": " + this.toTitleCase(str);
+            AHK("SetTitle", this.title + ": " + this.toTitleCase(str));
+        };
+        View.prototype.hideStatus = function () {
+            document.title = this.title;
+            AHK("SetTitle", this.title);
+        };
         View.prototype.showKey = function (key) {
             var _this = this;
             var keyType = " action";
@@ -412,7 +431,11 @@ var View;
                 .contextmenu(function (e) {
                 e.preventDefault();
                 key.actAlternate(_this);
-            });
+            })
+                .mouseover(function () { return _this.showStatus(key.getName()); });
+        };
+        View.prototype.toTitleCase = function (str) {
+            return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
         };
         return View;
     }());

@@ -2,8 +2,6 @@ Emoji Keyboard (with Emoji 4.0 support)
 ==============
 ![Screenshot](http://i.imgur.com/LkvfZJI.png)
 
-Copyright (c) 2017 [Gilles Waeber](http://www.gilleswaeber.ch), under MIT License
-
 How to use
 ----------
 Install [Autohotkey](https://autohotkey.com/) and then launch App.ahk. It will then stay in system tray until you call it.

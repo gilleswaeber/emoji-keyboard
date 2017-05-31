@@ -81,15 +81,13 @@ clipSaved =
 bClipSaved := False
 
 Credits(){
-	Run, http://www.gilleswaeber.ch
+	Run, https://github.com/romligCH/emoji-keyboard
 }
 Reload() {
 	Reload
 }
-Run(t) {
-	Run, %t%
-}
 Send(t) {
+	SetTimer, RestoreClipboard, Off
 	global clipSaved, bClipSaved
 	if(not bClipSaved){
 		clipSaved := ClipboardAll
@@ -131,6 +129,9 @@ Toggle(){
 Ready(){
 	global j
 	getDOM().document.ahk.setKeymap(j.keymap)
+}
+SetTitle(t){
+	Gui __Webapp_:Show, NA, %t%
 }
 
 #If vVisible

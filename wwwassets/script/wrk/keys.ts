@@ -24,7 +24,7 @@ module Workers{
 				container.text(this.symbol);
 			else{
 				let symbol = this.getSymbol();
-				let name = [];
+				let name: string[] = [];
 				for(var i=0; i<symbol.length; i++){
 					let c = symbol.codePointAt(i).toString(16);
 					if(c != 'fe0f') name.push(c);

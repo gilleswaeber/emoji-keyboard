@@ -3,7 +3,7 @@
 	"width":			764,
 	"height":			240,
 	"monitor":			1,
-	"keymap":			"en-US",
+	"keymap":			"en",
 	"theme":			"light",
 	"transparent":		"true",
 	"protocol":			"app",

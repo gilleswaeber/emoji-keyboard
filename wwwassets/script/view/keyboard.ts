@@ -14,10 +14,10 @@ module View{
 	var keysLocale: {[id: number]: string} = defaultLocale;
 	const KEYS: number[] = [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
 	const KEYMAP: number[][] = [
-		[41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-		[15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
-		[58, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43],
-		[42, 86, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 0]
+		[41,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13], //, 59, 60, 61
+		[15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], //, 62, 63, 64
+		[58, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43], //, 65, 66, 67
+		[42, 86, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,  0]  //, 68, 87, 88
 	];
 	const BLANKKEY: Workers.BlankKey = new Workers.BlankKey();
 
@@ -25,6 +25,7 @@ module View{
 		private jBase: JQuery;
 		private keyboard: Workers.Keyboard;
 		private idxKeys: {[id: number]: Workers.Key};
+		private title = "Emoji Keyboard";
 
 		private jKeyboard: JQuery;
 
@@ -42,6 +43,10 @@ module View{
 			keyboard.setKeys(KEYS);
 
 			this.refresh();
+
+			this.title = "Emoji Keyboard - " + this.toTitleCase(keyboard.getName());
+			document.title = this.title;
+			AHK("SetTitle", this.title);
 		}
 
 		input(key: number, shift: boolean): void{
@@ -72,6 +77,17 @@ module View{
 			})
 		}
 
+		showStatus(str: string): void{
+			if(!str.length) return this.hideStatus();
+			document.title = this.title + ": " + this.toTitleCase(str);
+			AHK("SetTitle", this.title + ": " + this.toTitleCase(str));
+		}
+
+		hideStatus(): void{
+			document.title = this.title;
+			AHK("SetTitle", this.title);
+		}
+
 		private showKey(key: Workers.Key): JQuery{
 			var keyType = " action";
 			if (key instanceof Workers.CharKey) { var keyType = " char"; }
@@ -88,7 +104,13 @@ module View{
 				.contextmenu((e)=>{
 					e.preventDefault();
 					key.actAlternate(this);
-				});
+				})
+				.mouseover(() => this.showStatus(key.getName()))
+				//.mouseout(() => this.hideStatus());
+		}
+
+		private toTitleCase(str: string){
+			return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 		}
 	}
 
