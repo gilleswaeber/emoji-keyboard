@@ -29,12 +29,10 @@
             "7\ufe0f\u20e3",
             "8\ufe0f\u20e3",
             "9\ufe0f\u20e3"
-		]
+		],
+		"version": 10
 	},
-	"forceVersion": {
-		"emoji": "4.0"
-	},
-	"nogroup": ["family","kiss","couple with heart"],
+	"nogroup": ["family","kiss","couple with heart","house","cricket"],
 	"keyboards": [
 		{"name":"(Un)Happy", "symbol":"😀", "content":[
 			{"group":"Smileys & People", "subGroup":"face-positive"},

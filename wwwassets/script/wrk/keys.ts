@@ -27,10 +27,10 @@ module Workers{
 				let name: string[] = [];
 				for(var i=0; i<symbol.length; i++){
 					let c = symbol.codePointAt(i).toString(16);
-					if(c != 'fe0f') name.push(c);
+					name.push(c);
 					if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
 				}
-				container.append($('<img>').attr('src', 'img/'+name.join('-')+'.svg'));
+				container.append($('<img>').attr('src', 'img/'+name.join('-')+'.svg').attr('alt', this.symbol));
 			}
 			return container.get(0) as HTMLDivElement;
 		}

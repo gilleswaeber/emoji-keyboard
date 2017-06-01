@@ -64,7 +64,7 @@ class DataBuilder{
 		$groups = [];
 
 		// First pass
-		foreach ($this->keys as $key) {
+		foreach ($this->keys as $n => $key) {
 			if($key['Type'] != 'fully-qualified') continue;
 			
 			$data = [
@@ -75,15 +75,17 @@ class DataBuilder{
 				'code' => $key['Code']
 			];
 
+			$basename = explode(': ', $key['Name'])[0];
 			if(
-				isset($emojis[explode(': ', $key['Name'])[0]]) &&
-				(!isset($this->config->nogroup) || !in_array(explode(': ', $key['Name'])[0], $this->config->nogroup))
+				isset($emojis[$basename]) &&
+				(!isset($this->config->nogroup) || !in_array($basename, $this->config->nogroup))
 			){
 				$base = explode(': ', $key['Name'])[0];
 				if(!isset($emojis[$base]['alternates'])) $emojis[$base]['alternates'] = [$emojis[$base]];
 				$emojis[$base]['alternates'][] = $data;
 			} else {
-				$emojis[$key['Name']] = $data;
+				if(isset($emojis[$key['Name']])) $emojis[$key['Name'].$n] = $data;
+				else $emojis[$key['Name']] = $data;
 			}
 		}
 		if(isset($this->config->addons)) foreach ($this->config->addons as $addon) {

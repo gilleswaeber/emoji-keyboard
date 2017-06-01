@@ -228,12 +228,11 @@ var Workers;
                 var name_1 = [];
                 for (var i = 0; i < symbol.length; i++) {
                     var c = symbol.codePointAt(i).toString(16);
-                    if (c != 'fe0f')
-                        name_1.push(c);
+                    name_1.push(c);
                     if (symbol.charCodeAt(i) != symbol.codePointAt(i))
                         i++;
                 }
-                container.append($('<img>').attr('src', 'img/' + name_1.join('-') + '.svg'));
+                container.append($('<img>').attr('src', 'img/' + name_1.join('-') + '.svg').attr('alt', this.symbol));
             }
             return container.get(0);
         };

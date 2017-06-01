@@ -25,6 +25,11 @@ body, html{
 	text-shadow: .1vw .1vw 0 #fff, .1vw -.1vw 0 #fff, -.1vw .1vw 0 #fff, -.1vw -.1vw 0 #fff;
 }
 
+.key.char .symbol img{
+	box-shadow: 0px 0px .2em black;
+	background: white;
+}
+
 .key:not(.empty):hover{
 	color: #000;
 }
