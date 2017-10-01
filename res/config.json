@@ -32,6 +32,11 @@
 		],
 		"version": 10
 	},
+	"forceVersion": {
+		"cldr": "31.0.1",
+		"emoji": "5.0",
+		"ucd": "10.0.0"
+	},
 	"nogroup": ["family","kiss","couple with heart","house","cricket"],
 	"keyboards": [
 		{"name":"(Un)Happy", "symbol":"😀", "content":[

@@ -1,1 +1,2 @@
-/res/data
+/res/data/*
+!/res/data/data.exp.js
