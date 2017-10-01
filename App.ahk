@@ -1,6 +1,12 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+; Check for AHK version
+if (A_AhkVersion < "1.1.21") {
+	MsgBox, 48, AutoHotkey %A_AhkVersion%, Please update AutoHotkey. Version 1.1.21+ is required.
+	ExitApp, 1
+}
+
 #SingleInstance force
 ;#NoTrayIcon
 SendMode Input
