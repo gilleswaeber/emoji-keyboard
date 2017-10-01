@@ -5,9 +5,5 @@
 	"monitor":			1,
 	"keymap":			"en",
 	"theme":			"light",
-	"transparent":		"true",
-	"protocol":			"app",
-	"protocol_call":	"app_call",
-	"html_url":			".\\wwwassets\\",
-	"NavComplete_call":	"app_page"
+	"transparent":		"true"
 }
