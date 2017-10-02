@@ -1,11 +1,11 @@
 <?php
 
+// Jump into script directory
+chdir(__DIR__);
+
 include_once 'DataParser.php';
 include_once 'DataGrabber.php';
 include_once 'DataBuilder.php';
-
-// Jump into script directory
-chdir(__DIR__);
 
 $dg = new DataGrabber();
 $dg->create_dir('data');
