@@ -10,32 +10,50 @@
 
 		{"symbol": "🏴‍☠️", "group": "Flags", "subGroup": "non-standard", "name": "*Pirate flag", "keywords": ["flag", "pirate", "skull", "non standard"]}
 	],
-	"iconFallback": {
-		"characters": [
-			{"from": "🇦", "to": "🇿🇿"},
-			{"from": "\ud83c\udff4", "to": "\ud83c\udff4🇿"}
-		],
-		"sequences": [
-			"🏴‍☠️",
-            "#\ufe0f\u20e3",
-            "*\ufe0f\u20e3",
-            "0\ufe0f\u20e3",
-            "1\ufe0f\u20e3",
-            "2\ufe0f\u20e3",
-            "3\ufe0f\u20e3",
-            "4\ufe0f\u20e3",
-            "5\ufe0f\u20e3",
-            "6\ufe0f\u20e3",
-            "7\ufe0f\u20e3",
-            "8\ufe0f\u20e3",
-            "9\ufe0f\u20e3"
-		],
-		"version": 10
-	},
+	"iconFallback": [
+		{
+			"windows": "10",
+			"version": 5
+		},
+		{
+			"windows": "10.0.14393",
+			"comments": "Windows Anniversary Update",
+			"version": 9
+		},
+		{
+			"windows": "10.0.15063",
+			"comments": "Windows Creator Update",
+			"emojiVersion": 4
+		},
+		{
+			"windows": "99",
+			"comment": "Not supported on Windows",
+			"characters": [
+				{"from": "🇦", "to": "🇿🇿"},
+				{"from": "\ud83c\udff4", "to": "\ud83c\udff4🇿"}
+			],
+			"sequences": [
+				"🏴‍☠️",
+				"#\ufe0f\u20e3",
+				"*\ufe0f\u20e3",
+				"0\ufe0f\u20e3",
+				"1\ufe0f\u20e3",
+				"2\ufe0f\u20e3",
+				"3\ufe0f\u20e3",
+				"4\ufe0f\u20e3",
+				"5\ufe0f\u20e3",
+				"6\ufe0f\u20e3",
+				"7\ufe0f\u20e3",
+				"8\ufe0f\u20e3",
+				"9\ufe0f\u20e3"
+			],
+			"version": 10
+		}
+	],
 	"forceVersion": {
 		"cldr": "31.0.1",
 		"emoji": "5.0",
-		"ucd": "10.0.0"
+		"ucd": "11.0.0"
 	},
 	"nogroup": ["family","kiss","couple with heart","house","cricket"],
 	"keyboards": [

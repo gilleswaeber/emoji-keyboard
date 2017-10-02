@@ -22,10 +22,59 @@ class DataBuilder{
 	function __construct($dp) {
 		$this->keys = $dp->parseKeys();
 		$this->chars = $dp->parseAttributes();
+		$this->sequences = $dp->parseSequences();
 		$this->annotations = $dp->parseAnnotations();
 		$this->unidata = $dp->parseUnidata();
 		$this->config = $dp->parseConfig();
 		$this->keymaps = $dp->parseKeymaps();
+
+		$this->versions = $this->buildVersions();
+	}
+	
+	function buildVersions(){
+		$versions = [];
+
+		foreach($this->chars['previous'] as $v => $chars){
+			foreach($chars as $char => $data){
+				if(!isset($versions[$char]) || version_compare($v, '<', $versions[$char])){
+					$versions[$char] = $v;
+				}
+			}
+		}
+
+		foreach($this->sequences as $v => $sequences){
+			foreach($sequences as $sequence){
+				if(!isset($versions[$sequence]) || version_compare($v, '<', $versions[$sequence])){
+					$versions[$sequence] = $v;
+				}
+			}
+		}
+
+		file_put_contents('data/versions.json', json_encode($versions, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+		return $versions;
+	}
+
+	function findEmojiVersion($e){
+		if(isset($this->versions[implode('-', $e['code'])])) return floatval($this->versions[implode('-', $e['code'])]);
+		else for($i = count($e['code']); $i > 0; $i--){
+			$code = implode('-', array_slice($e['code'], 0, $i));
+			if(isset($this->versions[$code])) return $this->versions[$code];
+		}
+		echo "[WARNING] Emoji Version not found for ".implode('-', $e['code']).": ".$e['symbol']."\n";
+		return "0";
+	}
+
+	function setRequiredVersion(&$e){
+		if(isset($this->config->iconFallback)) foreach ($this->config->iconFallback as $rules){
+			if(
+				(isset($rules->version) && $e['version'] >= $rules->version) ||
+				(isset($rules->emojiVersion) && $e['emojiVersion'] >= $rules->emojiVersion) ||
+				(isset($rules->sequences) && in_array($e['symbol'], $rules->sequences)) ||
+				(isset($rules->characters) && count(array_filter($rules->characters, function($c)use($e){
+					return $e['symbol'] > $c->from && $e['symbol'] <= $c->to;
+				})) > 0)
+			) $e['requiredVersion'] = $rules->windows;
+		}
 	}
 
 	function applySecondPass(&$e, &$groups = []){
@@ -40,20 +89,14 @@ class DataBuilder{
 				return !in_array($code, $this->ignoreList);
 			})));
 		
-		$e['version'] = floatval($this->chars[$e['code'][0]]['Version']);
+		$e['version'] = floatval($this->chars['latest'][$e['code'][0]]['Version']);
+		$e['emojiVersion'] = $this->findEmojiVersion($e);
 		
 		if(!isset($e['keywords']) && isset($this->annotations[$e['code'][0]]['keywords']))
 			$e['keywords'] = $this->annotations[$e['code'][0]]['keywords'];
 
-		if(isset($this->config->iconFallback)){
-			if(
-				(isset($this->config->iconFallback->version) && $e['version'] >= $this->config->iconFallback->version) ||
-				(isset($this->config->iconFallback->sequences) && in_array($e['symbol'], $this->config->iconFallback->sequences)) ||
-				(isset($this->config->iconFallback->characters) && count(array_filter($this->config->iconFallback->characters, function($c)use($e){
-					return $e['symbol'] > $c->from && $e['symbol'] <= $c->to;
-				})) > 0)
-			) $e['fallbackIcon'] = true;
-		}
+		$this->setRequiredVersion($e);
+
 		if(isset($e['alternates'])) foreach($e['alternates'] as &$a) $this->applySecondPass($a);
 	}
 
@@ -105,13 +148,24 @@ class DataBuilder{
 		echo "Got ".count($emojis)." base emojis\n";
 
 		// Keyboards
-		foreach ($keyboards as $k) {
+		foreach ($keyboards as &$k) {
 			foreach ($k->content as $c) {
 				if(!isset($groups[$c->group])) echo "[WARNING] Keyboard ".$k->name.": group ".$c->group." doesn't exist\n";
 				elseif(!isset($groups[$c->group][$c->subGroup])) echo "[WARNING] Keyboard ".$k->name.": subgroup ".$c->group.'.'.$c->subGroup." doesn't exist\n";
 				else $groups[$c->group][$c->subGroup]++;
 			}
+			
+			$e = [
+				'symbol' => $k->symbol,
+				'code' => array_map('DataParser::ord', preg_split("##u", $e['symbol'], -1, PREG_SPLIT_NO_EMPTY)),
+			];
+			$e['version'] = floatval($this->chars['latest'][$e['code'][0]]['Version']);
+			$e['emojiVersion'] = $this->findEmojiVersion($e);
+			$this->setRequiredVersion($e);
+
+			if(isset($e['requiredVersion'])) $k->requiredVersion = $e['requiredVersion'];
 		}
+		
 		foreach ($groups as $g => $sub) {
 			foreach ($sub as $s => $n) {
 				if($n == 0) echo "[WARNING] Subgroup $g.$s is not used on any keyboard.\n";

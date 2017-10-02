@@ -21,30 +21,42 @@
 			}
 		},
 		"iconFallback": {
-			"type": "object",
-			"properties": {
-				"version": {
-					"description": "Use fallback icon if character version >= number",
-					"type": "number"
-				},
-				"characters": {
-					"description": "Use fallback icon for a given text range",
-					"type": "array",
-					"items": {
-						"properties": {
-							"from": {"type": ["string", "number"]},
-							"to": {"type": ["string", "number"]}
-						},
-						"required": ["from", "to"]
+			"type": "array",
+			"items": {
+				"properties": {
+					"windows":{
+						"description": "Windows version in which the elements are supported",
+						"type": "string",
+						"default": "10"
+					},
+					"version": {
+						"description": "Use fallback icon if unicode version >= number",
+						"type": "number"
+					},
+					"emojiVersion": {
+						"description": "Use fallback icon if emoji version >= number",
+						"type": "number"
+					},
+					"characters": {
+						"description": "Use fallback icon for a given text range",
+						"type": "array",
+						"items": {
+							"properties": {
+								"from": {"type": ["string", "number"]},
+								"to": {"type": ["string", "number"]}
+							},
+							"required": ["from", "to"]
+						}
+					},
+					"sequences": {
+						"description": "Use fallback icon for given sequences or characters",
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
 					}
 				},
-				"sequences": {
-					"description": "Use fallback icon for given sequences or characters",
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
+				"required": ["windows"]
 			}
 		},
 		"forceVersion":{
@@ -73,10 +85,6 @@
 					},
 					"symbol": {
 						"type": "string"
-					},
-					"fallbackIcon": {
-						"type": "boolean",
-						"default": false
 					},
 					"content":{
 						"type": "array",

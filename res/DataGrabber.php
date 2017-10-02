@@ -18,25 +18,43 @@ class DataGrabber{
 	}
 
 	private function find_latest($folder) {
-		$versions = scandir($folder);
-		if(!$versions){
+		$versions = $this->find_versions;
+
+		// Folders should be named x((.y)?.z)?
+		$latest = '0';
+		foreach($versions as $v){
+			if(version_compare($v, $latest, '>=')){
+				$latest = $v;
+			}
+		}
+		echo "Found ".count($versions)." folders, latest seems to be $latest.\n";
+		return $latest;
+	}
+	
+	private function find_versions($folder) {
+		$folders = scandir($folder);
+		if(!$folders){
 			echo "[ERROR] Could not connect to unicode website.\n";
 			echo "Please check that ftp support is enabled and that $folder is accessible and try again.\n";
 			die();
 		}
 
-		// Folders should be named x((.y)?.z)?
-		$latest = '0'; $found = 0;
-		foreach($versions as $v){
+		$versions = [];
+
+		// Version folders should be named x((.y)?.z)?
+		foreach($folders as $v){
 			if(preg_match("#^[0-9]+(?:\.[0-9]+)+#", $v, $m)){
-				$found++;
-				if(version_compare($m[0], $latest, '>=')){
-					$latest = $m[0];
-				}
+				$versions[] = $m[0];
 			}
 		}
-		echo "Found $found folders, latest seems to be $latest.\n";
-		return $latest;
+		
+		return $versions;
+	}
+
+	private function versions_filter($versions, $comp, $compare_to){
+		return array_filter($versions, function($v)use($comp, $compare_to){
+			return version_compare($v, $compare_to, $comp);
+		});
 	}
 
 	private function download_file($address, $destination) {
@@ -105,6 +123,31 @@ class DataGrabber{
 		$this->download_file("http://unicode.org/Public/emoji/$latestemoji/emoji-test.txt", $emojidir.'emoji-test.txt');
 
 		return $emojidir;
+	}
+
+	/**
+	* @return string[] path to emoji folders for previous versions
+	*/
+	function download_unicode_emoji_previous(){
+		echo "Grabbing Unicode Emoji (previous versions) Data Files...\n";
+		if(isset($this->config->forceVersion->emoji)) $latestemoji = $this->config->forceVersion->emoji;
+		else $latestemoji = $this->find_latest('ftp://unicode.org/Public/emoji/');
+		$versions = $this->find_versions('ftp://unicode.org/Public/emoji/');
+		$versions = $this->versions_filter($versions, '>=', '2.0');
+		$versions = $this->versions_filter($versions, '<=', $latestemoji);
+		$folders = [];
+
+		foreach($versions as $version){
+			$emojidir = 'data/emoji-'.$version.'/';
+			$folders[$version] = $emojidir;
+			$this->create_dir($emojidir);
+
+			$this->download_file("http://unicode.org/Public/emoji/$version/emoji-data.txt", $emojidir.'emoji-data.txt');
+			$this->download_file("http://unicode.org/Public/emoji/$version/emoji-sequences.txt", $emojidir.'emoji-sequences.txt');
+			$this->download_file("http://unicode.org/Public/emoji/$version/emoji-zwj-sequences.txt", $emojidir.'emoji-zwj-sequences.txt');
+		}
+
+		return $folders;
 	}
 
 	/**
