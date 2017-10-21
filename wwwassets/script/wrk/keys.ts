@@ -18,8 +18,9 @@ module Workers{
 			return this.symbol;
 		}
 
-		getSymbolDiv(useFallback = false): HTMLDivElement{
+		getSymbolDiv(requiredVersion: string = null): HTMLDivElement{
 			let container = $('<div class="symbol">');
+			let useFallback = View.View.compareToOS(requiredVersion) <= 0;
 			if(!useFallback)
 				container.text(this.symbol);
 			else{
@@ -59,7 +60,7 @@ module Workers{
 		}
 
 		getSymbolDiv(){
-			 return super.getSymbolDiv(this.char.fallbackIcon);
+			 return super.getSymbolDiv(this.char.requiredVersion);
 		}
 
 		act(){
@@ -93,7 +94,7 @@ module Workers{
 		}
 
 		getSymbolDiv(){
-			return super.getSymbolDiv(this.target.hasFallbackIcon());
+			return super.getSymbolDiv(this.target.getRequiredVersion());
 		}
 	}
 

@@ -19,7 +19,7 @@ module Workers{
 			private name: string,
 			private symbol: string,
 			private keys: Key[],
-			private fallbackIcon: boolean = false
+			private requiredVersion: string = null
 		){
 			this.fixedKeys.push(new BlankKey());
 			this.multipage = this.keys.length > 46;
@@ -52,8 +52,8 @@ module Workers{
 			return this.symbol;
 		}
 
-		hasFallbackIcon(): boolean{
-			return this.fallbackIcon;
+		getRequiredVersion(): string{
+			return this.requiredVersion;
 		}
 
 		getVisible(): Key[]{
@@ -94,7 +94,7 @@ module Workers{
 					keys.push(new CharKey(chr));
 				});
 			});
-			super(kdata.name, kdata.symbol, keys, kdata.fallbackIcon);
+			super(kdata.name, kdata.symbol, keys, kdata.requiredVersion);
 		}
 	}
 
@@ -104,7 +104,7 @@ module Workers{
 			base.alternates.forEach((chr)=>{
 				keys.push(new CharKey(chr));
 			});
-			super(base.name, base.symbol, keys, base.fallbackIcon);
+			super(base.name, base.symbol, keys, base.requiredVersion);
 		}
 	}
 }

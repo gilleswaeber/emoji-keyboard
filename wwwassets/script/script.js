@@ -23,6 +23,9 @@ var Main = (function () {
     Main.prototype.setKeymap = function (keymap) {
         this.view.setKeymap(keymap);
     };
+    Main.prototype.setOS = function (os) {
+        this.view.setOS(os);
+    };
     return Main;
 }());
 var main;
@@ -97,13 +100,13 @@ var Workers;
         Keyboards.getMainKeyboard = getMainKeyboard;
     })(Keyboards = Workers.Keyboards || (Workers.Keyboards = {}));
     var Keyboard = (function () {
-        function Keyboard(name, symbol, keys, fallbackIcon) {
-            if (fallbackIcon === void 0) { fallbackIcon = false; }
+        function Keyboard(name, symbol, keys, requiredVersion) {
+            if (requiredVersion === void 0) { requiredVersion = null; }
             var _this = this;
             this.name = name;
             this.symbol = symbol;
             this.keys = keys;
-            this.fallbackIcon = fallbackIcon;
+            this.requiredVersion = requiredVersion;
             this.page = 0;
             this.fixedKeys = [];
             this.pagedKeys = [];
@@ -139,8 +142,8 @@ var Workers;
         Keyboard.prototype.getSymbol = function () {
             return this.symbol;
         };
-        Keyboard.prototype.hasFallbackIcon = function () {
-            return this.fallbackIcon;
+        Keyboard.prototype.getRequiredVersion = function () {
+            return this.requiredVersion;
         };
         Keyboard.prototype.getVisible = function () {
             if (this.multipage)
@@ -183,7 +186,7 @@ var Workers;
                     keys.push(new Workers.CharKey(chr));
                 });
             });
-            _this = _super.call(this, kdata.name, kdata.symbol, keys, kdata.fallbackIcon) || this;
+            _this = _super.call(this, kdata.name, kdata.symbol, keys, kdata.requiredVersion) || this;
             return _this;
         }
         return EmojiKeyboard;
@@ -197,7 +200,7 @@ var Workers;
             base.alternates.forEach(function (chr) {
                 keys.push(new Workers.CharKey(chr));
             });
-            _this = _super.call(this, base.name, base.symbol, keys, base.fallbackIcon) || this;
+            _this = _super.call(this, base.name, base.symbol, keys, base.requiredVersion) || this;
             return _this;
         }
         return AlternatesKeyboard;
@@ -218,9 +221,10 @@ var Workers;
         Key.prototype.getSymbol = function () {
             return this.symbol;
         };
-        Key.prototype.getSymbolDiv = function (useFallback) {
-            if (useFallback === void 0) { useFallback = false; }
+        Key.prototype.getSymbolDiv = function (requiredVersion) {
+            if (requiredVersion === void 0) { requiredVersion = null; }
             var container = $('<div class="symbol">');
+            var useFallback = View.View.compareToOS(requiredVersion) <= 0;
             if (!useFallback)
                 container.text(this.symbol);
             else {
@@ -258,7 +262,7 @@ var Workers;
             return _this;
         }
         CharKey.prototype.getSymbolDiv = function () {
-            return _super.prototype.getSymbolDiv.call(this, this.char.fallbackIcon);
+            return _super.prototype.getSymbolDiv.call(this, this.char.requiredVersion);
         };
         CharKey.prototype.act = function () {
             AHK("Send", this.getSymbol());
@@ -291,7 +295,7 @@ var Workers;
             this.target.setParent(keyboard);
         };
         KeyboardKey.prototype.getSymbolDiv = function () {
-            return _super.prototype.getSymbolDiv.call(this, this.target.hasFallbackIcon());
+            return _super.prototype.getSymbolDiv.call(this, this.target.getRequiredVersion());
         };
         return KeyboardKey;
     }(Key));
@@ -341,6 +345,7 @@ var View;
         30: 'a', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: ';', 40: '\'',
         86: '\\', 44: 'z', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: 'm', 51: ',', 52: '.', 53: '/'
     };
+    var os = [99];
     var keysLocale = defaultLocale;
     var KEYS = [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
     var KEYMAP = [
@@ -364,7 +369,8 @@ var View;
             this.refresh();
             this.title = "Emoji Keyboard - " + this.toTitleCase(keyboard.getName());
             document.title = this.title;
-            AHK("SetTitle", this.title);
+            if (window.AHK)
+                AHK("SetTitle", this.title);
         };
         View.prototype.input = function (key, shift) {
             if (this.idxKeys[key]) {
@@ -381,6 +387,33 @@ var View;
             }
             else
                 alert(keymap + " is not a valid keymap!\nValid keymaps are " + _.keys(data.keymaps).slice(1).join(", "));
+        };
+        View.prototype.setOS = function (_os) {
+            if (!/^[.0-9]+$/.test(_os)) {
+                console.error("Invalid OS version " + _os);
+                return;
+            }
+            os = _os.split(/./).map(function (part) { return parseInt(part); });
+            this.refresh();
+        };
+        View.compareToOS = function (os2) {
+            if (!/^[.0-9]+$/.test(os2)) {
+                console.error("Invalid version " + os2);
+                return -1;
+            }
+            var vos2 = os2.split(/./).map(function (part) { return parseInt(part); });
+            for (var i = 0; i < os.length; i++) {
+                if (i >= vos2.length)
+                    return -1;
+                if (vos2[i] > os[i])
+                    return 1;
+                if (vos2[i] < os[i])
+                    return -1;
+            }
+            if (vos2.length == os.length)
+                return 0;
+            else
+                return 1;
         };
         View.prototype.refresh = function () {
             var _this = this;
