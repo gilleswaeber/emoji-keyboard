@@ -1,4 +1,4 @@
-Emoji Keyboard (with Emoji 5 support)
+Emoji Keyboard (Emoji 5, Fall Creator Update Ready)
 ==============
 <img alt="Screenshot" src="http://i.imgur.com/gW11T1R.png" width="767" />
 

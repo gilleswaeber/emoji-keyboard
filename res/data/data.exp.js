@@ -398,7 +398,7 @@ var data = {
                 "star",
                 "eyes"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🤔",
@@ -432,7 +432,7 @@ var data = {
                 "skeptic",
                 "distrust"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "😐",
@@ -1114,7 +1114,7 @@ var data = {
             "keywords": [
                 "shocked"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "😬",
@@ -1210,7 +1210,7 @@ var data = {
                 "small",
                 "eye"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "😵",
@@ -1279,7 +1279,7 @@ var data = {
             "fullName": "SERIOUS FACE WITH SYMBOLS COVERING MOUTH",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "😷",
@@ -1373,7 +1373,7 @@ var data = {
                 "vomit",
                 "sick"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🤧",
@@ -1480,7 +1480,7 @@ var data = {
             "fullName": "FACE WITH FINGER COVERING CLOSED LIPS",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🤭",
@@ -1496,7 +1496,7 @@ var data = {
             "keywords": [
                 "whoops"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧐",
@@ -1512,7 +1512,7 @@ var data = {
             "keywords": [
                 "stuffy"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🤓",
@@ -2154,7 +2154,7 @@ var data = {
                         "gender-neutral",
                         "young"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧒🏻",
@@ -2172,7 +2172,7 @@ var data = {
                         "gender-neutral",
                         "young"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧒🏼",
@@ -2190,7 +2190,7 @@ var data = {
                         "gender-neutral",
                         "young"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧒🏽",
@@ -2208,7 +2208,7 @@ var data = {
                         "gender-neutral",
                         "young"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧒🏾",
@@ -2226,7 +2226,7 @@ var data = {
                         "gender-neutral",
                         "young"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧒🏿",
@@ -2244,7 +2244,7 @@ var data = {
                         "gender-neutral",
                         "young"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "CHILD",
@@ -2254,7 +2254,7 @@ var data = {
                 "gender-neutral",
                 "young"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "👦",
@@ -2538,7 +2538,7 @@ var data = {
                     "keywords": [
                         "gender-neutral"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧑🏻",
@@ -2555,7 +2555,7 @@ var data = {
                     "keywords": [
                         "gender-neutral"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧑🏼",
@@ -2572,7 +2572,7 @@ var data = {
                     "keywords": [
                         "gender-neutral"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧑🏽",
@@ -2589,7 +2589,7 @@ var data = {
                     "keywords": [
                         "gender-neutral"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧑🏾",
@@ -2606,7 +2606,7 @@ var data = {
                     "keywords": [
                         "gender-neutral"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧑🏿",
@@ -2623,7 +2623,7 @@ var data = {
                     "keywords": [
                         "gender-neutral"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "ADULT",
@@ -2632,7 +2632,7 @@ var data = {
             "keywords": [
                 "gender-neutral"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "👨",
@@ -2924,7 +2924,7 @@ var data = {
                         "gender-neutral",
                         "old"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧓🏻",
@@ -2942,7 +2942,7 @@ var data = {
                         "gender-neutral",
                         "old"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧓🏼",
@@ -2960,7 +2960,7 @@ var data = {
                         "gender-neutral",
                         "old"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧓🏽",
@@ -2978,7 +2978,7 @@ var data = {
                         "gender-neutral",
                         "old"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧓🏾",
@@ -2996,7 +2996,7 @@ var data = {
                         "gender-neutral",
                         "old"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧓🏿",
@@ -3014,7 +3014,7 @@ var data = {
                         "gender-neutral",
                         "old"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "OLDER ADULT",
@@ -3024,7 +3024,7 @@ var data = {
                 "gender-neutral",
                 "old"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "👴",
@@ -10639,7 +10639,7 @@ var data = {
                         "tichel",
                         "mantilla"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧕🏻",
@@ -10659,7 +10659,7 @@ var data = {
                         "tichel",
                         "mantilla"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧕🏼",
@@ -10679,7 +10679,7 @@ var data = {
                         "tichel",
                         "mantilla"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧕🏽",
@@ -10699,7 +10699,7 @@ var data = {
                         "tichel",
                         "mantilla"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧕🏾",
@@ -10719,7 +10719,7 @@ var data = {
                         "tichel",
                         "mantilla"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧕🏿",
@@ -10739,7 +10739,7 @@ var data = {
                         "tichel",
                         "mantilla"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON WITH HEADSCARF",
@@ -10751,7 +10751,7 @@ var data = {
                 "tichel",
                 "mantilla"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧔",
@@ -10773,7 +10773,7 @@ var data = {
                     "fullName": "BEARDED PERSON",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧔🏻",
@@ -10787,7 +10787,7 @@ var data = {
                     "fullName": "BEARDED PERSON, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧔🏼",
@@ -10801,7 +10801,7 @@ var data = {
                     "fullName": "BEARDED PERSON, EMOJI MODIFIER FITZPATRICK TYPE-3",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧔🏽",
@@ -10815,7 +10815,7 @@ var data = {
                     "fullName": "BEARDED PERSON, EMOJI MODIFIER FITZPATRICK TYPE-4",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧔🏾",
@@ -10829,7 +10829,7 @@ var data = {
                     "fullName": "BEARDED PERSON, EMOJI MODIFIER FITZPATRICK TYPE-5",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧔🏿",
@@ -10843,13 +10843,13 @@ var data = {
                     "fullName": "BEARDED PERSON, EMOJI MODIFIER FITZPATRICK TYPE-6",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "BEARDED PERSON",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "👱",
@@ -11683,7 +11683,7 @@ var data = {
                     "fullName": "BREAST-FEEDING",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤱🏻",
@@ -11697,7 +11697,7 @@ var data = {
                     "fullName": "BREAST-FEEDING, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤱🏼",
@@ -11711,7 +11711,7 @@ var data = {
                     "fullName": "BREAST-FEEDING, EMOJI MODIFIER FITZPATRICK TYPE-3",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤱🏽",
@@ -11725,7 +11725,7 @@ var data = {
                     "fullName": "BREAST-FEEDING, EMOJI MODIFIER FITZPATRICK TYPE-4",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤱🏾",
@@ -11739,7 +11739,7 @@ var data = {
                     "fullName": "BREAST-FEEDING, EMOJI MODIFIER FITZPATRICK TYPE-5",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤱🏿",
@@ -11753,13 +11753,13 @@ var data = {
                     "fullName": "BREAST-FEEDING, EMOJI MODIFIER FITZPATRICK TYPE-6",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "BREAST-FEEDING",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "👼",
@@ -12226,7 +12226,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏻",
@@ -12244,7 +12244,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏼",
@@ -12262,7 +12262,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏽",
@@ -12280,7 +12280,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏾",
@@ -12298,7 +12298,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏿",
@@ -12316,7 +12316,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "MAGE",
@@ -12326,7 +12326,7 @@ var data = {
                 "wizard",
                 "sorcerer"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧙‍♀️",
@@ -12358,7 +12358,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏻‍♀️",
@@ -12379,7 +12379,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏼‍♀️",
@@ -12400,7 +12400,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏽‍♀️",
@@ -12421,7 +12421,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏾‍♀️",
@@ -12442,7 +12442,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏿‍♀️",
@@ -12463,7 +12463,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "MAGE, FEMALE SIGN",
@@ -12473,7 +12473,7 @@ var data = {
                 "wizard",
                 "sorcerer"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧙‍♂️",
@@ -12505,7 +12505,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏻‍♂️",
@@ -12526,7 +12526,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏼‍♂️",
@@ -12547,7 +12547,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏽‍♂️",
@@ -12568,7 +12568,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏾‍♂️",
@@ -12589,7 +12589,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧙🏿‍♂️",
@@ -12610,7 +12610,7 @@ var data = {
                         "wizard",
                         "sorcerer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "MAGE, MALE SIGN",
@@ -12620,7 +12620,7 @@ var data = {
                 "wizard",
                 "sorcerer"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧚",
@@ -12646,7 +12646,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏻",
@@ -12664,7 +12664,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏼",
@@ -12682,7 +12682,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏽",
@@ -12700,7 +12700,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏾",
@@ -12718,7 +12718,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏿",
@@ -12736,7 +12736,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "FAIRY",
@@ -12746,7 +12746,7 @@ var data = {
                 "Puck",
                 "Oberon"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧚‍♀️",
@@ -12778,7 +12778,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏻‍♀️",
@@ -12799,7 +12799,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏼‍♀️",
@@ -12820,7 +12820,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏽‍♀️",
@@ -12841,7 +12841,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏾‍♀️",
@@ -12862,7 +12862,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏿‍♀️",
@@ -12883,7 +12883,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "FAIRY, FEMALE SIGN",
@@ -12893,7 +12893,7 @@ var data = {
                 "Puck",
                 "Oberon"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧚‍♂️",
@@ -12925,7 +12925,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏻‍♂️",
@@ -12946,7 +12946,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏼‍♂️",
@@ -12967,7 +12967,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏽‍♂️",
@@ -12988,7 +12988,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏾‍♂️",
@@ -13009,7 +13009,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧚🏿‍♂️",
@@ -13030,7 +13030,7 @@ var data = {
                         "Puck",
                         "Oberon"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "FAIRY, MALE SIGN",
@@ -13040,7 +13040,7 @@ var data = {
                 "Puck",
                 "Oberon"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧛",
@@ -13066,7 +13066,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏻",
@@ -13084,7 +13084,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏼",
@@ -13102,7 +13102,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏽",
@@ -13120,7 +13120,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏾",
@@ -13138,7 +13138,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏿",
@@ -13156,7 +13156,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "VAMPIRE",
@@ -13166,7 +13166,7 @@ var data = {
                 "Dracula",
                 "undead"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧛‍♀️",
@@ -13198,7 +13198,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏻‍♀️",
@@ -13219,7 +13219,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏼‍♀️",
@@ -13240,7 +13240,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏽‍♀️",
@@ -13261,7 +13261,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏾‍♀️",
@@ -13282,7 +13282,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏿‍♀️",
@@ -13303,7 +13303,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "VAMPIRE, FEMALE SIGN",
@@ -13313,7 +13313,7 @@ var data = {
                 "Dracula",
                 "undead"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧛‍♂️",
@@ -13345,7 +13345,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏻‍♂️",
@@ -13366,7 +13366,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏼‍♂️",
@@ -13387,7 +13387,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏽‍♂️",
@@ -13408,7 +13408,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏾‍♂️",
@@ -13429,7 +13429,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧛🏿‍♂️",
@@ -13450,7 +13450,7 @@ var data = {
                         "Dracula",
                         "undead"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "VAMPIRE, MALE SIGN",
@@ -13460,7 +13460,7 @@ var data = {
                 "Dracula",
                 "undead"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧜",
@@ -13485,7 +13485,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏻",
@@ -13502,7 +13502,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏼",
@@ -13519,7 +13519,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏽",
@@ -13536,7 +13536,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏾",
@@ -13553,7 +13553,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏿",
@@ -13570,7 +13570,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "MERPERSON",
@@ -13579,7 +13579,7 @@ var data = {
             "keywords": [
                 "merwoman"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧜‍♀️",
@@ -13610,7 +13610,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏻‍♀️",
@@ -13630,7 +13630,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏼‍♀️",
@@ -13650,7 +13650,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏽‍♀️",
@@ -13670,7 +13670,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏾‍♀️",
@@ -13690,7 +13690,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏿‍♀️",
@@ -13710,7 +13710,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "MERPERSON, FEMALE SIGN",
@@ -13719,7 +13719,7 @@ var data = {
             "keywords": [
                 "merwoman"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧜‍♂️",
@@ -13750,7 +13750,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏻‍♂️",
@@ -13770,7 +13770,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏼‍♂️",
@@ -13790,7 +13790,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏽‍♂️",
@@ -13810,7 +13810,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏾‍♂️",
@@ -13830,7 +13830,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧜🏿‍♂️",
@@ -13850,7 +13850,7 @@ var data = {
                     "keywords": [
                         "merwoman"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "MERPERSON, MALE SIGN",
@@ -13859,7 +13859,7 @@ var data = {
             "keywords": [
                 "merwoman"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧝",
@@ -13881,7 +13881,7 @@ var data = {
                     "fullName": "ELF",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏻",
@@ -13895,7 +13895,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏼",
@@ -13909,7 +13909,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-3",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏽",
@@ -13923,7 +13923,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-4",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏾",
@@ -13937,7 +13937,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-5",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏿",
@@ -13951,13 +13951,13 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-6",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "ELF",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧝‍♀️",
@@ -13985,7 +13985,7 @@ var data = {
                     "fullName": "ELF, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏻‍♀️",
@@ -14002,7 +14002,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏼‍♀️",
@@ -14019,7 +14019,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏽‍♀️",
@@ -14036,7 +14036,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏾‍♀️",
@@ -14053,7 +14053,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏿‍♀️",
@@ -14070,13 +14070,13 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "ELF, FEMALE SIGN",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧝‍♂️",
@@ -14104,7 +14104,7 @@ var data = {
                     "fullName": "ELF, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏻‍♂️",
@@ -14121,7 +14121,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏼‍♂️",
@@ -14138,7 +14138,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏽‍♂️",
@@ -14155,7 +14155,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏾‍♂️",
@@ -14172,7 +14172,7 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧝🏿‍♂️",
@@ -14189,13 +14189,13 @@ var data = {
                     "fullName": "ELF, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "ELF, MALE SIGN",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧞",
@@ -14211,7 +14211,7 @@ var data = {
             "keywords": [
                 "djinn"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧞‍♀️",
@@ -14230,7 +14230,7 @@ var data = {
             "keywords": [
                 "djinn"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧞‍♂️",
@@ -14249,7 +14249,7 @@ var data = {
             "keywords": [
                 "djinn"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧟",
@@ -14266,7 +14266,7 @@ var data = {
                 "undead",
                 "walking dead"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧟‍♀️",
@@ -14286,7 +14286,7 @@ var data = {
                 "undead",
                 "walking dead"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧟‍♂️",
@@ -14306,7 +14306,7 @@ var data = {
                 "undead",
                 "walking dead"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🙍",
@@ -20548,7 +20548,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏻",
@@ -20566,7 +20566,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏼",
@@ -20584,7 +20584,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏽",
@@ -20602,7 +20602,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏾",
@@ -20620,7 +20620,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏿",
@@ -20638,7 +20638,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON IN STEAMY ROOM",
@@ -20648,7 +20648,7 @@ var data = {
                 "sauna",
                 "steam room"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧖‍♀️",
@@ -20680,7 +20680,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏻‍♀️",
@@ -20701,7 +20701,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏼‍♀️",
@@ -20722,7 +20722,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏽‍♀️",
@@ -20743,7 +20743,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏾‍♀️",
@@ -20764,7 +20764,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏿‍♀️",
@@ -20785,7 +20785,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON IN STEAMY ROOM, FEMALE SIGN",
@@ -20795,7 +20795,7 @@ var data = {
                 "sauna",
                 "steam room"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧖‍♂️",
@@ -20827,7 +20827,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏻‍♂️",
@@ -20848,7 +20848,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏼‍♂️",
@@ -20869,7 +20869,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏽‍♂️",
@@ -20890,7 +20890,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏾‍♂️",
@@ -20911,7 +20911,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧖🏿‍♂️",
@@ -20932,7 +20932,7 @@ var data = {
                         "sauna",
                         "steam room"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON IN STEAMY ROOM, MALE SIGN",
@@ -20942,7 +20942,7 @@ var data = {
                 "sauna",
                 "steam room"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧗",
@@ -20964,7 +20964,7 @@ var data = {
                     "fullName": "PERSON CLIMBING",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏻",
@@ -20978,7 +20978,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-1-2",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏼",
@@ -20992,7 +20992,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-3",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏽",
@@ -21006,7 +21006,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-4",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏾",
@@ -21020,7 +21020,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-5",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏿",
@@ -21034,13 +21034,13 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-6",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON CLIMBING",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧗‍♀️",
@@ -21068,7 +21068,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏻‍♀️",
@@ -21085,7 +21085,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-1-2, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏼‍♀️",
@@ -21102,7 +21102,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-3, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏽‍♀️",
@@ -21119,7 +21119,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-4, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏾‍♀️",
@@ -21136,7 +21136,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-5, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏿‍♀️",
@@ -21153,13 +21153,13 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-6, FEMALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON CLIMBING, FEMALE SIGN",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧗‍♂️",
@@ -21187,7 +21187,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏻‍♂️",
@@ -21204,7 +21204,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-1-2, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏼‍♂️",
@@ -21221,7 +21221,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-3, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏽‍♂️",
@@ -21238,7 +21238,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-4, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏾‍♂️",
@@ -21255,7 +21255,7 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-5, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧗🏿‍♂️",
@@ -21272,13 +21272,13 @@ var data = {
                     "fullName": "PERSON CLIMBING, EMOJI MODIFIER FITZPATRICK TYPE-6, MALE SIGN",
                     "version": 10,
                     "emojiVersion": 5,
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON CLIMBING, MALE SIGN",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧘",
@@ -21304,7 +21304,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏻",
@@ -21322,7 +21322,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏼",
@@ -21340,7 +21340,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏽",
@@ -21358,7 +21358,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏾",
@@ -21376,7 +21376,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏿",
@@ -21394,7 +21394,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON IN LOTUS POSITION",
@@ -21404,7 +21404,7 @@ var data = {
                 "yoga",
                 "meditation"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧘‍♀️",
@@ -21436,7 +21436,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏻‍♀️",
@@ -21457,7 +21457,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏼‍♀️",
@@ -21478,7 +21478,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏽‍♀️",
@@ -21499,7 +21499,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏾‍♀️",
@@ -21520,7 +21520,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏿‍♀️",
@@ -21541,7 +21541,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON IN LOTUS POSITION, FEMALE SIGN",
@@ -21551,7 +21551,7 @@ var data = {
                 "yoga",
                 "meditation"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧘‍♂️",
@@ -21583,7 +21583,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏻‍♂️",
@@ -21604,7 +21604,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏼‍♂️",
@@ -21625,7 +21625,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏽‍♂️",
@@ -21646,7 +21646,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏾‍♂️",
@@ -21667,7 +21667,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🧘🏿‍♂️",
@@ -21688,7 +21688,7 @@ var data = {
                         "yoga",
                         "meditation"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PERSON IN LOTUS POSITION, MALE SIGN",
@@ -21698,7 +21698,7 @@ var data = {
                 "yoga",
                 "meditation"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🛀",
@@ -31896,7 +31896,7 @@ var data = {
                         "ILY",
                         "hand"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤟🏻",
@@ -31914,7 +31914,7 @@ var data = {
                         "ILY",
                         "hand"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤟🏼",
@@ -31932,7 +31932,7 @@ var data = {
                         "ILY",
                         "hand"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤟🏽",
@@ -31950,7 +31950,7 @@ var data = {
                         "ILY",
                         "hand"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤟🏾",
@@ -31968,7 +31968,7 @@ var data = {
                         "ILY",
                         "hand"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤟🏿",
@@ -31986,7 +31986,7 @@ var data = {
                         "ILY",
                         "hand"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "I LOVE YOU HAND SIGN",
@@ -31996,7 +31996,7 @@ var data = {
                 "ILY",
                 "hand"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "✍️",
@@ -32541,7 +32541,7 @@ var data = {
                     "keywords": [
                         "prayer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤲🏻",
@@ -32558,7 +32558,7 @@ var data = {
                     "keywords": [
                         "prayer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤲🏼",
@@ -32575,7 +32575,7 @@ var data = {
                     "keywords": [
                         "prayer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤲🏽",
@@ -32592,7 +32592,7 @@ var data = {
                     "keywords": [
                         "prayer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤲🏾",
@@ -32609,7 +32609,7 @@ var data = {
                     "keywords": [
                         "prayer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 },
                 {
                     "symbol": "🤲🏿",
@@ -32626,7 +32626,7 @@ var data = {
                     "keywords": [
                         "prayer"
                     ],
-                    "requiredVersion": "99"
+                    "requiredVersion": "10.0.16226"
                 }
             ],
             "fullName": "PALMS UP TOGETHER",
@@ -32635,7 +32635,7 @@ var data = {
             "keywords": [
                 "prayer"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🙏",
@@ -33300,7 +33300,7 @@ var data = {
             "keywords": [
                 "intelligent"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "👅",
@@ -33530,7 +33530,7 @@ var data = {
             "fullName": "ORANGE HEART",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "💜",
@@ -33972,7 +33972,7 @@ var data = {
             "keywords": [
                 "neck"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧤",
@@ -33985,7 +33985,7 @@ var data = {
             "fullName": "GLOVES",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧥",
@@ -34001,7 +34001,7 @@ var data = {
             "keywords": [
                 "jacket"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🧦",
@@ -34014,7 +34014,7 @@ var data = {
             "fullName": "SOCKS",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "👗",
@@ -34355,7 +34355,7 @@ var data = {
             "keywords": [
                 "baseball cap"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "⛑️",
@@ -34747,7 +34747,7 @@ var data = {
             "fullName": "ZEBRA FACE",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🦌",
@@ -34999,7 +34999,7 @@ var data = {
             "fullName": "GIRAFFE FACE",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🐘",
@@ -35164,7 +35164,7 @@ var data = {
             "fullName": "HEDGEHOG",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🦇",
@@ -35598,7 +35598,7 @@ var data = {
                 "diplodocus",
                 "brachiosaurus"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🦖",
@@ -35614,7 +35614,7 @@ var data = {
             "keywords": [
                 "Tyrannosaurus Rex"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🐳",
@@ -35933,7 +35933,7 @@ var data = {
             "fullName": "CRICKET",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🕷️",
@@ -36622,7 +36622,7 @@ var data = {
             "fullName": "COCONUT",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥑",
@@ -36762,7 +36762,7 @@ var data = {
             "fullName": "BROCCOLI",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🍄",
@@ -36884,7 +36884,7 @@ var data = {
             "keywords": [
                 "twisted"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥞",
@@ -36974,7 +36974,7 @@ var data = {
                 "chop",
                 "steak"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥓",
@@ -37073,7 +37073,7 @@ var data = {
             "fullName": "SANDWICH",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🌮",
@@ -37217,7 +37217,7 @@ var data = {
                 "cereal",
                 "congee"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥗",
@@ -37267,7 +37267,7 @@ var data = {
             "keywords": [
                 "can"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🍱",
@@ -37519,7 +37519,7 @@ var data = {
                 "pierogi",
                 "empanada"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥠",
@@ -37532,7 +37532,7 @@ var data = {
             "fullName": "FORTUNE COOKIE",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥡",
@@ -37548,7 +37548,7 @@ var data = {
             "keywords": [
                 "oyster pail"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🍦",
@@ -37696,7 +37696,7 @@ var data = {
             "fullName": "PIE",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🍫",
@@ -38056,7 +38056,7 @@ var data = {
                 "soda",
                 "juice"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥢",
@@ -38072,7 +38072,7 @@ var data = {
             "keywords": [
                 "hashi"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🍽️",
@@ -40339,7 +40339,7 @@ var data = {
             "keywords": [
                 "UFO"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🛎️",
@@ -42767,7 +42767,7 @@ var data = {
                 "sledge",
                 "sleigh"
             ],
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🥌",
@@ -42780,7 +42780,7 @@ var data = {
             "fullName": "CURLING STONE",
             "version": 10,
             "emojiVersion": 5,
-            "requiredVersion": "99"
+            "requiredVersion": "10.0.16226"
         },
         {
             "symbol": "🎮",
@@ -53274,7 +53274,7 @@ var data = {
             "keywords": [
                 "waving"
             ],
-            "requiredVersion": "10.0.15063"
+            "requiredVersion": "99"
         },
         {
             "symbol": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
@@ -53296,7 +53296,7 @@ var data = {
             "keywords": [
                 "waving"
             ],
-            "requiredVersion": "10.0.15063"
+            "requiredVersion": "99"
         },
         {
             "symbol": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
@@ -53318,7 +53318,7 @@ var data = {
             "keywords": [
                 "waving"
             ],
-            "requiredVersion": "10.0.15063"
+            "requiredVersion": "99"
         },
         {
             "symbol": "🐱‍👤",
