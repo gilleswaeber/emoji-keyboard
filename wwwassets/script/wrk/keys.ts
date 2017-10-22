@@ -1,4 +1,9 @@
+/// <reference path="AHKWrk.ts" />
+
+
 module Workers{
+
+	const ahk = new Wrk.AHKWrk();
 
 	export abstract class Key{
 		public key: number;
@@ -20,8 +25,7 @@ module Workers{
 
 		getSymbolDiv(requiredVersion: string): HTMLDivElement{
 			let container = $('<div class="symbol">');
-			let useFallback = View.View.compareToOS(requiredVersion) > 0;
-			console.log("Use fallback", useFallback, " requires ", requiredVersion);
+			let useFallback = View.KeyboardView.compareToOS(requiredVersion) > 0;
 			if(!useFallback)
 				container.text(this.symbol);
 			else{
@@ -70,7 +74,7 @@ module Workers{
 		}
 
 		act(){
-			AHK("Send", this.getSymbol());
+			ahk.send(this.getSymbol());
 		}
 
 		actAlternate(view: View.IViewKey){
@@ -122,6 +126,16 @@ module Workers{
 
 		act(view: View.IViewKey){
 			if(this.keyboard.getParent()) view.show(this.keyboard.getParent());
+		}
+	}
+
+	export class SearchKey extends Key{
+		constructor(){
+			super('search', '🔎');
+		}
+
+		act(view: View.IViewKey){
+			document.ahk.setSearch(true);
 		}
 	}
 

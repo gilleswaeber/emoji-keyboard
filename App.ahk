@@ -7,9 +7,14 @@ if (A_AhkVersion < "1.1.21") {
 	ExitApp, 1
 }
 
+#Include assets\OSD.ahk
+OSD("Emoji Keyboard")
+
 #SingleInstance force
-;#NoTrayIcon
 SendMode Input
+
+; Required for the search mode
+#MaxThreadsPerHotkey 2
 
 Menu, Tray, Icon, assets/keyboard.ico, 1, 1
 Menu, Tray, Tip, Emoji Keyboard
@@ -41,13 +46,17 @@ WM_SYSCOMMAND(wParam)
     }
 }
 
-;Variable containing the current state
+; Variable containing the current state
 vVisible := false
+; Variable containing the searching state
+vSearch := false
+; Search Handler Semaphore
+vSearchSem := 1
 
-;Get our HTML DOM object
+; Get our HTML DOM object
 iWebCtrl := getDOM()
 
-;Change App name on run-time
+; Change App name at run-time
 setAppName("Emoji Keyboard")
 
 ; Our custom protocol's url event handler
@@ -60,15 +69,13 @@ app_call(args) {
 }
 
 
-; function to run when page is loaded
+; Function to run when page is loaded
 app_page(NewURL) {
 }
 
 Gui __Webapp_:Hide
-Return
 
-
-Capslock::	; <-- OPEN with double left alt key
+Capslock::
 	global vVisible
 	if(vVisible){
 		vVisible := false
@@ -77,6 +84,30 @@ Capslock::	; <-- OPEN with double left alt key
 	}
 	Show()
 Return
+
+SearchHandler(){
+	global vVisible, vSearch, vSearchSem
+
+	If vSearchSem < 1
+		Return
+	
+	Critical
+	vSearchSem--
+	Critical Off
+
+	OSD("Search mode")
+	While vSearch and vVisible {
+		Input, key, L1
+		OSD("Input " + key)
+		If("" != key)
+			getDOM().document.ahk.charInput(key)
+	}
+	OSD("Quit search")
+
+	Critical
+	vSearchSem++
+	Critical Off
+}
 
 ; Functions to be called from the html/js source
 Exit() {
@@ -112,16 +143,18 @@ RestoreClipboard() {
 	bClipSaved := False
 }
 Show(){
-	global vVisible
+	global vVisible, vSearch
 	vVisible := true
-	Gui __Webapp_:Show
-	Sleep, 10
-	Send, !{Esc}
+	Gui __Webapp_:Show, NA
+	If vSearch
+		SearchHandler()
 }
 Hide(){
-	global vVisible
+	global vVisible, vSearch
 	vVisible := false
 	Gui __Webapp_:Hide
+	If vSearch
+		Send, a
 }
 Toggle(){
 	global vVisible
@@ -140,8 +173,21 @@ Ready(){
 SetTitle(t){
 	Gui __Webapp_:Show, NA, %t%
 }
+SetSearch(s){
+	global vSearch
+	If vSearch
+		Send, a
+	vSearch := s
+	getDOM().document.ahk.setSearch(s)
+	SearchHandler()
+}
 
 #If vVisible
+Tab::
+	SetSearch(!vSearch)
+Return
+
+#If vVisible and !vSearch
 ; Corresponding keys                    	;	US	CH
 SC001::getDOM().document.ahk.input(1)   	;	ESC	ESC
 SC03B::getDOM().document.ahk.input(59)   	;	F1	F1

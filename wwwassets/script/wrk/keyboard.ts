@@ -22,6 +22,7 @@ module Workers{
 			private requiredVersion: string = null
 		){
 			this.fixedKeys.push(new BlankKey());
+			this.fixedKeys.push(new SearchKey());
 			this.multipage = this.keys.length > 46;
 			if(this.multipage){
 				this.pages = 1;

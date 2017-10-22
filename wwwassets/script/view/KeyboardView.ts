@@ -1,5 +1,6 @@
 /// <reference path="../wrk/keyboard.ts" />
 /// <reference path="../wrk/keys.ts" />
+/// <reference path="BaseView.ts" />
 
 module View{
 	var defaultLocale = {
@@ -23,20 +24,25 @@ module View{
 	];
 	const BLANKKEY: Workers.BlankKey = new Workers.BlankKey();
 
-	export class View implements IViewKey{
+	export class KeyboardView extends View implements IViewKey{
 		private jBase: JQuery;
 		private keyboard: Workers.Keyboard;
 		private idxKeys: {[id: number]: Workers.Key};
 		private title = "Emoji Keyboard";
+		private element: HTMLElement;
+		private ahk: Wrk.AHKWrk = new Wrk.AHKWrk();
 
 		private jKeyboard: JQuery;
 
-		constructor(
-			private base: HTMLElement
-		){
-			this.jBase = $(base);
+		constructor(){
+			super();
+			this.jBase = $(this.element = document.createElement('div'));
 			this.jBase.empty();
 			this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
+		}
+
+		getElement(){
+			return this.element;
 		}
 
 		show(keyboard: Workers.Keyboard): void{
@@ -48,7 +54,7 @@ module View{
 
 			this.title = "Emoji Keyboard - " + this.toTitleCase(keyboard.getName());
 			document.title = this.title;
-			if(window.AHK) AHK("SetTitle", this.title);
+			this.ahk.setTitle(this.title);
 		}
 
 		input(key: number, shift: boolean): void{
@@ -82,8 +88,6 @@ module View{
 				return 0;
 			}
 			let vos2 = os2.split(/\./).map(part => parseInt(part));
-
-			console.log(os, vos2);
 			
 			for(let i=0; i<os.length; i++){
 				if(i >= vos2.length) return -1;
@@ -109,13 +113,11 @@ module View{
 
 		showStatus(str: string): void{
 			if(!str.length) return this.hideStatus();
-			document.title = this.title + ": " + this.toTitleCase(str);
-			AHK("SetTitle", this.title + ": " + this.toTitleCase(str));
+			this.ahk.setTitle(this.title + ": " + this.toTitleCase(str));
 		}
 
 		hideStatus(): void{
-			document.title = this.title;
-			AHK("SetTitle", this.title);
+			this.ahk.setTitle(this.title);
 		}
 
 		private showKey(key: Workers.Key): JQuery{

@@ -1,1 +1,0 @@
-declare function AHK(command: string, ...args: any[]): any;

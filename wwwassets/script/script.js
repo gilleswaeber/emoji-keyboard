@@ -11,27 +11,15 @@ var __extends = (this && this.__extends) || (function () {
 var Main = (function () {
     function Main(base) {
         this.base = base;
-        this.jBase = $(base);
-        this.jBase.empty();
-        this.view = new View.View(base);
-        this.view.show(Workers.Keyboards.getMainKeyboard());
+        this.view = new View.BaseView(this.base);
+        document.ahk = this.view;
     }
-    Main.prototype.input = function (key, shift) {
-        if (shift === void 0) { shift = false; }
-        this.view.input(key, shift);
-    };
-    Main.prototype.setKeymap = function (keymap) {
-        this.view.setKeymap(keymap);
-    };
-    Main.prototype.setOS = function (os) {
-        this.view.setOS(os);
-    };
     return Main;
 }());
 var main;
 $(document).ready(function () {
-    main = document.ahk = new Main(document.querySelector('main'));
-    setTimeout(function () { return AHK("Ready"); }, 0);
+    main = new Main(document.querySelector('main'));
+    setTimeout(function () { return (new Wrk.AHKWrk()).ready(); }, 0);
 });
 if (!String.prototype.codePointAt) {
     (function () {
@@ -90,6 +78,61 @@ if (!String.prototype.getCodePointLength) {
         }
     }());
 }
+var View;
+(function (View_1) {
+    var BaseView = (function () {
+        function BaseView(base) {
+            this.base = base;
+            this.keyboardView = new View_1.KeyboardView();
+            this.keyboardView.show(Workers.Keyboards.getMainKeyboard());
+            this.searchView = new View_1.SearchView();
+            this.loadKeyboard();
+        }
+        BaseView.prototype.loadKeyboard = function () {
+            $(this.base).children().detach();
+            this.view = this.keyboardView;
+            this.base.appendChild(this.view.getElement());
+        };
+        BaseView.prototype.loadSearch = function () {
+            $(this.base).children().detach();
+            this.view = this.searchView;
+            this.base.appendChild(this.view.getElement());
+        };
+        BaseView.prototype.input = function (key, shift) {
+            if (shift === void 0) { shift = false; }
+            this.view.input(key, shift);
+        };
+        BaseView.prototype.charInput = function (char) {
+            this.view.charInput(char);
+        };
+        BaseView.prototype.setKeymap = function (keymap) {
+            this.keyboardView.setKeymap(keymap);
+        };
+        BaseView.prototype.setOS = function (os) {
+            this.keyboardView.setOS(os);
+        };
+        BaseView.prototype.setSearch = function (search) {
+            if (search) {
+                this.loadSearch();
+            }
+            else {
+                this.loadKeyboard();
+            }
+        };
+        return BaseView;
+    }());
+    View_1.BaseView = BaseView;
+    var View = (function () {
+        function View() {
+        }
+        View.prototype.input = function (key, shift) {
+            if (shift === void 0) { shift = false; }
+        };
+        View.prototype.charInput = function (char) { };
+        return View;
+    }());
+    View_1.View = View;
+})(View || (View = {}));
 var Workers;
 (function (Workers) {
     var Keyboards;
@@ -112,6 +155,7 @@ var Workers;
             this.pagedKeys = [];
             this.pageKeys = {};
             this.fixedKeys.push(new Workers.BlankKey());
+            this.fixedKeys.push(new Workers.SearchKey());
             this.multipage = this.keys.length > 46;
             if (this.multipage) {
                 this.pages = 1;
@@ -207,8 +251,39 @@ var Workers;
     }(Keyboard));
     Workers.AlternatesKeyboard = AlternatesKeyboard;
 })(Workers || (Workers = {}));
+var Wrk;
+(function (Wrk) {
+    var AHKWrk = (function () {
+        function AHKWrk() {
+        }
+        AHKWrk.prototype.isAHK = function () {
+            return typeof AHK !== 'undefined';
+        };
+        AHKWrk.prototype.setTitle = function (title) {
+            if (this.isAHK())
+                AHK("SetTitle", title);
+            else
+                document.title = title;
+        };
+        AHKWrk.prototype.ready = function () {
+            if (this.isAHK())
+                AHK("Ready");
+            else
+                console.log("Ready");
+        };
+        AHKWrk.prototype.send = function (symbol) {
+            if (this.isAHK())
+                AHK("Send", symbol);
+            else
+                console.log("Send", symbol);
+        };
+        return AHKWrk;
+    }());
+    Wrk.AHKWrk = AHKWrk;
+})(Wrk || (Wrk = {}));
 var Workers;
 (function (Workers) {
+    var ahk = new Wrk.AHKWrk();
     var Key = (function () {
         function Key(name, symbol) {
             this.name = name;
@@ -223,8 +298,7 @@ var Workers;
         };
         Key.prototype.getSymbolDiv = function (requiredVersion) {
             var container = $('<div class="symbol">');
-            var useFallback = View.View.compareToOS(requiredVersion) > 0;
-            console.log("Use fallback", useFallback, " requires ", requiredVersion);
+            var useFallback = View.KeyboardView.compareToOS(requiredVersion) > 0;
             if (!useFallback)
                 container.text(this.symbol);
             else {
@@ -270,7 +344,7 @@ var Workers;
             return _super.prototype.getSymbolDiv.call(this, this.char.requiredVersion);
         };
         CharKey.prototype.act = function () {
-            AHK("Send", this.getSymbol());
+            ahk.send(this.getSymbol());
         };
         CharKey.prototype.actAlternate = function (view) {
             if (!this.hasAlternate())
@@ -331,6 +405,17 @@ var Workers;
         return BackKey;
     }(Key));
     Workers.BackKey = BackKey;
+    var SearchKey = (function (_super) {
+        __extends(SearchKey, _super);
+        function SearchKey() {
+            return _super.call(this, 'search', '🔎') || this;
+        }
+        SearchKey.prototype.act = function (view) {
+            document.ahk.setSearch(true);
+        };
+        return SearchKey;
+    }(Key));
+    Workers.SearchKey = SearchKey;
     var BlankKey = (function (_super) {
         __extends(BlankKey, _super);
         function BlankKey() {
@@ -341,7 +426,7 @@ var Workers;
     Workers.BlankKey = BlankKey;
 })(Workers || (Workers = {}));
 var View;
-(function (View_1) {
+(function (View) {
     var defaultLocale = {
         0: '', 1: 'ESC', 59: 'F1', 60: 'F2', 61: 'F3', 62: 'F4', 63: 'F5', 64: 'F6', 65: 'F7', 66: 'F8', 67: 'F9', 68: 'F10', 87: 'F11', 88: 'F12',
         14: 'BKSP', 15: 'Tab', 58: 'Caps Lk', 28: 'Enter', 42: 'Shift', 29: 'CTRL', 91: 'WIN', 56: 'ALT',
@@ -360,24 +445,29 @@ var View;
         [42, 86, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 0]
     ];
     var BLANKKEY = new Workers.BlankKey();
-    var View = (function () {
-        function View(base) {
-            this.base = base;
-            this.title = "Emoji Keyboard";
-            this.jBase = $(base);
-            this.jBase.empty();
-            this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
+    var KeyboardView = (function (_super) {
+        __extends(KeyboardView, _super);
+        function KeyboardView() {
+            var _this = _super.call(this) || this;
+            _this.title = "Emoji Keyboard";
+            _this.ahk = new Wrk.AHKWrk();
+            _this.jBase = $(_this.element = document.createElement('div'));
+            _this.jBase.empty();
+            _this.jKeyboard = $('<div class="keyboard">').appendTo(_this.jBase);
+            return _this;
         }
-        View.prototype.show = function (keyboard) {
+        KeyboardView.prototype.getElement = function () {
+            return this.element;
+        };
+        KeyboardView.prototype.show = function (keyboard) {
             this.keyboard = keyboard;
             keyboard.setKeys(KEYS);
             this.refresh();
             this.title = "Emoji Keyboard - " + this.toTitleCase(keyboard.getName());
             document.title = this.title;
-            if (window.AHK)
-                AHK("SetTitle", this.title);
+            this.ahk.setTitle(this.title);
         };
-        View.prototype.input = function (key, shift) {
+        KeyboardView.prototype.input = function (key, shift) {
             if (this.idxKeys[key]) {
                 if (!shift)
                     this.idxKeys[key].act(this);
@@ -385,7 +475,7 @@ var View;
                     this.idxKeys[key].actAlternate(this);
             }
         };
-        View.prototype.setKeymap = function (keymap) {
+        KeyboardView.prototype.setKeymap = function (keymap) {
             if (data.keymaps[keymap]) {
                 keysLocale = _.extend({}, defaultLocale, data.keymaps[keymap].keys);
                 this.refresh();
@@ -393,7 +483,7 @@ var View;
             else
                 alert(keymap + " is not a valid keymap!\nValid keymaps are " + _.keys(data.keymaps).slice(1).join(", "));
         };
-        View.prototype.setOS = function (_os) {
+        KeyboardView.prototype.setOS = function (_os) {
             _os = _os.replace(/^WIN_/, '');
             if (!/^[.0-9]+$/.test(_os)) {
                 console.error("Invalid OS version " + _os);
@@ -402,14 +492,13 @@ var View;
             os = _os.split(/\./).map(function (part) { return parseInt(part); });
             this.refresh();
         };
-        View.compareToOS = function (os2) {
+        KeyboardView.compareToOS = function (os2) {
             if (!/^[.0-9]+$/.test(os2)) {
                 if (os2)
                     console.error("Invalid version " + os2);
                 return 0;
             }
             var vos2 = os2.split(/\./).map(function (part) { return parseInt(part); });
-            console.log(os, vos2);
             for (var i = 0; i < os.length; i++) {
                 if (i >= vos2.length)
                     return -1;
@@ -423,7 +512,7 @@ var View;
             else
                 return 1;
         };
-        View.prototype.refresh = function () {
+        KeyboardView.prototype.refresh = function () {
             var _this = this;
             this.jKeyboard.empty();
             this.idxKeys = _.indexBy(this.keyboard.getVisible(), function (key) { return key.key; });
@@ -438,17 +527,15 @@ var View;
                 });
             });
         };
-        View.prototype.showStatus = function (str) {
+        KeyboardView.prototype.showStatus = function (str) {
             if (!str.length)
                 return this.hideStatus();
-            document.title = this.title + ": " + this.toTitleCase(str);
-            AHK("SetTitle", this.title + ": " + this.toTitleCase(str));
+            this.ahk.setTitle(this.title + ": " + this.toTitleCase(str));
         };
-        View.prototype.hideStatus = function () {
-            document.title = this.title;
-            AHK("SetTitle", this.title);
+        KeyboardView.prototype.hideStatus = function () {
+            this.ahk.setTitle(this.title);
         };
-        View.prototype.showKey = function (key) {
+        KeyboardView.prototype.showKey = function (key) {
             var _this = this;
             var keyType = " action";
             if (key instanceof Workers.CharKey) {
@@ -474,12 +561,127 @@ var View;
             })
                 .mouseover(function () { return _this.showStatus(key.getName()); });
         };
-        View.prototype.toTitleCase = function (str) {
+        KeyboardView.prototype.toTitleCase = function (str) {
             return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
         };
-        return View;
-    }());
-    View_1.View = View;
+        return KeyboardView;
+    }(View.View));
+    View.KeyboardView = KeyboardView;
+})(View || (View = {}));
+var View;
+(function (View) {
+    var KEYMAP = [
+        [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    ];
+    var BLANKKEY = new Workers.BlankKey();
+    var ESCAPE_REGEX = new RegExp('(\\' + ['/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\', '$', '^', '-'].join('|\\') + ')', 'g');
+    var defaultLocale = {
+        0: '', 1: 'ESC', 59: 'F1', 60: 'F2', 61: 'F3', 62: 'F4', 63: 'F5', 64: 'F6', 65: 'F7', 66: 'F8', 67: 'F9', 68: 'F10', 87: 'F11', 88: 'F12',
+        14: 'BKSP', 15: 'Tab', 58: 'Caps Lk', 28: 'Enter', 42: 'Shift', 29: 'CTRL', 91: 'WIN', 56: 'ALT',
+        41: '`', 2: '1', 3: '2', 4: '3', 5: '4', 6: '5', 7: '6', 8: '7', 9: '8', 10: '9', 11: '0', 12: '-', 13: '=',
+        16: 'q', 17: 'w', 18: 'e', 19: 'r', 20: 't', 21: 'y', 22: 'u', 23: 'i', 24: 'o', 25: 'p', 26: '[', 27: ']', 43: '\\',
+        30: 'a', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: ';', 40: '\'',
+        86: '\\', 44: 'z', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: 'm', 51: ',', 52: '.', 53: '/'
+    };
+    var keysLocale = defaultLocale;
+    var SearchView = (function (_super) {
+        __extends(SearchView, _super);
+        function SearchView() {
+            var _this = _super.call(this) || this;
+            _this.jBase = $(_this.element = document.createElement('div'));
+            _this.jBase.empty();
+            _this.element.classList.add('searchpane');
+            _this.jBase.append(_this.searchE = $('<input type="search">').on('input properychange', function () { return _this.refresh(); }).get(0)).append($('<button>').text("OK").click(function () { return document.ahk.setSearch(false); }));
+            _this.jKeyboard = $('<div class="keyboard">').appendTo(_this.jBase);
+            return _this;
+        }
+        SearchView.prototype.getElement = function () {
+            return this.element;
+        };
+        SearchView.prototype.charInput = function (key) {
+            this.searchE.value += key;
+        };
+        SearchView.prototype.escapeRegex = function (str) {
+            return str.replace(ESCAPE_REGEX, '\\$1');
+        };
+        SearchView.prototype.permute = function (permutation) {
+            var length = permutation.length, result = [permutation.slice()], c = new Array(length).fill(0), i = 1, k, p;
+            while (i < length) {
+                if (c[i] < i) {
+                    k = i % 2 && c[i];
+                    p = permutation[i];
+                    permutation[i] = permutation[k];
+                    permutation[k] = p;
+                    ++c[i];
+                    i = 1;
+                    result.push(permutation.slice());
+                }
+                else {
+                    c[i] = 0;
+                    ++i;
+                }
+            }
+            return result;
+        };
+        SearchView.prototype.searchKeys = function () {
+            var sr = this.escapeRegex(this.searchE.value);
+            console.log(sr);
+            var re = new RegExp(sr, 'i');
+            var results = data.emojis.filter(function (e) {
+                return re.test(e.fullName) ||
+                    re.test(e.name) ||
+                    (e.keywords && e.keywords.some(function (k) { return re.test(k); }));
+            });
+            return results;
+        };
+        SearchView.prototype.showKey = function (key) {
+            var _this = this;
+            var keyType = " action";
+            if (key instanceof Workers.CharKey) {
+                var keyType = " char";
+            }
+            if (key instanceof Workers.BlankKey) {
+                var keyType = " empty";
+            }
+            if (key.getName() == "back") {
+                var keyType = " back";
+            }
+            return $('<div class="key' + keyType + (key.hasAlternate() ? ' alt' : '') + (key.active ? ' active' : '') + '">')
+                .append($('<div class="keyname">').text(keysLocale[key.key]))
+                .append($('<div class="name">').text(key.getName()))
+                .append(key.getSymbolDiv(null))
+                .click(function (e) {
+                e.preventDefault();
+                key.act(_this);
+            })
+                .contextmenu(function (e) {
+                e.preventDefault();
+                key.actAlternate(_this);
+            });
+        };
+        SearchView.prototype.refresh = function () {
+            var _this = this;
+            var r = this.searchKeys(), i = 0;
+            this.jKeyboard.empty();
+            KEYMAP.forEach(function (row) {
+                var jRow = $('<div class="row">').appendTo(_this.jKeyboard);
+                row.forEach(function (keyCode) {
+                    if (i < r.length) {
+                        var k = new Workers.CharKey(r[i]);
+                        k.key = keyCode;
+                        jRow.append(_this.showKey(k));
+                    }
+                    else {
+                        BLANKKEY.key = keyCode;
+                        jRow.append(_this.showKey(BLANKKEY));
+                    }
+                    i++;
+                });
+            });
+        };
+        return SearchView;
+    }(View.View));
+    View.SearchView = SearchView;
 })(View || (View = {}));
 var Workers;
 (function (Workers) {

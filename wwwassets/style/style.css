@@ -86,3 +86,14 @@ main > section{
 .key:hover .symbol{
 	transform: translateY(-4px) scale(1.8) rotate(7deg);
 }
+
+.searchpane{
+	padding: .2vw 1vw;
+}
+
+.searchpane input{
+	display: block;
+	width: 100%;
+	font-size: 4vw;
+	padding: .5vw;
+}
