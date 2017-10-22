@@ -1,8 +1,9 @@
-Emoji Keyboard (with Emoji 5 support)
+Emoji Keyboard (Emoji 5, Fall Creator Update Ready)
 ==============
 <img alt="Screenshot" src="http://i.imgur.com/gW11T1R.png" width="767" />
 
 Packed with 1570 base Emojis!
+Requires Windows 7
 
 How to use
 ----------
@@ -22,7 +23,7 @@ There are different available themes. Currently there is the default "light" the
 
 Skinnable emojis are signaled by a yellow indicator, right click or use the shift key to see the different skins.
 
-The [Twemoji Pack](https://github.com/twitter/twemoji) is used as a fallback for Emojis not supported by Windows.
+The [Twemoji Pack](https://github.com/twitter/twemoji) is used as a fallback for Emojis not supported by your Windows version.
 
 The flags and the newest Emojis are currently not supported by Windows. You can still use them in 3rd-party applications or sites like Whatsapp or Twitter.
 Flags are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, between Congo and Côte d'Ivoire.

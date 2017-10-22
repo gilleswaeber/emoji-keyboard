@@ -14,14 +14,14 @@ declare module Data{
 		fullName: string,
 		name?: string,
 		keywords?: string[],
-		fallbackIcon?: boolean,
+		requiredVersion?: string,
 		alternates?: Data.Emoji[]
 	}
 
 	interface Keyboard{
 		name: string,
 		symbol: string,
-		fallbackIcon?: boolean,
+		requiredVersion?: string,
 		content: {
 			group: string,
 			subGroup: string

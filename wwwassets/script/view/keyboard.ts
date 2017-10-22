@@ -10,6 +10,8 @@ module View{
 		30: 'a', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: ';', 40: '\'',
 		86: '\\', 44: 'z', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: 'm', 51: ',', 52: '.', 53: '/'
 	};
+	
+	var os = [99];
 
 	var keysLocale: {[id: number]: string} = defaultLocale;
 	const KEYS: number[] = [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
@@ -46,7 +48,7 @@ module View{
 
 			this.title = "Emoji Keyboard - " + this.toTitleCase(keyboard.getName());
 			document.title = this.title;
-			AHK("SetTitle", this.title);
+			if(window.AHK) AHK("SetTitle", this.title);
 		}
 
 		input(key: number, shift: boolean): void{
@@ -62,6 +64,34 @@ module View{
 				this.refresh();
 			}
 			else alert(keymap + " is not a valid keymap!\nValid keymaps are "+_.keys(data.keymaps).slice(1).join(", "));
+		}
+		
+		setOS(_os: string): void{
+			_os = _os.replace(/^WIN_/, '');
+			if(!/^[.0-9]+$/.test(_os)){
+				console.error("Invalid OS version " + _os);
+				return;
+			}
+			os = _os.split(/\./).map(part => parseInt(part));
+			this.refresh();
+		}
+		
+		static compareToOS(os2: string): number{
+			if(!/^[.0-9]+$/.test(os2)){
+				if(os2) console.error("Invalid version " + os2);
+				return 0;
+			}
+			let vos2 = os2.split(/\./).map(part => parseInt(part));
+
+			console.log(os, vos2);
+			
+			for(let i=0; i<os.length; i++){
+				if(i >= vos2.length) return -1;
+				if(vos2[i] > os[i]) return 1;
+				if(vos2[i] < os[i]) return -1;
+			}
+			if(vos2.length == os.length) return 0;
+			else return 1;
 		}
 
 		refresh(): void{
@@ -96,7 +126,7 @@ module View{
             return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + (key.active?' active':'') + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
-				.append(key.getSymbolDiv())
+				.append(key.getSymbolDiv(null))
 				.click((e)=>{
 					e.preventDefault();
 					key.act(this);
@@ -106,7 +136,6 @@ module View{
 					key.actAlternate(this);
 				})
 				.mouseover(() => this.showStatus(key.getName()))
-				//.mouseout(() => this.hideStatus());
 		}
 
 		private toTitleCase(str: string){

@@ -21,6 +21,10 @@ class Main{
 	setKeymap(keymap: string){
 		this.view.setKeymap(keymap);
 	}
+	
+	setOS(os: string){
+		this.view.setOS(os);
+	}
 }
 
 

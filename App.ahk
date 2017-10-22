@@ -135,6 +135,7 @@ Toggle(){
 Ready(){
 	global j
 	getDOM().document.ahk.setKeymap(j.keymap)
+	getDOM().document.ahk.setOS(A_OSVersion)
 }
 SetTitle(t){
 	Gui __Webapp_:Show, NA, %t%

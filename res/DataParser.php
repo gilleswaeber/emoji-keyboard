@@ -5,6 +5,7 @@ include_once 'DataGrabber.php';
 class DataParser{
 	private $cldrdir;
 	private $emojidir;
+	private $emojiprevdirs;
 	private $ucddir;
 
 	/**
@@ -13,6 +14,7 @@ class DataParser{
 	function __construct($dataGrabber) {
 		$this->cldrdir = $dataGrabber->download_cldr();
 		$this->emojidir = $dataGrabber->download_unicode_emoji();
+		$this->emojiprevdirs = $dataGrabber->download_unicode_emoji_previous();
 		$this->ucddir = $dataGrabber->download_ucd();
 	}
 
@@ -27,9 +29,20 @@ class DataParser{
 	}
 
 	function parseAttributes() {
+		$chars['latest'] = $this->parseEmojiData($this->emojidir.'emoji-data.txt');
+
+		foreach ($this->emojiprevdirs as $v => $dir) {
+			$chars['previous'][$v] = $this->parseEmojiData($dir.'emoji-data.txt');
+		}
+
+		file_put_contents('data/chars.json', json_encode($chars, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+		return $chars;
+	}
+	
+	function parseEmojiData($filename){
 		$chars = [];
 
-		foreach (file($this->emojidir.'emoji-data.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+		foreach (file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
 			if(preg_match("/^(?P<char>[0-9a-f]+) +; (?P<attr>[a-z_]+) *# *(?P<version>[0-9.]+) *\[1]/i", $line, $m)) {
 				$char = hexdec($m['char']);
 				if(!isset($chars[$char])) $chars[$char] = [];
@@ -48,8 +61,37 @@ class DataParser{
 			}
 		}
 
-		file_put_contents('data/chars.json', json_encode($chars, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
 		return $chars;
+	}
+	
+	function parseSequences() {
+		$sequences = [];
+
+		foreach ($this->emojiprevdirs as $v => $dir) {
+			$sequences[$v] = array_merge(
+				$this->parseEmojiSequences($dir.'emoji-sequences.txt'),
+				$this->parseEmojiSequences($dir.'emoji-zwj-sequences.txt')
+			);
+		}
+
+		file_put_contents('data/sequences.json', json_encode($sequences, JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+		return $sequences;
+	}
+	
+	function parseEmojiSequences($filename){
+		$sequences = [];
+
+		foreach (file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+			if(preg_match("/^(?P<seq>[0-9a-f ]+[0-9a-f]) *[;#].*/i", $line, $m)) {
+				$seq = explode(' ', $m['seq']);
+				foreach($seq as &$part) $part = hexdec($part);
+				$sequences[] = implode('-', $seq);
+			} else {
+				//echo $line."\n";
+			}
+		}
+
+		return $sequences;
 	}
 
 	function parseKeys() {
