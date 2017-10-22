@@ -18,22 +18,28 @@ module Workers{
 			return this.symbol;
 		}
 
-		getSymbolDiv(requiredVersion: string = null): HTMLDivElement{
+		getSymbolDiv(requiredVersion: string): HTMLDivElement{
 			let container = $('<div class="symbol">');
-			let useFallback = View.View.compareToOS(requiredVersion) <= 0;
+			let useFallback = View.View.compareToOS(requiredVersion) > 0;
+			console.log("Use fallback", useFallback, " requires ", requiredVersion);
 			if(!useFallback)
 				container.text(this.symbol);
 			else{
-				let symbol = this.getSymbol();
-				let name: string[] = [];
-				for(var i=0; i<symbol.length; i++){
-					let c = symbol.codePointAt(i).toString(16);
-					name.push(c);
-					if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
-				}
-				container.append($('<img>').attr('src', 'img/'+name.join('-')+'.svg').attr('alt', this.symbol));
+				container.append($('<img>').attr('src', 'img/'+Key.toTwemojiFilename(this.getSymbol())).attr('alt', this.symbol));
 			}
 			return container.get(0) as HTMLDivElement;
+		}
+
+		static toTwemojiFilename(symbol: string){
+			let name: string[] = [];
+			for(var i=0; i<symbol.length; i++){
+				let c = symbol.codePointAt(i).toString(16);
+				name.push(c);
+				if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
+			}
+			let filename = name.join('-')+'.svg';
+			if(filename.indexOf('200d') === -1) filename = filename.replace(/-fe0f/g, '');
+			return filename;
 		}
 		
 		setKeyboard(keyboard: Keyboard){

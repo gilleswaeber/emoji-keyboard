@@ -67,20 +67,23 @@ module View{
 		}
 		
 		setOS(_os: string): void{
+			_os = _os.replace(/^WIN_/, '');
 			if(!/^[.0-9]+$/.test(_os)){
 				console.error("Invalid OS version " + _os);
 				return;
 			}
-			os = _os.split(/./).map(part => parseInt(part));
+			os = _os.split(/\./).map(part => parseInt(part));
 			this.refresh();
 		}
 		
 		static compareToOS(os2: string): number{
 			if(!/^[.0-9]+$/.test(os2)){
-				console.error("Invalid version " + os2);
-				return -1;
+				if(os2) console.error("Invalid version " + os2);
+				return 0;
 			}
-			let vos2 = os2.split(/./).map(part => parseInt(part));
+			let vos2 = os2.split(/\./).map(part => parseInt(part));
+
+			console.log(os, vos2);
 			
 			for(let i=0; i<os.length; i++){
 				if(i >= vos2.length) return -1;
@@ -123,7 +126,7 @@ module View{
             return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + (key.active?' active':'') + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
-				.append(key.getSymbolDiv())
+				.append(key.getSymbolDiv(null))
 				.click((e)=>{
 					e.preventDefault();
 					key.act(this);
@@ -133,7 +136,6 @@ module View{
 					key.actAlternate(this);
 				})
 				.mouseover(() => this.showStatus(key.getName()))
-				//.mouseout(() => this.hideStatus());
 		}
 
 		private toTitleCase(str: string){

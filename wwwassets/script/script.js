@@ -222,23 +222,28 @@ var Workers;
             return this.symbol;
         };
         Key.prototype.getSymbolDiv = function (requiredVersion) {
-            if (requiredVersion === void 0) { requiredVersion = null; }
             var container = $('<div class="symbol">');
-            var useFallback = View.View.compareToOS(requiredVersion) <= 0;
+            var useFallback = View.View.compareToOS(requiredVersion) > 0;
+            console.log("Use fallback", useFallback, " requires ", requiredVersion);
             if (!useFallback)
                 container.text(this.symbol);
             else {
-                var symbol = this.getSymbol();
-                var name_1 = [];
-                for (var i = 0; i < symbol.length; i++) {
-                    var c = symbol.codePointAt(i).toString(16);
-                    name_1.push(c);
-                    if (symbol.charCodeAt(i) != symbol.codePointAt(i))
-                        i++;
-                }
-                container.append($('<img>').attr('src', 'img/' + name_1.join('-') + '.svg').attr('alt', this.symbol));
+                container.append($('<img>').attr('src', 'img/' + Key.toTwemojiFilename(this.getSymbol())).attr('alt', this.symbol));
             }
             return container.get(0);
+        };
+        Key.toTwemojiFilename = function (symbol) {
+            var name = [];
+            for (var i = 0; i < symbol.length; i++) {
+                var c = symbol.codePointAt(i).toString(16);
+                name.push(c);
+                if (symbol.charCodeAt(i) != symbol.codePointAt(i))
+                    i++;
+            }
+            var filename = name.join('-') + '.svg';
+            if (filename.indexOf('200d') === -1)
+                filename = filename.replace(/-fe0f/g, '');
+            return filename;
         };
         Key.prototype.setKeyboard = function (keyboard) {
             this.keyboard = keyboard;
@@ -389,19 +394,22 @@ var View;
                 alert(keymap + " is not a valid keymap!\nValid keymaps are " + _.keys(data.keymaps).slice(1).join(", "));
         };
         View.prototype.setOS = function (_os) {
+            _os = _os.replace(/^WIN_/, '');
             if (!/^[.0-9]+$/.test(_os)) {
                 console.error("Invalid OS version " + _os);
                 return;
             }
-            os = _os.split(/./).map(function (part) { return parseInt(part); });
+            os = _os.split(/\./).map(function (part) { return parseInt(part); });
             this.refresh();
         };
         View.compareToOS = function (os2) {
             if (!/^[.0-9]+$/.test(os2)) {
-                console.error("Invalid version " + os2);
-                return -1;
+                if (os2)
+                    console.error("Invalid version " + os2);
+                return 0;
             }
-            var vos2 = os2.split(/./).map(function (part) { return parseInt(part); });
+            var vos2 = os2.split(/\./).map(function (part) { return parseInt(part); });
+            console.log(os, vos2);
             for (var i = 0; i < os.length; i++) {
                 if (i >= vos2.length)
                     return -1;
@@ -455,7 +463,7 @@ var View;
             return $('<div class="key' + keyType + (key.hasAlternate() ? ' alt' : '') + (key.active ? ' active' : '') + '">')
                 .append($('<div class="keyname">').text(keysLocale[key.key]))
                 .append($('<div class="name">').text(key.getName()))
-                .append(key.getSymbolDiv())
+                .append(key.getSymbolDiv(null))
                 .click(function (e) {
                 e.preventDefault();
                 key.act(_this);
