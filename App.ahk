@@ -179,7 +179,6 @@ SetSearch(s){
 	global vSearch
 	oldSearch := vSearch
 	vSearch := s
-	OSD("Search: " + s)
 	If oldSearch
 		Send, `%
 	If vSearch
