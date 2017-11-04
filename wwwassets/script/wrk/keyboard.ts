@@ -6,6 +6,8 @@ module Workers{
 		}
 	}
 
+	export const KEYS_PERMANENT = 2;
+
 	export class Keyboard{
 		private multipage: boolean;
 		private pages: number;
@@ -19,17 +21,18 @@ module Workers{
 			private name: string,
 			private symbol: string,
 			private keys: Key[],
-			private requiredVersion: string = null
+			private requiredVersion: string | undefined = undefined
 		){
 			this.fixedKeys.push(new BlankKey());
 			this.fixedKeys.push(new SearchKey());
-			this.multipage = this.keys.length > 46;
+
+			this.multipage = this.keys.length > View.KEYS_COUNT - KEYS_PERMANENT;
 			if(this.multipage){
 				this.pages = 1;
-				while(this.keys.length > this.pages*(45-Math.min(this.pages,10))){
+				while(this.keys.length > this.pages*(View.KEYS_COUNT - KEYS_PERMANENT - Math.min(this.pages,10))){
 					this.pages++;
 				}
-				var perpage = 45-Math.min(this.pages,10);
+				var perpage = View.KEYS_COUNT - KEYS_PERMANENT - Math.min(this.pages,10);
 				for(var i=0; i<Math.min(this.pages,10); i++){
 					this.fixedKeys.push(this.pageKeys[i] = new PageKey(i));
 				}
@@ -53,13 +56,13 @@ module Workers{
 			return this.symbol;
 		}
 
-		getRequiredVersion(): string{
+		getRequiredVersion(): string | undefined{
 			return this.requiredVersion;
 		}
 
 		getVisible(): Key[]{
-			if(this.multipage) return [].concat(this.fixedKeys, this.pagedKeys[this.page]);
-			else return [].concat(this.fixedKeys);
+			if(this.multipage) return ([] as Key[]).concat(this.fixedKeys, this.pagedKeys[this.page]);
+			else return ([] as Key[]).concat(this.fixedKeys);
 		}
 
 		getParent(): Keyboard{
@@ -88,7 +91,7 @@ module Workers{
 	}
 
 	export class EmojiKeyboard extends Keyboard{
-		constructor(parent: Keyboard, kdata: Data.Keyboard){
+		constructor(parent: Keyboard | null, kdata: Data.Keyboard){
 			var keys: CharKey[] = [];
 			kdata.content.forEach((content)=>{
 				Emojis.getSubGroup(content.group, content.subGroup).forEach((chr)=>{
@@ -102,7 +105,7 @@ module Workers{
 	export class AlternatesKeyboard extends Keyboard{
 		constructor(parent: Keyboard, base: Data.Emoji){
 			var keys: CharKey[] = [];
-			base.alternates.forEach((chr)=>{
+			if(base.alternates) base.alternates.forEach((chr)=>{
 				keys.push(new CharKey(chr));
 			});
 			super(base.name, base.symbol, keys, base.requiredVersion);

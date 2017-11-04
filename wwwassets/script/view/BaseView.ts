@@ -1,4 +1,9 @@
+/// <reference path="../wrk/AHKWrk.ts" />
+
+
 module View{
+
+	import AHKWrk = Workers.AHKWrk;
 
 	export class BaseView{
 		private view: View.View;
@@ -9,24 +14,26 @@ module View{
 		constructor(
 			private base: HTMLElement
 		){
-			this.keyboardView = new KeyboardView();
+			this.keyboardView = new KeyboardView(this);
 			this.keyboardView.show(Workers.Keyboards.getMainKeyboard());
 
-			this.searchView = new SearchView();
+			this.searchView = new SearchView(this);
 
 			this.loadKeyboard();
 		}
 
-		public loadKeyboard(){
+		loadKeyboard(){
 			$(this.base).children().detach();
 			this.view = this.keyboardView;
 			this.base.appendChild(this.view.getElement());
+			AHKWrk.setSearch(false);
 		}
 		
-		public loadSearch(){
+		loadSearch(){
 			$(this.base).children().detach();
 			this.view = this.searchView;
 			this.base.appendChild(this.view.getElement());
+			AHKWrk.setSearch(true);
 		}
 		
 		input(key: number, shift: boolean = false){
@@ -43,14 +50,7 @@ module View{
 		
 		setOS(os: string){
 			this.keyboardView.setOS(os);
-		}
-		
-		setSearch(search: boolean){
-			if(search){
-				this.loadSearch();
-			} else {
-				this.loadKeyboard();
-			}
+			this.searchView.refresh();
 		}
 	}
 

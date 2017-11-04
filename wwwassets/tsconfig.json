@@ -2,6 +2,7 @@
 	"compileOnSave": true,
     "compilerOptions": {
         "noImplicitAny": true,
+        "strict": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "outFile": "script/script.js",

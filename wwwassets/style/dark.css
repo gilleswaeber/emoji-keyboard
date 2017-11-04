@@ -38,3 +38,9 @@ body, html{
 .key:hover .name{
 	text-shadow: .1vw .1vw 0 #fff, .1vw -.1vw 0 #fff, -.1vw .1vw 0 #fff, -.1vw -.1vw 0 #fff;
 }
+
+.searchpane input{
+	background: transparent;
+	color: #fff;
+	border-bottom: solid .5vw #e5e5e5;
+}

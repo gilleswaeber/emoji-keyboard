@@ -1,9 +1,6 @@
 /// <reference path="AHKWrk.ts" />
 
-
 module Workers{
-
-	const ahk = new Wrk.AHKWrk();
 
 	export abstract class Key{
 		public key: number;
@@ -23,7 +20,7 @@ module Workers{
 			return this.symbol;
 		}
 
-		getSymbolDiv(requiredVersion: string): HTMLDivElement{
+		getSymbolDiv(requiredVersion?: string | undefined): HTMLDivElement{
 			let container = $('<div class="symbol">');
 			let useFallback = View.KeyboardView.compareToOS(requiredVersion) > 0;
 			if(!useFallback)
@@ -37,7 +34,7 @@ module Workers{
 		static toTwemojiFilename(symbol: string){
 			let name: string[] = [];
 			for(var i=0; i<symbol.length; i++){
-				let c = symbol.codePointAt(i).toString(16);
+				let c = (symbol.codePointAt(i) as number).toString(16);
 				name.push(c);
 				if(symbol.charCodeAt(i) != symbol.codePointAt(i))i++;
 			}
@@ -74,7 +71,7 @@ module Workers{
 		}
 
 		act(){
-			ahk.send(this.getSymbol());
+			AHKWrk.send(this.getSymbol());
 		}
 
 		actAlternate(view: View.IViewKey){
@@ -135,7 +132,17 @@ module Workers{
 		}
 
 		act(view: View.IViewKey){
-			document.ahk.setSearch(true);
+			view.getBaseView().loadSearch();
+		}
+	}
+	
+	export class ExitSearchKey extends Key{
+		constructor(){
+			super('back', '←');
+		}
+
+		act(view: View.IViewKey){
+			view.getBaseView().loadKeyboard();
 		}
 	}
 

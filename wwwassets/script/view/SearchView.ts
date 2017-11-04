@@ -1,38 +1,38 @@
 /// <reference path="BaseView.ts" />
+/// <reference path="../wrk/Emojis.ts" />
 
 module View{
-	const KEYMAP: number[][] = [
-		[41,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13], //, 59, 60, 61
-	];
-	const BLANKKEY: Workers.BlankKey = new Workers.BlankKey();
-	const ESCAPE_REGEX = new RegExp('(\\' + [ '/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\', '$', '^', '-' ].join('|\\') + ')', 'g' );
-	var defaultLocale = {
-		0: '', 1: 'ESC', 59: 'F1', 60: 'F2', 61: 'F3', 62: 'F4', 63: 'F5', 64: 'F6', 65: 'F7', 66: 'F8', 67: 'F9', 68: 'F10', 87: 'F11', 88: 'F12',
-		14: 'BKSP', 15: 'Tab', 58: 'Caps Lk', 28: 'Enter', 42: 'Shift', 29: 'CTRL', 91: 'WIN', 56: 'ALT',
-		41: '`', 2: '1', 3: '2', 4: '3', 5: '4', 6: '5', 7: '6', 8: '7', 9: '8', 10: '9', 11: '0', 12: '-', 13: '=',
-		16: 'q', 17: 'w', 18: 'e', 19: 'r', 20: 't', 21: 'y', 22: 'u', 23: 'i', 24: 'o', 25: 'p', 26: '[', 27: ']', 43: '\\',
-		30: 'a', 31: 's', 32: 'd', 33: 'f', 34: 'g', 35: 'h', 36: 'j', 37: 'k', 38: 'l', 39: ';', 40: '\'',
-		86: '\\', 44: 'z', 45: 'x', 46: 'c', 47: 'v', 48: 'b', 49: 'n', 50: 'm', 51: ',', 52: '.', 53: '/'
-	};
-	var keysLocale: {[id: number]: string} = defaultLocale;
 
-	export class SearchView extends View{
+	import AHKWrk = Workers.AHKWrk;
+	import Emojis = Workers.Emojis;
+
+	const KEYMAP: number[][] = [
+		[41,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13],
+		[1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013],
+		[1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026],
+	];
+	const KEYS: number[] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026];
+	const BLANKKEY = new Workers.BlankKey();
+	const EXITKEY = new Workers.ExitSearchKey();
+
+	export class SearchView extends View implements IViewKey{
 		private jBase: JQuery;
 		private searchE: HTMLInputElement;
 		private element: HTMLElement;
+		private idxKeys: {[id: number]: Workers.Key};
 		private jKeyboard: JQuery;
 
-		constructor(){
+		constructor(private baseView: BaseView){
 			super();
 			this.jBase = $(this.element = document.createElement('div'));
 			this.jBase.empty();
-			this.element.classList.add('searchpane');
 			this.jBase.append(
-				this.searchE = $('<input type="search">').on('input properychange', () => this.refresh()).get(0) as HTMLInputElement
-			).append(
-				$('<button>').text("OK").click(() => document.ahk.setSearch(false))
+				$('<div class="searchpane">').append(
+					this.searchE = $('<input type="search">').attr('placeholder', 'Search…').on('input properychange', () => this.refresh()).get(0) as HTMLInputElement
+				)
 			);
 			this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
+			this.refresh();
 		}
 
 		public getElement(){
@@ -40,47 +40,31 @@ module View{
 		}
 
 		public charInput(key: string){
+			if(key == '%') return;
 			this.searchE.value += key;
+			setTimeout(() => this.refresh(), 0);
 		}
-
-		private escapeRegex(str: string): string{
-			return str.replace(ESCAPE_REGEX, '\\$1');
-		}
-
-		private permute(permutation: string[]): string[][] {
-			var length = permutation.length,
-				result = [permutation.slice()],
-				c = new Array(length).fill(0),
-				i = 1, k, p;
-			while (i < length) {
-				if (c[i] < i) {
-					k = i % 2 && c[i];
-					p = permutation[i];
-					permutation[i] = permutation[k];
-					permutation[k] = p;
-					++c[i];
-					i = 1;
-					result.push(permutation.slice());
-				} else {
-					c[i] = 0;
-					++i;
-				}
+		
+		public input(key: number, shift: boolean){
+			if(key == 15) this.baseView.loadKeyboard(); // Tab
+			else if(key == 14){
+				if (shift) this.searchE.value = '';
+				else this.searchE.value = this.searchE.value.replace(/.$/, ''); // Backspace
+				setTimeout(() => this.refresh(), 0);
 			}
-			return result;
+			else if(this.idxKeys[key]){
+				if (!shift) this.idxKeys[key].act(this);
+				else this.idxKeys[key].actAlternate(this);
+			}
+		}
+		
+		public showStatus(str: string): void{
+			if(!str.length) return this.hideStatus();
+			AHKWrk.setTitle("Emoji Keyboard - Search: " + this.toTitleCase(str));
 		}
 
-		private searchKeys(){
-			var sr = this.escapeRegex(this.searchE.value);
-			//sr = this.permute(sr.split(/ /g).filter(s => s.length > 0)).map(prts => prts.join('.*')).join('|');
-			console.log(sr);
-			var re = new RegExp(sr, 'i');
-			var results = data.emojis.filter(
-				e => 
-					re.test(e.fullName) ||
-					re.test(e.name) ||
-					(e.keywords && e.keywords.some(k => re.test(k)))
-			);
-			return results;
+		hideStatus(): void{
+			AHKWrk.setTitle("Emoji Keyboard - Search");
 		}
 
 		private showKey(key: Workers.Key): JQuery{
@@ -91,7 +75,7 @@ module View{
             return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + (key.active?' active':'') + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
-				.append(key.getSymbolDiv(null))
+				.append(key.getSymbolDiv())
 				.click((e)=>{
 					e.preventDefault();
 					key.act(this);
@@ -100,25 +84,44 @@ module View{
 					e.preventDefault();
 					key.actAlternate(this);
 				})
+				.mouseover(() => this.showStatus(key.getName()))
 		}
 
-		private refresh(): void{
-			var r = this.searchKeys(), i = 0;
+		public refresh(): void{
+			this.showStatus("");
+			var r = Emojis.search(this.searchE.value), i = 0;
+			this.idxKeys = {};
+			this.idxKeys[41] = EXITKEY;
+			for(var i = 0; i < KEYS.length && i < r.length; i++){
+				this.idxKeys[KEYS[i]] = new Workers.CharKey(r[i]);
+			}
+
 			this.jKeyboard.empty();
 			KEYMAP.forEach((row)=>{
 				var jRow = $('<div class="row">').appendTo(this.jKeyboard);
 				row.forEach((keyCode)=>{
-					if(i < r.length){
-						var k = new Workers.CharKey(r[i]);
+					if(this.idxKeys[keyCode]){
+						var k = this.idxKeys[keyCode];
 						k.key = keyCode;
 						jRow.append(this.showKey(k));
 					}else{
 						BLANKKEY.key = keyCode;
 						jRow.append(this.showKey(BLANKKEY));
 					}
-					i++;
 				})
-			})
+			});
+		}
+		
+		private toTitleCase(str: string){
+			return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+		}
+
+		getBaseView(): BaseView {
+			return this.baseView;
+		}
+		
+		show(keyboard: Workers.Keyboard): void {
+			throw new Error("Method not implemented.");
 		}
 	}
 }

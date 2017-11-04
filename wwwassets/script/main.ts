@@ -15,5 +15,5 @@ class Main{
 var main: Main;
 $(document).ready(()=>{
 	main = new Main(document.querySelector('main') as HTMLElement);
-	setTimeout(()=>(new Wrk.AHKWrk()).ready(), 0);
+	setTimeout(()=>Workers.AHKWrk.ready(), 0);
 });

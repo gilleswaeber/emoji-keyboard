@@ -1,5 +1,5 @@
 interface String {
-	codePointAt(position: number): number;
+	codePointAt(position: number): number | undefined;
 	getCodePointLength(): number;
 }
 
@@ -7,7 +7,7 @@ interface String {
 if (!String.prototype.codePointAt) {
 	(function () {
 		'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
-		var codePointAt = function (position: number) {
+		var codePointAt = function (this: String, position: number) {
 			if (this == null) {
 				throw TypeError();
 			}
@@ -52,7 +52,7 @@ if (!String.prototype.codePointAt) {
 if (!String.prototype.getCodePointLength) {
 	(function () {
 		'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
-		var getCodePointLength = function () {
+		var getCodePointLength = function (this: String) {
 			return this.length - this.split(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g).length + 1;
 		}
 		if (Object.defineProperty) {

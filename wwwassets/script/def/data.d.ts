@@ -12,7 +12,7 @@ declare module Data{
 		group: string,
 		subGroup: string,
 		fullName: string,
-		name?: string,
+		name: string,
 		keywords?: string[],
 		requiredVersion?: string,
 		alternates?: Data.Emoji[]
