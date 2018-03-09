@@ -6,7 +6,7 @@ module Workers{
 		}
 	}
 
-	const MAX_PAGES = 20;
+	const MAX_PAGES = 12;
 
 	export class Keyboard{
 		private multipage: boolean;
@@ -33,7 +33,7 @@ module Workers{
 					this.pages++;
 				}
 				var perpage = View.KEYS_COUNT - this.fixedKeys.length - Math.min(this.pages,MAX_PAGES);
-				for(var i=0; i<Math.min(this.pages,10); i++){
+				for(var i=0; i<Math.min(this.pages,MAX_PAGES); i++){
 					this.fixedKeys.push(this.pageKeys[i] = new PageKey(i));
 				}
 				var keysStack = this.keys.slice(0);
@@ -92,10 +92,11 @@ module Workers{
 
 	export class EmojiKeyboard extends Keyboard{
 		constructor(parent: Keyboard | null, kdata: Data.Keyboard){
-			var keys: CharKey[] = [];
+			var keys: Key[] = [];
 			kdata.content.forEach((content)=>{
 				Emojis.getSubGroup(content.group, content.subGroup).forEach((chr)=>{
-					keys.push(new CharKey(chr));
+					if (chr.symbol.length) keys.push(new CharKey(chr));
+					else keys.push(new BlankKey());
 				});
 			});
 			super(kdata.name, kdata.symbol, keys, kdata.requiredVersion);

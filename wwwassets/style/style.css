@@ -92,6 +92,18 @@ main > section{
 	transform: translateY(-4px) scale(1.8) rotate(7deg);
 }
 
+.key:not(.lu) .uname{
+	display: none;
+}
+
+.key .uname{
+	position: absolute;
+	bottom: .2vw;
+	right: .2vw;
+	line-height: 1em;
+	transition: ease .05s;
+}
+
 .searchpane{
 	padding: .2vh 2.05vw;
 	height: 25vh;

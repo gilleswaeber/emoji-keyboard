@@ -83,16 +83,21 @@ class DataBuilder{
 
 		if(!isset($e['code'])) $e['code'] = array_map('DataParser::ord', preg_split("##u", $e['symbol'], -1, PREG_SPLIT_NO_EMPTY));
 
-		$e['fullName'] = implode(', ', array_map(function($cp){
+		if(!isset($e['fullName'])) $e['fullName'] = implode(', ', array_map(function($cp){
 				return $this->unidata[$cp]['name'];
 			}, array_filter($e['code'], function($code){
 				return !in_array($code, $this->ignoreList);
 			})));
 		
-		$e['version'] = floatval($this->chars['latest'][$e['code'][0]]['Version']);
-		$e['emojiVersion'] = $this->findEmojiVersion($e);
+		if(count($e['code'])){
+			$e['version'] = @floatval($this->chars['latest'][$e['code'][0]]['Version']) ?: 0;
+			$e['emojiVersion'] = $this->findEmojiVersion($e);
+		} else {
+			$e['version'] = $e['emojiVersion'] = 0;
+		}
 		
-		if(!isset($e['keywords']) && isset($this->annotations[$e['code'][0]]['keywords']))
+		
+		if(!isset($e['keywords']) && count($e['code']) && isset($this->annotations[$e['code'][0]]['keywords']))
 			$e['keywords'] = $this->annotations[$e['code'][0]]['keywords'];
 
 		$this->setRequiredVersion($e);
@@ -132,13 +137,32 @@ class DataBuilder{
 			}
 		}
 		if(isset($this->config->addons)) foreach ($this->config->addons as $addon) {
-			$emojis[$addon->name] = [
-				'symbol' => $addon->symbol,
-				'group' => $addon->group,
-				'subGroup' => $addon->subGroup,
-				'name' => $addon->name
-			];
-			if(isset($addon->keywords)) $emojis[$addon->name]['keywords'] = $addon->keywords;
+			if(isset($addon->symbols)){
+				foreach($addon->symbols as $symbol){
+					if(isset($symbol->from, $symbol->to)){
+						$fromcode = array_map('DataParser::ord', preg_split("##u", $symbol->from, -1, PREG_SPLIT_NO_EMPTY));
+						$tocode = array_map('DataParser::ord', preg_split("##u", $symbol->to, -1, PREG_SPLIT_NO_EMPTY));
+						if(count($fromcode) != 1 || count($tocode) != 1 || $fromcode[0] > $tocode[0]) throw InvalidArgumentException("Range not supported: " + $symbol->from + " — " + $symbol->to);
+						$from = $fromcode[0];
+						$to = $tocode[0];
+						for($c = $from; $c <= $to; $c++) {
+							$emoji = $this->getEmoji($addon, DataParser::chr($c));
+							$emojis[$emoji['name']] = $emoji;
+						}
+					} else {
+						$emoji = $this->getEmoji($addon, $symbol);
+						$emojis[$emoji['name']] = $emoji;
+					}
+				}
+			} else {
+				$emojis[$addon->name] = [
+					'symbol' => $addon->symbol,
+					'group' => $addon->group,
+					'subGroup' => $addon->subGroup,
+					'name' => $addon->name
+				];
+				if(isset($addon->keywords)) $emojis[$addon->name]['keywords'] = $addon->keywords;
+			}
 		}
 
 		// Second pass (add additional informations if possible)
@@ -185,5 +209,36 @@ class DataBuilder{
 		file_put_contents('data/data.js', "// Use the builder inside the res folder to edit this file\nvar data = ".json_encode($data, JSON_UNESCAPED_UNICODE));
 		echo "File written in data/data.js\n";
 		return $data;
+	}
+
+	function getEmoji($addon, $symbol){
+		static $blank = 0;
+		if(is_null($symbol)) {
+			return [
+				'symbol' => "",
+				'group' => $addon->group,
+				'subGroup' => $addon->subGroup,
+				'name' => "BLANK ".$blank++
+			];
+		} elseif(is_string($symbol)){
+			$code = array_map('DataParser::ord', preg_split("##u", $symbol, -1, PREG_SPLIT_NO_EMPTY));
+			$fname = $e['fullName'] = implode(', ', array_map(function($cp){
+				return $this->unidata[$cp]['name'];
+			}, $code));
+			$name = mb_convert_case($fname, MB_CASE_TITLE);
+			return [
+				'symbol' => $symbol,
+				'group' => $addon->group,
+				'subGroup' => $addon->subGroup,
+				'fullName' => $fname,
+				'name' => $name,
+				'code' => $code,
+			];
+		} elseif(is_array($symbol)){
+			$emoji = $this->getEmoji($addon, $symbol[0]);
+			$emoji['alternates'] = [];
+			foreach($symbol as $sym) $emoji['alternates'][] = $this->getEmoji($addon, $sym);
+			return $emoji;
+		} else throw new UnexpectedValueException($symbol);
 	}
 }

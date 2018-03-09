@@ -16,6 +16,10 @@ module Workers{
 			return this.name;
 		}
 
+		getUName(): string{
+			return "";
+		}
+
 		getSymbol(): string{
 			return this.symbol;
 		}
@@ -59,6 +63,10 @@ module Workers{
 		hasAlternate(): boolean{
 			return false;
 		}
+
+		isLULetter(): boolean{
+			return false;
+		}
 	}
 
 	export class CharKey extends Key{
@@ -75,14 +83,26 @@ module Workers{
 		}
 
 		actAlternate(view: View.IViewKey){
-			if(!this.hasAlternate()) return this.act();
-			let ak = new AlternatesKeyboard(this.keyboard, this.char);
-			ak.setParent(this.keyboard);
-			view.show(ak);
+			if(this.hasAlternate()) {
+				let ak = new AlternatesKeyboard(this.keyboard, this.char);
+				ak.setParent(this.keyboard);
+				view.show(ak);
+			} else if(this.isLULetter()) {
+				AHKWrk.send(this.char.alternates![1].symbol);
+			} else return this.act();
+		}
+
+		getUName(): string{
+			if(this.isLULetter()) return this.char.alternates![1].symbol;
+			else return "";
 		}
 
 		hasAlternate(): boolean{
-			return !!this.char.alternates;
+			return (!!this.char.alternates) && this.char.alternates.length > 2;
+		}
+
+		isLULetter(): boolean{
+			return (!!this.char.alternates) && this.char.alternates.length == 2;
 		}
 	}
 
