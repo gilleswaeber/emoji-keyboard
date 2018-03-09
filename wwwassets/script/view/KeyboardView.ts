@@ -130,13 +130,15 @@ module View{
 			if (key instanceof Workers.CharKey) { var keyType = " char"; }
 			if (key instanceof Workers.BlankKey) { var keyType = " empty"; }
 			if (key.getName() == "back") { var keyType = " back"; }
-            return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + (key.active?' active':'') + '">')
+            return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + (key.isLULetter()?' lu':'') + (key.active?' active':'') + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
+				.append($('<div class="uname">').text(key.getUName()))
 				.append(key.getSymbolDiv(undefined))
 				.click((e)=>{
 					e.preventDefault();
-					key.act(this);
+					if(e.shiftKey) key.actAlternate(this);
+					else key.act(this);
 				})
 				.contextmenu((e)=>{
 					e.preventDefault();

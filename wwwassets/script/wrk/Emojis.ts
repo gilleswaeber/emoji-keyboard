@@ -39,7 +39,7 @@ module Workers{
 		
 		export function search(needle: string){
 			let result: number[] = [];
-			needle.split(/\W+/g).forEach(n => {
+			needle.split(/\s+/g).forEach(n => {
 				if (!n.length) return;
 				const re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
 				for(let m; m = re.exec(searchHaystack);){
@@ -47,12 +47,6 @@ module Workers{
 				}
 			})
 			return result.filter((v, k) => result.indexOf(v) === k).map(v => flatEmojis[v]);
-			/*return flatEmojis.filter(
-				e => 
-					re.test(e.fullName) ||
-					re.test(e.name) ||
-					(e.keywords && e.keywords.some(k => re.test(k)))
-			);*/
 		}
 	}
 }

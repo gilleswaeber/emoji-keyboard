@@ -176,7 +176,7 @@ var Workers;
         }
         Keyboards.getMainKeyboard = getMainKeyboard;
     })(Keyboards = Workers.Keyboards || (Workers.Keyboards = {}));
-    var MAX_PAGES = 20;
+    var MAX_PAGES = 12;
     var Keyboard = (function () {
         function Keyboard(name, symbol, keys, requiredVersion) {
             if (requiredVersion === void 0) { requiredVersion = undefined; }
@@ -198,7 +198,7 @@ var Workers;
                     this.pages++;
                 }
                 var perpage = View.KEYS_COUNT - this.fixedKeys.length - Math.min(this.pages, MAX_PAGES);
-                for (var i = 0; i < Math.min(this.pages, 10); i++) {
+                for (var i = 0; i < Math.min(this.pages, MAX_PAGES); i++) {
                     this.fixedKeys.push(this.pageKeys[i] = new Workers.PageKey(i));
                 }
                 var keysStack = this.keys.slice(0);
@@ -262,7 +262,10 @@ var Workers;
             var keys = [];
             kdata.content.forEach(function (content) {
                 Workers.Emojis.getSubGroup(content.group, content.subGroup).forEach(function (chr) {
-                    keys.push(new Workers.CharKey(chr));
+                    if (chr.symbol.length)
+                        keys.push(new Workers.CharKey(chr));
+                    else
+                        keys.push(new Workers.BlankKey());
                 });
             });
             _this = _super.call(this, kdata.name, kdata.symbol, keys, kdata.requiredVersion) || this;
@@ -297,6 +300,9 @@ var Workers;
         }
         Key.prototype.getName = function () {
             return this.name;
+        };
+        Key.prototype.getUName = function () {
+            return "";
         };
         Key.prototype.getSymbol = function () {
             return this.symbol;
@@ -335,6 +341,9 @@ var Workers;
         Key.prototype.hasAlternate = function () {
             return false;
         };
+        Key.prototype.isLULetter = function () {
+            return false;
+        };
         return Key;
     }());
     Workers.Key = Key;
@@ -352,14 +361,28 @@ var Workers;
             Workers.AHKWrk.send(this.getSymbol());
         };
         CharKey.prototype.actAlternate = function (view) {
-            if (!this.hasAlternate())
+            if (this.hasAlternate()) {
+                var ak = new Workers.AlternatesKeyboard(this.keyboard, this.char);
+                ak.setParent(this.keyboard);
+                view.show(ak);
+            }
+            else if (this.isLULetter()) {
+                Workers.AHKWrk.send(this.char.alternates[1].symbol);
+            }
+            else
                 return this.act();
-            var ak = new Workers.AlternatesKeyboard(this.keyboard, this.char);
-            ak.setParent(this.keyboard);
-            view.show(ak);
+        };
+        CharKey.prototype.getUName = function () {
+            if (this.isLULetter())
+                return this.char.alternates[1].symbol;
+            else
+                return "";
         };
         CharKey.prototype.hasAlternate = function () {
-            return !!this.char.alternates;
+            return (!!this.char.alternates) && this.char.alternates.length > 2;
+        };
+        CharKey.prototype.isLULetter = function () {
+            return (!!this.char.alternates) && this.char.alternates.length == 2;
         };
         return CharKey;
     }(Key));
@@ -567,13 +590,17 @@ var View;
             if (key.getName() == "back") {
                 var keyType = " back";
             }
-            return $('<div class="key' + keyType + (key.hasAlternate() ? ' alt' : '') + (key.active ? ' active' : '') + '">')
+            return $('<div class="key' + keyType + (key.hasAlternate() ? ' alt' : '') + (key.isLULetter() ? ' lu' : '') + (key.active ? ' active' : '') + '">')
                 .append($('<div class="keyname">').text(View.keysLocale[key.key]))
                 .append($('<div class="name">').text(key.getName()))
+                .append($('<div class="uname">').text(key.getUName()))
                 .append(key.getSymbolDiv(undefined))
                 .click(function (e) {
                 e.preventDefault();
-                key.act(_this);
+                if (e.shiftKey)
+                    key.actAlternate(_this);
+                else
+                    key.act(_this);
             })
                 .contextmenu(function (e) {
                 e.preventDefault();
@@ -630,7 +657,7 @@ var Workers;
         Emojis.getSubGroup = getSubGroup;
         function search(needle) {
             var result = [];
-            needle.split(/\W+/g).forEach(function (n) {
+            needle.split(/\s+/g).forEach(function (n) {
                 if (!n.length)
                     return;
                 var re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
