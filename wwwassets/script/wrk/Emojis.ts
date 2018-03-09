@@ -24,8 +24,6 @@ module Workers{
 					flatEmojis.push(e);
 				});
 		})
-
-		document.s = searchHaystack;
 		
 		function escapeRegex(str: string): string{
 			return str.replace(ESCAPE_REGEX, '\\$1');

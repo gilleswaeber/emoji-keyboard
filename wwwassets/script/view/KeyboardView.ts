@@ -137,7 +137,8 @@ module View{
 				.append(key.getSymbolDiv(undefined))
 				.click((e)=>{
 					e.preventDefault();
-					key.act(this);
+					if(e.shiftKey) key.actAlternate(this);
+					else key.act(this);
 				})
 				.contextmenu((e)=>{
 					e.preventDefault();

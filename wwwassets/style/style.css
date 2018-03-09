@@ -6,6 +6,11 @@ body, html{
 	font-size: 1.8vw;
 }
 
+*{
+	user-select: none;
+	-ms-user-select: none;
+}
+
 input{
 	font-family: 'Segoe UI Emoji', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
