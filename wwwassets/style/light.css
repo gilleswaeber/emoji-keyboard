@@ -9,7 +9,6 @@ body, html{
 	color: #000;
 }
 .key.empty{
-	border: solid .1vw #888;
 	color: #888;
 }
 
@@ -32,4 +31,8 @@ body, html{
 
 .key:not(.empty):hover{
 	color: #000;
+}
+
+.searchpane input{
+	border: solid .1vw #888;
 }

@@ -1,7 +1,11 @@
 /// <reference path="../wrk/keyboard.ts" />
 /// <reference path="../wrk/keys.ts" />
+/// <reference path="BaseView.ts" />
 
 module View{
+
+	import AHKWrk = Workers.AHKWrk;
+
 	var defaultLocale = {
 		0: '', 1: 'ESC', 59: 'F1', 60: 'F2', 61: 'F3', 62: 'F4', 63: 'F5', 64: 'F6', 65: 'F7', 66: 'F8', 67: 'F9', 68: 'F10', 87: 'F11', 88: 'F12',
 		14: 'BKSP', 15: 'Tab', 58: 'Caps Lk', 28: 'Enter', 42: 'Shift', 29: 'CTRL', 91: 'WIN', 56: 'ALT',
@@ -13,8 +17,9 @@ module View{
 	
 	var os = [99];
 
-	var keysLocale: {[id: number]: string} = defaultLocale;
-	const KEYS: number[] = [41, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
+	export var keysLocale: {[id: number]: string} = defaultLocale;
+	export const KEYS: number[] = [41, 15, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
+	export const KEYS_COUNT = KEYS.length;
 	const KEYMAP: number[][] = [
 		[41,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13], //, 59, 60, 61
 		[15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], //, 62, 63, 64
@@ -23,20 +28,24 @@ module View{
 	];
 	const BLANKKEY: Workers.BlankKey = new Workers.BlankKey();
 
-	export class View implements IViewKey{
+	export class KeyboardView extends View implements IViewKey{
 		private jBase: JQuery;
 		private keyboard: Workers.Keyboard;
 		private idxKeys: {[id: number]: Workers.Key};
 		private title = "Emoji Keyboard";
+		private element: HTMLElement;
 
 		private jKeyboard: JQuery;
 
-		constructor(
-			private base: HTMLElement
-		){
-			this.jBase = $(base);
+		constructor(private baseView: BaseView){
+			super();
+			this.jBase = $(this.element = document.createElement('div'));
 			this.jBase.empty();
 			this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
+		}
+
+		getElement(){
+			return this.element;
 		}
 
 		show(keyboard: Workers.Keyboard): void{
@@ -48,7 +57,7 @@ module View{
 
 			this.title = "Emoji Keyboard - " + this.toTitleCase(keyboard.getName());
 			document.title = this.title;
-			if(window.AHK) AHK("SetTitle", this.title);
+			AHKWrk.setTitle(this.title);
 		}
 
 		input(key: number, shift: boolean): void{
@@ -76,14 +85,14 @@ module View{
 			this.refresh();
 		}
 		
-		static compareToOS(os2: string): number{
+		static compareToOS(os2: string | undefined): number{
+			if(typeof os2 != 'string') return 0;
+
 			if(!/^[.0-9]+$/.test(os2)){
 				if(os2) console.error("Invalid version " + os2);
 				return 0;
 			}
 			let vos2 = os2.split(/\./).map(part => parseInt(part));
-
-			console.log(os, vos2);
 			
 			for(let i=0; i<os.length; i++){
 				if(i >= vos2.length) return -1;
@@ -109,13 +118,11 @@ module View{
 
 		showStatus(str: string): void{
 			if(!str.length) return this.hideStatus();
-			document.title = this.title + ": " + this.toTitleCase(str);
-			AHK("SetTitle", this.title + ": " + this.toTitleCase(str));
+			AHKWrk.setTitle(this.title + ": " + this.toTitleCase(str));
 		}
 
 		hideStatus(): void{
-			document.title = this.title;
-			AHK("SetTitle", this.title);
+			AHKWrk.setTitle(this.title);
 		}
 
 		private showKey(key: Workers.Key): JQuery{
@@ -126,7 +133,7 @@ module View{
             return $('<div class="key' + keyType + (key.hasAlternate()?' alt':'') + (key.active?' active':'') + '">')
 				.append($('<div class="keyname">').text(keysLocale[key.key]))
 				.append($('<div class="name">').text(key.getName()))
-				.append(key.getSymbolDiv(null))
+				.append(key.getSymbolDiv(undefined))
 				.click((e)=>{
 					e.preventDefault();
 					key.act(this);
@@ -141,10 +148,15 @@ module View{
 		private toTitleCase(str: string){
 			return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 		}
+		
+		getBaseView(): BaseView {
+			return this.baseView;
+		}
 	}
 
 	export interface IViewKey{
 		show(keyboard: Workers.Keyboard): void;
 		refresh(): void;
+		getBaseView(): BaseView;
 	}
 }

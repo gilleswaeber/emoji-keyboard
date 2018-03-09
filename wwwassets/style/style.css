@@ -6,6 +6,10 @@ body, html{
 	font-size: 1.8vw;
 }
 
+input{
+	font-family: 'Segoe UI Emoji', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 main{
 	display: flex;
 	flex-direction: column;
@@ -26,12 +30,13 @@ main > section{
 	display: inline-flex;
 	list-style: none;
 	padding: .3vw;
-	width: 6.4vw;
+	width: 7.2vw;
 	overflow: hidden;
-	margin: 2px;
+	margin: .2vh .1vw;
 	position: relative;
 	align-items: center;
 	transition: ease .05s;
+	box-sizing: border-box;
 }
 
 .row{
@@ -85,4 +90,20 @@ main > section{
 
 .key:hover .symbol{
 	transform: translateY(-4px) scale(1.8) rotate(7deg);
+}
+
+.searchpane{
+	padding: .2vh 2.05vw;
+	height: 25vh;
+	box-sizing: border-box;
+}
+
+.searchpane input{
+	display: block;
+	font-size: 4vw;
+	height: 100%;
+	border: none;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 1vw;
 }
