@@ -6,7 +6,7 @@ module Workers{
 		}
 	}
 
-	export const KEYS_PERMANENT = 2;
+	const MAX_PAGES = 20;
 
 	export class Keyboard{
 		private multipage: boolean;
@@ -26,19 +26,19 @@ module Workers{
 			this.fixedKeys.push(new BlankKey());
 			this.fixedKeys.push(new SearchKey());
 
-			this.multipage = this.keys.length > View.KEYS_COUNT - KEYS_PERMANENT;
+			this.multipage = this.keys.length > View.KEYS_COUNT - this.fixedKeys.length;
 			if(this.multipage){
 				this.pages = 1;
-				while(this.keys.length > this.pages*(View.KEYS_COUNT - KEYS_PERMANENT - Math.min(this.pages,10))){
+				while(this.keys.length > this.pages*(View.KEYS_COUNT - this.fixedKeys.length - Math.min(this.pages, MAX_PAGES))){
 					this.pages++;
 				}
-				var perpage = View.KEYS_COUNT - KEYS_PERMANENT - Math.min(this.pages,10);
+				var perpage = View.KEYS_COUNT - this.fixedKeys.length - Math.min(this.pages,MAX_PAGES);
 				for(var i=0; i<Math.min(this.pages,10); i++){
 					this.fixedKeys.push(this.pageKeys[i] = new PageKey(i));
 				}
 				var keysStack = this.keys.slice(0);
 				for(var i=0; i<this.pages; i++){
-					this.pagedKeys[i] = keysStack.splice(0, perpage+1);
+					this.pagedKeys[i] = keysStack.splice(0, perpage);
 				}
 				this.pageKeys[0].active = true;
 			}else{

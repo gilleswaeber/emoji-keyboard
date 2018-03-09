@@ -176,7 +176,7 @@ var Workers;
         }
         Keyboards.getMainKeyboard = getMainKeyboard;
     })(Keyboards = Workers.Keyboards || (Workers.Keyboards = {}));
-    Workers.KEYS_PERMANENT = 2;
+    var MAX_PAGES = 20;
     var Keyboard = (function () {
         function Keyboard(name, symbol, keys, requiredVersion) {
             if (requiredVersion === void 0) { requiredVersion = undefined; }
@@ -191,19 +191,19 @@ var Workers;
             this.pageKeys = {};
             this.fixedKeys.push(new Workers.BlankKey());
             this.fixedKeys.push(new Workers.SearchKey());
-            this.multipage = this.keys.length > View.KEYS_COUNT - Workers.KEYS_PERMANENT;
+            this.multipage = this.keys.length > View.KEYS_COUNT - this.fixedKeys.length;
             if (this.multipage) {
                 this.pages = 1;
-                while (this.keys.length > this.pages * (View.KEYS_COUNT - Workers.KEYS_PERMANENT - Math.min(this.pages, 10))) {
+                while (this.keys.length > this.pages * (View.KEYS_COUNT - this.fixedKeys.length - Math.min(this.pages, MAX_PAGES))) {
                     this.pages++;
                 }
-                var perpage = View.KEYS_COUNT - Workers.KEYS_PERMANENT - Math.min(this.pages, 10);
+                var perpage = View.KEYS_COUNT - this.fixedKeys.length - Math.min(this.pages, MAX_PAGES);
                 for (var i = 0; i < Math.min(this.pages, 10); i++) {
                     this.fixedKeys.push(this.pageKeys[i] = new Workers.PageKey(i));
                 }
                 var keysStack = this.keys.slice(0);
                 for (var i = 0; i < this.pages; i++) {
-                    this.pagedKeys[i] = keysStack.splice(0, perpage + 1);
+                    this.pagedKeys[i] = keysStack.splice(0, perpage);
                 }
                 this.pageKeys[0].active = true;
             }
