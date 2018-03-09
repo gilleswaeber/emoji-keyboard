@@ -597,17 +597,24 @@ var Workers;
     (function (Emojis) {
         var indexedEmojis = {};
         var flatEmojis = [];
+        var searchHaystack = "";
         var ESCAPE_REGEX = new RegExp('(\\' + ['/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\', '$', '^', '-'].join('|\\') + ')', 'g');
+        var SEPARATOR = '%';
+        var SEPARATOR_REGEX_G = /%/g;
+        var SEARCH_ID = SEPARATOR + '(\\d+)' + SEPARATOR + '[^' + SEPARATOR + ']+';
         data.emojis.forEach(function (emoji) {
             if (!indexedEmojis[emoji.group])
                 indexedEmojis[emoji.group] = {};
             if (!indexedEmojis[emoji.group][emoji.subGroup])
                 indexedEmojis[emoji.group][emoji.subGroup] = [];
             indexedEmojis[emoji.group][emoji.subGroup].push(emoji);
-            if (!emoji.alternates || !emoji.alternates.length)
-                flatEmojis.push(emoji);
-            else
-                emoji.alternates.forEach(function (e) { return flatEmojis.push(e); });
+            (!emoji.alternates || !emoji.alternates.length ? [emoji] : emoji.alternates)
+                .forEach(function (e) {
+                searchHaystack +=
+                    '%' + flatEmojis.length + '%' +
+                        (e.fullName + ' ' + e.name + (e.keywords ? ' ' + e.keywords.join(' ') : '')).replace(SEPARATOR_REGEX_G, '');
+                flatEmojis.push(e);
+            });
         });
         function escapeRegex(str) {
             return str.replace(ESCAPE_REGEX, '\\$1');
@@ -621,13 +628,17 @@ var Workers;
             }
         }
         Emojis.getSubGroup = getSubGroup;
-        function search(value) {
-            var re = new RegExp(escapeRegex(value), 'i');
-            return flatEmojis.filter(function (e) {
-                return re.test(e.fullName) ||
-                    re.test(e.name) ||
-                    (e.keywords && e.keywords.some(function (k) { return re.test(k); }));
+        function search(needle) {
+            var result = [];
+            needle.split(/\W+/g).forEach(function (n) {
+                if (!n.length)
+                    return;
+                var re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
+                for (var m = void 0; m = re.exec(searchHaystack);) {
+                    result.push(parseInt(m[1]));
+                }
             });
+            return result.filter(function (v, k) { return result.indexOf(v) === k; }).map(function (v) { return flatEmojis[v]; });
         }
         Emojis.search = search;
     })(Emojis = Workers.Emojis || (Workers.Emojis = {}));

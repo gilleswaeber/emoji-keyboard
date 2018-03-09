@@ -1,5 +1,6 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+SetBatchLines -1 ; Execute the script at maximum speed
 
 ; Check for AHK version
 if (A_AhkVersion < "1.1.21") {
@@ -52,6 +53,7 @@ vVisible := false
 vSearch := false
 ; Search Handler Semaphore (avoid multiple instances running)
 vSearchSem := 1
+vSearchInput := ""
 
 ; Get our HTML DOM object
 iWebCtrl := getDOM()
@@ -86,7 +88,7 @@ Capslock::
 Return
 
 SearchHandler(){
-	global vVisible, vSearch, vSearchSem
+	global vVisible, vSearch, vSearchSem, vSearchInput
 
 	If vSearchSem < 1
 		Return
@@ -95,18 +97,23 @@ SearchHandler(){
 	vSearchSem--
 	Critical Off
 
-	dak := getDOM().document.ahk
-
 	While vSearch and vVisible {
 		Input, key, L1
 		If("" != key and vVisible)
-			dak.charInput(key)
+			SetTimer, SendSearchInput, 100
+			vSearchInput := vSearchInput key
 	}
 
 	Critical
 	vSearchSem++
 	Critical Off
 }
+
+SendSearchInput:
+	SetTimer, SendSearchInput, Off
+	getDOM().document.ahk.charInput(vSearchInput)
+	vSearchInput := ""
+Return
 
 ; Functions to be called from the html/js source
 Exit() {
