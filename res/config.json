@@ -8,7 +8,16 @@
 		{"symbol":"🐱‍🏍","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Stunt cat","keywords":["windows","non standard","stunt","ninja","cat"]},
 		{"symbol":"🐱‍🚀","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Astro cat","keywords":["windows","non standard","astronaut","ninja","cat"]},
 
-		{"symbol": "🏴‍☠️", "group": "Flags", "subGroup": "non-standard", "name": "*Pirate flag", "keywords": ["flag", "pirate", "skull", "non standard"]}
+		{"symbol": "🏴‍☠️", "group": "Flags", "subGroup": "non-standard", "name": "*Pirate flag", "keywords": ["flag", "pirate", "skull", "non standard"]},
+
+		{"group": "Greek", "subGroup": "base", "symbols": [
+			["ά", "Ά"], ["έ", "Έ"], ["ή", "Ή"], ["ί", "Ί"], ["ό", "Ό"], ["ύ", "Ύ"], ["ώ", "Ώ"], ["ϊ", "Ϊ"], ["ϋ", "Ϋ"], "ΐ"       , "ΰ"       , null,
+			"ϵ"       , ["ς", "ϐ"], ["ε", "Ε"], ["ρ", "Ρ"], ["τ", "Τ"], ["ζ", "Ζ"], ["θ", "Θ"], ["ι", "Ι"], ["ο", "Ο"], ["π", "Π"], null, null,
+			["α", "Α"], ["σ", "Σ"], ["δ", "Δ"], ["φ", "Φ"], ["γ", "Γ"], ["η", "Η"], ["ξ", "Ξ"], ["κ", "Κ"], ["λ", "Λ"], null, null, null,
+			["υ", "Υ"], ["χ", "Χ"], ["ψ", "Ψ"], ["ω", "Ω"], ["β", "Β"], ["ν", "Ν"], ["μ", "Μ"], ";"
+		]},
+
+		{"group": "Arrows", "subGroup": "base", "symbols": [{"from": "←", "to": "⇿"}]}
 	],
 	"iconFallback": [
 		{
@@ -174,6 +183,10 @@
 			{"group":"Flags", "subGroup":"subdivision-flag"},
 			{"group":"Flags", "subGroup":"flag"},
 			{"group":"Flags", "subGroup":"non-standard"}
+		]},{"name":"Greek", "symbol":"π", "content":[
+			{"group":"Greek", "subGroup":"base"}
+		]},{"name":"Arrows", "symbol":"⇅", "content":[
+			{"group":"Arrows", "subGroup":"base"}
 		]}
 	],
 	"keymaps": {

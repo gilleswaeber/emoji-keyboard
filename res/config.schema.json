@@ -7,17 +7,56 @@
 			"type": "array",
 			"items": {
 				"type": "object",
-				"properties": {
-					"symbol": {"type": "string"},
-					"group": {"type": "string"},
-					"subGroup": {"type": "string"},
-					"name": {"type": "string"},
-					"keywords": {
-						"type": "array",
-						"items": {"type": "string"}
+				"oneOf": [
+					{
+						"description": "A single character/sequence",
+						"symbol": {"type": "string"},
+						"name": {"type": "string"},
+						"keywords": {
+							"type": "array",
+							"items": {"type": "string"}
+						},
+						"required": ["symbol", "name"]
+					},
+					{
+						"description": "A group of characters/sequences",
+						"symbols": {
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"description": "Padding",
+										"type": "null"
+									},
+									{
+										"description": "A single symbol",
+										"type": "string"
+									},
+									{
+										"description": "A group of alternate symbols",
+										"type": "array",
+										"items": {"type": "string"}
+									},
+									{
+										"description": "A range of characters (inclusive)",
+										"type": "object",
+										"properties": {
+											"from": {"type": "string"},
+											"to": {"type": "string"}
+										},
+										"required": ["from", "to"]
+									}
+								]
+							}
+						},
+						"required": ["symbols"]
 					}
+				],
+				"properties": {
+					"group": {"type": "string"},
+					"subGroup": {"type": "string"}
 				},
-				"required": ["symbol", "group", "subGroup", "name"]
+				"required": ["group", "subGroup"]
 			}
 		},
 		"iconFallback": {

@@ -53453,13 +53453,2802 @@ var data = {
             "requiredVersion": "10"
         },
         {
-            "symbol": "🏁",
-            "code": [
-                127760
+            "symbol": "🏴‍☠️",
+            "group": "Flags",
+            "subGroup": "non-standard",
+            "name": "*Pirate flag",
+            "keywords": [
+                "flag",
+                "pirate",
+                "skull",
+                "non standard"
             ],
-            "version": 6,
+            "code": [
+                127988,
+                8205,
+                9760,
+                65039
+            ],
+            "fullName": "WAVING BLACK FLAG, SKULL AND CROSSBONES",
+            "version": 7,
+            "emojiVersion": "3.0",
+            "requiredVersion": "99"
+        },
+        {
+            "symbol": "ά",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER ALPHA WITH TONOS",
+            "name": "Greek Small Letter Alpha With Tonos",
+            "code": [
+                940
+            ],
+            "alternates": [
+                {
+                    "symbol": "ά",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER ALPHA WITH TONOS",
+                    "name": "Greek Small Letter Alpha With Tonos",
+                    "code": [
+                        940
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ά",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER ALPHA WITH TONOS",
+                    "name": "Greek Capital Letter Alpha With Tonos",
+                    "code": [
+                        902
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "έ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER EPSILON WITH TONOS",
+            "name": "Greek Small Letter Epsilon With Tonos",
+            "code": [
+                941
+            ],
+            "alternates": [
+                {
+                    "symbol": "έ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER EPSILON WITH TONOS",
+                    "name": "Greek Small Letter Epsilon With Tonos",
+                    "code": [
+                        941
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Έ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER EPSILON WITH TONOS",
+                    "name": "Greek Capital Letter Epsilon With Tonos",
+                    "code": [
+                        904
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ή",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER ETA WITH TONOS",
+            "name": "Greek Small Letter Eta With Tonos",
+            "code": [
+                942
+            ],
+            "alternates": [
+                {
+                    "symbol": "ή",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER ETA WITH TONOS",
+                    "name": "Greek Small Letter Eta With Tonos",
+                    "code": [
+                        942
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ή",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER ETA WITH TONOS",
+                    "name": "Greek Capital Letter Eta With Tonos",
+                    "code": [
+                        905
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ί",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER IOTA WITH TONOS",
+            "name": "Greek Small Letter Iota With Tonos",
+            "code": [
+                943
+            ],
+            "alternates": [
+                {
+                    "symbol": "ί",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER IOTA WITH TONOS",
+                    "name": "Greek Small Letter Iota With Tonos",
+                    "code": [
+                        943
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ί",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER IOTA WITH TONOS",
+                    "name": "Greek Capital Letter Iota With Tonos",
+                    "code": [
+                        906
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ό",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER OMICRON WITH TONOS",
+            "name": "Greek Small Letter Omicron With Tonos",
+            "code": [
+                972
+            ],
+            "alternates": [
+                {
+                    "symbol": "ό",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER OMICRON WITH TONOS",
+                    "name": "Greek Small Letter Omicron With Tonos",
+                    "code": [
+                        972
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ό",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER OMICRON WITH TONOS",
+                    "name": "Greek Capital Letter Omicron With Tonos",
+                    "code": [
+                        908
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ύ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER UPSILON WITH TONOS",
+            "name": "Greek Small Letter Upsilon With Tonos",
+            "code": [
+                973
+            ],
+            "alternates": [
+                {
+                    "symbol": "ύ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER UPSILON WITH TONOS",
+                    "name": "Greek Small Letter Upsilon With Tonos",
+                    "code": [
+                        973
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ύ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER UPSILON WITH TONOS",
+                    "name": "Greek Capital Letter Upsilon With Tonos",
+                    "code": [
+                        910
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ώ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER OMEGA WITH TONOS",
+            "name": "Greek Small Letter Omega With Tonos",
+            "code": [
+                974
+            ],
+            "alternates": [
+                {
+                    "symbol": "ώ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER OMEGA WITH TONOS",
+                    "name": "Greek Small Letter Omega With Tonos",
+                    "code": [
+                        974
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ώ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER OMEGA WITH TONOS",
+                    "name": "Greek Capital Letter Omega With Tonos",
+                    "code": [
+                        911
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ϊ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA",
+            "name": "Greek Small Letter Iota With Dialytika",
+            "code": [
+                970
+            ],
+            "alternates": [
+                {
+                    "symbol": "ϊ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA",
+                    "name": "Greek Small Letter Iota With Dialytika",
+                    "code": [
+                        970
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ϊ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER IOTA WITH DIALYTIKA",
+                    "name": "Greek Capital Letter Iota With Dialytika",
+                    "code": [
+                        938
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ϋ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA",
+            "name": "Greek Small Letter Upsilon With Dialytika",
+            "code": [
+                971
+            ],
+            "alternates": [
+                {
+                    "symbol": "ϋ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA",
+                    "name": "Greek Small Letter Upsilon With Dialytika",
+                    "code": [
+                        971
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ϋ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA",
+                    "name": "Greek Capital Letter Upsilon With Dialytika",
+                    "code": [
+                        939
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ΐ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS",
+            "name": "Greek Small Letter Iota With Dialytika And Tonos",
+            "code": [
+                912
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ΰ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS",
+            "name": "Greek Small Letter Upsilon With Dialytika And Tonos",
+            "code": [
+                944
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "",
+            "group": "Greek",
+            "subGroup": "base",
+            "name": "BLANK 0",
+            "code": [],
+            "fullName": "",
+            "emojiVersion": 0,
+            "version": 0
+        },
+        {
+            "symbol": "ϵ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK LUNATE EPSILON SYMBOL",
+            "name": "Greek Lunate Epsilon Symbol",
+            "code": [
+                1013
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ς",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER FINAL SIGMA",
+            "name": "Greek Small Letter Final Sigma",
+            "code": [
+                962
+            ],
+            "alternates": [
+                {
+                    "symbol": "ς",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER FINAL SIGMA",
+                    "name": "Greek Small Letter Final Sigma",
+                    "code": [
+                        962
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "ϐ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK BETA SYMBOL",
+                    "name": "Greek Beta Symbol",
+                    "code": [
+                        976
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ε",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER EPSILON",
+            "name": "Greek Small Letter Epsilon",
+            "code": [
+                949
+            ],
+            "alternates": [
+                {
+                    "symbol": "ε",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER EPSILON",
+                    "name": "Greek Small Letter Epsilon",
+                    "code": [
+                        949
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ε",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER EPSILON",
+                    "name": "Greek Capital Letter Epsilon",
+                    "code": [
+                        917
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ρ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER RHO",
+            "name": "Greek Small Letter Rho",
+            "code": [
+                961
+            ],
+            "alternates": [
+                {
+                    "symbol": "ρ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER RHO",
+                    "name": "Greek Small Letter Rho",
+                    "code": [
+                        961
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ρ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER RHO",
+                    "name": "Greek Capital Letter Rho",
+                    "code": [
+                        929
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "τ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER TAU",
+            "name": "Greek Small Letter Tau",
+            "code": [
+                964
+            ],
+            "alternates": [
+                {
+                    "symbol": "τ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER TAU",
+                    "name": "Greek Small Letter Tau",
+                    "code": [
+                        964
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Τ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER TAU",
+                    "name": "Greek Capital Letter Tau",
+                    "code": [
+                        932
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ζ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER ZETA",
+            "name": "Greek Small Letter Zeta",
+            "code": [
+                950
+            ],
+            "alternates": [
+                {
+                    "symbol": "ζ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER ZETA",
+                    "name": "Greek Small Letter Zeta",
+                    "code": [
+                        950
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ζ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER ZETA",
+                    "name": "Greek Capital Letter Zeta",
+                    "code": [
+                        918
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "θ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER THETA",
+            "name": "Greek Small Letter Theta",
+            "code": [
+                952
+            ],
+            "alternates": [
+                {
+                    "symbol": "θ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER THETA",
+                    "name": "Greek Small Letter Theta",
+                    "code": [
+                        952
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Θ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER THETA",
+                    "name": "Greek Capital Letter Theta",
+                    "code": [
+                        920
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ι",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER IOTA",
+            "name": "Greek Small Letter Iota",
+            "code": [
+                953
+            ],
+            "alternates": [
+                {
+                    "symbol": "ι",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER IOTA",
+                    "name": "Greek Small Letter Iota",
+                    "code": [
+                        953
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ι",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER IOTA",
+                    "name": "Greek Capital Letter Iota",
+                    "code": [
+                        921
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ο",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER OMICRON",
+            "name": "Greek Small Letter Omicron",
+            "code": [
+                959
+            ],
+            "alternates": [
+                {
+                    "symbol": "ο",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER OMICRON",
+                    "name": "Greek Small Letter Omicron",
+                    "code": [
+                        959
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ο",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER OMICRON",
+                    "name": "Greek Capital Letter Omicron",
+                    "code": [
+                        927
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "π",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER PI",
+            "name": "Greek Small Letter Pi",
+            "code": [
+                960
+            ],
+            "alternates": [
+                {
+                    "symbol": "π",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER PI",
+                    "name": "Greek Small Letter Pi",
+                    "code": [
+                        960
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Π",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER PI",
+                    "name": "Greek Capital Letter Pi",
+                    "code": [
+                        928
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "",
+            "group": "Greek",
+            "subGroup": "base",
+            "name": "BLANK 1",
+            "code": [],
+            "fullName": "",
+            "emojiVersion": 0,
+            "version": 0
+        },
+        {
+            "symbol": "",
+            "group": "Greek",
+            "subGroup": "base",
+            "name": "BLANK 2",
+            "code": [],
+            "fullName": "",
+            "emojiVersion": 0,
+            "version": 0
+        },
+        {
+            "symbol": "α",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER ALPHA",
+            "name": "Greek Small Letter Alpha",
+            "code": [
+                945
+            ],
+            "alternates": [
+                {
+                    "symbol": "α",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER ALPHA",
+                    "name": "Greek Small Letter Alpha",
+                    "code": [
+                        945
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Α",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER ALPHA",
+                    "name": "Greek Capital Letter Alpha",
+                    "code": [
+                        913
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "σ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER SIGMA",
+            "name": "Greek Small Letter Sigma",
+            "code": [
+                963
+            ],
+            "alternates": [
+                {
+                    "symbol": "σ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER SIGMA",
+                    "name": "Greek Small Letter Sigma",
+                    "code": [
+                        963
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Σ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER SIGMA",
+                    "name": "Greek Capital Letter Sigma",
+                    "code": [
+                        931
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "δ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER DELTA",
+            "name": "Greek Small Letter Delta",
+            "code": [
+                948
+            ],
+            "alternates": [
+                {
+                    "symbol": "δ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER DELTA",
+                    "name": "Greek Small Letter Delta",
+                    "code": [
+                        948
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Δ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER DELTA",
+                    "name": "Greek Capital Letter Delta",
+                    "code": [
+                        916
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "φ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER PHI",
+            "name": "Greek Small Letter Phi",
+            "code": [
+                966
+            ],
+            "alternates": [
+                {
+                    "symbol": "φ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER PHI",
+                    "name": "Greek Small Letter Phi",
+                    "code": [
+                        966
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Φ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER PHI",
+                    "name": "Greek Capital Letter Phi",
+                    "code": [
+                        934
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "γ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER GAMMA",
+            "name": "Greek Small Letter Gamma",
+            "code": [
+                947
+            ],
+            "alternates": [
+                {
+                    "symbol": "γ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER GAMMA",
+                    "name": "Greek Small Letter Gamma",
+                    "code": [
+                        947
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Γ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER GAMMA",
+                    "name": "Greek Capital Letter Gamma",
+                    "code": [
+                        915
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "η",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER ETA",
+            "name": "Greek Small Letter Eta",
+            "code": [
+                951
+            ],
+            "alternates": [
+                {
+                    "symbol": "η",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER ETA",
+                    "name": "Greek Small Letter Eta",
+                    "code": [
+                        951
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Η",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER ETA",
+                    "name": "Greek Capital Letter Eta",
+                    "code": [
+                        919
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ξ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER XI",
+            "name": "Greek Small Letter Xi",
+            "code": [
+                958
+            ],
+            "alternates": [
+                {
+                    "symbol": "ξ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER XI",
+                    "name": "Greek Small Letter Xi",
+                    "code": [
+                        958
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ξ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER XI",
+                    "name": "Greek Capital Letter Xi",
+                    "code": [
+                        926
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "κ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER KAPPA",
+            "name": "Greek Small Letter Kappa",
+            "code": [
+                954
+            ],
+            "alternates": [
+                {
+                    "symbol": "κ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER KAPPA",
+                    "name": "Greek Small Letter Kappa",
+                    "code": [
+                        954
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Κ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER KAPPA",
+                    "name": "Greek Capital Letter Kappa",
+                    "code": [
+                        922
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "λ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER LAMDA",
+            "name": "Greek Small Letter Lamda",
+            "code": [
+                955
+            ],
+            "alternates": [
+                {
+                    "symbol": "λ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER LAMDA",
+                    "name": "Greek Small Letter Lamda",
+                    "code": [
+                        955
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Λ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER LAMDA",
+                    "name": "Greek Capital Letter Lamda",
+                    "code": [
+                        923
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "",
+            "group": "Greek",
+            "subGroup": "base",
+            "name": "BLANK 3",
+            "code": [],
+            "fullName": "",
+            "emojiVersion": 0,
+            "version": 0
+        },
+        {
+            "symbol": "",
+            "group": "Greek",
+            "subGroup": "base",
+            "name": "BLANK 4",
+            "code": [],
+            "fullName": "",
+            "emojiVersion": 0,
+            "version": 0
+        },
+        {
+            "symbol": "",
+            "group": "Greek",
+            "subGroup": "base",
+            "name": "BLANK 5",
+            "code": [],
+            "fullName": "",
+            "emojiVersion": 0,
+            "version": 0
+        },
+        {
+            "symbol": "υ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER UPSILON",
+            "name": "Greek Small Letter Upsilon",
+            "code": [
+                965
+            ],
+            "alternates": [
+                {
+                    "symbol": "υ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER UPSILON",
+                    "name": "Greek Small Letter Upsilon",
+                    "code": [
+                        965
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Υ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER UPSILON",
+                    "name": "Greek Capital Letter Upsilon",
+                    "code": [
+                        933
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "χ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER CHI",
+            "name": "Greek Small Letter Chi",
+            "code": [
+                967
+            ],
+            "alternates": [
+                {
+                    "symbol": "χ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER CHI",
+                    "name": "Greek Small Letter Chi",
+                    "code": [
+                        967
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Χ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER CHI",
+                    "name": "Greek Capital Letter Chi",
+                    "code": [
+                        935
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ψ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER PSI",
+            "name": "Greek Small Letter Psi",
+            "code": [
+                968
+            ],
+            "alternates": [
+                {
+                    "symbol": "ψ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER PSI",
+                    "name": "Greek Small Letter Psi",
+                    "code": [
+                        968
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ψ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER PSI",
+                    "name": "Greek Capital Letter Psi",
+                    "code": [
+                        936
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ω",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER OMEGA",
+            "name": "Greek Small Letter Omega",
+            "code": [
+                969
+            ],
+            "alternates": [
+                {
+                    "symbol": "ω",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER OMEGA",
+                    "name": "Greek Small Letter Omega",
+                    "code": [
+                        969
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ω",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER OMEGA",
+                    "name": "Greek Capital Letter Omega",
+                    "code": [
+                        937
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "β",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER BETA",
+            "name": "Greek Small Letter Beta",
+            "code": [
+                946
+            ],
+            "alternates": [
+                {
+                    "symbol": "β",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER BETA",
+                    "name": "Greek Small Letter Beta",
+                    "code": [
+                        946
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Β",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER BETA",
+                    "name": "Greek Capital Letter Beta",
+                    "code": [
+                        914
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "ν",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER NU",
+            "name": "Greek Small Letter Nu",
+            "code": [
+                957
+            ],
+            "alternates": [
+                {
+                    "symbol": "ν",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER NU",
+                    "name": "Greek Small Letter Nu",
+                    "code": [
+                        957
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Ν",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER NU",
+                    "name": "Greek Capital Letter Nu",
+                    "code": [
+                        925
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "μ",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK SMALL LETTER MU",
+            "name": "Greek Small Letter Mu",
+            "code": [
+                956
+            ],
+            "alternates": [
+                {
+                    "symbol": "μ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK SMALL LETTER MU",
+                    "name": "Greek Small Letter Mu",
+                    "code": [
+                        956
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                },
+                {
+                    "symbol": "Μ",
+                    "group": "Greek",
+                    "subGroup": "base",
+                    "fullName": "GREEK CAPITAL LETTER MU",
+                    "name": "Greek Capital Letter Mu",
+                    "code": [
+                        924
+                    ],
+                    "version": 0,
+                    "emojiVersion": "0"
+                }
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": ";",
+            "group": "Greek",
+            "subGroup": "base",
+            "fullName": "GREEK QUESTION MARK",
+            "name": "Greek Question Mark",
+            "code": [
+                894
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "←",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW",
+            "name": "Leftwards Arrow",
+            "code": [
+                8592
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↑",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS ARROW",
+            "name": "Upwards Arrow",
+            "code": [
+                8593
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "→",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW",
+            "name": "Rightwards Arrow",
+            "code": [
+                8594
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↓",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ARROW",
+            "name": "Downwards Arrow",
+            "code": [
+                8595
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↔",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFT RIGHT ARROW",
+            "name": "Left Right Arrow",
+            "code": [
+                8596
+            ],
+            "version": 1.1,
             "emojiVersion": 3,
-            "requiredVersion": "10"
+            "keywords": [
+                "arrow"
+            ]
+        },
+        {
+            "symbol": "↕",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UP DOWN ARROW",
+            "name": "Up Down Arrow",
+            "code": [
+                8597
+            ],
+            "version": 1.1,
+            "emojiVersion": 3,
+            "keywords": [
+                "arrow"
+            ]
+        },
+        {
+            "symbol": "↖",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "NORTH WEST ARROW",
+            "name": "North West Arrow",
+            "code": [
+                8598
+            ],
+            "version": 1.1,
+            "emojiVersion": 3,
+            "keywords": [
+                "arrow",
+                "direction",
+                "intercardinal",
+                "northwest"
+            ]
+        },
+        {
+            "symbol": "↗",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "NORTH EAST ARROW",
+            "name": "North East Arrow",
+            "code": [
+                8599
+            ],
+            "version": 1.1,
+            "emojiVersion": 3,
+            "keywords": [
+                "arrow",
+                "direction",
+                "intercardinal",
+                "northeast"
+            ]
+        },
+        {
+            "symbol": "↘",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "SOUTH EAST ARROW",
+            "name": "South East Arrow",
+            "code": [
+                8600
+            ],
+            "version": 1.1,
+            "emojiVersion": 3,
+            "keywords": [
+                "arrow",
+                "direction",
+                "intercardinal",
+                "southeast"
+            ]
+        },
+        {
+            "symbol": "↙",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "SOUTH WEST ARROW",
+            "name": "South West Arrow",
+            "code": [
+                8601
+            ],
+            "version": 1.1,
+            "emojiVersion": 3,
+            "keywords": [
+                "arrow",
+                "direction",
+                "intercardinal",
+                "southwest"
+            ]
+        },
+        {
+            "symbol": "↚",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW WITH STROKE",
+            "name": "Leftwards Arrow With Stroke",
+            "code": [
+                8602
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↛",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW WITH STROKE",
+            "name": "Rightwards Arrow With Stroke",
+            "code": [
+                8603
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↜",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS WAVE ARROW",
+            "name": "Leftwards Wave Arrow",
+            "code": [
+                8604
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↝",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS WAVE ARROW",
+            "name": "Rightwards Wave Arrow",
+            "code": [
+                8605
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↞",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS TWO HEADED ARROW",
+            "name": "Leftwards Two Headed Arrow",
+            "code": [
+                8606
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↟",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS TWO HEADED ARROW",
+            "name": "Upwards Two Headed Arrow",
+            "code": [
+                8607
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↠",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS TWO HEADED ARROW",
+            "name": "Rightwards Two Headed Arrow",
+            "code": [
+                8608
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↡",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS TWO HEADED ARROW",
+            "name": "Downwards Two Headed Arrow",
+            "code": [
+                8609
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↢",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW WITH TAIL",
+            "name": "Leftwards Arrow With Tail",
+            "code": [
+                8610
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↣",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW WITH TAIL",
+            "name": "Rightwards Arrow With Tail",
+            "code": [
+                8611
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↤",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW FROM BAR",
+            "name": "Leftwards Arrow From Bar",
+            "code": [
+                8612
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↥",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS ARROW FROM BAR",
+            "name": "Upwards Arrow From Bar",
+            "code": [
+                8613
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↦",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW FROM BAR",
+            "name": "Rightwards Arrow From Bar",
+            "code": [
+                8614
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↧",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ARROW FROM BAR",
+            "name": "Downwards Arrow From Bar",
+            "code": [
+                8615
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↨",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UP DOWN ARROW WITH BASE",
+            "name": "Up Down Arrow With Base",
+            "code": [
+                8616
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↩",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW WITH HOOK",
+            "name": "Leftwards Arrow With Hook",
+            "code": [
+                8617
+            ],
+            "version": 1.1,
+            "emojiVersion": 3,
+            "keywords": [
+                "arrow"
+            ]
+        },
+        {
+            "symbol": "↪",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW WITH HOOK",
+            "name": "Rightwards Arrow With Hook",
+            "code": [
+                8618
+            ],
+            "version": 1.1,
+            "emojiVersion": 3,
+            "keywords": [
+                "arrow"
+            ]
+        },
+        {
+            "symbol": "↫",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW WITH LOOP",
+            "name": "Leftwards Arrow With Loop",
+            "code": [
+                8619
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↬",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW WITH LOOP",
+            "name": "Rightwards Arrow With Loop",
+            "code": [
+                8620
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↭",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFT RIGHT WAVE ARROW",
+            "name": "Left Right Wave Arrow",
+            "code": [
+                8621
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↮",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFT RIGHT ARROW WITH STROKE",
+            "name": "Left Right Arrow With Stroke",
+            "code": [
+                8622
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↯",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ZIGZAG ARROW",
+            "name": "Downwards Zigzag Arrow",
+            "code": [
+                8623
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↰",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS ARROW WITH TIP LEFTWARDS",
+            "name": "Upwards Arrow With Tip Leftwards",
+            "code": [
+                8624
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↱",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS ARROW WITH TIP RIGHTWARDS",
+            "name": "Upwards Arrow With Tip Rightwards",
+            "code": [
+                8625
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↲",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ARROW WITH TIP LEFTWARDS",
+            "name": "Downwards Arrow With Tip Leftwards",
+            "code": [
+                8626
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↳",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ARROW WITH TIP RIGHTWARDS",
+            "name": "Downwards Arrow With Tip Rightwards",
+            "code": [
+                8627
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↴",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW WITH CORNER DOWNWARDS",
+            "name": "Rightwards Arrow With Corner Downwards",
+            "code": [
+                8628
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↵",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ARROW WITH CORNER LEFTWARDS",
+            "name": "Downwards Arrow With Corner Leftwards",
+            "code": [
+                8629
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↶",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "ANTICLOCKWISE TOP SEMICIRCLE ARROW",
+            "name": "Anticlockwise Top Semicircle Arrow",
+            "code": [
+                8630
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↷",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "CLOCKWISE TOP SEMICIRCLE ARROW",
+            "name": "Clockwise Top Semicircle Arrow",
+            "code": [
+                8631
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↸",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "NORTH WEST ARROW TO LONG BAR",
+            "name": "North West Arrow To Long Bar",
+            "code": [
+                8632
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↹",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW TO BAR OVER RIGHTWARDS ARROW TO BAR",
+            "name": "Leftwards Arrow To Bar Over Rightwards Arrow To Bar",
+            "code": [
+                8633
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↺",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "ANTICLOCKWISE OPEN CIRCLE ARROW",
+            "name": "Anticlockwise Open Circle Arrow",
+            "code": [
+                8634
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↻",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "CLOCKWISE OPEN CIRCLE ARROW",
+            "name": "Clockwise Open Circle Arrow",
+            "code": [
+                8635
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↼",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS HARPOON WITH BARB UPWARDS",
+            "name": "Leftwards Harpoon With Barb Upwards",
+            "code": [
+                8636
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↽",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS HARPOON WITH BARB DOWNWARDS",
+            "name": "Leftwards Harpoon With Barb Downwards",
+            "code": [
+                8637
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↾",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS HARPOON WITH BARB RIGHTWARDS",
+            "name": "Upwards Harpoon With Barb Rightwards",
+            "code": [
+                8638
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "↿",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS HARPOON WITH BARB LEFTWARDS",
+            "name": "Upwards Harpoon With Barb Leftwards",
+            "code": [
+                8639
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇀",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS HARPOON WITH BARB UPWARDS",
+            "name": "Rightwards Harpoon With Barb Upwards",
+            "code": [
+                8640
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇁",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS HARPOON WITH BARB DOWNWARDS",
+            "name": "Rightwards Harpoon With Barb Downwards",
+            "code": [
+                8641
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇂",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS HARPOON WITH BARB RIGHTWARDS",
+            "name": "Downwards Harpoon With Barb Rightwards",
+            "code": [
+                8642
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇃",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS HARPOON WITH BARB LEFTWARDS",
+            "name": "Downwards Harpoon With Barb Leftwards",
+            "code": [
+                8643
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇄",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW OVER LEFTWARDS ARROW",
+            "name": "Rightwards Arrow Over Leftwards Arrow",
+            "code": [
+                8644
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇅",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS ARROW LEFTWARDS OF DOWNWARDS ARROW",
+            "name": "Upwards Arrow Leftwards Of Downwards Arrow",
+            "code": [
+                8645
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇆",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW OVER RIGHTWARDS ARROW",
+            "name": "Leftwards Arrow Over Rightwards Arrow",
+            "code": [
+                8646
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇇",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS PAIRED ARROWS",
+            "name": "Leftwards Paired Arrows",
+            "code": [
+                8647
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇈",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS PAIRED ARROWS",
+            "name": "Upwards Paired Arrows",
+            "code": [
+                8648
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇉",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS PAIRED ARROWS",
+            "name": "Rightwards Paired Arrows",
+            "code": [
+                8649
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇊",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS PAIRED ARROWS",
+            "name": "Downwards Paired Arrows",
+            "code": [
+                8650
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇋",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON",
+            "name": "Leftwards Harpoon Over Rightwards Harpoon",
+            "code": [
+                8651
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇌",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON",
+            "name": "Rightwards Harpoon Over Leftwards Harpoon",
+            "code": [
+                8652
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇍",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS DOUBLE ARROW WITH STROKE",
+            "name": "Leftwards Double Arrow With Stroke",
+            "code": [
+                8653
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇎",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFT RIGHT DOUBLE ARROW WITH STROKE",
+            "name": "Left Right Double Arrow With Stroke",
+            "code": [
+                8654
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇏",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS DOUBLE ARROW WITH STROKE",
+            "name": "Rightwards Double Arrow With Stroke",
+            "code": [
+                8655
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇐",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS DOUBLE ARROW",
+            "name": "Leftwards Double Arrow",
+            "code": [
+                8656
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇑",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS DOUBLE ARROW",
+            "name": "Upwards Double Arrow",
+            "code": [
+                8657
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇒",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS DOUBLE ARROW",
+            "name": "Rightwards Double Arrow",
+            "code": [
+                8658
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇓",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS DOUBLE ARROW",
+            "name": "Downwards Double Arrow",
+            "code": [
+                8659
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇔",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFT RIGHT DOUBLE ARROW",
+            "name": "Left Right Double Arrow",
+            "code": [
+                8660
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇕",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UP DOWN DOUBLE ARROW",
+            "name": "Up Down Double Arrow",
+            "code": [
+                8661
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇖",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "NORTH WEST DOUBLE ARROW",
+            "name": "North West Double Arrow",
+            "code": [
+                8662
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇗",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "NORTH EAST DOUBLE ARROW",
+            "name": "North East Double Arrow",
+            "code": [
+                8663
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇘",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "SOUTH EAST DOUBLE ARROW",
+            "name": "South East Double Arrow",
+            "code": [
+                8664
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇙",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "SOUTH WEST DOUBLE ARROW",
+            "name": "South West Double Arrow",
+            "code": [
+                8665
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇚",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS TRIPLE ARROW",
+            "name": "Leftwards Triple Arrow",
+            "code": [
+                8666
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇛",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS TRIPLE ARROW",
+            "name": "Rightwards Triple Arrow",
+            "code": [
+                8667
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇜",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS SQUIGGLE ARROW",
+            "name": "Leftwards Squiggle Arrow",
+            "code": [
+                8668
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇝",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS SQUIGGLE ARROW",
+            "name": "Rightwards Squiggle Arrow",
+            "code": [
+                8669
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇞",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS ARROW WITH DOUBLE STROKE",
+            "name": "Upwards Arrow With Double Stroke",
+            "code": [
+                8670
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇟",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ARROW WITH DOUBLE STROKE",
+            "name": "Downwards Arrow With Double Stroke",
+            "code": [
+                8671
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇠",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS DASHED ARROW",
+            "name": "Leftwards Dashed Arrow",
+            "code": [
+                8672
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇡",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS DASHED ARROW",
+            "name": "Upwards Dashed Arrow",
+            "code": [
+                8673
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇢",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS DASHED ARROW",
+            "name": "Rightwards Dashed Arrow",
+            "code": [
+                8674
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇣",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS DASHED ARROW",
+            "name": "Downwards Dashed Arrow",
+            "code": [
+                8675
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇤",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW TO BAR",
+            "name": "Leftwards Arrow To Bar",
+            "code": [
+                8676
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇥",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW TO BAR",
+            "name": "Rightwards Arrow To Bar",
+            "code": [
+                8677
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇦",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS WHITE ARROW",
+            "name": "Leftwards White Arrow",
+            "code": [
+                8678
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇧",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS WHITE ARROW",
+            "name": "Upwards White Arrow",
+            "code": [
+                8679
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇨",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS WHITE ARROW",
+            "name": "Rightwards White Arrow",
+            "code": [
+                8680
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇩",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS WHITE ARROW",
+            "name": "Downwards White Arrow",
+            "code": [
+                8681
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇪",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS WHITE ARROW FROM BAR",
+            "name": "Upwards White Arrow From Bar",
+            "code": [
+                8682
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇫",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS WHITE ARROW ON PEDESTAL",
+            "name": "Upwards White Arrow On Pedestal",
+            "code": [
+                8683
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇬",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS WHITE ARROW ON PEDESTAL WITH HORIZONTAL BAR",
+            "name": "Upwards White Arrow On Pedestal With Horizontal Bar",
+            "code": [
+                8684
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇭",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS WHITE ARROW ON PEDESTAL WITH VERTICAL BAR",
+            "name": "Upwards White Arrow On Pedestal With Vertical Bar",
+            "code": [
+                8685
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇮",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS WHITE DOUBLE ARROW",
+            "name": "Upwards White Double Arrow",
+            "code": [
+                8686
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇯",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UPWARDS WHITE DOUBLE ARROW ON PEDESTAL",
+            "name": "Upwards White Double Arrow On Pedestal",
+            "code": [
+                8687
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇰",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS WHITE ARROW FROM WALL",
+            "name": "Rightwards White Arrow From Wall",
+            "code": [
+                8688
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇱",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "NORTH WEST ARROW TO CORNER",
+            "name": "North West Arrow To Corner",
+            "code": [
+                8689
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇲",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "SOUTH EAST ARROW TO CORNER",
+            "name": "South East Arrow To Corner",
+            "code": [
+                8690
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇳",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "UP DOWN WHITE ARROW",
+            "name": "Up Down White Arrow",
+            "code": [
+                8691
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇴",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHT ARROW WITH SMALL CIRCLE",
+            "name": "Right Arrow With Small Circle",
+            "code": [
+                8692
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇵",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "DOWNWARDS ARROW LEFTWARDS OF UPWARDS ARROW",
+            "name": "Downwards Arrow Leftwards Of Upwards Arrow",
+            "code": [
+                8693
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇶",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "THREE RIGHTWARDS ARROWS",
+            "name": "Three Rightwards Arrows",
+            "code": [
+                8694
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇷",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW WITH VERTICAL STROKE",
+            "name": "Leftwards Arrow With Vertical Stroke",
+            "code": [
+                8695
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇸",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW WITH VERTICAL STROKE",
+            "name": "Rightwards Arrow With Vertical Stroke",
+            "code": [
+                8696
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇹",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFT RIGHT ARROW WITH VERTICAL STROKE",
+            "name": "Left Right Arrow With Vertical Stroke",
+            "code": [
+                8697
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇺",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS ARROW WITH DOUBLE VERTICAL STROKE",
+            "name": "Leftwards Arrow With Double Vertical Stroke",
+            "code": [
+                8698
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇻",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS ARROW WITH DOUBLE VERTICAL STROKE",
+            "name": "Rightwards Arrow With Double Vertical Stroke",
+            "code": [
+                8699
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇼",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFT RIGHT ARROW WITH DOUBLE VERTICAL STROKE",
+            "name": "Left Right Arrow With Double Vertical Stroke",
+            "code": [
+                8700
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇽",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "LEFTWARDS OPEN-HEADED ARROW",
+            "name": "Leftwards Open-Headed Arrow",
+            "code": [
+                8701
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇾",
+            "group": "Arrows",
+            "subGroup": "base",
+            "fullName": "RIGHTWARDS OPEN-HEADED ARROW",
+            "name": "Rightwards Open-Headed Arrow",
+            "code": [
+                8702
+            ],
+            "version": 0,
+            "emojiVersion": "0"
+        },
+        {
+            "symbol": "⇅",
+            "code": [
+                960
+            ],
+            "version": 0,
+            "emojiVersion": "0"
         }
     ],
     "keyboards": [
@@ -53479,8 +56268,7 @@ var data = {
                     "group": "Smileys & People",
                     "subGroup": "face-sick"
                 }
-            ],
-            "requiredVersion": "10"
+            ]
         },
         {
             "name": "Neutral",
@@ -54005,6 +56793,27 @@ var data = {
                 }
             ],
             "requiredVersion": "10"
+        },
+        {
+            "name": "Greek",
+            "symbol": "π",
+            "content": [
+                {
+                    "group": "Greek",
+                    "subGroup": "base"
+                }
+            ],
+            "requiredVersion": "10"
+        },
+        {
+            "name": "Arrows",
+            "symbol": "⇅",
+            "content": [
+                {
+                    "group": "Arrows",
+                    "subGroup": "base"
+                }
+            ]
         }
     ],
     "keymaps": {

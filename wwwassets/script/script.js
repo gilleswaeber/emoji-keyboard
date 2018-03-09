@@ -597,7 +597,10 @@ var View;
                 .append(key.getSymbolDiv(undefined))
                 .click(function (e) {
                 e.preventDefault();
-                key.act(_this);
+                if (e.shiftKey)
+                    key.actAlternate(_this);
+                else
+                    key.act(_this);
             })
                 .contextmenu(function (e) {
                 e.preventDefault();
@@ -640,7 +643,6 @@ var Workers;
                 flatEmojis.push(e);
             });
         });
-        document.s = searchHaystack;
         function escapeRegex(str) {
             return str.replace(ESCAPE_REGEX, '\\$1');
         }
