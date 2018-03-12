@@ -18,7 +18,7 @@ class DataGrabber{
 	}
 
 	private function find_latest($folder) {
-		$versions = $this->find_versions;
+		$versions = $this->find_versions($folder);
 
 		// Folders should be named x((.y)?.z)?
 		$latest = '0';
