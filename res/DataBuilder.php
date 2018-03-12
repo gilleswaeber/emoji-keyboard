@@ -60,7 +60,7 @@ class DataBuilder{
 			$code = implode('-', array_slice($e['code'], 0, $i));
 			if(isset($this->versions[$code])) return $this->versions[$code];
 		}
-		echo "[WARNING] Emoji Version not found for ".implode('-', $e['code']).": ".$e['symbol']."\n";
+		if(App::$verbose) echo "[WARNING] Emoji Version not found for ".implode('-', $e['code']).": ".$e['symbol']."\n";
 		return "0";
 	}
 

@@ -26,3 +26,10 @@ Some examples:
 - Eventually, you will have to update the fallback rules and add newer Twemoji images
 
 After that, you have to rebuild the data file.
+
+## Command line arguments
+| Argument               | Description                    |
+| ---------------------- | ------------------------------ |
+| -h, --help             | Show help instructions         |
+| -v, --verbose          | More detailed output           |
+| -l, --local, --offline | Do not connect to the internet |
