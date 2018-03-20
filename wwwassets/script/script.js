@@ -657,15 +657,20 @@ var Workers;
         Emojis.getSubGroup = getSubGroup;
         function search(needle) {
             var result = [];
-            needle.split(/\s+/g).forEach(function (n) {
+            needle.split(/\s+/g).forEach(function (n, k) {
+                var filter = [];
                 if (!n.length)
                     return;
                 var re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
                 for (var m = void 0; m = re.exec(searchHaystack);) {
-                    result.push(parseInt(m[1]));
+                    filter.push(parseInt(m[1]));
                 }
+                if (k == 0)
+                    result = filter;
+                else
+                    result = result.filter(function (v) { return filter.indexOf(v) !== -1; });
             });
-            return result.filter(function (v, k) { return result.indexOf(v) === k; }).map(function (v) { return flatEmojis[v]; });
+            return result.map(function (v) { return flatEmojis[v]; });
         }
         Emojis.search = search;
     })(Emojis = Workers.Emojis || (Workers.Emojis = {}));

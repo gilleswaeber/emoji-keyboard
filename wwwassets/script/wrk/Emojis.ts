@@ -39,14 +39,17 @@ module Workers{
 		
 		export function search(needle: string){
 			let result: number[] = [];
-			needle.split(/\s+/g).forEach(n => {
+			needle.split(/\s+/g).forEach((n, k) => {
+				let filter: number[] = [];
 				if (!n.length) return;
 				const re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
 				for(let m; m = re.exec(searchHaystack);){
-					result.push(parseInt(m[1]));
+					filter.push(parseInt(m[1]));
 				}
+				if (k == 0) result = filter;
+				else result = result.filter(v => filter.indexOf(v) !== -1);
 			})
-			return result.filter((v, k) => result.indexOf(v) === k).map(v => flatEmojis[v]);
+			return result.map(v => flatEmojis[v]);
 		}
 	}
 }
