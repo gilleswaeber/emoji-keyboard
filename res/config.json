@@ -8,8 +8,6 @@
 		{"symbol":"🐱‍🏍","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Stunt cat","keywords":["windows","non standard","stunt","ninja","cat"]},
 		{"symbol":"🐱‍🚀","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Astro cat","keywords":["windows","non standard","astronaut","ninja","cat"]},
 
-		{"symbol": "🏴‍☠️", "group": "Flags", "subGroup": "non-standard", "name": "*Pirate flag", "keywords": ["flag", "pirate", "skull", "non standard"]},
-
 		{"group": "Greek", "subGroup": "base", "symbols": [
 			["ά", "Ά"], ["έ", "Έ"], ["ή", "Ή"], ["ί", "Ί"], ["ό", "Ό"], ["ύ", "Ύ"], ["ώ", "Ώ"], ["ϊ", "Ϊ"], ["ϋ", "Ϋ"], "ΐ"       , "ΰ"       , null,
 			"ϵ"       , ["ς", "ϐ"], ["ε", "Ε"], ["ρ", "Ρ"], ["τ", "Τ"], ["ζ", "Ζ"], ["θ", "Θ"], ["ι", "Ι"], ["ο", "Ο"], ["π", "Π"], null, null,
@@ -41,6 +39,11 @@
 			"version": 10
 		},
 		{
+			"windows": "10.0.17723",
+			"comments": "Redstone 5",
+			"version": 11
+		},
+		{
 			"windows": "99",
 			"comment": "Not supported on Windows",
 			"characters": [
@@ -65,9 +68,9 @@
 		}
 	],
 	"forceVersion": {
-		"cldr": "31.0.1",
-		"emoji": "5.0",
-		"ucd": "11.0.0"
+		"cldr": "33.1",
+		"emoji": "11.0",
+		"ucd": "12.0.0"
 	},
 	"nogroup": ["family","kiss","couple with heart","house","cricket"],
 	"keyboards": [
@@ -79,7 +82,6 @@
 			{"group":"Smileys & People", "subGroup":"face-neutral"}
 		]},{"name":"Roles", "symbol":"👻", "content":[
 			{"group":"Smileys & People", "subGroup":"face-role"},
-			{"group":"Smileys & People", "subGroup":"creature-face"},
 			{"group":"Smileys & People", "subGroup":"face-fantasy"},
 			{"group":"Smileys & People", "subGroup":"person-fantasy"}
 		]},{"name":"Body", "symbol":"👍", "content":[
@@ -141,7 +143,8 @@
 		]},{"name":"Activities", "symbol":"🎮", "content":[
 			{"group":"Activities", "subGroup":"event"},
 			{"group":"Activities", "subGroup":"award-medal"},
-			{"group":"Activities", "subGroup":"game"}
+			{"group":"Activities", "subGroup":"game"},
+			{"group":"Activities", "subGroup":"arts & crafts"}
 		]},{"name":"Sound & light", "symbol":"🎥", "content":[
 			{"group":"Objects", "subGroup":"sound"},
 			{"group":"Objects", "subGroup":"music"},
@@ -157,7 +160,9 @@
 			{"group":"Objects", "subGroup":"money"},
 			{"group":"Objects", "subGroup":"writing"},
 			{"group":"Objects", "subGroup":"medical"},
-			{"group":"Objects", "subGroup":"other-object"}
+			{"group":"Objects", "subGroup":"other-object"},
+			{"group":"Objects", "subGroup":"science"},
+			{"group":"Objects", "subGroup":"household"}
 		]},{"name":"Work", "symbol":"💼", "content":[
 			{"group":"Objects", "subGroup":"office"},
 			{"group":"Objects", "subGroup":"lock"},
@@ -181,8 +186,7 @@
 			{"group":"Flags", "subGroup":"country-flag"}
 		]},{"name":"Flags", "symbol":"🏁", "content":[
 			{"group":"Flags", "subGroup":"subdivision-flag"},
-			{"group":"Flags", "subGroup":"flag"},
-			{"group":"Flags", "subGroup":"non-standard"}
+			{"group":"Flags", "subGroup":"flag"}
 		]},{"name":"Greek", "symbol":"π", "content":[
 			{"group":"Greek", "subGroup":"base"}
 		]},{"name":"Arrows", "symbol":"⇅", "content":[
