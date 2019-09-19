@@ -96,6 +96,7 @@ class DataBuilder{
 			$e['version'] = $e['emojiVersion'] = 0;
 		}
 		
+		if(!isset($e['show'])) $e['show'] = $e['symbol'];
 		
 		if(!isset($e['keywords']) && count($e['code']) && isset($this->annotations[$e['code'][0]]['keywords']))
 			$e['keywords'] = $this->annotations[$e['code'][0]]['keywords'];
@@ -159,9 +160,24 @@ class DataBuilder{
 					'symbol' => $addon->symbol,
 					'group' => $addon->group,
 					'subGroup' => $addon->subGroup,
-					'name' => $addon->name
+					'name' => $addon->name,
+					'show' => @$addon->show ?: $addon->symbol
 				];
 				if(isset($addon->keywords)) $emojis[$addon->name]['keywords'] = $addon->keywords;
+				if(isset($addon->alternates)) {
+					$emojis[$addon->name]['alternates'] = [$emojis[$addon->name]];
+					foreach($addon->alternates as $alt){
+						$c = [
+							'symbol' => $alt->symbol,
+							'group' => $addon->group,
+							'subGroup' => $addon->subGroup,
+							'name' => $alt->name,
+							'show' => @$alt->show ?: $alt->symbol
+						];
+						if(isset($alt->keywords)) $c['keywords'] = $addon->keywords;
+						$emojis[$addon->name]['alternates'][] = $c;
+					}
+				}
 			}
 		}
 

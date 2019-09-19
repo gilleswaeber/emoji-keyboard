@@ -41,14 +41,14 @@
 
 		{"group": "UTN28", "subGroup": "special", "symbol": "Ⅎ", "name": "Size Override"},
 
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏜", "name": "\\overparen"},
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏝", "name": "\\underparen"},
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏞", "name": "\\overbrace"},
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏟", "name": "\\underbrace"},
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏠", "name": "\\overshell"},
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏡", "name": "\\undershell"},
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⎴", "name": "\\overbracket"},
-		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⎵", "name": "\\underbracket"},
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏝", "name": "\\underparen", "alternates": [
+			{"symbol": "⏜", "name": "\\overparen"}]},
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏟", "name": "\\underbrace", "alternates": [
+			{"symbol": "⏞", "name": "\\overbrace"}]},
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏡", "name": "\\undershell", "alternates": [
+			{"symbol": "⏠", "name": "\\overshell"}]},
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⎵", "name": "\\underbracket", "alternates": [
+			{"symbol": "⎴", "name": "\\overbracket"}]},
 
 		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̂", "show": "◌̂", "name": "\\hat"},
 		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̌", "show": "◌̌", "name": "\\check"},
@@ -66,16 +66,16 @@
 		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "⃑", "show": "◌⃑", "name": "\\hvec"},
 		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "⃡", "show": "◌⃡", "name": "\\tvec"},
 
-		{"group": "UTN28", "subGroup": "spaces", "symbol": "​", "name": "\\zwsp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\hairsp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\thinsp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\medsp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\thicksp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\vthicksp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\ensp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\emsp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\numsp"},
-		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\nbsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": "​", "name": "\\zwsp", "show": "zwsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\hairsp", "show": "hairsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\thinsp", "show": "thinsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\medsp", "show": "medsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\thicksp", "show": "thicksp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\vthicksp", "show": "vthicksp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\ensp", "show": "ensp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\emsp", "show": "emsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\numsp", "show": "numsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\nbsp", "show": "nbsp"},
 
 		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⟡", "name": "\\phantom"},
 		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬄", "name": "\\hphantom"},
@@ -85,7 +85,7 @@
 		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬇", "name": "\\dsmash"},
 		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬌", "name": "\\hsmash"},
 
-		{"group": "UTN28", "subGroup": "operators", "symbols": ["‼", "±", "∓", "∷", "≔", "≤", "≥", "≪", "≫", "≅", "→", "≮", "≠", "≯"]},
+		{"group": "UTN28", "subGroup": "operators", "symbols": ["‼", ["±", "∓"], "∷", "≔", ["≪", "⋘"], ["≫", "⋙"], "→", "≮", "≠", "≯"]},
 
 		{"group": "UTN28", "subGroup": "operators", "symbol": "∃", "name": "\\exists", "alternates": [{"symbol": "∄", "name": "/\\exists"}]},
 		{"group": "UTN28", "subGroup": "operators", "symbol": "∈", "name": "\\in", "alternates": [{"symbol": "∉", "name": "/\\in"}]},
@@ -112,15 +112,15 @@
 		{"group": "UTN28", "subGroup": "operators", "symbol": "⊒", "name": "\\sqsupseteq", "alternates": [{"symbol": "⋣", "name": "/\\sqsupseteq"}]},
 			
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∐", "name": "\\amalg"},
-		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∳", "name": "\\aoint"},
-		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∲", "name": "\\coint"},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∫", "name": "\\int", "alternates": [
 			{"symbol": "∬", "name": "\\iint"},
 			{"symbol": "∭", "name": "\\iiint"},
-			{"symbol": "⨌", "name": "\\iiiint"}]},
-		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∮", "name": "\\oint", "alternates": [
+			{"symbol": "⨌", "name": "\\iiiint"}
+			{"symbol": "∮", "name": "\\oint"},
 			{"symbol": "∯", "name": "\\oiint"},
-			{"symbol": "∰", "name": "\\oiiint"}]},
+			{"symbol": "∰", "name": "\\oiiint"},
+			{"symbol": "∳", "name": "\\aoint"},
+			{"symbol": "∲", "name": "\\coint"}]},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∏", "name": "\\prod"},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∑", "name": "\\sum"},
 		
@@ -289,13 +289,13 @@
 			{"group":"Symbols", "subGroup":"other-symbol"}
 		]},{"name":"Arrows", "symbol":"↕", "content":[
 			{"group":"Symbols", "subGroup":"arrow"},
-			{"group":"Symbols", "subGroup":"av-symbol"},
 			{"group":"Arrows", "subGroup":"base"}
 		]},{"name":"Alphanum", "symbol":"🔤", "content":[
 			{"group":"Symbols", "subGroup":"alphanum"}
 		]},{"name":"Geometric & keys", "symbol":"🔷", "content":[
 			{"group":"Symbols", "subGroup":"keycap"},
-			{"group":"Symbols", "subGroup":"geometric"}
+			{"group":"Symbols", "subGroup":"geometric"},
+			{"group":"Symbols", "subGroup":"av-symbol"}
 		]},{"name":"Country Flags", "symbol":"🌐", "content":[
 			{"group":"Flags", "subGroup":"country-flag"}
 		]},{"name":"Flags", "symbol":"🏁", "content":[
@@ -306,11 +306,13 @@
 			{"group":"Greek", "subGroup":"base"}
 		]},{"name": "Boxes", "symbol": "╚", "content": [
 			{"group":"Box Drawing", "subGroup":"base"}
-		]},{"name": "TextMath", "symbol": "√", "content": [
+		]},{"name": "TextMath", "symbol": "\u221a2", "content": [
 			{"group": "UTN28", "subGroup": "special"},
 			{"group": "UTN28", "subGroup": "stretchy-characters"},
 			{"group": "UTN28", "subGroup": "accents-operators"},
 			{"group": "UTN28", "subGroup": "operators"},
+			{"group": "UTN28", "subGroup": "operators-nary"},
+			{"group": "UTN28", "subGroup": "enclosing"},
 			{"group": "UTN28", "subGroup": "spaces"},
 			{"group": "UTN28", "subGroup": "phantom-smashes"}
 		]}
