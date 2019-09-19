@@ -17,7 +17,7 @@ module View{
 
 	export class SearchView extends View implements IViewKey{
 		private jBase: JQuery;
-		private searchE: HTMLInputElement;
+		private searchString = '';
 		private element: HTMLElement;
 		private idxKeys: {[id: number]: Workers.Key};
 		private jKeyboard: JQuery;
@@ -26,11 +26,6 @@ module View{
 			super();
 			this.jBase = $(this.element = document.createElement('div'));
 			this.jBase.empty();
-			this.jBase.append(
-				$('<div class="searchpane">').append(
-					this.searchE = $('<input type="search">').attr('placeholder', 'Search…').on('input properychange', () => this.refresh()).get(0) as HTMLInputElement
-				)
-			);
 			this.jKeyboard = $('<div class="keyboard">').appendTo(this.jBase);
 			this.refresh();
 		}
@@ -40,19 +35,10 @@ module View{
 		}
 
 		public charInput(key: string){
-			if(key == '%') return;
-			this.searchE.value += key;
-			setTimeout(() => this.refresh(), 0);
 		}
 		
 		public input(key: number, shift: boolean){
-			if(key == 15) this.baseView.loadKeyboard(); // Tab
-			else if(key == 14){
-				if (shift) this.searchE.value = '';
-				else this.searchE.value = this.searchE.value.replace(/.$/, ''); // Backspace
-				setTimeout(() => this.refresh(), 0);
-			}
-			else if(this.idxKeys[key]){
+			if(this.idxKeys[key]){
 				if (!shift) this.idxKeys[key].act(this);
 				else this.idxKeys[key].actAlternate(this);
 			}
@@ -61,6 +47,11 @@ module View{
 		public showStatus(str: string): void{
 			if(!str.length) return this.hideStatus();
 			AHKWrk.setTitle("Emoji Keyboard - Search: " + this.toTitleCase(str));
+		}
+
+		public setSearchString(str: string) {
+			this.searchString = str;
+			this.refresh();
 		}
 
 		hideStatus(): void{
@@ -89,7 +80,7 @@ module View{
 
 		public refresh(): void{
 			this.showStatus("");
-			var r = Emojis.search(this.searchE.value), i = 0;
+			var r = Emojis.search(this.searchString), i = 0;
 			this.idxKeys = {};
 			this.idxKeys[41] = EXITKEY;
 			for(var i = 0; i < KEYS.length && i < r.length; i++){
@@ -98,7 +89,7 @@ module View{
 
 			this.jKeyboard.empty();
 			KEYMAP.forEach((row)=>{
-				var jRow = $('<div class="row">').appendTo(this.jKeyboard);
+				var jRow = $('<div class="row">').css('height', 100 / 3 + 'vh').appendTo(this.jKeyboard);
 				row.forEach((keyCode)=>{
 					if(this.idxKeys[keyCode]){
 						var k = this.idxKeys[keyCode];

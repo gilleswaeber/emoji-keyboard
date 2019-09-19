@@ -62,8 +62,10 @@ OnExit,__Webapp_GuiClose
 Gui __Webapp_:New
 Gui __Webapp_:Margin, 0, 0
 Gui __Webapp_:+LastFound +Resize
-OnMessage(0x100, "gui_KeyDown", 2)
+;OnMessage(0x100, "gui_KeyDown", 2)
 Gui __Webapp_:Add, ActiveX, v__Webapp_wb w%__Webapp_Width% h%__Webapp_height%, Shell.Explorer
+Gui, Font, s24, Segoe UI
+Gui __Webapp_:Add, Edit, x0 y0 vSearchBox gSearchChange
 SetWBClientSite()
 __Webapp_wb.silent := true ;Surpress JS Error boxes
 ;__Webapp_wb.Navigate("about:<!DOCTYPE html><meta http-equiv='X-UA-Compatible' content='IE=edge'>")
@@ -117,9 +119,9 @@ __Webapp_JS_AHK_Attach:
 	 __Webapp_wb.Document.parentWindow.AHK := __Webapp_wf
 return
 
-__Webapp_GuiSize:
-	GuiControl, __Webapp_:Move, __Webapp_wb, W%A_GuiWidth% H%A_GuiHeight%
-return
+;__Webapp_GuiSize:
+;	GuiControl, __Webapp_:Move, __Webapp_wb, W%A_GuiWidth% H%A_GuiHeight%
+;return
 
 __Webapp_GuiEscape:
 	MsgBox 0x34, Webapp.ahk, Are you sure you want to quit?

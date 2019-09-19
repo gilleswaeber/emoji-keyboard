@@ -107,7 +107,7 @@ module View{
 			this.jKeyboard.empty();
 			this.idxKeys = _.indexBy(this.keyboard.getVisible(), (key)=>key.key);
 			KEYMAP.forEach((row)=>{
-				var jRow = $('<div class="row">').appendTo(this.jKeyboard);
+				var jRow = $('<div class="row">').css('height', 100 / 4 + 'vh').appendTo(this.jKeyboard);
 				row.forEach((keyCode)=>{
 					BLANKKEY.key = keyCode;
 					if(!this.idxKeys[keyCode]) jRow.append(this.showKey(BLANKKEY));
@@ -148,7 +148,7 @@ module View{
 		}
 
 		private toTitleCase(str: string){
-			return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+			return str.replace(/\\?\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 		}
 		
 		getBaseView(): BaseView {

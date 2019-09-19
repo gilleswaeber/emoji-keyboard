@@ -52,6 +52,10 @@ module View{
 			this.keyboardView.setOS(os);
 			this.searchView.refresh();
 		}
+
+		setSearch(str: string){
+			this.searchView.setSearchString(str);
+		}
 	}
 
 	export abstract class View{
