@@ -1,9 +1,13 @@
-Emoji Keyboard (Emoji 5, Fall Creator Update Ready)
+Emoji Keyboard (Emoji 11, Redstone 5 Ready)
 ==============
 <img alt="Screenshot" src="http://i.imgur.com/gW11T1R.png" width="767" />
 
-Packed with 1570 base Emojis!
+Packed with 1811 base Emojis!
 Requires Windows 7
+
+Alternatives
+------------
+Since the Windows 10 April 2018 Update update, you can open the built-in emoji picker with `Win+.`. It is missing support for flags and emojis newer than the OS.
 
 How to use
 ----------

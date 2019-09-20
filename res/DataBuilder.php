@@ -90,7 +90,7 @@ class DataBuilder{
 			})));
 		
 		if(count($e['code'])){
-			$e['version'] = @floatval($this->chars['latest'][$e['code'][0]]['Version']) ?: 0;
+			$e['version'] = array_key_exists($e['code'][0], $this->chars['latest']) ? floatval($this->chars['latest'][$e['code'][0]]['Version']) : 0;
 			$e['emojiVersion'] = $this->findEmojiVersion($e);
 		} else {
 			$e['version'] = $e['emojiVersion'] = 0;
@@ -161,7 +161,7 @@ class DataBuilder{
 					'group' => $addon->group,
 					'subGroup' => $addon->subGroup,
 					'name' => $addon->name,
-					'show' => @$addon->show ?: $addon->symbol
+					'show' => property_exists($addon, 'show') ? $addon->show : $addon->symbol
 				];
 				if(isset($addon->keywords)) $emojis[$addon->name]['keywords'] = $addon->keywords;
 				if(isset($addon->alternates)) {
@@ -172,7 +172,7 @@ class DataBuilder{
 							'group' => $addon->group,
 							'subGroup' => $addon->subGroup,
 							'name' => $alt->name,
-							'show' => @$alt->show ?: $alt->symbol
+							'show' => property_exists($alt, 'show') ? $alt->show : $alt->symbol
 						];
 						if(isset($alt->keywords)) $c['keywords'] = $addon->keywords;
 						$emojis[$addon->name]['alternates'][] = $c;
@@ -199,7 +199,7 @@ class DataBuilder{
 				'symbol' => $k->symbol,
 				'code' => array_map('DataParser::ord', preg_split("##u", $e['symbol'], -1, PREG_SPLIT_NO_EMPTY)),
 			];
-			$e['version'] = floatval($this->chars['latest'][$e['code'][0]]['Version']);
+			$e['version'] = array_key_exists($e['code'][0], $this->chars['latest']) ? floatval($this->chars['latest'][$e['code'][0]]['Version']) : 0;
 			$e['emojiVersion'] = $this->findEmojiVersion($e);
 			$this->setRequiredVersion($e);
 

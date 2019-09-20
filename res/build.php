@@ -15,17 +15,41 @@ abstract class App {
 }
 
 foreach(array_slice($argv, 1) as $arg){
-	if(preg_match("#^(?:[-/][^ ]*[h?]|--help)$#i", $arg)) App::$help = true;
-	elseif(preg_match("#^(?:[-/][^ ]*v|--verbose)$#i", $arg)) App::$verbose = true;
-	elseif(preg_match("#^(?:[-/][^ ]*l|--offline|--local)$#i", $arg)) App::$offline = true;
-	elseif(preg_match("#^(?:[-/][^ ]*i|--install)$#i", $arg)) App::$install = true;
-	else echo "[WARNING] Unrecognized argument ".$arg."\n";
+	$found = false;
+	if (preg_match("#^(?:[-/][a-z]*[h?][a-z]*|--help)$#i", $arg)) {
+		App::$help = true;
+		$found = true;
+	}
+	if (preg_match("#^(?:[-/][a-z]*v[a-z]*|--verbose)$#i", $arg)) {
+		App::$verbose = true;
+		$found = true;
+	}
+	if (preg_match("#^(?:[-/][a-z]*l[a-z]*|--offline|--local)$#i", $arg)) {
+		App::$offline = true;
+		$found = true;
+	}
+	if (preg_match("#^(?:[-/][a-z]*i[a-z]*|--install)$#i", $arg)) {
+		App::$install = true;
+		$found = true;
+	}
+	if (!$found) echo "[WARNING] Unrecognized argument ".$arg."\n";
 }
 
 if(App::$help){
 	echo "Please refer to the README.md file\n";
 	die();
 }
+
+function errHandle($errNo, $errStr, $errFile, $errLine) {
+    $msg = "$errStr in $errFile on line $errLine";
+    if ($errNo == E_NOTICE || $errNo == E_WARNING) {
+        throw new ErrorException($msg, $errNo);
+    } else {
+        echo "$msg\n";
+    }
+}
+
+set_error_handler('errHandle');
 
 $dg = new DataGrabber();
 $dg->create_dir('data');
