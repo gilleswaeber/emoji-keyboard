@@ -25,10 +25,13 @@ module Workers{
 		}
 
 		getSymbolDiv(requiredVersion?: string | undefined): HTMLDivElement{
-			let container = $('<div class="symbol">');
-			let useFallback = View.KeyboardView.compareToOS(requiredVersion) > 0;
+			const container = $('<div class="symbol">');
+			const useFallback = View.KeyboardView.compareToOS(requiredVersion) > 0;
+			const style = this.symbol.match(/^([a-z]+):([\w\W]+)$/);
+			const show = style ? style[2].replace(/\n/g, '\r\n') : this.symbol;
+			if (style) container.addClass('display-' + style[1]);
 			if(!useFallback)
-				container.text(this.symbol);
+				container.append(document.createTextNode(show));
 			else{
 				container.append($('<img>').attr('src', 'img/'+Key.toTwemojiFilename(this.getSymbol())).attr('alt', this.symbol));
 			}

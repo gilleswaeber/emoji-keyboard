@@ -1,8 +1,8 @@
-Emoji Keyboard (Emoji 11, Redstone 5 Ready)
+Emoji Keyboard (Emoji 12)
 ==============
-<img alt="Screenshot" src="http://i.imgur.com/gW11T1R.png" width="767" />
+<img alt="Screenshot" src="https://i.imgur.com/p8LAlF9.png" width="767" />
 
-Packed with 1811 base Emojis!
+Packed with thousands of Emojis!
 Requires Windows 7
 
 Alternatives
@@ -13,8 +13,8 @@ How to use
 ----------
 Install [Autohotkey](https://autohotkey.com/) and then launch App.ahk. It will then stay in system tray until you call it.
 
-Open it with the Caps Lock key. You can still enable Caps Lock with Shift+Caps Lock.
-You can also use a double click on the tray icon.
+Open it with the `Caps Lock` key. You can still enable Caps Lock with Shift+Caps Lock.
+You can also use a double click on the tray icon. (Look for `Capslock` in the *App.ahk* file to change the shortcut).
 
 Use the shown keyboard keys to navigate between the categories and type the Emojis. You can also use the mouse. You can move the window and resize it as you wish. If you use another keymap, pay only attention to the position of the different keys.
 
@@ -32,12 +32,16 @@ The [Twemoji Pack](https://github.com/twitter/twemoji) is used as a fallback for
 The flags and the newest Emojis are currently not supported by Windows. You can still use them in 3rd-party applications or sites like Whatsapp or Twitter.
 Flags are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, between Congo and Côte d'Ivoire.
 
-For informations on how to customize the keyboard, see [the README in the res folder](res/README.md).
-
 Keymaps
 -------
 This application supports 209 different keymaps. You can define it in the webapp.json file under keymap. Changing the keymap requires a restart.
 Some keymaps are: en, blank, fr-CH, en-dvorak, uk, etc. See all keymaps in the [keymap file](keymaps.md).
+
+Customize
+---------
+For information on how to customize the keyboard, see [the README in the res folder](res/README.md).
+The keyboard view is realized using an embedded Internet Explorer control, as native AHK controls do not support Emojis at the moment.
+Some characters may use a fallback image because they are not rendered properly, but they are supported by the OS.
 
 Screenshots
 -----------

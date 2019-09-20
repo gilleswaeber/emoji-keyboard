@@ -1,8 +1,11 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -313,8 +316,12 @@ var Workers;
         Key.prototype.getSymbolDiv = function (requiredVersion) {
             var container = $('<div class="symbol">');
             var useFallback = View.KeyboardView.compareToOS(requiredVersion) > 0;
+            var style = this.symbol.match(/^([a-z]+):([\w\W]+)$/);
+            var show = style ? style[2].replace(/\n/g, '\r\n') : this.symbol;
+            if (style)
+                container.addClass('display-' + style[1]);
             if (!useFallback)
-                container.text(this.symbol);
+                container.append(document.createTextNode(show));
             else {
                 container.append($('<img>').attr('src', 'img/' + Key.toTwemojiFilename(this.getSymbol())).attr('alt', this.symbol));
             }

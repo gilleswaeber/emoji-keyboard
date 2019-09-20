@@ -16,7 +16,7 @@
 							"type": "array",
 							"items": {"type": "string"}
 						},
-						"required": ["symbol", "name"]
+						"required": ["symbol"]
 					},
 					{
 						"description": "A group of characters/sequences",
