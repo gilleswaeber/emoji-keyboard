@@ -162,16 +162,12 @@
 			"version": 11
 		},
 		{
-			"windows": "99",
-			"comment": "Not supported on Windows",
-			"characters": [
-				{"from": "🇦", "to": "🇿🇿"},
-				{"from": "\ud83c\udff4\udb40\udc61", "to": "\ud83c\udff4\udb40\udc7a\udb40\udc7a", "comments": "From 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER A' to 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER Z, TAG LATIN SMALL LETTER Z'"}
-			],
+			"windows": " 10.0.18277",
+			"comments": "Windows 19H1",
+			"version": 12,
 			"sequences": [
-				"🏴‍☠️",
+				"🏴‍☠️", "",
 				"#\ufe0f\u20e3",
-				"*\ufe0f\u20e3",
 				"0\ufe0f\u20e3",
 				"1\ufe0f\u20e3",
 				"2\ufe0f\u20e3",
@@ -183,41 +179,86 @@
 				"8\ufe0f\u20e3",
 				"9\ufe0f\u20e3"
 			]
+		},
+		{
+			"windows": "10.0.18363",
+			"comment": "Supported in Windows but not IE",
+			"sequences": [
+				"*\ufe0f\u20e3",
+				"🦸‍♂️", "🦸🏻‍♂️", "🦸🏼‍♂️", "🦸🏽‍♂️", "🦸🏾‍♂️", "🦸🏿‍♂️",
+				"🦸‍♀️", "🦸🏻‍♀️", "🦸🏼‍♀️", "🦸🏽‍♀️", "🦸🏾‍♀️", "🦸🏿‍♀️",
+				"🦹‍♂️", "🦹🏻‍♂️", "🦹🏼‍♂️", "🦹🏽‍♂️", "🦹🏾‍♂️", "🦹🏿‍♂️",
+				"🦹‍♀️", "🦹🏻‍♀️", "🦹🏼‍♀️", "🦹🏽‍♀️", "🦹🏾‍♀️", "🦹🏿‍♀️", 
+				"🧍‍♂️", "🧍🏻‍♂️", "🧍🏼‍♂️", "🧍🏽‍♂️", "🧍🏾‍♂️", "🧍🏿‍♂️",
+				"🧍‍♀️", "🧍🏻‍♀️", "🧍🏼‍♀️", "🧍🏽‍♀️", "🧍🏾‍♀️", "🧍🏿‍♀️",
+				"🧎‍♂️", "🧎🏻‍♂️", "🧎🏼‍♂️", "🧎🏽‍♂️", "🧎🏾‍♂️", "🧎🏿‍♂️",
+				"🧎‍♀️", "🧎🏻‍♀️", "🧎🏼‍♀️", "🧎🏽‍♀️", "🧎🏾‍♀️", "🧎🏿‍♀️",
+				"👨‍🦯", "👨🏻‍🦯", "👨🏼‍🦯", "👨🏽‍🦯", "👨🏾‍🦯", "👨🏿‍🦯",
+				"👩‍🦯", "👩🏻‍🦯", "👩🏼‍🦯", "👩🏽‍🦯", "👩🏾‍🦯", "👩🏿‍🦯",
+				"👨‍🦼", "👨🏻‍🦼", "👨🏼‍🦼", "👨🏽‍🦼", "👨🏾‍🦼", "👨🏿‍🦼",
+				"👩‍🦼", "👩🏻‍🦼", "👩🏼‍🦼", "👩🏽‍🦼", "👩🏾‍🦼", "👩🏿‍🦼",
+				"👨‍🦽", "👨🏻‍🦽", "👨🏼‍🦽", "👨🏽‍🦽", "👨🏾‍🦽", "👨🏿‍🦽",
+				"👩‍🦽", "👩🏻‍🦽", "👩🏼‍🦽", "👩🏽‍🦽", "👩🏾‍🦽", "👩🏿‍🦽"
+			]
+		},
+		{
+			"windows": "99",
+			"comment": "Not supported on Windows",
+			"characters": [
+				{"from": "🇦", "to": "🇿🇿"},
+				{"from": "\ud83c\udff4\udb40\udc61", "to": "\ud83c\udff4\udb40\udc7a\udb40\udc7a", "comments": "From 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER A' to 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER Z, TAG LATIN SMALL LETTER Z'"}
+			],
+			"sequences": [
+			]
 		}
 	],
 	"forceVersion": {
-		"cldr": "33.1",
-		"emoji": "11.0",
-		"ucd": "12.0.0"
+		"cldr": "35.1",
+		"emoji": "12.0",
+		"ucd": "13.0.0"
 	},
 	"nogroup": ["family","kiss","couple with heart","house","cricket"],
 	"keyboards": [
-		{"name":"(Un)Happy", "symbol":"😀", "content":[
-			{"group":"Smileys & People", "subGroup":"face-positive"},
-			{"group":"Smileys & People", "subGroup":"face-negative"},
-			{"group":"Smileys & People", "subGroup":"face-sick"}
-		]},{"name":"Neutral", "symbol":"😐", "content":[
-			{"group":"Smileys & People", "subGroup":"face-neutral"}
+		{"name":"Happy", "symbol":"😀", "content":[
+			{"group":"Smileys & Emotion", "subGroup":"face-smiling"},
+			{"group":"Smileys & Emotion", "subGroup":"face-affection"},
+			{"group":"Smileys & Emotion", "subGroup":"face-tongue"},
+			{"group":"Smileys & Emotion", "subGroup":"face-hand"},
+			{"group":"Smileys & Emotion", "subGroup":"face-hat"},
+			{"group":"Smileys & Emotion", "subGroup":"face-glasses"},
+			{"group":"Smileys & Emotion", "subGroup":"face-neutral-skeptical"}
+		]},{"name":"Unwell", "symbol":"😱", "content":[
+			{"group":"Smileys & Emotion", "subGroup":"face-unwell"},
+			{"group":"Smileys & Emotion", "subGroup":"face-concerned"},
+			{"group":"Smileys & Emotion", "subGroup":"face-negative"},
+			{"group":"Smileys & Emotion", "subGroup":"face-sleepy"}
 		]},{"name":"Roles", "symbol":"👻", "content":[
-			{"group":"Smileys & People", "subGroup":"face-role"},
-			{"group":"Smileys & People", "subGroup":"face-fantasy"},
-			{"group":"Smileys & People", "subGroup":"person-fantasy"}
+			{"group":"Smileys & Emotion", "subGroup":"face-costume"},
+			{"group": "People & Body", "subGroup": "person-fantasy"}
 		]},{"name":"Body", "symbol":"👍", "content":[
-			{"group":"Smileys & People", "subGroup":"body"}
+			{"group": "People & Body", "subGroup": "hand-fingers-open"},
+			{"group": "People & Body", "subGroup": "hand-fingers-partial"},
+			{"group": "People & Body", "subGroup": "hand-single-finger"},
+			{"group": "People & Body", "subGroup": "hand-fingers-closed"},
+			{"group": "People & Body", "subGroup": "hands"},
+			{"group": "People & Body", "subGroup": "hand-prop"},
+			{"group": "People & Body", "subGroup": "body-parts"}
 		]},{"name":"Gestures & activities", "symbol":"💃", "content":[
-			{"group":"Smileys & People", "subGroup":"person-gesture"},
-			{"group":"Smileys & People", "subGroup":"person-activity"}
+			{"group": "People & Body", "subGroup": "person-gesture"},
+			{"group": "People & Body", "subGroup": "person-activity"},
+			{"group": "People & Body", "subGroup": "person-resting"}
 		]},{"name":"Persons", "symbol":"👤", "content":[
-			{"group":"Smileys & People", "subGroup":"person"},
-			{"group":"Smileys & People", "subGroup":"person-role"}
+			{"group": "People & Body", "subGroup": "person"},
+			{"group": "People & Body", "subGroup": "person-role"},
+			{"group": "People & Body", "subGroup": "person-symbol"}
 		]},{"name":"Emotions", "symbol":"😺", "content":[
-			{"group":"Smileys & People", "subGroup":"cat-face"},
-			{"group":"Smileys & People", "subGroup":"monkey-face"},
-			{"group":"Smileys & People", "subGroup":"emotion"}
+			{"group":"Smileys & Emotion", "subGroup":"cat-face"},
+			{"group":"Smileys & Emotion", "subGroup":"monkey-face"},
+			{"group":"Smileys & Emotion", "subGroup":"emotion"}
 		]},{"name":"Families", "symbol":"👫", "content":[
-			{"group":"Smileys & People", "subGroup":"family"}
+			{"group": "People & Body", "subGroup": "family"}
 		]},{"name":"Clothing", "symbol":"👖", "content":[
-			{"group":"Smileys & People", "subGroup":"clothing"}
+			{"group":"Objects", "subGroup":"clothing"}
 		]},{"name":"Mammals", "symbol":"🐄", "content":[
 			{"group":"Animals & Nature", "subGroup":"animal-mammal"}
 		]},{"name":"Other animals", "symbol":"🐦", "content":[
@@ -232,6 +273,7 @@
 		]},{"name":"Raw food", "symbol":"🥝", "content":[
 			{"group":"Food & Drink", "subGroup":"food-fruit"},
 			{"group":"Food & Drink", "subGroup":"food-vegetable"},
+			{"group":"Food & Drink", "subGroup":"food-marine"},
 			{"group":"Food & Drink", "subGroup":"drink"},
 			{"group":"Food & Drink", "subGroup":"dishware"}
 		]},{"name":"Cooked", "symbol":"🌭", "content":[
@@ -257,7 +299,7 @@
 			{"group":"Travel & Places", "subGroup":"sky & weather"}
 		]},{"name":"Sports", "symbol":"🎽", "content":[
 			{"group":"Activities", "subGroup":"sport"},
-			{"group":"Smileys & People", "subGroup":"person-sport"}
+			{"group": "People & Body", "subGroup": "person-sport"}
 		]},{"name":"Activities", "symbol":"🎮", "content":[
 			{"group":"Activities", "subGroup":"event"},
 			{"group":"Activities", "subGroup":"award-medal"},
@@ -291,6 +333,7 @@
 			{"group":"Symbols", "subGroup":"zodiac"}
 		]},{"name":"Symbols", "symbol":"⚜", "content":[
 			{"group":"Symbols", "subGroup":"religion"},
+			{"group":"Symbols", "subGroup":"gender"},
 			{"group":"Symbols", "subGroup":"other-symbol"}
 		]},{"name":"Arrows", "symbol":"↕", "content":[
 			{"group":"Symbols", "subGroup":"arrow"},
