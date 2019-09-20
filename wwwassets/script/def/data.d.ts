@@ -15,7 +15,8 @@ declare module Data{
 		name: string,
 		keywords?: string[],
 		requiredVersion?: string,
-		alternates?: Data.Emoji[]
+		alternates?: Data.Emoji[],
+		show: string,
 	}
 
 	interface Keyboard{

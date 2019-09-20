@@ -71,15 +71,15 @@ module Workers{
 
 	export class CharKey extends Key{
 		constructor(private char: Data.Emoji){
-			super((char.name || char.fullName).toLowerCase(), char.symbol);
+			super((char.name  || char.fullName).toLowerCase(), char.show);
 		}
 
 		getSymbolDiv(){
-			 return super.getSymbolDiv(this.char.requiredVersion);
+			return super.getSymbolDiv(this.char.requiredVersion);
 		}
 
 		act(){
-			AHKWrk.send(this.getSymbol());
+			AHKWrk.send(this.char.symbol);
 		}
 
 		actAlternate(view: View.IViewKey){
@@ -93,7 +93,7 @@ module Workers{
 		}
 
 		getUName(): string{
-			if(this.isLULetter()) return this.char.alternates![1].symbol;
+			if(this.isLULetter()) return this.char.alternates![1].show;
 			else return "";
 		}
 

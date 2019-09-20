@@ -17,25 +17,48 @@ SendMode Input
 ; Required for the search mode
 #MaxThreadsPerHotkey 2
 
+; Setup tray menu
 Menu, Tray, Icon, assets/keyboard.ico, 1, 1
 Menu, Tray, Tip, Emoji Keyboard
 Menu, Tray, Add, &Show, Toggle
 Menu, Tray, Add
 Menu, Tray, Add, Emoji &Keyboard by Gilles Waeber, Credits
 Menu, Tray, Add
-Menu, Tray, Add, E&xit, Exit 
+Menu, Tray, Add, E&xit, Exit
 Menu, Tray, Default, &Show
 Menu, Tray, NoStandard
 
 #Include assets\JSON_ToObj.ahk
 #Include assets\Webapp.ahk
+
+__Webapp_GuiSize:
+	global __WebappH, __WebappW
+	__WebappH := A_GuiHeight
+	__WebappW := A_GuiWidth
+	RepositionGui()
+return
+
+RepositionGui() {
+	global vSearch
+	if (vSearch) {
+		GuiControlGet, vPos, __Webapp_:Pos, SearchBox
+		GuiControl, __Webapp_:Show, SearchBox
+		GuiControl, __Webapp_:Move, SearchBox, W%__WebappW%
+		webH := __WebappH - vPosH
+	}
+	else {
+		GuiControl, __Webapp_:Hide, SearchBox
+		webH := __WebappH
+	}
+	GuiControl, __Webapp_:Move, __Webapp_wb, Y%vPosH% W%__WebappW% H%webH%
+}
+
 __Webapp_AppStart:
 ;<< Header End >>
 
 ;             not focusable
 Gui __Webapp_:+E0x08000000 +AlwaysOnTop -MaximizeBox -MinimizeBox ; +E0x40000 +ToolWindow ;  -Caption
 OnMessage(0x112, "WM_SYSCOMMAND")
-
 
 WM_SYSCOMMAND(wParam)
 {
@@ -54,9 +77,9 @@ vSearch := false
 ; Search Handler Semaphore (avoid multiple instances running)
 vSearchSem := 1
 vSearchInput := ""
-
-; Get our HTML DOM object
-iWebCtrl := getDOM()
+; Save clipboard contents
+clipSaved =
+bClipSaved := False
 
 ; Change App name at run-time
 setAppName("Emoji Keyboard")
@@ -87,54 +110,24 @@ Capslock::
 	Show()
 Return
 
-SearchHandler(){
-	global vVisible, vSearch, vSearchSem, vSearchInput
-
-	If vSearchSem < 1
-		Return
-	
-	Critical
-	vSearchSem--
-	Critical Off
-
-	While vSearch and vVisible {
-		Input, key, L1
-		If("" != key and vVisible)
-			SetTimer, SendSearchInput, 100
-			vSearchInput := vSearchInput key
-	}
-
-	Critical
-	vSearchSem++
-	Critical Off
-}
-
-SendSearchInput:
-	SetTimer, SendSearchInput, Off
-	getDOM().document.ahk.charInput(vSearchInput)
-	vSearchInput := ""
-Return
-
 ; Functions to be called from the html/js source
 Exit() {
 	ExitApp
 }
-
-clipSaved =
-bClipSaved := False
-
-Credits(){
+Credits() {
 	Run, https://github.com/romligCH/emoji-keyboard
 }
 Reload() {
 	Reload
 }
+
 Send(t) {
 	SetTimer, RestoreClipboard, Off
 	global clipSaved, bClipSaved, vSearch
-	oldVSearch := vSearch
-	SetSearch(false)
-	if(not bClipSaved){
+	if (vSearch) {
+		Gui __Webapp_:Hide
+	}
+	if(not bClipSaved) {
 		clipSaved := ClipboardAll
 		bClipSaved := True
 	}
@@ -142,7 +135,9 @@ Send(t) {
 	Sleep, 10
 	Send, ^v
 	SetTimer, RestoreClipboard, 200
-	SetSearch(oldVSearch)
+	if (vSearch) {
+		Gui __Webapp_:Show
+	}
 }
 RestoreClipboard() {
 	global clipSaved, bClipSaved
@@ -151,21 +146,21 @@ RestoreClipboard() {
 	clipSaved =
 	bClipSaved := False
 }
-Show(){
+
+Show() {
 	global vVisible, vSearch
 	vVisible := true
 	Gui __Webapp_:Show, NA
-	If vSearch
-		SearchHandler()
+	if (vSearch) {
+		GuiControl, __Webapp_:Focus, SearchBox
+	}
 }
-Hide(){
+Hide() {
 	global vVisible, vSearch
 	vVisible := false
 	Gui __Webapp_:Hide
-	If vSearch
-		Send, `%
 }
-Toggle(){
+Toggle() {
 	global vVisible
 	if(vVisible){
 		Hide()
@@ -174,22 +169,47 @@ Toggle(){
 		Show()
 	}
 }
-Ready(){
+
+Ready() {
 	global j
 	getDOM().document.ahk.setKeymap(j.keymap)
 	getDOM().document.ahk.setOS(A_OSVersion)
 }
-SetTitle(t){
+
+SetTitle(t) {
 	Gui __Webapp_:Show, NA, %t%
 }
-SetSearch(s){
+
+SearchChange() {
+	GuiControlGet, str, __Webapp_:, SearchBox
+	getDOM().document.ahk.setSearch(str)
+}
+
+ToggleSearch() {
+	global vSearch
+	if vSearch
+		SetSearch(false)
+	else
+		SetSearch(true)
+}
+SetSearch(s) {
 	global vSearch
 	oldSearch := vSearch
 	vSearch := s
-	If oldSearch
-		Send, `%
-	If vSearch
-		SearchHandler()
+	if (oldSearch and !s) {
+		RepositionGui()
+		Gui __Webapp_:Show
+		Gui __Webapp_:+E0x08000000
+		Send !{Esc}
+		getDOM().document.ahk.loadKeyboard()
+	}
+	If (!oldSearch and s) {
+		RepositionGui()
+		Gui __Webapp_:-E0x08000000
+		Gui __Webapp_:Show
+		getDOM().document.ahk.loadSearch()
+		GuiControl, __Webapp_:Focus, SearchBox
+	}
 }
 
 #If vVisible
@@ -220,12 +240,10 @@ SC00D::getDOM().document.ahk.input(13)   		;	=	^
 +SC00B::getDOM().document.ahk.input(11, True)	;	0	0
 +SC00C::getDOM().document.ahk.input(12, True)	;	-	'
 +SC00D::getDOM().document.ahk.input(13, True)	;	=	^
-Tab::getDOM().document.ahk.input(15)
-+Tab::getDOM().document.ahk.input(15, True)
+Tab::ToggleSearch()
++Tab::ToggleSearch()
 #If vVisible and vSearch
-Backspace::getDOM().document.ahk.input(14)
-+Backspace::getDOM().document.ahk.input(14, True)
-^Backspace::getDOM().document.ahk.input(14, True)
+^Backspace::GuiControl, __Webapp_:, SearchBox,  ; clear seach
 #If vVisible and !vSearch
 ; Corresponding keys                    		;	US	CH
 ;SC001::getDOM().document.ahk.input(1)   		;	ESC	ESC
@@ -251,7 +269,7 @@ SC016::getDOM().document.ahk.input(22)   		;	u	u
 SC017::getDOM().document.ahk.input(23)   		;	i	i
 SC018::getDOM().document.ahk.input(24)   		;	o	o
 SC019::getDOM().document.ahk.input(25)   		;	p	p
-SC01A::getDOM().document.ahk.input(26)   		;	[	è
+SC01A::getDOM().document.ahk.input(26)   		;	[	èü
 SC01B::getDOM().document.ahk.input(27)   		;	]	¨
 SC01E::getDOM().document.ahk.input(30)   		;	a	a
 SC01F::getDOM().document.ahk.input(31)   		;	s	s
@@ -262,8 +280,8 @@ SC023::getDOM().document.ahk.input(35)   		;	h	h
 SC024::getDOM().document.ahk.input(36)   		;	j	j
 SC025::getDOM().document.ahk.input(37)   		;	k	k
 SC026::getDOM().document.ahk.input(38)   		;	l	l
-SC027::getDOM().document.ahk.input(39)   		;	;	é
-SC028::getDOM().document.ahk.input(40)   		;	'	à
+SC027::getDOM().document.ahk.input(39)   		;	;	éö
+SC028::getDOM().document.ahk.input(40)   		;	'	àä
 SC02B::getDOM().document.ahk.input(43)   		;	\	$
 SC056::getDOM().document.ahk.input(86)   		;	\	<
 SC02C::getDOM().document.ahk.input(44)   		;	z	y
@@ -286,7 +304,7 @@ SC035::getDOM().document.ahk.input(53)   		;	/	-
 +SC017::getDOM().document.ahk.input(23, True)	;	i	i
 +SC018::getDOM().document.ahk.input(24, True)	;	o	o
 +SC019::getDOM().document.ahk.input(25, True)	;	p	p
-+SC01A::getDOM().document.ahk.input(26, True)	;	[	è
++SC01A::getDOM().document.ahk.input(26, True)	;	[	èü
 +SC01B::getDOM().document.ahk.input(27, True)	;	]	¨
 +SC01E::getDOM().document.ahk.input(30, True)	;	a	a
 +SC01F::getDOM().document.ahk.input(31, True)	;	s	s
@@ -297,8 +315,8 @@ SC035::getDOM().document.ahk.input(53)   		;	/	-
 +SC024::getDOM().document.ahk.input(36, True)	;	j	j
 +SC025::getDOM().document.ahk.input(37, True)	;	k	k
 +SC026::getDOM().document.ahk.input(38, True)	;	l	l
-+SC027::getDOM().document.ahk.input(39, True)	;	;	é
-+SC028::getDOM().document.ahk.input(40, True)	;	'	à
++SC027::getDOM().document.ahk.input(39, True)	;	;	éö
++SC028::getDOM().document.ahk.input(40, True)	;	'	àä
 +SC02B::getDOM().document.ahk.input(43, True)	;	\	$
 +SC056::getDOM().document.ahk.input(86, True)	;	\	<
 +SC02C::getDOM().document.ahk.input(44, True)	;	z	y

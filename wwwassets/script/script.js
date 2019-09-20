@@ -153,6 +153,9 @@ var View;
             this.keyboardView.setOS(os);
             this.searchView.refresh();
         };
+        BaseView.prototype.setSearch = function (str) {
+            this.searchView.setSearchString(str);
+        };
         return BaseView;
     }());
     View_1.BaseView = BaseView;
@@ -350,7 +353,7 @@ var Workers;
     var CharKey = (function (_super) {
         __extends(CharKey, _super);
         function CharKey(char) {
-            var _this = _super.call(this, (char.name || char.fullName).toLowerCase(), char.symbol) || this;
+            var _this = _super.call(this, (char.name || char.fullName).toLowerCase(), char.show) || this;
             _this.char = char;
             return _this;
         }
@@ -358,7 +361,7 @@ var Workers;
             return _super.prototype.getSymbolDiv.call(this, this.char.requiredVersion);
         };
         CharKey.prototype.act = function () {
-            Workers.AHKWrk.send(this.getSymbol());
+            Workers.AHKWrk.send(this.char.symbol);
         };
         CharKey.prototype.actAlternate = function (view) {
             if (this.hasAlternate()) {
@@ -374,7 +377,7 @@ var Workers;
         };
         CharKey.prototype.getUName = function () {
             if (this.isLULetter())
-                return this.char.alternates[1].symbol;
+                return this.char.alternates[1].show;
             else
                 return "";
         };
@@ -560,7 +563,7 @@ var View;
             this.jKeyboard.empty();
             this.idxKeys = _.indexBy(this.keyboard.getVisible(), function (key) { return key.key; });
             KEYMAP.forEach(function (row) {
-                var jRow = $('<div class="row">').appendTo(_this.jKeyboard);
+                var jRow = $('<div class="row">').css('height', 100 / 4 + 'vh').appendTo(_this.jKeyboard);
                 row.forEach(function (keyCode) {
                     BLANKKEY.key = keyCode;
                     if (!_this.idxKeys[keyCode])
@@ -609,7 +612,7 @@ var View;
                 .mouseover(function () { return _this.showStatus(key.getName()); });
         };
         KeyboardView.prototype.toTitleCase = function (str) {
-            return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+            return str.replace(/\\?\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
         };
         KeyboardView.prototype.getBaseView = function () {
             return this.baseView;
@@ -657,15 +660,20 @@ var Workers;
         Emojis.getSubGroup = getSubGroup;
         function search(needle) {
             var result = [];
-            needle.split(/\s+/g).forEach(function (n) {
+            needle.split(/\s+/g).forEach(function (n, k) {
+                var filter = [];
                 if (!n.length)
                     return;
                 var re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
                 for (var m = void 0; m = re.exec(searchHaystack);) {
-                    result.push(parseInt(m[1]));
+                    filter.push(parseInt(m[1]));
                 }
+                if (k == 0)
+                    result = filter;
+                else
+                    result = result.filter(function (v) { return filter.indexOf(v) !== -1; });
             });
-            return result.filter(function (v, k) { return result.indexOf(v) === k; }).map(function (v) { return flatEmojis[v]; });
+            return result.map(function (v) { return flatEmojis[v]; });
         }
         Emojis.search = search;
     })(Emojis = Workers.Emojis || (Workers.Emojis = {}));
@@ -687,9 +695,9 @@ var View;
         function SearchView(baseView) {
             var _this = _super.call(this) || this;
             _this.baseView = baseView;
+            _this.searchString = '';
             _this.jBase = $(_this.element = document.createElement('div'));
             _this.jBase.empty();
-            _this.jBase.append($('<div class="searchpane">').append(_this.searchE = $('<input type="search">').attr('placeholder', 'Search…').on('input properychange', function () { return _this.refresh(); }).get(0)));
             _this.jKeyboard = $('<div class="keyboard">').appendTo(_this.jBase);
             _this.refresh();
             return _this;
@@ -698,24 +706,9 @@ var View;
             return this.element;
         };
         SearchView.prototype.charInput = function (key) {
-            var _this = this;
-            if (key == '%')
-                return;
-            this.searchE.value += key;
-            setTimeout(function () { return _this.refresh(); }, 0);
         };
         SearchView.prototype.input = function (key, shift) {
-            var _this = this;
-            if (key == 15)
-                this.baseView.loadKeyboard();
-            else if (key == 14) {
-                if (shift)
-                    this.searchE.value = '';
-                else
-                    this.searchE.value = this.searchE.value.replace(/.$/, '');
-                setTimeout(function () { return _this.refresh(); }, 0);
-            }
-            else if (this.idxKeys[key]) {
+            if (this.idxKeys[key]) {
                 if (!shift)
                     this.idxKeys[key].act(this);
                 else
@@ -726,6 +719,10 @@ var View;
             if (!str.length)
                 return this.hideStatus();
             AHKWrk.setTitle("Emoji Keyboard - Search: " + this.toTitleCase(str));
+        };
+        SearchView.prototype.setSearchString = function (str) {
+            this.searchString = str;
+            this.refresh();
         };
         SearchView.prototype.hideStatus = function () {
             AHKWrk.setTitle("Emoji Keyboard - Search");
@@ -759,7 +756,7 @@ var View;
         SearchView.prototype.refresh = function () {
             var _this = this;
             this.showStatus("");
-            var r = Emojis.search(this.searchE.value), i = 0;
+            var r = Emojis.search(this.searchString), i = 0;
             this.idxKeys = {};
             this.idxKeys[41] = EXITKEY;
             for (var i = 0; i < KEYS.length && i < r.length; i++) {
@@ -767,7 +764,7 @@ var View;
             }
             this.jKeyboard.empty();
             KEYMAP.forEach(function (row) {
-                var jRow = $('<div class="row">').appendTo(_this.jKeyboard);
+                var jRow = $('<div class="row">').css('height', 100 / 3 + 'vh').appendTo(_this.jKeyboard);
                 row.forEach(function (keyCode) {
                     if (_this.idxKeys[keyCode]) {
                         var k = _this.idxKeys[keyCode];

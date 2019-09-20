@@ -1,12 +1,12 @@
 {
 	"$schema": "./config.schema.json",
 	"addons": [
-		{"symbol":"🐱‍👤","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Ninja cat","keywords":["windows","non standard","ninja","cat"]},
-		{"symbol":"🐱‍👓","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Hipster cat","keywords":["windows","non standard","hipster","ninja","cat"]},
-		{"symbol":"🐱‍💻","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Hacker cat","keywords":["windows","non standard","computer","hacker","ninja","cat"]},
-		{"symbol":"🐱‍🐉","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Dino cat","keywords":["windows","non standard","dino","ninja","cat"]},
-		{"symbol":"🐱‍🏍","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Stunt cat","keywords":["windows","non standard","stunt","ninja","cat"]},
-		{"symbol":"🐱‍🚀","group":"Animals & Nature","subGroup":"addon-ninja-cat","name":"*Astro cat","keywords":["windows","non standard","astronaut","ninja","cat"]},
+		{"group": "Animals & Nature","subGroup": "addon-ninja-cat","symbol": "🐱‍👤","name": "*Ninja cat","keywords": ["windows", "non standard", "ninja", "cat"]},
+		{"group": "Animals & Nature","subGroup": "addon-ninja-cat","symbol": "🐱‍👓","name": "*Hipster cat","keywords": ["windows", "non standard", "hipster", "ninja", "cat"]},
+		{"group": "Animals & Nature","subGroup": "addon-ninja-cat","symbol": "🐱‍💻","name": "*Hacker cat","keywords": ["windows", "non standard", "computer", "hacker", "ninja", "cat"]},
+		{"group": "Animals & Nature","subGroup": "addon-ninja-cat","symbol": "🐱‍🐉","name": "*Dino cat","keywords": ["windows", "non standard", "dino", "ninja", "cat"]},
+		{"group": "Animals & Nature","subGroup": "addon-ninja-cat","symbol": "🐱‍🏍","name": "*Stunt cat","keywords": ["windows", "non standard", "stunt", "ninja", "cat"]},
+		{"group": "Animals & Nature","subGroup": "addon-ninja-cat","symbol": "🐱‍🚀","name": "*Astro cat","keywords": ["windows", "non standard", "astronaut", "ninja", "cat"]},
 
 		{"group": "Greek", "subGroup": "base", "symbols": [
 			["ά", "Ά"], ["έ", "Έ"], ["ή", "Ή"], ["ί", "Ί"], ["ό", "Ό"], ["ύ", "Ύ"], ["ώ", "Ώ"], ["ϊ", "Ϊ"], ["ϋ", "Ϋ"], "ΐ"       , "ΰ"       , null,
@@ -15,7 +15,125 @@
 			["υ", "Υ"], ["χ", "Χ"], ["ψ", "Ψ"], ["ω", "Ω"], ["β", "Β"], ["ν", "Ν"], ["μ", "Μ"], ";"
 		]},
 
-		{"group": "Arrows", "subGroup": "base", "symbols": [{"from": "←", "to": "⇿"}]}
+		{"group": "Arrows", "subGroup": "base", "symbols": [{"from": "←", "to": "⇿"}]},
+
+		{"group": "Box Drawing", "subGroup": "base", "symbols": [
+			["┌", "╔"], ["┬", "╦"], ["┐", "╗"],
+			["┏", "┍", "┎"], ["┳", "┭", "┮", "┯", "┰", "┱", "┲"], ["┓", "┑", "┒"],
+			["╒", "╓"], ["╤", "╥"], ["╕", "╖"], "╭", "╮", null,
+			["├", "╠"], ["┼", "╬"], ["┤", "╣"],
+			["┣", "┝", "┞", "┟", "┠", "┡", "┢"], ["╋", "┽", "┾", "┿", "╀", "╁", "╂", "╃", "╄", "╅", "╆", "╇", "╈", "╉", "╊"], ["┫", "┥", "┦", "┧", "┨", "┩", "┪"],
+			["╞", "╟"], ["╪", "╫"], ["╡", "╢"], "╰", "╯", null,
+			["└", "╚"], ["┴", "╩"], ["┘", "╝"],
+			["┗", "┕", "┖"], ["┻", "┵", "┶", "┷", "┸", "┹", "┺"], ["┛", "┙", "┚"],
+			["╘", "╙"], ["╧", "╨"], ["╛", "╜"], "╱", "╲", null,
+			["│", "║"], ["─", "═"], "╳",  ["━", "┄", "┅", "┈", "┉", "╌", "╍"], ["┃", "┆", "┇", "┊", "┋", "╎", "╏"], null, ["╴", "╶", "╸", "╺", "╼", "╾"], ["╵", "╷", "╹", "╻", "╽", "╿"], null
+		]},
+
+		{"group": "UTN28", "subGroup": "enclosing", "symbol": "■", "name": "\\matrix"},
+		{"group": "UTN28", "subGroup": "enclosing", "symbol": "█", "name": "\\eqarray"},
+		{"group": "UTN28", "subGroup": "enclosing", "symbol": "□", "name": "\\box"},
+		{"group": "UTN28", "subGroup": "enclosing", "symbol": "▭", "name": "\\rect"},
+		{"group": "UTN28", "subGroup": "enclosing", "symbol": "¯", "name": "\\overbar"},
+		{"group": "UTN28", "subGroup": "enclosing", "symbol": "▁", "name": "\\underbar"},
+
+		{"group": "UTN28", "subGroup": "special", "symbol": "Ⅎ", "name": "Size Override"},
+
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏝", "name": "\\underparen", "alternates": [
+			{"symbol": "⏜", "name": "\\overparen"}]},
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏟", "name": "\\underbrace", "alternates": [
+			{"symbol": "⏞", "name": "\\overbrace"}]},
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⏡", "name": "\\undershell", "alternates": [
+			{"symbol": "⏠", "name": "\\overshell"}]},
+		{"group": "UTN28", "subGroup": "stretchy-characters", "symbol": "⎵", "name": "\\underbracket", "alternates": [
+			{"symbol": "⎴", "name": "\\overbracket"}]},
+
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̂", "show": "◌̂", "name": "\\hat"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̌", "show": "◌̌", "name": "\\check"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̃", "show": "◌̃", "name": "\\tilde"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "́", "show": "◌́", "name": "\\acute"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̀", "show": "◌̀", "name": "\\grave"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̆", "show": "◌̆", "name": "\\breve"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̇", "show": "◌̇", "name": "\\dot"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̈", "show": "◌̈", "name": "\\ddot"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "⃛", "show": "◌⃛", "name": "\\dddot"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "⃜", "show": "◌⃜", "name": "\\ddddot"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̅", "show": "◌̅", "name": "\\bar"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "̿", "show": "◌̿", "name": "\\Bar"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "⃗", "show": "◌⃗", "name": "\\vec"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "⃑", "show": "◌⃑", "name": "\\hvec"},
+		{"group": "UTN28", "subGroup": "accents-operators", "symbol": "⃡", "show": "◌⃡", "name": "\\tvec"},
+
+		{"group": "UTN28", "subGroup": "spaces", "symbol": "​", "name": "\\zwsp", "show": "zwsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\hairsp", "show": "hairsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\thinsp", "show": "thinsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\medsp", "show": "medsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\thicksp", "show": "thicksp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\vthicksp", "show": "vthicksp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\ensp", "show": "ensp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\emsp", "show": "emsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\numsp", "show": "numsp"},
+		{"group": "UTN28", "subGroup": "spaces", "symbol": " ", "name": "\\nbsp", "show": "nbsp"},
+
+		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⟡", "name": "\\phantom"},
+		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬄", "name": "\\hphantom"},
+		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⇳", "name": "\\vphantom"},
+		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬍", "name": "\\smash"},
+		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬆", "name": "\\asmash"},
+		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬇", "name": "\\dsmash"},
+		{"group": "UTN28", "subGroup": "phantom-smashes", "symbol": "⬌", "name": "\\hsmash"},
+
+		{"group": "UTN28", "subGroup": "operators", "symbols": ["‼", ["±", "∓"], "∷", "≔", ["≪", "⋘"], ["≫", "⋙"], "→", "≮", "≠", "≯"]},
+
+		{"group": "UTN28", "subGroup": "operators", "symbol": "∃", "name": "\\exists", "alternates": [{"symbol": "∄", "name": "/\\exists"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "∈", "name": "\\in", "alternates": [{"symbol": "∉", "name": "/\\in"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "∋", "name": "\\ni", "alternates": [{"symbol": "∌", "name": "/\\ni"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "∼", "name": "\\sim", "alternates": [{"symbol": "≁", "name": "/\\sim"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≃", "name": "\\simeq", "alternates": [{"symbol": "≄", "name": "/\\simeq"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≅", "name": "\\cong", "alternates": [{"symbol": "≇", "name": "/\\cong"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≈", "name": "\\approx", "alternates": [{"symbol": "≉", "name": "/\\approx"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≍", "name": "\\asymp", "alternates": [{"symbol": "≭", "name": "/\\asymp"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≡", "name": "\\equiv", "alternates": [{"symbol": "≢", "name": "/\\equiv"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≤", "name": "\\le", "alternates": [{"symbol": "≰", "name": "/\\le"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≥", "name": "\\ge", "alternates": [{"symbol": "≱", "name": "/\\ge"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≶", "name": "\\lessgtr", "alternates": [{"symbol": "≸", "name": "/\\lessgtr"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≷", "name": "\\gtrless", "alternates": [{"symbol": "≹", "name": "/\\gtrless"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≽", "name": "\\succeq", "alternates": [{"symbol": "⋡", "name": "/\\succeq"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≺", "name": "\\prec", "alternates": [{"symbol": "⊀", "name": "/\\prec"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≻", "name": "\\succ", "alternates": [{"symbol": "⊁", "name": "/\\succ"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "≼", "name": "\\preceq", "alternates": [{"symbol": "⋠", "name": "/\\preceq"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "⊂", "name": "\\subset", "alternates": [{"symbol": "⊄", "name": "/\\subset"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "⊃", "name": "\\superset", "alternates": [{"symbol": "⊅", "name": "/\\superset"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "⊆", "name": "\\subseteq", "alternates": [{"symbol": "⊈", "name": "/\\subseteq"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "⊇", "name": "\\superseteq", "alternates": [{"symbol": "⊉", "name": "/\\superseteq"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "⊑", "name": "\\sqsubseteq", "alternates": [{"symbol": "⋢", "name": "/\\sqsubseteq"}]},
+		{"group": "UTN28", "subGroup": "operators", "symbol": "⊒", "name": "\\sqsupseteq", "alternates": [{"symbol": "⋣", "name": "/\\sqsupseteq"}]},
+			
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∐", "name": "\\amalg"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∫", "name": "\\int", "alternates": [
+			{"symbol": "∬", "name": "\\iint"},
+			{"symbol": "∭", "name": "\\iiint"},
+			{"symbol": "⨌", "name": "\\iiiint"},
+			{"symbol": "∮", "name": "\\oint"},
+			{"symbol": "∯", "name": "\\oiint"},
+			{"symbol": "∰", "name": "\\oiiint"},
+			{"symbol": "∳", "name": "\\aoint"},
+			{"symbol": "∲", "name": "\\coint"}]},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∏", "name": "\\prod"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∑", "name": "\\sum"},
+		
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⋂", "name": "\\bigcap"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⋃", "name": "\\bigcup"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⨀", "name": "\\bigodot"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⨁", "name": "\\bigoplus"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⨂", "name": "\\bigotimes"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⨆", "name": "\\bigsqcup"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⨄", "name": "\\biguplus"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⋁", "name": "\\bigvee"},
+		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⋀", "name": "\\bigwedge"},
+		
+
+		{"group": "UTN28", "subGroup": "operators", "symbols": []}
 	],
 	"iconFallback": [
 		{
@@ -176,12 +294,13 @@
 			{"group":"Symbols", "subGroup":"other-symbol"}
 		]},{"name":"Arrows", "symbol":"↕", "content":[
 			{"group":"Symbols", "subGroup":"arrow"},
-			{"group":"Symbols", "subGroup":"av-symbol"}
+			{"group":"Arrows", "subGroup":"base"}
 		]},{"name":"Alphanum", "symbol":"🔤", "content":[
 			{"group":"Symbols", "subGroup":"alphanum"}
 		]},{"name":"Geometric & keys", "symbol":"🔷", "content":[
 			{"group":"Symbols", "subGroup":"keycap"},
-			{"group":"Symbols", "subGroup":"geometric"}
+			{"group":"Symbols", "subGroup":"geometric"},
+			{"group":"Symbols", "subGroup":"av-symbol"}
 		]},{"name":"Country Flags", "symbol":"🌐", "content":[
 			{"group":"Flags", "subGroup":"country-flag"}
 		]},{"name":"Flags", "symbol":"🏁", "content":[
@@ -189,8 +308,17 @@
 			{"group":"Flags", "subGroup":"flag"}
 		]},{"name":"Greek", "symbol":"π", "content":[
 			{"group":"Greek", "subGroup":"base"}
-		]},{"name":"Arrows", "symbol":"⇅", "content":[
-			{"group":"Arrows", "subGroup":"base"}
+		]},{"name": "Boxes", "symbol": "╚", "content": [
+			{"group":"Box Drawing", "subGroup":"base"}
+		]},{"name": "TextMath", "symbol": "\u221a2", "content": [
+			{"group": "UTN28", "subGroup": "special"},
+			{"group": "UTN28", "subGroup": "stretchy-characters"},
+			{"group": "UTN28", "subGroup": "accents-operators"},
+			{"group": "UTN28", "subGroup": "operators"},
+			{"group": "UTN28", "subGroup": "operators-nary"},
+			{"group": "UTN28", "subGroup": "enclosing"},
+			{"group": "UTN28", "subGroup": "spaces"},
+			{"group": "UTN28", "subGroup": "phantom-smashes"}
 		]}
 	],
 	"keymaps": {
