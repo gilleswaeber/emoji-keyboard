@@ -16,7 +16,7 @@ The image files (svg) are stored in `/wwwassets/img`. They are copied manually f
 You can delete the *data* folder at any time and its content will be downloaded again on the next run.
 
 Some examples:
-- To update to a newer emoji version, update the numbers in forceVersion or remove the section to use the latest version (iirc, launching the build script will show you the latest versions)
+- To update to a newer emoji version, update the numbers in forceVersion or remove the section to use the latest version (launching the build script should show you the latest versions)
 - To add an arbitrary character, add it in the addon section.
 	
 	The group+subgroup pair must be present somewhere in the keyboards list otherwise you won't see it.
@@ -28,8 +28,9 @@ Some examples:
 After that, you have to rebuild the data file.
 
 ## Command line arguments
-| Argument               | Description                    |
-| ---------------------- | ------------------------------ |
-| -h, --help             | Show help instructions         |
-| -v, --verbose          | More detailed output           |
-| -l, --local, --offline | Do not connect to the internet |
+| Argument               | Description                     |
+| ---------------------- | ------------------------------- |
+| -h, --help             | Show help instructions          |
+| -v, --verbose          | More detailed output            |
+| -l, --local, --offline | Do not connect to the internet  |
+| -i, --install          | Copy the resulting data.js file |

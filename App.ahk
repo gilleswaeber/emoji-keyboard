@@ -100,6 +100,7 @@ app_page(NewURL) {
 
 Gui __Webapp_:Hide
 
+; Change Hotkey here
 Capslock::
 	global vVisible
 	if(vVisible){
