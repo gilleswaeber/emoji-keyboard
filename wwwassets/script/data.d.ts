@@ -6,6 +6,8 @@ export interface DataStatic {
 	keymaps: Dictionary<KeyboardLayout>
 }
 
+export type EmojiStyle = "space";
+
 export interface Emoji {
 	symbol: string,
 	group: string,
@@ -15,6 +17,7 @@ export interface Emoji {
 	keywords?: string[],
 	requiredVersion?: string,
 	alternates?: Emoji[],
+	style?: EmojiStyle;
 	show: string,
 }
 

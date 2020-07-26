@@ -1,4 +1,4 @@
-import {Emoji} from "./def/data";
+import {Emoji} from "./data";
 
 const indexedEmojis: {[group: string]: {[subGroupd: string]: Emoji[]}} = {};
 const flatEmojis: Emoji[] = [];

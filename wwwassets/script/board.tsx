@@ -1,4 +1,4 @@
-import {Emoji, EmojiKeyboard, KeyboardLayout, KeyCode} from "./def/data";
+import {Emoji, EmojiKeyboard, KeyboardLayout, KeyCode} from "./data";
 import {BackKey, BlankKey, CharKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
 import {AppActions} from "./app";
 import {h} from "preact";

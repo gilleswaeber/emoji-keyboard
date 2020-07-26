@@ -1,5 +1,5 @@
 import {Component, h, options, render} from 'preact';
-import {KeyboardLayout} from "./def/data";
+import {KeyboardLayout} from "./data";
 import {DefaultLayout} from "./layout";
 import {Board, BoardState, DefaultBoardState, getMainBoard, KeyboardView} from "./board";
 import {Version} from "./osversion";

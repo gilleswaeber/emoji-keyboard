@@ -74695,7 +74695,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "NO-BREAK SPACE",
-            "show": "s:No-Break\nSpace",
+            "show": "No-Break\nSpace",
+            "style": "space",
             "code": [
                 160
             ],
@@ -74708,7 +74709,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "NARROW NO-BREAK SPACE",
-            "show": "s:Narrow\nNo-Break\nSpace",
+            "show": "Narrow\nNo-Break\nSpace",
+            "style": "space",
             "code": [
                 8239
             ],
@@ -74721,7 +74723,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "EM QUAD",
-            "show": "s:EM\nQuad",
+            "show": "EM\nQuad",
+            "style": "space",
             "code": [
                 8193
             ],
@@ -74734,7 +74737,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "EN QUAD",
-            "show": "s:EN\nQuad",
+            "show": "EN\nQuad",
+            "style": "space",
             "code": [
                 8192
             ],
@@ -74747,7 +74751,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "EM SPACE",
-            "show": "s:EM\nSpace",
+            "show": "EM\nSpace",
+            "style": "space",
             "code": [
                 8195
             ],
@@ -74760,7 +74765,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "EN SPACE",
-            "show": "s:EN\nSpace",
+            "show": "EN\nSpace",
+            "style": "space",
             "code": [
                 8194
             ],
@@ -74773,7 +74779,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "THREE-PER-EM SPACE",
-            "show": "s:⅓ EM\nSpace",
+            "show": "⅓ EM\nSpace",
+            "style": "space",
             "code": [
                 8196
             ],
@@ -74786,7 +74793,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "FOUR-PER-EM SPACE",
-            "show": "s:¼ EM\nSpace",
+            "show": "¼ EM\nSpace",
+            "style": "space",
             "code": [
                 8197
             ],
@@ -74799,7 +74807,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "SIX-PER-EM SPACE",
-            "show": "s:⅙ EM\nSpace",
+            "show": "⅙ EM\nSpace",
+            "style": "space",
             "code": [
                 8198
             ],
@@ -74812,7 +74821,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "THIN SPACE",
-            "show": "s:Thin\nSpace",
+            "show": "Thin\nSpace",
+            "style": "space",
             "code": [
                 8201
             ],
@@ -74825,7 +74835,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "HAIR SPACE",
-            "show": "s:Hair\nSpace",
+            "show": "Hair\nSpace",
+            "style": "space",
             "code": [
                 8202
             ],
@@ -74838,7 +74849,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "FIGURE SPACE",
-            "show": "s:Figure\nSpace",
+            "show": "Figure\nSpace",
+            "style": "space",
             "code": [
                 8199
             ],
@@ -74851,7 +74863,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "PUNCTUATION SPACE",
-            "show": "s:Punctuation\nSpace",
+            "show": "Punctuation\nSpace",
+            "style": "space",
             "code": [
                 8200
             ],
@@ -74864,7 +74877,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "ZERO WIDTH SPACE",
-            "show": "s:Zero\nWidth\nSpace",
+            "show": "Zero\nWidth\nSpace",
+            "style": "space",
             "code": [
                 8203
             ],
@@ -74877,7 +74891,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "ZERO WIDTH NON-JOINER",
-            "show": "s:Zero\nWidth\nNon-Joiner",
+            "show": "Zero\nWidth\nNon-Joiner",
+            "style": "space",
             "code": [
                 8204
             ],
@@ -74890,7 +74905,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "spaces",
             "name": "Zero Width Joiner",
-            "show": "s:Zero\nWidth\nJoiner",
+            "show": "Zero\nWidth\nJoiner",
+            "style": "space",
             "code": [
                 8205
             ],
@@ -74904,7 +74920,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "special-spaces",
             "name": "MEDIUM MATHEMATICAL SPACE",
-            "show": "s:Medium\nMath\nSpace",
+            "show": "Medium\nMath\nSpace",
+            "style": "space",
             "code": [
                 8287
             ],
@@ -74917,7 +74934,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "special-spaces",
             "name": "IDEOGRAPHIC SPACE",
-            "show": "s:Ideographic\nSpace",
+            "show": "Ideographic\nSpace",
+            "style": "space",
             "code": [
                 12288
             ],
@@ -74930,7 +74948,8 @@ var data = {
             "group": "Punctuation",
             "subGroup": "dashes",
             "name": "SOFT HYPHEN",
-            "show": "s:Soft\nHyphen",
+            "show": "Soft\nHyphen",
+            "style": "space",
             "code": [
                 173
             ],
@@ -74986,34 +75005,6 @@ var data = {
             "code": [
                 8220
             ],
-            "alternates": [
-                {
-                    "symbol": "“",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "LEFT DOUBLE QUOTATION MARK",
-                    "name": "Left Double Quotation Mark",
-                    "code": [
-                        8220
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "“"
-                },
-                {
-                    "symbol": "‟",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "DOUBLE HIGH-REVERSED-9 QUOTATION MARK",
-                    "name": "Double High-Reversed-9 Quotation Mark",
-                    "code": [
-                        8223
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "‟"
-                }
-            ],
             "version": 0,
             "emojiVersion": "0",
             "show": "“"
@@ -75027,37 +75018,35 @@ var data = {
             "code": [
                 8221
             ],
-            "alternates": [
-                {
-                    "symbol": "”",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "RIGHT DOUBLE QUOTATION MARK",
-                    "name": "Right Double Quotation Mark",
-                    "code": [
-                        8221
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "”"
-                },
-                {
-                    "symbol": "„",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "DOUBLE LOW-9 QUOTATION MARK",
-                    "name": "Double Low-9 Quotation Mark",
-                    "code": [
-                        8222
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "„"
-                }
-            ],
             "version": 0,
             "emojiVersion": "0",
             "show": "”"
+        },
+        {
+            "symbol": "‟",
+            "group": "Punctuation",
+            "subGroup": "quotes",
+            "fullName": "DOUBLE HIGH-REVERSED-9 QUOTATION MARK",
+            "name": "Double High-Reversed-9 Quotation Mark",
+            "code": [
+                8223
+            ],
+            "version": 0,
+            "emojiVersion": "0",
+            "show": "‟"
+        },
+        {
+            "symbol": "„",
+            "group": "Punctuation",
+            "subGroup": "quotes",
+            "fullName": "DOUBLE LOW-9 QUOTATION MARK",
+            "name": "Double Low-9 Quotation Mark",
+            "code": [
+                8222
+            ],
+            "version": 0,
+            "emojiVersion": "0",
+            "show": "„"
         },
         {
             "symbol": "«",
@@ -75067,34 +75056,6 @@ var data = {
             "name": "Left-Pointing Double Angle Quotation Mark",
             "code": [
                 171
-            ],
-            "alternates": [
-                {
-                    "symbol": "«",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "LEFT-POINTING DOUBLE ANGLE QUOTATION MARK",
-                    "name": "Left-Pointing Double Angle Quotation Mark",
-                    "code": [
-                        171
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "«"
-                },
-                {
-                    "symbol": "‹",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "SINGLE LEFT-POINTING ANGLE QUOTATION MARK",
-                    "name": "Single Left-Pointing Angle Quotation Mark",
-                    "code": [
-                        8249
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "‹"
-                }
             ],
             "version": 0,
             "emojiVersion": "0",
@@ -75109,37 +75070,35 @@ var data = {
             "code": [
                 187
             ],
-            "alternates": [
-                {
-                    "symbol": "»",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK",
-                    "name": "Right-Pointing Double Angle Quotation Mark",
-                    "code": [
-                        187
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "»"
-                },
-                {
-                    "symbol": "›",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "SINGLE RIGHT-POINTING ANGLE QUOTATION MARK",
-                    "name": "Single Right-Pointing Angle Quotation Mark",
-                    "code": [
-                        8250
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "›"
-                }
-            ],
             "version": 0,
             "emojiVersion": "0",
             "show": "»"
+        },
+        {
+            "symbol": "‹",
+            "group": "Punctuation",
+            "subGroup": "quotes",
+            "fullName": "SINGLE LEFT-POINTING ANGLE QUOTATION MARK",
+            "name": "Single Left-Pointing Angle Quotation Mark",
+            "code": [
+                8249
+            ],
+            "version": 0,
+            "emojiVersion": "0",
+            "show": "‹"
+        },
+        {
+            "symbol": "›",
+            "group": "Punctuation",
+            "subGroup": "quotes",
+            "fullName": "SINGLE RIGHT-POINTING ANGLE QUOTATION MARK",
+            "name": "Single Right-Pointing Angle Quotation Mark",
+            "code": [
+                8250
+            ],
+            "version": 0,
+            "emojiVersion": "0",
+            "show": "›"
         },
         {
             "symbol": "‘",
@@ -75149,34 +75108,6 @@ var data = {
             "name": "Left Single Quotation Mark",
             "code": [
                 8216
-            ],
-            "alternates": [
-                {
-                    "symbol": "‘",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "LEFT SINGLE QUOTATION MARK",
-                    "name": "Left Single Quotation Mark",
-                    "code": [
-                        8216
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "‘"
-                },
-                {
-                    "symbol": "‛",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "SINGLE HIGH-REVERSED-9 QUOTATION MARK",
-                    "name": "Single High-Reversed-9 Quotation Mark",
-                    "code": [
-                        8219
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "‛"
-                }
             ],
             "version": 0,
             "emojiVersion": "0",
@@ -75191,37 +75122,35 @@ var data = {
             "code": [
                 8217
             ],
-            "alternates": [
-                {
-                    "symbol": "’",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "RIGHT SINGLE QUOTATION MARK",
-                    "name": "Right Single Quotation Mark",
-                    "code": [
-                        8217
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "’"
-                },
-                {
-                    "symbol": "‚",
-                    "group": "Punctuation",
-                    "subGroup": "quotes",
-                    "fullName": "SINGLE LOW-9 QUOTATION MARK",
-                    "name": "Single Low-9 Quotation Mark",
-                    "code": [
-                        8218
-                    ],
-                    "version": 0,
-                    "emojiVersion": "0",
-                    "show": "‚"
-                }
-            ],
             "version": 0,
             "emojiVersion": "0",
             "show": "’"
+        },
+        {
+            "symbol": "‛",
+            "group": "Punctuation",
+            "subGroup": "quotes",
+            "fullName": "SINGLE HIGH-REVERSED-9 QUOTATION MARK",
+            "name": "Single High-Reversed-9 Quotation Mark",
+            "code": [
+                8219
+            ],
+            "version": 0,
+            "emojiVersion": "0",
+            "show": "‛"
+        },
+        {
+            "symbol": "‚",
+            "group": "Punctuation",
+            "subGroup": "quotes",
+            "fullName": "SINGLE LOW-9 QUOTATION MARK",
+            "name": "Single Low-9 Quotation Mark",
+            "code": [
+                8218
+            ],
+            "version": 0,
+            "emojiVersion": "0",
+            "show": "‚"
         },
         {
             "symbol": "¿",

@@ -1,4 +1,4 @@
-import {KeyboardLayout} from "./def/data";
+import {KeyboardLayout} from "./data";
 import {Version} from "./osversion";
 import {h} from "preact";
 import {AppActions} from "./app";

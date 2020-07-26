@@ -1,4 +1,4 @@
-import {KeyboardLayout, KeyCode} from "./def/data";
+import {KeyboardLayout, KeyCode} from "./data";
 
 export const DefaultLayout: KeyboardLayout = {
 	name: 'default',

@@ -155,6 +155,7 @@ class DataBuilder{
 				}
 			} else {
 				$name = property_exists($addon, 'name') ? $addon->name : $this->getFullName(DataBuilder::splitChars($addon->symbol));
+				$style = property_exists($addon, 'style') ? $addon->style : null;
 				$emojis[$name] = [
 					'symbol' => $addon->symbol,
 					'group' => $addon->group,
@@ -162,6 +163,7 @@ class DataBuilder{
 					'name' => $name,
 					'show' => property_exists($addon, 'show') ? $addon->show : $addon->symbol
 				];
+				if (!is_null($style)) $emojis[$name]['style'] = $style;
 				if (isset($addon->keywords)) $emojis[$addon->name]['keywords'] = $addon->keywords;
 				if (isset($addon->alternates)) {
 					$emojis[$addon->name]['alternates'] = [$emojis[$addon->name]];
@@ -174,6 +176,7 @@ class DataBuilder{
 							'show' => property_exists($alt, 'show') ? $alt->show : $alt->symbol
 						];
 						if (isset($alt->keywords)) $c['keywords'] = $addon->keywords;
+						if (!is_null($style)) $c['style'] = $style;
 						$emojis[$addon->name]['alternates'][] = $c;
 					}
 				}

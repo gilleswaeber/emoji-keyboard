@@ -196,7 +196,7 @@ define("key", ["require", "exports", "preact", "board", "ahk"], function (requir
                 preact_1.h("div", { class: "keyname" }, layout.keys[code]),
                 preact_1.h("div", { class: "name" }, this.name),
                 preact_1.h("div", { class: "uname" }, this.upperName),
-                preact_1.h("div", { class: "symbol" }, useFallback ? preact_1.h("img", { src: toTwemojiFilename(this.symbol), alt: this.symbol }) : this.symbol));
+                preact_1.h("div", { class: "symbol " + (this.style && 's-' + this.style) }, useFallback ? preact_1.h("img", { src: toTwemojiFilename(this.symbol), alt: this.symbol }) : this.symbol));
         };
         Key.prototype.act = function (app, parent) {
         };
@@ -278,11 +278,12 @@ define("key", ["require", "exports", "preact", "board", "ahk"], function (requir
     var CharKey = (function (_super) {
         __extends(CharKey, _super);
         function CharKey(char) {
-            var _a;
+            var _a, _b;
             var _this = _super.call(this, {
                 name: (char.name || char.fullName).toLowerCase(),
                 upperName: ((_a = char.alternates) === null || _a === void 0 ? void 0 : _a.length) == 2 ? char.alternates[1].show : "",
-                symbol: char.symbol,
+                style: char.style,
+                symbol: (_b = char.show) !== null && _b !== void 0 ? _b : char.symbol,
                 requiredOS: char.requiredVersion,
             }) || this;
             _this.char = char;

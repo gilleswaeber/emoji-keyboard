@@ -2,7 +2,7 @@ import {Version} from "./osversion";
 import {AppActions} from "./app";
 import {h} from "preact";
 import {Board} from "./board";
-import {Emoji, KeyboardLayout, KeyCode} from "./def/data";
+import {Emoji, EmojiStyle, KeyboardLayout, KeyCode} from "./data";
 import {ahkSend, ahkSetSearch} from "./ahk";
 
 function toTwemojiFilename(symbol: string) {
@@ -26,7 +26,7 @@ export class Key {
 	public readonly active: boolean;
 
 	constructor(
-		props: { name: string, upperName?: string, symbol: string, style?: string, requiredOS?: string, active?: boolean }
+		props: { name: string, upperName?: string, symbol: string, style?: EmojiStyle, requiredOS?: string, active?: boolean }
 	) {
 		this.name = props.name;
 		this.upperName = props.upperName ?? '';
@@ -56,7 +56,7 @@ export class Key {
 			<div class="keyname">{layout.keys[code]}</div>
 			<div class="name">{this.name}</div>
 			<div class="uname">{this.upperName}</div>
-			<div class="symbol">
+			<div class={`symbol ${this.style && 's-' + this.style}`}>
 				{useFallback ? <img src={toTwemojiFilename(this.symbol)} alt={this.symbol}/> : this.symbol}
 			</div>
 		</div>;
@@ -136,7 +136,8 @@ export class CharKey extends Key {
 		super({
 			name: (char.name || char.fullName).toLowerCase(),
 			upperName: char.alternates?.length == 2 ? char.alternates[1].show : "",
-			symbol: char.symbol,
+			style: char.style,
+			symbol: char.show ?? char.symbol,
 			requiredOS: char.requiredVersion,
 		});
 	}

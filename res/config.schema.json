@@ -3,7 +3,7 @@
 	"type": "object",
 	"properties": {
 		"addons":{
-			"description": "Additional charater/sequences to add",
+			"description": "Additional character/sequences to add",
 			"type": "array",
 			"items": {
 				"type": "object",
@@ -12,6 +12,10 @@
 						"description": "A single character/sequence",
 						"symbol": {"type": "string"},
 						"name": {"type": "string"},
+						"style": {
+							"description": "Display style",
+							"enum": [null, "space"]
+						},
 						"keywords": {
 							"type": "array",
 							"items": {"type": "string"}

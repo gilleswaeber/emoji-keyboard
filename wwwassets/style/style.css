@@ -54,7 +54,7 @@ main > section{
 	transition: ease .1s;
 	white-space: pre;
 }
-.key .symbol.display-s{
+.key .symbol.s-space{
 	font-size: 1.1vw;
 	font-variant: small-caps;
 	font-weight: bold;
