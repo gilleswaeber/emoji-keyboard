@@ -4,10 +4,20 @@
 		<title>⌨ Emoji Keyboard</title>
 		<meta charset="UTF-8">
 		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-		<script src="lib/jquery/jquery-3.1.0.min.js"></script>
-		<script src="lib/underscore/underscore-min.js"></script>
 		<script src="script/data.js"></script>
+		<script src="lib/core-js/core-js-2.6.5.min.js"></script>
+		<script src="lib/requirejs/require-2.3.6.min.js"></script>
 		<script src="script/script.js"></script>
+		<script type="application/javascript" defer>
+			require.config({
+				baseUrl: "lib",
+				paths: {
+					"preact": "preact/preact-10.4.6-umd",
+					"preact/hooks": "preact/hooks-10.4.6-umd"
+				},
+			})
+			require(["app"]);
+		</script>
 		<link rel="stylesheet" href="style/style.css">
 		<link rel="stylesheet" id="themeCSS" href="style/light.css">
 		<script>window.document.eval = window.eval</script>

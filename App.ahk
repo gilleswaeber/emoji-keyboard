@@ -183,7 +183,7 @@ SetTitle(t) {
 
 SearchChange() {
 	GuiControlGet, str, __Webapp_:, SearchBox
-	getDOM().document.ahk.setSearch(str)
+	getDOM().document.ahk.setSearchText(str)
 }
 
 ToggleSearch() {
@@ -202,13 +202,13 @@ SetSearch(s) {
 		Gui __Webapp_:Show
 		Gui __Webapp_:+E0x08000000
 		Send !{Esc}
-		getDOM().document.ahk.loadKeyboard()
+		getDOM().document.ahk.setSearch(false)
 	}
 	If (!oldSearch and s) {
 		RepositionGui()
 		Gui __Webapp_:-E0x08000000
 		Gui __Webapp_:Show
-		getDOM().document.ahk.loadSearch()
+		getDOM().document.ahk.setSearch(true)
 		GuiControl, __Webapp_:Focus, SearchBox
 	}
 }

@@ -5,10 +5,17 @@
         "strict": true,
         "removeComments": true,
         "preserveConstEnums": true,
+        "module": "AMD",
+        "baseUrl": "lib",
+        "paths": {
+            "preact": ["preact/index"]
+        },
         "outFile": "script/script.js",
         "sourceMap": true,
         "target": "es5",
-        "watch": true,
-        "lib": ["dom", "es5", "es2015.promise"]
+        "jsx": "react",
+        "jsxFactory": "h",
+        "lib": ["dom", "es2017"],
+        "typeRoots": ["lib"]
     }
 }
