@@ -1,2 +1,7 @@
 /res/data/*
 !/res/data/data.exp.js
+# IDE-specific
+.idea
+.vscode
+# OS-specific
+Thumbs.db
