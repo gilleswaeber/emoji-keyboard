@@ -54,11 +54,12 @@ RepositionGui() {
 }
 
 __Webapp_AppStart:
-;<< Header End >>
-
-;             not focusable
-Gui __Webapp_:+E0x08000000 +AlwaysOnTop -MaximizeBox -MinimizeBox ; +E0x40000 +ToolWindow ;  -Caption
-OnMessage(0x112, "WM_SYSCOMMAND")
+	;<< Header End >>
+	;             not focusable
+	Gui __Webapp_:+E0x08000000 +AlwaysOnTop -MaximizeBox -MinimizeBox ; +E0x40000 +ToolWindow ;  -Caption
+	OnMessage(0x112, "WM_SYSCOMMAND")
+	Gui __Webapp_:Hide
+Return
 
 WM_SYSCOMMAND(wParam)
 {
@@ -86,7 +87,6 @@ setAppName("Emoji Keyboard")
 
 ; Our custom protocol's url event handler
 app_call(args) {
-	
 	;MsgBox %args%
 	param := SubStr(args, 6) 
 	if SubStr(args, 1, 5) = "send/"
@@ -97,8 +97,6 @@ app_call(args) {
 ; Function to run when page is loaded
 app_page(NewURL) {
 }
-
-Gui __Webapp_:Hide
 
 ; Change Hotkey here
 Capslock::
