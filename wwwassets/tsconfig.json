@@ -12,10 +12,10 @@
         },
         "outFile": "script/script.js",
         "sourceMap": true,
-        "target": "es5",
+        "target": "es2022",
         "jsx": "react",
         "jsxFactory": "h",
-        "lib": ["dom", "es2017"],
+        "lib": ["dom", "es2022"],
         "typeRoots": ["lib"]
     }
 }

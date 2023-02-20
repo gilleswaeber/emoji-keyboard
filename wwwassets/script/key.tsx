@@ -1,9 +1,9 @@
-import {Version} from "./osversion";
-import {AppActions} from "./app";
+import {AppActions, AppMode, AppRenderProps} from "./app";
 import {h} from "preact";
 import {Board} from "./board";
-import {Emoji, EmojiStyle, KeyboardLayout, KeyCode} from "./data";
-import {ahkSend, ahkSetSearch} from "./ahk";
+import {Emoji, EmojiStyle, SC} from "./data";
+import {ahkSend} from "./ahk";
+import {ConfigPage} from "./config";
 
 function toTwemojiFilename(symbol: string) {
 	let name: string[] = [];
@@ -36,7 +36,7 @@ export class Key {
 		this.active = props.active ?? false;
 	}
 
-	render(app: AppActions, b: Board, code: KeyCode, layout: KeyboardLayout, os: Version) {
+	render({os, app, layout}: AppRenderProps, code: SC) {
 		const useFallback = os.ge(this.requiredOS);
 		let keyType = "action";
 		if (!this.name.length) {
@@ -49,11 +49,18 @@ export class Key {
 
 		return <div
 			class={`key ${keyType} ${this.hasAlternate() && 'alt'} ${this.isLULetter() && 'lu'} ${this.active && 'active'}`}
-			onClick={(e) => {e.preventDefault(); e.shiftKey ? this.actAlternate(app, b) : this.act(app, b);}}
-			onContextMenu={(e) => {e.preventDefault(); this.actAlternate(app, b);}}
-			onMouseOver={() => b.showStatus(this.name)}
+			onClick={(e) => {
+				e.preventDefault();
+				e.shiftKey ? this.actAlternate(app) : this.act(app);
+			}}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				this.actAlternate(app);
+			}}
+			onMouseOver={() => app.updateStatus(this.name)}
+			key={code}
 		>
-			<div class="keyname">{layout.keys[code]}</div>
+			<div class="keyname">{layout[code]?.name}</div>
 			<div class="name">{this.name}</div>
 			<div class="uname">{this.upperName}</div>
 			<div class={`symbol ${this.style && 's-' + this.style}`}>
@@ -62,12 +69,12 @@ export class Key {
 		</div>;
 	}
 
-	act(app: AppActions, parent: Board): void {
+	act(app: AppActions): void {
 		// Default: do nothing
 	}
 
-	actAlternate(app: AppActions, parent: Board): void {
-		this.act(app, parent);
+	actAlternate(app: AppActions): void {
+		this.act(app);
 	}
 
 	hasAlternate(): boolean {
@@ -79,15 +86,94 @@ export class Key {
 	}
 }
 
+export class ConfigKey extends Key {
+	constructor() {
+		super({name: "Settings", symbol: "🛠️"});
+	}
+
+	render({os, app, layout}: AppRenderProps, code: SC) {
+		const useFallback = os.ge(this.requiredOS);
+
+		return <div
+			class={`key action`}
+			onClick={(e) => {
+				e.preventDefault();
+				this.actAlternate(app);
+			}}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				this.actAlternate(app);
+			}}
+			onMouseOver={() => app.updateStatus(this.name)}
+		>
+			<div class="keyname">{`⇧${layout[code]?.name}`}</div>
+			<div class="name">{this.name}</div>
+			<div class={`symbol`}>
+				{useFallback ? <img src={toTwemojiFilename(this.symbol)} alt={this.symbol}/> : this.symbol}
+			</div>
+		</div>;
+	}
+
+	act(app: AppActions): void {
+		// Do nothing
+	}
+
+	actAlternate(app: AppActions): void {
+		app.setMode(AppMode.SETTINGS);
+	}
+}
+
+export class ConfigActionKey extends Key {
+	protected action: () => void;
+
+	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name?: string, symbol?: string }) {
+		active = active ?? false;
+		super({
+			name: name ?? (active ? "On" : "Off"),
+			symbol: symbol ?? (active ? "✔️" : "❌"),
+			active
+		});
+		this.action = action;
+	}
+
+	act(app: AppActions) {
+		this.action();
+	}
+}
+
+export class ConfigToggleKey extends ConfigActionKey {
+	act(app: AppActions) {
+		this.action();
+	}
+}
+
+export class ConfigLabelKey extends Key {
+	constructor(text: string) {
+		super({name: "", symbol: text});
+	}
+
+	render({os, app, layout}: AppRenderProps, code: SC) {
+		return <div class={`key label`}>
+			<div class="keyname">{layout[code]?.name}</div>
+			<div class="name">{this.name}</div>
+			<div class="symbol">{this.symbol}</div>
+		</div>;
+	}
+}
+
 export const BlankKey = new Key({name: '', symbol: ''});
 
 export class BackKey extends Key {
 	constructor(private parent: Board) {
-		super({name: 'back', symbol: '←'});
+		super({name: 'back/🛠️', symbol: '←'});
 	}
 
 	act(app: AppActions) {
-		app.showBoard(this.parent);
+		app.setBoard(this.parent);
+	}
+
+	actAlternate(app: AppActions) {
+		app.setMode(AppMode.SETTINGS);
 	}
 }
 
@@ -97,17 +183,27 @@ export class KeyboardKey extends Key {
 	}
 
 	act(app: AppActions) {
-		app.showBoard(this.target);
+		app.setBoard(this.target);
 	}
 }
 
 export class PageKey extends Key {
-	constructor(private page: number, active: boolean) {
+	constructor(private board: Board, private page: number, active: boolean) {
 		super({name: `page ${page + 1}`, symbol: '' + (page + 1), active});
 	}
 
 	act(app: AppActions) {
-		if (!this.active) app.setPage(this.page);
+		if (!this.active) app.setPage(this.board.name, this.page);
+	}
+}
+
+export class ConfigPageKey extends Key {
+	constructor(private page: ConfigPage, active: boolean) {
+		super({name: page.name, symbol: page.symbol, active});
+	}
+
+	act(app: AppActions) {
+		if (!this.active) app.setConfigPage(this.page);
 	}
 }
 
@@ -117,7 +213,7 @@ export class SearchKey extends Key {
 	}
 
 	act(app: AppActions) {
-		ahkSetSearch(true);
+		app.setMode(AppMode.SEARCH);
 	}
 }
 
@@ -127,14 +223,14 @@ export class ExitSearchKey extends Key {
 	}
 
 	act(app: AppActions) {
-		ahkSetSearch(false);
+		app.setMode(AppMode.MAIN);
 	}
 }
 
 export class CharKey extends Key {
-	constructor(private char: Emoji) {
+	constructor(private char: Emoji, private board: Board) {
 		super({
-			name: (char.name || char.fullName).toLowerCase(),
+			name: (char.name ?? char.fullName ?? "").toLowerCase(),
 			upperName: char.alternates?.length == 2 ? char.alternates[1].show : "",
 			style: char.style,
 			symbol: char.show ?? char.symbol,
@@ -146,9 +242,9 @@ export class CharKey extends Key {
 		ahkSend(this.char.symbol);
 	}
 
-	actAlternate(app: AppActions, parent: Board) {
+	actAlternate(app: AppActions) {
 		if (this.hasAlternate()) {
-			app.showBoard(Board.fromAlternates(parent, this.char));
+			app.setBoard(Board.fromAlternates(this.board!!, this.char));
 		} else if (this.isLULetter()) {
 			ahkSend(this.char.alternates![1].symbol);
 		} else return this.act(app);

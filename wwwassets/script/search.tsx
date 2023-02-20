@@ -1,32 +1,36 @@
-import {KeyboardLayout} from "./data";
-import {Version} from "./osversion";
+import {SC} from "./data";
 import {h} from "preact";
-import {AppActions} from "./app";
+import {AppRenderProps} from "./app";
 import {SearchKeyCodes, SearchKeyCodesTable} from "./layout";
 import {BlankKey, CharKey, ExitSearchKey} from "./key";
-import {Board, createPage} from "./board";
+import {Board, mapKeysToSlots} from "./board";
 import {search} from "./emojis";
+import {useCallback, useEffect, useMemo} from "preact/hooks";
+import {ChangeEvent} from "react";
+import {Fragment} from "preact";
 
-export function SearchView({layout, os, board, app}: { layout: KeyboardLayout, os: Version, board: Board; app: AppActions }) {
-
-	const keys = board.getPage({page: 0});
+export function SearchView(p: AppRenderProps) {
+	useEffect(() => p.app.setSearchBoard(getSearchBoard(p.searchText)), [p.searchText]);
+	useEffect(() => (document.querySelector('input[type="search"]') as HTMLInputElement)?.focus(), []);
+	const pages = useMemo(() => p.sharedState.searchBoard.getPages(p.config), [p.sharedState.searchBoard, p.config]);
+	const keys = pages[0];
+	p.app.keyHandlers = keys;
 
 	const table = SearchKeyCodesTable;
-
-	return <div class="keyboard">{table.map((codes, row) =>
-		<div class="row" key={row} style={{height: 100 / table.length + 'vh'}}>
-			{codes.map((code) => (keys[code] ?? BlankKey).render(app, board, code, layout, os))}
-		</div>
+	const onInput = useCallback((e: ChangeEvent<HTMLInputElement>) => p.app.setSearchText(e.target.value), [p.app]);
+	return <div class="keyboard">
+		<input type="search" value={p.searchText} onInput={onInput as any}/>
+		{table.map((code, row) =>
+		<Fragment key={code}>{(keys[code] ?? BlankKey).render(p, code)}</Fragment>
 	)}</div>
 }
 
 export function getSearchBoard(needle: string): Board {
-	return new Board('Search', '🔎', () => {
-		const fixedKeys = [new ExitSearchKey()];
-		const result = search(needle);
-		const keys = result
-			.slice(0, SearchKeyCodes.length)
-			.map((c) => new CharKey(c));
-		return [createPage(SearchKeyCodes, fixedKeys.concat(keys))];
-	})
+	return new Board("Search", "🔎", (b) => [
+		{
+			[SC.Backtick]: new ExitSearchKey(),
+			[SC.Tab]: new ExitSearchKey(),
+			...mapKeysToSlots(SearchKeyCodes, search(needle).map((c) => new CharKey(c, b)))
+		}
+	]);
 }

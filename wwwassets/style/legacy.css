@@ -1,0 +1,74 @@
+:root {
+	--c-background: #FFF;
+	--c-key: #f8f8f8;
+	--c-text: #000;
+	--c-empty: #f8f8f8;
+	--c-empty-text: #888;
+	--c-label: #f8f8f8;
+	--c-primary: #FFC83D;
+	--border-key: solid .1vw #888;
+}
+
+@media (prefers-color-scheme: dark) {
+	.system-color-scheme {
+		--c-background: #1a1a1a;
+		--c-key: #333;
+		--c-text: #fff;
+		--c-empty: #252525;
+		--c-empty-text: #fff;
+		--c-label: #252525;
+		--c-primary: #FFC83D;
+		--border-key: none;
+	}
+}
+
+.dark-color-scheme {
+	--c-background: #1a1a1a;
+	--c-key: #333;
+	--c-text: #fff;
+	--c-empty: #252525;
+	--c-empty-text: #fff;
+	--c-label: #252525;
+	--c-primary: #FFC83D;
+	--border-key: none;
+}
+
+.keyboard {
+	background-color: var(--c-background);
+}
+
+.key{
+	background-color: var(--c-key);
+	border: var(--border-key);
+	color: var(--c-text);
+}
+
+.key .symbol {
+	color: #FFF;
+}
+
+.key.empty{
+	background-color: var(--c-empty);
+	color: var(--c-empty-text);
+}
+.key.label{
+	background-color: var(--c-empty);
+	color: var(--c-text);
+}
+
+.key.alt{
+	box-shadow: 0 .5vw var(--c-primary) inset;
+}
+
+.key.active{
+	box-shadow: 0 .5vw var(--c-text) inset;
+}
+
+.key.char .symbol img{
+	box-shadow: 0 0 .2em var(--c-text);
+	background: var(--c-background);
+}
+
+.searchpane input{
+	border: solid .1vw #888;
+}

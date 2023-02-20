@@ -39,7 +39,7 @@ class DataBuilder{
 
 		foreach ($this->chars['previous'] as $v => $chars){
 			foreach ($chars as $char => $data){
-				if (!isset($versions[$char]) || version_compare($v, '<', $versions[$char])) {
+				if (!isset($versions[$char]) || version_compare($v, $versions[$char], '<')) {
 					$versions[$char] = $v;
 				}
 			}
@@ -47,7 +47,7 @@ class DataBuilder{
 
 		foreach ($this->sequences as $v => $sequences){
 			foreach ($sequences as $sequence){
-				if (!isset($versions[$sequence]) || version_compare($v, '<', $versions[$sequence])) {
+				if (!isset($versions[$sequence]) || version_compare($v, $versions[$sequence], '<')) {
 					$versions[$sequence] = $v;
 				}
 			}

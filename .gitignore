@@ -1,5 +1,7 @@
 /res/data/*
 !/res/data/data.exp.js
+/config.json
+/wwwassets/node_modules
 # IDE-specific
 .idea
 .vscode

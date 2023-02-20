@@ -17,17 +17,18 @@ class DataGrabber{
 		if(!is_dir($dir) && !mkdir($dir)) $this->err('Failed to create folder');
 	}
 
-	private function find_latest($folder, $localf) {
+	private function find_latest($folder, $localf)
+	{
 		$versions = $this->find_versions($folder, $localf);
 
 		// Folders should be named x((.y)?.z)?
 		$latest = '0';
-		foreach($versions as $v){
-			if(version_compare($v, $latest, '>=')){
+		foreach ($versions as $v) {
+			if (version_compare($v, $latest, '>=')) {
 				$latest = $v;
 			}
 		}
-		echo "Found ".count($versions)." folders, latest seems to be $latest.\n";
+		echo "Found " . count($versions) . " folders, latest seems to be $latest.\n";
 		return $latest;
 	}
 	
@@ -38,7 +39,7 @@ class DataGrabber{
 				if(strpos($f, $localf) === 0) $folders[] = substr($f, strlen($localf));
 			}
 		} else {
-			$folders = scandir($folder);
+			$folders = $this->scandir_http($folder);
 			if(!$folders){
 				echo "[ERROR] Could not connect to unicode website.\n";
 				echo "Please check that ftp support is enabled and that $folder is accessible and try again.\n";
@@ -50,12 +51,21 @@ class DataGrabber{
 
 		// Version folders should be named x((.y)?.z)?
 		foreach($folders as $v){
-			if(preg_match("#^[0-9]+(?:\.[0-9]+)+#", $v, $m)){
+			if(preg_match("#^[0-9]+(?:\.[0-9]+)*#", $v, $m)){
 				$versions[] = $m[0];
 			}
 		}
 		
 		return $versions;
+	}
+
+	private function scandir_http($folder) {
+		$contents = file_get_contents($folder);
+		$matches = [];
+		preg_match_all('#href="((?![/?])[^"/]+)/?"#', $contents, $matches, PREG_PATTERN_ORDER);
+		$matches = $matches[1];
+		print_r($matches);
+		return $matches;
 	}
 
 	private function versions_filter($versions, $comp, $compare_to){
@@ -96,7 +106,7 @@ class DataGrabber{
 	function download_cldr(){
 		echo "Grabbing CLDR... ";
 		if(isset($this->config->forceVersion->cldr)) $latestcldr = $this->config->forceVersion->cldr;
-		else $latestcldr = $this->find_latest('ftp://www.unicode.org/Public/cldr', 'cldr-');
+		else $latestcldr = $this->find_latest('https://www.unicode.org/Public/cldr', 'cldr-');
 		$cldrdir = 'data/cldr-'.$latestcldr.'/';
 		$this->create_dir($cldrdir);
 		echo "using version $latestcldr\n";
@@ -132,7 +142,7 @@ class DataGrabber{
 	function download_unicode_emoji(){
 		echo "Grabbing Unicode Emoji Data Files... ";
 		if(isset($this->config->forceVersion->emoji)) $latestemoji = $this->config->forceVersion->emoji;
-		else $latestemoji = $this->find_latest('ftp://unicode.org/Public/emoji/', 'emoji-');
+		else $latestemoji = $this->find_latest('https://unicode.org/Public/emoji/', 'emoji-');
 		$emojidir = 'data/emoji-'.$latestemoji.'/';
 		$this->create_dir($emojidir);
 		echo "using version $latestemoji\n";
@@ -149,8 +159,8 @@ class DataGrabber{
 	function download_unicode_emoji_previous(){
 		echo "Grabbing Unicode Emoji (previous versions) Data Files... ";
 		if(isset($this->config->forceVersion->emoji)) $latestemoji = $this->config->forceVersion->emoji;
-		else $latestemoji = $this->find_latest('ftp://unicode.org/Public/emoji/', 'emoji-');
-		$versions = $this->find_versions('ftp://unicode.org/Public/emoji/', 'emoji-');
+		else $latestemoji = $this->find_latest('https://unicode.org/Public/emoji/', 'emoji-');
+		$versions = $this->find_versions('https://unicode.org/Public/emoji/', 'emoji-');
 		$versions = $this->versions_filter($versions, '>=', '2.0');
 		$versions = $this->versions_filter($versions, '<=', $latestemoji);
 		$folders = [];
@@ -175,17 +185,17 @@ class DataGrabber{
 	function download_ucd(){
 		echo "Grabbing UCD... ";
 		if(isset($this->config->forceVersion->ucd)) $latestucd = $this->config->forceVersion->ucd;
-		else $latestucd = $this->find_latest('ftp://www.unicode.org/Public/', 'ucd-');
+		else $latestucd = $this->find_latest('https://www.unicode.org/Public/', 'ucd-');
 		$ucddir = 'data/ucd-'.$latestucd.'/';
 		$this->create_dir($ucddir);
 		echo "using UCD $latestucd\n";
 
 		$ucdfile = FALSE;
-		foreach(scandir(App::$offline ? $ucddir : 'ftp://www.unicode.org/Public/'.$latestucd.'/ucd') as $file){
+		foreach(App::$offline ? scandir($ucddir) : $this->scandir_http('https://www.unicode.org/Public/'.$latestucd.'/ucd') as $file){
 			if(preg_match("#^UnicodeData.*\.txt$#", $file)) $ucdfile = $file;
 		}
 
-		if(!$ucdfile) die('Unable to find UCD file in ftp://www.unicode.org/Public/'.$latestucd.'/ucd');
+		if(!$ucdfile) die('Unable to find UCD file in https://www.unicode.org/Public/'.$latestucd.'/ucd');
 
 		$this->download_file('http://www.unicode.org/Public/'.$latestucd.'/ucd/'.$ucdfile, $ucddir.$ucdfile);
 		copy($ucddir.$ucdfile, $ucddir.'UnicodeData.txt');

@@ -9,7 +9,7 @@
 		{"group": "Animals & Nature","subGroup": "addon-ninja-cat","symbol": "🐱‍🚀","name": "*Astro cat","keywords": ["windows", "non standard", "astronaut", "ninja", "cat"]},
 
 		{"group": "Greek", "subGroup": "tonos", "symbols": [
-			["ά", "Ά"], ["έ", "Έ"], ["ή", "Ή"], ["ί", "Ί"], ["ό", "Ό"], ["ύ", "Ύ"], ["ώ", "Ώ"], ["ϊ", "Ϊ"], ["ϋ", "Ϋ"], "ΐ"       , "ΰ"       
+			["ά", "Ά"], ["έ", "Έ"], ["ή", "Ή"], ["ί", "Ί"], ["ό", "Ό"], ["ύ", "Ύ"], ["ώ", "Ώ"], ["ϊ", "Ϊ"], ["ϋ", "Ϋ"], "ΐ"       , "ΰ"
 		]},
 		{"group": "Greek", "subGroup": "base", "symbols": [
 			null      , null      , null      , null      , null      , null      , null      , null      , null      , null, null, null,
@@ -100,7 +100,7 @@
 		{"group": "UTN28", "subGroup": "operators", "symbol": "⊇", "name": "\\superseteq", "alternates": [{"symbol": "⊉", "name": "/\\superseteq"}]},
 		{"group": "UTN28", "subGroup": "operators", "symbol": "⊑", "name": "\\sqsubseteq", "alternates": [{"symbol": "⋢", "name": "/\\sqsubseteq"}]},
 		{"group": "UTN28", "subGroup": "operators", "symbol": "⊒", "name": "\\sqsupseteq", "alternates": [{"symbol": "⋣", "name": "/\\sqsupseteq"}]},
-			
+
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∐", "name": "\\amalg"},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∫", "name": "\\int", "alternates": [
 			{"symbol": "∬", "name": "\\iint"},
@@ -113,7 +113,7 @@
 			{"symbol": "∲", "name": "\\coint"}]},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∏", "name": "\\prod"},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "∑", "name": "\\sum"},
-		
+
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⋂", "name": "\\bigcap"},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⋃", "name": "\\bigcup"},
 		{"group": "UTN28", "subGroup": "operators-nary", "symbol": "⨀", "name": "\\bigodot"},
@@ -208,7 +208,7 @@
 				"🦸‍♂️", "🦸🏻‍♂️", "🦸🏼‍♂️", "🦸🏽‍♂️", "🦸🏾‍♂️", "🦸🏿‍♂️",
 				"🦸‍♀️", "🦸🏻‍♀️", "🦸🏼‍♀️", "🦸🏽‍♀️", "🦸🏾‍♀️", "🦸🏿‍♀️",
 				"🦹‍♂️", "🦹🏻‍♂️", "🦹🏼‍♂️", "🦹🏽‍♂️", "🦹🏾‍♂️", "🦹🏿‍♂️",
-				"🦹‍♀️", "🦹🏻‍♀️", "🦹🏼‍♀️", "🦹🏽‍♀️", "🦹🏾‍♀️", "🦹🏿‍♀️", 
+				"🦹‍♀️", "🦹🏻‍♀️", "🦹🏼‍♀️", "🦹🏽‍♀️", "🦹🏾‍♀️", "🦹🏿‍♀️",
 				"🧍‍♂️", "🧍🏻‍♂️", "🧍🏼‍♂️", "🧍🏽‍♂️", "🧍🏾‍♂️", "🧍🏿‍♂️",
 				"🧍‍♀️", "🧍🏻‍♀️", "🧍🏼‍♀️", "🧍🏽‍♀️", "🧍🏾‍♀️", "🧍🏿‍♀️",
 				"🧎‍♂️", "🧎🏻‍♂️", "🧎🏼‍♂️", "🧎🏽‍♂️", "🧎🏾‍♂️", "🧎🏿‍♂️",
@@ -222,20 +222,23 @@
 			]
 		},
 		{
+			"windows": "10.0.22000",
+			"comment": "Windows 11 new emoji font",
+			"characters": [
+			]
+		},
+		{
 			"windows": "99",
 			"comment": "Not supported on Windows",
 			"characters": [
-				{"from": "🇦", "to": "🇿🇿"},
-				{"from": "\ud83c\udff4\udb40\udc61", "to": "\ud83c\udff4\udb40\udc7a\udb40\udc7a", "comments": "From 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER A' to 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER Z, TAG LATIN SMALL LETTER Z'"}
+			  {"from": "🇦", "to": "🇿🇿"},
+			  {"from": "\ud83c\udff4\udb40\udc61", "to": "\ud83c\udff4\udb40\udc7a\udb40\udc7a", "comments": "From 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER A' to 'WAVING BLACK FLAG, TAG LATIN SMALL LETTER Z, TAG LATIN SMALL LETTER Z'"}
 			],
 			"sequences": [
 			]
 		}
 	],
 	"forceVersion": {
-		"cldr": "35.1",
-		"emoji": "12.0",
-		"ucd": "13.0.0"
 	},
 	"nogroup": ["family","kiss","couple with heart","house","cricket"],
 	"keyboards": [
@@ -403,5 +406,26 @@
 				"86": "", "44": "", "45": "", "46": "", "47": "", "48": "", "49": "", "50": "", "51": "", "52": "", "53": ""
 			}
 		}
+	},
+	"symbols": {
+		"\u00a0": {"group": "Punctuation/spaces", "style": "space", "show": "No-Break\nSpace"},
+		"\u202f": {"group": "Punctuation/spaces", "style": "space", "show": "Narrow\nNo-Break\nSpace"},
+		"\u2001": {"group": "Punctuation/spaces", "style": "space", "show": "EM\nQuad"},
+		"\u2000": {"group": "Punctuation/spaces", "style": "space", "show": "EN\nQuad"},
+		"\u2003": {"group": "Punctuation/spaces", "style": "space", "show": "EM\nSpace"},
+		"\u2002": {"group": "Punctuation/spaces", "style": "space", "show": "EN\nSpace"},
+		"\u2004": {"group": "Punctuation/spaces", "style": "space", "show": "⅓ EM\nSpace"},
+		"\u2005": {"group": "Punctuation/spaces", "style": "space", "show": "¼ EM\nSpace"},
+		"\u2006": {"group": "Punctuation/spaces", "style": "space", "show": "⅙ EM\nSpace"},
+		"\u2009": {"group": "Punctuation/spaces", "style": "space", "show": "Thin\nSpace"},
+		"\u200a": {"group": "Punctuation/spaces", "style": "space", "show": "Hair\nSpace"},
+		"\u2007": {"group": "Punctuation/spaces", "style": "space", "show": "Figure\nSpace"},
+		"\u2008": {"group": "Punctuation/spaces", "style": "space", "show": "Punctuation\nSpace"},
+		"\u200b": {"group": "Punctuation/spaces", "style": "space", "show": "Zero\nWidth\nSpace"},
+		"\u200c": {"group": "Punctuation/spaces", "style": "space", "show": "Zero\nWidth\nNon-Joiner"},
+		"\u200d": {"group": "Punctuation/spaces", "style": "space", "show": "Zero\nWidth\nJoiner", "name": "Zero Width Joiner"},
+		"\u205f": {"group": "Punctuation/special-spaces", "style": "space", "show": "Medium\nMath\nSpace"},
+		"\u3000": {"group": "Punctuation/special-spaces", "style": "space", "show": "Ideographic\nSpace"},
+		"\u00ad": {"group": "Punctuation/dashes", "style": "space", "show": "Soft\nHyphen"}
 	}
 }

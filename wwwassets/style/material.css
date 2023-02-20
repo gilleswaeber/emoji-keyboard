@@ -1,0 +1,85 @@
+:root {
+	--c-background: #EEE;
+	--c-primary: #FFC83D;
+	--c-key: #FFF;
+	--c-text: #000;
+	--c-text2: #BBB;
+	--c-text-active: #000;
+	--c-empty: #BBB;
+
+	--dark-c-background: #222;
+	--dark-c-key: #333;
+	--dark-c-text: #EEE;
+	--dark-c-text2: #888;
+	--dark-c-text-active: #000;
+	--dark-c-empty: #888;
+}
+
+@media (prefers-color-scheme: dark) {
+	.system-color-scheme {
+		--c-background: var(--dark-c-background);
+		--c-key: var(--dark-c-key);
+		--c-text: var(--dark-c-text);
+		--c-text2: var(--dark-c-text2);
+		--c-text-active: var(--dark-c-text-active);
+		--c-empty: var(--dark-c-empty);
+	}
+}
+
+.dark-color-scheme {
+	--c-background: var(--dark-c-background);
+	--c-key: var(--dark-c-key);
+	--c-text: var(--dark-c-text);
+	--c-text2: var(--dark-c-text2);
+	--c-text-active: var(--dark-c-text-active);
+	--c-empty: var(--dark-c-empty);
+}
+
+.keyboard {
+	background-color: var(--c-background);
+}
+
+.key {
+	background-color: var(--c-key);
+	border-radius: .5vw;
+	color: var(--c-text);
+}
+
+.row {
+	/*! padding: .2vw 0; */
+}
+
+.key .symbol {
+	color: #FFF;
+}
+
+.key.empty {
+	background-color: inherit;
+	color: var(--c-empty);
+}
+
+.key.alt {
+	background: linear-gradient(to top, var(--c-primary) .5vw, var(--c-key) .5vw);
+}
+
+.key.active {
+	background: var(--c-primary);
+	color: var(--c-text-active);
+}
+
+.key .keyname, .key .name {
+	color: var(--c-text2);
+}
+
+.key.active .keyname, .key.active .name {
+	color: var(--c-text-active);
+}
+
+.key:not(.empty):not(.label):hover {
+	color: var(--c-text);
+	box-shadow: 0 .2vw .4vw #444;
+}
+
+.searchpane input {
+	border: solid .1vw #888;
+}

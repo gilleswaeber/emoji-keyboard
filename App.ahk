@@ -1,331 +1,357 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-SetBatchLines -1 ; Execute the script at maximum speed
+#Requires AutoHotkey 2.0
+#SingleInstance Force
 
-; Check for AHK version
-if (A_AhkVersion < "1.1.21") {
-	MsgBox, 48, AutoHotkey %A_AhkVersion%, Please update AutoHotkey. Version 1.1.21+ is required.
-	ExitApp, 1
-}
+#Include lib/thqby/WebView2/WebView2.ahk
+#Include lib/monitor.ahk
+#Include lib/keyboard_layout.ahk
 
-#Include assets\OSD.ahk
-OSD("Emoji Keyboard")
-
-#SingleInstance force
-SendMode Input
-
-; Required for the search mode
-#MaxThreadsPerHotkey 2
+#Warn
+SetWorkingDir(A_ScriptDir)	; Ensures a consistent starting directory
+SendMode("Input")
 
 ; Setup tray menu
-Menu, Tray, Icon, assets/keyboard.ico, 1, 1
-Menu, Tray, Tip, Emoji Keyboard
-Menu, Tray, Add, &Show, Toggle
-Menu, Tray, Add
-Menu, Tray, Add, Emoji &Keyboard by Gilles Waeber, Credits
-Menu, Tray, Add
-Menu, Tray, Add, E&xit, Exit
-Menu, Tray, Default, &Show
-Menu, Tray, NoStandard
+TraySetIcon("lib/keyboard.ico")
+A_IconTip := "Emoji Keyboard"
+A_TrayMenu.Delete()
+A_TrayMenu.Add("&Show", ActToggle)
+A_TrayMenu.Add()
+A_TrayMenu.Add("Emoji &Keyboard by Gilles Waeber", ActCredits)
+A_TrayMenu.Add("&Reload", ActReload)
+A_TrayMenu.Add()
+A_TrayMenu.Add("E&xit", ActExit)
+A_TrayMenu.Default := "&Show"
 
-#Include assets\JSON_ToObj.ahk
-#Include assets\Webapp.ahk
+class EmojiKeyboard {
+	isVisible := false
+	isSearch := false
+	isInitialized := false
+	width := 764
+	height := 240
+	main := Gui("+E0x08000000 +AlwaysOnTop +Resize -MaximizeBox -MinimizeBox", "Emoji Keyboard")
+	wvKeyboard := ""
 
-__Webapp_GuiSize:
-	global __WebappH, __WebappW
-	__WebappH := A_GuiHeight
-	__WebappW := A_GuiWidth
-	RepositionGui()
-return
+	isClipSaved := false
+	clipSaved := unset
 
-RepositionGui() {
-	global vSearch
-	if (vSearch) {
-		GuiControlGet, vPos, __Webapp_:Pos, SearchBox
-		GuiControl, __Webapp_:Show, SearchBox
-		GuiControl, __Webapp_:Move, SearchBox, W%__WebappW%
-		webH := __WebappH - vPosH
+	__New() {
+		this.text := this.main.AddText(, "Please wait...")
+		onClose(*) {
+			this.Hide()
+		}
+		onSize(obj, minMax, width, height) {
+			if (minMax >= 0 and width > 0 and height > 0 and !this.text.Visible) {
+				if (this.width != width or this.height != height) {
+					this.width := width
+					this.height := height
+					this.Redraw()
+					this.wv.PostWebMessageAsJson('["size", ' width ',' height ']')
+				}
+			}
+		}
+		onSysCommand(wParam, *) {
+			if (wParam = 0xF060 and this.isVisible)	; SC_CLOSE hide instead of closing
+			{
+				this.Hide()
+				return 0
+			}
+		}
+		onInputLangChange(*) {
+			this.CheckLayout()
+		}
+		this.main.OnEvent("Close", onClose)
+		this.main.OnEvent("Size", onSize)
+		OnMessage(0x112, onSysCommand)	; WM_SYSCOMMAND
+		OnMessage(0x51, onInputLangChange)	; WM_INPUTLANGCHANGE
 	}
-	else {
-		GuiControl, __Webapp_:Hide, SearchBox
-		webH := __WebappH
+
+	Redraw() {
+		this.wvc.Fill()
 	}
-	GuiControl, __Webapp_:Move, __Webapp_wb, Y%vPosH% W%__WebappW% H%webH%
+
+	Initialize() {
+		NewWindowRequestedHandler(handler, wv2, arg) {
+			argp := WebView2.NewWindowRequestedEventArgs(arg)
+			deferral := argp.GetDeferral()
+			argp.NewWindow := wv2
+			deferral.Complete()
+		}
+		onOpenDevTools() {
+			this.wv.OpenDevToolsWindow()
+		}
+		onReady() {
+			this.wv.PostWebMessageAsString("os," A_OSVersion)
+			if (FileExist("config.json")) {
+				config := FileRead("config.json")
+				this.wv.PostWebMessageAsString("config," config)
+			} else {
+				this.wv.PostWebMessageAsString("defaultConfig,")
+			}
+			this.wvKeyboard := ""
+			CheckLayout()
+		}
+		onSaveConfig(config) {
+			fh := FileOpen("config.tmp.json", "w", "UTF-8")
+			fh.Write(config)
+			fh.Close()
+			FileMove("config.tmp.json", "config.json", true)
+		}
+		onSend(text) {
+			SetTimer(RestoreClipboard,0)
+			if (this.isSearch) {
+				this.Hide()
+			}
+			if(!this.isClipSaved) {
+				this.clipSaved := ClipboardAll()
+				this.isClipSaved := True
+			}
+			A_Clipboard := text
+			Sleep(10)
+			Send("^v")
+			SetTimer(RestoreClipboard,200)
+			if (this.isSearch) {
+				this.Show()
+			}
+		}
+		onSetOpacity(opacity) {
+			if (opacity > .99) {
+				WinSetTransparent("Off", this.main)
+			} else if(opacity > .2) {
+				WinSetTransparent(Round(255 * opacity), this.main)
+			} else {
+				WinSetTransparent(Round(255 * .2), this.main)
+			}
+		}
+		onSetSearch(enable) {
+			if (this.isSearch != enable) {
+				this.isSearch := enable
+				if (enable) {
+					this.main.Opt("-E0x08000000")
+					this.main.Show()
+				} else {
+					if (WinActive(this.main)) {
+						Send("!{Esc}")
+					}
+					this.main.Opt("+E0x08000000")
+				}
+			}
+		}
+		onSetSize(width, height) {
+			if (width != this.width or height != this.height) {
+				this.width := width
+				this.height := height
+				if (this.isVisible) {
+					this.Show()
+				}
+			}
+		}
+		onSetTitle(title) {
+			this.main.Title := title
+		}
+
+		this.isInitialized := true
+		this.wvc := WebView2.create(this.main.Hwnd)
+		this.wv := this.wvc.CoreWebView2
+		nwr := this.wv.NewWindowRequested(NewWindowRequestedHandler)
+		this.wv.Navigate('file:///' A_ScriptDir '\wwwassets\index.html')
+		this.wv.AddHostObjectToScript('ahk', {
+			openDevTools: onOpenDevTools,
+			ready: onReady, reload: ActReload,
+			saveConfig: onSaveConfig, send: onSend,
+			setOpacity: onSetOpacity, setSearch: onSetSearch, setSize: onSetSize, setTitle: onSetTitle,
+		})
+		this.text.Visible := false
+	}
+
+	Show() {
+		this.isVisible := true
+		monitor := GetMouseMonitor()
+		MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
+		x := left + (right - left - (this.width + 13) * A_Scaling) / 2	; 13px = shadow
+		y := bottom - (this.height + 30) * A_Scaling	; 32 = titlebar + shadow
+
+		this.main.Show(Format("{} W{} H{} x{} y{}", this.isSearch ? "" : "NA", this.width, this.height, x, y))
+		if (!this.isInitialized) {
+			this.Initialize()
+		} else {
+			this.wvc.Fill()
+			CheckLayout()
+		}
+	}
+
+	Hide(*) {
+		if (this.isVisible and this.text.Visible) {
+			Return
+		}
+		this.isVisible := false
+		this.main.Hide()
+		SetTimer(CheckLayout, 0)
+	}
+
+	Toggle() {
+		If (this.isVisible) {
+			this.Hide()
+		} Else {
+			this.Show()
+		}
+	}
+
+	Input(scanCode, shift := false) {
+		this.wv.PostWebMessageAsJson('["input",' scanCode ',' (shift ? 'true' : 'false') ']')
+	}
+
+	SendLayout() {
+		layout := KeyboardLayoutJson()
+		this.wv.PostWebMessageAsJson('["layout",' layout ']')
+	}
+}
+KB := EmojiKeyboard()
+;EmojiKeyboard.main.Hide()
+RestoreClipboard() {
+	SetTimer(RestoreClipboard, 0)
+	A_Clipboard := KB.clipSaved
+	KB.clipSaved := unset
+	KB.isClipSaved := False
 }
 
-__Webapp_AppStart:
-	;<< Header End >>
-	;             not focusable
-	Gui __Webapp_:+E0x08000000 +AlwaysOnTop -MaximizeBox -MinimizeBox ; +E0x40000 +ToolWindow ;  -Caption
-	OnMessage(0x112, "WM_SYSCOMMAND")
-	Gui __Webapp_:Hide
-Return
-
-WM_SYSCOMMAND(wParam)
-{
-	global vVisible
-    if (wParam = 0xF060 and vVisible) ; SC_CLOSE hide instead of closing
-    {
-        Hide()
-        return 0
-    }
+CheckLayout() {	
+	cKeyboard := CurrentKeyboardLayout()
+	If (cKeyboard != KB.wvKeyboard and cKeyboard != "" and cKeyboard != 0 and ! KB.text.Visible) {
+		KB.wvKeyboard := cKeyboard
+		KB.SendLayout()
+	}
 }
 
-; Variable containing the current state
-vVisible := false
-; Variable containing the searching state
-vSearch := false
-; Search Handler Semaphore (avoid multiple instances running)
-vSearchSem := 1
-vSearchInput := ""
-; Save clipboard contents
-clipSaved =
-bClipSaved := False
-
-; Change App name at run-time
-setAppName("Emoji Keyboard")
-
-; Our custom protocol's url event handler
-app_call(args) {
-	;MsgBox %args%
-	param := SubStr(args, 6) 
-	if SubStr(args, 1, 5) = "send/"
-		Send(param)
+ActToggle(*) {
+	KB.Toggle()
 }
-
-
-; Function to run when page is loaded
-app_page(NewURL) {
+ActReload(*) {
+	Reload
+}
+ActExit(*) {
+	ExitApp
+}
+ActCredits(*) {
+	Run("https://github.com/romligCH/emoji-keyboard")
 }
 
 ; Change Hotkey here
-Capslock::
-	global vVisible
-	if(vVisible){
-		vVisible := false
-		Hide()
-		Return
-	}
-	Show()
-Return
++Capslock:: KB.Toggle()
 
-; Functions to be called from the html/js source
-Exit() {
-	ExitApp
-}
-Credits() {
-	Run, https://github.com/romligCH/emoji-keyboard
-}
-Reload() {
-	Reload
-}
 
-Send(t) {
-	SetTimer, RestoreClipboard, Off
-	global clipSaved, bClipSaved, vSearch
-	if (vSearch) {
-		Gui __Webapp_:Hide
-	}
-	if(not bClipSaved) {
-		clipSaved := ClipboardAll
-		bClipSaved := True
-	}
-	Clipboard := t
-	Sleep, 10
-	Send, ^v
-	SetTimer, RestoreClipboard, 200
-	if (vSearch) {
-		Gui __Webapp_:Show
-	}
-}
-RestoreClipboard() {
-	global clipSaved, bClipSaved
-	SetTimer, RestoreClipboard, Off
-	Clipboard := clipSaved
-	clipSaved =
-	bClipSaved := False
-}
-
-Show() {
-	global vVisible, vSearch
-	vVisible := true
-	Gui __Webapp_:Show, NA
-	if (vSearch) {
-		GuiControl, __Webapp_:Focus, SearchBox
-	}
-}
-Hide() {
-	global vVisible, vSearch
-	vVisible := false
-	Gui __Webapp_:Hide
-}
-Toggle() {
-	global vVisible
-	if(vVisible){
-		Hide()
-	}
-	else{
-		Show()
-	}
-}
-
-Ready() {
-	global j
-	getDOM().document.ahk.setKeymap(j.keymap)
-	getDOM().document.ahk.setOS(A_OSVersion)
-}
-
-SetTitle(t) {
-	Gui __Webapp_:Show, NA, %t%
-}
-
-SearchChange() {
-	GuiControlGet, str, __Webapp_:, SearchBox
-	getDOM().document.ahk.setSearchText(str)
-}
-
-ToggleSearch() {
-	global vSearch
-	if vSearch
-		SetSearch(false)
-	else
-		SetSearch(true)
-}
-SetSearch(s) {
-	global vSearch
-	oldSearch := vSearch
-	vSearch := s
-	if (oldSearch and !s) {
-		RepositionGui()
-		Gui __Webapp_:Show
-		Gui __Webapp_:+E0x08000000
-		Send !{Esc}
-		getDOM().document.ahk.setSearch(false)
-	}
-	If (!oldSearch and s) {
-		RepositionGui()
-		Gui __Webapp_:-E0x08000000
-		Gui __Webapp_:Show
-		getDOM().document.ahk.setSearch(true)
-		GuiControl, __Webapp_:Focus, SearchBox
-	}
-}
-
-#If vVisible
-; Corresponding keys                    		;	US	CH
-SC029::getDOM().document.ahk.input(41)   		;	`	§
-SC002::getDOM().document.ahk.input(2)    		;	1	1
-SC003::getDOM().document.ahk.input(3)   		;	2	2
-SC004::getDOM().document.ahk.input(4)   		;	3	3
-SC005::getDOM().document.ahk.input(5)   		;	4	4
-SC006::getDOM().document.ahk.input(6)   		;	5	5
-SC007::getDOM().document.ahk.input(7)   		;	6	6
-SC008::getDOM().document.ahk.input(8)   		;	7	7
-SC009::getDOM().document.ahk.input(9)   		;	8	8
-SC00A::getDOM().document.ahk.input(10)   		;	9	9
-SC00B::getDOM().document.ahk.input(11)   		;	0	0
-SC00C::getDOM().document.ahk.input(12)   		;	-	'
-SC00D::getDOM().document.ahk.input(13)   		;	=	^
-+SC029::getDOM().document.ahk.input(41, True)  	;	`	§
-+SC002::getDOM().document.ahk.input(2, True)	;	1	1
-+SC003::getDOM().document.ahk.input(3, True)	;	2	2
-+SC004::getDOM().document.ahk.input(4, True)	;	3	3
-+SC005::getDOM().document.ahk.input(5, True)	;	4	4
-+SC006::getDOM().document.ahk.input(6, True)	;	5	5
-+SC007::getDOM().document.ahk.input(7, True)	;	6	6
-+SC008::getDOM().document.ahk.input(8, True)	;	7	7
-+SC009::getDOM().document.ahk.input(9, True)	;	8	8
-+SC00A::getDOM().document.ahk.input(10, True)	;	9	9
-+SC00B::getDOM().document.ahk.input(11, True)	;	0	0
-+SC00C::getDOM().document.ahk.input(12, True)	;	-	'
-+SC00D::getDOM().document.ahk.input(13, True)	;	=	^
-Tab::ToggleSearch()
-+Tab::ToggleSearch()
-#If vVisible and vSearch
-^Backspace::GuiControl, __Webapp_:, SearchBox,  ; clear seach
-#If vVisible and !vSearch
-; Corresponding keys                    		;	US	CH
-;SC001::getDOM().document.ahk.input(1)   		;	ESC	ESC
-;SC03B::getDOM().document.ahk.input(59)   		;	F1	F1
-;SC03C::getDOM().document.ahk.input(60)   		;	F2	F2
-;SC03D::getDOM().document.ahk.input(61)   		;	F3	F3
-;SC03E::getDOM().document.ahk.input(62)   		;	F4	F4
-;SC03F::getDOM().document.ahk.input(63)   		;	F5	F5
-;SC040::getDOM().document.ahk.input(64)   		;	F6	F6
-;SC041::getDOM().document.ahk.input(65)   		;	F7	F7
-;SC042::getDOM().document.ahk.input(66)   		;	F8	F8
-;SC043::getDOM().document.ahk.input(67)   		;	F9	F9
-;SC044::getDOM().document.ahk.input(68)   		;	F10	F10
-;SC057::getDOM().document.ahk.input(87)   		;	F11	F11
-;SC058::getDOM().document.ahk.input(88)   		;	F12	F12
-SC010::getDOM().document.ahk.input(16)   		;	q	q
-SC011::getDOM().document.ahk.input(17)   		;	w	w
-SC012::getDOM().document.ahk.input(18)   		;	e	e
-SC013::getDOM().document.ahk.input(19)   		;	r	r
-SC014::getDOM().document.ahk.input(20)   		;	t	t
-SC015::getDOM().document.ahk.input(21)   		;	y	z
-SC016::getDOM().document.ahk.input(22)   		;	u	u
-SC017::getDOM().document.ahk.input(23)   		;	i	i
-SC018::getDOM().document.ahk.input(24)   		;	o	o
-SC019::getDOM().document.ahk.input(25)   		;	p	p
-SC01A::getDOM().document.ahk.input(26)   		;	[	èü
-SC01B::getDOM().document.ahk.input(27)   		;	]	¨
-SC01E::getDOM().document.ahk.input(30)   		;	a	a
-SC01F::getDOM().document.ahk.input(31)   		;	s	s
-SC020::getDOM().document.ahk.input(32)   		;	d	d
-SC021::getDOM().document.ahk.input(33)   		;	f	f
-SC022::getDOM().document.ahk.input(34)   		;	g	g
-SC023::getDOM().document.ahk.input(35)   		;	h	h
-SC024::getDOM().document.ahk.input(36)   		;	j	j
-SC025::getDOM().document.ahk.input(37)   		;	k	k
-SC026::getDOM().document.ahk.input(38)   		;	l	l
-SC027::getDOM().document.ahk.input(39)   		;	;	éö
-SC028::getDOM().document.ahk.input(40)   		;	'	àä
-SC02B::getDOM().document.ahk.input(43)   		;	\	$
-SC056::getDOM().document.ahk.input(86)   		;	\	<
-SC02C::getDOM().document.ahk.input(44)   		;	z	y
-SC02D::getDOM().document.ahk.input(45)   		;	x	x
-SC02E::getDOM().document.ahk.input(46)   		;	c	c
-SC02F::getDOM().document.ahk.input(47)   		;	v	v
-SC030::getDOM().document.ahk.input(48)   		;	b	b
-SC031::getDOM().document.ahk.input(49)   		;	n	n
-SC032::getDOM().document.ahk.input(50)   		;	m	m
-SC033::getDOM().document.ahk.input(51)   		;	,	,
-SC034::getDOM().document.ahk.input(52)   		;	.	.
-SC035::getDOM().document.ahk.input(53)   		;	/	-
-+SC010::getDOM().document.ahk.input(16, True)	;	q	q
-+SC011::getDOM().document.ahk.input(17, True)	;	w	w
-+SC012::getDOM().document.ahk.input(18, True)	;	e	e
-+SC013::getDOM().document.ahk.input(19, True)	;	r	r
-+SC014::getDOM().document.ahk.input(20, True)	;	t	t
-+SC015::getDOM().document.ahk.input(21, True)	;	y	z
-+SC016::getDOM().document.ahk.input(22, True)	;	u	u
-+SC017::getDOM().document.ahk.input(23, True)	;	i	i
-+SC018::getDOM().document.ahk.input(24, True)	;	o	o
-+SC019::getDOM().document.ahk.input(25, True)	;	p	p
-+SC01A::getDOM().document.ahk.input(26, True)	;	[	èü
-+SC01B::getDOM().document.ahk.input(27, True)	;	]	¨
-+SC01E::getDOM().document.ahk.input(30, True)	;	a	a
-+SC01F::getDOM().document.ahk.input(31, True)	;	s	s
-+SC020::getDOM().document.ahk.input(32, True)	;	d	d
-+SC021::getDOM().document.ahk.input(33, True)	;	f	f
-+SC022::getDOM().document.ahk.input(34, True)	;	g	g
-+SC023::getDOM().document.ahk.input(35, True)	;	h	h
-+SC024::getDOM().document.ahk.input(36, True)	;	j	j
-+SC025::getDOM().document.ahk.input(37, True)	;	k	k
-+SC026::getDOM().document.ahk.input(38, True)	;	l	l
-+SC027::getDOM().document.ahk.input(39, True)	;	;	éö
-+SC028::getDOM().document.ahk.input(40, True)	;	'	àä
-+SC02B::getDOM().document.ahk.input(43, True)	;	\	$
-+SC056::getDOM().document.ahk.input(86, True)	;	\	<
-+SC02C::getDOM().document.ahk.input(44, True)	;	z	y
-+SC02D::getDOM().document.ahk.input(45, True)	;	x	x
-+SC02E::getDOM().document.ahk.input(46, True)	;	c	c
-+SC02F::getDOM().document.ahk.input(47, True)	;	v	v
-+SC030::getDOM().document.ahk.input(48, True)	;	b	b
-+SC031::getDOM().document.ahk.input(49, True)	;	n	n
-+SC032::getDOM().document.ahk.input(50, True)	;	m	m
-+SC033::getDOM().document.ahk.input(51, True)	;	,	,
-+SC034::getDOM().document.ahk.input(52, True)	;	.	.
-+SC035::getDOM().document.ahk.input(53, True)	;	/	-
-#If
+#HotIf KB.isVisible
+; Corresponding keys          US   CH
+SC029:: KB.Input(41, False)	; `    §
+SC002:: KB.Input(02, False)	; 1    1
+SC003:: KB.Input(03, False)	; 2    2
+SC004:: KB.Input(04, False)	; 3    3
+SC005:: KB.Input(05, False)	; 4    4
+SC006:: KB.Input(06, False)	; 5    5
+SC007:: KB.Input(07, False)	; 6    6
+SC008:: KB.Input(08, False)	; 7    7
+SC009:: KB.Input(09, False)	; 8    8
+SC00A:: KB.Input(10, False)	; 9    9
+SC00B:: KB.Input(11, False)	; 0    0
+SC00C:: KB.Input(12, False)	; -    '
+SC00D:: KB.Input(13, False)	; =    ^
++SC029:: KB.Input(41, True)	; `    §
++SC002:: KB.Input(02, True)	; 1    1
++SC003:: KB.Input(03, True)	; 2    2
++SC004:: KB.Input(04, True)	; 3    3
++SC005:: KB.Input(05, True)	; 4    4
++SC006:: KB.Input(06, True)	; 5    5
++SC007:: KB.Input(07, True)	; 6    6
++SC008:: KB.Input(08, True)	; 7    7
++SC009:: KB.Input(09, True)	; 8    8
++SC00A:: KB.Input(10, True)	; 9    9
++SC00B:: KB.Input(11, True)	; 0    0
++SC00C:: KB.Input(12, True)	; -    '
++SC00D:: KB.Input(13, True)	; =    ^
+Tab:: KB.Input(15, False)
++Tab:: KB.Input(15, True)
+Esc:: KB.Hide()
+#HotIf KB.isVisible and !KB.isSearch
+; Corresponding keys          US   CH
+;SC001::KB.Input(01, False) ; ESC  ESC
+;SC03B::KB.Input(59, False) ; F1   F1
+;SC03C::KB.Input(60, False) ; F2   F2
+;SC03D::KB.Input(61, False) ; F3   F3
+;SC03E::KB.Input(62, False) ; F4   F4
+;SC03F::KB.Input(63, False) ; F5   F5
+;SC040::KB.Input(64, False) ; F6   F6
+;SC041::KB.Input(65, False) ; F7   F7
+;SC042::KB.Input(66, False) ; F8   F8
+;SC043::KB.Input(67, False) ; F9   F9
+;SC044::KB.Input(68, False) ; F10  F10
+;SC057::KB.Input(87, False) ; F11  F11
+;SC058::KB.Input(88, False) ; F12  F12
+SC010:: KB.Input(16, False)	; q    q
+SC011:: KB.Input(17, False)	; w    w
+SC012:: KB.Input(18, False)	; e    e
+SC013:: KB.Input(19, False)	; r    r
+SC014:: KB.Input(20, False)	; t    t
+SC015:: KB.Input(21, False)	; y    z
+SC016:: KB.Input(22, False)	; u    u
+SC017:: KB.Input(23, False)	; i    i
+SC018:: KB.Input(24, False)	; o    o
+SC019:: KB.Input(25, False)	; p    p
+SC01A:: KB.Input(26, False)	; [    èü
+SC01B:: KB.Input(27, False)	; ]    ¨
+SC01E:: KB.Input(30, False)	; a    a
+SC01F:: KB.Input(31, False)	; s    s
+SC020:: KB.Input(32, False)	; d    d
+SC021:: KB.Input(33, False)	; f    f
+SC022:: KB.Input(34, False)	; g    g
+SC023:: KB.Input(35, False)	; h    h
+SC024:: KB.Input(36, False)	; j    j
+SC025:: KB.Input(37, False)	; k    k
+SC026:: KB.Input(38, False)	; l    l
+SC027:: KB.Input(39, False)	; ;    éö
+SC028:: KB.Input(40, False)	; '    àä
+SC02B:: KB.Input(43, False)	; \    $
+SC056:: KB.Input(86, False)	; N/A  <
+SC02C:: KB.Input(44, False)	; z    y
+SC02D:: KB.Input(45, False)	; x    x
+SC02E:: KB.Input(46, False)	; c    c
+SC02F:: KB.Input(47, False)	; v    v
+SC030:: KB.Input(48, False)	; b    b
+SC031:: KB.Input(49, False)	; n    n
+SC032:: KB.Input(50, False)	; m    m
+SC033:: KB.Input(51, False)	; ,    ,
+SC034:: KB.Input(52, False)	; .    .
+SC035:: KB.Input(53, False)	; /    -
++SC010:: KB.Input(16, True)	; q    q
++SC011:: KB.Input(17, True)	; w    w
++SC012:: KB.Input(18, True)	; e    e
++SC013:: KB.Input(19, True)	; r    r
++SC014:: KB.Input(20, True)	; t    t
++SC015:: KB.Input(21, True)	; y    z
++SC016:: KB.Input(22, True)	; u    u
++SC017:: KB.Input(23, True)	; i    i
++SC018:: KB.Input(24, True)	; o    o
++SC019:: KB.Input(25, True)	; p    p
++SC01A:: KB.Input(26, True)	; [    èü
++SC01B:: KB.Input(27, True)	; ]    ¨
++SC01E:: KB.Input(30, True)	; a    a
++SC01F:: KB.Input(31, True)	; s    s
++SC020:: KB.Input(32, True)	; d    d
++SC021:: KB.Input(33, True)	; f    f
++SC022:: KB.Input(34, True)	; g    g
++SC023:: KB.Input(35, True)	; h    h
++SC024:: KB.Input(36, True)	; j    j
++SC025:: KB.Input(37, True)	; k    k
++SC026:: KB.Input(38, True)	; l    l
++SC027:: KB.Input(39, True)	; ;    éö
++SC028:: KB.Input(40, True)	; '    àä
++SC02B:: KB.Input(43, True)	; \    $
++SC056:: KB.Input(86, True)	; N/A  <
++SC02C:: KB.Input(44, True)	; z    y
++SC02D:: KB.Input(45, True)	; x    x
++SC02E:: KB.Input(46, True)	; c    c
++SC02F:: KB.Input(47, True)	; v    v
++SC030:: KB.Input(48, True)	; b    b
++SC031:: KB.Input(49, True)	; n    n
++SC032:: KB.Input(50, True)	; m    m
++SC033:: KB.Input(51, True)	; ,    ,
++SC034:: KB.Input(52, True)	; .    .
++SC035:: KB.Input(53, True)	; /    -
+#HotIf

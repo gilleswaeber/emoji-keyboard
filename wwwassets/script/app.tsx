@@ -1,35 +1,63 @@
 import {Component, h, options, render} from 'preact';
-import {KeyboardLayout} from "./data";
-import {DefaultLayout} from "./layout";
-import {Board, BoardState, DefaultBoardState, getMainBoard, KeyboardView} from "./board";
+import {SC, SystemLayout} from "./data";
+import {SystemLayoutUS} from "./layout";
+import {Board, getMainBoard, KeyboardView, SharedState, SlottedKeys, toTitleCase} from "./board";
 import {Version} from "./osversion";
-import {ahkReady, ahkTitle} from "./ahk";
+import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkSetSize, ahkTitle} from "./ahk";
 import {getSearchBoard, SearchView} from "./search";
 import {search} from "./emojis";
+import {
+	AppConfig,
+	ConfigPage,
+	ConfigView,
+	DefaultConfig,
+	DefaultConfigPage,
+	DefaultThemeUrl,
+	ThemesMap
+} from "./config";
+import {unreachable} from "./helpers";
 
-type AppState = {
-	search: boolean;
-	searchText: string;
-	searchBoard: Board;
-	layout: KeyboardLayout;
-	board: Board;
-	boardState: BoardState;
-	os: Version;
+export const enum AppMode {
+	MAIN = 0,
+	SEARCH = 1,
+	SETTINGS = 2
 }
 
+type AppState = {
+	mode: AppMode;
+	searchText: string;
+	layout: SystemLayout;
+	config: AppConfig;
+	sharedState: SharedState;
+	os: Version;
+}
+export type AppRenderProps = AppState & { app: AppActions };
+
 export interface AppActions {
-	showBoard(parent: Board): void;
-	setPage(page: number): void;
+	keyHandlers: SlottedKeys;
+	setBoard(parent: Board): void;
+	setSearchBoard(searchBoard: Board): void;
+	setConfigPage(configPage: ConfigPage): void;
+	setSearchText(searchText: string): void;
+	updateConfig(config: Partial<AppConfig>): void;
+	setPage(name: string, page: number): void;
+	updateStatus(name: string): void;
+	setMode(mode: AppMode): void;
 }
 
 class App extends Component<{}, AppState> implements AppActions {
+	keyHandlers: SlottedKeys = {}
 	state = {
-		search: false,
+		mode: AppMode.MAIN,
 		searchText: '',
-		searchBoard: getSearchBoard(''),
-		layout: DefaultLayout,
-		board: getMainBoard(),
-		boardState: DefaultBoardState,
+		layout: SystemLayoutUS,
+		config: {...DefaultConfig, opacity: 1},
+		sharedState: {
+			board: getMainBoard(),
+			searchBoard: getSearchBoard(''),
+			configPage: DefaultConfigPage,
+			state: {}
+		},
 		os: new Version('99')
 	}
 
@@ -37,41 +65,135 @@ class App extends Component<{}, AppState> implements AppActions {
 		super(props);
 		(window as any).document.ahk = this;
 		(window as any).s = search;
+		(window as any).chrome?.webview?.addEventListener('message', (e: MessageEvent) => {
+			if (Array.isArray(e.data)) {
+				switch (e.data[0]) {
+					case 'input':
+						this.input(e.data[1], e.data[2]);
+						break;
+					case 'layout':
+						this.setSystemLayout(e.data[1]);
+						break;
+					case 'size':
+						this.updateConfig({width: e.data[1], height: e.data[2]});
+						break;
+					default:
+						console.log("message", e.data[0], e.data)
+				}
+			} else if (typeof e.data === 'string') {
+				const command = e.data.split(',', 1)[0];
+				const rest = e.data.slice(command.length + 1);
+				switch (command) {
+					case 'config':
+						this.setConfig(rest);
+						break;
+					case 'defaultConfig':
+						this.defaultConfig();
+						break;
+					case 'os':
+						this.setOS(rest);
+						break;
+					default:
+						console.log("message", command, rest)
+				}
+			} else {
+				console.log("message", e.data)
+			}
+		})
 	}
 
 	render() {
 		const s = this.state;
-		if (this.state.search) {
-			return <SearchView layout={s.layout} os={s.os} board={s.searchBoard} app={this}/>;
-		} else {
-			return <KeyboardView layout={s.layout} board={s.board} boardState={s.boardState} os={s.os} app={this}/>
+		let c;
+		switch (s.mode) {
+			case AppMode.MAIN:
+				c = <KeyboardView {...s} app={this}/>;
+				break;
+			case AppMode.SEARCH:
+				c = <SearchView {...s} app={this}/>
+				break;
+			case AppMode.SETTINGS:
+				c = <ConfigView {...s} app={this}/>
+				break;
+			default:
+				return unreachable(s.mode);
 		}
+		const layout = s.config.isoKeyboard ? 'iso-layout' : 'ansi-layout';
+		return <div class={`root ${s.config.themeMode}-color-scheme ${layout}`}>{c}</div>
 	}
 
-	public setSearch(search: boolean) {
-		this.setState({search})
-		if (search) ahkTitle('Emoji Keyboard - Search');
-		else ahkTitle(this.state.board.name);
+	public setMode(mode: AppMode) {
+		this.setState((s) => {
+			if (s.mode != mode) {
+				if (mode == AppMode.SEARCH) ahkSetSearch(true);
+				if (s.mode == AppMode.SEARCH) ahkSetSearch(false);
+			}
+			return {mode};
+		}, () => {
+			this.updateStatus();
+		});
+	}
+
+	public updateStatus(text?: string) {
+		const s = this.state;
+		switch (s.mode) {
+			case AppMode.MAIN:
+				ahkTitle(s.sharedState.board.name + (text?.length ? `: ${toTitleCase(text)}` : ''));
+				break;
+			case AppMode.SEARCH:
+				ahkTitle('Emoji Keyboard - Search' + (s.searchText.length ? `: ${toTitleCase(s.searchText)}` : ''));
+				break;
+			case AppMode.SETTINGS:
+				ahkTitle('Emoji Keyboard - Settings');
+				break;
+			default:
+				return unreachable(s.mode);
+		}
+
 	}
 
 	public input(key: number, shift: boolean = false) {
 		const s = this.state;
-		if (s.search) {
-			s.searchBoard.input(this, {page: 0}, key, shift);
-		} else {
-			s.board.input(this, s.boardState, key, shift);
+		switch (s.mode) {
+			case AppMode.MAIN:
+			case AppMode.SEARCH:
+			case AppMode.SETTINGS:
+				const k = this.keyHandlers[key as SC];
+				if (k) {
+					if (shift) k.actAlternate(this);
+					else k.act(this);
+				}
+				break;
+			default:
+				return unreachable(s.mode);
 		}
 	}
 
-	public setKeymap(keymap: string) {
-		if (data.keymaps[keymap]) {
-			const k = data.keymaps[keymap];
-			const layout: KeyboardLayout = {name: k.name, keys: {...DefaultLayout.keys, ...k.keys}};
-			this.setState({layout})
-		} else {
-			const keymaps = Array.from(Object.keys(data.keymaps)).slice(1).join(", ");
-			alert(keymap + " is not a valid keymap!\nValid keymaps are " + keymaps);
-		}
+	public setConfig(config: string) {
+		this.updateConfig(JSON.parse(config), false);
+	}
+
+	public defaultConfig() {
+		ahkSaveConfig(JSON.stringify(this.state.config));
+		ahkSetOpacity(this.state.config.opacity);
+	}
+
+	public updateConfig(config: Partial<AppConfig>, save = true) {
+		this.setState((s) => {
+			if (config.theme && s.config.theme != config.theme) {
+				const link = document.getElementById('themeCSS') as HTMLLinkElement;
+				link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
+			}
+			if (config.opacity && s.config.opacity != config.opacity) {
+				ahkSetOpacity(config.opacity);
+			}
+			if (config.devTools && !s.config.devTools) {
+				ahkOpenDevTools();
+			}
+			return {config: {...s.config, ...config}};
+		}, () => {
+			if (save) ahkSaveConfig(JSON.stringify(this.state.config));
+		})
 	}
 
 	public setOS(os: string) {
@@ -79,18 +201,31 @@ class App extends Component<{}, AppState> implements AppActions {
 		this.setState({os: new Version(os)})
 	}
 
+	public setSystemLayout(layout: SystemLayout) {
+		this.setState({layout: {...SystemLayoutUS, ...layout}});
+	}
+
 	public setSearchText(searchText: string) {
-		this.setState({searchText, searchBoard: getSearchBoard(searchText)});
-		ahkTitle('Text: ' + searchText);
+		this.setState({searchText},
+			() => this.updateStatus());
 	}
 
-	public showBoard(board: Board): void {
-		this.setState({board, boardState: board.lastState})
-		ahkTitle(board.name);
+	public setBoard(board: Board): void {
+		this.setState((s) => ({sharedState: {...s.sharedState, board}}),
+			() => this.updateStatus());
 	}
 
-	public setPage(page: number): void {
-		this.setState({boardState: {page}});
+	public setSearchBoard(searchBoard: Board) {
+		this.setState((s) => ({sharedState: {...s.sharedState, searchBoard}}),
+			() => this.updateStatus());
+	}
+
+	public setConfigPage(configPage: ConfigPage) {
+		this.setState((s) => ({sharedState: {...s.sharedState, configPage}}))
+	}
+
+	public setPage(name: string, page: number): void {
+		this.setState((s) => ({sharedState: {...s.sharedState, state: {...s.sharedState.state, [name]: {page}}}}));
 	}
 }
 
