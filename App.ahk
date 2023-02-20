@@ -56,7 +56,7 @@ class EmojiKeyboard {
 			}
 		}
 		onInputLangChange(*) {
-			this.CheckLayout()
+			CheckLayout()
 		}
 		this.main.OnEvent("Close", onClose)
 		this.main.OnEvent("Size", onSize)
