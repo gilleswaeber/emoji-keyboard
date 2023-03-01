@@ -1,3 +1,6 @@
+// Peggy (fork of PegJS) parser definition for the Unicode NamesList.txt file
+// © 2023 Gilles Waeber - MIT License
+
 {{
 	function dropNA(arr) {
 		return arr.filter(e => e !== null && typeof e !== 'undefined')
@@ -27,6 +30,7 @@
 		const sub = []
 		let current = []
 		let name = "base"
+		let base = {}
 		for (const e of dropNA(info)) {
 			if (typeof e.sub !== 'undefined') {
 				if (current.length) sub.push({name, ...mergeInfo(current)})
@@ -37,12 +41,16 @@
 			}
 		}
 		if (current.length) sub.push({name, ...mergeInfo(current)})
-		return sub
+		if (sub.length && !sub[0].char) {
+			let {name:_, ...rest} = sub.shift()
+			base = rest
+		}
+		return {...base, sub}
 	}
 }}
 
 NAMELIST "NAMELIST"
-	= title: TITLE_PAGE* block: EXTENDED_BLOCK* {return {title, block}}
+	= title: TITLE_PAGE block: EXTENDED_BLOCK* {return {title, block}}
 
 TITLE_PAGE "TITLE_PAGE"
 	= FILE_COMMENT* title: TITLE info:
@@ -62,7 +70,7 @@ EXTENDED_BLOCK "EXTENDED_BLOCK"
 
 BLOCK "BLOCK"
 	= header: BLOCKHEADER INDEX_TAB? info:
-		( char: CHAR_ENTRY {return {char}}
+		( chr: CHAR_ENTRY {return {char: chr}}
 		/ sub: SUBHEADER  {return {sub}}
 		/ ref: CROSS_REF {return {ref}}
 		/ notice: NOTICE_LINE  {return {notice}}
@@ -70,7 +78,7 @@ BLOCK "BLOCK"
 		/ IGNORED_LINE {}
 		/ SIDEBAR_LINE {}
 		/ PAGEBREAK {}
-		/ FILE_COMMENT {})* {return {...header, sub: block(info)}}
+		/ FILE_COMMENT {})* {return {...block(info), ...header}}
 
 
 CHAR_ENTRY "CHAR_ENTRY"
@@ -110,10 +118,10 @@ SUMMARY_LINE "SUMMARY_LINE"
 	/ EMPTY_LINE
 
 NAME_LINE "NAME_LINE"
-	= code: CHAR TAB name: NAME LF {return {code, name}}
-	/ code: CHAR TAB "<" cname: LCNAME ">" LF {return {code, name: "<" + cname + ">"}}
-	/ code: CHAR TAB name: NAME SP COMMENT LF {return {code, name}}
-	/ code: CHAR TAB "<" cname: LCNAME ">" SP COMMENT LF {return {code, name: "<" + cname + ">"}}
+	= code: CODEPOINT TAB name: NAME LF {return {code, name}}
+	/ code: CODEPOINT TAB "<" cname: LCNAME ">" LF {return {code, name: "<" + cname + ">"}}
+	/ code: CODEPOINT TAB name: NAME SP COMMENT LF {return {code, name}}
+	/ code: CODEPOINT TAB "<" cname: LCNAME ">" SP COMMENT LF {return {code, name: "<" + cname + ">"}}
 
 RESERVED_LINE "RESERVED_LINE"
 	= code: CHAR TAB name: "<reserved>" LF {return {code, name}}
@@ -130,13 +138,13 @@ FORMALALIAS_LINE "FORMALALIAS_LINE"
 
 CROSS_REF "CROSS_REF"
 	= TAB "x" SP code: (
-    	code: CHAR (SP "<" LCNAME ">" / LCNAME)? {return code}
-		/ "(" ("<" LCNAME ">" / LCNAME) SP "-" SP code: CHAR ")" {return code}
+    	code: CODEPOINT (SP "<" LCNAME ">" / LCNAME)? {return code}
+		/ "(" ("<" LCNAME ">" / LCNAME) SP "-" SP code: CODEPOINT ")" {return code}
 	) LF {return code}
 
 VARIATION_LINE "VARIATION_LINE"
-	= TAB "~" SP code: CHAR SP sel: VARSEL SP name: LABEL LF {return {code, sel, name}}
-	/ TAB "~" SP code: CHAR SP sel: VARSEL SP name: (LABEL "(" LCTAG ")") LF {return {code, sel, name: name.join('')}}
+	= TAB "~" SP code: CODEPOINT SP sel: VARSEL SP name: LABEL LF {return {code, sel, name}}
+	/ TAB "~" SP code: CODEPOINT SP sel: VARSEL SP name: (LABEL "(" LCTAG ")") LF {return {code, sel, name: name.join('')}}
 
 FILE_COMMENT "FILE_COMMENT"
 	= ";" text: LINE {return ";" + text}
@@ -191,15 +199,11 @@ MIXED_SUBHEADER "MIXED_SUBHEADER"
 	/ "@@@~" TAB "!" VARSEL_LIST LINE
 
 BLOCKHEADER "BLOCKHEADER"
-	= "@@" TAB start: BLOCKSTART TAB name: BLOCKNAME TAB end: BLOCKEND LF {return {start, end, name}}
+	= "@@" TAB start: CODEPOINT TAB name: BLOCKNAME TAB end: CODEPOINT LF {return {start, end, name}}
 
 BLOCKNAME "BLOCKNAME"
 	= text: (LABEL (SP "(" LABEL ")")?) {return flatJoin(text)}
 
-BLOCKSTART "BLOCKSTART"
-	= CHAR
-BLOCKEND "BLOCKEND"
-	= CHAR
 PAGEBREAK "PAGEBREAK"
 	= "@@" LF
 INDEX_TAB "INDEX_TAB"
@@ -225,7 +229,7 @@ TAG "TAG"
 LCTAG "LCTAG"
 	= text: [a-z]+ {return text.join('')}
 STRING "STRING"
-	= text: [\u0020-\u02FF]+ {return text.join('')} // except controls
+	= text: ([\u0020-\uD7FF\uE000-\uFFFF] / SUP_PLANE_CHAR)+ {return text.join('')} // except controls
 LABEL "LABEL"
 	= text: ([\u0021-\u0027\u002A-\u02FF]+([ -]+[\u0021-\u0027\u002A-\u002C\u002E-\u02FF]+)*) {
     	return flatJoin(text)}  // except controls, "(" or ")"
@@ -237,7 +241,9 @@ VARSEL_LIST "VARSEL_LIST"
 CHAR_LIST "CHAR_LIST"
 	= CHAR (SP CHAR)*
 CHAR "CHAR"
-	= text:(X X X X X? X?) {return flatJoin(text)}
+	= text: X|4..6| {return text.join('')}
+CODEPOINT "CODEPOINT"
+	= code: CHAR {return parseInt(code, 16)}
 X "X"
 	= [0-9A-F]
 ESC_CHAR "ESC_CHAR"
@@ -250,3 +256,7 @@ SP "SP"
 	= [ ]
 LF "LF"
 	= [\r\n]+
+
+// One character in the Supplementary Plane, encoded as a surrogate pair of two UTF-16 code units
+SUP_PLANE_CHAR "SUP_PLANE_CHAR"
+	= lead: [\uD800-\uDBFF] trail: [\uDC00-\uDFFF] {return lead + trail}

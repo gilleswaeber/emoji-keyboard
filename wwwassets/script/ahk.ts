@@ -1,6 +1,9 @@
+import {ConsolidatedUnicodeData} from "./builder/consolidated";
+
 type HostObject = {
 	openDevTools(): void;
 	saveConfig(config: string): void;
+	saveUnicodeData(data: string, types: string): void;
 	send(text: string): void;
 	setOpacity(opacity: number): void;
 	setTitle(title: string): void;
@@ -37,7 +40,19 @@ export function ahkSetSearch(state: boolean) {
 
 export function ahkSaveConfig(config: string) {
 	if (isAHK()) AHK!.saveConfig(config);
-	else console.log("SaveConfig", config)
+	else console.log("SaveConfig", config);
+}
+
+export function ahkSaveUnicodeData(data: ConsolidatedUnicodeData) {
+	if (isAHK()) {
+		AHK!.saveUnicodeData(
+			JSON.stringify(data),
+			'export type UnicodeEmojiGroup = \n\t' + data.groups.flatMap(g => g.sub.flatMap(
+				s => `{group: ${JSON.stringify(g.name)}, subGroup: ${JSON.stringify(s.name)}}`
+			)).join('\n\t| ') + ';\n'
+		);
+	}
+	else console.log("SaveUnicodeData", data);
 }
 
 export function ahkSetSize(width: number, height: number) {

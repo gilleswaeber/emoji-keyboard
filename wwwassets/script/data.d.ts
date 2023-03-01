@@ -2,7 +2,7 @@ declare type Dictionary<T> = { [key: string]: T }
 
 export interface DataStatic {
 	emojis: Emoji[];
-	keyboards: EmojiKeyboard[];
+	keyboards: LegacyEmojiKeyboard[];
 }
 
 export type EmojiStyle = "space";
@@ -20,7 +20,7 @@ export interface Emoji {
 	show: string,
 }
 
-export interface EmojiKeyboard {
+export interface LegacyEmojiKeyboard {
 	name: string,
 	symbol: string,
 	requiredVersion?: string,

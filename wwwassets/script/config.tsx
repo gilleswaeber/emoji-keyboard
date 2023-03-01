@@ -5,6 +5,7 @@ import {AnsiCodesList, DigitsRow, FirstRow, IsoCodesList, SecondRow} from "./lay
 import {BackKey, BlankKey, ConfigActionKey, ConfigLabelKey, ConfigPageKey, ConfigToggleKey, ExitSearchKey} from "./key";
 import {SlottedKeys, mapKeysToSlots} from "./board";
 import {useMemo} from "preact/hooks";
+import {makeBuild} from "./builder/builder";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 const SHORTCUT_KEYS = [
@@ -211,6 +212,24 @@ const ConfigPages: ConfigPage[] = [
 			};
 		}
 	},
+	{
+		"name": "Tools",
+		"symbol": "🔨",
+		keys(p: AppRenderProps) {
+			if (!p.config.devTools) return {};
+			return {
+				...mapKeysToSlots(FirstRow, [
+					new ConfigActionKey({
+						name: "Build",
+						symbol: "🏗️",
+						action() {
+							makeBuild();
+						}
+					})
+				]),
+			}
+		}
+	}
 ]
 export const DefaultConfigPage = ConfigPages[0];
 

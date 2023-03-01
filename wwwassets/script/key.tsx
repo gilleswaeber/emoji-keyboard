@@ -41,7 +41,7 @@ export class Key {
 		let keyType = "action";
 		if (!this.name.length) {
 			keyType = "empty";
-		} else if (this instanceof CharKey) {
+		} else if (this instanceof LegacyCharKey) {
 			keyType = "char";
 		} else if (this instanceof BackKey) {
 			keyType = "back";
@@ -227,7 +227,7 @@ export class ExitSearchKey extends Key {
 	}
 }
 
-export class CharKey extends Key {
+export class LegacyCharKey extends Key {
 	constructor(private char: Emoji, private board: Board) {
 		super({
 			name: (char.name ?? char.fullName ?? "").toLowerCase(),

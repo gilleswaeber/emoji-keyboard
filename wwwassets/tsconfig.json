@@ -15,7 +15,8 @@
         "target": "es2022",
         "jsx": "react",
         "jsxFactory": "h",
-        "lib": ["dom", "es2022"],
-        "typeRoots": ["lib"]
+        "lib": ["dom", "esnext"],
+        "typeRoots": ["lib"],
+	  	"moduleResolution": "node",
     }
 }

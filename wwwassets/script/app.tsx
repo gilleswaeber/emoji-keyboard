@@ -1,9 +1,9 @@
-import {Component, h, options, render} from 'preact';
+import {Component, createContext, h, options, render} from 'preact';
 import {SC, SystemLayout} from "./data";
 import {SystemLayoutUS} from "./layout";
-import {Board, getMainBoard, KeyboardView, SharedState, SlottedKeys, toTitleCase} from "./board";
+import {Board, getMainBoard, LegacyKeyboardView, SharedState, SlottedKeys} from "./board";
 import {Version} from "./osversion";
-import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkSetSize, ahkTitle} from "./ahk";
+import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
 import {getSearchBoard, SearchView} from "./search";
 import {search} from "./emojis";
 import {
@@ -16,6 +16,7 @@ import {
 	ThemesMap
 } from "./config";
 import {unreachable} from "./helpers";
+import {toTitleCase} from "./builder/titleCase";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -44,6 +45,7 @@ export interface AppActions {
 	updateStatus(name: string): void;
 	setMode(mode: AppMode): void;
 }
+export const AppContext = createContext<AppActions>(null as any);
 
 class App extends Component<{}, AppState> implements AppActions {
 	keyHandlers: SlottedKeys = {}
@@ -107,7 +109,7 @@ class App extends Component<{}, AppState> implements AppActions {
 		let c;
 		switch (s.mode) {
 			case AppMode.MAIN:
-				c = <KeyboardView {...s} app={this}/>;
+				c = <LegacyKeyboardView {...s} app={this}/>;
 				break;
 			case AppMode.SEARCH:
 				c = <SearchView {...s} app={this}/>
@@ -119,7 +121,9 @@ class App extends Component<{}, AppState> implements AppActions {
 				return unreachable(s.mode);
 		}
 		const layout = s.config.isoKeyboard ? 'iso-layout' : 'ansi-layout';
-		return <div class={`root ${s.config.themeMode}-color-scheme ${layout}`}>{c}</div>
+		return <AppContext.Provider value={this}>
+			<div className={`root ${s.config.themeMode}-color-scheme ${layout}`}>{c}</div>
+		</AppContext.Provider>;
 	}
 
 	public setMode(mode: AppMode) {

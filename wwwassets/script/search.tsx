@@ -2,7 +2,7 @@ import {SC} from "./data";
 import {h} from "preact";
 import {AppRenderProps} from "./app";
 import {SearchKeyCodes, SearchKeyCodesTable} from "./layout";
-import {BlankKey, CharKey, ExitSearchKey} from "./key";
+import {BlankKey, LegacyCharKey, ExitSearchKey} from "./key";
 import {Board, mapKeysToSlots} from "./board";
 import {search} from "./emojis";
 import {useCallback, useEffect, useMemo} from "preact/hooks";
@@ -30,7 +30,7 @@ export function getSearchBoard(needle: string): Board {
 		{
 			[SC.Backtick]: new ExitSearchKey(),
 			[SC.Tab]: new ExitSearchKey(),
-			...mapKeysToSlots(SearchKeyCodes, search(needle).map((c) => new CharKey(c, b)))
+			...mapKeysToSlots(SearchKeyCodes, search(needle).map((c) => new LegacyCharKey(c, b)))
 		}
 	]);
 }
