@@ -1,11 +1,12 @@
 import {SC} from "./data";
 import {AppRenderProps} from "./app";
 import {h} from "preact";
-import {AnsiCodesList, DigitsRow, FirstRow, IsoCodesList, SecondRow} from "./layout";
+import {DigitsRow, FirstRow, SecondRow} from "./layout";
 import {BackKey, BlankKey, ConfigActionKey, ConfigLabelKey, ConfigPageKey, ConfigToggleKey, ExitSearchKey} from "./key";
 import {SlottedKeys, mapKeysToSlots} from "./board";
-import {useMemo} from "preact/hooks";
+import {useContext, useMemo} from "preact/hooks";
 import {makeBuild} from "./builder/builder";
+import {LayoutContext} from "./appVar";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 const SHORTCUT_KEYS = [
@@ -241,6 +242,6 @@ export function ConfigView(p: AppRenderProps) {
 		})
 		, [p.sharedState.configPage, p.layout, p.config]);
 	p.app.keyHandlers = keys;
-	const codes = p.config.isoKeyboard ? IsoCodesList : AnsiCodesList;
-	return <div className="keyboard">{codes.map((code) => (keys[code] ?? BlankKey).render(p, code))}</div>
+	const layout = useContext(LayoutContext);
+	return <div className="keyboard">{layout.all.map((code) => (keys[code] ?? BlankKey).render(p, code))}</div>
 }

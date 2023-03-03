@@ -7,7 +7,7 @@ export interface DataStatic {
 
 export type EmojiStyle = "space";
 
-export interface Emoji {
+interface Emoji {
 	symbol: string,
 	group: string,
 	subGroup: string,

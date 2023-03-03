@@ -198,7 +198,9 @@ export function consolidateUnicodeData(
 }
 
 declare global {
-	const unicodeData: ConsolidatedUnicodeData;
+	interface Window {
+		unicodeData?: ConsolidatedUnicodeData
+	}
 }
 export type ExtendedUnicodeData = {
 	blocks: ExtendedBlockInformation[];
@@ -208,27 +210,34 @@ export type ExtendedUnicodeData = {
 };
 
 export function getUnicodeData(): ExtendedUnicodeData {
+	const u: ConsolidatedUnicodeData = window.unicodeData ?? {
+		blocks: [],
+		chars: [],
+		clusters: [],
+		groups: [],
+	};
+
 	const blocks: ExtendedBlockInformation[] = [];
 	const chars: Record<number, ExtendedCharInformation> = {};
 	const groups: Record<string, ExtendedGroupInformation> = {};
-	const clusters: Record<string, ExtendedClusterInformation> = Object.fromEntries(unicodeData.clusters.map(c => [c.cluster, {...c}]));
+	const clusters: Record<string, ExtendedClusterInformation> = Object.fromEntries(u.clusters.map(c => [c.cluster, {...c}]));
 
-	for (const block of unicodeData.blocks) {
+	for (const block of u.blocks) {
 		const b: ExtendedBlockInformation = {...block, sub: []};
 		b.sub = block.sub.map(s => ({...s, block: new WeakRef(b)}));
 		blocks.push(b);
 		for (const s of b.sub) {
 			for (const c of s.char) {
-				if (!unicodeData.chars[c]) continue;
+				if (!u.chars[c]) continue;
 				chars[c] = {
-					...unicodeData.chars[c],
+					...u.chars[c],
 					block: b,
 					sub: s,
 				};
 			}
 		}
 	}
-	for (const group of unicodeData.groups) {
+	for (const group of u.groups) {
 		const g: ExtendedGroupInformation = {...group, sub: {}};
 		groups[group.name] = g;
 		for (const sub of group.sub) {

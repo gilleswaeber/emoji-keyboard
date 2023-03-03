@@ -1,7 +1,7 @@
 import {Component, createContext, h, options, render} from 'preact';
 import {SC, SystemLayout} from "./data";
-import {SystemLayoutUS} from "./layout";
-import {Board, getMainBoard, LegacyKeyboardView, SharedState, SlottedKeys} from "./board";
+import {AnsiLayout, IsoLayout, SystemLayoutUS} from "./layout";
+import {Board, getMainBoard, KeyboardView, SharedState, SlottedKeys} from "./board";
 import {Version} from "./osversion";
 import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
 import {getSearchBoard, SearchView} from "./search";
@@ -15,14 +15,16 @@ import {
 	DefaultThemeUrl,
 	ThemesMap
 } from "./config";
-import {unreachable} from "./helpers";
+import {fromEntries, unreachable} from "./helpers";
 import {toTitleCase} from "./builder/titleCase";
+import {AppActions, LayoutContext, setApp} from "./appVar";
 
 export const enum AppMode {
 	MAIN = 0,
 	SEARCH = 1,
 	SETTINGS = 2
 }
+const AppModes = [AppMode.MAIN, AppMode.SEARCH, AppMode.SETTINGS] as const;
 
 type AppState = {
 	mode: AppMode;
@@ -31,21 +33,10 @@ type AppState = {
 	config: AppConfig;
 	sharedState: SharedState;
 	os: Version;
+	/** oldest at the end */
+	parentBoards: { [mode in AppMode]: Board[] }
 }
 export type AppRenderProps = AppState & { app: AppActions };
-
-export interface AppActions {
-	keyHandlers: SlottedKeys;
-	setBoard(parent: Board): void;
-	setSearchBoard(searchBoard: Board): void;
-	setConfigPage(configPage: ConfigPage): void;
-	setSearchText(searchText: string): void;
-	updateConfig(config: Partial<AppConfig>): void;
-	setPage(name: string, page: number): void;
-	updateStatus(name: string): void;
-	setMode(mode: AppMode): void;
-}
-export const AppContext = createContext<AppActions>(null as any);
 
 class App extends Component<{}, AppState> implements AppActions {
 	keyHandlers: SlottedKeys = {}
@@ -60,11 +51,13 @@ class App extends Component<{}, AppState> implements AppActions {
 			configPage: DefaultConfigPage,
 			state: {}
 		},
-		os: new Version('99')
+		os: new Version('99'),
+		parentBoards: fromEntries(AppModes.map(m => [m, []] as const))
 	}
 
 	constructor(props: {}) {
 		super(props);
+		setApp(this);
 		(window as any).document.ahk = this;
 		(window as any).s = search;
 		(window as any).chrome?.webview?.addEventListener('message', (e: MessageEvent) => {
@@ -109,7 +102,7 @@ class App extends Component<{}, AppState> implements AppActions {
 		let c;
 		switch (s.mode) {
 			case AppMode.MAIN:
-				c = <LegacyKeyboardView {...s} app={this}/>;
+				c = <KeyboardView {...s} app={this}/>;
 				break;
 			case AppMode.SEARCH:
 				c = <SearchView {...s} app={this}/>
@@ -120,10 +113,10 @@ class App extends Component<{}, AppState> implements AppActions {
 			default:
 				return unreachable(s.mode);
 		}
-		const layout = s.config.isoKeyboard ? 'iso-layout' : 'ansi-layout';
-		return <AppContext.Provider value={this}>
-			<div className={`root ${s.config.themeMode}-color-scheme ${layout}`}>{c}</div>
-		</AppContext.Provider>;
+		const l = s.config.isoKeyboard ? IsoLayout : AnsiLayout;
+		return <LayoutContext.Provider value={l}>
+			<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
+		</LayoutContext.Provider>;
 	}
 
 	public setMode(mode: AppMode) {
@@ -164,8 +157,8 @@ class App extends Component<{}, AppState> implements AppActions {
 			case AppMode.SETTINGS:
 				const k = this.keyHandlers[key as SC];
 				if (k) {
-					if (shift) k.actAlternate(this);
-					else k.act(this);
+					if (shift) k.actAlternate();
+					else k.act();
 				}
 				break;
 			default:
@@ -215,7 +208,10 @@ class App extends Component<{}, AppState> implements AppActions {
 	}
 
 	public setBoard(board: Board): void {
-		this.setState((s) => ({sharedState: {...s.sharedState, board}}),
+		this.setState((s) => ({
+				parentBoards: {...s.parentBoards, [s.mode]: [s.sharedState.board, ...s.parentBoards[s.mode]]},
+				sharedState: {...s.sharedState, board}
+			}),
 			() => this.updateStatus());
 	}
 
@@ -228,8 +224,26 @@ class App extends Component<{}, AppState> implements AppActions {
 		this.setState((s) => ({sharedState: {...s.sharedState, configPage}}))
 	}
 
-	public setPage(name: string, page: number): void {
-		this.setState((s) => ({sharedState: {...s.sharedState, state: {...s.sharedState.state, [name]: {page}}}}));
+	public setPage(page: number): void {
+		this.setState((s) => ({
+			sharedState: {
+				...s.sharedState,
+				state: {...s.sharedState.state, [s.sharedState.board.name]: {page}}
+			}
+		}));
+	}
+
+	public back(): void {
+		this.setState((s) => {
+			if (s.parentBoards[s.mode].length) {
+				const [b, ...p] = s.parentBoards[s.mode];
+				return {
+					parentBoards: {...s.parentBoards, [s.mode]: p},
+					sharedState: {...s.sharedState, board: b},
+				};
+			}
+			return {};
+		});
 	}
 }
 

@@ -28,14 +28,6 @@ function escapeRegex(str: string): string {
 	return str.replace(ESCAPE_REGEX, '\\$1');
 }
 
-export function getSubGroup(group: string, subGroup: string): Emoji[] {
-	if (indexedEmojis[group] && indexedEmojis[group][subGroup]) {
-		return indexedEmojis[group][subGroup];
-	} else {
-		return [];
-	}
-}
-
 export function search(needle: string) {
 	let result: number[] = [];
 	needle.split(/\s+/g).forEach((n, k) => {

@@ -1,9 +1,12 @@
-import {AppActions, AppMode, AppRenderProps} from "./app";
+import {AppMode, AppRenderProps} from "./app";
 import {h} from "preact";
 import {Board} from "./board";
-import {Emoji, EmojiStyle, SC} from "./data";
+import {EmojiStyle, SC} from "./data";
 import {ahkSend} from "./ahk";
 import {ConfigPage} from "./config";
+import {app} from "./appVar";
+import {cl} from "./helpers";
+import {clusterName, clusterVariants} from "./unicodeInterface";
 
 function toTwemojiFilename(symbol: string) {
 	let name: string[] = [];
@@ -17,109 +20,84 @@ function toTwemojiFilename(symbol: string) {
 	return 'img/' + filename;
 }
 
+function Symbol({symbol, style}: { symbol: string, style?: string }) {
+	const useFallback = false;
+	return <div className={`symbol ${style && 's-' + style}`}>
+		{useFallback ? <img src={/*toTwemojiFilename*/(symbol)} alt={symbol}/> : symbol}
+	</div>
+}
+
 export class Key {
 	public readonly name: string;
 	public readonly upperName: string;
 	public readonly symbol: string;
 	public readonly style: string;
-	public readonly requiredOS: string;
 	public readonly active: boolean;
+	private readonly clickAlwaysAlternate: boolean;
+	private readonly keyNamePrefix: string;
+	protected readonly alt: boolean;
+	protected readonly lu: boolean;
 
 	constructor(
-		props: { name: string, upperName?: string, symbol: string, style?: EmojiStyle, requiredOS?: string, active?: boolean }
+		p: { name: string, upperName?: string, symbol: string, style?: EmojiStyle, active?: boolean, clickAlwaysAlternate?: boolean, keyNamePrefix?: string, alt?: boolean, lu?: boolean }
 	) {
-		this.name = props.name;
-		this.upperName = props.upperName ?? '';
-		this.symbol = props.symbol;
-		this.style = props.style ?? '';
-		this.requiredOS = props.requiredOS ?? '0';
-		this.active = props.active ?? false;
+		this.name = p.name;
+		this.upperName = p.upperName ?? '';
+		this.symbol = p.symbol;
+		this.style = p.style ?? '';
+		this.active = p.active ?? false;
+		this.clickAlwaysAlternate = p.clickAlwaysAlternate ?? false;
+		this.keyNamePrefix = p.keyNamePrefix ?? '';
+		this.alt = p.alt ?? false;
+		this.lu = p.lu ?? false;
 	}
 
-	render({os, app, layout}: AppRenderProps, code: SC) {
-		const useFallback = os.ge(this.requiredOS);
+	render({os, layout}: AppRenderProps, code: SC) {
 		let keyType = "action";
 		if (!this.name.length) {
 			keyType = "empty";
-		} else if (this instanceof LegacyCharKey) {
+		} else if (this instanceof ClusterKey) {
 			keyType = "char";
 		} else if (this instanceof BackKey) {
 			keyType = "back";
 		}
 
 		return <div
-			class={`key ${keyType} ${this.hasAlternate() && 'alt'} ${this.isLULetter() && 'lu'} ${this.active && 'active'}`}
+			className={cl('key', keyType, {alt: this.alt, lu: this.lu, active: this.active})}
 			onClick={(e) => {
 				e.preventDefault();
-				e.shiftKey ? this.actAlternate(app) : this.act(app);
+				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
 			}}
 			onContextMenu={(e) => {
 				e.preventDefault();
-				this.actAlternate(app);
+				this.actAlternate();
 			}}
-			onMouseOver={() => app.updateStatus(this.name)}
+			onMouseOver={() => app().updateStatus(this.name)}
 			key={code}
 		>
-			<div class="keyname">{layout[code]?.name}</div>
-			<div class="name">{this.name}</div>
-			<div class="uname">{this.upperName}</div>
-			<div class={`symbol ${this.style && 's-' + this.style}`}>
-				{useFallback ? <img src={toTwemojiFilename(this.symbol)} alt={this.symbol}/> : this.symbol}
-			</div>
+			<div className="keyname">{this.keyNamePrefix}{layout[code]?.name}</div>
+			<div className="name">{this.name}</div>
+			<div className="uname">{this.upperName}</div>
+			<Symbol symbol={this.symbol} style={this.style}/>
 		</div>;
 	}
 
-	act(app: AppActions): void {
+	act(): void {
 		// Default: do nothing
 	}
 
-	actAlternate(app: AppActions): void {
-		this.act(app);
-	}
-
-	hasAlternate(): boolean {
-		return false;
-	}
-
-	isLULetter(): boolean {
-		return false;
+	actAlternate(): void {
+		this.act();
 	}
 }
 
 export class ConfigKey extends Key {
 	constructor() {
-		super({name: "Settings", symbol: "🛠️"});
+		super({name: "Settings", symbol: "🛠️", clickAlwaysAlternate: true});
 	}
 
-	render({os, app, layout}: AppRenderProps, code: SC) {
-		const useFallback = os.ge(this.requiredOS);
-
-		return <div
-			class={`key action`}
-			onClick={(e) => {
-				e.preventDefault();
-				this.actAlternate(app);
-			}}
-			onContextMenu={(e) => {
-				e.preventDefault();
-				this.actAlternate(app);
-			}}
-			onMouseOver={() => app.updateStatus(this.name)}
-		>
-			<div class="keyname">{`⇧${layout[code]?.name}`}</div>
-			<div class="name">{this.name}</div>
-			<div class={`symbol`}>
-				{useFallback ? <img src={toTwemojiFilename(this.symbol)} alt={this.symbol}/> : this.symbol}
-			</div>
-		</div>;
-	}
-
-	act(app: AppActions): void {
-		// Do nothing
-	}
-
-	actAlternate(app: AppActions): void {
-		app.setMode(AppMode.SETTINGS);
+	actAlternate(): void {
+		app().setMode(AppMode.SETTINGS);
 	}
 }
 
@@ -136,13 +114,13 @@ export class ConfigActionKey extends Key {
 		this.action = action;
 	}
 
-	act(app: AppActions) {
+	act() {
 		this.action();
 	}
 }
 
 export class ConfigToggleKey extends ConfigActionKey {
-	act(app: AppActions) {
+	act() {
 		this.action();
 	}
 }
@@ -152,7 +130,7 @@ export class ConfigLabelKey extends Key {
 		super({name: "", symbol: text});
 	}
 
-	render({os, app, layout}: AppRenderProps, code: SC) {
+	render({os, layout}: AppRenderProps, code: SC) {
 		return <div class={`key label`}>
 			<div class="keyname">{layout[code]?.name}</div>
 			<div class="name">{this.name}</div>
@@ -164,36 +142,36 @@ export class ConfigLabelKey extends Key {
 export const BlankKey = new Key({name: '', symbol: ''});
 
 export class BackKey extends Key {
-	constructor(private parent: Board) {
+	constructor() {
 		super({name: 'back/🛠️', symbol: '←'});
 	}
 
-	act(app: AppActions) {
-		app.setBoard(this.parent);
+	act() {
+		app().back();
 	}
 
-	actAlternate(app: AppActions) {
-		app.setMode(AppMode.SETTINGS);
+	actAlternate() {
+		app().setMode(AppMode.SETTINGS);
 	}
 }
 
 export class KeyboardKey extends Key {
 	constructor(private target: Board) {
-		super({name: target.name, symbol: target.symbol, requiredOS: target.requiredOS});
+		super({name: target.name, symbol: target.symbol});
 	}
 
-	act(app: AppActions) {
-		app.setBoard(this.target);
+	act() {
+		app().setBoard(this.target);
 	}
 }
 
 export class PageKey extends Key {
-	constructor(private board: Board, private page: number, active: boolean) {
+	constructor(private page: number, active: boolean) {
 		super({name: `page ${page + 1}`, symbol: '' + (page + 1), active});
 	}
 
-	act(app: AppActions) {
-		if (!this.active) app.setPage(this.board.name, this.page);
+	act() {
+		if (!this.active) app().setPage(this.page);
 	}
 }
 
@@ -202,8 +180,8 @@ export class ConfigPageKey extends Key {
 		super({name: page.name, symbol: page.symbol, active});
 	}
 
-	act(app: AppActions) {
-		if (!this.active) app.setConfigPage(this.page);
+	act() {
+		if (!this.active) app().setConfigPage(this.page);
 	}
 }
 
@@ -212,8 +190,8 @@ export class SearchKey extends Key {
 		super({name: 'search', symbol: '🔎'});
 	}
 
-	act(app: AppActions) {
-		app.setMode(AppMode.SEARCH);
+	act() {
+		app().setMode(AppMode.SEARCH);
 	}
 }
 
@@ -222,44 +200,35 @@ export class ExitSearchKey extends Key {
 		super({name: 'back', symbol: '←'});
 	}
 
-	act(app: AppActions) {
-		app.setMode(AppMode.MAIN);
+	act() {
+		app().setMode(AppMode.MAIN);
 	}
 }
 
-export class LegacyCharKey extends Key {
-	constructor(private char: Emoji, private board: Board) {
+export class ClusterKey extends Key {
+	private readonly variants: string[] | undefined;
+	constructor(private cluster: string) {
+		const name = clusterName(cluster);
+		const variants = clusterVariants(cluster);
 		super({
-			name: (char.name ?? char.fullName ?? "").toLowerCase(),
-			upperName: char.alternates?.length == 2 ? char.alternates[1].show : "",
-			style: char.style,
-			symbol: char.show ?? char.symbol,
-			requiredOS: char.requiredVersion,
+			name,
+			upperName: variants?.length == 2 ? variants[1] : "",
+			symbol: cluster,
+			alt: !!variants && variants.length > 2,
+			lu: variants?.length === 2,
 		});
+		this.variants = variants;
 	}
 
-	act(app: AppActions) {
-		ahkSend(this.char.symbol);
+	act() {
+		ahkSend(this.cluster);
 	}
 
-	actAlternate(app: AppActions) {
-		if (this.hasAlternate()) {
-			app.setBoard(Board.fromAlternates(this.board!!, this.char));
-		} else if (this.isLULetter()) {
-			ahkSend(this.char.alternates![1].symbol);
-		} else return this.act(app);
-	}
-
-	getUName(): string {
-		if (this.isLULetter()) return this.char.alternates![1].show;
-		else return "";
-	}
-
-	hasAlternate(): boolean {
-		return !!this.char.alternates && this.char.alternates.length > 2;
-	}
-
-	isLULetter(): boolean {
-		return this.char.alternates?.length == 2;
+	actAlternate() {
+		if (this.alt) {
+			app().setBoard(Board.clusterAlternates(this.cluster));
+		} else if (this.lu) {
+			ahkSend(this.variants![1]);
+		} else return this.act();
 	}
 }
