@@ -10,7 +10,7 @@ const EmojiDataRegex = new RegExp(
 	`^(?<char>[0-9A-F]+(?:..[0-9A-F]+)?)\\s*;\\s*(?<attr>[A-Za-z_]+)\\s*#\\s*E?(?<version>[0-9.]+)\\s*\\[`
 );
 
-export type EmojiVersion = Record<number, string|undefined>;
+export type EmojiVersion = Record<number, number|undefined>;
 
 export async function parseEmojiVersions(emojiDataPath: string): Promise<EmojiVersion> {
 	const emojiVersion: EmojiVersion = {};
@@ -20,15 +20,15 @@ export async function parseEmojiVersions(emojiDataPath: string): Promise<EmojiVe
 		if (!line.length || line.startsWith('#')) continue;
 		const m = line.match(EmojiDataRegex)?.groups;
 		if (m) {
+			const version = parseFloat(m['version']);
 			if (m['char'].includes('..')) {
 				const [from, to] = m['char'].split('..').map(s => parseInt(s, 16));
-				const version = m['version'];
 				for (let char = from; char <= to; char++) {
 					emojiVersion[char] = version;
 				}
 			} else {
 				const char = parseInt(m['char'], 16);
-				emojiVersion[char] = m['version'];
+				emojiVersion[char] = version;
 			}
 		}
 	}
@@ -324,7 +324,7 @@ type EmojiSequence = {
 	sequence: string;
 	type: SequenceType;
 	name: string;
-	version: string;
+	version: number;
 }
 export type EmojiTestData = {
 	groups: EmojiGroup[],
@@ -355,7 +355,7 @@ export async function parseEmojiTest(p: { emojiTestPath: string }): Promise<Emoj
 					sequence,
 					type: m['type'] as SequenceType,
 					name: m['name'],
-					version: m['version'],
+					version: parseFloat(m['version']),
 				};
 			}
 		}

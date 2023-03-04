@@ -1,12 +1,15 @@
 import {AppMode, AppRenderProps} from "./app";
 import {h} from "preact";
 import {Board} from "./board";
-import {EmojiStyle, SC} from "./data";
+import {SC} from "./data";
 import {ahkSend} from "./ahk";
 import {ConfigPage} from "./config";
-import {app} from "./appVar";
+import {app, OSContext} from "./appVar";
 import {cl} from "./helpers";
-import {clusterName, clusterVariants} from "./unicodeInterface";
+import {charInfo, clusterName, clusterVariants, requiredOS} from "./unicodeInterface";
+import {toCodePoints} from "./builder/builder";
+import {GeneralCategory} from "./builder/unicode";
+import {useContext, useMemo} from "preact/hooks";
 
 function toTwemojiFilename(symbol: string) {
 	let name: string[] = [];
@@ -20,18 +23,27 @@ function toTwemojiFilename(symbol: string) {
 	return 'img/' + filename;
 }
 
-function Symbol({symbol, style}: { symbol: string, style?: string }) {
-	const useFallback = false;
-	return <div className={`symbol ${style && 's-' + style}`}>
-		{useFallback ? <img src={/*toTwemojiFilename*/(symbol)} alt={symbol}/> : symbol}
-	</div>
+function Symbol({symbol}: { symbol: string }) {
+	const os = useContext(OSContext);
+	return useMemo(() => {
+		if ([...symbol].length == 1) {
+			const info = charInfo(toCodePoints(symbol)[0]);
+			if (info?.category === GeneralCategory.Space_Separator || info?.category === GeneralCategory.Format) {
+				return <div className="symbol s-space">{info.name}</div>
+			}
+		}
+		const req = requiredOS(symbol);
+		const fallback = os.lt(req);
+		return <div className={cl(`symbol`, {fallback})}>
+			{symbol}
+		</div>
+	}, [symbol, os]);
 }
 
 export class Key {
 	public readonly name: string;
 	public readonly upperName: string;
 	public readonly symbol: string;
-	public readonly style: string;
 	public readonly active: boolean;
 	private readonly clickAlwaysAlternate: boolean;
 	private readonly keyNamePrefix: string;
@@ -39,12 +51,11 @@ export class Key {
 	protected readonly lu: boolean;
 
 	constructor(
-		p: { name: string, upperName?: string, symbol: string, style?: EmojiStyle, active?: boolean, clickAlwaysAlternate?: boolean, keyNamePrefix?: string, alt?: boolean, lu?: boolean }
+		p: { name: string, upperName?: string, symbol: string, active?: boolean, clickAlwaysAlternate?: boolean, keyNamePrefix?: string, alt?: boolean, lu?: boolean }
 	) {
 		this.name = p.name;
 		this.upperName = p.upperName ?? '';
 		this.symbol = p.symbol;
-		this.style = p.style ?? '';
 		this.active = p.active ?? false;
 		this.clickAlwaysAlternate = p.clickAlwaysAlternate ?? false;
 		this.keyNamePrefix = p.keyNamePrefix ?? '';
@@ -78,7 +89,7 @@ export class Key {
 			<div className="keyname">{this.keyNamePrefix}{layout[code]?.name}</div>
 			<div className="name">{this.name}</div>
 			<div className="uname">{this.upperName}</div>
-			<Symbol symbol={this.symbol} style={this.style}/>
+			<Symbol symbol={this.symbol}/>
 		</div>;
 	}
 
@@ -93,7 +104,7 @@ export class Key {
 
 export class ConfigKey extends Key {
 	constructor() {
-		super({name: "Settings", symbol: "🛠️", clickAlwaysAlternate: true});
+		super({name: "Settings", symbol: "🛠️", clickAlwaysAlternate: true, keyNamePrefix: "⇧"});
 	}
 
 	actAlternate(): void {
@@ -207,9 +218,9 @@ export class ExitSearchKey extends Key {
 
 export class ClusterKey extends Key {
 	private readonly variants: string[] | undefined;
-	constructor(private cluster: string) {
+	constructor(private cluster: string, variants?: string[]) {
 		const name = clusterName(cluster);
-		const variants = clusterVariants(cluster);
+		variants ??= clusterVariants(cluster);
 		super({
 			name,
 			upperName: variants?.length == 2 ? variants[1] : "",
@@ -226,7 +237,7 @@ export class ClusterKey extends Key {
 
 	actAlternate() {
 		if (this.alt) {
-			app().setBoard(Board.clusterAlternates(this.cluster));
+			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!));
 		} else if (this.lu) {
 			ahkSend(this.variants![1]);
 		} else return this.act();

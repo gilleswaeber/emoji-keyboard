@@ -38,16 +38,26 @@ export class Version {
 		else this.knownSame.add(other);
 	}
 
+	/** < operator */
+	public lt(other: string): boolean {
+		if (!this.known.has(other)) this.add(other);
+		return this.knownGreater.has(other);
+	}
+
+	/** > operator */
+	public gt(other: string): boolean {
+		if (!this.known.has(other)) this.add(other);
+		return this.knownLesser.has(other);
+	}
+
 	/** ≥ operator */
 	public ge(other: string): boolean {
-		if (!this.known.has(other)) this.add(other);
-		return !this.knownLesser.has(other);
+		return !this.lt(other);
 	}
 
 	/** ≤ operator */
 	public le(other: string): boolean {
-		if (!this.known.has(other)) this.add(other);
-		return !this.knownGreater.has(other);
+		return !this.gt(other);
 	}
 
 	/** == operator */

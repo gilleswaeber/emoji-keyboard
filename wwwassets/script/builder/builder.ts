@@ -2,7 +2,7 @@ import {Config, ConfigAddon, Paths} from "./config";
 import {Dictionary} from "../data";
 import {parseEmojiTest, parseEmojiVersions, parseNamesList, parseUnicodeData, UnicodeData} from "./unicode";
 import {consolidateUnicodeData} from "./consolidated";
-import {ahkSaveUnicodeData} from "../ahk";
+import {ahkDownloadUnicode, ahkSaveUnicodeData} from "../ahk";
 import {IgnoreForName} from "../unicodeInterface";
 
 function getFullName(code: number[], ctx: { unicodeData: UnicodeData }): string {
@@ -18,7 +18,7 @@ function getFullName(code: number[], ctx: { unicodeData: UnicodeData }): string 
 	return parts.join(", ");
 }
 
-function toCodePoints(s: string): number[] {
+export function toCodePoints(s: string): number[] {
 	return [...s].map(c => c.codePointAt(0)!);
 }
 
@@ -105,24 +105,22 @@ function secondPass(e: FirstPassEmoji, ctx: {unicodeData: UnicodeData}) {
 }*/
 
 export async function makeBuild() {
-	await build({
-		addons: [],
-		noGroup: [],
-		iconFallback: [],
-		keyboards: [],
-		symbols: [],
-	});
+	try {
+		await build();
+	} catch (e) {
+		console.error(e);
+		alert(`Build failed: ${e}`)
+	}
 }
 
-async function build(config: Config) {
+async function build() {
+	ahkDownloadUnicode()
 	const paths: Paths = {
-		emojiTestPath: '../res/data/emoji-15.0/emoji-test.txt',
-		emojiDataPath: '../res/data/ucd-15.0.0/emoji/emoji-data.txt',
-		unicodeDataPath: '../res/data/ucd-15.0.0/UnicodeData.txt',
-		namesListPath: '../res/data/ucd-15.0.0/NamesList.txt',
+		emojiTestPath: '../res/data/emoji/15.0/emoji-test.txt',
+		emojiDataPath: '../res/data/15.0.0/ucd/emoji/emoji-data.txt',
+		unicodeDataPath: '../res/data/15.0.0/ucd/UnicodeData.txt',
+		namesListPath: '../res/data/15.0.0/ucd/NamesList.txt',
 	};
-	const emojis: Dictionary<FirstPassEmoji> = {};
-	const groups = [];
 
 	const ctx = {
 		unicodeData: await parseUnicodeData(paths),
@@ -131,74 +129,18 @@ async function build(config: Config) {
 		namesList: await parseNamesList(paths),
 	};
 
-	const uni = consolidateUnicodeData(ctx);
-	console.log(uni);
+	const u = consolidateUnicodeData(ctx);
+	console.log(u);
 
-	debugger;
+	ahkSaveUnicodeData(u);
 
-	ahkSaveUnicodeData(uni);
-
-	/*
-	// Parse Addons
-	if (config.addons) {
-		for (const addon of config.addons) {
-			if (addon.symbols) {
-				for (const symbol of addon.symbols) {
-					if (symbol && typeof symbol !== 'string') {
-						const fromCode = toCodePoints(symbol.from);
-						const toCode = toCodePoints(symbol.to);
-						if (fromCode.length !== 1 || toCode.length !== 1 || fromCode[0] > toCode[0]) {
-							throw new Error(`Invalid range: ${symbol.from} — ${symbol.to}`);
-						}
-						const from = fromCode[0];
-						const to = toCode[0];
-						for (let c = from; c <= to; c++) {
-							const emoji = getEmoji(addon, String.fromCodePoint(c), ctx);
-							emojis[emoji.name] = emoji;
-						}
-					} else {
-						const emoji = getEmoji(addon, symbol, ctx);
-						emojis[emoji.name] = emoji;
-					}
-				}
-			} else {
-				const name = addon.name ?? getFullName(toCodePoints(addon.symbol), ctx);
-				const style = addon.style ?? null;
-				emojis[name] = {
-					symbol: addon.symbol,
-					group: addon.group,
-					subGroup: addon.subGroup,
-					name,
-					show: addon.show ?? addon.symbol,
-				};
-				if (style !== null) {
-					emojis[name].style = style;
-				}
-				if (addon.keywords) {
-					emojis[name].keywords = addon.keywords;
-				}
-				if (addon.alternates) {
-					emojis[name].alternates = [emojis[name]];
-					for (const alt of addon.alternates) {
-						const c: FirstPassEmoji = {
-							symbol: alt.symbol,
-							group: addon.group,
-							subGroup: addon.subGroup,
-							name: alt.name ?? getFullName(toCodePoints(alt.symbol), ctx),
-							show: alt.show ?? alt.symbol
-						};
-						if (alt.keywords) {
-							c.keywords = addon.keywords;
-						}
-						if (style !== null) {
-							c.style = style;
-						}
-						emojis[name].alternates!.push(c);
-					}
-				}
-			}
-		}
-	}
-	*/
+	const emojiCount = u.groups.map(g => g.sub.reduce((v, s) => v + (s.clusters?.length ?? 0), 0)).reduce((a, b) => a + b, 0);
+	alert(
+		`Finished building “${u.name}”\n` +
+		` – ${u.chars.length} codepoints in ${u.blocks.length} blocks\n` +
+		` – ${u.clusters.length} grapheme clusters with length > 1\n` +
+		` – ${u.groups.length} emoji groups with ${emojiCount} base emojis\n\n` +
+		`Reload the app to load the new data file`
+	)
 }
 

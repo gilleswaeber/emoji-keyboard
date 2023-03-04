@@ -10,6 +10,7 @@ import {
 	UnicodeDataChar
 } from "./unicode";
 import {toTitleCase} from "./titleCase";
+import {ZeroWidthJoiner} from "../chars";
 
 type BlockInformation = {
 	start: number;
@@ -29,16 +30,16 @@ type ExtendedSubBlockInformation = SubBlockInformation & {
 	block: WeakRef<ExtendedBlockInformation>;
 }
 type CharInformation = UnicodeDataChar & NamesListChar & {
-	emojiVersion?: string;
+	emojiVersion?: number;
 }
-type ExtendedCharInformation = CharInformation & {
+export type ExtendedCharInformation = CharInformation & {
 	block: ExtendedBlockInformation;
 	sub: ExtendedSubBlockInformation;
 }
 type ClusterInformation = {
 	cluster: string;
 	name: string;
-	version: string;
+	version: number;
 	parent?: string;
 	variants?: string[];
 };
@@ -62,6 +63,7 @@ type ExtendedSubGroupInformation = SubGroupInformation & {
 	group: WeakRef<ExtendedGroupInformation>;
 }
 export type ConsolidatedUnicodeData = {
+	name: string;
 	blocks: BlockInformation[];
 	chars: CharInformation[];
 	groups: GroupInformation[];
@@ -194,7 +196,7 @@ export function consolidateUnicodeData(
 			}
 		}
 	}
-	return {blocks, chars, groups, clusters};
+	return {blocks, chars, groups, clusters, name: namesList.title.title};
 }
 
 declare global {
@@ -209,13 +211,26 @@ export type ExtendedUnicodeData = {
 	clusters: Record<string, ClusterInformation>;
 };
 
+const SKIN_TONES = ["🏻", "🏼", "🏽", "🏾", "🏿"] as const;
+const SKIN_TONES_NAMES = {
+	"🏻": "Light Skin Tone",
+	"🏼": "Medium-Light Skin Tone",
+	"🏽": "Medium Skin Tone",
+	"🏾": "Medium-Dark Skin Tone",
+	"🏿": "Dark Skin Tone",
+} as const;
+const SKIN_TONE_REGEX = new RegExp(`(?:${SKIN_TONES.join('|')})`, 'g');
+
 export function getUnicodeData(): ExtendedUnicodeData {
 	const u: ConsolidatedUnicodeData = window.unicodeData ?? {
+		name: "No Unicode Data Available",
 		blocks: [],
 		chars: [],
 		clusters: [],
 		groups: [],
 	};
+
+	const idxChars: Record<number, CharInformation> = Object.fromEntries(u.chars.map(c => [c.code, c]));
 
 	const blocks: ExtendedBlockInformation[] = [];
 	const chars: Record<number, ExtendedCharInformation> = {};
@@ -228,9 +243,9 @@ export function getUnicodeData(): ExtendedUnicodeData {
 		blocks.push(b);
 		for (const s of b.sub) {
 			for (const c of s.char) {
-				if (!u.chars[c]) continue;
+				if (!idxChars[c]) continue;
 				chars[c] = {
-					...u.chars[c],
+					...idxChars[c],
 					block: b,
 					sub: s,
 				};
@@ -250,5 +265,28 @@ export function getUnicodeData(): ExtendedUnicodeData {
 			}
 		}
 	}
+
+	// Add skin tone variants to family sequences
+	for (const c of ["👨‍👩‍👦", "👨‍👩‍👧", "👨‍👩‍👧‍👦", "👨‍👩‍👦‍👦", "👨‍👩‍👧‍👧", "👨‍👨‍👦", "👨‍👨‍👧", "👨‍👨‍👧‍👦", "👨‍👨‍👦‍👦", "👨‍👨‍👧‍👧", "👩‍👩‍👦", "👩‍👩‍👧", "👩‍👩‍👧‍👦", "👩‍👩‍👦‍👦", "👩‍👩‍👧‍👧", "👨‍👦", "👨‍👦‍👦", "👨‍👧", "👨‍👧‍👦", "👨‍👧‍👧", "👩‍👦", "👩‍👦‍👦", "👩‍👧", "👩‍👧‍👦", "👩‍👧‍👧"]) {
+		if (clusters[c] && !clusters[c].variants) {
+			const parts = c.split(ZeroWidthJoiner);
+			for (let i = 1; i < parts.length; ++i) parts[i] = ZeroWidthJoiner + parts[i];
+			let variants = [""];
+			for (const p of parts) {
+				variants = variants.flatMap(v => SKIN_TONES.map(k => v + p + k))
+			}
+			for (const v of variants) {
+				clusters[v] = {
+					cluster: v,
+					parent: c,
+					name: clusters[c].name + ': ' + [...v.matchAll(SKIN_TONE_REGEX)].map(v => SKIN_TONES_NAMES[v[0] as keyof typeof SKIN_TONES_NAMES]).join(', '),
+					version: clusters[c].version,
+				}
+			}
+			variants.unshift(c);
+			clusters[c].variants = variants;
+		}
+	}
+
 	return {blocks, chars, groups, clusters};
 }

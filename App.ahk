@@ -68,12 +68,30 @@ class EmojiKeyboard {
 		this.wvc.Fill()
 	}
 
+	DownloadIfMissing(path) {
+		localPath := "res/data/" path
+		url := "https://unicode.org/Public/" path
+		if (!FileExist(localPath)) {
+			dir := RegExReplace(localPath, "[\\/][^\\/]+$", "")
+			if (!DirExist(dir)) {
+				DirCreate(dir)
+			}
+			Download(url, localPath)
+		}
+	}
+
 	Initialize() {
 		NewWindowRequestedHandler(handler, wv2, arg) {
 			argp := WebView2.NewWindowRequestedEventArgs(arg)
 			deferral := argp.GetDeferral()
 			argp.NewWindow := wv2
 			deferral.Complete()
+		}
+		onDownloadUnicode() {
+			this.DownloadIfMissing('emoji/15.0/emoji-test.txt')
+			this.DownloadIfMissing('15.0.0/ucd/emoji/emoji-data.txt')
+			this.DownloadIfMissing('15.0.0/ucd/UnicodeData.txt')
+			this.DownloadIfMissing('15.0.0/ucd/NamesList.txt')
 		}
 		onOpenDevTools() {
 			this.wv.OpenDevToolsWindow()
@@ -174,6 +192,7 @@ class EmojiKeyboard {
 		nwr := this.wv.NewWindowRequested(NewWindowRequestedHandler)
 		this.wv.Navigate('file:///' A_ScriptDir '\wwwassets\index.html')
 		this.wv.AddHostObjectToScript('ahk', {
+			downloadUnicode: onDownloadUnicode,
 			openDevTools: onOpenDevTools,
 			ready: onReady, reload: ActReload,
 			saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,

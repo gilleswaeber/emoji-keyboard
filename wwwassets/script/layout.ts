@@ -94,7 +94,7 @@ export const SystemLayoutUS: SystemLayout = {
 	[SC.PrintScreen]: {vk: 44, name: "Prnt Scrn"},
 	[SC.RightAlt]: {vk: 165, name: "Right Alt"},
 	[SC.NumLock]: {vk: 144, name: "Num Lock"},
-	[SC.Win]: {vk: 0x5B, name: "Win"}
+	[SC.Win]: {vk: 91, name: "Win"}
 }
 
 export type KeyCodesLocations = readonly (readonly SC[])[];
@@ -108,12 +108,15 @@ export const SearchKeyCodesTable: KeyCodesList = [
 	1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
 	1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026,
 ];
-export type Layout = {
+export type BaseLayout = {
 	all: KeyCodesList;
 	free: KeyCodesList;
 	cssClass: string;
 }
-export const AnsiLayout: Layout = {
+export type Layout = BaseLayout & {
+	sys: SystemLayout;
+}
+export const AnsiLayout: BaseLayout = {
 	all: [
 		SC.Backtick, ...DigitsRow, //, 59, 60, 61
 		SC.Tab, ...FirstRow, //, 62, 63, 64
@@ -123,7 +126,7 @@ export const AnsiLayout: Layout = {
 	free: [...DigitsRow, ...FirstRow, ...SecondRow, ...ThirdRow],
 	cssClass: 'ansi-layout',
 };
-export const IsoLayout: Layout = {
+export const IsoLayout: BaseLayout = {
 	all: [
 		SC.Backtick, ...DigitsRow, //, 59, 60, 61
 		SC.Tab, ...FirstRow, //, 62, 63, 64

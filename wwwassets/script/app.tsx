@@ -1,6 +1,6 @@
 import {Component, createContext, h, options, render} from 'preact';
 import {SC, SystemLayout} from "./data";
-import {AnsiLayout, IsoLayout, SystemLayoutUS} from "./layout";
+import {AnsiLayout, IsoLayout, Layout, SystemLayoutUS} from "./layout";
 import {Board, getMainBoard, KeyboardView, SharedState, SlottedKeys} from "./board";
 import {Version} from "./osversion";
 import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
@@ -17,7 +17,8 @@ import {
 } from "./config";
 import {fromEntries, unreachable} from "./helpers";
 import {toTitleCase} from "./builder/titleCase";
-import {AppActions, LayoutContext, setApp} from "./appVar";
+import {AppActions, LayoutContext, OSContext, setApp} from "./appVar";
+import {useMemo} from "preact/hooks";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -113,10 +114,13 @@ class App extends Component<{}, AppState> implements AppActions {
 			default:
 				return unreachable(s.mode);
 		}
-		const l = s.config.isoKeyboard ? IsoLayout : AnsiLayout;
-		return <LayoutContext.Provider value={l}>
+		const l: Layout = useMemo(() => {
+			const base = s.config.isoKeyboard ? IsoLayout : AnsiLayout;
+			return {...base, sys: s.layout};
+		}, [s.config.isoKeyboard, s.layout]);
+		return <LayoutContext.Provider value={l}><OSContext.Provider value={s.os}>
 			<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
-		</LayoutContext.Provider>;
+		</OSContext.Provider></LayoutContext.Provider>;
 	}
 
 	public setMode(mode: AppMode) {

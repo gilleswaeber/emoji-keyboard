@@ -1,15 +1,18 @@
 import {UnicodeEmojiGroup} from "../unidata";
+import {SC, VK} from "../data";
+import {SoftHyphen, ZeroWidthJoiner} from "../chars";
 
-export type EmojiKeyboardContent =
-	string
-	| null
-	| string[]
+export type KeyboardItem = string | null | string[];
+export type KeyboardContent =
+	KeyboardItem
 	| (UnicodeEmojiGroup & { from?: undefined })
 	| { group?: undefined, from: string | number, to: string | number };
 export type EmojiKeyboard = {
 	name: string;
 	symbol: string;
-	content: EmojiKeyboardContent[]
+	content?: KeyboardContent[];
+	byVK?: { [vk in VK]?: KeyboardItem }
+	bySC?: { [sc in SC]?: KeyboardItem }
 }
 export const DEFAULT_KEYBOARDS: EmojiKeyboard[] = [
 	{
@@ -86,7 +89,7 @@ export const DEFAULT_KEYBOARDS: EmojiKeyboard[] = [
 	},
 	{
 		name: "Families",
-		symbol: "👫",
+		symbol: "👪",
 		content: [
 			{group: "People & Body", subGroup: "family"}
 		]
@@ -301,27 +304,89 @@ export const DEFAULT_KEYBOARDS: EmojiKeyboard[] = [
 		name: "Greek",
 		symbol: "π",
 		content: [
-			null      , null      , null      , null      , null      , null      , null      , null      , null      , null, null, null,
-			"ϵ"       , ["ς", "ϐ"], ["ε", "Ε"], ["ρ", "Ρ"], ["τ", "Τ"], ["υ", "Υ"], ["θ", "Θ"], ["ι", "Ι"], ["ο", "Ο"], ["π", "Π"], null, null,
-			["α", "Α"], ["σ", "Σ"], ["δ", "Δ"], ["φ", "Φ"], ["γ", "Γ"], ["η", "Η"], ["ξ", "Ξ"], ["κ", "Κ"], ["λ", "Λ"], null, null, null,
-			["ζ", "Ζ"], ["χ", "Χ"], ["ψ", "Ψ"], ["ω", "Ω"], ["β", "Β"], ["ν", "Ν"], ["μ", "Μ"], ";"
-		]
+			"ϕ",
+		],
+		byVK: {
+			[VK.A]: ["α", "Α"],
+			[VK.B]: ["β", "Β"],
+			[VK.C]: ["ψ", "Ψ"],
+			[VK.D]: ["δ", "Δ"],
+			[VK.E]: ["ε", "Ε"],
+			[VK.F]: ["φ", "Φ"],
+			[VK.G]: ["γ", "Γ"],
+			[VK.H]: ["η", "Η"],
+			[VK.I]: ["ι", "Ι"],
+			[VK.J]: ["ξ", "Ξ"],
+			[VK.K]: ["κ", "Κ"],
+			[VK.L]: ["λ", "Λ"],
+			[VK.M]: ["μ", "Μ"],
+			[VK.N]: ["ν", "Ν"],
+			[VK.O]: ["ο", "Ο"],
+			[VK.P]: ["π", "Π"],
+			[VK.Q]: ";",
+			[VK.R]: ["ρ", "Ρ"],
+			[VK.S]: ["σ", "Σ"],
+			[VK.T]: ["τ", "Τ"],
+			[VK.U]: ["θ", "Θ"],
+			[VK.V]: ["ω", "Ω"],
+			[VK.W]: ["ς", "ϐ"],
+			[VK.X]: ["χ", "Χ"],
+			[VK.Y]: ["υ", "Υ"],
+			[VK.Z]: ["ζ", "Ζ"],
+			[VK.Comma]: "ϵ",
+			[VK.Period]: "·",
+		}
 	},
 	{
 		name: "Boxes",
 		symbol: "╚",
-		content: [
-			["┌", "╔"], ["┬", "╦"], ["┐", "╗"],
-			["┏", "┍", "┎"], ["┳", "┭", "┮", "┯", "┰", "┱", "┲"], ["┓", "┑", "┒"],
-			["╒", "╓"], ["╤", "╥"], ["╕", "╖"], "╭", "╮", null,
-			["├", "╠"], ["┼", "╬"], ["┤", "╣"],
-			["┣", "┝", "┞", "┟", "┠", "┡", "┢"], ["╋", "┽", "┾", "┿", "╀", "╁", "╂", "╃", "╄", "╅", "╆", "╇", "╈", "╉", "╊"], ["┫", "┥", "┦", "┧", "┨", "┩", "┪"],
-			["╞", "╟"], ["╪", "╫"], ["╡", "╢"], "╰", "╯", null,
-			["└", "╚"], ["┴", "╩"], ["┘", "╝"],
-			["┗", "┕", "┖"], ["┻", "┵", "┶", "┷", "┸", "┹", "┺"], ["┛", "┙", "┚"],
-			["╘", "╙"], ["╧", "╨"], ["╛", "╜"], "╱", "╲", null,
-			["│", "║"], ["─", "═"], "╳", ["┃", "┆", "┇", "┊", "┋", "╎", "╏", "╽", "╿"], ["━", "┄", "┅", "┈", "┉", "╌", "╍", "╼", "╾"], ["╴", "╸"], ["╵", "╹"], ["╷", "╻"], ["╶", "╺"], null
-		]
+		bySC: {
+			[SC.Digit1]: ["┌", "╔"],
+			[SC.Digit2]: ["┬", "╦"],
+			[SC.Digit3]: ["┐", "╗"],
+			[SC.Q]: ["├", "╠"],
+			[SC.W]: ["┼", "╬"],
+			[SC.E]: ["┤", "╣"],
+			[SC.A]: ["└", "╚"],
+			[SC.S]: ["┴", "╩"],
+			[SC.D]: ["┘", "╝"],
+			[SC.Z]: ["│", "║"],
+			[SC.X]: ["─", "═"],
+			[SC.C]: "╳",
+
+			[SC.Digit4]: ["┏", "┍", "┎"],
+			[SC.Digit5]: ["┳", "┭", "┮", "┯", "┰", "┱", "┲"],
+			[SC.Digit6]: ["┓", "┑", "┒"],
+			[SC.R]: ["┣", "┝", "┞", "┟", "┠", "┡", "┢"],
+			[SC.T]: ["╋", "┽", "┾", "┿", "╀", "╁", "╂", "╃", "╄", "╅", "╆", "╇", "╈", "╉", "╊"],
+			[SC.Y]: ["┫", "┥", "┦", "┧", "┨", "┩", "┪"],
+			[SC.F]: ["┗", "┕", "┖"],
+			[SC.G]: ["┻", "┵", "┶", "┷", "┸", "┹", "┺"],
+			[SC.H]: ["┛", "┙", "┚"],
+			[SC.V]: ["┃", "┆", "┇", "┊", "┋", "╎", "╏", "╽", "╿"],
+			[SC.B]: ["━", "┄", "┅", "┈", "┉", "╌", "╍", "╼", "╾"],
+			[SC.N]: ["╴", "╸"],
+
+			[SC.Digit7]: ["╒", "╓"],
+			[SC.Digit8]: ["╤", "╥"],
+			[SC.Digit9]: ["╕", "╖"],
+			[SC.U]: ["╞", "╟"],
+			[SC.I]: ["╪", "╫"],
+			[SC.O]: ["╡", "╢"],
+			[SC.J]: ["╘", "╙"],
+			[SC.K]: ["╧", "╨"],
+			[SC.L]: ["╛", "╜"],
+			[SC.M]: ["╵", "╹"],
+			[SC.Comma]: ["╷", "╻"],
+			[SC.Period]: ["╶", "╺"],
+
+			[SC.Digit0]: "╭",
+			[SC.Minus]: "╮",
+			[SC.P]: "╰",
+			[SC.LeftBrace]: "╯",
+			[SC.Semicolon]: "╱",
+			[SC.Apostrophe]: "╲",
+		}
 	},/*
 	{
 		name: "TextMath",
@@ -338,8 +403,8 @@ export const DEFAULT_KEYBOARDS: EmojiKeyboard[] = [
 		]
 	},*/
 	{
-		name: "Typo\u00adgraphy",
-		symbol: "\u203d",
+		name: `Typo${SoftHyphen}graphy`,
+		symbol: "‽",
 		content: [
 			"\u00a0", // No-Break\nSpace
 			"\u202f", // Narrow\nNo-Break\nSpace
@@ -356,10 +421,10 @@ export const DEFAULT_KEYBOARDS: EmojiKeyboard[] = [
 			"\u2008", // Punctuation\nSpace
 			"\u200b", // Zero\nWidth\nSpace
 			"\u200c", // Zero\nWidth\nNon-Joiner
-			"\u200d", // Zero\nWidth\nJoiner", "name": "Zero Width Joiner
+			ZeroWidthJoiner,
 			"\u205f", // Medium\nMath\nSpace
 			"\u3000", // Ideographic\nSpace
-			"\u00ad", // Soft\nHyphen
+			SoftHyphen, // Soft\nHyphen
 			"–", "—", "―", // Hyphens
 			"“", "”", "‟", "„", "«", "»", "‹", "›", "‘", "’", "‛", "‚", // Quotes
 			"¿", "¡", "‽", "‼", "°", "¦", // Punctuation

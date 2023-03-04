@@ -8,7 +8,7 @@ and [WebView2](https://go.microsoft.com/fwlink/p/?LinkId=2124703) (comes with Wi
 
 Alternatives
 ------------
-Since the Windows 10 April 2018 Update update, you can open the built-in emoji picker with `Win+.`. It is missing support for flags and emojis newer than the OS.
+Since the Windows 10 April 2018 Update update, you can open the built-in emoji picker with <kbd>Win</kbd>+<kbd>.</kbd>. It is missing support for flags and emojis newer than the OS.
 
 How to use
 ----------
@@ -34,8 +34,15 @@ Flags are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, be
 Customize
 ---------
 Some settings are available in the app.
-For information on how to customize the keyboard, see [the README in the res folder](res/README.md).
 The keyboard view is realized using an embedded WebView2 control, as native AHK controls do not support Emojis at the moment.
 Some characters may use a fallback image because they are not rendered properly, but they are supported by the OS.
 
-The current version is lacking behind for Emoji support. New stuff coming soon-ish.
+The web-app part is written in Typescript.
+In the *wwwassets*, run `yarn install; yarn watch` to get started.
+
+Unicode data is generated from sources:
+- The [Unicode® Emoji Resources](http://unicode.org/emoji/) which contain information about emoji attributes and emoji ordering
+- The [UnicodeData](http://unicode.org/Public/3.0-Update/UnicodeData-3.0.0.html) file which contain character names
+
+A rebuild can be triggered in the app settings. It will download hard-coded versions of the spec when necessary.
+

@@ -19,6 +19,11 @@ input{
 	font-family: 'Segoe UI', 'Segoe UI Emoji', 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+@font-face {
+	font-family: NotoEmoji;
+	src: url("../fonts/NotoColorEmoji-Regular.ttf");
+}
+
 main{
 	display: flex;
 	flex-direction: column;
@@ -50,7 +55,7 @@ main > section{
 }
 
 .key{
-	display: inline-flex;
+	display: flex;
 	list-style: none;
 	padding: .3vw;
 	overflow: hidden;
@@ -71,10 +76,18 @@ main > section{
 	white-space: pre;
 	text-shadow: var(--c-shadow) 0 0 .1em, var(--c-shadow) 0 0 .1em, var(--c-shadow) 0 0 .1em, var(--c-shadow) 0 0 .1em;
 }
-.key .symbol.s-space{
-	font-size: 1.1vw;
+.key.char .symbol.s-space{
+	font-size: 1.2vw;
 	font-variant: small-caps;
 	font-weight: bold;
+	max-width: 100%;
+	transform: none;
+	hyphens: auto;
+	word-wrap: break-word;
+	white-space: normal;
+}
+.key .symbol.fallback {
+	font-family: NotoEmoji, 'Segoe UI', 'Segoe UI Emoji', 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }
 .key .symbol img{
 	height: 3.6vw;

@@ -1,5 +1,6 @@
 /res/data/*
 !/res/data/data.exp.js
+!/res/data/.gitkeep
 /config.json
 /wwwassets/node_modules
 # IDE-specific

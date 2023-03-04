@@ -2,7 +2,8 @@ import {Board, SlottedKeys} from "./board";
 import {AppConfig, ConfigPage} from "./config";
 import {AppMode} from "./app";
 import {createContext} from "preact";
-import {AnsiLayout, Layout} from "./layout";
+import {AnsiLayout, Layout, SystemLayoutUS} from "./layout";
+import {Version} from "./osversion";
 
 export interface AppActions {
 	keyHandlers: SlottedKeys;
@@ -34,4 +35,5 @@ export function app(): AppActions {
 	return appVar;
 }
 
-export const LayoutContext = createContext<Layout>(AnsiLayout);
+export const LayoutContext = createContext<Layout>({...AnsiLayout, sys: SystemLayoutUS});
+export const OSContext = createContext<Version>(new Version('99'));

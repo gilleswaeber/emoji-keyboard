@@ -1,12 +1,14 @@
-import {createContext} from "preact";
-import {ExtendedUnicodeData, getUnicodeData} from "./builder/consolidated";
-import {UnicodeData} from "./builder/unicode";
+import {ExtendedCharInformation, getUnicodeData} from "./builder/consolidated";
+import {toCodePoints} from "./builder/builder";
+import {IconFallback} from "./config/fallback";
 
 export const IgnoreForName = [
 	8205, // Zero Width Joiner,
 	65039, // Variation Selector-16
 ]
 const u = getUnicodeData();
+// Make it accessible in the DevTools
+(window as any).u = u;
 
 function charName(code: number): string {
 	if (code >= 19968 && code <= 40956) {
@@ -16,11 +18,16 @@ function charName(code: number): string {
 	}
 }
 function clusterFullName(cluster: string): string {
-	return [...cluster]
-		.map(c => c.codePointAt(0)!)
+	const c = toCodePoints(cluster);
+	if (c.length === 1) return charName(c[0]!);
+	return c
 		.filter(c => !IgnoreForName.includes(c))
 		.map(c => charName(c))
 		.join(', ');
+}
+
+export function charInfo(code: number): ExtendedCharInformation|undefined {
+	return u.chars[code];
 }
 
 export function clusterName(cluster: string): string {
@@ -33,4 +40,16 @@ export function clusterVariants(cluster: string): string[]|undefined {
 
 export function emojiGroup(g: {group: string, subGroup: string}): string[] {
 	return u.groups[g.group]?.sub[g.subGroup]?.clusters ?? [];
+}
+
+export function requiredOS(cluster: string): string {
+	const info = u.clusters[cluster];
+	for (const f of IconFallback) {
+		if (info && f.version && info.version >= f.version) return f.windows;
+		if (f.clusters && f.clusters.has(cluster)) return f.windows;
+		if (f.ranges) for (const r of f.ranges) {
+			if (cluster >= r.from && cluster <= r.to) return f.windows;
+		}
+	}
+	return "0";
 }

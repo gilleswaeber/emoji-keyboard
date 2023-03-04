@@ -1,6 +1,7 @@
 import {ConsolidatedUnicodeData} from "./builder/consolidated";
 
 type HostObject = {
+	downloadUnicode(): void;
 	openDevTools(): void;
 	saveConfig(config: string): void;
 	saveUnicodeData(data: string, types: string): void;
@@ -16,6 +17,11 @@ let AHK: HostObject | null = null;
 
 function isAHK(): boolean {
 	return AHK !== null;
+}
+
+export function ahkDownloadUnicode() {
+	if (isAHK()) AHK!.downloadUnicode();
+	else console.log("DownloadUnicode");
 }
 
 export function ahkTitle(title: string) {
