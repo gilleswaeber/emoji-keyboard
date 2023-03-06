@@ -35,7 +35,9 @@ type AppState = {
 	sharedState: SharedState;
 	os: Version;
 	/** oldest at the end */
-	parentBoards: { [mode in AppMode]: Board[] }
+	parentBoards: { [mode in AppMode]: Board[] };
+	/** building in progress */
+	building: boolean;
 }
 export type AppRenderProps = AppState & { app: AppActions };
 
@@ -53,7 +55,8 @@ class App extends Component<{}, AppState> implements AppActions {
 			state: {}
 		},
 		os: new Version('99'),
-		parentBoards: fromEntries(AppModes.map(m => [m, []] as const))
+		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
+		building: false,
 	}
 
 	constructor(props: {}) {
@@ -88,6 +91,10 @@ class App extends Component<{}, AppState> implements AppActions {
 						break;
 					case 'os':
 						this.setOS(rest);
+						break;
+					case 'done':
+					case 'error':
+						console.log("async callback", command, rest);
 						break;
 					default:
 						console.log("message", command, rest)
@@ -235,6 +242,10 @@ class App extends Component<{}, AppState> implements AppActions {
 				state: {...s.sharedState.state, [s.sharedState.board.name]: {page}}
 			}
 		}));
+	}
+
+	public setBuilding(building: boolean) {
+		this.setState({building});
 	}
 
 	public back(): void {

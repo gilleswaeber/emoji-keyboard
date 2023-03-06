@@ -4,6 +4,7 @@ import {parseEmojiTest, parseEmojiVersions, parseNamesList, parseUnicodeData, Un
 import {consolidateUnicodeData} from "./consolidated";
 import {ahkDownloadUnicode, ahkSaveUnicodeData} from "../ahk";
 import {IgnoreForName} from "../unicodeInterface";
+import {app} from "../appVar";
 
 function getFullName(code: number[], ctx: { unicodeData: UnicodeData }): string {
 	const parts: string[] = [];
@@ -104,17 +105,24 @@ function secondPass(e: FirstPassEmoji, ctx: {unicodeData: UnicodeData}) {
 	}
 }*/
 
+let building = false;
 export async function makeBuild() {
+	if (building) return;
 	try {
+		app().setBuilding(true);
+		building = true;
 		await build();
 	} catch (e) {
 		console.error(e);
 		alert(`Build failed: ${e}`)
+	} finally {
+		app().setBuilding(false);
+		building = false;
 	}
 }
 
 async function build() {
-	ahkDownloadUnicode()
+	await ahkDownloadUnicode();
 	const paths: Paths = {
 		emojiTestPath: '../res/data/emoji/15.0/emoji-test.txt',
 		emojiDataPath: '../res/data/15.0.0/ucd/emoji/emoji-data.txt',

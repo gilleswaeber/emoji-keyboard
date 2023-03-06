@@ -1,7 +1,7 @@
 import {ConsolidatedUnicodeData} from "./builder/consolidated";
 
 type HostObject = {
-	downloadUnicode(): void;
+	downloadUnicode(callbackNumber: number): void;
 	openDevTools(): void;
 	saveConfig(config: string): void;
 	saveUnicodeData(data: string, types: string): void;
@@ -19,8 +19,40 @@ function isAHK(): boolean {
 	return AHK !== null;
 }
 
-export function ahkDownloadUnicode() {
-	if (isAHK()) AHK!.downloadUnicode();
+let nextNumber = 0;
+
+/**
+ * Wait for a callback from the host application, only handles ok/error with message.
+ * This system is necessary since all exchanges with the host application are asynchronous
+ */
+function waitForCallback(): [number, Promise<void>] {
+	const c = nextNumber++;
+	return [c, new Promise<void>((resolve, reject) => {
+		const ok = `done,${c},`;
+		const error = `error,${c},`;
+		const listener = (e: MessageEvent) => {
+			if (typeof e.data === 'string') {
+				if (e.data.startsWith(ok)) {
+					resolve();
+					(window as any).chrome?.webview?.removeEventListener('message', listener);
+				}
+				if (e.data.startsWith(error)) {
+					reject(e.data.substring(error.length));
+					(window as any).chrome?.webview?.removeEventListener('message', listener);
+				}
+			}
+		};
+		(window as any).chrome?.webview?.addEventListener('message', listener);
+		AHK!.downloadUnicode(c);
+	})];
+}
+
+export async function ahkDownloadUnicode() {
+	if (isAHK()) {
+		const [c, p] = waitForCallback();
+		setTimeout(() => AHK!.downloadUnicode(c), 10);43
+		return p;
+	}
 	else console.log("DownloadUnicode");
 }
 

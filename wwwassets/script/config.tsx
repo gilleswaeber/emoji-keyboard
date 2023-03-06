@@ -214,8 +214,8 @@ const ConfigPages: ConfigPage[] = [
 		}
 	},
 	{
-		"name": "Tools",
-		"symbol": "🔨",
+		name: "Tools",
+		symbol: "🔨",
 		keys(p: AppRenderProps) {
 			if (!p.config.devTools) return {};
 			return {
@@ -223,6 +223,7 @@ const ConfigPages: ConfigPage[] = [
 					new ConfigActionKey({
 						name: "Build",
 						symbol: "🏗️",
+						active: p.building,
 						action() {
 							makeBuild();
 						}

@@ -76,7 +76,8 @@ class EmojiKeyboard {
 			if (!DirExist(dir)) {
 				DirCreate(dir)
 			}
-			Download(url, localPath)
+			Download(url, localPath ".tmp")
+			FileMove(localPath ".tmp", localPath)
 		}
 	}
 
@@ -87,11 +88,17 @@ class EmojiKeyboard {
 			argp.NewWindow := wv2
 			deferral.Complete()
 		}
-		onDownloadUnicode() {
-			this.DownloadIfMissing('emoji/15.0/emoji-test.txt')
-			this.DownloadIfMissing('15.0.0/ucd/emoji/emoji-data.txt')
-			this.DownloadIfMissing('15.0.0/ucd/UnicodeData.txt')
-			this.DownloadIfMissing('15.0.0/ucd/NamesList.txt')
+		onDownloadUnicode(num) {
+			try {
+				this.DownloadIfMissing('emoji/15.0/emoji-test.txt')
+				this.DownloadIfMissing('15.0.0/ucd/emoji/emoji-data.txt')
+				this.DownloadIfMissing('15.0.0/ucd/UnicodeData.txt')
+				this.DownloadIfMissing('15.0.0/ucd/NamesList.txt')
+			} catch as e {
+				this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)
+			} else {
+				this.wv.PostWebMessageAsString('done,' num ',')
+			}
 		}
 		onOpenDevTools() {
 			this.wv.OpenDevToolsWindow()
@@ -393,3 +400,4 @@ SC035:: KB.Input(53, False)	; /    -
 +SC034:: KB.Input(52, True)	; .    .
 +SC035:: KB.Input(53, True)	; /    -
 #HotIf
+

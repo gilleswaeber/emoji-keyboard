@@ -25,6 +25,8 @@ export interface AppActions {
 	setMode(mode: AppMode): void;
 
 	back(): void;
+
+	setBuilding(building: boolean): void;
 }
 
 let appVar: AppActions;
