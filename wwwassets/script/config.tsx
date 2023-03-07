@@ -1,4 +1,3 @@
-import {SC} from "./data";
 import {AppRenderProps} from "./app";
 import {h} from "preact";
 import {DigitsRow, FirstRow, SecondRow} from "./layout";
@@ -7,6 +6,7 @@ import {mapKeysToSlots, SlottedKeys} from "./board";
 import {useContext, useMemo} from "preact/hooks";
 import {makeBuild} from "./builder/builder";
 import {LayoutContext} from "./appVar";
+import {SC} from "./layout/sc";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 const SHORTCUT_KEYS = [

@@ -1,4 +1,3 @@
-import {SC} from "./data";
 import {Fragment, h} from "preact";
 import {AppRenderProps} from "./app";
 import {SearchKeyCodes, SearchKeyCodesTable} from "./layout";
@@ -7,6 +6,7 @@ import {search} from "./emojis";
 import {useCallback, useContext, useEffect, useMemo} from "preact/hooks";
 import {BlankKey, ClusterKey, ExitSearchKey} from "./key";
 import {LayoutContext} from "./appVar";
+import {SC} from "./layout/sc";
 
 export function SearchView(p: AppRenderProps) {
 	useEffect(() => p.app.setSearchBoard(getSearchBoard(p.searchText)), [p.searchText]);
@@ -30,7 +30,7 @@ export function getSearchBoard(needle: string): Board {
 		{
 			[SC.Backtick]: new ExitSearchKey(),
 			[SC.Tab]: new ExitSearchKey(),
-			...mapKeysToSlots(SearchKeyCodes, search(needle).map((c) => new ClusterKey(c.symbol)))
+			...mapKeysToSlots(SearchKeyCodes, search(needle).map((c) => new ClusterKey(c)))
 		}
 	]});
 }

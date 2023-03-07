@@ -1,6 +1,5 @@
-import {Component, createContext, h, options, render} from 'preact';
-import {SC, SystemLayout} from "./data";
-import {AnsiLayout, IsoLayout, Layout, SystemLayoutUS} from "./layout";
+import {Component, h, options, render} from 'preact';
+import {AnsiLayout, IsoLayout, Layout, SystemLayout, SystemLayoutUS} from "./layout";
 import {Board, getMainBoard, KeyboardView, SharedState, SlottedKeys} from "./board";
 import {Version} from "./osversion";
 import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
@@ -19,6 +18,7 @@ import {fromEntries, unreachable} from "./helpers";
 import {toTitleCase} from "./builder/titleCase";
 import {AppActions, LayoutContext, OSContext, setApp} from "./appVar";
 import {useMemo} from "preact/hooks";
+import {SC} from "./layout/sc";
 
 export const enum AppMode {
 	MAIN = 0,

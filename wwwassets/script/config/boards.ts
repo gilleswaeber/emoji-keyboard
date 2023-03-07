@@ -1,6 +1,7 @@
 import {UnicodeEmojiGroup} from "../unidata";
-import {SC, VK} from "../data";
 import {SoftHyphen, ZeroWidthJoiner} from "../chars";
+import {VK} from "../layout/vk";
+import {SC} from "../layout/sc";
 
 export type KeyboardItem = string | null | string[];
 export type KeyboardContent =

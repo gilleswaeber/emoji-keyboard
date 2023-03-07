@@ -1,4 +1,12 @@
-import {SC, SystemLayout} from "./data";
+import {VK} from "./layout/vk";
+import {SC} from "./layout/sc";
+
+export type SystemLayout = {
+	readonly [id in SC]: {
+		vk: VK,
+		name: string
+	}
+};
 
 export const SystemLayoutUS: SystemLayout = {
 	[SC.None]: {vk: 0, name: ""},
@@ -97,7 +105,6 @@ export const SystemLayoutUS: SystemLayout = {
 	[SC.Win]: {vk: 91, name: "Win"}
 }
 
-export type KeyCodesLocations = readonly (readonly SC[])[];
 export type KeyCodesList = readonly SC[];
 export const DigitsRow = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] as const;
 export const FirstRow = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27] as const;

@@ -1,4 +1,3 @@
-import {SC, VK} from "./data";
 import {AppRenderProps} from "./app";
 import {h} from "preact";
 import {KeyCodesList, Layout} from "./layout";
@@ -10,9 +9,11 @@ import {DEFAULT_KEYBOARDS, EmojiKeyboard, KeyboardContent, KeyboardItem} from ".
 import {AppActions, LayoutContext} from "./appVar";
 import {BackKey, BlankKey, ClusterKey, ConfigKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
-import {clusterName, clusterVariants, emojiGroup} from "./unicodeInterface";
+import {clusterName, emojiGroup} from "./unicodeInterface";
 import {fromEntries, unreachable} from "./helpers";
 import {toCodePoints} from "./builder/builder";
+import {VK} from "./layout/vk";
+import {SC} from "./layout/sc";
 
 export interface BoardState {
 	page?: number;

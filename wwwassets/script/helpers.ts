@@ -1,4 +1,4 @@
-import {Dictionary} from "./data";
+export declare type Dictionary<T> = { [key: string]: T };
 
 /** Mark as unreachable */
 export function unreachable(x: never): never {

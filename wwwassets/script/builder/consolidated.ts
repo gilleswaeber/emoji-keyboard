@@ -1,13 +1,12 @@
 import {
+	AnnotationsData,
 	BidiClass,
 	CanonicalCombiningClass,
 	EmojiTestData,
 	EmojiVersion,
 	GeneralCategory,
-	NamesListChar,
 	NamesListData,
-	UnicodeData,
-	UnicodeDataChar
+	UnicodeData
 } from "./unicode";
 import {toTitleCase} from "./titleCase";
 import {ZeroWidthJoiner} from "../chars";
@@ -29,7 +28,39 @@ type ExtendedBlockInformation = BlockInformation & {
 type ExtendedSubBlockInformation = SubBlockInformation & {
 	block: WeakRef<ExtendedBlockInformation>;
 }
-type CharInformation = UnicodeDataChar & NamesListChar & {
+type CharInformation = {
+	/** name */
+	n: string;
+	code: number;
+	alias?: string[];
+	falias?: string[];
+	ref?: number[];
+	decomposition?: string[];
+	variation?: {
+		code: number;
+		sel: string;
+		name: string;
+	}[];
+	notice?: string[];
+	/** category */
+	ca?: GeneralCategory;
+	/** combining */
+	cb?: CanonicalCombiningClass;
+	/** bidiClass */
+	bc?: BidiClass;
+	/** decompositionUD */
+	de2?: string;
+	decimalDigit?: number;
+	digit?: number;
+	numeric?: string;
+	/** bidiMirrored */
+	bm?: true;
+	/** unicode1 */
+	u1?: string;
+	comment?: string[];
+	uppercase?: string;
+	lowercase?: string;
+	titlecase?: string;
 	emojiVersion?: number;
 }
 export type ExtendedCharInformation = CharInformation & {
@@ -42,6 +73,7 @@ type ClusterInformation = {
 	version: number;
 	parent?: string;
 	variants?: string[];
+	alias?: string[];
 };
 type ExtendedClusterInformation = ClusterInformation & {
 	group?: ExtendedGroupInformation;
@@ -62,6 +94,13 @@ type SubGroupInformation = {
 type ExtendedSubGroupInformation = SubGroupInformation & {
 	group: WeakRef<ExtendedGroupInformation>;
 }
+export type UnicodeDataSource = {
+	namesList: NamesListData;
+	unicodeData: UnicodeData;
+	emojiVersion: EmojiVersion;
+	emojiTest: EmojiTestData;
+	annotations: AnnotationsData;
+};
 export type ConsolidatedUnicodeData = {
 	name: string;
 	blocks: BlockInformation[];
@@ -72,8 +111,7 @@ export type ConsolidatedUnicodeData = {
 const ExcludeStem = new Set(["keycap", "flag", "family"]);
 
 export function consolidateUnicodeData(
-	{namesList, unicodeData, emojiVersion, emojiTest}:
-		{ namesList: NamesListData, unicodeData: UnicodeData, emojiVersion: EmojiVersion, emojiTest: EmojiTestData }): ConsolidatedUnicodeData {
+	{annotations, namesList, unicodeData, emojiVersion, emojiTest}: UnicodeDataSource): ConsolidatedUnicodeData {
 	const blocks: BlockInformation[] = [];
 	const chars: CharInformation[] = [];
 	const groups: GroupInformation[] = [];
@@ -96,23 +134,25 @@ export function consolidateUnicodeData(
 			};
 			b.sub.push(s);
 			for (const char of (sub.char ?? [])) {
+				const str = String.fromCodePoint(char.code);
+
 				const u = unicodeData[char.code];
 				const ev = emojiVersion[char.code];
-				const seq = emojiTest.sequences[String.fromCodePoint(char.code)];
+				const seq = emojiTest.sequences[str];
+				const a = annotations.annotations[str];
 
 				s.char.push(char.code);
 				const c: CharInformation = {
-					name: char.name,
+					n: char.name,
 					code: char.code,
-					category: u?.category ?? GeneralCategory.Unassigned,
-					combining: u?.combining ?? CanonicalCombiningClass.Not_Reordered,
-					bidiClass: u?.bidiClass ?? BidiClass.Other_Neutral,
-					bidiMirrored: u?.bidiMirrored ?? false,
 					// block: b,
 					// sub: s,
-				}
+				};
 
-				if (char.alias) c.alias = char.alias;
+				if (char.alias || a?.default) {
+					c.alias = [...(char.alias ?? []), ...(a?.default ?? [])];
+				}
+				if (c.n === '<control>') c.n = c.alias?.[0] ?? 'U+' + c.code.toString(16).toUpperCase().padStart(4, '0');
 				if (char.falias) c.falias = char.falias;
 				if (char.ref) c.ref = char.ref;
 				if (char.decomposition) c.decomposition = char.decomposition;
@@ -121,18 +161,23 @@ export function consolidateUnicodeData(
 				if (char.comment?.length || u?.comment?.length) {
 					c.comment = [...(char.comment ?? []), ...(u?.comment ?? [])];
 				}
-				if (u?.decompositionUD) c.decompositionUD = u.decompositionUD;
+
+				if (u?.category) c.ca = u.category;
+				if (u?.combining) c.cb = u.combining;
+				if (u?.bidiClass) c.bc = u.bidiClass;
+				if (u?.bidiMirrored) c.bm = u.bidiMirrored;
+				if (u?.decompositionUD) c.de2 = u.decompositionUD;
 				if (u?.decimalDigit) c.decimalDigit = u.decimalDigit;
 				if (u?.digit) c.digit = u.digit;
 				if (u?.numeric) c.numeric = u.numeric;
-				if (u?.unicode1) c.unicode1 = u.unicode1;
+				if (u?.unicode1) c.u1 = u.unicode1;
 				if (u?.uppercase) c.uppercase = u.uppercase;
 				if (u?.lowercase) c.lowercase = u.lowercase;
 				if (u?.titlecase) c.titlecase = u.titlecase;
 
 				if (ev) c.emojiVersion = ev;
-				if (seq) c.name = seq.name;
-				c.name = toTitleCase(c.name);
+				if (seq) c.n = seq.name;
+				c.n = toTitleCase(c.n);
 
 				chars.push(c);
 			}
@@ -154,8 +199,10 @@ export function consolidateUnicodeData(
 			for (const cluster of sub.clusters) {
 				const info = emojiTest.sequences[cluster];
 				if (!info || info.type !== 'fully-qualified') continue;
+
 				const stem = info.name.split(':', 1)[0];
 				const name = toTitleCase(info.name);
+				const a = annotations.annotations[cluster];
 
 				// Grapheme clusters are grouped by stem
 				if (stems.has(stem) && !ExcludeStem.has(stem)) {
@@ -169,6 +216,7 @@ export function consolidateUnicodeData(
 							version: info.version,
 							variants: [cluster, ...c.variants],
 						};
+						if (a?.default) c2.alias = a.default;
 						clusters.push(c2);
 						delete c.variants;
 						c.parent = cluster;
@@ -189,6 +237,7 @@ export function consolidateUnicodeData(
 						name: name,
 						version: info.version,
 					}
+					if (a?.default) c.alias = a.default;
 					stems.set(stem, c);
 					clusters.push(c);
 					s.clusters.push(cluster);

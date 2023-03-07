@@ -68,9 +68,22 @@ class EmojiKeyboard {
 		this.wvc.Fill()
 	}
 
-	DownloadIfMissing(path) {
+	DataUnicode(path) {
 		localPath := "res/data/" path
 		url := "https://unicode.org/Public/" path
+		if (!FileExist(localPath)) {
+			dir := RegExReplace(localPath, "[\\/][^\\/]+$", "")
+			if (!DirExist(dir)) {
+				DirCreate(dir)
+			}
+			Download(url, localPath ".tmp")
+			FileMove(localPath ".tmp", localPath)
+		}
+	}
+
+	DataCLDR(path) {
+		localPath := "res/data/cldr-json/" path
+		url := "https://raw.githubusercontent.com/unicode-org/cldr-json/" path
 		if (!FileExist(localPath)) {
 			dir := RegExReplace(localPath, "[\\/][^\\/]+$", "")
 			if (!DirExist(dir)) {
@@ -90,10 +103,11 @@ class EmojiKeyboard {
 		}
 		onDownloadUnicode(num) {
 			try {
-				this.DownloadIfMissing('emoji/15.0/emoji-test.txt')
-				this.DownloadIfMissing('15.0.0/ucd/emoji/emoji-data.txt')
-				this.DownloadIfMissing('15.0.0/ucd/UnicodeData.txt')
-				this.DownloadIfMissing('15.0.0/ucd/NamesList.txt')
+				this.DataUnicode('emoji/15.0/emoji-test.txt')
+				this.DataUnicode('15.0.0/ucd/emoji/emoji-data.txt')
+				this.DataUnicode('15.0.0/ucd/UnicodeData.txt')
+				this.DataUnicode('15.0.0/ucd/NamesList.txt')
+				this.DataCLDR('42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
 			} catch as e {
 				this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)
 			} else {
@@ -400,4 +414,3 @@ SC035:: KB.Input(53, False)	; /    -
 +SC034:: KB.Input(52, True)	; .    .
 +SC035:: KB.Input(53, True)	; /    -
 #HotIf
-

@@ -1,7 +1,6 @@
 import {AppMode, AppRenderProps} from "./app";
 import {h} from "preact";
 import {Board} from "./board";
-import {SC} from "./data";
 import {ahkSend} from "./ahk";
 import {ConfigPage} from "./config";
 import {app, OSContext} from "./appVar";
@@ -10,26 +9,15 @@ import {charInfo, clusterName, clusterVariants, requiredOS} from "./unicodeInter
 import {toCodePoints} from "./builder/builder";
 import {GeneralCategory} from "./builder/unicode";
 import {useContext, useMemo} from "preact/hooks";
-
-function toTwemojiFilename(symbol: string) {
-	let name: string[] = [];
-	for (var i = 0; i < symbol.length; i++) {
-		let c = (symbol.codePointAt(i) as number).toString(16);
-		name.push(c);
-		if (symbol.charCodeAt(i) != symbol.codePointAt(i)) i++;
-	}
-	let filename = name.join('-') + '.svg';
-	if (filename.indexOf('200d') === -1) filename = filename.replace(/-fe0f/g, '');
-	return 'img/' + filename;
-}
+import {SC} from "./layout/sc";
 
 function Symbol({symbol}: { symbol: string }) {
 	const os = useContext(OSContext);
 	return useMemo(() => {
 		if ([...symbol].length == 1) {
 			const info = charInfo(toCodePoints(symbol)[0]);
-			if (info?.category === GeneralCategory.Space_Separator || info?.category === GeneralCategory.Format) {
-				return <div className="symbol s-space">{info.name}</div>
+			if (info?.ca === GeneralCategory.Space_Separator || info?.ca === GeneralCategory.Format || info?.ca === GeneralCategory.Control) {
+				return <div className="symbol s-space">{info.n}</div>
 			}
 		}
 		const req = requiredOS(symbol);

@@ -58,4 +58,5 @@ export type Paths = {
 	emojiDataPath: string;
 	unicodeDataPath: string;
 	namesListPath: string;
+	annotationsPath: string;
 }

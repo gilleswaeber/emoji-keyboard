@@ -1,7 +1,13 @@
-import {Config, ConfigAddon, Paths} from "./config";
-import {Dictionary} from "../data";
-import {parseEmojiTest, parseEmojiVersions, parseNamesList, parseUnicodeData, UnicodeData} from "./unicode";
-import {consolidateUnicodeData} from "./consolidated";
+import {ConfigAddon, Paths} from "./config";
+import {
+	parseAnnotations,
+	parseEmojiTest,
+	parseEmojiVersions,
+	parseNamesList,
+	parseUnicodeData,
+	UnicodeData
+} from "./unicode";
+import {consolidateUnicodeData, UnicodeDataSource} from "./consolidated";
 import {ahkDownloadUnicode, ahkSaveUnicodeData} from "../ahk";
 import {IgnoreForName} from "../unicodeInterface";
 import {app} from "../appVar";
@@ -128,13 +134,15 @@ async function build() {
 		emojiDataPath: '../res/data/15.0.0/ucd/emoji/emoji-data.txt',
 		unicodeDataPath: '../res/data/15.0.0/ucd/UnicodeData.txt',
 		namesListPath: '../res/data/15.0.0/ucd/NamesList.txt',
+		annotationsPath: '../res/data/cldr-json/42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json',
 	};
 
-	const ctx = {
+	const ctx: UnicodeDataSource = {
 		unicodeData: await parseUnicodeData(paths),
 		emojiVersion: await parseEmojiVersions(paths.emojiDataPath),
 		emojiTest: await parseEmojiTest(paths),
 		namesList: await parseNamesList(paths),
+		annotations: await parseAnnotations(paths),
 	};
 
 	const u = consolidateUnicodeData(ctx);

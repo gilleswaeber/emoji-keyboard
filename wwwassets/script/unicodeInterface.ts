@@ -7,6 +7,7 @@ export const IgnoreForName = [
 	65039, // Variation Selector-16
 ]
 const u = getUnicodeData();
+export const UnicodeData = u;
 // Make it accessible in the DevTools
 (window as any).u = u;
 
@@ -14,7 +15,7 @@ function charName(code: number): string {
 	if (code >= 19968 && code <= 40956) {
 		return `CJK UNIFIED IDEOGRAPH-${code.toString(16)}`;
 	} else {
-		return u.chars[code]?.name ?? `U+${code.toString(16)}`;
+		return u.chars[code]?.n ?? `U+${code.toString(16)}`;
 	}
 }
 function clusterFullName(cluster: string): string {

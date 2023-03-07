@@ -1,6 +1,6 @@
 import {Paths} from "./config";
 import * as peggy from "peggy";
-import {Dictionary} from "../data";
+import {Dictionary} from "../helpers";
 
 /*
  * Parsers for Unicode data files
@@ -362,4 +362,22 @@ export async function parseEmojiTest(p: { emojiTestPath: string }): Promise<Emoj
 	}
 
 	return {groups, sequences};
+}
+
+export type AnnotationsData = {
+	identity: {
+		version: {
+			_cldrVersion: string;
+		};
+		language: string;
+	};
+	annotations: Record<string, undefined|{
+		default?: string[];
+		tts?: string;
+	}>;
+}
+
+export async function parseAnnotations(paths: Paths): Promise<AnnotationsData> {
+	const data = await fetch(paths.annotationsPath).then(f => f.json());
+	return (data.annotations) as AnnotationsData;
 }
