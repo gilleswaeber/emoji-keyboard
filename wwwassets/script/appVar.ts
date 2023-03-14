@@ -1,5 +1,5 @@
 import {Board, SlottedKeys} from "./board";
-import {AppConfig, ConfigPage} from "./config";
+import {AppConfig} from "./config";
 import {AppMode} from "./app";
 import {createContext} from "preact";
 import {AnsiLayout, Layout, SystemLayoutUS} from "./layout";
@@ -9,10 +9,6 @@ export interface AppActions {
 	keyHandlers: SlottedKeys;
 
 	setBoard(parent: Board): void;
-
-	setSearchBoard(searchBoard: Board): void;
-
-	setConfigPage(configPage: ConfigPage): void;
 
 	setSearchText(searchText: string): void;
 
@@ -30,12 +26,16 @@ export interface AppActions {
 }
 
 let appVar: AppActions;
+
 export function setApp(app: AppActions) {
 	appVar = app;
 }
+
 export function app(): AppActions {
 	return appVar;
 }
 
 export const LayoutContext = createContext<Layout>({...AnsiLayout, sys: SystemLayoutUS});
 export const OSContext = createContext<Version>(new Version('99'));
+export const ConfigContext = createContext<AppConfig>(undefined as any);
+export const ConfigBuildingContext = createContext<boolean>(true);

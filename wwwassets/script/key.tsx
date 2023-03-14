@@ -1,12 +1,11 @@
-import {AppMode, AppRenderProps} from "./app";
-import {h} from "preact";
+import {AppMode} from "./app";
+import {ComponentChild, Fragment, h} from "preact";
 import {Board} from "./board";
 import {ahkSend} from "./ahk";
-import {ConfigPage} from "./config";
-import {app, OSContext} from "./appVar";
+import {app, ConfigBuildingContext, LayoutContext, OSContext} from "./appVar";
 import {cl} from "./helpers";
 import {charInfo, clusterName, clusterVariants, requiredOS} from "./unicodeInterface";
-import {toCodePoints} from "./builder/builder";
+import {makeBuild, toCodePoints} from "./builder/builder";
 import {GeneralCategory} from "./builder/unicode";
 import {useContext, useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
@@ -28,12 +27,17 @@ function Symbol({symbol}: { symbol: string }) {
 	}, [symbol, os]);
 }
 
+export function KeyName({code}: { code: SC }) {
+	const layout = useContext(LayoutContext);
+	return <Fragment>{layout.sys[code]?.name ?? ''}</Fragment>;
+}
+
 export class Key {
 	public readonly name: string;
 	public readonly upperName: string;
 	public readonly symbol: string;
 	public readonly active: boolean;
-	private readonly clickAlwaysAlternate: boolean;
+	protected readonly clickAlwaysAlternate: boolean;
 	private readonly keyNamePrefix: string;
 	protected readonly alt: boolean;
 	protected readonly lu: boolean;
@@ -51,7 +55,7 @@ export class Key {
 		this.lu = p.lu ?? false;
 	}
 
-	render({os, layout}: AppRenderProps, code: SC) {
+	Contents({code}: { code: SC }) {
 		let keyType = "action";
 		if (!this.name.length) {
 			keyType = "empty";
@@ -72,9 +76,8 @@ export class Key {
 				this.actAlternate();
 			}}
 			onMouseOver={() => app().updateStatus(this.name)}
-			key={code}
 		>
-			<div className="keyname">{this.keyNamePrefix}{layout[code]?.name}</div>
+			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
 			<div className="name">{this.name}</div>
 			<div className="uname">{this.upperName}</div>
 			<Symbol symbol={this.symbol}/>
@@ -103,13 +106,8 @@ export class ConfigKey extends Key {
 export class ConfigActionKey extends Key {
 	protected action: () => void;
 
-	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name?: string, symbol?: string }) {
-		active = active ?? false;
-		super({
-			name: name ?? (active ? "On" : "Off"),
-			symbol: symbol ?? (active ? "✔️" : "❌"),
-			active
-		});
+	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name: string, symbol: string }) {
+		super({name, symbol, active});
 		this.action = action;
 	}
 
@@ -119,21 +117,55 @@ export class ConfigActionKey extends Key {
 }
 
 export class ConfigToggleKey extends ConfigActionKey {
-	act() {
-		this.action();
+	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name?: string, symbol?: string }) {
+		active = active ?? false;
+		super({
+			name: name ?? (active ? "On" : "Off"),
+			symbol: symbol ?? (active ? "✔️" : "❌"),
+			active, action,
+		});
 	}
 }
 
 export class ConfigLabelKey extends Key {
-	constructor(text: string) {
-		super({name: "", symbol: text});
+	constructor(private text: ComponentChild) {
+		super({name: "", symbol: ""});
 	}
 
-	render({os, layout}: AppRenderProps, code: SC) {
+	Contents({code}: { code: SC }) {
 		return <div class={`key label`}>
-			<div class="keyname">{layout[code]?.name}</div>
-			<div class="name">{this.name}</div>
-			<div class="symbol">{this.symbol}</div>
+			<div class="keyname"><KeyName code={code}/></div>
+			<div class="symbol">{this.text}</div>
+		</div>;
+	}
+}
+
+export class ConfigBuildKey extends Key {
+	constructor() {
+		super({name: "Build", symbol: "🏗️"})
+	}
+
+	act() {
+		makeBuild();
+	}
+
+	Contents({code}: { code: SC }) {
+		const active = useContext(ConfigBuildingContext);
+		return <div
+			className={cl('key action', {active})}
+			onClick={(e) => {
+				e.preventDefault();
+				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
+			}}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				this.actAlternate();
+			}}
+			onMouseOver={() => app().updateStatus(this.name)}
+		>
+			<div className="keyname"><KeyName code={code}/></div>
+			<div className="name">{this.name}</div>
+			<Symbol symbol={this.symbol}/>
 		</div>;
 	}
 }
@@ -165,22 +197,12 @@ export class KeyboardKey extends Key {
 }
 
 export class PageKey extends Key {
-	constructor(private page: number, active: boolean) {
-		super({name: `page ${page + 1}`, symbol: '' + (page + 1), active});
+	constructor(private page: number, active: boolean, name?: string, symbol?: string) {
+		super({name: name ?? `page ${page + 1}`, symbol: symbol ?? '' + (page + 1), active});
 	}
 
 	act() {
 		if (!this.active) app().setPage(this.page);
-	}
-}
-
-export class ConfigPageKey extends Key {
-	constructor(private page: ConfigPage, active: boolean) {
-		super({name: page.name, symbol: page.symbol, active});
-	}
-
-	act() {
-		if (!this.active) app().setConfigPage(this.page);
 	}
 }
 

@@ -1,12 +1,11 @@
-import {AppRenderProps} from "./app";
-import {h} from "preact";
+import {h, VNode} from "preact";
 import {KeyCodesList, Layout} from "./layout";
 import {ahkTitle} from "./ahk";
 import {useContext, useMemo} from "preact/hooks";
-import {AppConfig, ConfigPage} from "./config";
+import {ConfigPage} from "./config";
 import {toTitleCase} from "./builder/titleCase";
 import {DEFAULT_KEYBOARDS, EmojiKeyboard, KeyboardContent, KeyboardItem} from "./config/boards";
-import {AppActions, LayoutContext} from "./appVar";
+import {app, AppActions, LayoutContext} from "./appVar";
 import {BackKey, BlankKey, ClusterKey, ConfigKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
 import {clusterName, emojiGroup} from "./unicodeInterface";
@@ -37,15 +36,13 @@ export function getMainBoard(): Board {
 
 const MAX_PAGE_KEYS = 9;
 
-export function KeyboardView(p: AppRenderProps) {
-	const board = p.sharedState.board;
-	const state = p.sharedState.state[board.name];
+export function Keys({keys}: { keys: SlottedKeys }) {
 	const l = useContext(LayoutContext);
-	const pages = useMemo(() => board.keys(l, p.config), [board, l, p.config]);
-	const keys = pages[state?.page ?? 0] ?? pages[0];
-	p.app.keyHandlers = keys;
 	return <div className="keyboard">
-		{l.all.map((code) => (keys[code] ?? BlankKey).render(p, code))}
+		{l.all.map((code) => {
+			const K = (keys[code] ?? BlankKey);
+			return <K.Contents code={code} key={code}/>;
+		})}
 	</div>
 }
 
@@ -81,7 +78,7 @@ export abstract class Board {
 	public readonly name: string;
 	public readonly symbol: string;
 
-	public abstract keys(layout: Layout, config: AppConfig): SlottedKeys[];
+	public abstract Contents(p: { state: BoardState | undefined }): VNode;
 
 	showStatus(str: string): void {
 		if (!str.length) return this.hideStatus();
@@ -242,7 +239,15 @@ export class StaticBoard extends Board {
 		this._keys = memoizeOne(keys);
 	}
 
-	keys(layout: Layout, config: AppConfig): SlottedKeys[] {
+	keys(layout: Layout): SlottedKeys[] {
 		return this._keys(layout);
+	}
+
+	Contents({state}: { state: BoardState | undefined }) {
+		const l = useContext(LayoutContext);
+		const pages = useMemo(() => this.keys(l), [l]);
+		const keys = pages[state?.page ?? 0] ?? pages[0];
+		app().keyHandlers = keys;
+		return <Keys keys={keys}/>;
 	}
 }

@@ -1,22 +1,14 @@
 import {Component, h, options, render} from 'preact';
 import {AnsiLayout, IsoLayout, Layout, SystemLayout, SystemLayoutUS} from "./layout";
-import {Board, getMainBoard, KeyboardView, SharedState, SlottedKeys} from "./board";
+import {Board, BoardState, getMainBoard, SlottedKeys} from "./board";
 import {Version} from "./osversion";
 import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
-import {getSearchBoard, SearchView} from "./search";
+import {getSearchBoard} from "./search";
 import {search} from "./emojis";
-import {
-	AppConfig,
-	ConfigPage,
-	ConfigView,
-	DefaultConfig,
-	DefaultConfigPage,
-	DefaultThemeUrl,
-	ThemesMap
-} from "./config";
+import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
 import {toTitleCase} from "./builder/titleCase";
-import {AppActions, LayoutContext, OSContext, setApp} from "./appVar";
+import {AppActions, ConfigBuildingContext, ConfigContext, LayoutContext, OSContext, setApp} from "./appVar";
 import {useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
 
@@ -25,6 +17,7 @@ export const enum AppMode {
 	SEARCH = 1,
 	SETTINGS = 2
 }
+
 const AppModes = [AppMode.MAIN, AppMode.SEARCH, AppMode.SETTINGS] as const;
 
 type AppState = {
@@ -32,8 +25,9 @@ type AppState = {
 	searchText: string;
 	layout: SystemLayout;
 	config: AppConfig;
-	sharedState: SharedState;
 	os: Version;
+	boardState: Record<string, BoardState | undefined>;
+	currentBoard: { [mode in AppMode]: Board };
 	/** oldest at the end */
 	parentBoards: { [mode in AppMode]: Board[] };
 	/** building in progress */
@@ -43,18 +37,18 @@ export type AppRenderProps = AppState & { app: AppActions };
 
 class App extends Component<{}, AppState> implements AppActions {
 	keyHandlers: SlottedKeys = {}
-	state = {
+	state: AppState = {
 		mode: AppMode.MAIN,
 		searchText: '',
 		layout: SystemLayoutUS,
 		config: {...DefaultConfig, opacity: 1},
-		sharedState: {
-			board: getMainBoard(),
-			searchBoard: getSearchBoard(''),
-			configPage: DefaultConfigPage,
-			state: {}
-		},
+		boardState: {},
 		os: new Version('99'),
+		currentBoard: {
+			[AppMode.MAIN]: getMainBoard(),
+			[AppMode.SEARCH]: getSearchBoard(''),
+			[AppMode.SETTINGS]: new ConfigBoard(),
+		},
 		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
 		building: false,
 	}
@@ -107,27 +101,21 @@ class App extends Component<{}, AppState> implements AppActions {
 
 	render() {
 		const s = this.state;
-		let c;
-		switch (s.mode) {
-			case AppMode.MAIN:
-				c = <KeyboardView {...s} app={this}/>;
-				break;
-			case AppMode.SEARCH:
-				c = <SearchView {...s} app={this}/>
-				break;
-			case AppMode.SETTINGS:
-				c = <ConfigView {...s} app={this}/>
-				break;
-			default:
-				return unreachable(s.mode);
-		}
+		const Board = s.currentBoard[s.mode];
+		const c = <Board.Contents state={s.boardState[Board.name]}/>;
 		const l: Layout = useMemo(() => {
 			const base = s.config.isoKeyboard ? IsoLayout : AnsiLayout;
 			return {...base, sys: s.layout};
 		}, [s.config.isoKeyboard, s.layout]);
-		return <LayoutContext.Provider value={l}><OSContext.Provider value={s.os}>
-			<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
-		</OSContext.Provider></LayoutContext.Provider>;
+		return <LayoutContext.Provider value={l}>
+			<OSContext.Provider value={s.os}>
+				<ConfigContext.Provider value={s.config}>
+					<ConfigBuildingContext.Provider value={s.building}>
+						<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
+					</ConfigBuildingContext.Provider>
+				</ConfigContext.Provider>
+			</OSContext.Provider>
+		</LayoutContext.Provider>;
 	}
 
 	public setMode(mode: AppMode) {
@@ -146,10 +134,11 @@ class App extends Component<{}, AppState> implements AppActions {
 		const s = this.state;
 		switch (s.mode) {
 			case AppMode.MAIN:
-				ahkTitle(s.sharedState.board.name + (text?.length ? `: ${toTitleCase(text)}` : ''));
+				const board = s.currentBoard[s.mode];
+				ahkTitle(board.name + (text?.length ? `: ${toTitleCase(text)}` : ''));
 				break;
 			case AppMode.SEARCH:
-				ahkTitle('Emoji Keyboard - Search' + (s.searchText.length ? `: ${toTitleCase(s.searchText)}` : ''));
+				ahkTitle('Emoji Keyboard - Search' + (s.searchText.length ? `: ${toTitleCase(s.searchText)}` : '') + (text ? ': ' + text : ''));
 				break;
 			case AppMode.SETTINGS:
 				ahkTitle('Emoji Keyboard - Settings');
@@ -220,28 +209,21 @@ class App extends Component<{}, AppState> implements AppActions {
 
 	public setBoard(board: Board): void {
 		this.setState((s) => ({
-				parentBoards: {...s.parentBoards, [s.mode]: [s.sharedState.board, ...s.parentBoards[s.mode]]},
-				sharedState: {...s.sharedState, board}
+				currentBoard: {...s.currentBoard, [s.mode]: board}
 			}),
 			() => this.updateStatus());
 	}
 
-	public setSearchBoard(searchBoard: Board) {
-		this.setState((s) => ({sharedState: {...s.sharedState, searchBoard}}),
-			() => this.updateStatus());
-	}
-
-	public setConfigPage(configPage: ConfigPage) {
-		this.setState((s) => ({sharedState: {...s.sharedState, configPage}}))
-	}
-
 	public setPage(page: number): void {
-		this.setState((s) => ({
-			sharedState: {
-				...s.sharedState,
-				state: {...s.sharedState.state, [s.sharedState.board.name]: {page}}
+		this.setState((s) => {
+			const board = s.currentBoard[s.mode];
+			return {
+				boardState: {
+					...s.boardState,
+					[board.name]: {page}
+				}
 			}
-		}));
+		});
 	}
 
 	public setBuilding(building: boolean) {
@@ -251,10 +233,10 @@ class App extends Component<{}, AppState> implements AppActions {
 	public back(): void {
 		this.setState((s) => {
 			if (s.parentBoards[s.mode].length) {
-				const [b, ...p] = s.parentBoards[s.mode];
+				const [board, ...parents] = s.parentBoards[s.mode];
 				return {
-					parentBoards: {...s.parentBoards, [s.mode]: p},
-					sharedState: {...s.sharedState, board: b},
+					parentBoards: {...s.parentBoards, [s.mode]: parents},
+					currentBoard: {...s.currentBoard, [s.mode]: board},
 				};
 			}
 			return {};

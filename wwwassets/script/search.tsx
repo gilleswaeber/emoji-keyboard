@@ -8,6 +8,18 @@ import {BlankKey, ClusterKey, ExitSearchKey} from "./key";
 import {LayoutContext} from "./appVar";
 import {SC} from "./layout/sc";
 
+export class SearchBoard extends Board {
+	Contents(): preact.VNode {
+		const table = SearchKeyCodesTable;
+		const onInput = useCallback((e: InputEvent) => p.app.setSearchText((e.target as HTMLInputElement).value), [p.app]);
+		return <div class="keyboard">
+			<input type="search" value={p.searchText} onInput={onInput as any}/>
+			{table.map((code, row) =>
+				<Fragment key={code}>{(keys[code] ?? BlankKey).render(p, code)}</Fragment>
+			)}</div>
+	}
+}
+
 export function SearchView(p: AppRenderProps) {
 	useEffect(() => p.app.setSearchBoard(getSearchBoard(p.searchText)), [p.searchText]);
 	useEffect(() => (document.querySelector('input[type="search"]') as HTMLInputElement)?.focus(), []);
@@ -16,13 +28,7 @@ export function SearchView(p: AppRenderProps) {
 	const keys = pages[0];
 	p.app.keyHandlers = keys;
 
-	const table = SearchKeyCodesTable;
-	const onInput = useCallback((e: InputEvent) => p.app.setSearchText((e.target as HTMLInputElement).value), [p.app]);
-	return <div class="keyboard">
-		<input type="search" value={p.searchText} onInput={onInput as any}/>
-		{table.map((code, row) =>
-		<Fragment key={code}>{(keys[code] ?? BlankKey).render(p, code)}</Fragment>
-	)}</div>
+
 }
 
 export function getSearchBoard(needle: string): Board {

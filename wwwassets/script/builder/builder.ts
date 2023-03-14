@@ -75,42 +75,6 @@ function getEmoji(addon: ConfigAddon, symbol: string | string[] | null, ctx: { u
 	}
 }
 
-/*
-function secondPass(e: FirstPassEmoji, ctx: {unicodeData: UnicodeData}) {
-	const code = e.code ?? toCodePoints(e.symbol);
-
-	return {
-		code,
-		fullName: e.fullName ?? getFullName(code, ctx),
-		show: e.show ?? e.symbol,
-	};
-
-	if (e.code.length) {
-		e.version = this.chars.latest[e.code[0]]
-			? parseFloat(this.chars.latest[e.code[0]].Version)
-			: 0;
-		e.emojiVersion = this.findEmojiVersion(e);
-	} else {
-		e.version = e.emojiVersion = 0;
-	}
-
-	if (!e.show) {
-		e.show = e.symbol;
-	}
-
-	if (!e.keywords && e.code.length && this.annotations[e.code[0]]?.keywords) {
-		e.keywords = this.annotations[e.code[0]].keywords;
-	}
-
-	this.setRequiredVersion(e);
-
-	if (e.alternates) {
-		for (const a of e.alternates) {
-			this.applySecondPass(a);
-		}
-	}
-}*/
-
 let building = false;
 export async function makeBuild() {
 	if (building) return;
