@@ -17,6 +17,8 @@ function Symbol({symbol}: { symbol: string }) {
 			const info = charInfo(toCodePoints(symbol)[0]);
 			if (info?.ca === GeneralCategory.Space_Separator || info?.ca === GeneralCategory.Format || info?.ca === GeneralCategory.Control) {
 				return <div className="symbol s-space">{info.n}</div>
+			} else if (info?.ca === GeneralCategory.Nonspacing_Mark) {
+				symbol = '◌' + symbol;
 			}
 		}
 		const req = requiredOS(symbol);
@@ -55,7 +57,7 @@ export class Key {
 		this.lu = p.lu ?? false;
 	}
 
-	Contents({code}: { code: SC }) {
+	Contents = ({code}: { code: SC }) => {
 		let keyType = "action";
 		if (!this.name.length) {
 			keyType = "empty";
@@ -132,7 +134,7 @@ export class ConfigLabelKey extends Key {
 		super({name: "", symbol: ""});
 	}
 
-	Contents({code}: { code: SC }) {
+	Contents = ({code}: { code: SC }) => {
 		return <div class={`key label`}>
 			<div class="keyname"><KeyName code={code}/></div>
 			<div class="symbol">{this.text}</div>
@@ -149,7 +151,7 @@ export class ConfigBuildKey extends Key {
 		makeBuild();
 	}
 
-	Contents({code}: { code: SC }) {
+	Contents = ({code}: { code: SC }) => {
 		const active = useContext(ConfigBuildingContext);
 		return <div
 			className={cl('key action', {active})}

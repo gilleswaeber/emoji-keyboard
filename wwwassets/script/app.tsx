@@ -3,14 +3,22 @@ import {AnsiLayout, IsoLayout, Layout, SystemLayout, SystemLayoutUS} from "./lay
 import {Board, BoardState, getMainBoard, SlottedKeys} from "./board";
 import {Version} from "./osversion";
 import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
-import {getSearchBoard} from "./search";
 import {search} from "./emojis";
 import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
 import {toTitleCase} from "./builder/titleCase";
-import {AppActions, ConfigBuildingContext, ConfigContext, LayoutContext, OSContext, setApp} from "./appVar";
+import {
+	AppActions,
+	ConfigBuildingContext,
+	ConfigContext,
+	LayoutContext,
+	OSContext,
+	SearchContext,
+	setApp
+} from "./appVar";
 import {useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
+import {SearchBoard} from "./searchView";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -33,7 +41,6 @@ type AppState = {
 	/** building in progress */
 	building: boolean;
 }
-export type AppRenderProps = AppState & { app: AppActions };
 
 class App extends Component<{}, AppState> implements AppActions {
 	keyHandlers: SlottedKeys = {}
@@ -46,7 +53,7 @@ class App extends Component<{}, AppState> implements AppActions {
 		os: new Version('99'),
 		currentBoard: {
 			[AppMode.MAIN]: getMainBoard(),
-			[AppMode.SEARCH]: getSearchBoard(''),
+			[AppMode.SEARCH]: new SearchBoard(),
 			[AppMode.SETTINGS]: new ConfigBoard(),
 		},
 		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
@@ -111,7 +118,9 @@ class App extends Component<{}, AppState> implements AppActions {
 			<OSContext.Provider value={s.os}>
 				<ConfigContext.Provider value={s.config}>
 					<ConfigBuildingContext.Provider value={s.building}>
-						<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
+						<SearchContext.Provider value={s.searchText}>
+							<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
+						</SearchContext.Provider>
 					</ConfigBuildingContext.Provider>
 				</ConfigContext.Provider>
 			</OSContext.Provider>
@@ -209,7 +218,8 @@ class App extends Component<{}, AppState> implements AppActions {
 
 	public setBoard(board: Board): void {
 		this.setState((s) => ({
-				currentBoard: {...s.currentBoard, [s.mode]: board}
+				currentBoard: {...s.currentBoard, [s.mode]: board},
+				parentBoards: {...s.parentBoards, [s.mode]: [s.currentBoard[s.mode], ...s.parentBoards[s.mode]]},
 			}),
 			() => this.updateStatus());
 	}

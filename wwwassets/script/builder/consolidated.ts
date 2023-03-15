@@ -62,6 +62,9 @@ type CharInformation = {
 	lowercase?: string;
 	titlecase?: string;
 	emojiVersion?: number;
+	control?: true;
+	reserved?: true;
+	notACharacter?: true;
 }
 export type ExtendedCharInformation = CharInformation & {
 	block: ExtendedBlockInformation;
@@ -110,6 +113,10 @@ export type ConsolidatedUnicodeData = {
 }
 const ExcludeStem = new Set(["keycap", "flag", "family"]);
 
+export function toHex(code: number) {
+	return code.toString(16).toUpperCase().padStart(4, '0');
+}
+
 export function consolidateUnicodeData(
 	{annotations, namesList, unicodeData, emojiVersion, emojiTest}: UnicodeDataSource): ConsolidatedUnicodeData {
 	const blocks: BlockInformation[] = [];
@@ -141,7 +148,6 @@ export function consolidateUnicodeData(
 				const seq = emojiTest.sequences[str];
 				const a = annotations.annotations[str];
 
-				s.char.push(char.code);
 				const c: CharInformation = {
 					n: char.name,
 					code: char.code,
@@ -152,7 +158,6 @@ export function consolidateUnicodeData(
 				if (char.alias || a?.default) {
 					c.alias = [...(char.alias ?? []), ...(a?.default ?? [])];
 				}
-				if (c.n === '<control>') c.n = c.alias?.[0] ?? 'U+' + c.code.toString(16).toUpperCase().padStart(4, '0');
 				if (char.falias) c.falias = char.falias;
 				if (char.ref) c.ref = char.ref;
 				if (char.decomposition) c.decomposition = char.decomposition;
@@ -177,8 +182,21 @@ export function consolidateUnicodeData(
 
 				if (ev) c.emojiVersion = ev;
 				if (seq) c.n = seq.name;
-				c.n = toTitleCase(c.n);
 
+				if (c.n === '<control>') {
+					c.n = c.alias?.[0] ?? 'Control U+' + toHex(c.code);
+					c.control = true;
+				}
+				if (c.n === '<reserved>') {
+					c.n = 'Reserved U+' + toHex(c.code);
+					c.reserved = true;
+				}
+				if (c.n === '<not a character>') {
+					c.n = 'Not a Character U+' + toHex(c.code);
+					c.notACharacter = true;
+				}
+
+				s.char.push(char.code);
 				chars.push(c);
 			}
 		}
@@ -284,7 +302,10 @@ export function getUnicodeData(): ExtendedUnicodeData {
 	const blocks: ExtendedBlockInformation[] = [];
 	const chars: Record<number, ExtendedCharInformation> = {};
 	const groups: Record<string, ExtendedGroupInformation> = {};
-	const clusters: Record<string, ExtendedClusterInformation> = Object.fromEntries(u.clusters.map(c => [c.cluster, {...c}]));
+	const clusters: Record<string, ExtendedClusterInformation> = Object.fromEntries(u.clusters.map(c => [c.cluster, {
+		...c,
+		name: toTitleCase(c.name),
+	}]));
 
 	for (const block of u.blocks) {
 		const b: ExtendedBlockInformation = {...block, sub: []};
@@ -295,6 +316,7 @@ export function getUnicodeData(): ExtendedUnicodeData {
 				if (!idxChars[c]) continue;
 				chars[c] = {
 					...idxChars[c],
+					n: toTitleCase(idxChars[c].n),
 					block: b,
 					sub: s,
 				};

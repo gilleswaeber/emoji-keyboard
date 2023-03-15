@@ -216,7 +216,6 @@ const ConfigPages: ConfigPage[] = [
 		name: "Tools",
 		symbol: "🔨",
 		keys(config: AppConfig) {
-			if (!config.devTools) return {};
 			return {
 				...mapKeysToSlots(FirstRow, [
 					new ConfigBuildKey(),
@@ -235,7 +234,7 @@ export class ConfigBoard extends Board {
 	Contents({state}: { state: BoardState | undefined }) {
 		const page = Math.min(state?.page ?? 0, ConfigPages.length - 1);
 		const config = useContext(ConfigContext);
-		const pageKeys = ConfigPages.map((c, n) => new PageKey(n, n === page));
+		const pageKeys = ConfigPages.map((c, n) => new PageKey(n, n === page, c.name, c.symbol));
 		const keys = {
 			[SC.Backtick]: new ExitSearchKey(),
 			...mapKeysToSlots(DigitsRow, pageKeys),

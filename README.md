@@ -1,4 +1,4 @@
-Emoji Keyboard (Emoji 12)
+Emoji Keyboard (Emoji 15)
 ==============
 <img alt="Screenshot" src="https://i.imgur.com/rJFlKDm.png" width="766" />
 
@@ -26,7 +26,7 @@ There are different available themes: the default "material" theme and a "legacy
 
 Skinnable emojis are signaled by a yellow indicator, right click or use the <kbd>⇧ Shift</kbd> key to see the different skins.
 
-The [Twemoji Pack](https://github.com/twitter/twemoji) is used as a fallback for Emojis not supported by your Windows version.
+The [Noto Emoji](https://github.com/googlefonts/noto-emoji) font is used as a fallback for Emojis not supported by your Windows version.
 
 The flags and the newest Emojis are currently not supported by Windows. You can still use them in 3rd-party applications or sites like Whatsapp or Twitter.
 Flags are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, between Congo and Côte d'Ivoire.
@@ -44,5 +44,5 @@ Unicode data is generated from sources:
 - The [Unicode® Emoji Resources](http://unicode.org/emoji/) which contain information about emoji attributes and emoji ordering
 - The [UnicodeData](http://unicode.org/Public/3.0-Update/UnicodeData-3.0.0.html) file which contain character names
 
-A rebuild can be triggered in the app settings. It will download hard-coded versions of the spec when necessary.
+A rebuild of the Unicode database can be triggered in the app settings. It will download parts of the Unicode spec when necessary.
 

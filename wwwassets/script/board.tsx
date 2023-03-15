@@ -2,10 +2,9 @@ import {h, VNode} from "preact";
 import {KeyCodesList, Layout} from "./layout";
 import {ahkTitle} from "./ahk";
 import {useContext, useMemo} from "preact/hooks";
-import {ConfigPage} from "./config";
 import {toTitleCase} from "./builder/titleCase";
 import {DEFAULT_KEYBOARDS, EmojiKeyboard, KeyboardContent, KeyboardItem} from "./config/boards";
-import {app, AppActions, LayoutContext} from "./appVar";
+import {app, LayoutContext} from "./appVar";
 import {BackKey, BlankKey, ClusterKey, ConfigKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
 import {clusterName, emojiGroup} from "./unicodeInterface";
@@ -16,13 +15,6 @@ import {SC} from "./layout/sc";
 
 export interface BoardState {
 	page?: number;
-}
-
-export interface SharedState {
-	board: Board;
-	searchBoard: Board;
-	configPage: ConfigPage;
-	state: { [board: string]: BoardState };
 }
 
 export function getMainBoard(): Board {
@@ -38,6 +30,7 @@ const MAX_PAGE_KEYS = 9;
 
 export function Keys({keys}: { keys: SlottedKeys }) {
 	const l = useContext(LayoutContext);
+	app().keyHandlers = keys;
 	return <div className="keyboard">
 		{l.all.map((code) => {
 			const K = (keys[code] ?? BlankKey);
@@ -62,15 +55,9 @@ function range(stop: number): number[] {
 	return Array.from((new Array(stop)).keys());
 }
 
-export abstract class View<ViewState> {
-	abstract input(app: AppActions, key: number, shift: boolean): void;
-
-	abstract render(state: ViewState): void;
-}
-
 /** A board has several pages of keys */
 export abstract class Board {
-	constructor(p: { name: string, symbol: string }) {
+	protected constructor(p: { name: string, symbol: string }) {
 		this.name = p.name;
 		this.symbol = p.symbol;
 	}
@@ -226,7 +213,7 @@ export abstract class Board {
 
 /** On a static board the keys and their locations depend only on the layout */
 export class StaticBoard extends Board {
-	private readonly _keys: (layout: Layout) => SlottedKeys[];
+	private readonly keys: (layout: Layout) => SlottedKeys[];
 
 	constructor(
 		{keys, ...p}: {
@@ -236,18 +223,13 @@ export class StaticBoard extends Board {
 		}
 	) {
 		super(p);
-		this._keys = memoizeOne(keys);
+		this.keys = memoizeOne(keys);
 	}
 
-	keys(layout: Layout): SlottedKeys[] {
-		return this._keys(layout);
-	}
-
-	Contents({state}: { state: BoardState | undefined }) {
+	Contents = ({state}: { state: BoardState | undefined }) => {
 		const l = useContext(LayoutContext);
 		const pages = useMemo(() => this.keys(l), [l]);
 		const keys = pages[state?.page ?? 0] ?? pages[0];
-		app().keyHandlers = keys;
 		return <Keys keys={keys}/>;
 	}
 }

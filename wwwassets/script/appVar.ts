@@ -39,3 +39,4 @@ export const LayoutContext = createContext<Layout>({...AnsiLayout, sys: SystemLa
 export const OSContext = createContext<Version>(new Version('99'));
 export const ConfigContext = createContext<AppConfig>(undefined as any);
 export const ConfigBuildingContext = createContext<boolean>(true);
+export const SearchContext = createContext<string>('');

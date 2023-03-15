@@ -6,7 +6,7 @@ export function unreachable(x: never): never {
 	throw new Error("Unexpected: " + x);
 }
 
-/** Class name builder, e.g. for React */
+/** CSS class builder, e.g. for React */
 export function cl(...args: (null|undefined|string|Dictionary<any>)[]) {
 	return args.flatMap(a => {
 		if (typeof a === "string") return a;

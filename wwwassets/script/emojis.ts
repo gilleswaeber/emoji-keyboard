@@ -16,7 +16,9 @@ for (const c of Object.values(u.clusters)) {
 	}
 }
 for (const c of Object.values(u.chars)) {
-	index.set(c.code.toString(), `${c.n} ${c.alias?.join(' ') ?? ''} ${c.falias?.join(' ') ?? ''}`);
+	if (!c.reserved && !c.notACharacter) {
+		index.set(c.code.toString(), `${c.n} ${c.alias?.join(' ') ?? ''} ${c.falias?.join(' ') ?? ''}`);
+	}
 }
 console.log(index);
 const searchHaystack = Array.from(index.entries()).map(([k, v]) => `${SEPARATOR}${k}${SEPARATOR}${v.replace(SEPARATOR_REGEX_G, '')}`).join('');
