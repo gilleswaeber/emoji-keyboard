@@ -34,15 +34,39 @@ Flags are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, be
 Customize
 ---------
 Some settings are available in the app.
-The keyboard view is realized using an embedded WebView2 control, as native AHK controls do not support Emojis at the moment.
+The keyboard view is realized using an embedded WebView2 control, as native AHK controls do not support Emojis at the
+moment.
 Some characters may use a fallback image because they are not rendered properly, but they are supported by the OS.
 
 The web-app part is written in Typescript.
 In the *wwwassets*, run `yarn install; yarn watch` to get started.
+The boards configuration is done in *wwwassets/script/config*.
 
-Unicode data is generated from sources:
-- The [Unicode® Emoji Resources](http://unicode.org/emoji/) which contain information about emoji attributes and emoji ordering
+Unicode data is generated from several sources:
+
+- The [Unicode® Emoji Resources](http://unicode.org/emoji/) which contain information about emoji attributes and emoji
+  ordering
 - The [UnicodeData](http://unicode.org/Public/3.0-Update/UnicodeData-3.0.0.html) file which contain character names
+- The [Unicode NamesList](https://unicode.org/Public/UNIDATA/NamesList.txt) file which used to generate the code charts
+  and contains aliases used in search, and additional information not yet used
+- The [Unicode CLDR](https://cldr.unicode.org/) annotations for aliases used in search
 
-A rebuild of the Unicode database can be triggered in the app settings. It will download parts of the Unicode spec when necessary.
+A rebuild of the Unicode database can be triggered in the app settings. It will download parts of the Unicode spec when
+necessary.
 
+Dependencies
+------------
+AutoHotkey libs:
+
+- [ahk2_lib/WebView2](https://github.com/thqby/ahk2_lib), thqby
+
+JavaScript libs:
+
+- [memoize-one](https://github.com/alexreardon/memoize-one.git), Alex Reardon, MIT License
+- [Peggy](https://peggyjs.org/), David Majda, MIT License
+- [Preact](https://preactjs.com/), Jason Miller, MIT License
+- [RequireJS](https://github.com/requirejs/requirejs), jQuery Foundation and other contributors, MIT License
+
+Fonts:
+
+- [Noto Emoji](https://github.com/googlefonts/noto-emoji), Google Fonts, SIL Open Font License 1.1

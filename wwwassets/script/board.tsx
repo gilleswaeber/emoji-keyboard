@@ -3,12 +3,12 @@ import {KeyCodesList, Layout} from "./layout";
 import {ahkTitle} from "./ahk";
 import {useContext, useMemo} from "preact/hooks";
 import {toTitleCase} from "./builder/titleCase";
-import {DEFAULT_KEYBOARDS, EmojiKeyboard, KeyboardContent, KeyboardItem} from "./config/boards";
+import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
 import {BackKey, BlankKey, ClusterKey, ConfigKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
 import {clusterName, emojiGroup} from "./unicodeInterface";
-import {fromEntries, unreachable} from "./helpers";
+import {fromEntries} from "./helpers";
 import {toCodePoints} from "./builder/builder";
 import {VK} from "./layout/vk";
 import {SC} from "./layout/sc";
@@ -18,12 +18,7 @@ export interface BoardState {
 }
 
 export function getMainBoard(): Board {
-	return Board.fromKeys({
-		name: 'Main keyboard',
-		top: true,
-		symbol: '⌨',
-		keys: DEFAULT_KEYBOARDS.map((k) => new KeyboardKey(Board.fromEmoji(k)))
-	});
+	return Board.fromEmoji(MAIN_BOARD);
 }
 
 const MAX_PAGE_KEYS = 9;
@@ -76,7 +71,7 @@ export abstract class Board {
 		ahkTitle(this.name);
 	}
 
-	static fromKeys(
+	private static fromKeys(
 		{name, symbol, keys, top, bySC, byVK}:
 			{ name: string, symbol: string, keys: Key[], bySC?: SlottedKeys, byVK?: { [vk in VK]?: Key }, top?: boolean }): Board {
 		return new StaticBoard({
@@ -172,7 +167,7 @@ export abstract class Board {
 			}
 			return BlankKey;
 		} else {
-			return unreachable(item);
+			return new KeyboardKey(Board.fromEmoji(item));
 		}
 	}
 
@@ -190,7 +185,7 @@ export abstract class Board {
 					for (let i = from; i <= to; ++i) keys.push(new ClusterKey(String.fromCodePoint(i)));
 				}
 			} else {
-				return unreachable(item);
+				keys.push(this.fromItem(item));
 			}
 		}
 		return keys;
@@ -201,7 +196,7 @@ export abstract class Board {
 		const bySC = fromEntries(k.bySC ? Object.entries(k.bySC).map(([k, v]) => [k, this.fromItem(v)] as const) : []);
 		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v)] as const) : []);
 
-		return this.fromKeys({name: k.name, symbol: k.symbol, keys, bySC, byVK});
+		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, keys, bySC, byVK});
 	}
 
 	static clusterAlternates(cluster: string, variants: string[]) {
