@@ -1,21 +1,29 @@
 {
 	"compileOnSave": true,
     "compilerOptions": {
-        "noImplicitAny": true,
-        "strict": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "module": "AMD",
-        "baseUrl": "lib",
-        "paths": {
-            "preact": ["preact/index"]
-        },
-        "outFile": "script/script.js",
-        "sourceMap": true,
-        "target": "es2022",
-        "jsx": "react",
-        "jsxFactory": "h",
-        "lib": ["dom", "es2022"],
-        "typeRoots": ["lib"]
-    }
+	  "noImplicitAny": true,
+	  "strict": true,
+	  "removeComments": true,
+	  "preserveConstEnums": true,
+	  "module": "AMD",
+	  "baseUrl": "lib",
+	  "paths": {
+		"preact": [
+		  "preact/index"
+		]
+	  },
+	  "outFile": "script/dist/script.js",
+	  "sourceMap": true,
+	  "target": "es2022",
+	  "jsx": "react",
+	  "jsxFactory": "h",
+	  "lib": [
+		"dom",
+		"esnext"
+	  ],
+	  "typeRoots": [
+		"lib"
+	  ],
+	  "moduleResolution": "node"
+	}
 }

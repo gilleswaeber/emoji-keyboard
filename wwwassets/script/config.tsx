@@ -1,10 +1,10 @@
-import {SC} from "./data";
-import {AppRenderProps} from "./app";
-import {h} from "preact";
-import {AnsiCodesList, DigitsRow, FirstRow, IsoCodesList, SecondRow} from "./layout";
-import {BackKey, BlankKey, ConfigActionKey, ConfigLabelKey, ConfigPageKey, ConfigToggleKey, ExitSearchKey} from "./key";
-import {SlottedKeys, mapKeysToSlots} from "./board";
-import {useMemo} from "preact/hooks";
+import {Fragment, h} from "preact";
+import {DigitsRow, FirstRow, SecondRow} from "./layout";
+import {ConfigActionKey, ConfigBuildKey, ConfigLabelKey, ConfigToggleKey, ExitSearchKey, KeyName, PageKey} from "./key";
+import {Board, BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./board";
+import {useContext} from "preact/hooks";
+import {app, ConfigContext} from "./appVar";
+import {SC} from "./layout/sc";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 const SHORTCUT_KEYS = [
@@ -107,25 +107,26 @@ export interface ConfigPage {
 	name: string;
 	symbol: string;
 
-	keys(config: AppRenderProps): SlottedKeys;
+	keys(config: AppConfig): SlottedKeys;
 }
 
 const ConfigPages: ConfigPage[] = [
 	{
 		name: "General",
 		symbol: "🛠️",
-		keys(p: AppRenderProps) {
+		keys(config: AppConfig) {
 			return {
 				[SC.Q]: new ConfigToggleKey({
-					active: p.config.isoKeyboard,
+					active: config.isoKeyboard,
 					action() {
-						p.app.updateConfig({isoKeyboard: !p.config.isoKeyboard});
+						app().updateConfig({isoKeyboard: !config.isoKeyboard});
 					}
 				}),
-				[SC.W]: new ConfigLabelKey(`ISO layout (additional key between ${p.layout[SC.Shift].name} and ${p.layout[SC.Z].name})`),
+				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (additional key between <KeyName
+					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
 				// ...mapKeysToSlots(SecondRow, [
 				// 	...SkinTones.map((s, i) => new ConfigActionKey({
-				// 		active: i == p.config.skinTone,
+				// 		active: i == config.skinTone,
 				// 		action() {
 				// 			p.app.updateConfig({skinTone: i});
 				// 		},
@@ -140,14 +141,14 @@ const ConfigPages: ConfigPage[] = [
 	{
 		name: "Theme",
 		symbol: "🎨",
-		keys(p: AppRenderProps) {
+		keys(config: AppConfig) {
 			return {
 				...mapKeysToSlots(FirstRow, Themes.map((t) => new ConfigActionKey({
-					active: p.config.theme == t.name,
+					active: config.theme == t.name,
 					name: t.name,
 					symbol: t.symbol,
 					action() {
-						p.app.updateConfig({theme: t.name});
+						app().updateConfig({theme: t.name});
 					}
 				}))),
 				...mapKeysToSlots(SecondRow, [
@@ -156,10 +157,10 @@ const ConfigPages: ConfigPage[] = [
 						["dark", "🌚"],
 						["system", "📟"]
 					] as const).map(([mode, symbol]) => new ConfigActionKey({
-						active: p.config.themeMode == mode,
+						active: config.themeMode == mode,
 						name: mode, symbol: symbol,
 						action() {
-							p.app.updateConfig({themeMode: mode})
+							app().updateConfig({themeMode: mode})
 						}
 					}))
 				])
@@ -169,41 +170,41 @@ const ConfigPages: ConfigPage[] = [
 	{
 		name: "Display",
 		symbol: "🖥️",
-		keys(p: AppRenderProps) {
+		keys(config: AppConfig) {
 			return {
 				...mapKeysToSlots(FirstRow, [
 					new ConfigActionKey({
 						symbol: "--", name: "-10", action() {
-							p.app.updateConfig({opacity: Math.max(p.config.opacity - .1, .2)})
+							app().updateConfig({opacity: Math.max(config.opacity - .1, .2)})
 						}
 					}),
 					new ConfigActionKey({
 						symbol: "-", name: "-1", action() {
-							p.app.updateConfig({opacity: Math.max(p.config.opacity - .01, .2)})
+							app().updateConfig({opacity: Math.max(config.opacity - .01, .2)})
 						}
 					}),
 					new ConfigActionKey({
 						symbol: "+", name: "+1", action() {
-							p.app.updateConfig({opacity: Math.min(p.config.opacity + .01, 1)})
+							app().updateConfig({opacity: Math.min(config.opacity + .01, 1)})
 						}
 					}),
 					new ConfigActionKey({
 						symbol: "++", name: "+10", action() {
-							p.app.updateConfig({opacity: Math.min(p.config.opacity + .1, 1)})
+							app().updateConfig({opacity: Math.min(config.opacity + .1, 1)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: `${Math.round(p.config.opacity * 100)}`, name: "reset", action() {
-							p.app.updateConfig({opacity: DefaultOpacity})
+						symbol: `${Math.round(config.opacity * 100)}`, name: "reset", action() {
+							app().updateConfig({opacity: DefaultOpacity})
 						}
 					}),
 					new ConfigLabelKey("Opacity")
 				]),
 				...mapKeysToSlots(SecondRow, [
 					new ConfigToggleKey({
-						active: p.config.devTools,
+						active: config.devTools,
 						action() {
-							p.app.updateConfig({devTools: !p.config.devTools});
+							app().updateConfig({devTools: !config.devTools});
 						}
 					}),
 					new ConfigLabelKey("Open DevTools")
@@ -211,17 +212,34 @@ const ConfigPages: ConfigPage[] = [
 			};
 		}
 	},
+	{
+		name: "Tools",
+		symbol: "🔨",
+		keys(config: AppConfig) {
+			return {
+				...mapKeysToSlots(FirstRow, [
+					new ConfigBuildKey(),
+				]),
+			}
+		}
+	}
 ]
 export const DefaultConfigPage = ConfigPages[0];
 
-export function ConfigView(p: AppRenderProps) {
-	const keys = useMemo(() => ({
+export class ConfigBoard extends Board {
+	constructor() {
+		super({name: '__config', symbol: '🛠️'});
+	}
+
+	Contents({state}: { state: BoardState | undefined }) {
+		const page = Math.min(state?.page ?? 0, ConfigPages.length - 1);
+		const config = useContext(ConfigContext);
+		const pageKeys = ConfigPages.map((c, n) => new PageKey(n, n === page, c.name, c.symbol));
+		const keys = {
 			[SC.Backtick]: new ExitSearchKey(),
-			...mapKeysToSlots(DigitsRow, ConfigPages.map((c) => new ConfigPageKey(c, c == p.sharedState.configPage))),
-			...p.sharedState.configPage.keys(p)
-		})
-		, [p.sharedState.configPage, p.layout, p.config]);
-	p.app.keyHandlers = keys;
-	const codes = p.config.isoKeyboard ? IsoCodesList : AnsiCodesList;
-	return <div className="keyboard">{codes.map((code) => (keys[code] ?? BlankKey).render(p, code))}</div>
+			...mapKeysToSlots(DigitsRow, pageKeys),
+			...ConfigPages[page].keys(config),
+		}
+		return <Keys keys={keys}/>
+	}
 }

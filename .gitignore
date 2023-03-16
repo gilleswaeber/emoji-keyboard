@@ -1,7 +1,9 @@
 /res/data/*
 !/res/data/data.exp.js
+!/res/data/.gitkeep
 /config.json
 /wwwassets/node_modules
+*.js.map
 # IDE-specific
 .idea
 .vscode

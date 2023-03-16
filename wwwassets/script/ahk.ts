@@ -1,6 +1,10 @@
+import {ConsolidatedUnicodeData} from "./builder/consolidated";
+
 type HostObject = {
+	downloadUnicode(callbackNumber: number): void;
 	openDevTools(): void;
 	saveConfig(config: string): void;
+	saveUnicodeData(data: string, types: string): void;
 	send(text: string): void;
 	setOpacity(opacity: number): void;
 	setTitle(title: string): void;
@@ -13,6 +17,43 @@ let AHK: HostObject | null = null;
 
 function isAHK(): boolean {
 	return AHK !== null;
+}
+
+let nextNumber = 0;
+
+/**
+ * Wait for a callback from the host application, only handles ok/error with message.
+ * This system is necessary since all exchanges with the host application are asynchronous
+ */
+function waitForCallback(): [number, Promise<void>] {
+	const c = nextNumber++;
+	return [c, new Promise<void>((resolve, reject) => {
+		const ok = `done,${c},`;
+		const error = `error,${c},`;
+		const listener = (e: MessageEvent) => {
+			if (typeof e.data === 'string') {
+				if (e.data.startsWith(ok)) {
+					resolve();
+					(window as any).chrome?.webview?.removeEventListener('message', listener);
+				}
+				if (e.data.startsWith(error)) {
+					reject(e.data.substring(error.length));
+					(window as any).chrome?.webview?.removeEventListener('message', listener);
+				}
+			}
+		};
+		(window as any).chrome?.webview?.addEventListener('message', listener);
+		AHK!.downloadUnicode(c);
+	})];
+}
+
+export async function ahkDownloadUnicode() {
+	if (isAHK()) {
+		const [c, p] = waitForCallback();
+		setTimeout(() => AHK!.downloadUnicode(c), 10);43
+		return p;
+	}
+	else console.log("DownloadUnicode");
 }
 
 export function ahkTitle(title: string) {
@@ -37,7 +78,19 @@ export function ahkSetSearch(state: boolean) {
 
 export function ahkSaveConfig(config: string) {
 	if (isAHK()) AHK!.saveConfig(config);
-	else console.log("SaveConfig", config)
+	else console.log("SaveConfig", config);
+}
+
+export function ahkSaveUnicodeData(data: ConsolidatedUnicodeData) {
+	if (isAHK()) {
+		AHK!.saveUnicodeData(
+			JSON.stringify(data),
+			'export type UnicodeEmojiGroup = \n\t' + data.groups.flatMap(g => g.sub.flatMap(
+				s => `{group: ${JSON.stringify(g.name)}, subGroup: ${JSON.stringify(s.name)}}`
+			)).join('\n\t| ') + ';\n'
+		);
+	}
+	else console.log("SaveUnicodeData", data);
 }
 
 export function ahkSetSize(width: number, height: number) {

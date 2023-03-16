@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>⌨ Emoji Keyboard</title>
 		<meta charset="UTF-8">
 		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-		<script src="script/data.js"></script>
+		<script src="script/dist/unidata.js"></script>
 		<script src="lib/requirejs/require-2.3.6.min.js"></script>
-		<script src="script/script.js"></script>
+		<script src="script/dist/script.js"></script>
 		<script type="application/javascript" defer>
 			require.config({
 				baseUrl: "lib",
 				paths: {
+					"memoize-one": "memoize-one/memoize-one-6.0.0",
 					"preact": "preact/preact-10.4.6-umd",
-					"preact/hooks": "preact/hooks-10.4.6-umd"
+					"preact/hooks": "preact/hooks-10.4.6-umd",
+					"peggy": "peggy/peggy.min-3.0.0",
 				},
 			})
 			require(["app"]);

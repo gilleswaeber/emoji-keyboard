@@ -1,162 +1,173 @@
-import {AppActions, AppMode, AppRenderProps} from "./app";
-import {h} from "preact";
+import {AppMode} from "./app";
+import {ComponentChild, Fragment, h} from "preact";
 import {Board} from "./board";
-import {Emoji, EmojiStyle, SC} from "./data";
 import {ahkSend} from "./ahk";
-import {ConfigPage} from "./config";
+import {app, ConfigBuildingContext, LayoutContext, OSContext} from "./appVar";
+import {cl} from "./helpers";
+import {charInfo, clusterName, clusterVariants, requiredOS} from "./unicodeInterface";
+import {makeBuild, toCodePoints} from "./builder/builder";
+import {GeneralCategory} from "./builder/unicode";
+import {useContext, useMemo} from "preact/hooks";
+import {SC} from "./layout/sc";
 
-function toTwemojiFilename(symbol: string) {
-	let name: string[] = [];
-	for (var i = 0; i < symbol.length; i++) {
-		let c = (symbol.codePointAt(i) as number).toString(16);
-		name.push(c);
-		if (symbol.charCodeAt(i) != symbol.codePointAt(i)) i++;
-	}
-	let filename = name.join('-') + '.svg';
-	if (filename.indexOf('200d') === -1) filename = filename.replace(/-fe0f/g, '');
-	return 'img/' + filename;
+function Symbol({symbol}: { symbol: string }) {
+	const os = useContext(OSContext);
+	return useMemo(() => {
+		if ([...symbol].length == 1) {
+			const info = charInfo(toCodePoints(symbol)[0]);
+			if (info?.ca === GeneralCategory.Space_Separator || info?.ca === GeneralCategory.Format || info?.ca === GeneralCategory.Control) {
+				return <div className="symbol s-space">{info.n}</div>
+			} else if (info?.ca === GeneralCategory.Nonspacing_Mark) {
+				symbol = '◌' + symbol;
+			}
+		}
+		const req = requiredOS(symbol);
+		const fallback = os.lt(req);
+		return <div className={cl(`symbol`, {fallback})}>
+			{symbol}
+		</div>
+	}, [symbol, os]);
+}
+
+export function KeyName({code}: { code: SC }) {
+	const layout = useContext(LayoutContext);
+	return <Fragment>{layout.sys[code]?.name ?? ''}</Fragment>;
 }
 
 export class Key {
 	public readonly name: string;
 	public readonly upperName: string;
 	public readonly symbol: string;
-	public readonly style: string;
-	public readonly requiredOS: string;
 	public readonly active: boolean;
+	protected readonly clickAlwaysAlternate: boolean;
+	private readonly keyNamePrefix: string;
+	protected readonly alt: boolean;
+	protected readonly lu: boolean;
 
 	constructor(
-		props: { name: string, upperName?: string, symbol: string, style?: EmojiStyle, requiredOS?: string, active?: boolean }
+		p: { name: string, upperName?: string, symbol: string, active?: boolean, clickAlwaysAlternate?: boolean, keyNamePrefix?: string, alt?: boolean, lu?: boolean }
 	) {
-		this.name = props.name;
-		this.upperName = props.upperName ?? '';
-		this.symbol = props.symbol;
-		this.style = props.style ?? '';
-		this.requiredOS = props.requiredOS ?? '0';
-		this.active = props.active ?? false;
+		this.name = p.name;
+		this.upperName = p.upperName ?? '';
+		this.symbol = p.symbol;
+		this.active = p.active ?? false;
+		this.clickAlwaysAlternate = p.clickAlwaysAlternate ?? false;
+		this.keyNamePrefix = p.keyNamePrefix ?? '';
+		this.alt = p.alt ?? false;
+		this.lu = p.lu ?? false;
 	}
 
-	render({os, app, layout}: AppRenderProps, code: SC) {
-		const useFallback = os.ge(this.requiredOS);
+	Contents = ({code}: { code: SC }) => {
 		let keyType = "action";
 		if (!this.name.length) {
 			keyType = "empty";
-		} else if (this instanceof CharKey) {
+		} else if (this instanceof ClusterKey) {
 			keyType = "char";
 		} else if (this instanceof BackKey) {
 			keyType = "back";
 		}
 
 		return <div
-			class={`key ${keyType} ${this.hasAlternate() && 'alt'} ${this.isLULetter() && 'lu'} ${this.active && 'active'}`}
+			className={cl('key', keyType, {alt: this.alt, lu: this.lu, active: this.active})}
 			onClick={(e) => {
 				e.preventDefault();
-				e.shiftKey ? this.actAlternate(app) : this.act(app);
+				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
 			}}
 			onContextMenu={(e) => {
 				e.preventDefault();
-				this.actAlternate(app);
+				this.actAlternate();
 			}}
-			onMouseOver={() => app.updateStatus(this.name)}
-			key={code}
+			onMouseOver={() => app().updateStatus(this.name)}
 		>
-			<div class="keyname">{layout[code]?.name}</div>
-			<div class="name">{this.name}</div>
-			<div class="uname">{this.upperName}</div>
-			<div class={`symbol ${this.style && 's-' + this.style}`}>
-				{useFallback ? <img src={toTwemojiFilename(this.symbol)} alt={this.symbol}/> : this.symbol}
-			</div>
+			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
+			<div className="name">{this.name}</div>
+			<div className="uname">{this.upperName}</div>
+			<Symbol symbol={this.symbol}/>
 		</div>;
 	}
 
-	act(app: AppActions): void {
+	act(): void {
 		// Default: do nothing
 	}
 
-	actAlternate(app: AppActions): void {
-		this.act(app);
-	}
-
-	hasAlternate(): boolean {
-		return false;
-	}
-
-	isLULetter(): boolean {
-		return false;
+	actAlternate(): void {
+		this.act();
 	}
 }
 
 export class ConfigKey extends Key {
 	constructor() {
-		super({name: "Settings", symbol: "🛠️"});
+		super({name: "Settings", symbol: "🛠️", clickAlwaysAlternate: true, keyNamePrefix: "⇧"});
 	}
 
-	render({os, app, layout}: AppRenderProps, code: SC) {
-		const useFallback = os.ge(this.requiredOS);
-
-		return <div
-			class={`key action`}
-			onClick={(e) => {
-				e.preventDefault();
-				this.actAlternate(app);
-			}}
-			onContextMenu={(e) => {
-				e.preventDefault();
-				this.actAlternate(app);
-			}}
-			onMouseOver={() => app.updateStatus(this.name)}
-		>
-			<div class="keyname">{`⇧${layout[code]?.name}`}</div>
-			<div class="name">{this.name}</div>
-			<div class={`symbol`}>
-				{useFallback ? <img src={toTwemojiFilename(this.symbol)} alt={this.symbol}/> : this.symbol}
-			</div>
-		</div>;
-	}
-
-	act(app: AppActions): void {
-		// Do nothing
-	}
-
-	actAlternate(app: AppActions): void {
-		app.setMode(AppMode.SETTINGS);
+	actAlternate(): void {
+		app().setMode(AppMode.SETTINGS);
 	}
 }
 
 export class ConfigActionKey extends Key {
 	protected action: () => void;
 
-	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name?: string, symbol?: string }) {
-		active = active ?? false;
-		super({
-			name: name ?? (active ? "On" : "Off"),
-			symbol: symbol ?? (active ? "✔️" : "❌"),
-			active
-		});
+	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name: string, symbol: string }) {
+		super({name, symbol, active});
 		this.action = action;
 	}
 
-	act(app: AppActions) {
+	act() {
 		this.action();
 	}
 }
 
 export class ConfigToggleKey extends ConfigActionKey {
-	act(app: AppActions) {
-		this.action();
+	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name?: string, symbol?: string }) {
+		active = active ?? false;
+		super({
+			name: name ?? (active ? "On" : "Off"),
+			symbol: symbol ?? (active ? "✔️" : "❌"),
+			active, action,
+		});
 	}
 }
 
 export class ConfigLabelKey extends Key {
-	constructor(text: string) {
-		super({name: "", symbol: text});
+	constructor(private text: ComponentChild) {
+		super({name: "", symbol: ""});
 	}
 
-	render({os, app, layout}: AppRenderProps, code: SC) {
+	Contents = ({code}: { code: SC }) => {
 		return <div class={`key label`}>
-			<div class="keyname">{layout[code]?.name}</div>
-			<div class="name">{this.name}</div>
-			<div class="symbol">{this.symbol}</div>
+			<div class="keyname"><KeyName code={code}/></div>
+			<div class="symbol">{this.text}</div>
+		</div>;
+	}
+}
+
+export class ConfigBuildKey extends Key {
+	constructor() {
+		super({name: "Build", symbol: "🏗️"})
+	}
+
+	act() {
+		makeBuild();
+	}
+
+	Contents = ({code}: { code: SC }) => {
+		const active = useContext(ConfigBuildingContext);
+		return <div
+			className={cl('key action', {active})}
+			onClick={(e) => {
+				e.preventDefault();
+				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
+			}}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				this.actAlternate();
+			}}
+			onMouseOver={() => app().updateStatus(this.name)}
+		>
+			<div className="keyname"><KeyName code={code}/></div>
+			<div className="name">{this.name}</div>
+			<Symbol symbol={this.symbol}/>
 		</div>;
 	}
 }
@@ -164,46 +175,36 @@ export class ConfigLabelKey extends Key {
 export const BlankKey = new Key({name: '', symbol: ''});
 
 export class BackKey extends Key {
-	constructor(private parent: Board) {
+	constructor() {
 		super({name: 'back/🛠️', symbol: '←'});
 	}
 
-	act(app: AppActions) {
-		app.setBoard(this.parent);
+	act() {
+		app().back();
 	}
 
-	actAlternate(app: AppActions) {
-		app.setMode(AppMode.SETTINGS);
+	actAlternate() {
+		app().setMode(AppMode.SETTINGS);
 	}
 }
 
 export class KeyboardKey extends Key {
 	constructor(private target: Board) {
-		super({name: target.name, symbol: target.symbol, requiredOS: target.requiredOS});
+		super({name: target.name, symbol: target.symbol});
 	}
 
-	act(app: AppActions) {
-		app.setBoard(this.target);
+	act() {
+		app().setBoard(this.target);
 	}
 }
 
 export class PageKey extends Key {
-	constructor(private board: Board, private page: number, active: boolean) {
-		super({name: `page ${page + 1}`, symbol: '' + (page + 1), active});
+	constructor(private page: number, active: boolean, name?: string, symbol?: string) {
+		super({name: name ?? `page ${page + 1}`, symbol: symbol ?? '' + (page + 1), active});
 	}
 
-	act(app: AppActions) {
-		if (!this.active) app.setPage(this.board.name, this.page);
-	}
-}
-
-export class ConfigPageKey extends Key {
-	constructor(private page: ConfigPage, active: boolean) {
-		super({name: page.name, symbol: page.symbol, active});
-	}
-
-	act(app: AppActions) {
-		if (!this.active) app.setConfigPage(this.page);
+	act() {
+		if (!this.active) app().setPage(this.page);
 	}
 }
 
@@ -212,8 +213,8 @@ export class SearchKey extends Key {
 		super({name: 'search', symbol: '🔎'});
 	}
 
-	act(app: AppActions) {
-		app.setMode(AppMode.SEARCH);
+	act() {
+		app().setMode(AppMode.SEARCH);
 	}
 }
 
@@ -222,44 +223,35 @@ export class ExitSearchKey extends Key {
 		super({name: 'back', symbol: '←'});
 	}
 
-	act(app: AppActions) {
-		app.setMode(AppMode.MAIN);
+	act() {
+		app().setMode(AppMode.MAIN);
 	}
 }
 
-export class CharKey extends Key {
-	constructor(private char: Emoji, private board: Board) {
+export class ClusterKey extends Key {
+	private readonly variants: string[] | undefined;
+	constructor(private cluster: string, variants?: string[]) {
+		const name = clusterName(cluster);
+		variants ??= clusterVariants(cluster);
 		super({
-			name: (char.name ?? char.fullName ?? "").toLowerCase(),
-			upperName: char.alternates?.length == 2 ? char.alternates[1].show : "",
-			style: char.style,
-			symbol: char.show ?? char.symbol,
-			requiredOS: char.requiredVersion,
+			name,
+			upperName: variants?.length == 2 ? variants[1] : "",
+			symbol: cluster,
+			alt: !!variants && variants.length > 2,
+			lu: variants?.length === 2,
 		});
+		this.variants = variants;
 	}
 
-	act(app: AppActions) {
-		ahkSend(this.char.symbol);
+	act() {
+		ahkSend(this.cluster);
 	}
 
-	actAlternate(app: AppActions) {
-		if (this.hasAlternate()) {
-			app.setBoard(Board.fromAlternates(this.board!!, this.char));
-		} else if (this.isLULetter()) {
-			ahkSend(this.char.alternates![1].symbol);
-		} else return this.act(app);
-	}
-
-	getUName(): string {
-		if (this.isLULetter()) return this.char.alternates![1].show;
-		else return "";
-	}
-
-	hasAlternate(): boolean {
-		return !!this.char.alternates && this.char.alternates.length > 2;
-	}
-
-	isLULetter(): boolean {
-		return this.char.alternates?.length == 2;
+	actAlternate() {
+		if (this.alt) {
+			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!));
+		} else if (this.lu) {
+			ahkSend(this.variants![1]);
+		} else return this.act();
 	}
 }

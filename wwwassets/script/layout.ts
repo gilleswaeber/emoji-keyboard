@@ -1,4 +1,12 @@
-import {SC, SystemLayout} from "./data";
+import {VK} from "./layout/vk";
+import {SC} from "./layout/sc";
+
+export type SystemLayout = {
+	readonly [id in SC]: {
+		vk: VK,
+		name: string
+	}
+};
 
 export const SystemLayoutUS: SystemLayout = {
 	[SC.None]: {vk: 0, name: ""},
@@ -94,38 +102,47 @@ export const SystemLayoutUS: SystemLayout = {
 	[SC.PrintScreen]: {vk: 44, name: "Prnt Scrn"},
 	[SC.RightAlt]: {vk: 165, name: "Right Alt"},
 	[SC.NumLock]: {vk: 144, name: "Num Lock"},
-	[SC.Win]: {vk: 0x5B, name: "Win"}
+	[SC.Win]: {vk: 91, name: "Win"}
 }
 
-export type KeyCodesLocations = readonly (readonly SC[])[];
 export type KeyCodesList = readonly SC[];
 export const DigitsRow = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] as const;
 export const FirstRow = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27] as const;
 export const SecondRow = [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43] as const;
 export const ThirdRow = [44, 45, 46, 47, 48, 49, 50, 51, 52, 53] as const;
-export const IsoCodesList: KeyCodesList = [
-	SC.Backtick,  ...DigitsRow, //, 59, 60, 61
-	SC.Tab, ...FirstRow, //, 62, 63, 64
-	SC.CapsLock, ...SecondRow, //, 65, 66, 67
-	SC.LessThan, ...ThirdRow,  1100, 1101  //, 68, 87, 88
-];
-export const AnsiCodesList: KeyCodesList = [
-	SC.Backtick,  ...DigitsRow, //, 59, 60, 61
-	SC.Tab, ...FirstRow, //, 62, 63, 64
-	SC.CapsLock, ...SecondRow, //, 65, 66, 67
-	SC.Shift, ...ThirdRow,  1100, 1101  //, 68, 87, 88
-];
 export const SearchKeyCodesTable: KeyCodesList = [
 	SC.Backtick, ...DigitsRow,
 	1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
 	1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026,
 ];
-export const AnsiFreeKeys: KeyCodesList = [
-	...DigitsRow, ...FirstRow, ...SecondRow, ...ThirdRow
-];
-export const IsoFreeKeys: KeyCodesList = [
-	...DigitsRow, ...FirstRow, ...SecondRow, SC.LessThan, ...ThirdRow
-];
+export type BaseLayout = {
+	all: KeyCodesList;
+	free: KeyCodesList;
+	cssClass: string;
+}
+export type Layout = BaseLayout & {
+	sys: SystemLayout;
+}
+export const AnsiLayout: BaseLayout = {
+	all: [
+		SC.Backtick, ...DigitsRow, //, 59, 60, 61
+		SC.Tab, ...FirstRow, //, 62, 63, 64
+		SC.CapsLock, ...SecondRow, //, 65, 66, 67
+		SC.Shift, ...ThirdRow, 1100, 1101  //, 68, 87, 88
+	],
+	free: [...DigitsRow, ...FirstRow, ...SecondRow, ...ThirdRow],
+	cssClass: 'ansi-layout',
+};
+export const IsoLayout: BaseLayout = {
+	all: [
+		SC.Backtick, ...DigitsRow, //, 59, 60, 61
+		SC.Tab, ...FirstRow, //, 62, 63, 64
+		SC.CapsLock, ...SecondRow, //, 65, 66, 67
+		SC.LessThan, ...ThirdRow, 1100, 1101  //, 68, 87, 88
+	],
+	free: [...DigitsRow, ...FirstRow, ...SecondRow, SC.LessThan, ...ThirdRow],
+	cssClass: 'iso-layout',
+};
 export const SearchKeyCodes: number[] = [
 	...DigitsRow,
 	1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
