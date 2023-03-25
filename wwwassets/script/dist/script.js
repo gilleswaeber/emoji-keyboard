@@ -4413,7 +4413,7 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
                         }
                     }),
                     [17]: new key_1.ConfigLabelKey((0, preact_2.h)(preact_2.Fragment, null,
-                        "ISO layout (additional key between ",
+                        "ISO layout (< between ",
                         (0, preact_2.h)(key_1.KeyName, { code: 42 }),
                         " and ",
                         (0, preact_2.h)(key_1.KeyName, { code: 44 }),

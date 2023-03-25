@@ -122,7 +122,7 @@ const ConfigPages: ConfigPage[] = [
 						app().updateConfig({isoKeyboard: !config.isoKeyboard});
 					}
 				}),
-				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (additional key between <KeyName
+				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (&lt; between <KeyName
 					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
 				// ...mapKeysToSlots(SecondRow, [
 				// 	...SkinTones.map((s, i) => new ConfigActionKey({
