@@ -5051,7 +5051,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
             this.updateConfig(JSON.parse(config), false);
         }
         defaultConfig() {
-            (0, ahk_4.ahkSaveConfig)(JSON.stringify(this.state.config));
+            (0, ahk_4.ahkSaveConfig)(JSON.stringify(this.state.config, null, 4));
             (0, ahk_4.ahkSetOpacity)(this.state.config.opacity);
         }
         updateConfig(config, save = true) {
@@ -5069,7 +5069,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 return { config: { ...s.config, ...config } };
             }, () => {
                 if (save)
-                    (0, ahk_4.ahkSaveConfig)(JSON.stringify(this.state.config));
+                    (0, ahk_4.ahkSaveConfig)(JSON.stringify(this.state.config, null, 4));
             });
         }
         setOS(os) {

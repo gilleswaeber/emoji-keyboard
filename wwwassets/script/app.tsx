@@ -180,7 +180,7 @@ class App extends Component<{}, AppState> implements AppActions {
 	}
 
 	public defaultConfig() {
-		ahkSaveConfig(JSON.stringify(this.state.config));
+		ahkSaveConfig(JSON.stringify(this.state.config, null, 4));
 		ahkSetOpacity(this.state.config.opacity);
 	}
 
@@ -198,7 +198,7 @@ class App extends Component<{}, AppState> implements AppActions {
 			}
 			return {config: {...s.config, ...config}};
 		}, () => {
-			if (save) ahkSaveConfig(JSON.stringify(this.state.config));
+			if (save) ahkSaveConfig(JSON.stringify(this.state.config, null, 4));
 		})
 	}
 
