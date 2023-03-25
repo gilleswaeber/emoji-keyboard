@@ -207,15 +207,6 @@ const ConfigPages: ConfigPage[] = [
 					}),
 					new ConfigLabelKey("Opacity")
 				]),
-				...mapKeysToSlots(SecondRow, [
-					new ConfigToggleKey({
-						active: config.devTools,
-						action() {
-							app().updateConfig({devTools: !config.devTools});
-						}
-					}),
-					new ConfigLabelKey("Open DevTools")
-				]),
 			};
 		}
 	},
@@ -226,6 +217,15 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(FirstRow, [
 					new ConfigBuildKey(),
+				]),
+				...mapKeysToSlots(SecondRow, [
+					new ConfigToggleKey({
+						active: config.devTools,
+						action() {
+							app().updateConfig({devTools: !config.devTools});
+						}
+					}),
+					new ConfigLabelKey("Open DevTools")
 				]),
 			}
 		}

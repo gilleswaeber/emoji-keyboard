@@ -4525,15 +4525,6 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
                         }),
                         new key_1.ConfigLabelKey("Opacity")
                     ]),
-                    ...(0, board_2.mapKeysToSlots)(layout_1.SecondRow, [
-                        new key_1.ConfigToggleKey({
-                            active: config.devTools,
-                            action() {
-                                (0, appVar_3.app)().updateConfig({ devTools: !config.devTools });
-                            }
-                        }),
-                        new key_1.ConfigLabelKey("Open DevTools")
-                    ]),
                 };
             }
         },
@@ -4544,6 +4535,15 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
                 return {
                     ...(0, board_2.mapKeysToSlots)(layout_1.FirstRow, [
                         new key_1.ConfigBuildKey(),
+                    ]),
+                    ...(0, board_2.mapKeysToSlots)(layout_1.SecondRow, [
+                        new key_1.ConfigToggleKey({
+                            active: config.devTools,
+                            action() {
+                                (0, appVar_3.app)().updateConfig({ devTools: !config.devTools });
+                            }
+                        }),
+                        new key_1.ConfigLabelKey("Open DevTools")
                     ]),
                 };
             }
