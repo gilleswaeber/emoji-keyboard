@@ -921,8 +921,8 @@ define("layout", ["require", "exports"], function (require, exports) {
     exports.ThirdRow = [44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
     exports.SearchKeyCodesTable = [
         41, ...exports.DigitsRow,
-        1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
-        1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026,
+        58, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012,
+        42, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024
     ];
     exports.AnsiLayout = {
         all: [
@@ -939,15 +939,15 @@ define("layout", ["require", "exports"], function (require, exports) {
             41, ...exports.DigitsRow,
             15, ...exports.FirstRow,
             58, ...exports.SecondRow,
-            86, ...exports.ThirdRow, 1100, 1101
+            42, 86, ...exports.ThirdRow, 1100
         ],
         free: [...exports.DigitsRow, ...exports.FirstRow, ...exports.SecondRow, 86, ...exports.ThirdRow],
         cssClass: 'iso-layout',
     };
     exports.SearchKeyCodes = [
         ...exports.DigitsRow,
-        1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
-        1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026
+        1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012,
+        1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024
     ];
 });
 define("config/arrows", ["require", "exports"], function (require, exports) {

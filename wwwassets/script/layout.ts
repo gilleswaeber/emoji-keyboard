@@ -112,8 +112,8 @@ export const SecondRow = [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43] as con
 export const ThirdRow = [44, 45, 46, 47, 48, 49, 50, 51, 52, 53] as const;
 export const SearchKeyCodesTable: KeyCodesList = [
 	SC.Backtick, ...DigitsRow,
-	1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
-	1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026,
+	SC.CapsLock, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012,
+	SC.Shift, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024
 ];
 export type BaseLayout = {
 	all: KeyCodesList;
@@ -138,13 +138,13 @@ export const IsoLayout: BaseLayout = {
 		SC.Backtick, ...DigitsRow, //, 59, 60, 61
 		SC.Tab, ...FirstRow, //, 62, 63, 64
 		SC.CapsLock, ...SecondRow, //, 65, 66, 67
-		SC.LessThan, ...ThirdRow, 1100, 1101  //, 68, 87, 88
+		SC.Shift, SC.LessThan, ...ThirdRow, 1100 //, 68, 87, 88
 	],
 	free: [...DigitsRow, ...FirstRow, ...SecondRow, SC.LessThan, ...ThirdRow],
 	cssClass: 'iso-layout',
 };
 export const SearchKeyCodes: number[] = [
 	...DigitsRow,
-	1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
-	1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026
+	1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012,
+	1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024
 ];
