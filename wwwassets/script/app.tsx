@@ -1,5 +1,5 @@
 import {Component, h, options, render} from 'preact';
-import {AnsiLayout, IsoLayout, Layout, SystemLayout, SystemLayoutUS} from "./layout";
+import {AnsiLayout, BaseLayout, IsoLayout,  Layout, SystemLayout, SystemLayoutUS} from "./layout";
 import {Board, BoardState, getMainBoard, SlottedKeys} from "./board";
 import {Version} from "./osversion";
 import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
@@ -18,6 +18,7 @@ import {
 import {useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
 import {SearchBoard} from "./searchView";
+import { RecentEmoji } from './config';
 
 export const enum AppMode {
 	MAIN = 0,
@@ -256,6 +257,15 @@ class App extends Component<{}, AppState> implements AppActions {
 			}
 			return {};
 		});
+	}
+
+	public getLayout(): BaseLayout
+	{
+		return this.state.config.isoKeyboard ? IsoLayout : AnsiLayout;
+	}
+
+	public getRecent() : RecentEmoji[] {
+		return this.state.config.recent;
 	}
 }
 

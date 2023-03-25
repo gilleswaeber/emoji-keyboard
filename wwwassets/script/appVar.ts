@@ -2,8 +2,9 @@ import {Board, SlottedKeys} from "./board";
 import {AppConfig} from "./config";
 import {AppMode} from "./app";
 import {createContext} from "preact";
-import {AnsiLayout, Layout, SystemLayoutUS} from "./layout";
+import {AnsiLayout, BaseLayout, Layout, SystemLayoutUS} from "./layout";
 import {Version} from "./osversion";
+import { RecentEmoji } from "./config";
 
 export interface AppActions {
 	keyHandlers: SlottedKeys;
@@ -23,6 +24,10 @@ export interface AppActions {
 	back(): void;
 
 	setBuilding(building: boolean): void;
+
+	getLayout(): BaseLayout;
+
+	getRecent(): RecentEmoji[];
 }
 
 let appVar: AppActions;

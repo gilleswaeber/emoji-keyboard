@@ -4093,7 +4093,7 @@ define("unicodeInterface", ["require", "exports", "builder/consolidated", "build
 define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helpers", "unicodeInterface", "builder/builder", "preact/hooks"], function (require, exports, preact_1, board_1, ahk_2, appVar_2, helpers_1, unicodeInterface_2, builder_2, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ClusterKey = exports.ExitSearchKey = exports.SearchKey = exports.PageKey = exports.KeyboardKey = exports.BackKey = exports.BlankKey = exports.ConfigBuildKey = exports.ConfigLabelKey = exports.ConfigToggleKey = exports.ConfigActionKey = exports.ConfigKey = exports.Key = exports.KeyName = void 0;
+    exports.ExitRecentKey = exports.RecentKey = exports.ClusterKey = exports.ExitSearchKey = exports.SearchKey = exports.PageKey = exports.KeyboardKey = exports.BackKey = exports.BlankKey = exports.ConfigBuildKey = exports.ConfigLabelKey = exports.ConfigToggleKey = exports.ConfigActionKey = exports.ConfigKey = exports.Key = exports.KeyName = void 0;
     function Symbol({ symbol }) {
         const os = (0, hooks_1.useContext)(appVar_2.OSContext);
         return (0, hooks_1.useMemo)(() => {
@@ -4307,6 +4307,7 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
         }
         act() {
             (0, ahk_2.ahkSend)(this.cluster);
+            this.addRecent(this.cluster);
         }
         actAlternate() {
             if (this.alt) {
@@ -4314,12 +4315,52 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
             }
             else if (this.lu) {
                 (0, ahk_2.ahkSend)(this.variants[1]);
+                this.addRecent(this.variants[1]);
             }
             else
                 return this.act();
         }
+        addRecent(symbol) {
+            var r = (0, appVar_2.app)().getRecent();
+            const riseValue = 11;
+            r.forEach(ue => {
+                if (ue.useCount < 100) {
+                    if (ue.symbol == symbol) {
+                        ue.useCount += riseValue;
+                    }
+                    else if (ue.useCount > 0) {
+                        ue.useCount -= 1;
+                    }
+                }
+            });
+            var ue = r.filter(ue => ue.symbol == symbol);
+            if (ue.length == 0) {
+                r.unshift({ symbol: symbol, useCount: riseValue });
+            }
+            r = r.slice(0, (0, appVar_2.app)().getLayout().free.length);
+            r.sort((a, b) => b.useCount - a.useCount);
+            (0, appVar_2.app)().updateConfig({ recent: r });
+        }
     }
     exports.ClusterKey = ClusterKey;
+    class RecentKey extends Key {
+        constructor() {
+            super({ name: 'Recent', symbol: '⟲' });
+        }
+        act() {
+            (0, appVar_2.app)().setBoard(new board_1.RecentBoard());
+        }
+    }
+    exports.RecentKey = RecentKey;
+    class ExitRecentKey extends Key {
+        constructor() {
+            super({ name: 'Back', symbol: '←' });
+        }
+        act() {
+            (0, appVar_2.app)().back();
+        }
+    }
+    exports.ExitRecentKey = ExitRecentKey;
 });
 define("config", ["require", "exports", "preact", "layout", "key", "board", "preact/hooks", "appVar"], function (require, exports, preact_2, layout_1, key_1, board_2, hooks_2, appVar_3) {
     "use strict";
@@ -4397,6 +4438,7 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
         devTools: false,
         opacity: exports.DefaultOpacity,
         skinTone: 0,
+        recent: [],
     };
     exports.ThemesMap = new Map(exports.Themes.map((t) => [t.name, t]));
     exports.DefaultThemeUrl = exports.ThemesMap.get(exports.DefaultTheme).url;
@@ -4615,7 +4657,7 @@ define("appVar", ["require", "exports", "preact", "layout", "osversion"], functi
 define("board", ["require", "exports", "preact", "ahk", "preact/hooks", "config/boards", "appVar", "key", "memoize-one", "unicodeInterface", "helpers", "builder/builder"], function (require, exports, preact_4, ahk_3, hooks_3, boards_1, appVar_4, key_2, memoize_one_1, unicodeInterface_3, helpers_2, builder_3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.StaticBoard = exports.Board = exports.mapKeysToSlots = exports.Keys = exports.getMainBoard = void 0;
+    exports.RecentBoard = exports.StaticBoard = exports.Board = exports.mapKeysToSlots = exports.Keys = exports.getMainBoard = void 0;
     function getMainBoard() {
         return Board.fromEmoji(boards_1.MAIN_BOARD);
     }
@@ -4664,6 +4706,7 @@ define("board", ["require", "exports", "preact", "ahk", "preact/hooks", "config/
                     const fixedKeys = {
                         [41]: top ? new key_2.ConfigKey() : new key_2.BackKey(),
                         [15]: new key_2.SearchKey(),
+                        [58]: new key_2.RecentKey(),
                     };
                     if (bySC) {
                         Object.assign(fixedKeys, bySC);
@@ -4820,6 +4863,28 @@ define("board", ["require", "exports", "preact", "ahk", "preact/hooks", "config/
         };
     }
     exports.StaticBoard = StaticBoard;
+    class RecentBoard extends Board {
+        constructor() {
+            super({ name: "Recent", symbol: "⟲" });
+        }
+        Contents() {
+            const layout = (0, appVar_4.app)().getLayout();
+            const recentEmojis = (0, appVar_4.app)().getRecent();
+            recentEmojis.sort((a, b) => b.useCount - a.useCount);
+            const keys = (0, hooks_3.useMemo)(() => ({
+                [41]: new key_2.ExitRecentKey(),
+                [15]: new key_2.SearchKey(),
+                [58]: new key_2.ExitRecentKey(),
+                ...mapKeysToSlots(layout.free, recentEmojis.map(r => new key_2.ClusterKey(r.symbol)))
+            }), [""]);
+            (0, appVar_4.app)().keyHandlers = keys;
+            return (0, preact_4.h)("div", { class: "keyboard" }, layout.all.map((code) => {
+                const K = (keys[code] ?? key_2.BlankKey);
+                return (0, preact_4.h)(K.Contents, { code: code, key: code });
+            }));
+        }
+    }
+    exports.RecentBoard = RecentBoard;
 });
 define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "helpers"], function (require, exports, unicodeInterface_4, builder_4, helpers_3) {
     "use strict";
@@ -4896,6 +4961,7 @@ define("searchView", ["require", "exports", "preact", "layout", "board", "emojis
             const keys = (0, hooks_4.useMemo)(() => ({
                 [41]: new key_3.ExitSearchKey(),
                 [15]: new key_3.ExitSearchKey(),
+                [58]: new key_3.RecentKey(),
                 ...(0, board_3.mapKeysToSlots)(layout_3.SearchKeyCodes, (0, emojis_1.search)(searchText).map((c) => new key_3.ClusterKey(c)))
             }), [searchText]);
             (0, appVar_5.app)().keyHandlers = keys;
@@ -5117,6 +5183,12 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 }
                 return {};
             });
+        }
+        getLayout() {
+            return this.state.config.isoKeyboard ? layout_4.IsoLayout : layout_4.AnsiLayout;
+        }
+        getRecent() {
+            return this.state.config.recent;
         }
     }
     const main = document.querySelector('main');

@@ -20,6 +20,8 @@ You can also use a double click on the tray icon. (Look for `+Capslock` in the *
 Use the shown keyboard keys to navigate between the categories and type the Emojis. You can also use the mouse. You can move the window and resize it as you wish.
 Keymap should match the one of your system.
 
+The recent list opens with <kbd>Caps Lock</kbd> and shows a list of recent Emojis sorted on opening by their "useCount". Inserting an Emoji increments its "useCount" by 11, all others will decrement "useCount" by 1. Emojis with a "useCount" greater than 99 are sticky and will not change anymore. Minimum "useCount" is 0. Edit config.json before starting the app to make Emojis sticky in a specific order or remove some.
+
 To exit completely, do a right click on the tray icon and choose Exit.
 
 There are different available themes: the default "material" theme and a "legacy" theme. Both come in light and dark variants.

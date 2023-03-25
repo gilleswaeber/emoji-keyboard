@@ -1,6 +1,6 @@
 import {AppMode} from "./app";
 import {ComponentChild, Fragment, h} from "preact";
-import {Board} from "./board";
+import {Board, RecentBoard} from "./board";
 import {ahkSend} from "./ahk";
 import {app, ConfigBuildingContext, LayoutContext, OSContext} from "./appVar";
 import {cl} from "./helpers";
@@ -9,6 +9,7 @@ import {makeBuild, toCodePoints} from "./builder/builder";
 import {GeneralCategory} from "./builder/unicode";
 import {useContext, useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
+import { RecentEmoji } from "./config";
 
 function Symbol({symbol}: { symbol: string }) {
 	const os = useContext(OSContext);
@@ -246,6 +247,7 @@ export class ClusterKey extends Key {
 
 	act() {
 		ahkSend(this.cluster);
+		this.addRecent(this.cluster);
 	}
 
 	actAlternate() {
@@ -253,6 +255,55 @@ export class ClusterKey extends Key {
 			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!));
 		} else if (this.lu) {
 			ahkSend(this.variants![1]);
+			this.addRecent(this.variants![1]);
 		} else return this.act();
+	}
+
+	addRecent(symbol: string) {
+		var r: RecentEmoji[] = app().getRecent();
+		const riseValue = 11;
+
+		// rise if it exists, others sink and >=100 are sticky
+		r.forEach(ue => {
+			if (ue.useCount < 100) {
+				if (ue.symbol == symbol) {
+					ue.useCount += riseValue;
+				}
+				else if (ue.useCount > 0) {
+					ue.useCount -= 1;
+				}
+			}
+		});
+
+		// add new one with higher useCount so it comes before outdated ones
+		var ue = r.filter(ue => ue.symbol == symbol);
+		if (ue.length == 0) {
+			r.unshift({ symbol: symbol, useCount: riseValue })
+		}
+
+		r = r.slice(0, app().getLayout().free.length);
+		r.sort((a, b) => b.useCount - a.useCount);
+		app().updateConfig({ recent: r });
+	}
+}
+
+export class RecentKey extends Key {
+	constructor() {
+		super({ name: 'Recent', symbol: '⟲' });
+	}
+
+	act() {
+		app().setBoard(new RecentBoard());
+	}
+}
+
+export class ExitRecentKey extends Key {
+	constructor() {
+		super({ name: 'Back', symbol: '←' });
+	}
+
+	act() {
+		app().back();
+		// app().setMode(AppMode.MAIN);
 	}
 }

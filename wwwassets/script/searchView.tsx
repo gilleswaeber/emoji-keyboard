@@ -3,7 +3,7 @@ import {SearchKeyCodes, SearchKeyCodesTable} from "./layout";
 import {Board, mapKeysToSlots} from "./board";
 import {search} from "./emojis";
 import {useCallback, useContext, useEffect, useMemo} from "preact/hooks";
-import {BlankKey, ClusterKey, ExitSearchKey} from "./key";
+import {BlankKey, ClusterKey, ExitSearchKey, RecentKey} from "./key";
 import {app, SearchContext} from "./appVar";
 import {SC} from "./layout/sc";
 
@@ -19,6 +19,7 @@ export class SearchBoard extends Board {
 		const keys = useMemo(() => ({
 			[SC.Backtick]: new ExitSearchKey(),
 			[SC.Tab]: new ExitSearchKey(),
+			[SC.CapsLock]: new RecentKey(),
 			...mapKeysToSlots(SearchKeyCodes, search(searchText).map((c) => new ClusterKey(c)))
 		}), [searchText]);
 		app().keyHandlers = keys;

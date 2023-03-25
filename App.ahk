@@ -328,6 +328,7 @@ SC00D:: KB.Input(13, False)	; =    ^
 Tab:: KB.Input(15, False)
 +Tab:: KB.Input(15, True)
 Esc:: KB.Hide()
+Capslock::KB.Input(58, False)
 #HotIf KB.isVisible and !KB.isSearch
 ; Corresponding keys          US   CH
 ;SC001::KB.Input(01, False) ; ESC  ESC

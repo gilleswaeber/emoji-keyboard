@@ -75,6 +75,12 @@ export const Themes: { name: string, url: string, symbol: string }[] = [
 ];
 type ThemeMode = "light" | "dark" | "system";
 
+
+export interface RecentEmoji {
+	symbol: string;
+	useCount: number;
+}
+
 export interface AppConfig {
 	isoKeyboard: boolean;  // has an additional key next to left shift
 	theme: string;
@@ -84,7 +90,7 @@ export interface AppConfig {
 	devTools: boolean;
 	opacity: number;
 	skinTone: SkinTone;
-
+	recent: RecentEmoji[];
 }
 
 export const DefaultOpacity = .90;
@@ -98,6 +104,7 @@ export const DefaultConfig: AppConfig = {
 	devTools: false,
 	opacity: DefaultOpacity,
 	skinTone: 0,
+	recent: [],
 };
 
 export const ThemesMap = new Map(Themes.map((t) => [t.name, t]));

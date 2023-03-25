@@ -4,13 +4,14 @@ import {ahkTitle} from "./ahk";
 import {useContext, useMemo} from "preact/hooks";
 import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
-import {BackKey, BlankKey, ClusterKey, ConfigKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
+import {BackKey, BlankKey, ClusterKey, ConfigKey, ExitRecentKey, Key, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
 import {clusterName, emojiGroup} from "./unicodeInterface";
 import {fromEntries} from "./helpers";
 import {toCodePoints} from "./builder/builder";
 import {VK} from "./layout/vk";
 import {SC} from "./layout/sc";
+import { RecentEmoji } from "./config";
 
 export interface BoardState {
 	page?: number;
@@ -79,6 +80,7 @@ export abstract class Board {
 				const fixedKeys: SlottedKeys = {
 					[SC.Backtick]: top ? new ConfigKey() : new BackKey(),
 					[SC.Tab]: new SearchKey(),
+					[SC.CapsLock]: new RecentKey(),
 				};
 				if (bySC) {
 					Object.assign(fixedKeys, bySC);
@@ -225,5 +227,31 @@ export class StaticBoard extends Board {
 		const pages = useMemo(() => this.keys(l), [l]);
 		const keys = pages[state?.page ?? 0] ?? pages[0];
 		return <Keys keys={keys}/>;
+	}
+}
+
+
+export class RecentBoard extends Board {
+	constructor() {
+		super({name: "Recent", symbol: "⟲"});
+	}
+
+	Contents(): preact.VNode {
+		const layout = app().getLayout()
+		const recentEmojis: RecentEmoji[] = app().getRecent();
+		recentEmojis.sort((a, b) => b.useCount - a.useCount);
+		const keys = useMemo(() => ({
+			[SC.Backtick]: new ExitRecentKey(),
+			[SC.Tab]: new SearchKey(),
+			[SC.CapsLock]: new ExitRecentKey(),
+			...mapKeysToSlots(layout.free, recentEmojis.map(r => new ClusterKey(r.symbol)))
+		}), [""]);
+		app().keyHandlers = keys;
+		return <div class="keyboard">
+			{layout.all.map((code) => {
+				const K = (keys[code] ?? BlankKey);
+				return <K.Contents code={code} key={code}/>;
+			})}
+		</div>
 	}
 }
