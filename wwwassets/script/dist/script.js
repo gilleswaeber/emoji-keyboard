@@ -3417,7 +3417,7 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MAIN_BOARD = void 0;
     exports.MAIN_BOARD = {
-        name: 'Emoji Keyboard',
+        name: 'Main Board',
         top: true,
         symbol: '⌨',
         content: [
@@ -4238,7 +4238,7 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
     exports.BlankKey = new Key({ name: '', symbol: '' });
     class BackKey extends Key {
         constructor() {
-            super({ name: 'back/🛠️', symbol: '←' });
+            super({ name: 'Back/🛠️', symbol: '←' });
         }
         act() {
             (0, appVar_2.app)().back();
@@ -4612,7 +4612,7 @@ define("appVar", ["require", "exports", "preact", "layout", "osversion"], functi
     exports.ConfigBuildingContext = (0, preact_3.createContext)(true);
     exports.SearchContext = (0, preact_3.createContext)('');
 });
-define("board", ["require", "exports", "preact", "ahk", "preact/hooks", "builder/titleCase", "config/boards", "appVar", "key", "memoize-one", "unicodeInterface", "helpers", "builder/builder"], function (require, exports, preact_4, ahk_3, hooks_3, titleCase_2, boards_1, appVar_4, key_2, memoize_one_1, unicodeInterface_3, helpers_2, builder_3) {
+define("board", ["require", "exports", "preact", "ahk", "preact/hooks", "config/boards", "appVar", "key", "memoize-one", "unicodeInterface", "helpers", "builder/builder"], function (require, exports, preact_4, ahk_3, hooks_3, boards_1, appVar_4, key_2, memoize_one_1, unicodeInterface_3, helpers_2, builder_3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.StaticBoard = exports.Board = exports.mapKeysToSlots = exports.Keys = exports.getMainBoard = void 0;
@@ -4652,7 +4652,7 @@ define("board", ["require", "exports", "preact", "ahk", "preact/hooks", "builder
         showStatus(str) {
             if (!str.length)
                 return this.hideStatus();
-            (0, ahk_3.ahkTitle)(this.name + ": " + (0, titleCase_2.toTitleCase)(str));
+            (0, ahk_3.ahkTitle)(this.name + ": " + str);
         }
         hideStatus() {
             (0, ahk_3.ahkTitle)(this.name);
@@ -4909,7 +4909,7 @@ define("searchView", ["require", "exports", "preact", "layout", "board", "emojis
     }
     exports.SearchBoard = SearchBoard;
 });
-define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "builder/titleCase", "appVar", "preact/hooks", "searchView"], function (require, exports, preact_6, layout_4, board_4, osversion_2, ahk_4, emojis_2, config_1, helpers_4, titleCase_3, appVar_6, hooks_5, searchView_1) {
+define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView"], function (require, exports, preact_6, layout_4, board_4, osversion_2, ahk_4, emojis_2, config_1, helpers_4, appVar_6, hooks_5, searchView_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AppMode = void 0;
@@ -5017,10 +5017,10 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
             switch (s.mode) {
                 case 0:
                     const board = s.currentBoard[s.mode];
-                    (0, ahk_4.ahkTitle)(board.name + (text?.length ? `: ${(0, titleCase_3.toTitleCase)(text)}` : ''));
+                    (0, ahk_4.ahkTitle)('Emoji Keyboard - ' + board.name + ': ' + (text?.length ? text : ''));
                     break;
                 case 1:
-                    (0, ahk_4.ahkTitle)('Emoji Keyboard - Search' + (s.searchText.length ? `: ${(0, titleCase_3.toTitleCase)(s.searchText)}` : '') + (text ? ': ' + text : ''));
+                    (0, ahk_4.ahkTitle)('Emoji Keyboard - Search: ' + (text?.length ? text : ''));
                     break;
                 case 2:
                     (0, ahk_4.ahkTitle)('Emoji Keyboard - Settings');

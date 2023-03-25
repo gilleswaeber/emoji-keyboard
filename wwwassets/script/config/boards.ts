@@ -39,7 +39,7 @@ export type EmojiKeyboard = {
 	bySC?: { [sc in SC]?: KeyboardItem }
 }
 export const MAIN_BOARD: EmojiKeyboard = {
-	name: 'Emoji Keyboard',
+	name: 'Main Board',
 	top: true,
 	symbol: '⌨',
 	content: [

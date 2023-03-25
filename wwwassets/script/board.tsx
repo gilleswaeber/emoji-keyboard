@@ -2,7 +2,6 @@ import {h, VNode} from "preact";
 import {KeyCodesList, Layout} from "./layout";
 import {ahkTitle} from "./ahk";
 import {useContext, useMemo} from "preact/hooks";
-import {toTitleCase} from "./builder/titleCase";
 import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
 import {BackKey, BlankKey, ClusterKey, ConfigKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
@@ -64,7 +63,7 @@ export abstract class Board {
 
 	showStatus(str: string): void {
 		if (!str.length) return this.hideStatus();
-		ahkTitle(this.name + ": " + toTitleCase(str));
+		ahkTitle(this.name + ": " + str);
 	}
 
 	private hideStatus(): void {

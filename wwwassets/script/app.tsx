@@ -6,7 +6,6 @@ import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, a
 import {search} from "./emojis";
 import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
-import {toTitleCase} from "./builder/titleCase";
 import {
 	AppActions,
 	ConfigBuildingContext,
@@ -144,10 +143,10 @@ class App extends Component<{}, AppState> implements AppActions {
 		switch (s.mode) {
 			case AppMode.MAIN:
 				const board = s.currentBoard[s.mode];
-				ahkTitle(board.name + (text?.length ? `: ${toTitleCase(text)}` : ''));
+				ahkTitle('Emoji Keyboard - ' + board.name + ': '+ (text?.length ? text : ''));
 				break;
 			case AppMode.SEARCH:
-				ahkTitle('Emoji Keyboard - Search' + (s.searchText.length ? `: ${toTitleCase(s.searchText)}` : '') + (text ? ': ' + text : ''));
+				ahkTitle('Emoji Keyboard - Search: ' + (text?.length ? text : ''));
 				break;
 			case AppMode.SETTINGS:
 				ahkTitle('Emoji Keyboard - Settings');

@@ -177,7 +177,7 @@ export const BlankKey = new Key({name: '', symbol: ''});
 
 export class BackKey extends Key {
 	constructor() {
-		super({name: 'back/🛠️', symbol: '←'});
+		super({name: 'Back/🛠️', symbol: '←'});
 	}
 
 	act() {
