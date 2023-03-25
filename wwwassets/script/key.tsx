@@ -78,6 +78,7 @@ export class Key {
 				this.actAlternate();
 			}}
 			onMouseOver={() => app().updateStatus(this.name)}
+			data-keycode={code}
 		>
 			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
 			<div className="name">{this.name}</div>

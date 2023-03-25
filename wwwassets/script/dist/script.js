@@ -4152,7 +4152,7 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
                 }, onContextMenu: (e) => {
                     e.preventDefault();
                     this.actAlternate();
-                }, onMouseOver: () => (0, appVar_2.app)().updateStatus(this.name) },
+                }, onMouseOver: () => (0, appVar_2.app)().updateStatus(this.name), "data-keycode": code },
                 (0, preact_1.h)("div", { className: "keyname" },
                     this.keyNamePrefix,
                     (0, preact_1.h)(KeyName, { code: code })),
@@ -5035,6 +5035,10 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 case 0:
                 case 1:
                 case 2:
+                    var keydiv = document.querySelector('[data-keycode="' + key + '"]');
+                    var symboldiv = keydiv?.getElementsByClassName("symbol")[0];
+                    symboldiv?.classList.add("keypress");
+                    setTimeout(() => { symboldiv?.classList.remove("keypress"); }, 100);
                     const k = this.keyHandlers[key];
                     if (k) {
                         if (shift)

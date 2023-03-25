@@ -164,6 +164,12 @@ class App extends Component<{}, AppState> implements AppActions {
 			case AppMode.MAIN:
 			case AppMode.SEARCH:
 			case AppMode.SETTINGS:
+				// animate keypress
+				var keydiv = document.querySelector('[data-keycode="' + key +'"]')
+				var symboldiv = keydiv?.getElementsByClassName("symbol")[0]
+				symboldiv?.classList.add("keypress")
+				setTimeout(() => {symboldiv?.classList.remove("keypress")}, 100)
+
 				const k = this.keyHandlers[key as SC];
 				if (k) {
 					if (shift) k.actAlternate();
