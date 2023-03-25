@@ -507,7 +507,7 @@ define("builder/consolidated", ["require", "exports", "builder/titleCase", "char
 define("ahk", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ahkOpenDevTools = exports.ahkSetOpacity = exports.ahkSetSize = exports.ahkSaveUnicodeData = exports.ahkSaveConfig = exports.ahkSetSearch = exports.ahkSend = exports.ahkReady = exports.ahkTitle = exports.ahkDownloadUnicode = void 0;
+    exports.ahkOpenDevTools = exports.ahkSetOpacity = exports.ahkSetOpenAt = exports.ahkSetPosSize = exports.ahkSaveUnicodeData = exports.ahkSaveConfig = exports.ahkSetSearch = exports.ahkSend = exports.ahkReady = exports.ahkTitle = exports.ahkDownloadUnicode = void 0;
     let AHK = null;
     window.chrome?.webview?.hostObjects?.ahk.then((ahk) => AHK = ahk);
     function isAHK() {
@@ -589,13 +589,20 @@ define("ahk", ["require", "exports"], function (require, exports) {
             console.log("SaveUnicodeData", data);
     }
     exports.ahkSaveUnicodeData = ahkSaveUnicodeData;
-    function ahkSetSize(width, height) {
+    function ahkSetPosSize(x, y, width, height) {
         if (isAHK())
-            AHK.setSize(width, height);
+            AHK.setPosSize(x, y, width, height);
         else
-            console.log("SetSize", width, height);
+            console.log("SetPosSize", x, y, width, height);
     }
-    exports.ahkSetSize = ahkSetSize;
+    exports.ahkSetPosSize = ahkSetPosSize;
+    function ahkSetOpenAt(at) {
+        if (isAHK())
+            AHK.setOpenAt(at);
+        else
+            console.log("SetOpenAt", at);
+    }
+    exports.ahkSetOpenAt = ahkSetOpenAt;
     function ahkSetOpacity(opacity) {
         if (isAHK())
             AHK.setOpacity(opacity);
@@ -4433,9 +4440,12 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
         isoKeyboard: false,
         theme: exports.DefaultTheme,
         themeMode: "system",
+        x: -1,
+        y: -1,
         width: 764,
         height: 240,
         devTools: false,
+        openAt: "caret",
         opacity: exports.DefaultOpacity,
         skinTone: 0,
         recent: [],
@@ -4525,6 +4535,21 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
                         }),
                         new key_1.ConfigLabelKey("Opacity")
                     ]),
+                    ...(0, board_2.mapKeysToSlots)(layout_1.SecondRow, [
+                        ...[
+                            ["last pos", "+"],
+                            ["bottom", "_"],
+                            ["caret", "|"],
+                            ["mouse", "🖯"]
+                        ].map(([mode, symbol]) => new key_1.ConfigActionKey({
+                            active: config.openAt == mode,
+                            name: mode, symbol: symbol,
+                            action() {
+                                (0, appVar_3.app)().updateConfig({ openAt: mode });
+                            }
+                        })),
+                        new key_1.ConfigLabelKey("Open At")
+                    ])
                 };
             }
         },
@@ -5017,8 +5042,8 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                         case 'layout':
                             this.setSystemLayout(e.data[1]);
                             break;
-                        case 'size':
-                            this.updateConfig({ width: e.data[1], height: e.data[2] });
+                        case 'possize':
+                            this.updateConfig({ x: e.data[1], y: e.data[2], width: e.data[3], height: e.data[4] });
                             break;
                         default:
                             console.log("message", e.data[0], e.data);
@@ -5129,6 +5154,13 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 if (config.theme && s.config.theme != config.theme) {
                     const link = document.getElementById('themeCSS');
                     link.href = config_1.ThemesMap.get(config.theme)?.url ?? config_1.DefaultThemeUrl;
+                }
+                if (config.openAt) {
+                    (0, ahk_4.ahkSetOpenAt)(config.openAt);
+                }
+                if ((config.x != undefined && config.y != undefined &&
+                    config.width != undefined && config.height != undefined)) {
+                    (0, ahk_4.ahkSetPosSize)(config.x, config.y, config.width, config.height);
                 }
                 if (config.opacity && s.config.opacity != config.opacity) {
                     (0, ahk_4.ahkSetOpacity)(config.opacity);

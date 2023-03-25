@@ -6,10 +6,11 @@ type HostObject = {
 	saveConfig(config: string): void;
 	saveUnicodeData(data: string, types: string): void;
 	send(text: string): void;
+	setOpenAt(at: string): void;
 	setOpacity(opacity: number): void;
 	setTitle(title: string): void;
 	setSearch(enable: boolean): void;
-	setSize(width: number, height: number): void;
+	setPosSize(x: number, y: number, width: number, height: number): void;
 	ready(): void;
 };
 let AHK: HostObject | null = null;
@@ -93,9 +94,14 @@ export function ahkSaveUnicodeData(data: ConsolidatedUnicodeData) {
 	else console.log("SaveUnicodeData", data);
 }
 
-export function ahkSetSize(width: number, height: number) {
-	if (isAHK()) AHK!.setSize(width, height);
-	else console.log("SetSize", width, height);
+export function ahkSetPosSize(x: number, y: number, width: number, height: number) {
+	if (isAHK()) AHK!.setPosSize(x, y, width, height);
+	else console.log("SetPosSize", x, y, width, height);
+}
+
+export function ahkSetOpenAt(at: string) {
+	if (isAHK()) AHK!.setOpenAt(at);
+	else console.log("SetOpenAt", at);
 }
 
 export function ahkSetOpacity(opacity: number) {

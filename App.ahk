@@ -25,9 +25,12 @@ class EmojiKeyboard {
 	isVisible := false
 	isSearch := false
 	isInitialized := false
+	openAt := "bottom"
+	x := -1
+	y := -1
 	width := 764
 	height := 240
-	main := Gui("+E0x08000000 +AlwaysOnTop +Resize -MaximizeBox -MinimizeBox", "Emoji Keyboard")
+	main := Gui("+E0x08000000 +AlwaysOnTop -DPIScale +Resize -MaximizeBox -MinimizeBox", "Emoji Keyboard")
 	wvKeyboard := ""
 
 	isClipSaved := false
@@ -44,7 +47,6 @@ class EmojiKeyboard {
 					this.width := width
 					this.height := height
 					this.Redraw()
-					this.wv.PostWebMessageAsJson('["size", ' width ',' height ']')
 				}
 			}
 		}
@@ -62,6 +64,17 @@ class EmojiKeyboard {
 		this.main.OnEvent("Size", onSize)
 		OnMessage(0x112, onSysCommand)	; WM_SYSCOMMAND
 		OnMessage(0x51, onInputLangChange)	; WM_INPUTLANGCHANGE
+
+		monitor := GetMouseMonitor()
+		MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
+		x := left + (right - left - this.width) / 2
+		y := top + (bottom - top - this.height) / 2
+		this.main.Title := "Emoji Keyboard - Starting up ..."
+		this.main.Show(Format("x{} y{} W{} H{}", x, y, this.width, this.height))
+		this.Initialize()
+		Sleep(1000)
+		this.main.Title := "Emoji Keyboard"
+		this.main.Hide()
 	}
 
 	Redraw() {
@@ -179,6 +192,15 @@ class EmojiKeyboard {
 				WinSetTransparent(Round(255 * .2), this.main)
 			}
 		}
+		onSetOpenAt(at) {
+			this.openAt := at
+		}
+		onSetPosSize(x, y, width, height) {
+			this.x := x
+			this.y := y
+			this.width := width
+			this.height := height
+		}
 		onSetSearch(enable) {
 			if (this.isSearch != enable) {
 				this.isSearch := enable
@@ -190,15 +212,6 @@ class EmojiKeyboard {
 						Send("!{Esc}")
 					}
 					this.main.Opt("+E0x08000000")
-				}
-			}
-		}
-		onSetSize(width, height) {
-			if (width != this.width or height != this.height) {
-				this.width := width
-				this.height := height
-				if (this.isVisible) {
-					this.Show()
 				}
 			}
 		}
@@ -217,34 +230,108 @@ class EmojiKeyboard {
 			openDevTools: onOpenDevTools,
 			ready: onReady, reload: ActReload,
 			saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,
-			setOpacity: onSetOpacity, setSearch: onSetSearch, setSize: onSetSize, setTitle: onSetTitle,
+			setOpenAt: onSetOpenAt,
+			setOpacity: onSetOpacity, setSearch: onSetSearch, setPosSize: onSetPosSize, setTitle: onSetTitle,
 		})
 		this.text.Visible := false
 	}
 
+	; https://www.reddit.com/r/AutoHotkey/comments/ysuawq/get_the_caret_location_in_any_program/
+	GetCaret(&X?, &Y?, &W?, &H?) {
+		; UIA2 caret
+		static IUIA := ComObject("{e22ad333-b25f-460c-83d0-0581107395c9}", "{34723aff-0c9d-49d0-9896-7ab52df8cd8a}")
+		try {
+			ComCall(8, IUIA, "ptr*", &FocusedEl := 0) ; GetFocusedElement
+			ComCall(16, FocusedEl, "int", 10024, "ptr*", &patternObject := 0), ObjRelease(FocusedEl) ; GetCurrentPattern. TextPatternElement2 = 10024
+			if patternObject {
+				ComCall(10, patternObject, "int*", &IsActive := 1, "ptr*", &caretRange := 0), ObjRelease(patternObject) ; GetCaretRange
+				ComCall(10, caretRange, "ptr*", &boundingRects := 0), ObjRelease(caretRange) ; GetBoundingRectangles
+				if (Rect := ComValue(0x2005, boundingRects)).MaxIndex() = 3 { ; VT_ARRAY | VT_R8
+					X := Round(Rect[0]), Y := Round(Rect[1]), W := Round(Rect[2]), H := Round(Rect[3])
+					return 3
+				}
+			}
+		}
+
+		; Acc caret
+		static _ := DllCall("LoadLibrary", "Str", "oleacc", "Ptr")
+		try {
+			idObject := 0xFFFFFFF8 ; OBJID_CARET
+			if DllCall("oleacc\AccessibleObjectFromWindow", "ptr", WinExist("A"), "uint", idObject &= 0xFFFFFFFF
+				, "ptr", -16 + NumPut("int64", idObject == 0xFFFFFFF0 ? 0x46000000000000C0 : 0x719B3800AA000C81, NumPut("int64", idObject == 0xFFFFFFF0 ? 0x0000000000020400 : 0x11CF3C3D618736E0, IID := Buffer(16)))
+				, "ptr*", oAcc := ComValue(9, 0)) = 0 {
+				x := Buffer(4), y := Buffer(4), w := Buffer(4), h := Buffer(4)
+				oAcc.accLocation(ComValue(0x4003, x.ptr, 1), ComValue(0x4003, y.ptr, 1), ComValue(0x4003, w.ptr, 1), ComValue(0x4003, h.ptr, 1), 0)
+				X := NumGet(x, 0, "int"), Y := NumGet(y, 0, "int"), W := NumGet(w, 0, "int"), H := NumGet(h, 0, "int")
+				if (X | Y) != 0
+					return 2
+			}
+		}
+
+		; Default caret
+		return CaretGetPos(&X, &Y)
+	}
+
 	Show() {
-		this.isVisible := true
 		monitor := GetMouseMonitor()
 		MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
-		x := left + (right - left - (this.width + 13) * A_Scaling) / 2	; 13px = shadow
-		y := bottom - (this.height + 30) * A_Scaling	; 32 = titlebar + shadow
+		this.main.GetPos(&x, &y, &w, &h)
+		this.main.GetClientPos(&xc, &yc, &wc, &hc)
+		gc := this.GetCaret(&xm, &ym, &wm, &hm)
+		xo := xc - x
+		yo := yc - y
 
-		this.main.Show(Format("{} W{} H{} x{} y{}", this.isSearch ? "" : "NA", this.width, this.height, x, y))
-		if (!this.isInitialized) {
-			this.Initialize()
-		} else {
-			this.wvc.Fill()
-			CheckLayout()
+		if (this.openAt == "mouse") {
+			MouseGetPos(&xm, &ym)
+			x := xm - wc / 2 - xo
+			y := ym - hc / 2 - yo
 		}
+		else if (this.openAt == "caret" && gc > 0) {
+			x := xm - w / 2
+			if (ym > top + hc + yo + gc) {
+				y := ym - hc - yo - gc
+			}
+			else if (ym < bottom - h - hm - gc) {
+				y := ym + hm + gc
+			}
+		}
+		else if (this.openAt == "bottom") {
+			x := left + (right - left - w) / 2 + xo
+			y := bottom - h + yo
+		}
+		else { ; last pos
+			x := this.x
+			y := this.y
+		}
+
+		; sanitize position - seems a bit inconsitent, but only this yield rigth results
+		if (x < left - xo)
+			x := left - xo
+		if (x > right - w + xo)
+			x := right - w + xo
+		if (y < top)
+			y := top
+		if (y > bottom - hc - yo)
+			y := bottom - hc - yo
+
+		this.main.Show(Format("{} x{} y{} W{} H{}", this.isSearch ? "" : "NA", x, y, wc, hc))
+
+		this.wvc.Fill()
+		CheckLayout()
+
+		this.isVisible := true
 	}
 
 	Hide(*) {
 		if (this.isVisible and this.text.Visible) {
 			Return
 		}
-		this.isVisible := false
+		this.main.GetPos(&x, &y, &w, &h)
+		this.main.GetClientPos(&xc, &yc, &wc, &hc)
+		this.wv.PostWebMessageAsJson('["possize", ' x ',' y ',' wc ',' hc ']')
 		this.main.Hide()
 		SetTimer(CheckLayout, 0)
+		this.isVisible := false
 	}
 
 	Toggle() {

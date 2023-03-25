@@ -75,6 +75,7 @@ export const Themes: { name: string, url: string, symbol: string }[] = [
 ];
 type ThemeMode = "light" | "dark" | "system";
 
+type OpenAt = "last pos" | "bottom" | "caret" | "mouse";
 
 export interface RecentEmoji {
 	symbol: string;
@@ -85,9 +86,12 @@ export interface AppConfig {
 	isoKeyboard: boolean;  // has an additional key next to left shift
 	theme: string;
 	themeMode: ThemeMode;
+	x: number;
+	y: number;
 	width: number;
 	height: number;
 	devTools: boolean;
+	openAt: OpenAt;
 	opacity: number;
 	skinTone: SkinTone;
 	recent: RecentEmoji[];
@@ -99,9 +103,12 @@ export const DefaultConfig: AppConfig = {
 	isoKeyboard: false,
 	theme: DefaultTheme,
 	themeMode: "system",
+	x: -1,
+	y: -1,
 	width: 764,
 	height: 240,
 	devTools: false,
+	openAt: "caret",
 	opacity: DefaultOpacity,
 	skinTone: 0,
 	recent: [],
@@ -207,6 +214,21 @@ const ConfigPages: ConfigPage[] = [
 					}),
 					new ConfigLabelKey("Opacity")
 				]),
+				...mapKeysToSlots(SecondRow, [
+					...([
+						["last pos", "+"],
+						["bottom", "_"],
+						["caret", "|"],
+						["mouse", "🖯"]
+					] as const).map(([mode, symbol]) => new ConfigActionKey({
+						active: config.openAt == mode,
+						name: mode, symbol: symbol,
+						action() {
+							app().updateConfig({openAt: mode})
+						}
+					})),
+					new ConfigLabelKey("Open At")
+				])
 			};
 		}
 	},

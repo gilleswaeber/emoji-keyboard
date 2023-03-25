@@ -2,7 +2,7 @@ import {Component, h, options, render} from 'preact';
 import {AnsiLayout, BaseLayout, IsoLayout,  Layout, SystemLayout, SystemLayoutUS} from "./layout";
 import {Board, BoardState, getMainBoard, SlottedKeys} from "./board";
 import {Version} from "./osversion";
-import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
+import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetOpenAt, ahkSetPosSize, ahkSetSearch, ahkTitle} from "./ahk";
 import {search} from "./emojis";
 import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
@@ -74,8 +74,8 @@ class App extends Component<{}, AppState> implements AppActions {
 					case 'layout':
 						this.setSystemLayout(e.data[1]);
 						break;
-					case 'size':
-						this.updateConfig({width: e.data[1], height: e.data[2]});
+					case 'possize':
+						this.updateConfig({x: e.data[1], y: e.data[2], width: e.data[3], height: e.data[4]});
 						break;
 					default:
 						console.log("message", e.data[0], e.data)
@@ -103,7 +103,7 @@ class App extends Component<{}, AppState> implements AppActions {
 			} else {
 				console.log("message", e.data)
 			}
-		})
+		});
 	}
 
 	render() {
@@ -195,6 +195,14 @@ class App extends Component<{}, AppState> implements AppActions {
 			if (config.theme && s.config.theme != config.theme) {
 				const link = document.getElementById('themeCSS') as HTMLLinkElement;
 				link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
+			}
+			if (config.openAt) {
+				ahkSetOpenAt(config.openAt);
+			}
+			// must check explicitly as 0 is false
+			if ((config.x != undefined && config.y != undefined &&
+				config.width != undefined && config.height != undefined)) {
+				ahkSetPosSize(config.x, config.y, config.width, config.height);
 			}
 			if (config.opacity && s.config.opacity != config.opacity) {
 				ahkSetOpacity(config.opacity);
