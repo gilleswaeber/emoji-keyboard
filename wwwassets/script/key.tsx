@@ -9,7 +9,8 @@ import {makeBuild, toCodePoints} from "./builder/builder";
 import {GeneralCategory} from "./builder/unicode";
 import {useContext, useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
-import { RecentEmoji } from "./config";
+import {RecentEmoji} from "./config";
+import {VarSel15} from "./chars";
 
 function Symbol({symbol}: { symbol: string }) {
 	const os = useContext(OSContext);
@@ -23,8 +24,12 @@ function Symbol({symbol}: { symbol: string }) {
 			}
 		}
 		const req = requiredOS(symbol);
-		const fallback = os.lt(req);
-		return <div className={cl(`symbol`, {fallback})}>
+		// here we consider that symbol = 1 grapheme cluster
+		// note that the browser doesn't apply the text-style selector by itself since the chars are in different fonts
+		// also, we may need a fallback for a sequence so font-family fallback won't work either
+		const fallbackFont = os.lt(req);
+		const textStyle = symbol.endsWith(VarSel15);
+		return <div className={cl(`symbol`, {fallbackFont, textStyle})}>
 			{symbol}
 		</div>
 	}, [symbol, os]);

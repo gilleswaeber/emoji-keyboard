@@ -3,19 +3,27 @@
 	--c-shadow: #000;
 }
 
-body, html{
+body, html {
 	margin: 0;
 	padding: 0;
 	font-family: 'Segoe UI', 'Segoe UI Emoji', 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 1.8vw;
 }
 
-*{
+.fallbackFont {
+	font-family: NotoEmoji, 'Segoe UI', 'Segoe UI Emoji', 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.textStyle {
+	font-family: 'Segoe UI', 'Segoe UI Symbol', 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
 	user-select: none;
 	-ms-user-select: none;
 }
 
-input{
+input {
 	font-family: 'Segoe UI', 'Segoe UI Emoji', 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -85,9 +93,6 @@ main > section{
 	hyphens: auto;
 	word-wrap: break-word;
 	white-space: normal;
-}
-.key .symbol.fallback {
-	font-family: NotoEmoji, 'Segoe UI', 'Segoe UI Emoji', 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }
 .key .symbol img{
 	height: 3.6vw;
