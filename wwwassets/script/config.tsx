@@ -74,8 +74,7 @@ export const Themes: { name: string, url: string, symbol: string }[] = [
 	{name: "legacy", url: "style/legacy.css", symbol: "⬜"},
 ];
 type ThemeMode = "light" | "dark" | "system";
-
-type OpenAt = "last pos" | "bottom" | "caret" | "mouse";
+type OpenAt = "last-position" | "bottom" | "text-caret" | "mouse";
 
 export interface RecentEmoji {
 	symbol: string;
@@ -108,7 +107,7 @@ export const DefaultConfig: AppConfig = {
 	width: 764,
 	height: 240,
 	devTools: false,
-	openAt: "caret",
+	openAt: "bottom",
 	opacity: DefaultOpacity,
 	skinTone: 0,
 	recent: [],
@@ -188,22 +187,22 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(FirstRow, [
 					new ConfigActionKey({
-						symbol: "--", name: "-10", action() {
+						symbol: "⏬", name: "-10", action() {
 							app().updateConfig({opacity: Math.max(config.opacity - .1, .2)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "-", name: "-1", action() {
+						symbol: "🔽", name: "-1", action() {
 							app().updateConfig({opacity: Math.max(config.opacity - .01, .2)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "+", name: "+1", action() {
+						symbol: "🔼", name: "+1", action() {
 							app().updateConfig({opacity: Math.min(config.opacity + .01, 1)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "++", name: "+10", action() {
+						symbol: "⏫", name: "+10", action() {
 							app().updateConfig({opacity: Math.min(config.opacity + .1, 1)})
 						}
 					}),
@@ -216,13 +215,13 @@ const ConfigPages: ConfigPage[] = [
 				]),
 				...mapKeysToSlots(SecondRow, [
 					...([
-						["last pos", "+"],
-						["bottom", "_"],
-						["caret", "|"],
-						["mouse", "🖯"]
-					] as const).map(([mode, symbol]) => new ConfigActionKey({
+						["last position", "🗿", "last-position"],
+						["bottom", "👇", "bottom"],
+						["caret (beta)", "⌨️", "text-caret"],
+						["mouse", "🖱️", "mouse"]
+					] as const).map(([name, symbol, mode]) => new ConfigActionKey({
 						active: config.openAt == mode,
-						name: mode, symbol: symbol,
+						name, symbol,
 						action() {
 							app().updateConfig({openAt: mode})
 						}

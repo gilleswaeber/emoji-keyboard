@@ -107,7 +107,7 @@ export class Key {
 
 export class ConfigKey extends Key {
 	constructor() {
-		super({name: "Settings", symbol: "🛠️", clickAlwaysAlternate: true, keyNamePrefix: "⇧"});
+		super({name: "Settings", symbol: "🛠️" + VarSel15, clickAlwaysAlternate: true, keyNamePrefix: "⇧"});
 	}
 
 	actAlternate(): void {
@@ -220,7 +220,7 @@ export class PageKey extends Key {
 
 export class SearchKey extends Key {
 	constructor() {
-		super({name: 'search', symbol: '🔎'});
+		super({name: 'search', symbol: '🔎' + VarSel15});
 	}
 
 	act() {
@@ -297,7 +297,7 @@ export class ClusterKey extends Key {
 
 export class RecentKey extends Key {
 	constructor() {
-		super({ name: 'Recent', symbol: '⟲' });
+		super({name: 'Recent', symbol: '↺'});
 	}
 
 	act() {
