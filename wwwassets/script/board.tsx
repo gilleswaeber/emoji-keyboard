@@ -72,37 +72,54 @@ export abstract class Board {
 	}
 
 	private static fromKeys(
-		{name, symbol, keys, top, bySC, byVK}:
-			{ name: string, symbol: string, keys: Key[], bySC?: SlottedKeys, byVK?: { [vk in VK]?: Key }, top?: boolean }): Board {
+		{name, symbol, keys, top, byRow, byVK}:
+			{ name: string, symbol: string, keys: Key[], byRow?: Key[][], byVK?: { [vk in VK]?: Key }, top?: boolean }): Board {
 		return new StaticBoard({
 			name, symbol, keys: (layout) => {
-				let freeKeys: readonly SC[] = layout.free;
+				let freeKeys = new Set<SC>(layout.free);
 				const fixedKeys: SlottedKeys = {
 					[SC.Backtick]: top ? new ConfigKey() : new BackKey(),
 					[SC.Tab]: new SearchKey(),
 					[SC.CapsLock]: new RecentKey(),
 				};
-				if (bySC) {
-					Object.assign(fixedKeys, bySC);
-					freeKeys = freeKeys.filter(sc => !fixedKeys[sc]);
+				const notPlaceable: Key[] = [];
+				if (byRow) {
+					const f = layout.freeRows;
+					for (const [r, row] of byRow.entries()) {
+						for (const [c, key] of row.entries()) {
+							if (key.blank) continue;
+							if (r < f.length && c < f[r].length && freeKeys.has(f[r][c])) {
+								fixedKeys[f[r][c]] = key;
+								freeKeys.delete(f[r][c]);
+							} else {
+								notPlaceable.push(key);
+							}
+						}
+					}
 				}
 				if (byVK) {
+					const vkPlaced = new Set<VK>();
 					for (const sc of freeKeys) {
 						const vk = layout.sys[sc].vk;
 						if (byVK[vk]) {
 							fixedKeys[sc] = byVK[vk];
+							vkPlaced.add(vk);
+							freeKeys.delete(sc);
 						}
 					}
-					freeKeys = freeKeys.filter(sc => !fixedKeys[sc]);
+					for (const [vk, key] of Object.entries(byVK)) {
+						if (!vkPlaced.has(parseInt(vk, 10))) notPlaceable.push(key);
+					}
 				}
+				if (notPlaceable.length) keys.unshift(...notPlaceable);
 
-				if (keys.length > freeKeys.length) {
+				if (keys.length > freeKeys.size) {
 					let pages = 1;
-					while (keys.length > pages * (freeKeys.length - Math.min(pages, MAX_PAGE_KEYS))) {
+					while (keys.length > pages * (freeKeys.size - Math.min(pages, MAX_PAGE_KEYS))) {
 						pages++;
 					}
 					const pageKeys = Math.min(pages, MAX_PAGE_KEYS);
-					const perPage = freeKeys.length - pageKeys;
+					const perPage = freeKeys.size - pageKeys;
 
 					return range(pages).map((i) => {
 						const pagesStart = i <= 4;
@@ -148,10 +165,10 @@ export abstract class Board {
 								}
 							}))
 							.concat(keys.slice(i * perPage, i * perPage + perPage))
-						return {...fixedKeys, ...mapKeysToSlots(freeKeys, page)}
+						return {...fixedKeys, ...mapKeysToSlots([...freeKeys], page)}
 					});
 				} else {
-					return [{...fixedKeys, ...mapKeysToSlots(freeKeys, keys)}];
+					return [{...fixedKeys, ...mapKeysToSlots([...freeKeys], keys)}];
 				}
 			}
 		});
@@ -194,10 +211,10 @@ export abstract class Board {
 
 	static fromEmoji(k: EmojiKeyboard): Board {
 		const keys = this.fromContents(k.content ?? []);
-		const bySC = fromEntries(k.bySC ? Object.entries(k.bySC).map(([k, v]) => [k, this.fromItem(v)] as const) : []);
+		const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key)));
 		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v)] as const) : []);
 
-		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, keys, bySC, byVK});
+		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, keys, byRow, byVK});
 	}
 
 	static clusterAlternates(cluster: string, variants: string[]) {

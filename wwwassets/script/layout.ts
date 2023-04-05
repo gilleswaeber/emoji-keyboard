@@ -118,6 +118,7 @@ export const SearchKeyCodesTable: KeyCodesList = [
 export type BaseLayout = {
 	all: KeyCodesList;
 	free: KeyCodesList;
+	freeRows: KeyCodesList[];
 	cssClass: string;
 }
 export type Layout = BaseLayout & {
@@ -131,6 +132,7 @@ export const AnsiLayout: BaseLayout = {
 		SC.Shift, ...ThirdRow, 1100, 1101  //, 68, 87, 88
 	],
 	free: [...DigitsRow, ...FirstRow, ...SecondRow, ...ThirdRow],
+	freeRows: [DigitsRow, FirstRow, SecondRow, ThirdRow],
 	cssClass: 'ansi-layout',
 };
 export const IsoLayout: BaseLayout = {
@@ -141,6 +143,7 @@ export const IsoLayout: BaseLayout = {
 		SC.Shift, SC.LessThan, ...ThirdRow, 1100 //, 68, 87, 88
 	],
 	free: [...DigitsRow, ...FirstRow, ...SecondRow, SC.LessThan, ...ThirdRow],
+	freeRows: [DigitsRow, FirstRow, SecondRow, [SC.LessThan, ...ThirdRow]],
 	cssClass: 'iso-layout',
 };
 export const SearchKeyCodes: number[] = [

@@ -45,13 +45,15 @@ export class Key {
 	public readonly upperName: string;
 	public readonly symbol: string;
 	public readonly active: boolean;
+	public readonly blank: boolean;
 	protected readonly clickAlwaysAlternate: boolean;
 	private readonly keyNamePrefix: string;
 	protected readonly alt: boolean;
 	protected readonly lu: boolean;
 
+
 	constructor(
-		p: { name: string, upperName?: string, symbol: string, active?: boolean, clickAlwaysAlternate?: boolean, keyNamePrefix?: string, alt?: boolean, lu?: boolean }
+		p: { name: string, upperName?: string, symbol: string, active?: boolean, clickAlwaysAlternate?: boolean, keyNamePrefix?: string, alt?: boolean, lu?: boolean, blank?: boolean }
 	) {
 		this.name = p.name;
 		this.upperName = p.upperName ?? '';
@@ -61,6 +63,7 @@ export class Key {
 		this.keyNamePrefix = p.keyNamePrefix ?? '';
 		this.alt = p.alt ?? false;
 		this.lu = p.lu ?? false;
+		this.blank = p.blank ?? false;
 	}
 
 	Contents = ({code}: { code: SC }) => {
@@ -179,7 +182,7 @@ export class ConfigBuildKey extends Key {
 	}
 }
 
-export const BlankKey = new Key({name: '', symbol: ''});
+export const BlankKey = new Key({name: '', symbol: '', blank: true});
 
 export class BackKey extends Key {
 	constructor() {
