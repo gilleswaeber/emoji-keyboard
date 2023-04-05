@@ -42,10 +42,12 @@ class EmojiKeyboard {
 			this.Hide()
 		}
 		onSize(obj, minMax, width, height) {
+			w := Round(width / A_Scaling)
+			h := Round(height / A_Scaling)
 			if (minMax >= 0 and width > 0 and height > 0 and !this.text.Visible) {
-				if (this.width != width or this.height != height) {
-					this.width := width
-					this.height := height
+				if (this.width != w or this.height != h) {
+					this.width := w
+					this.height := h
 					this.Redraw()
 				}
 			}
@@ -67,10 +69,12 @@ class EmojiKeyboard {
 
 		monitor := GetMouseMonitor()
 		MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
-		x := left + (right - left - this.width) / 2
-		y := top + (bottom - top - this.height) / 2
+		w := Round(this.width * A_Scaling)
+		h := Round(this.height * A_Scaling)
+		x := left + (right - left - w) / 2
+		y := top + (bottom - top - h) / 2
 		this.main.Title := "Emoji Keyboard - Starting up ..."
-		this.main.Show(Format("x{} y{} W{} H{}", x, y, this.width, this.height))
+		this.main.Show(Format("x{} y{} W{} H{}", x, y, w, h))
 		this.Initialize()
 		Sleep(1000)
 		this.main.Title := "Emoji Keyboard"
