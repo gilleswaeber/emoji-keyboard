@@ -1,7 +1,9 @@
 import {ConsolidatedUnicodeData} from "./builder/consolidated";
+import {AppConfig} from "./config";
 
 type HostObject = {
 	downloadUnicode(callbackNumber: number): void;
+	loaded(): void;
 	openDevTools(): void;
 	saveConfig(config: string): void;
 	saveUnicodeData(data: string, types: string): void;
@@ -62,6 +64,11 @@ export function ahkTitle(title: string) {
 	else document.title = title;
 }
 
+export function ahkLoaded() {
+	if (isAHK()) AHK!.loaded();
+	else console.log("Loaded");
+}
+
 export function ahkReady() {
 	if (isAHK()) AHK!.ready();
 	else console.log("Ready");
@@ -77,8 +84,8 @@ export function ahkSetSearch(state: boolean) {
 	else console.log("SetSearch", state);
 }
 
-export function ahkSaveConfig(config: string) {
-	if (isAHK()) AHK!.saveConfig(config);
+export function ahkSaveConfig(config: AppConfig) {
+	if (isAHK()) AHK!.saveConfig(JSON.stringify(config, null, 4));
 	else console.log("SaveConfig", config);
 }
 

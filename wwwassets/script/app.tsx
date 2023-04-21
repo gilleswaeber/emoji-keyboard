@@ -2,7 +2,17 @@ import {Component, h, options, render} from 'preact';
 import {AnsiLayout, BaseLayout, IsoLayout,  Layout, SystemLayout, SystemLayoutUS} from "./layout";
 import {Board, BoardState, getMainBoard, SlottedKeys} from "./board";
 import {Version} from "./osversion";
-import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetOpenAt, ahkSetPosSize, ahkSetSearch, ahkTitle} from "./ahk";
+import {
+	ahkLoaded,
+	ahkOpenDevTools,
+	ahkReady,
+	ahkSaveConfig,
+	ahkSetOpacity,
+	ahkSetOpenAt,
+	ahkSetPosSize,
+	ahkSetSearch,
+	ahkTitle
+} from "./ahk";
 import {search} from "./emojis";
 import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
@@ -85,7 +95,7 @@ class App extends Component<{}, AppState> implements AppActions {
 				const rest = e.data.slice(command.length + 1);
 				switch (command) {
 					case 'config':
-						this.setConfig(rest);
+						this.setConfig(rest).catch(console.error);
 						break;
 					case 'defaultConfig':
 						this.defaultConfig();
@@ -181,38 +191,43 @@ class App extends Component<{}, AppState> implements AppActions {
 		}
 	}
 
-	public setConfig(config: string) {
-		this.updateConfig(JSON.parse(config), false);
+	public async setConfig(config: string) {
+		await this.updateConfig(JSON.parse(config), false);
+		ahkReady();
 	}
 
 	public defaultConfig() {
-		ahkSaveConfig(JSON.stringify(this.state.config, null, 4));
+		ahkSaveConfig(this.state.config);
 		ahkSetOpacity(this.state.config.opacity);
+		ahkReady();
 	}
 
-	public updateConfig(config: Partial<AppConfig>, save = true) {
-		this.setState((s) => {
-			if (config.theme && s.config.theme != config.theme) {
-				const link = document.getElementById('themeCSS') as HTMLLinkElement;
-				link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
-			}
-			if (config.openAt) {
-				ahkSetOpenAt(config.openAt);
-			}
-			// must check explicitly as 0 is false
-			if ((config.x != undefined && config.y != undefined &&
-				config.width != undefined && config.height != undefined)) {
-				ahkSetPosSize(config.x, config.y, config.width, config.height);
-			}
-			if (config.opacity && s.config.opacity != config.opacity) {
-				ahkSetOpacity(config.opacity);
-			}
-			if (config.devTools && !s.config.devTools) {
-				ahkOpenDevTools();
-			}
-			return {config: {...s.config, ...config}};
-		}, () => {
-			if (save) ahkSaveConfig(JSON.stringify(this.state.config, null, 4));
+	public updateConfig(config: Partial<AppConfig>, save = true): Promise<void> {
+		return new Promise((resolve) => {
+			this.setState((s) => {
+				if (config.theme && s.config.theme != config.theme) {
+					const link = document.getElementById('themeCSS') as HTMLLinkElement;
+					link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
+				}
+				if (config.openAt) {
+					ahkSetOpenAt(config.openAt);
+				}
+				// must check explicitly as 0 is false
+				if ((config.x != undefined && config.y != undefined &&
+					config.width != undefined && config.height != undefined)) {
+					ahkSetPosSize(config.x, config.y, config.width, config.height);
+				}
+				if (config.opacity && s.config.opacity != config.opacity) {
+					ahkSetOpacity(config.opacity);
+				}
+				if (config.devTools && !s.config.devTools) {
+					ahkOpenDevTools();
+				}
+				return {config: {...s.config, ...config}};
+			}, () => {
+				if (save) ahkSaveConfig(this.state.config);
+				resolve();
+			});
 		})
 	}
 
@@ -281,4 +296,4 @@ const main = document.querySelector('main') as HTMLElement;
 options.debounceRendering = f => setTimeout(f, 0);  // Use setTimeout for debounce to avoid the use of the Promise polyfill, which causes issues with IE
 
 render(<App/>, main);
-setTimeout(() => ahkReady(), 0);
+setTimeout(() => ahkLoaded(), 0);
