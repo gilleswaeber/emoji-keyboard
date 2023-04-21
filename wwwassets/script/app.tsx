@@ -140,8 +140,8 @@ class App extends Component<{}, AppState> implements AppActions {
 	public setMode(mode: AppMode) {
 		this.setState((s) => {
 			if (s.mode != mode) {
-				if (mode == AppMode.SEARCH) ahkSetSearch(true);
-				if (s.mode == AppMode.SEARCH) ahkSetSearch(false);
+				if (mode == AppMode.SEARCH && !s.parentBoards[AppMode.SEARCH].length) ahkSetSearch(true);
+				else ahkSetSearch(false);
 			}
 			return {mode};
 		}, () => {
@@ -246,11 +246,13 @@ class App extends Component<{}, AppState> implements AppActions {
 	}
 
 	public setBoard(board: Board): void {
-		this.setState((s) => ({
+		this.setState((s) => {
+			if (s.mode == AppMode.SEARCH) ahkSetSearch(false);
+			return {
 				currentBoard: {...s.currentBoard, [s.mode]: board},
 				parentBoards: {...s.parentBoards, [s.mode]: [s.currentBoard[s.mode], ...s.parentBoards[s.mode]]},
-			}),
-			() => this.updateStatus());
+			}
+		}, () => this.updateStatus());
 	}
 
 	public setPage(page: number): void {
@@ -272,6 +274,7 @@ class App extends Component<{}, AppState> implements AppActions {
 	public back(): void {
 		this.setState((s) => {
 			if (s.parentBoards[s.mode].length) {
+				if (s.mode == AppMode.SEARCH) ahkSetSearch(s.parentBoards[s.mode].length == 1);
 				const [board, ...parents] = s.parentBoards[s.mode];
 				return {
 					parentBoards: {...s.parentBoards, [s.mode]: parents},

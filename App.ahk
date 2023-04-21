@@ -182,7 +182,8 @@ class EmojiKeyboard {
         }
         onSend(text) {
             SetTimer(RestoreClipboard,0)
-            if (this.isSearch) {
+            isActive := WinActive(this.main)
+            if (isActive) {
                 this.Hide()
             }
             if(!this.isClipSaved) {
@@ -193,7 +194,7 @@ class EmojiKeyboard {
             Sleep(10)
             Send("^v")
             SetTimer(RestoreClipboard,200)
-            if (this.isSearch) {
+            if (isActive) {
                 this.Show()
             }
         }
