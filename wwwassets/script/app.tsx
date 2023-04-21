@@ -154,10 +154,10 @@ class App extends Component<{}, AppState> implements AppActions {
 		switch (s.mode) {
 			case AppMode.MAIN:
 				const board = s.currentBoard[s.mode];
-				ahkTitle('Emoji Keyboard - ' + board.name + ': '+ (text?.length ? text : ''));
+				ahkTitle('Emoji Keyboard - ' + board.name + (text?.length ? ': '+ text : ''));
 				break;
 			case AppMode.SEARCH:
-				ahkTitle('Emoji Keyboard - Search: ' + (text?.length ? text : ''));
+				ahkTitle('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
 				break;
 			case AppMode.SETTINGS:
 				ahkTitle('Emoji Keyboard - Settings');

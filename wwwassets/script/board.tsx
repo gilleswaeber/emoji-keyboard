@@ -1,7 +1,7 @@
 import {h, VNode} from "preact";
 import {KeyCodesList, Layout} from "./layout";
 import {ahkTitle} from "./ahk";
-import {useContext, useMemo} from "preact/hooks";
+import {useContext, useEffect, useMemo} from "preact/hooks";
 import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
 import {BackKey, BlankKey, ClusterKey, ConfigKey, ExitRecentKey, Key, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
@@ -61,15 +61,6 @@ export abstract class Board {
 	public readonly symbol: string;
 
 	public abstract Contents(p: { state: BoardState | undefined }): VNode;
-
-	showStatus(str: string): void {
-		if (!str.length) return this.hideStatus();
-		ahkTitle(this.name + ": " + str);
-	}
-
-	private hideStatus(): void {
-		ahkTitle(this.name);
-	}
 
 	private static fromKeys(
 		{name, symbol, keys, top, byRow, byVK}:
@@ -242,6 +233,7 @@ export class StaticBoard extends Board {
 	Contents = ({state}: { state: BoardState | undefined }) => {
 		const l = useContext(LayoutContext);
 		const pages = useMemo(() => this.keys(l), [l]);
+		useEffect(() => app().updateStatus())
 		const keys = pages[state?.page ?? 0] ?? pages[0];
 		return <Keys keys={keys}/>;
 	}

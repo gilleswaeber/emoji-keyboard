@@ -17,7 +17,7 @@ export interface AppActions {
 
 	setPage(page: number): void;
 
-	updateStatus(name: string): void;
+	updateStatus(name?: string): void;
 
 	setMode(mode: AppMode): void;
 
