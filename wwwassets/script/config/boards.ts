@@ -28,6 +28,8 @@ export type EmojiKeyboard = {
 	symbol: string;
 	/** Only set to true on the main keyboard */
 	top?: true;
+	/** Do not add to recently used */
+	noRecent?: true;
 	group?: undefined;
 	from?: undefined;
 	/** Place the items on the free keys, paging when necessary */
@@ -322,6 +324,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 		{
 			name: "Greek",
 			symbol: "π",
+			noRecent: true,
 			content: [
 				"ϐ",
 				"∂",

@@ -34,10 +34,18 @@ export abstract class Board {
 	public abstract Contents(p: { state: BoardState | undefined }): VNode;
 
 	private static fromKeys(
-		{name, symbol, keys, top, byRow, byVK}:
-			{ name: string, symbol: string, keys: Key[], byRow?: Key[][], byVK?: { [vk in VK]?: Key }, top?: boolean }): Board {
+		{name, symbol, keys, top, noRecent, byRow, byVK}:
+			{
+				name: string,
+				symbol: string,
+				keys: Key[],
+				byRow?: Key[][],
+				byVK?: { [vk in VK]?: Key },
+				top?: boolean,
+				noRecent?: boolean
+			}): Board {
 		return new StaticBoard({
-			name, symbol, keys: (layout) => {
+			name, symbol, noRecent, keys: (layout) => {
 				let freeKeys = new Set<SC>(layout.free);
 				const fixedKeys: SlottedKeys = {
 					[SC.Backtick]: top ? new ConfigKey() : new BackKey(),
@@ -136,14 +144,14 @@ export abstract class Board {
 		});
 	}
 
-	private static fromItem(item: KeyboardItem): Key {
+	private static fromItem(item: KeyboardItem, p: { noRecent?: boolean }): Key {
 		if (item === null) {
 			return BlankKey;
 		} else if (typeof item === 'string') {
-			return new ClusterKey(item);
+			return new ClusterKey(item, p);
 		} else if (Array.isArray(item)) {
 			if (item.length) {
-				return new ClusterKey(item[0], item);
+				return new ClusterKey(item[0], {variants: item, ...p});
 			}
 			return BlankKey;
 		} else {
@@ -151,36 +159,37 @@ export abstract class Board {
 		}
 	}
 
-	private static fromContents(contents: KeyboardContent[]): Key[] {
+	private static fromContents(contents: KeyboardContent[], p: { noRecent?: boolean }): Key[] {
 		const keys: Key[] = [];
 		for (const item of contents) {
 			if (item === null || typeof item === 'string' || Array.isArray(item)) {
-				keys.push(this.fromItem(item));
+				keys.push(this.fromItem(item, p));
 			} else if (item.group) {
-				keys.push(...emojiGroup(item).map(c => new ClusterKey(c)));
+				keys.push(...emojiGroup(item).map(c => new ClusterKey(c, p)));
 			} else if (typeof item.from !== 'undefined') {
 				const from = typeof item.from === 'number' ? item.from : toCodePoints(item.from)[0];
 				const to = typeof item.to === 'number' ? item.to : toCodePoints(item.to)[0];
 				if (from && to && to > from) {
-					for (let i = from; i <= to; ++i) keys.push(new ClusterKey(String.fromCodePoint(i)));
+					for (let i = from; i <= to; ++i) keys.push(new ClusterKey(String.fromCodePoint(i), p));
 				}
 			} else {
-				keys.push(this.fromItem(item));
+				keys.push(this.fromItem(item, p));
 			}
 		}
 		return keys;
 	}
 
 	static fromEmoji(k: EmojiKeyboard): Board {
-		const keys = this.fromContents(k.content ?? []);
-		const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key)));
-		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v)] as const) : []);
+		const p = {noRecent: k.noRecent};
+		const keys = this.fromContents(k.content ?? [], p);
+		const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key, p)));
+		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)] as const) : []);
 
-		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, keys, byRow, byVK});
+		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, noRecent: k.noRecent, keys, byRow, byVK});
 	}
 
-	static clusterAlternates(cluster: string, variants: string[]) {
-		const keys = variants.map((c) => new ClusterKey(c, []));
+	static clusterAlternates(cluster: string, variants: string[], k?: { noRecent?: boolean }) {
+		const keys = variants.map((c) => new ClusterKey(c, {variants: [], ...k}));
 		return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
 	}
 
@@ -195,6 +204,7 @@ export class StaticBoard extends Board {
 			name: string;
 			symbol: string;
 			keys: (layout: Layout) => SlottedKeys[];
+			noRecent?: boolean;
 		}
 	) {
 		super(p);

@@ -146,9 +146,11 @@ export class ExitSearchKey extends Key {
 
 export class ClusterKey extends Key {
 	private readonly variants: string[] | undefined;
-	constructor(private cluster: string, variants?: string[]) {
+	private readonly noRecent: boolean;
+
+	constructor(private cluster: string, p?: { variants?: string[], noRecent?: boolean }) {
 		const name = clusterName(cluster);
-		variants ??= clusterVariants(cluster);
+		const variants = p?.variants ?? clusterVariants(cluster);
 		super({
 			name,
 			upperName: variants?.length == 2 ? variants[1] : "",
@@ -157,20 +159,21 @@ export class ClusterKey extends Key {
 			lu: variants?.length === 2,
 			keyType: "char",
 		});
+		this.noRecent = p?.noRecent ?? false;
 		this.variants = variants;
 	}
 
 	act() {
 		ahkSend(this.cluster);
-		increaseRecent(this.cluster);
+		if (!this.noRecent) increaseRecent(this.cluster);
 	}
 
 	actAlternate() {
 		if (this.alt) {
-			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!));
+			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!, {noRecent: this.noRecent}));
 		} else if (this.lu) {
 			ahkSend(this.variants![1]);
-			increaseRecent(this.variants![1]);
+			if (!this.noRecent) increaseRecent(this.variants![1]);
 		} else return this.act();
 	}
 }
