@@ -1,10 +1,12 @@
 import {Fragment, h} from "preact";
 import {DigitsRow, FirstRow, SecondRow} from "./layout";
-import {ConfigActionKey, ConfigBuildKey, ConfigLabelKey, ConfigToggleKey, ExitSearchKey, KeyName, PageKey} from "./key";
-import {Board, BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./board";
+import {ConfigActionKey, ConfigBuildKey, ConfigLabelKey, ConfigToggleKey, ExitSearchKey, PageKey} from "./key";
+import {Board} from "./board";
 import {useContext} from "preact/hooks";
 import {app, ConfigContext} from "./appVar";
 import {SC} from "./layout/sc";
+import {BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./boards/utils";
+import {KeyName} from "./keys/base";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 const SHORTCUT_KEYS = [

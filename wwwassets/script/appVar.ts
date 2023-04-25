@@ -1,19 +1,19 @@
-import {Board, SlottedKeys} from "./board";
-import {AppConfig} from "./config";
-import {AppMode} from "./app";
 import {createContext} from "preact";
-import {AnsiLayout, BaseLayout, Layout, SystemLayoutUS} from "./layout";
+import type {AppMode} from "./app";
+import type {Board} from "./board";
+import type {AppConfig} from "./config";
+import {AnsiLayout, Layout, SystemLayoutUS} from "./layout";
 import {Version} from "./osversion";
-import { RecentEmoji } from "./config";
+import {SlottedKeys} from "./boards/utils";
 
 export interface AppActions {
 	keyHandlers: SlottedKeys;
 
-	setBoard(parent: Board): void;
+	setBoard(board: Board): void;
 
 	setSearchText(searchText: string): void;
 
-	updateConfig(config: Partial<AppConfig>): void;
+	updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save?: boolean): void;
 
 	setPage(page: number): void;
 
@@ -24,10 +24,6 @@ export interface AppActions {
 	back(): void;
 
 	setBuilding(building: boolean): void;
-
-	getLayout(): BaseLayout;
-
-	getRecent(): RecentEmoji[];
 }
 
 let appVar: AppActions;

@@ -1,6 +1,6 @@
 import {Component, h, options, render} from 'preact';
-import {AnsiLayout, BaseLayout, IsoLayout,  Layout, SystemLayout, SystemLayoutUS} from "./layout";
-import {Board, BoardState, getMainBoard, SlottedKeys} from "./board";
+import {AnsiLayout, IsoLayout, Layout, SystemLayout, SystemLayoutUS} from "./layout";
+import {Board, getMainBoard} from "./board";
 import {Version} from "./osversion";
 import {
 	ahkLoaded,
@@ -28,15 +28,17 @@ import {
 import {useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
 import {SearchBoard} from "./searchView";
-import { RecentEmoji } from './config';
+import {BoardState, SlottedKeys} from "./boards/utils";
+import {RecentBoard} from "./recentsView";
 
 export const enum AppMode {
 	MAIN = 0,
 	SEARCH = 1,
-	SETTINGS = 2
+	SETTINGS = 2,
+	RECENTS = 3,
 }
 
-const AppModes = [AppMode.MAIN, AppMode.SEARCH, AppMode.SETTINGS] as const;
+const AppModes = [AppMode.MAIN, AppMode.SEARCH, AppMode.SETTINGS, AppMode.RECENTS] as const;
 
 type AppState = {
 	mode: AppMode;
@@ -65,6 +67,7 @@ class App extends Component<{}, AppState> implements AppActions {
 			[AppMode.MAIN]: getMainBoard(),
 			[AppMode.SEARCH]: new SearchBoard(),
 			[AppMode.SETTINGS]: new ConfigBoard(),
+			[AppMode.RECENTS]: new RecentBoard(),
 		},
 		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
 		building: false,
@@ -153,8 +156,9 @@ class App extends Component<{}, AppState> implements AppActions {
 		const s = this.state;
 		switch (s.mode) {
 			case AppMode.MAIN:
+			case AppMode.RECENTS:
 				const board = s.currentBoard[s.mode];
-				ahkTitle('Emoji Keyboard - ' + board.name + (text?.length ? ': '+ text : ''));
+				ahkTitle('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : ''));
 				break;
 			case AppMode.SEARCH:
 				ahkTitle('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
@@ -174,11 +178,14 @@ class App extends Component<{}, AppState> implements AppActions {
 			case AppMode.MAIN:
 			case AppMode.SEARCH:
 			case AppMode.SETTINGS:
+			case AppMode.RECENTS:
 				// animate keypress
-				var keydiv = document.querySelector('[data-keycode="' + key +'"]')
+				var keydiv = document.querySelector('[data-keycode="' + key + '"]')
 				var symboldiv = keydiv?.getElementsByClassName("symbol")[0]
 				symboldiv?.classList.add("keypress")
-				setTimeout(() => {symboldiv?.classList.remove("keypress")}, 100)
+				setTimeout(() => {
+					symboldiv?.classList.remove("keypress")
+				}, 100)
 
 				const k = this.keyHandlers[key as SC];
 				if (k) {
@@ -202,9 +209,10 @@ class App extends Component<{}, AppState> implements AppActions {
 		ahkReady();
 	}
 
-	public updateConfig(config: Partial<AppConfig>, save = true): Promise<void> {
+	public updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save = true): Promise<void> {
 		return new Promise((resolve) => {
 			this.setState((s) => {
+				if (typeof config === 'function') config = config(s.config);
 				if (config.theme && s.config.theme != config.theme) {
 					const link = document.getElementById('themeCSS') as HTMLLinkElement;
 					link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
@@ -283,15 +291,6 @@ class App extends Component<{}, AppState> implements AppActions {
 			}
 			return {};
 		});
-	}
-
-	public getLayout(): BaseLayout
-	{
-		return this.state.config.isoKeyboard ? IsoLayout : AnsiLayout;
-	}
-
-	public getRecent() : RecentEmoji[] {
-		return this.state.config.recent;
 	}
 }
 

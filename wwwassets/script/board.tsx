@@ -1,49 +1,20 @@
 import {h, VNode} from "preact";
-import {KeyCodesList, Layout} from "./layout";
-import {ahkTitle} from "./ahk";
+import {Layout} from "./layout";
 import {useContext, useEffect, useMemo} from "preact/hooks";
 import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
-import {BackKey, BlankKey, ClusterKey, ConfigKey, ExitRecentKey, Key, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
+import {BackKey, ClusterKey, ConfigKey, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
 import {clusterName, emojiGroup} from "./unicodeInterface";
 import {fromEntries} from "./helpers";
 import {toCodePoints} from "./builder/builder";
 import {VK} from "./layout/vk";
 import {SC} from "./layout/sc";
-import { RecentEmoji } from "./config";
-
-export interface BoardState {
-	page?: number;
-}
+import {BoardState, Keys, mapKeysToSlots, MAX_PAGE_KEYS, SlottedKeys} from "./boards/utils";
+import {BlankKey, Key} from "./keys/base";
 
 export function getMainBoard(): Board {
 	return Board.fromEmoji(MAIN_BOARD);
-}
-
-const MAX_PAGE_KEYS = 9;
-
-export function Keys({keys}: { keys: SlottedKeys }) {
-	const l = useContext(LayoutContext);
-	app().keyHandlers = keys;
-	return <div className="keyboard">
-		{l.all.map((code) => {
-			const K = (keys[code] ?? BlankKey);
-			return <K.Contents code={code} key={code}/>;
-		})}
-	</div>
-}
-
-export type SlottedKeys = {
-	[key in SC]?: Key
-}
-
-export function mapKeysToSlots(codes: KeyCodesList, keys: Key[]): SlottedKeys {
-	const mapped: SlottedKeys = {}
-	for (const [index, code] of Array.from(codes.entries())) {
-		if (keys[index]) mapped[code] = keys[index];
-	}
-	return mapped;
 }
 
 function range(stop: number): number[] {
@@ -233,34 +204,8 @@ export class StaticBoard extends Board {
 	Contents = ({state}: { state: BoardState | undefined }) => {
 		const l = useContext(LayoutContext);
 		const pages = useMemo(() => this.keys(l), [l]);
-		useEffect(() => app().updateStatus())
+		useEffect(() => app().updateStatus(), []);
 		const keys = pages[state?.page ?? 0] ?? pages[0];
 		return <Keys keys={keys}/>;
-	}
-}
-
-
-export class RecentBoard extends Board {
-	constructor() {
-		super({name: "Recent", symbol: "⟲"});
-	}
-
-	Contents(): preact.VNode {
-		const layout = app().getLayout()
-		const recentEmojis: RecentEmoji[] = app().getRecent();
-		recentEmojis.sort((a, b) => b.useCount - a.useCount);
-		const keys = useMemo(() => ({
-			[SC.Backtick]: new ExitRecentKey(),
-			[SC.Tab]: new SearchKey(),
-			[SC.CapsLock]: new ExitRecentKey(),
-			...mapKeysToSlots(layout.free, recentEmojis.map(r => new ClusterKey(r.symbol)))
-		}), [""]);
-		app().keyHandlers = keys;
-		return <div class="keyboard">
-			{layout.all.map((code) => {
-				const K = (keys[code] ?? BlankKey);
-				return <K.Contents code={code} key={code}/>;
-			})}
-		</div>
 	}
 }
