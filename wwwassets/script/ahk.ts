@@ -3,6 +3,7 @@ import {AppConfig} from "./config";
 
 type HostObject = {
 	downloadUnicode(callbackNumber: number): void;
+	hide(): void;
 	loaded(): void;
 	openDevTools(): void;
 	saveConfig(config: string): void;
@@ -53,10 +54,15 @@ function waitForCallback(): [number, Promise<void>] {
 export async function ahkDownloadUnicode() {
 	if (isAHK()) {
 		const [c, p] = waitForCallback();
-		setTimeout(() => AHK!.downloadUnicode(c), 10);43
+		setTimeout(() => AHK!.downloadUnicode(c), 10);
+		43
 		return p;
-	}
-	else console.log("DownloadUnicode");
+	} else console.log("DownloadUnicode");
+}
+
+export function ahkHide() {
+	if (isAHK()) AHK!.hide();
+	else console.log("Hide");
 }
 
 export function ahkTitle(title: string) {
@@ -74,9 +80,9 @@ export function ahkReady() {
 	else console.log("Ready");
 }
 
-export function ahkSend(symbol: string) {
-	if (isAHK()) AHK!.send(symbol);
-	else console.log("Send", symbol);
+export function ahkSend(text: string) {
+	if (isAHK()) AHK!.send(text);
+	else console.log("Send", text);
 }
 
 export function ahkSetSearch(state: boolean) {

@@ -1,7 +1,6 @@
 import {AppMode} from "./app";
 import {ComponentChild, h} from "preact";
 import {Board} from "./board";
-import {ahkSend} from "./ahk";
 import {app, ConfigBuildingContext} from "./appVar";
 import {cl} from "./helpers";
 import {clusterName, clusterVariants} from "./unicodeInterface";
@@ -11,7 +10,6 @@ import {SC} from "./layout/sc";
 import {VarSel15} from "./chars";
 import {Key, KeyName} from "./keys/base";
 import {Symbol} from "./keys/symbol";
-import {increaseRecent} from "./recentsActions";
 
 export class ConfigKey extends Key {
 	constructor() {
@@ -53,9 +51,9 @@ export class ConfigLabelKey extends Key {
 	}
 
 	Contents = ({code}: { code: SC }) => {
-		return <div class={`key label`}>
-			<div class="keyname"><KeyName code={code}/></div>
-			<div class="symbol">{this.text}</div>
+		return <div className={`key label`}>
+			<div className="keyname"><KeyName code={code}/></div>
+			<div className="symbol">{this.text}</div>
 		</div>;
 	}
 }
@@ -164,16 +162,14 @@ export class ClusterKey extends Key {
 	}
 
 	act() {
-		ahkSend(this.cluster);
-		if (!this.noRecent) increaseRecent(this.cluster);
+		app().send(this.cluster, {noRecent: this.noRecent});
 	}
 
 	actAlternate() {
 		if (this.alt) {
 			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!, {noRecent: this.noRecent}));
 		} else if (this.lu) {
-			ahkSend(this.variants![1]);
-			if (!this.noRecent) increaseRecent(this.variants![1]);
+			app().send(this.variants![1], {noRecent: this.noRecent});
 		} else return this.act();
 	}
 }

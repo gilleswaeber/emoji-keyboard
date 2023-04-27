@@ -145,6 +145,9 @@ class EmojiKeyboard {
                 this.wv.PostWebMessageAsString('done,' num ',')
             }
         }
+        onHide() {
+        	this.Hide()
+		}
         onOpenDevTools() {
             this.wv.OpenDevToolsWindow()
         }
@@ -250,6 +253,7 @@ class EmojiKeyboard {
         this.wv.Navigate('file:///' A_ScriptDir '\wwwassets\index.html')
         this.wv.AddHostObjectToScript('ahk', {
             downloadUnicode: onDownloadUnicode,
+        	hide: onHide,
             loaded: onLoaded,
             openDevTools: onOpenDevTools,
             ready: onReady, reload: ActReload,

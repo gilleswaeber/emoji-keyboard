@@ -7,7 +7,6 @@ import {h} from "preact";
 import {Board} from "./board";
 import {Key} from "./keys/base";
 import {clusterName} from "./unicodeInterface";
-import {ahkSend} from "./ahk";
 import {DigitsRow} from "./layout";
 import {FAVORITE_SCORE, removeRecent, SCORE_DECR, SCORE_INCR, toggleFavorite} from "./recentsActions";
 
@@ -47,7 +46,7 @@ export class RecentClusterKey extends Key {
 	}
 
 	act() {
-		ahkSend(this.cluster);
+		app().send(this.cluster, {noRecent: true});
 	}
 
 	actAlternate() {

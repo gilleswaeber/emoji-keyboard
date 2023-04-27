@@ -3,10 +3,12 @@ import {AnsiLayout, IsoLayout, Layout, SystemLayout, SystemLayoutUS} from "./lay
 import {Board, getMainBoard} from "./board";
 import {Version} from "./osversion";
 import {
+	ahkHide,
 	ahkLoaded,
 	ahkOpenDevTools,
 	ahkReady,
 	ahkSaveConfig,
+	ahkSend,
 	ahkSetOpacity,
 	ahkSetOpenAt,
 	ahkSetPosSize,
@@ -30,6 +32,7 @@ import {SC} from "./layout/sc";
 import {SearchBoard} from "./searchView";
 import {BoardState, SlottedKeys} from "./boards/utils";
 import {RecentBoard} from "./recentsView";
+import {increaseRecent} from "./recentsActions";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -291,6 +294,30 @@ class App extends Component<{}, AppState> implements AppActions {
 			}
 			return {};
 		});
+	}
+
+	/** Go back to main board */
+	private main(): void {
+		this.setState(s => ({
+			mode: AppMode.MAIN,
+			currentBoard: {
+				...s.currentBoard,
+				[AppMode.MAIN]: s.parentBoards[AppMode.MAIN][s.parentBoards[AppMode.MAIN].length - 1] ?? s.currentBoard[AppMode.MAIN]
+			},
+			parentBoards: {
+				...s.parentBoards,
+				[AppMode.MAIN]: []
+			}
+		}));
+	}
+
+	public send(cluster: string, p: { noRecent?: boolean, parent?: string }): void {
+		ahkSend(cluster);
+		if (!p.noRecent) increaseRecent(cluster);
+		if (this.state.config.hideAfterInput) ahkHide();
+		if (this.state.config.mainAfterInput) {
+			if (this.state.mode == AppMode.RECENTS || this.state.mode == AppMode.MAIN) this.main();
+		}
 	}
 }
 

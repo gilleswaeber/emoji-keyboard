@@ -24,6 +24,8 @@ export interface AppActions {
 	back(): void;
 
 	setBuilding(building: boolean): void;
+
+	send(cluster: string, p: { noRecent?: boolean, parent?: string }): void;
 }
 
 let appVar: AppActions;
