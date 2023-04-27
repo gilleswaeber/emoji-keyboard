@@ -196,7 +196,7 @@ class EmojiKeyboard {
             A_Clipboard := text
             Sleep(10)
             Send("^v")
-            SetTimer(RestoreClipboard,200)
+            SetTimer(RestoreClipboard,500)
             if (isActive) {
                 this.Show()
             }
