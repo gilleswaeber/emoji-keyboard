@@ -167,7 +167,7 @@ class App extends Component<{}, AppState> implements AppActions {
 				ahkTitle('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
 				break;
 			case AppMode.SETTINGS:
-				ahkTitle('Emoji Keyboard - Settings');
+				ahkTitle('Emoji Keyboard - ' + (text?.length ? text : 'Settings'));
 				break;
 			default:
 				return unreachable(s.mode);

@@ -9,6 +9,7 @@ import {BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./boards/utils";
 import {KeyName} from "./keys/base";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
+// noinspection JSUnusedLocalSymbols
 const SHORTCUT_KEYS = [
 	{
 		name: "Function Row", keys: [
@@ -137,6 +138,7 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				[SC.Q]: new ConfigToggleKey({
 					active: config.isoKeyboard,
+					statusName: `ISO layout: ${config.isoKeyboard ? 'on' : 'off'}`,
 					action() {
 						app().updateConfig({isoKeyboard: !config.isoKeyboard});
 					}
@@ -164,7 +166,7 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(FirstRow, Themes.map((t) => new ConfigActionKey({
 					active: config.theme == t.name,
-					name: t.name,
+					name: t.name, statusName: `Theme: ${t.name}`,
 					symbol: t.symbol,
 					action() {
 						app().updateConfig({theme: t.name});
@@ -178,6 +180,7 @@ const ConfigPages: ConfigPage[] = [
 					] as const).map(([mode, symbol]) => new ConfigActionKey({
 						active: config.themeMode == mode,
 						name: mode, symbol: symbol,
+						statusName: `Theme variant: ${mode}`,
 						action() {
 							app().updateConfig({themeMode: mode})
 						}
@@ -193,27 +196,30 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(l.freeRows[1], [
 					new ConfigActionKey({
-						symbol: "⏬", name: "-10", action() {
+						symbol: "⏬", name: "-10", statusName: 'Opacity -10', action() {
 							app().updateConfig({opacity: Math.max(config.opacity - .1, .2)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "🔽", name: "-1", action() {
+						symbol: "🔽", name: "-1", statusName: 'Opacity -1', action() {
 							app().updateConfig({opacity: Math.max(config.opacity - .01, .2)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "🔼", name: "+1", action() {
+						symbol: "🔼", name: "+1", statusName: 'Opacity +1', action() {
 							app().updateConfig({opacity: Math.min(config.opacity + .01, 1)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "⏫", name: "+10", action() {
+						symbol: "⏫", name: "+10", statusName: 'Opacity +10', action() {
 							app().updateConfig({opacity: Math.min(config.opacity + .1, 1)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: `${Math.round(config.opacity * 100)}`, name: "reset", action() {
+						symbol: `${Math.round(config.opacity * 100)}`,
+						name: "reset",
+						statusName: 'Reset opacity',
+						action() {
 							app().updateConfig({opacity: DefaultOpacity})
 						}
 					}),
@@ -227,7 +233,7 @@ const ConfigPages: ConfigPage[] = [
 						["mouse", "🖱️", "mouse"]
 					] as const).map(([name, symbol, mode]) => new ConfigActionKey({
 						active: config.openAt == mode,
-						name, symbol,
+						name, statusName: `Open at ${name}`, symbol,
 						action() {
 							app().updateConfig({openAt: mode})
 						}
@@ -237,7 +243,7 @@ const ConfigPages: ConfigPage[] = [
 				...mapKeysToSlots(l.freeRows[3], [
 					new ConfigToggleKey({
 						active: config.hideAfterInput,
-						name: 'Hide',
+						name: 'Hide', statusName: `Hide after input: ${config.hideAfterInput ? 'on' : 'off'}`,
 						symbol: '🫥',
 						action() {
 							app().updateConfig({hideAfterInput: !config.hideAfterInput})
@@ -246,7 +252,7 @@ const ConfigPages: ConfigPage[] = [
 					new ConfigToggleKey({
 						active: config.mainAfterInput,
 						name: 'Go Home',
-						symbol: '🏠',
+						symbol: '🏠', statusName: `Go home after input: ${config.hideAfterInput ? 'on' : 'off'}`,
 						action() {
 							app().updateConfig({mainAfterInput: !config.mainAfterInput})
 						}
@@ -266,7 +272,7 @@ const ConfigPages: ConfigPage[] = [
 				]),
 				...mapKeysToSlots(SecondRow, [
 					new ConfigToggleKey({
-						active: config.devTools,
+						active: config.devTools, statusName: `Open DevTools: ${config.devTools ? 'on' : 'off'}`,
 						action() {
 							app().updateConfig({devTools: !config.devTools});
 						}

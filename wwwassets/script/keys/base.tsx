@@ -15,6 +15,8 @@ export type KeyType = "action" | "empty" | "char" | "back";
 export class Key {
 	public readonly name: string;
 	public readonly upperName: string;
+	/** Name used in the title bar */
+	private readonly statusName: string;
 	public readonly symbol: string;
 	public readonly active: boolean;
 	public readonly blank: boolean;
@@ -29,6 +31,7 @@ export class Key {
 		p: {
 			name: string,
 			upperName?: string,
+			statusName?: string,
 			symbol: string,
 			active?: boolean,
 			clickAlwaysAlternate?: boolean,
@@ -41,6 +44,7 @@ export class Key {
 	) {
 		this.name = p.name;
 		this.upperName = p.upperName ?? '';
+		this.statusName = p.statusName ?? p.name;
 		this.symbol = p.symbol;
 		this.active = p.active ?? false;
 		this.clickAlwaysAlternate = p.clickAlwaysAlternate ?? false;
@@ -62,7 +66,7 @@ export class Key {
 				e.preventDefault();
 				this.actAlternate();
 			}}
-			onMouseOver={() => app().updateStatus(this.name)}
+			onMouseOver={() => app().updateStatus(this.statusName)}
 			data-keycode={code}
 		>
 			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>

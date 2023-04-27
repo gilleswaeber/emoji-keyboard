@@ -24,8 +24,14 @@ export class ConfigKey extends Key {
 export class ConfigActionKey extends Key {
 	protected action: () => void;
 
-	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name: string, symbol: string }) {
-		super({name, symbol, active});
+	constructor({action, ...p}: {
+		active?: boolean,
+		action(): void,
+		name: string,
+		statusName?: string,
+		symbol: string
+	}) {
+		super(p);
 		this.action = action;
 	}
 
@@ -35,12 +41,19 @@ export class ConfigActionKey extends Key {
 }
 
 export class ConfigToggleKey extends ConfigActionKey {
-	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name?: string, symbol?: string }) {
+	constructor({active, ...p}: {
+		active?: boolean,
+		action(): void,
+		name?: string,
+		statusName?: string,
+		symbol?: string
+	}) {
 		active = active ?? false;
 		super({
-			name: name ?? (active ? "On" : "Off"),
-			symbol: symbol ?? (active ? "✔️" : "❌"),
-			active, action,
+			name: active ? "On" : "Off",
+			symbol: active ? "✔️" : "❌",
+			active,
+			...p,
 		});
 	}
 }
