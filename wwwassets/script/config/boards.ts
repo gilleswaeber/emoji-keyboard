@@ -3,6 +3,8 @@ import {SoftHyphen, ZeroWidthJoiner} from "../chars";
 import {VK} from "../layout/vk";
 import {ArrowsKeyboard} from "./arrows";
 import {MathKeyboard} from "./math";
+import {charInfo, UnicodeData} from "../unicodeInterface";
+import {GeneralCategory} from "../builder/unicode";
 
 /**
  * An item that will be placed on one key, either:
@@ -487,8 +489,83 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			symbol: "¤",
 			content: [
 				"¤",
-				"₳", "؋", "฿", "₵", "¢", "₡", "₢", "$", "₫", "₯", "₠", "€", "ƒ", "₣", "₲", "₴", "₭", "₤", "ℳ", "₥", "₦", "₪", "₧", "₱", "₰", "£", "﷼", "៛", "૱", "௹", "₨", "৳", "৲", "₮", "₩", "円", "¥", "元", "圓"
+				/* Afghani */ "₳",
+				/* Austral */ "؋",
+				/* Baht */ "฿",
+				/* Bitcoin */ "₿",
+				/* Cedi */ "₵",
+				/* Cent */ "¢",
+				/* Colon */ "₡",
+				/* Cruzeiro */ "₢",
+				/* Dollar */ "$",
+				/* Dong */ "₫",
+				/* Drachma */ "₯",
+				/* Euro, Currency */ "₠",
+				/* Euro, Symbol */ "€",
+				/* Floren */ "ƒ",
+				/* Franc */ "₣",
+				/* Guarani */ "₲",
+				/* Hryvnia */ "₴",
+				/* Kip */ "₭",
+				/* Lari */ "₾",
+				/* Lira */ "₤",
+				/* Lira, Turkish */ "₺",
+				/* Livre Tournois */ "₶",
+				/* Manat */ "₼",
+				/* Mark, German */ "ℳ",
+				/* Mark, Nordic */ "₻",
+				/* Mill */ "₥",
+				/* Naira */ "₦",
+				/* Penny, German */ "₰",
+				/* Peseta */ "₧",
+				/* Peso */ "₱",
+				/* Pound */ "£",
+				/* Rial */ "﷼",
+				/* Riel, Khmer */ "៛",
+				/* Ruble */ "₽",
+				/* Rupee */ "₨",
+				/* Rupee, Bengali */ "৳",
+				/* Rupee, Gujarati */ "૱",
+				/* Rupee, Indian */ "₹",
+				/* Rupee, Mark */ "৲",
+				/* Rupee, Tamil */ "௹",
+				/* Sheqel, New */ "₪",
+				/* Som */ "⃀",
+				/* Spesmilo */ "₷",
+				/* Tenge */ "₸",
+				/* Tugrik */ "₮",
+				/* Won */ "₩",
+				/* Yen */ "¥",
+				/* Yen 2 */ "円",
+				/* Yuan */ "元",
+				/* Yuan 2 */ "圓",
 			]
+		},
+		{
+			name: "Unicode Blocks",
+			symbol: "∪",
+			content: UnicodeData.blocks.filter(b => b.sub.some(s => s.char?.some(validCode))).map(block => {
+				const codes = block.sub.map(sub => sub.char).flat().filter(validCode);
+				let symbol = String.fromCodePoint(codes[0]);
+				for (const code of codes) {
+					const info = charInfo(code);
+					if (info?.ca?.startsWith(GeneralCategory.Letter)) {
+						symbol = String.fromCodePoint(code);
+						break;
+					}
+				}
+				return {
+					name: block.name,
+					symbol,
+					content: codes.map(c => String.fromCodePoint(c)),
+				} as EmojiKeyboard;
+			})
 		},
 	]
 };
+
+function validCode(code: number): boolean {
+	const info = charInfo(code);
+	if (!info) return false;
+	return !info.control && !info.reserved && !info.notACharacter;
+}
