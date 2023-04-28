@@ -1,12 +1,23 @@
 import {Component, h, options, render} from 'preact';
 import {AnsiLayout, IsoLayout, Layout, SystemLayout, SystemLayoutUS} from "./layout";
-import {Board, BoardState, getMainBoard, SlottedKeys} from "./board";
+import {Board, getMainBoard} from "./board";
 import {Version} from "./osversion";
-import {ahkOpenDevTools, ahkReady, ahkSaveConfig, ahkSetOpacity, ahkSetSearch, ahkTitle} from "./ahk";
+import {
+	ahkHide,
+	ahkLoaded,
+	ahkOpenDevTools,
+	ahkReady,
+	ahkSaveConfig,
+	ahkSend,
+	ahkSetOpacity,
+	ahkSetOpenAt,
+	ahkSetPosSize,
+	ahkSetSearch,
+	ahkTitle
+} from "./ahk";
 import {search} from "./emojis";
 import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
-import {toTitleCase} from "./builder/titleCase";
 import {
 	AppActions,
 	ConfigBuildingContext,
@@ -19,14 +30,18 @@ import {
 import {useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
 import {SearchBoard} from "./searchView";
+import {BoardState, SlottedKeys} from "./boards/utils";
+import {RecentBoard} from "./recentsView";
+import {increaseRecent} from "./recentsActions";
 
 export const enum AppMode {
 	MAIN = 0,
 	SEARCH = 1,
-	SETTINGS = 2
+	SETTINGS = 2,
+	RECENTS = 3,
 }
 
-const AppModes = [AppMode.MAIN, AppMode.SEARCH, AppMode.SETTINGS] as const;
+const AppModes = [AppMode.MAIN, AppMode.SEARCH, AppMode.SETTINGS, AppMode.RECENTS] as const;
 
 type AppState = {
 	mode: AppMode;
@@ -55,6 +70,7 @@ class App extends Component<{}, AppState> implements AppActions {
 			[AppMode.MAIN]: getMainBoard(),
 			[AppMode.SEARCH]: new SearchBoard(),
 			[AppMode.SETTINGS]: new ConfigBoard(),
+			[AppMode.RECENTS]: new RecentBoard(),
 		},
 		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
 		building: false,
@@ -74,8 +90,8 @@ class App extends Component<{}, AppState> implements AppActions {
 					case 'layout':
 						this.setSystemLayout(e.data[1]);
 						break;
-					case 'size':
-						this.updateConfig({width: e.data[1], height: e.data[2]});
+					case 'possize':
+						this.updateConfig({x: e.data[1], y: e.data[2], width: e.data[3], height: e.data[4]});
 						break;
 					default:
 						console.log("message", e.data[0], e.data)
@@ -85,7 +101,7 @@ class App extends Component<{}, AppState> implements AppActions {
 				const rest = e.data.slice(command.length + 1);
 				switch (command) {
 					case 'config':
-						this.setConfig(rest);
+						this.setConfig(rest).catch(console.error);
 						break;
 					case 'defaultConfig':
 						this.defaultConfig();
@@ -103,7 +119,7 @@ class App extends Component<{}, AppState> implements AppActions {
 			} else {
 				console.log("message", e.data)
 			}
-		})
+		});
 	}
 
 	render() {
@@ -130,8 +146,8 @@ class App extends Component<{}, AppState> implements AppActions {
 	public setMode(mode: AppMode) {
 		this.setState((s) => {
 			if (s.mode != mode) {
-				if (mode == AppMode.SEARCH) ahkSetSearch(true);
-				if (s.mode == AppMode.SEARCH) ahkSetSearch(false);
+				if (mode == AppMode.SEARCH && !s.parentBoards[AppMode.SEARCH].length) ahkSetSearch(true);
+				else ahkSetSearch(false);
 			}
 			return {mode};
 		}, () => {
@@ -143,14 +159,15 @@ class App extends Component<{}, AppState> implements AppActions {
 		const s = this.state;
 		switch (s.mode) {
 			case AppMode.MAIN:
+			case AppMode.RECENTS:
 				const board = s.currentBoard[s.mode];
-				ahkTitle(board.name + (text?.length ? `: ${toTitleCase(text)}` : ''));
+				ahkTitle('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : ''));
 				break;
 			case AppMode.SEARCH:
-				ahkTitle('Emoji Keyboard - Search' + (s.searchText.length ? `: ${toTitleCase(s.searchText)}` : '') + (text ? ': ' + text : ''));
+				ahkTitle('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
 				break;
 			case AppMode.SETTINGS:
-				ahkTitle('Emoji Keyboard - Settings');
+				ahkTitle('Emoji Keyboard - ' + (text?.length ? text : 'Settings'));
 				break;
 			default:
 				return unreachable(s.mode);
@@ -164,6 +181,15 @@ class App extends Component<{}, AppState> implements AppActions {
 			case AppMode.MAIN:
 			case AppMode.SEARCH:
 			case AppMode.SETTINGS:
+			case AppMode.RECENTS:
+				// animate keypress
+				var keydiv = document.querySelector('[data-keycode="' + key + '"]')
+				var symboldiv = keydiv?.getElementsByClassName("symbol")[0]
+				symboldiv?.classList.add("keypress")
+				setTimeout(() => {
+					symboldiv?.classList.remove("keypress")
+				}, 100)
+
 				const k = this.keyHandlers[key as SC];
 				if (k) {
 					if (shift) k.actAlternate();
@@ -175,30 +201,44 @@ class App extends Component<{}, AppState> implements AppActions {
 		}
 	}
 
-	public setConfig(config: string) {
-		this.updateConfig(JSON.parse(config), false);
+	public async setConfig(config: string) {
+		await this.updateConfig(JSON.parse(config), false);
+		ahkReady();
 	}
 
 	public defaultConfig() {
-		ahkSaveConfig(JSON.stringify(this.state.config));
+		ahkSaveConfig(this.state.config);
 		ahkSetOpacity(this.state.config.opacity);
+		ahkReady();
 	}
 
-	public updateConfig(config: Partial<AppConfig>, save = true) {
-		this.setState((s) => {
-			if (config.theme && s.config.theme != config.theme) {
-				const link = document.getElementById('themeCSS') as HTMLLinkElement;
-				link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
-			}
-			if (config.opacity && s.config.opacity != config.opacity) {
-				ahkSetOpacity(config.opacity);
-			}
-			if (config.devTools && !s.config.devTools) {
-				ahkOpenDevTools();
-			}
-			return {config: {...s.config, ...config}};
-		}, () => {
-			if (save) ahkSaveConfig(JSON.stringify(this.state.config));
+	public updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save = true): Promise<void> {
+		return new Promise((resolve) => {
+			this.setState((s) => {
+				if (typeof config === 'function') config = config(s.config);
+				if (config.theme && s.config.theme != config.theme) {
+					const link = document.getElementById('themeCSS') as HTMLLinkElement;
+					link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
+				}
+				if (config.openAt) {
+					ahkSetOpenAt(config.openAt);
+				}
+				// must check explicitly as 0 is false
+				if ((config.x != undefined && config.y != undefined &&
+					config.width != undefined && config.height != undefined)) {
+					ahkSetPosSize(config.x, config.y, config.width, config.height);
+				}
+				if (config.opacity && s.config.opacity != config.opacity) {
+					ahkSetOpacity(config.opacity);
+				}
+				if (config.devTools && !s.config.devTools) {
+					ahkOpenDevTools();
+				}
+				return {config: {...s.config, ...config}};
+			}, () => {
+				if (save) ahkSaveConfig(this.state.config);
+				resolve();
+			});
 		})
 	}
 
@@ -217,11 +257,13 @@ class App extends Component<{}, AppState> implements AppActions {
 	}
 
 	public setBoard(board: Board): void {
-		this.setState((s) => ({
+		this.setState((s) => {
+			if (s.mode == AppMode.SEARCH) ahkSetSearch(false);
+			return {
 				currentBoard: {...s.currentBoard, [s.mode]: board},
 				parentBoards: {...s.parentBoards, [s.mode]: [s.currentBoard[s.mode], ...s.parentBoards[s.mode]]},
-			}),
-			() => this.updateStatus());
+			}
+		}, () => this.updateStatus());
 	}
 
 	public setPage(page: number): void {
@@ -243,6 +285,7 @@ class App extends Component<{}, AppState> implements AppActions {
 	public back(): void {
 		this.setState((s) => {
 			if (s.parentBoards[s.mode].length) {
+				if (s.mode == AppMode.SEARCH) ahkSetSearch(s.parentBoards[s.mode].length == 1);
 				const [board, ...parents] = s.parentBoards[s.mode];
 				return {
 					parentBoards: {...s.parentBoards, [s.mode]: parents},
@@ -252,10 +295,34 @@ class App extends Component<{}, AppState> implements AppActions {
 			return {};
 		});
 	}
+
+	/** Go back to main board */
+	private main(): void {
+		this.setState(s => ({
+			mode: AppMode.MAIN,
+			currentBoard: {
+				...s.currentBoard,
+				[AppMode.MAIN]: s.parentBoards[AppMode.MAIN][s.parentBoards[AppMode.MAIN].length - 1] ?? s.currentBoard[AppMode.MAIN]
+			},
+			parentBoards: {
+				...s.parentBoards,
+				[AppMode.MAIN]: []
+			}
+		}));
+	}
+
+	public send(cluster: string, p: { noRecent?: boolean, parent?: string }): void {
+		ahkSend(cluster);
+		if (!p.noRecent) increaseRecent(cluster);
+		if (this.state.config.hideAfterInput) ahkHide();
+		if (this.state.config.mainAfterInput) {
+			if (this.state.mode == AppMode.RECENTS || this.state.mode == AppMode.MAIN) this.main();
+		}
+	}
 }
 
 const main = document.querySelector('main') as HTMLElement;
 options.debounceRendering = f => setTimeout(f, 0);  // Use setTimeout for debounce to avoid the use of the Promise polyfill, which causes issues with IE
 
 render(<App/>, main);
-setTimeout(() => ahkReady(), 0);
+setTimeout(() => ahkLoaded(), 0);

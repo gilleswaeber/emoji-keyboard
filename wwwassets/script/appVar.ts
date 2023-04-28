@@ -1,28 +1,31 @@
-import {Board, SlottedKeys} from "./board";
-import {AppConfig} from "./config";
-import {AppMode} from "./app";
 import {createContext} from "preact";
+import type {AppMode} from "./app";
+import type {Board} from "./board";
+import type {AppConfig} from "./config";
 import {AnsiLayout, Layout, SystemLayoutUS} from "./layout";
 import {Version} from "./osversion";
+import {SlottedKeys} from "./boards/utils";
 
 export interface AppActions {
 	keyHandlers: SlottedKeys;
 
-	setBoard(parent: Board): void;
+	setBoard(board: Board): void;
 
 	setSearchText(searchText: string): void;
 
-	updateConfig(config: Partial<AppConfig>): void;
+	updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save?: boolean): void;
 
 	setPage(page: number): void;
 
-	updateStatus(name: string): void;
+	updateStatus(name?: string): void;
 
 	setMode(mode: AppMode): void;
 
 	back(): void;
 
 	setBuilding(building: boolean): void;
+
+	send(cluster: string, p: { noRecent?: boolean, parent?: string }): void;
 }
 
 let appVar: AppActions;

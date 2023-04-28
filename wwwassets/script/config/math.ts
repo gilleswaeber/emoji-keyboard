@@ -179,39 +179,47 @@ const MathNAry = {
 	name: "Math N-Ary",
 	symbol: "∑",
 	content: [
-		[
-			"∑", // \sum
-			"⅀", // \Bbbsum	double-struck n-ary summation
-			"⨊", // \modtwosum	modulo two sum
-		],
-		[
-			"∫", // \int
-			"∬", // \iint
-			"∭", // \iiint
-			"⨌", // \iiiint	quadruple integral operator
-			"∮", // \oint
-			"∯", // \oiint
-			"∰", // \oiiint
-			"∱", // \intclockwise	clockwise integral
-			"∲", // \coint, \varointclockwise	contour integral, clockwise
-			"∳", // \aoint, \ointctrclockwise	contour integral, anticlockwise
-			"⨍", // \intbar	finite part integral
-			"⨎", // \intBar	integral with double stroke
-			"⨏", // \fint	integral average with slash
-			"⨐", // \cirfnint	circulation function
-			"⨑", // \awint	anticlockwise integration
-			"⨒", // \rppolint	line integration with rectangular path around pole
-			"⨓", // \scpolint	line integration with semicircular path around pole
-			"⨔", // \npolint	line integration not including the pole
-			"⨕", // \pointint	integral around a point operator
-			"⨖", // \sqint	quaternion integral operator
-			"⨗", // \intlarhk integral with leftwards arrow with hook
-			"⨘", // \intx integral with times sign
-			"⨙", // \intcap integral with intersection
-			"⨚", // \intcup integral with union
-			"⨛", // \upint integral with overbar
-			"⨜", // \lowint integral with underbar
-		],
+		"∑", // \sum
+		{
+			name: "More Sums",
+			symbol: "⅀",
+			content: [
+				"⅀", // \Bbbsum	double-struck n-ary summation
+				"⨊", // \modtwosum	modulo two sum
+			]
+		},
+		"∫", // \int
+		{
+			name: "More Integrals",
+			symbol: "∬",
+			content: [
+				"∬", // \iint
+				"∭", // \iiint
+				"⨌", // \iiiint	quadruple integral operator
+				"∮", // \oint
+				"∯", // \oiint
+				"∰", // \oiiint
+				"∱", // \intclockwise	clockwise integral
+				"∲", // \coint, \varointclockwise	contour integral, clockwise
+				"∳", // \aoint, \ointctrclockwise	contour integral, anticlockwise
+				"⨍", // \intbar	finite part integral
+				"⨎", // \intBar	integral with double stroke
+				"⨏", // \fint	integral average with slash
+				"⨐", // \cirfnint	circulation function
+				"⨑", // \awint	anticlockwise integration
+				"⨒", // \rppolint	line integration with rectangular path around pole
+				"⨓", // \scpolint	line integration with semicircular path around pole
+				"⨔", // \npolint	line integration not including the pole
+				"⨕", // \pointint	integral around a point operator
+				"⨖", // \sqint	quaternion integral operator
+				"⨗", // \intlarhk integral with leftwards arrow with hook
+				"⨘", // \intx integral with times sign
+				"⨙", // \intcap integral with intersection
+				"⨚", // \intcup integral with union
+				"⨛", // \upint integral with overbar
+				"⨜", // \lowint integral with underbar
+			]
+		},
 		"⨋", // \sumint	summation with integral
 		"∏", // \prod
 		"∐", // \amalg, \coprod
@@ -229,13 +237,11 @@ const MathNAry = {
 		"⨄", // \biguplus
 		"⨅", // \bigsqcap(p)	n-ary square intersection operator
 		"⨆", // \bigsqcup
-		[
-			"⨝", // \Join join⊍
-			"⟗", // \fullouterjoin	full outer join
-			"⟕", // \leftouterjoin	left outer join
-			"⟖", // \rightouterjoin	right outer join
-			"⨞", // \bigtriangleleft large left triangle operator
-		],
+		"⨝", // \Join join⊍
+		"⟗", // \fullouterjoin	full outer join
+		"⟕", // \leftouterjoin	left outer join
+		"⟖", // \rightouterjoin	right outer join
+		"⨞", // \bigtriangleleft large left triangle operator
 		"⟘", //\bigbot	large up tack
 		"⟙", //\bigtop	large down tack
 		"⧸", // \xsol	big solidus

@@ -1,12 +1,15 @@
 import {Fragment, h} from "preact";
-import {DigitsRow, FirstRow, SecondRow} from "./layout";
-import {ConfigActionKey, ConfigBuildKey, ConfigLabelKey, ConfigToggleKey, ExitSearchKey, KeyName, PageKey} from "./key";
-import {Board, BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./board";
+import {DigitsRow, FirstRow, Layout, SecondRow} from "./layout";
+import {ConfigActionKey, ConfigBuildKey, ConfigLabelKey, ConfigToggleKey, ExitSearchKey, PageKey} from "./key";
+import {Board} from "./board";
 import {useContext} from "preact/hooks";
-import {app, ConfigContext} from "./appVar";
+import {app, ConfigContext, LayoutContext} from "./appVar";
 import {SC} from "./layout/sc";
+import {BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./boards/utils";
+import {KeyName} from "./keys/base";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
+// noinspection JSUnusedLocalSymbols
 const SHORTCUT_KEYS = [
 	{
 		name: "Function Row", keys: [
@@ -74,17 +77,28 @@ export const Themes: { name: string, url: string, symbol: string }[] = [
 	{name: "legacy", url: "style/legacy.css", symbol: "⬜"},
 ];
 type ThemeMode = "light" | "dark" | "system";
+type OpenAt = "last-position" | "bottom" | "text-caret" | "mouse";
+
+export interface RecentEmoji {
+	symbol: string;
+	useCount: number;
+}
 
 export interface AppConfig {
 	isoKeyboard: boolean;  // has an additional key next to left shift
 	theme: string;
 	themeMode: ThemeMode;
+	x: number;
+	y: number;
 	width: number;
 	height: number;
 	devTools: boolean;
+	openAt: OpenAt;
 	opacity: number;
 	skinTone: SkinTone;
-
+	recent: RecentEmoji[];
+	hideAfterInput: boolean;
+	mainAfterInput: boolean;
 }
 
 export const DefaultOpacity = .90;
@@ -93,11 +107,17 @@ export const DefaultConfig: AppConfig = {
 	isoKeyboard: false,
 	theme: DefaultTheme,
 	themeMode: "system",
+	x: -1,
+	y: -1,
 	width: 764,
 	height: 240,
 	devTools: false,
+	openAt: "bottom",
 	opacity: DefaultOpacity,
 	skinTone: 0,
+	recent: [],
+	hideAfterInput: false,
+	mainAfterInput: false,
 };
 
 export const ThemesMap = new Map(Themes.map((t) => [t.name, t]));
@@ -107,7 +127,7 @@ export interface ConfigPage {
 	name: string;
 	symbol: string;
 
-	keys(config: AppConfig): SlottedKeys;
+	keys(config: AppConfig, l: Layout): SlottedKeys;
 }
 
 const ConfigPages: ConfigPage[] = [
@@ -118,11 +138,12 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				[SC.Q]: new ConfigToggleKey({
 					active: config.isoKeyboard,
+					statusName: `ISO layout: ${config.isoKeyboard ? 'on' : 'off'}`,
 					action() {
 						app().updateConfig({isoKeyboard: !config.isoKeyboard});
 					}
 				}),
-				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (additional key between <KeyName
+				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (<KeyName code={SC.LessThan}/> between <KeyName
 					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
 				// ...mapKeysToSlots(SecondRow, [
 				// 	...SkinTones.map((s, i) => new ConfigActionKey({
@@ -145,7 +166,7 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(FirstRow, Themes.map((t) => new ConfigActionKey({
 					active: config.theme == t.name,
-					name: t.name,
+					name: t.name, statusName: `Theme: ${t.name}`,
 					symbol: t.symbol,
 					action() {
 						app().updateConfig({theme: t.name});
@@ -159,6 +180,7 @@ const ConfigPages: ConfigPage[] = [
 					] as const).map(([mode, symbol]) => new ConfigActionKey({
 						active: config.themeMode == mode,
 						name: mode, symbol: symbol,
+						statusName: `Theme variant: ${mode}`,
 						action() {
 							app().updateConfig({themeMode: mode})
 						}
@@ -170,45 +192,73 @@ const ConfigPages: ConfigPage[] = [
 	{
 		name: "Display",
 		symbol: "🖥️",
-		keys(config: AppConfig) {
+		keys(config, l) {
 			return {
-				...mapKeysToSlots(FirstRow, [
+				...mapKeysToSlots(l.freeRows[1], [
 					new ConfigActionKey({
-						symbol: "--", name: "-10", action() {
+						symbol: "⏬", name: "-10", statusName: 'Opacity -10', action() {
 							app().updateConfig({opacity: Math.max(config.opacity - .1, .2)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "-", name: "-1", action() {
+						symbol: "🔽", name: "-1", statusName: 'Opacity -1', action() {
 							app().updateConfig({opacity: Math.max(config.opacity - .01, .2)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "+", name: "+1", action() {
+						symbol: "🔼", name: "+1", statusName: 'Opacity +1', action() {
 							app().updateConfig({opacity: Math.min(config.opacity + .01, 1)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: "++", name: "+10", action() {
+						symbol: "⏫", name: "+10", statusName: 'Opacity +10', action() {
 							app().updateConfig({opacity: Math.min(config.opacity + .1, 1)})
 						}
 					}),
 					new ConfigActionKey({
-						symbol: `${Math.round(config.opacity * 100)}`, name: "reset", action() {
+						symbol: `${Math.round(config.opacity * 100)}`,
+						name: "reset",
+						statusName: 'Reset opacity',
+						action() {
 							app().updateConfig({opacity: DefaultOpacity})
 						}
 					}),
 					new ConfigLabelKey("Opacity")
 				]),
-				...mapKeysToSlots(SecondRow, [
-					new ConfigToggleKey({
-						active: config.devTools,
+				...mapKeysToSlots(l.freeRows[2], [
+					...([
+						["last position", "🗿", "last-position"],
+						["bottom", "👇", "bottom"],
+						["caret (beta)", "⌨️", "text-caret"],
+						["mouse", "🖱️", "mouse"]
+					] as const).map(([name, symbol, mode]) => new ConfigActionKey({
+						active: config.openAt == mode,
+						name, statusName: `Open at ${name}`, symbol,
 						action() {
-							app().updateConfig({devTools: !config.devTools});
+							app().updateConfig({openAt: mode})
+						}
+					})),
+					new ConfigLabelKey("Open At")
+				]),
+				...mapKeysToSlots(l.freeRows[3], [
+					new ConfigToggleKey({
+						active: config.hideAfterInput,
+						name: 'Hide', statusName: `Hide after input: ${config.hideAfterInput ? 'on' : 'off'}`,
+						symbol: '🫥',
+						action() {
+							app().updateConfig({hideAfterInput: !config.hideAfterInput})
 						}
 					}),
-					new ConfigLabelKey("Open DevTools")
-				]),
+					new ConfigToggleKey({
+						active: config.mainAfterInput,
+						name: 'Go Home',
+						symbol: '🏠', statusName: `Go home after input: ${config.hideAfterInput ? 'on' : 'off'}`,
+						action() {
+							app().updateConfig({mainAfterInput: !config.mainAfterInput})
+						}
+					}),
+					new ConfigLabelKey('After Input')
+				])
 			};
 		}
 	},
@@ -219,6 +269,15 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(FirstRow, [
 					new ConfigBuildKey(),
+				]),
+				...mapKeysToSlots(SecondRow, [
+					new ConfigToggleKey({
+						active: config.devTools, statusName: `Open DevTools: ${config.devTools ? 'on' : 'off'}`,
+						action() {
+							app().updateConfig({devTools: !config.devTools});
+						}
+					}),
+					new ConfigLabelKey("Open DevTools")
 				]),
 			}
 		}
@@ -234,11 +293,12 @@ export class ConfigBoard extends Board {
 	Contents({state}: { state: BoardState | undefined }) {
 		const page = Math.min(state?.page ?? 0, ConfigPages.length - 1);
 		const config = useContext(ConfigContext);
+		const l = useContext(LayoutContext);
 		const pageKeys = ConfigPages.map((c, n) => new PageKey(n, n === page, c.name, c.symbol));
 		const keys = {
 			[SC.Backtick]: new ExitSearchKey(),
 			...mapKeysToSlots(DigitsRow, pageKeys),
-			...ConfigPages[page].keys(config),
+			...ConfigPages[page].keys(config, l),
 		}
 		return <Keys keys={keys}/>
 	}

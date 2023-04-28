@@ -1,7 +1,6 @@
 import {UnicodeEmojiGroup} from "../unidata";
 import {SoftHyphen, ZeroWidthJoiner} from "../chars";
 import {VK} from "../layout/vk";
-import {SC} from "../layout/sc";
 import {ArrowsKeyboard} from "./arrows";
 import {MathKeyboard} from "./math";
 
@@ -29,17 +28,19 @@ export type EmojiKeyboard = {
 	symbol: string;
 	/** Only set to true on the main keyboard */
 	top?: true;
+	/** Do not add to recently used */
+	noRecent?: true;
 	group?: undefined;
 	from?: undefined;
 	/** Place the items on the free keys, paging when necessary */
 	content?: KeyboardContent[];
 	/** Place the items according the Virtual Key code i.e. based on the symbols on the keys */
 	byVK?: { [vk in VK]?: KeyboardItem }
-	/** Place the items according to the Scan Code i.e. based on the physical location of the keys */
-	bySC?: { [sc in SC]?: KeyboardItem }
+	/** Place the items by row */
+	byRow?: KeyboardItem[][]
 }
 export const MAIN_BOARD: EmojiKeyboard = {
-	name: 'Emoji Keyboard',
+	name: 'Main Board',
 	top: true,
 	symbol: '⌨',
 	content: [
@@ -323,6 +324,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 		{
 			name: "Greek",
 			symbol: "π",
+			noRecent: true,
 			content: [
 				"ϐ",
 				"∂",
@@ -368,53 +370,58 @@ export const MAIN_BOARD: EmojiKeyboard = {
 		{
 			name: "Boxes",
 			symbol: "╚",
-			bySC: {
-				[SC.Digit1]: ["┌", "╔"],
-				[SC.Digit2]: ["┬", "╦"],
-				[SC.Digit3]: ["┐", "╗"],
-				[SC.Q]: ["├", "╠"],
-				[SC.W]: ["┼", "╬"],
-				[SC.E]: ["┤", "╣"],
-				[SC.A]: ["└", "╚"],
-				[SC.S]: ["┴", "╩"],
-				[SC.D]: ["┘", "╝"],
-				[SC.Z]: ["│", "║"],
-				[SC.X]: ["─", "═"],
-				[SC.C]: "╳",
-
-				[SC.Digit4]: ["┏", "┍", "┎"],
-				[SC.Digit5]: ["┳", "┭", "┮", "┯", "┰", "┱", "┲"],
-				[SC.Digit6]: ["┓", "┑", "┒"],
-				[SC.R]: ["┣", "┝", "┞", "┟", "┠", "┡", "┢"],
-				[SC.T]: ["╋", "┽", "┾", "┿", "╀", "╁", "╂", "╃", "╄", "╅", "╆", "╇", "╈", "╉", "╊"],
-				[SC.Y]: ["┫", "┥", "┦", "┧", "┨", "┩", "┪"],
-				[SC.F]: ["┗", "┕", "┖"],
-				[SC.G]: ["┻", "┵", "┶", "┷", "┸", "┹", "┺"],
-				[SC.H]: ["┛", "┙", "┚"],
-				[SC.V]: ["┃", "┆", "┇", "┊", "┋", "╎", "╏", "╽", "╿"],
-				[SC.B]: ["━", "┄", "┅", "┈", "┉", "╌", "╍", "╼", "╾"],
-				[SC.N]: ["╴", "╸"],
-
-				[SC.Digit7]: ["╒", "╓"],
-				[SC.Digit8]: ["╤", "╥"],
-				[SC.Digit9]: ["╕", "╖"],
-				[SC.U]: ["╞", "╟"],
-				[SC.I]: ["╪", "╫"],
-				[SC.O]: ["╡", "╢"],
-				[SC.J]: ["╘", "╙"],
-				[SC.K]: ["╧", "╨"],
-				[SC.L]: ["╛", "╜"],
-				[SC.M]: ["╵", "╹"],
-				[SC.Comma]: ["╷", "╻"],
-				[SC.Period]: ["╶", "╺"],
-
-				[SC.Digit0]: "╭",
-				[SC.Minus]: "╮",
-				[SC.P]: "╰",
-				[SC.LeftBrace]: "╯",
-				[SC.Semicolon]: "╱",
-				[SC.Apostrophe]: "╲",
-			}
+			byRow: [
+				[
+					["┌", "╔"],
+					["┬", "╦"],
+					["┐", "╗"],
+					["┏", "┍", "┎"],
+					["┳", "┭", "┮", "┯", "┰", "┱", "┲"],
+					["┓", "┑", "┒"],
+					["╒", "╓"],
+					["╤", "╥"],
+					["╕", "╖"],
+					"╭",
+					"╮",
+				],
+				[
+					["├", "╠"],
+					["┼", "╬"],
+					["┤", "╣"],
+					["┣", "┝", "┞", "┟", "┠", "┡", "┢"],
+					["╋", "┽", "┾", "┿", "╀", "╁", "╂", "╃", "╄", "╅", "╆", "╇", "╈", "╉", "╊"],
+					["┫", "┥", "┦", "┧", "┨", "┩", "┪"],
+					["╞", "╟"],
+					["╪", "╫"],
+					["╡", "╢"],
+					"╰",
+					"╯",
+				],
+				[
+					["└", "╚"],
+					["┴", "╩"],
+					["┘", "╝"],
+					["┗", "┕", "┖"],
+					["┻", "┵", "┶", "┷", "┸", "┹", "┺"],
+					["┛", "┙", "┚"],
+					["╘", "╙"],
+					["╧", "╨"],
+					["╛", "╜"],
+					"╱",
+					"╲",
+				],
+				[
+					["│", "║"],
+					["─", "═"],
+					"╳",
+					["┃", "┆", "┇", "┊", "┋", "╎", "╏", "╽", "╿"],
+					["━", "┄", "┅", "┈", "┉", "╌", "╍", "╼", "╾"],
+					["╴", "╸"],
+					["╵", "╹"],
+					["╷", "╻"],
+					["╶", "╺"],
+				]
+			],
 		},
 		MathKeyboard,
 		ArrowsKeyboard,

@@ -253,9 +253,11 @@ define("builder/titleCase", ["require", "exports"], function (require, exports) 
 define("chars", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ZeroWidthJoiner = exports.SoftHyphen = void 0;
+    exports.VarSel16 = exports.VarSel15 = exports.ZeroWidthJoiner = exports.SoftHyphen = void 0;
     exports.SoftHyphen = "\u00ad";
     exports.ZeroWidthJoiner = '\u200D';
+    exports.VarSel15 = '\uFE0E';
+    exports.VarSel16 = '\uFE0E';
 });
 define("builder/consolidated", ["require", "exports", "builder/titleCase", "chars"], function (require, exports, titleCase_1, chars_1) {
     "use strict";
@@ -504,113 +506,6 @@ define("builder/consolidated", ["require", "exports", "builder/titleCase", "char
     }
     exports.getUnicodeData = getUnicodeData;
 });
-define("ahk", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ahkOpenDevTools = exports.ahkSetOpacity = exports.ahkSetSize = exports.ahkSaveUnicodeData = exports.ahkSaveConfig = exports.ahkSetSearch = exports.ahkSend = exports.ahkReady = exports.ahkTitle = exports.ahkDownloadUnicode = void 0;
-    let AHK = null;
-    window.chrome?.webview?.hostObjects?.ahk.then((ahk) => AHK = ahk);
-    function isAHK() {
-        return AHK !== null;
-    }
-    let nextNumber = 0;
-    function waitForCallback() {
-        const c = nextNumber++;
-        return [c, new Promise((resolve, reject) => {
-                const ok = `done,${c},`;
-                const error = `error,${c},`;
-                const listener = (e) => {
-                    if (typeof e.data === 'string') {
-                        if (e.data.startsWith(ok)) {
-                            resolve();
-                            window.chrome?.webview?.removeEventListener('message', listener);
-                        }
-                        if (e.data.startsWith(error)) {
-                            reject(e.data.substring(error.length));
-                            window.chrome?.webview?.removeEventListener('message', listener);
-                        }
-                    }
-                };
-                window.chrome?.webview?.addEventListener('message', listener);
-                AHK.downloadUnicode(c);
-            })];
-    }
-    async function ahkDownloadUnicode() {
-        if (isAHK()) {
-            const [c, p] = waitForCallback();
-            setTimeout(() => AHK.downloadUnicode(c), 10);
-            43;
-            return p;
-        }
-        else
-            console.log("DownloadUnicode");
-    }
-    exports.ahkDownloadUnicode = ahkDownloadUnicode;
-    function ahkTitle(title) {
-        if (isAHK())
-            AHK.setTitle(title);
-        else
-            document.title = title;
-    }
-    exports.ahkTitle = ahkTitle;
-    function ahkReady() {
-        if (isAHK())
-            AHK.ready();
-        else
-            console.log("Ready");
-    }
-    exports.ahkReady = ahkReady;
-    function ahkSend(symbol) {
-        if (isAHK())
-            AHK.send(symbol);
-        else
-            console.log("Send", symbol);
-    }
-    exports.ahkSend = ahkSend;
-    function ahkSetSearch(state) {
-        if (isAHK())
-            AHK.setSearch(state);
-        else
-            console.log("SetSearch", state);
-    }
-    exports.ahkSetSearch = ahkSetSearch;
-    function ahkSaveConfig(config) {
-        if (isAHK())
-            AHK.saveConfig(config);
-        else
-            console.log("SaveConfig", config);
-    }
-    exports.ahkSaveConfig = ahkSaveConfig;
-    function ahkSaveUnicodeData(data) {
-        if (isAHK()) {
-            AHK.saveUnicodeData(JSON.stringify(data), 'export type UnicodeEmojiGroup = \n\t' + data.groups.flatMap(g => g.sub.flatMap(s => `{group: ${JSON.stringify(g.name)}, subGroup: ${JSON.stringify(s.name)}}`)).join('\n\t| ') + ';\n');
-        }
-        else
-            console.log("SaveUnicodeData", data);
-    }
-    exports.ahkSaveUnicodeData = ahkSaveUnicodeData;
-    function ahkSetSize(width, height) {
-        if (isAHK())
-            AHK.setSize(width, height);
-        else
-            console.log("SetSize", width, height);
-    }
-    exports.ahkSetSize = ahkSetSize;
-    function ahkSetOpacity(opacity) {
-        if (isAHK())
-            AHK.setOpacity(opacity);
-        else
-            console.log("SetOpacity", opacity);
-    }
-    exports.ahkSetOpacity = ahkSetOpacity;
-    function ahkOpenDevTools() {
-        if (isAHK())
-            AHK.openDevTools();
-        else
-            console.log("OpenDevTools");
-    }
-    exports.ahkOpenDevTools = ahkOpenDevTools;
-});
 define("layout/vk", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -716,7 +611,7 @@ define("layout/vk", ["require", "exports"], function (require, exports) {
 define("layout/sc", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.SC = void 0;
+    exports.ExtraSC = exports.SC = void 0;
     var SC;
     (function (SC) {
         SC[SC["None"] = 0] = "None";
@@ -813,9 +708,66 @@ define("layout/sc", ["require", "exports"], function (require, exports) {
         SC[SC["Num7"] = 71] = "Num7";
         SC[SC["Num8"] = 72] = "Num8";
         SC[SC["Num9"] = 73] = "Num9";
+        SC[SC["Extra00"] = 1000] = "Extra00";
+        SC[SC["Extra01"] = 1001] = "Extra01";
+        SC[SC["Extra02"] = 1002] = "Extra02";
+        SC[SC["Extra03"] = 1003] = "Extra03";
+        SC[SC["Extra04"] = 1004] = "Extra04";
+        SC[SC["Extra05"] = 1005] = "Extra05";
+        SC[SC["Extra06"] = 1006] = "Extra06";
+        SC[SC["Extra07"] = 1007] = "Extra07";
+        SC[SC["Extra08"] = 1008] = "Extra08";
+        SC[SC["Extra09"] = 1009] = "Extra09";
+        SC[SC["Extra10"] = 1010] = "Extra10";
+        SC[SC["Extra11"] = 1011] = "Extra11";
+        SC[SC["Extra12"] = 1012] = "Extra12";
+        SC[SC["Extra13"] = 1013] = "Extra13";
+        SC[SC["Extra14"] = 1014] = "Extra14";
+        SC[SC["Extra15"] = 1015] = "Extra15";
+        SC[SC["Extra16"] = 1016] = "Extra16";
+        SC[SC["Extra17"] = 1017] = "Extra17";
+        SC[SC["Extra18"] = 1018] = "Extra18";
+        SC[SC["Extra19"] = 1019] = "Extra19";
+        SC[SC["Extra20"] = 1020] = "Extra20";
+        SC[SC["Extra21"] = 1021] = "Extra21";
+        SC[SC["Extra22"] = 1022] = "Extra22";
+        SC[SC["Extra23"] = 1023] = "Extra23";
+        SC[SC["Extra24"] = 1024] = "Extra24";
+        SC[SC["Extra25"] = 1025] = "Extra25";
+        SC[SC["Extra26"] = 1026] = "Extra26";
+        SC[SC["Extra27"] = 1027] = "Extra27";
+        SC[SC["Extra28"] = 1028] = "Extra28";
+        SC[SC["Extra29"] = 1029] = "Extra29";
+        SC[SC["Extra30"] = 1030] = "Extra30";
+        SC[SC["Extra31"] = 1031] = "Extra31";
+        SC[SC["Extra32"] = 1032] = "Extra32";
+        SC[SC["Extra33"] = 1033] = "Extra33";
+        SC[SC["Extra34"] = 1034] = "Extra34";
+        SC[SC["Extra35"] = 1035] = "Extra35";
+        SC[SC["Extra36"] = 1036] = "Extra36";
+        SC[SC["Extra37"] = 1037] = "Extra37";
+        SC[SC["Extra38"] = 1038] = "Extra38";
+        SC[SC["Extra39"] = 1039] = "Extra39";
+        SC[SC["Extra40"] = 1040] = "Extra40";
+        SC[SC["Extra41"] = 1041] = "Extra41";
+        SC[SC["Extra42"] = 1042] = "Extra42";
+        SC[SC["Extra43"] = 1043] = "Extra43";
+        SC[SC["Extra44"] = 1044] = "Extra44";
+        SC[SC["Extra45"] = 1045] = "Extra45";
+        SC[SC["Extra46"] = 1046] = "Extra46";
+        SC[SC["Extra47"] = 1047] = "Extra47";
+        SC[SC["Extra48"] = 1048] = "Extra48";
+        SC[SC["Extra49"] = 1049] = "Extra49";
     })(SC = exports.SC || (exports.SC = {}));
+    exports.ExtraSC = [
+        1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009,
+        1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019,
+        1020, 1021, 1022, 1023, 1024, 1025, 1026, 1027, 1028, 1029,
+        1030, 1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039,
+        1040, 1041, 1042, 1043, 1044, 1045, 1046, 1047, 1048, 1049,
+    ];
 });
-define("layout", ["require", "exports"], function (require, exports) {
+define("layout", ["require", "exports", "layout/sc", "helpers"], function (require, exports, sc_1, helpers_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SearchKeyCodes = exports.IsoLayout = exports.AnsiLayout = exports.SearchKeyCodesTable = exports.ThirdRow = exports.SecondRow = exports.FirstRow = exports.DigitsRow = exports.SystemLayoutUS = void 0;
@@ -913,25 +865,77 @@ define("layout", ["require", "exports"], function (require, exports) {
         [311]: { vk: 44, name: "Prnt Scrn" },
         [312]: { vk: 165, name: "Right Alt" },
         [325]: { vk: 144, name: "Num Lock" },
-        [91]: { vk: 91, name: "Win" }
+        [91]: { vk: 91, name: "Win" },
+        ...(0, helpers_1.fromEntries)(sc_1.ExtraSC.map(sc => [sc, { vk: 0, name: '' }])),
     };
-    exports.DigitsRow = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-    exports.FirstRow = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
-    exports.SecondRow = [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 43];
-    exports.ThirdRow = [44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
+    exports.DigitsRow = [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+    ];
+    exports.FirstRow = [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+    ];
+    exports.SecondRow = [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        43,
+    ];
+    exports.ThirdRow = [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+    ];
     exports.SearchKeyCodesTable = [
         41, ...exports.DigitsRow,
-        1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
-        1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026,
+        58, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012,
+        42, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024
     ];
     exports.AnsiLayout = {
         all: [
             41, ...exports.DigitsRow,
             15, ...exports.FirstRow,
             58, ...exports.SecondRow,
-            42, ...exports.ThirdRow, 1100, 1101
+            42, ...exports.ThirdRow, 1000, 1001
         ],
         free: [...exports.DigitsRow, ...exports.FirstRow, ...exports.SecondRow, ...exports.ThirdRow],
+        freeRows: [exports.DigitsRow, exports.FirstRow, exports.SecondRow, exports.ThirdRow],
         cssClass: 'ansi-layout',
     };
     exports.IsoLayout = {
@@ -939,15 +943,16 @@ define("layout", ["require", "exports"], function (require, exports) {
             41, ...exports.DigitsRow,
             15, ...exports.FirstRow,
             58, ...exports.SecondRow,
-            86, ...exports.ThirdRow, 1100, 1101
+            42, 86, ...exports.ThirdRow, 1000
         ],
         free: [...exports.DigitsRow, ...exports.FirstRow, ...exports.SecondRow, 86, ...exports.ThirdRow],
+        freeRows: [exports.DigitsRow, exports.FirstRow, exports.SecondRow, [86, ...exports.ThirdRow]],
         cssClass: 'iso-layout',
     };
     exports.SearchKeyCodes = [
         ...exports.DigitsRow,
-        1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
-        1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026
+        1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012,
+        1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024
     ];
 });
 define("config/arrows", ["require", "exports"], function (require, exports) {
@@ -957,264 +962,311 @@ define("config/arrows", ["require", "exports"], function (require, exports) {
     exports.ArrowsKeyboard = {
         name: "Arrows",
         symbol: "↔",
-        bySC: {
-            [16]: [
-                "↖",
-                "↸",
-                "↰",
-                "⤣",
+        byRow: [
+            [
+                null,
+                null,
+                [
+                    "↕",
+                    "⇕",
+                ],
+                null,
+                null,
+                {
+                    name: "NS Arrows",
+                    symbol: "⇅",
+                    content: [
+                        "↨",
+                        "⇅",
+                        "⇵",
+                        "⥌",
+                        "⥍",
+                        "⥏",
+                        "⥑",
+                        "⥮",
+                        "⥯",
+                    ]
+                }
             ],
-            [17]: [
-                "↑",
-                "⇈",
-                "⤉",
-                "⇞",
-                "↟",
-                "↥",
-                "⤒",
-                "⥉",
-                "⇡",
-                "↿",
-                "⥘",
-                "⥠",
-                "↾",
-                "⥔",
-                "⥜",
-                "⥣",
+            [
+                [
+                    "↖",
+                    "⇖",
+                ],
+                [
+                    "↑",
+                    "⇑",
+                ],
+                [
+                    "↗",
+                    "⇗",
+                ],
+                {
+                    name: "NW Arrows",
+                    symbol: "⤣",
+                    content: [
+                        "↸",
+                        "↰",
+                        "⤣",
+                    ]
+                },
+                {
+                    name: "North Arrows",
+                    symbol: "↥",
+                    content: [
+                        "⇈",
+                        "⤉",
+                        "⇞",
+                        "↟",
+                        "↥",
+                        "⤒",
+                        "⥉",
+                        "⇡",
+                        "⤊",
+                        "⟰",
+                        "⇧",
+                        "⇪",
+                        "↿",
+                        "⥘",
+                        "⥠",
+                        "↾",
+                        "⥔",
+                        "⥜",
+                        "⥣",
+                    ]
+                },
+                {
+                    name: "NE Arrows",
+                    symbol: "⤤",
+                    content: [
+                        "↱",
+                        "⤤",
+                    ]
+                }
             ],
-            [18]: [
-                "↗",
-                "↱",
-                "⤤",
+            [
+                [
+                    "←",
+                    "⇐",
+                ],
+                [
+                    "↔",
+                    "⇔",
+                ],
+                [
+                    "→",
+                    "⇒",
+                ],
+                {
+                    name: "West Arrows",
+                    symbol: "↫",
+                    content: [
+                        "↚",
+                        "⇇",
+                        "⬱",
+                        "⟵",
+                        "↢",
+                        "⬹",
+                        "⬺",
+                        "↤",
+                        "⟻",
+                        "↜",
+                        "⇜",
+                        "⬿",
+                        "⬳",
+                        "↫",
+                        "⇤",
+                        "⇷",
+                        "⇺",
+                        "⤌",
+                        "⤎",
+                        "⇠",
+                        "⬸",
+                        "⇍",
+                        "⤂",
+                        "⤆",
+                        "⟸",
+                        "⟽",
+                        "⇚",
+                        "⭅",
+                        "⇦",
+                        "↞",
+                        "⬴",
+                        "⬵",
+                        "⬶",
+                        "⬷",
+                        "⬻",
+                        "⬼",
+                        "⬽",
+                        "↼",
+                        "⥒",
+                        "⥚",
+                        "⥪",
+                        "⥢",
+                        "↽",
+                        "⥖",
+                        "⥞",
+                        "⥫",
+                        "⇽",
+                        "⤙",
+                        "⤛",
+                        "⤝",
+                        "⤟",
+                    ]
+                },
+                {
+                    name: "EW Arrows",
+                    symbol: "⇆",
+                    content: [
+                        "↮",
+                        "⟷",
+                        "↭",
+                        "⇎",
+                        "⤄",
+                        "⟺",
+                        "⇄",
+                        "⇆",
+                        "↹",
+                        "⇋",
+                        "⇌",
+                        "⇹",
+                        "⇼",
+                        "⇿",
+                        "⥂",
+                        "⥃",
+                        "⥄",
+                        "⥈",
+                        "⥊",
+                        "⥋",
+                        "⥎",
+                        "⥐",
+                        "⥦",
+                        "⥧",
+                        "⥨",
+                        "⥩",
+                    ]
+                },
+                {
+                    name: "East Arrows",
+                    symbol: "↬",
+                    content: [
+                        "↛",
+                        "⇉",
+                        "⇶",
+                        "⟶",
+                        "↠",
+                        "↣",
+                        "↦",
+                        "⤅",
+                        "⟼",
+                        "↝",
+                        "⇝",
+                        "⤳",
+                        "⟿",
+                        "↬",
+                        "⇥",
+                        "⇸",
+                        "⤀",
+                        "⇻",
+                        "⤁",
+                        "⤍",
+                        "⤏",
+                        "⇢",
+                        "⤑",
+                        "⇏",
+                        "⤃",
+                        "⤇",
+                        "⟹",
+                        "⟾",
+                        "⇛",
+                        "⭆",
+                        "⥰",
+                        "⇨",
+                        "⤐",
+                        "⤔",
+                        "⤕",
+                        "⤖",
+                        "⤗",
+                        "⤘",
+                        "⇀",
+                        "⥓",
+                        "⥛",
+                        "⥬",
+                        "⥤",
+                        "⇁",
+                        "⥗",
+                        "⥟",
+                        "⥭",
+                        "⇾",
+                        "⤚",
+                        "⤜",
+                        "⤞",
+                        "⤠",
+                    ]
+                },
             ],
-            [30]: [
-                "←",
-                "↚",
-                "⇇",
-                "⬱",
-                "⟵",
-                "↢",
-                "⬹",
-                "⬺",
-                "↤",
-                "⟻",
-                "↜",
-                "⇜",
-                "⬿",
-                "⬳",
-                "↩",
-                "↫",
-                "↶",
-                "⤺",
-                "⤽",
-                "⇤",
-                "⇷",
-                "⇺",
-                "⤌",
-                "⤎",
-                "⇠",
-                "⬸",
-                "↞",
-                "⬴",
-                "⬵",
-                "⬶",
-                "⬷",
-                "⬻",
-                "⬼",
-                "⬽",
-                "⇽",
-                "⤙",
-                "⤛",
-                "⤝",
-                "⤟",
+            [
+                [
+                    "↙",
+                    "⇙",
+                ],
+                [
+                    "↓",
+                    "⇓",
+                ],
+                [
+                    "↘",
+                    "⇘",
+                ],
+                {
+                    name: "SW Arrows",
+                    symbol: "⤦",
+                    content: [
+                        "↲",
+                        "⏎",
+                        "⤦",
+                        "⤶",
+                        "⤸",
+                        "↵",
+                    ]
+                },
+                {
+                    name: "South Arrows",
+                    symbol: "↧",
+                    content: [
+                        "⇊",
+                        "⤈",
+                        "⇟",
+                        "↡",
+                        "↧",
+                        "⤓",
+                        "⇣",
+                        "⤋",
+                        "⟱",
+                        "⇩",
+                        "↯",
+                        "⇃",
+                        "⥙",
+                        "⥡",
+                        "⇂",
+                        "⥕",
+                        "⥝",
+                        "⥥",
+                    ]
+                },
+                {
+                    name: "SE Arrows",
+                    symbol: "⤥",
+                    content: [
+                        "↳",
+                        "⤥",
+                        "⤷",
+                        "⤹",
+                        "↴",
+                    ]
+                }
             ],
-            [31]: [
-                "↔",
-                "↮",
-                "⟷",
-                "↭",
-                "⇄",
-                "⇆",
-                "↹",
-                "⇋",
-                "⇌",
-                "⇹",
-                "⇼",
-                "⇿",
-                "⥂",
-                "⥃",
-                "⥄",
-                "⥈",
-                "⥊",
-                "⥋",
-                "⥎",
-                "⥐",
-                "⥦",
-                "⥧",
-                "⥨",
-                "⥩",
-            ],
-            [32]: [
-                "→",
-                "↛",
-                "⇉",
-                "⇶",
-                "⟶",
-                "↠",
-                "↣",
-                "↦",
-                "⤅",
-                "⟼",
-                "↝",
-                "⇝",
-                "⤳",
-                "⟿",
-                "↪",
-                "↬",
-                "↷",
-                "⤼",
-                "⤻",
-                "⇥",
-                "⇸",
-                "⤀",
-                "⇻",
-                "⤁",
-                "⤍",
-                "⤏",
-                "⇢",
-                "⤑",
-                "⤐",
-                "⤔",
-                "⤕",
-                "⤖",
-                "⤗",
-                "⤘",
-                "⇾",
-                "⤚",
-                "⤜",
-                "⤞",
-                "⤠",
-            ],
-            [44]: [
-                "↙",
-                "↲",
-                "⤦",
-                "⤶",
-                "⤸",
-                "↵",
-            ],
-            [45]: [
-                "↓",
-                "⇊",
-                "⤈",
-                "⇟",
-                "↡",
-                "↧",
-                "⤓",
-                "⇣",
-                "↯",
-                "⇃",
-                "⥙",
-                "⥡",
-                "⇂",
-                "⥕",
-                "⥝",
-                "⥥",
-            ],
-            [46]: [
-                "↘",
-                "↳",
-                "⤥",
-                "⤷",
-                "⤹",
-                "↴",
-            ],
-            [19]: [
-                "⇖",
-            ],
-            [20]: [
-                "⇑",
-                "⤊",
-                "⟰",
-                "⇧",
-                "⇪",
-            ],
-            [21]: [
-                "⇗",
-            ],
-            [33]: [
-                "⇐",
-                "⇍",
-                "⤂",
-                "⤆",
-                "⟸",
-                "⟽",
-                "⇚",
-                "⭅",
-                "⇦",
-            ],
-            [34]: [
-                "⇔",
-                "⇎",
-                "⤄",
-                "⟺",
-            ],
-            [35]: [
-                "⇒",
-                "⇏",
-                "⤃",
-                "⤇",
-                "⟹",
-                "⟾",
-                "⇛",
-                "⭆",
-                "⥰",
-                "⇨",
-            ],
-            [47]: [
-                "⇙",
-                "⏎",
-            ],
-            [48]: [
-                "⇓",
-                "⤋",
-                "⟱",
-                "⇩",
-            ],
-            [49]: [
-                "⇘",
-            ],
-            [22]: [
-                "↼",
-                "⥒",
-                "⥚",
-                "⥪",
-            ],
-            [36]: [
-                "⥢",
-            ],
-            [50]: [
-                "↽",
-                "⥖",
-                "⥞",
-                "⥫",
-            ],
-            [23]: [
-                "⇀",
-                "⥓",
-                "⥛",
-                "⥬",
-            ],
-            [37]: [
-                "⥤",
-            ],
-            [51]: [
-                "⇁",
-                "⥗",
-                "⥟",
-                "⥭",
-            ],
-        },
+        ],
         content: [
             {
                 name: "Symbol Arrows",
@@ -1230,6 +1282,8 @@ define("config/arrows", ["require", "exports"], function (require, exports) {
                     "⥵",
                     "⭂",
                     "⭈",
+                    "⤽",
+                    "⤼",
                     "⭀",
                     "⥱",
                     "⭉",
@@ -1252,31 +1306,26 @@ define("config/arrows", ["require", "exports"], function (require, exports) {
                     "⥇",
                 ]
             },
-            [
-                "↕",
-                "↨",
-                "⇅",
-                "⇵",
-                "⥌",
-                "⥍",
-                "⥏",
-                "⥑",
-                "⥮",
-                "⥯",
-            ],
-            [
-                "⇕",
-            ],
-            [
-                "↻",
-                "↺",
-                "⟳",
-                "⟲",
-                "⥀",
-                "⥁",
-                "⤾",
-                "⤿",
-            ],
+            {
+                name: "Circular Arrows",
+                symbol: "↻",
+                content: [
+                    "↻",
+                    "↺",
+                    "⟳",
+                    "⟲",
+                    "⥀",
+                    "⥁",
+                    "↶",
+                    "↷",
+                    "↩",
+                    "↪",
+                    "⤺",
+                    "⤻",
+                    "⤾",
+                    "⤿",
+                ]
+            },
             "⤡",
             "⤢",
             [
@@ -1319,6 +1368,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinBold = {
         name: "Latin Bold",
         symbol: "𝐚",
+        noRecent: true,
         byVK: {
             [48]: "𝟎",
             [49]: "𝟏",
@@ -1361,6 +1411,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinItalic = {
         name: "Latin Italic",
         symbol: "𝑎",
+        noRecent: true,
         byVK: {
             [65]: ["𝑎", "𝐴"],
             [66]: ["𝑏", "𝐵"],
@@ -1397,6 +1448,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinBoldItalic = {
         name: "Latin Bold Italic",
         symbol: "𝒂",
+        noRecent: true,
         byVK: {
             [65]: ["𝒂", "𝑨"],
             [66]: ["𝒃", "𝑩"],
@@ -1429,6 +1481,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinSans = {
         name: "Latin Sans-Serif",
         symbol: "𝖺",
+        noRecent: true,
         byVK: {
             [48]: "𝟢",
             [49]: "𝟣",
@@ -1471,6 +1524,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinSansBold = {
         name: "Latin Sans-Serif Bold",
         symbol: "𝗮",
+        noRecent: true,
         byVK: {
             [48]: "𝟬",
             [49]: "𝟭",
@@ -1513,6 +1567,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinSansItalic = {
         name: "Latin Sans Italic",
         symbol: "𝘢",
+        noRecent: true,
         byVK: {
             [65]: ["𝘢", "𝘈"],
             [66]: ["𝘣", "𝘉"],
@@ -1545,6 +1600,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinSansBoldItalic = {
         name: "Latin Sans Bold Italic",
         symbol: "𝙖",
+        noRecent: true,
         byVK: {
             [65]: ["𝙖", "𝘼"],
             [66]: ["𝙗", "𝘽"],
@@ -1577,6 +1633,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinScript = {
         name: "Latin Script",
         symbol: "𝒶",
+        noRecent: true,
         byVK: {
             [65]: ["𝒶", "𝒜"],
             [66]: ["𝒷", "ℬ"],
@@ -1609,6 +1666,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinScriptBold = {
         name: "Latin Script Bold",
         symbol: "𝓪",
+        noRecent: true,
         byVK: {
             [65]: ["𝓪", "𝓐"],
             [66]: ["𝓫", "𝓑"],
@@ -1641,6 +1699,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinFraktur = {
         name: "Latin Fraktur",
         symbol: "𝔞",
+        noRecent: true,
         byVK: {
             [65]: ["𝔞", "𝔄"],
             [66]: ["𝔟", "𝔅"],
@@ -1673,6 +1732,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinFrakturBold = {
         name: "Latin Fraktur Bold",
         symbol: "𝖆",
+        noRecent: true,
         byVK: {
             [65]: ["𝖆", "𝕬"],
             [66]: ["𝖇", "𝕭"],
@@ -1705,6 +1765,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinMono = {
         name: "Latin Mono",
         symbol: "𝚊",
+        noRecent: true,
         byVK: {
             [48]: "𝟶",
             [49]: "𝟷",
@@ -1747,6 +1808,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.LatinDoubleStruck = {
         name: "Double-Struck",
         symbol: "𝕒",
+        noRecent: true,
         byVK: {
             [48]: "𝟘",
             [49]: "𝟙",
@@ -1789,6 +1851,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.GreekBold = {
         name: "Greek Bold",
         symbol: "𝛂",
+        noRecent: true,
         byVK: {
             [65]: ["𝛂", "𝚨"],
             [66]: ["𝛃", "𝚩"],
@@ -1821,6 +1884,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.GreekItalic = {
         name: "Greek Italic",
         symbol: "𝛼",
+        noRecent: true,
         byVK: {
             [65]: ["𝛼", "𝛢"],
             [66]: ["𝛽", "𝛣"],
@@ -1853,6 +1917,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.GreekBoldItalic = {
         name: "Greek Bold Italic",
         symbol: "𝜶",
+        noRecent: true,
         byVK: {
             [65]: ["𝜶", "𝜜"],
             [66]: ["𝜷", "𝜝"],
@@ -1885,6 +1950,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.GreekSansBold = {
         name: "Greek Sans Bold",
         symbol: "𝝰",
+        noRecent: true,
         byVK: {
             [65]: ["𝝰", "𝝖"],
             [66]: ["𝝱", "𝝗"],
@@ -1917,6 +1983,7 @@ define("config/mathLetters", ["require", "exports"], function (require, exports)
     exports.GreekSansBoldItalic = {
         name: "Greek Sans Bold Italic",
         symbol: "𝞪",
+        noRecent: true,
         byVK: {
             [65]: ["𝞪", "𝞐"],
             [66]: ["𝞫", "𝞑"],
@@ -2103,39 +2170,47 @@ define("config/math", ["require", "exports", "config/mathLetters"], function (re
         name: "Math N-Ary",
         symbol: "∑",
         content: [
-            [
-                "∑",
-                "⅀",
-                "⨊",
-            ],
-            [
-                "∫",
-                "∬",
-                "∭",
-                "⨌",
-                "∮",
-                "∯",
-                "∰",
-                "∱",
-                "∲",
-                "∳",
-                "⨍",
-                "⨎",
-                "⨏",
-                "⨐",
-                "⨑",
-                "⨒",
-                "⨓",
-                "⨔",
-                "⨕",
-                "⨖",
-                "⨗",
-                "⨘",
-                "⨙",
-                "⨚",
-                "⨛",
-                "⨜",
-            ],
+            "∑",
+            {
+                name: "More Sums",
+                symbol: "⅀",
+                content: [
+                    "⅀",
+                    "⨊",
+                ]
+            },
+            "∫",
+            {
+                name: "More Integrals",
+                symbol: "∬",
+                content: [
+                    "∬",
+                    "∭",
+                    "⨌",
+                    "∮",
+                    "∯",
+                    "∰",
+                    "∱",
+                    "∲",
+                    "∳",
+                    "⨍",
+                    "⨎",
+                    "⨏",
+                    "⨐",
+                    "⨑",
+                    "⨒",
+                    "⨓",
+                    "⨔",
+                    "⨕",
+                    "⨖",
+                    "⨗",
+                    "⨘",
+                    "⨙",
+                    "⨚",
+                    "⨛",
+                    "⨜",
+                ]
+            },
             "⨋",
             "∏",
             "∐",
@@ -2153,13 +2228,11 @@ define("config/math", ["require", "exports", "config/mathLetters"], function (re
             "⨄",
             "⨅",
             "⨆",
-            [
-                "⨝",
-                "⟗",
-                "⟕",
-                "⟖",
-                "⨞",
-            ],
+            "⨝",
+            "⟗",
+            "⟕",
+            "⟖",
+            "⨞",
             "⟘",
             "⟙",
             "⧸",
@@ -3417,7 +3490,7 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MAIN_BOARD = void 0;
     exports.MAIN_BOARD = {
-        name: 'Emoji Keyboard',
+        name: 'Main Board',
         top: true,
         symbol: '⌨',
         content: [
@@ -3701,6 +3774,7 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
             {
                 name: "Greek",
                 symbol: "π",
+                noRecent: true,
                 content: [
                     "ϐ",
                     "∂",
@@ -3746,50 +3820,58 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
             {
                 name: "Boxes",
                 symbol: "╚",
-                bySC: {
-                    [2]: ["┌", "╔"],
-                    [3]: ["┬", "╦"],
-                    [4]: ["┐", "╗"],
-                    [16]: ["├", "╠"],
-                    [17]: ["┼", "╬"],
-                    [18]: ["┤", "╣"],
-                    [30]: ["└", "╚"],
-                    [31]: ["┴", "╩"],
-                    [32]: ["┘", "╝"],
-                    [44]: ["│", "║"],
-                    [45]: ["─", "═"],
-                    [46]: "╳",
-                    [5]: ["┏", "┍", "┎"],
-                    [6]: ["┳", "┭", "┮", "┯", "┰", "┱", "┲"],
-                    [7]: ["┓", "┑", "┒"],
-                    [19]: ["┣", "┝", "┞", "┟", "┠", "┡", "┢"],
-                    [20]: ["╋", "┽", "┾", "┿", "╀", "╁", "╂", "╃", "╄", "╅", "╆", "╇", "╈", "╉", "╊"],
-                    [21]: ["┫", "┥", "┦", "┧", "┨", "┩", "┪"],
-                    [33]: ["┗", "┕", "┖"],
-                    [34]: ["┻", "┵", "┶", "┷", "┸", "┹", "┺"],
-                    [35]: ["┛", "┙", "┚"],
-                    [47]: ["┃", "┆", "┇", "┊", "┋", "╎", "╏", "╽", "╿"],
-                    [48]: ["━", "┄", "┅", "┈", "┉", "╌", "╍", "╼", "╾"],
-                    [49]: ["╴", "╸"],
-                    [8]: ["╒", "╓"],
-                    [9]: ["╤", "╥"],
-                    [10]: ["╕", "╖"],
-                    [22]: ["╞", "╟"],
-                    [23]: ["╪", "╫"],
-                    [24]: ["╡", "╢"],
-                    [36]: ["╘", "╙"],
-                    [37]: ["╧", "╨"],
-                    [38]: ["╛", "╜"],
-                    [50]: ["╵", "╹"],
-                    [51]: ["╷", "╻"],
-                    [52]: ["╶", "╺"],
-                    [11]: "╭",
-                    [12]: "╮",
-                    [25]: "╰",
-                    [26]: "╯",
-                    [39]: "╱",
-                    [40]: "╲",
-                }
+                byRow: [
+                    [
+                        ["┌", "╔"],
+                        ["┬", "╦"],
+                        ["┐", "╗"],
+                        ["┏", "┍", "┎"],
+                        ["┳", "┭", "┮", "┯", "┰", "┱", "┲"],
+                        ["┓", "┑", "┒"],
+                        ["╒", "╓"],
+                        ["╤", "╥"],
+                        ["╕", "╖"],
+                        "╭",
+                        "╮",
+                    ],
+                    [
+                        ["├", "╠"],
+                        ["┼", "╬"],
+                        ["┤", "╣"],
+                        ["┣", "┝", "┞", "┟", "┠", "┡", "┢"],
+                        ["╋", "┽", "┾", "┿", "╀", "╁", "╂", "╃", "╄", "╅", "╆", "╇", "╈", "╉", "╊"],
+                        ["┫", "┥", "┦", "┧", "┨", "┩", "┪"],
+                        ["╞", "╟"],
+                        ["╪", "╫"],
+                        ["╡", "╢"],
+                        "╰",
+                        "╯",
+                    ],
+                    [
+                        ["└", "╚"],
+                        ["┴", "╩"],
+                        ["┘", "╝"],
+                        ["┗", "┕", "┖"],
+                        ["┻", "┵", "┶", "┷", "┸", "┹", "┺"],
+                        ["┛", "┙", "┚"],
+                        ["╘", "╙"],
+                        ["╧", "╨"],
+                        ["╛", "╜"],
+                        "╱",
+                        "╲",
+                    ],
+                    [
+                        ["│", "║"],
+                        ["─", "═"],
+                        "╳",
+                        ["┃", "┆", "┇", "┊", "┋", "╎", "╏", "╽", "╿"],
+                        ["━", "┄", "┅", "┈", "┉", "╌", "╍", "╼", "╾"],
+                        ["╴", "╸"],
+                        ["╵", "╹"],
+                        ["╷", "╻"],
+                        ["╶", "╺"],
+                    ]
+                ],
             },
             math_1.MathKeyboard,
             arrows_1.ArrowsKeyboard,
@@ -3833,6 +3915,73 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
             },
         ]
     };
+});
+define("osversion", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Version = void 0;
+    class Version {
+        version;
+        known = new Set();
+        knownLesser = new Set();
+        knownGreater = new Set();
+        knownSame = new Set();
+        constructor(version) {
+            this.version = Version.parse(version);
+        }
+        static parse(v) {
+            if (!/^[.0-9]+$/.test(v.trim())) {
+                console.error("Invalid version", v);
+                return [0];
+            }
+            return v.split(/\./).map(part => parseInt(part, 10));
+        }
+        static compare(a, b) {
+            for (let i = 0; i < a.length; i++) {
+                if (i >= b.length)
+                    return a.slice(i).some((p) => p > 0) ? 1 : 0;
+                if (a[i] > b[i])
+                    return 1;
+                if (a[i] < b[i])
+                    return -1;
+            }
+            if (a.length == b.length)
+                return 0;
+            return b.slice(a.length).some((p) => p > 0) ? -1 : 0;
+        }
+        add(other) {
+            const cmp = Version.compare(this.version, Version.parse(other));
+            this.known.add(other);
+            if (cmp > 0)
+                this.knownLesser.add(other);
+            else if (cmp < 0)
+                this.knownGreater.add(other);
+            else
+                this.knownSame.add(other);
+        }
+        lt(other) {
+            if (!this.known.has(other))
+                this.add(other);
+            return this.knownGreater.has(other);
+        }
+        gt(other) {
+            if (!this.known.has(other))
+                this.add(other);
+            return this.knownLesser.has(other);
+        }
+        ge(other) {
+            return !this.lt(other);
+        }
+        le(other) {
+            return !this.gt(other);
+        }
+        eq(other) {
+            if (!this.known.has(other))
+                this.add(other);
+            return this.knownSame.has(other);
+        }
+    }
+    exports.Version = Version;
 });
 define("builder/builder", ["require", "exports", "builder/unicode", "builder/consolidated", "ahk", "unicodeInterface", "appVar"], function (require, exports, unicode_1, consolidated_1, ahk_1, unicodeInterface_1, appVar_1) {
     "use strict";
@@ -4090,10 +4239,10 @@ define("unicodeInterface", ["require", "exports", "builder/consolidated", "build
     }
     exports.requiredOS = requiredOS;
 });
-define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helpers", "unicodeInterface", "builder/builder", "preact/hooks"], function (require, exports, preact_1, board_1, ahk_2, appVar_2, helpers_1, unicodeInterface_2, builder_2, hooks_1) {
+define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeInterface", "builder/builder", "chars", "helpers", "preact"], function (require, exports, hooks_1, appVar_2, unicodeInterface_2, builder_2, chars_3, helpers_2, preact_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ClusterKey = exports.ExitSearchKey = exports.SearchKey = exports.PageKey = exports.KeyboardKey = exports.BackKey = exports.BlankKey = exports.ConfigBuildKey = exports.ConfigLabelKey = exports.ConfigToggleKey = exports.ConfigActionKey = exports.ConfigKey = exports.Key = exports.KeyName = void 0;
+    exports.Symbol = void 0;
     function Symbol({ symbol }) {
         const os = (0, hooks_1.useContext)(appVar_2.OSContext);
         return (0, hooks_1.useMemo)(() => {
@@ -4107,20 +4256,30 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
                 }
             }
             const req = (0, unicodeInterface_2.requiredOS)(symbol);
-            const fallback = os.lt(req);
-            return (0, preact_1.h)("div", { className: (0, helpers_1.cl)(`symbol`, { fallback }) }, symbol);
+            const fallbackFont = os.lt(req);
+            const textStyle = symbol.endsWith(chars_3.VarSel15);
+            return (0, preact_1.h)("div", { className: (0, helpers_2.cl)(`symbol`, { fallbackFont, textStyle }) }, symbol);
         }, [symbol, os]);
     }
+    exports.Symbol = Symbol;
+});
+define("keys/base", ["require", "exports", "preact/hooks", "appVar", "preact", "helpers", "keys/symbol"], function (require, exports, hooks_2, appVar_3, preact_2, helpers_3, symbol_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.BlankKey = exports.Key = exports.KeyName = void 0;
     function KeyName({ code }) {
-        const layout = (0, hooks_1.useContext)(appVar_2.LayoutContext);
-        return (0, preact_1.h)(preact_1.Fragment, null, layout.sys[code]?.name ?? '');
+        const layout = (0, hooks_2.useContext)(appVar_3.LayoutContext);
+        return (0, preact_2.h)(preact_2.Fragment, null, layout.sys[code]?.name ?? '');
     }
     exports.KeyName = KeyName;
     class Key {
         name;
         upperName;
+        statusName;
         symbol;
         active;
+        blank;
+        keyType;
         clickAlwaysAlternate;
         keyNamePrefix;
         alt;
@@ -4128,37 +4287,30 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
         constructor(p) {
             this.name = p.name;
             this.upperName = p.upperName ?? '';
+            this.statusName = p.statusName ?? p.name;
             this.symbol = p.symbol;
             this.active = p.active ?? false;
             this.clickAlwaysAlternate = p.clickAlwaysAlternate ?? false;
             this.keyNamePrefix = p.keyNamePrefix ?? '';
             this.alt = p.alt ?? false;
             this.lu = p.lu ?? false;
+            this.blank = p.blank ?? false;
+            this.keyType = !p.name.length ? "empty" : p.keyType ?? "action";
         }
         Contents = ({ code }) => {
-            let keyType = "action";
-            if (!this.name.length) {
-                keyType = "empty";
-            }
-            else if (this instanceof ClusterKey) {
-                keyType = "char";
-            }
-            else if (this instanceof BackKey) {
-                keyType = "back";
-            }
-            return (0, preact_1.h)("div", { className: (0, helpers_1.cl)('key', keyType, { alt: this.alt, lu: this.lu, active: this.active }), onClick: (e) => {
+            return (0, preact_2.h)("div", { className: (0, helpers_3.cl)('key', this.keyType, { alt: this.alt, lu: this.lu, active: this.active }), onClick: (e) => {
                     e.preventDefault();
                     e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
                 }, onContextMenu: (e) => {
                     e.preventDefault();
                     this.actAlternate();
-                }, onMouseOver: () => (0, appVar_2.app)().updateStatus(this.name) },
-                (0, preact_1.h)("div", { className: "keyname" },
+                }, onMouseOver: () => (0, appVar_3.app)().updateStatus(this.statusName), "data-keycode": code },
+                (0, preact_2.h)("div", { className: "keyname" },
                     this.keyNamePrefix,
-                    (0, preact_1.h)(KeyName, { code: code })),
-                (0, preact_1.h)("div", { className: "name" }, this.name),
-                (0, preact_1.h)("div", { className: "uname" }, this.upperName),
-                (0, preact_1.h)(Symbol, { symbol: this.symbol }));
+                    (0, preact_2.h)(KeyName, { code: code })),
+                (0, preact_2.h)("div", { className: "name" }, this.name),
+                (0, preact_2.h)("div", { className: "uname" }, this.upperName),
+                (0, preact_2.h)(symbol_1.Symbol, { symbol: this.symbol }));
         };
         act() {
         }
@@ -4167,19 +4319,767 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
         }
     }
     exports.Key = Key;
-    class ConfigKey extends Key {
+    exports.BlankKey = new Key({ name: '', symbol: '', blank: true, keyType: "empty" });
+});
+define("boards/utils", ["require", "exports", "preact/hooks", "appVar", "preact", "keys/base"], function (require, exports, hooks_3, appVar_4, preact_3, base_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.mapKeysToSlots = exports.Keys = exports.MAX_PAGE_KEYS = void 0;
+    exports.MAX_PAGE_KEYS = 9;
+    function Keys({ keys }) {
+        const l = (0, hooks_3.useContext)(appVar_4.LayoutContext);
+        (0, appVar_4.app)().keyHandlers = keys;
+        return (0, preact_3.h)("div", { className: "keyboard" }, l.all.map((code) => {
+            const K = (keys[code] ?? base_1.BlankKey);
+            return (0, preact_3.h)(K.Contents, { code: code, key: code });
+        }));
+    }
+    exports.Keys = Keys;
+    function mapKeysToSlots(codes, keys) {
+        const mapped = {};
+        for (const [index, code] of Array.from(codes.entries())) {
+            if (keys[index])
+                mapped[code] = keys[index];
+        }
+        return mapped;
+    }
+    exports.mapKeysToSlots = mapKeysToSlots;
+});
+define("appVar", ["require", "exports", "preact", "layout", "osversion"], function (require, exports, preact_4, layout_1, osversion_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SearchContext = exports.ConfigBuildingContext = exports.ConfigContext = exports.OSContext = exports.LayoutContext = exports.app = exports.setApp = void 0;
+    let appVar;
+    function setApp(app) {
+        appVar = app;
+    }
+    exports.setApp = setApp;
+    function app() {
+        return appVar;
+    }
+    exports.app = app;
+    exports.LayoutContext = (0, preact_4.createContext)({ ...layout_1.AnsiLayout, sys: layout_1.SystemLayoutUS });
+    exports.OSContext = (0, preact_4.createContext)(new osversion_1.Version('99'));
+    exports.ConfigContext = (0, preact_4.createContext)(undefined);
+    exports.ConfigBuildingContext = (0, preact_4.createContext)(true);
+    exports.SearchContext = (0, preact_4.createContext)('');
+});
+define("board", ["require", "exports", "preact", "preact/hooks", "config/boards", "appVar", "key", "memoize-one", "unicodeInterface", "helpers", "builder/builder", "boards/utils", "keys/base"], function (require, exports, preact_5, hooks_4, boards_1, appVar_5, key_1, memoize_one_1, unicodeInterface_3, helpers_4, builder_3, utils_1, base_2) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.StaticBoard = exports.Board = exports.getMainBoard = void 0;
+    function getMainBoard() {
+        return Board.fromEmoji(boards_1.MAIN_BOARD);
+    }
+    exports.getMainBoard = getMainBoard;
+    function range(stop) {
+        return Array.from((new Array(stop)).keys());
+    }
+    class Board {
+        constructor(p) {
+            this.name = p.name;
+            this.symbol = p.symbol;
+        }
+        name;
+        symbol;
+        static fromKeys({ name, symbol, keys, top, noRecent, byRow, byVK }) {
+            return new StaticBoard({
+                name, symbol, noRecent, keys: (layout) => {
+                    let freeKeys = new Set(layout.free);
+                    const fixedKeys = {
+                        [41]: top ? new key_1.ConfigKey() : new key_1.BackKey(),
+                        [15]: new key_1.SearchKey(),
+                        [58]: new key_1.RecentKey(),
+                    };
+                    const notPlaceable = [];
+                    if (byRow) {
+                        const f = layout.freeRows;
+                        for (const [r, row] of byRow.entries()) {
+                            for (const [c, key] of row.entries()) {
+                                if (key.blank)
+                                    continue;
+                                if (r < f.length && c < f[r].length && freeKeys.has(f[r][c])) {
+                                    fixedKeys[f[r][c]] = key;
+                                    freeKeys.delete(f[r][c]);
+                                }
+                                else {
+                                    notPlaceable.push(key);
+                                }
+                            }
+                        }
+                    }
+                    if (byVK) {
+                        const vkPlaced = new Set();
+                        for (const sc of freeKeys) {
+                            const vk = layout.sys[sc].vk;
+                            if (byVK[vk]) {
+                                fixedKeys[sc] = byVK[vk];
+                                vkPlaced.add(vk);
+                                freeKeys.delete(sc);
+                            }
+                        }
+                        for (const [vk, key] of Object.entries(byVK)) {
+                            if (!vkPlaced.has(parseInt(vk, 10)))
+                                notPlaceable.push(key);
+                        }
+                    }
+                    if (notPlaceable.length)
+                        keys.unshift(...notPlaceable);
+                    if (keys.length > freeKeys.size) {
+                        let pages = 1;
+                        while (keys.length > pages * (freeKeys.size - Math.min(pages, utils_1.MAX_PAGE_KEYS))) {
+                            pages++;
+                        }
+                        const pageKeys = Math.min(pages, utils_1.MAX_PAGE_KEYS);
+                        const perPage = freeKeys.size - pageKeys;
+                        return range(pages).map((i) => {
+                            const pagesStart = i <= 4;
+                            const pagesEnd = i >= pages - 5;
+                            const page = []
+                                .concat(range(pageKeys).map((j) => {
+                                if (pages == pageKeys)
+                                    return new key_1.PageKey(j, i == j);
+                                else
+                                    switch (j) {
+                                        case 0:
+                                            return new key_1.PageKey(0, i == 0);
+                                        case 1:
+                                            if (pagesStart)
+                                                return new key_1.PageKey(1, i == 1);
+                                            if (pagesEnd)
+                                                return new key_1.PageKey(pages - 8, i == pages - 8);
+                                            return new key_1.PageKey(i - 3, false);
+                                        case 2:
+                                            if (pagesStart)
+                                                return new key_1.PageKey(2, i == 2);
+                                            if (pagesEnd)
+                                                return new key_1.PageKey(pages - 7, i == pages - 7);
+                                            return new key_1.PageKey(i - 2, false);
+                                        case 3:
+                                            if (pagesStart)
+                                                return new key_1.PageKey(3, i == 3);
+                                            if (pagesEnd)
+                                                return new key_1.PageKey(pages - 6, i == pages - 6);
+                                            return new key_1.PageKey(i - 1, false);
+                                        case 4:
+                                            if (pagesStart)
+                                                return new key_1.PageKey(4, i == 4);
+                                            if (pagesEnd)
+                                                return new key_1.PageKey(pages - 5, i == pages - 5);
+                                            return new key_1.PageKey(i, true);
+                                        case 5:
+                                            if (pagesStart)
+                                                return new key_1.PageKey(5, i == 5);
+                                            if (pagesEnd)
+                                                return new key_1.PageKey(pages - 4, i == pages - 4);
+                                            return new key_1.PageKey(i + 1, false);
+                                        case 6:
+                                            if (pagesStart)
+                                                return new key_1.PageKey(6, i == 6);
+                                            if (pagesEnd)
+                                                return new key_1.PageKey(pages - 3, i == pages - 3);
+                                            return new key_1.PageKey(i + 2, false);
+                                        case 7:
+                                            if (pagesStart)
+                                                return new key_1.PageKey(7, i == 7);
+                                            if (pagesEnd)
+                                                return new key_1.PageKey(pages - 2, i == pages - 2);
+                                            return new key_1.PageKey(i + 3, false);
+                                        case 8:
+                                            return new key_1.PageKey(pages - 1, i == pages - 1);
+                                        default:
+                                            return base_2.BlankKey;
+                                    }
+                            }))
+                                .concat(keys.slice(i * perPage, i * perPage + perPage));
+                            return { ...fixedKeys, ...(0, utils_1.mapKeysToSlots)([...freeKeys], page) };
+                        });
+                    }
+                    else {
+                        return [{ ...fixedKeys, ...(0, utils_1.mapKeysToSlots)([...freeKeys], keys) }];
+                    }
+                }
+            });
+        }
+        static fromItem(item, p) {
+            if (item === null) {
+                return base_2.BlankKey;
+            }
+            else if (typeof item === 'string') {
+                return new key_1.ClusterKey(item, p);
+            }
+            else if (Array.isArray(item)) {
+                if (item.length) {
+                    return new key_1.ClusterKey(item[0], { variants: item, ...p });
+                }
+                return base_2.BlankKey;
+            }
+            else {
+                return new key_1.KeyboardKey(Board.fromEmoji(item));
+            }
+        }
+        static fromContents(contents, p) {
+            const keys = [];
+            for (const item of contents) {
+                if (item === null || typeof item === 'string' || Array.isArray(item)) {
+                    keys.push(this.fromItem(item, p));
+                }
+                else if (item.group) {
+                    keys.push(...(0, unicodeInterface_3.emojiGroup)(item).map(c => new key_1.ClusterKey(c, p)));
+                }
+                else if (typeof item.from !== 'undefined') {
+                    const from = typeof item.from === 'number' ? item.from : (0, builder_3.toCodePoints)(item.from)[0];
+                    const to = typeof item.to === 'number' ? item.to : (0, builder_3.toCodePoints)(item.to)[0];
+                    if (from && to && to > from) {
+                        for (let i = from; i <= to; ++i)
+                            keys.push(new key_1.ClusterKey(String.fromCodePoint(i), p));
+                    }
+                }
+                else {
+                    keys.push(this.fromItem(item, p));
+                }
+            }
+            return keys;
+        }
+        static fromEmoji(k) {
+            const p = { noRecent: k.noRecent };
+            const keys = this.fromContents(k.content ?? [], p);
+            const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key, p)));
+            const byVK = (0, helpers_4.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
+            return this.fromKeys({ name: k.name, symbol: k.symbol, top: k.top, noRecent: k.noRecent, keys, byRow, byVK });
+        }
+        static clusterAlternates(cluster, variants, k) {
+            const keys = variants.map((c) => new key_1.ClusterKey(c, { variants: [], ...k }));
+            return this.fromKeys({ name: (0, unicodeInterface_3.clusterName)(cluster), symbol: cluster, keys });
+        }
+    }
+    exports.Board = Board;
+    class StaticBoard extends Board {
+        keys;
+        constructor({ keys, ...p }) {
+            super(p);
+            this.keys = (0, memoize_one_1.default)(keys);
+        }
+        Contents = ({ state }) => {
+            const l = (0, hooks_4.useContext)(appVar_5.LayoutContext);
+            const pages = (0, hooks_4.useMemo)(() => this.keys(l), [l]);
+            (0, hooks_4.useEffect)(() => (0, appVar_5.app)().updateStatus(), []);
+            const keys = pages[state?.page ?? 0] ?? pages[0];
+            return (0, preact_5.h)(utils_1.Keys, { keys: keys });
+        };
+    }
+    exports.StaticBoard = StaticBoard;
+});
+define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "helpers"], function (require, exports, unicodeInterface_4, builder_4, helpers_5) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.search = void 0;
+    const u = unicodeInterface_4.UnicodeData;
+    const ESCAPE_REGEX = new RegExp('(\\' + ['/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\', '$', '^', '-'].join('|\\') + ')', 'g');
+    const SEPARATOR = '%';
+    const SEPARATOR_REGEX_G = /%/g;
+    const SEARCH_ID = SEPARATOR + '([\\d,]+)' + SEPARATOR + '[^' + SEPARATOR + ']*';
+    const index = new Map();
+    for (const c of Object.values(u.clusters)) {
+        if (!c.parent) {
+            index.set((0, builder_4.toCodePoints)(c.cluster).join(',').toString(), `${c.name} ${c.alias?.join(' ') ?? ''}`);
+        }
+    }
+    for (const c of Object.values(u.chars)) {
+        if (!c.reserved && !c.notACharacter) {
+            index.set(c.code.toString(), `${c.n} ${c.alias?.join(' ') ?? ''} ${c.falias?.join(' ') ?? ''}`);
+        }
+    }
+    console.log(index);
+    const searchHaystack = Array.from(index.entries()).map(([k, v]) => `${SEPARATOR}${k}${SEPARATOR}${v.replace(SEPARATOR_REGEX_G, '')}`).join('');
+    function escapeRegex(str) {
+        return str.replace(ESCAPE_REGEX, '\\$1');
+    }
+    function search(needle) {
+        let result = [];
+        needle.split(/\s+/g).forEach((n, k) => {
+            let filter = [];
+            if (!n.length)
+                return;
+            const re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
+            for (let m; (m = re.exec(searchHaystack));) {
+                filter.push(m[1]);
+            }
+            if (k == 0)
+                result = filter;
+            else {
+                const f = new Set(filter);
+                result = result.filter(v => f.has(v));
+            }
+        });
+        const scores = (0, helpers_5.fromEntries)(result.map(v => [v, 0]));
+        for (const n of needle.split(/\s+/g)) {
+            if (!n.length)
+                continue;
+            const re1 = new RegExp('(?:[^a-z]|^)' + escapeRegex(n) + '(?:[^a-z]|$)', 'i');
+            const re2 = new RegExp('(?:[^a-z]|^)' + escapeRegex(n), 'i');
+            for (const r of result) {
+                if (re1.test(index.get(r)))
+                    scores[r]++;
+                else if (!re2.test(index.get(r)))
+                    scores[r]--;
+            }
+        }
+        result.sort((a, b) => scores[b] - scores[a]);
+        return result.map(v => String.fromCodePoint(...v.split(',').map(v => parseInt(v, 10))));
+    }
+    exports.search = search;
+});
+define("searchView", ["require", "exports", "preact", "layout", "board", "emojis", "preact/hooks", "key", "appVar", "boards/utils", "keys/base"], function (require, exports, preact_6, layout_2, board_1, emojis_1, hooks_5, key_2, appVar_6, utils_2, base_3) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SearchBoard = void 0;
+    class SearchBoard extends board_1.Board {
         constructor() {
-            super({ name: "Settings", symbol: "🛠️", clickAlwaysAlternate: true, keyNamePrefix: "⇧" });
+            super({ name: "Search", symbol: "🔎" });
+        }
+        Contents() {
+            const searchText = (0, hooks_5.useContext)(appVar_6.SearchContext);
+            const onInput = (0, hooks_5.useCallback)((e) => (0, appVar_6.app)().setSearchText(e.target.value), []);
+            (0, hooks_5.useEffect)(() => document.querySelector('input[type="search"]')?.focus(), []);
+            const keys = (0, hooks_5.useMemo)(() => ({
+                [41]: new key_2.ExitSearchKey(),
+                [15]: new key_2.ExitSearchKey(),
+                [58]: new key_2.RecentKey(),
+                ...(0, utils_2.mapKeysToSlots)(layout_2.SearchKeyCodes, (0, emojis_1.search)(searchText).map((c) => new key_2.ClusterKey(c)))
+            }), [searchText]);
+            (0, appVar_6.app)().keyHandlers = keys;
+            return (0, preact_6.h)("div", { class: "keyboard" },
+                (0, preact_6.h)("input", { type: "search", value: searchText, onInput: onInput }),
+                layout_2.SearchKeyCodesTable.map((code) => {
+                    const K = (keys[code] ?? base_3.BlankKey);
+                    return (0, preact_6.h)(K.Contents, { code: code, key: code });
+                }));
+        }
+    }
+    exports.SearchBoard = SearchBoard;
+});
+define("recentsActions", ["require", "exports", "appVar"], function (require, exports, appVar_7) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.toggleFavorite = exports.removeRecent = exports.increaseRecent = exports.MAX_RECENT_ITEMS = exports.SCORE_DECR = exports.SCORE_INCR = exports.FAVORITE_SCORE = void 0;
+    exports.FAVORITE_SCORE = 100;
+    exports.SCORE_INCR = 11;
+    exports.SCORE_DECR = 1;
+    exports.MAX_RECENT_ITEMS = 47;
+    function sortRecent(arr) {
+        arr.sort((a, b) => b.useCount - a.useCount);
+    }
+    function increaseRecent(cluster) {
+        (0, appVar_7.app)().updateConfig(c => {
+            const current = c.recent.find(r => r.symbol == cluster);
+            let recent = [
+                { symbol: cluster, useCount: Math.min((current?.useCount ?? 0) + exports.SCORE_INCR, 100) },
+                ...c.recent.filter(r => r.symbol != cluster).map(r => ({
+                    symbol: r.symbol,
+                    useCount: r.useCount < exports.FAVORITE_SCORE ? Math.max(r.useCount - exports.SCORE_DECR, 0) : exports.FAVORITE_SCORE,
+                }))
+            ];
+            sortRecent(recent);
+            if (recent.length > exports.MAX_RECENT_ITEMS)
+                recent = recent.slice(0, exports.MAX_RECENT_ITEMS);
+            return { recent };
+        }, false);
+    }
+    exports.increaseRecent = increaseRecent;
+    function removeRecent(cluster) {
+        (0, appVar_7.app)().updateConfig(c => {
+            return { recent: c.recent.filter(r => r.symbol != cluster) };
+        });
+    }
+    exports.removeRecent = removeRecent;
+    function toggleFavorite(cluster) {
+        (0, appVar_7.app)().updateConfig(c => {
+            const r = c.recent.find(r => r.symbol == cluster);
+            if (!r)
+                return { recent: [{ symbol: cluster, useCount: exports.FAVORITE_SCORE }, ...c.recent] };
+            else {
+                const rest = c.recent.filter(r => r.symbol != cluster);
+                if (r.useCount < exports.FAVORITE_SCORE) {
+                    return { recent: [{ symbol: cluster, useCount: exports.FAVORITE_SCORE }, ...rest] };
+                }
+                else {
+                    return {
+                        recent: [{
+                                symbol: cluster,
+                                useCount: exports.FAVORITE_SCORE / 2
+                            }, ...rest].sort((a, b) => b.useCount - a.useCount)
+                    };
+                }
+            }
+        });
+    }
+    exports.toggleFavorite = toggleFavorite;
+});
+define("recentsView", ["require", "exports", "preact/hooks", "appVar", "key", "boards/utils", "preact", "board", "keys/base", "unicodeInterface", "layout", "recentsActions"], function (require, exports, hooks_6, appVar_8, key_3, utils_3, preact_7, board_2, base_4, unicodeInterface_5, layout_3, recentsActions_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.RecentSettingsBoard = exports.RecentClusterKey = exports.RecentBoard = void 0;
+    class RecentBoard extends board_2.Board {
+        constructor() {
+            super({ name: "Recent", symbol: "⟲" });
+        }
+        Contents = () => {
+            (0, hooks_6.useEffect)(() => (0, appVar_8.app)().updateStatus(), []);
+            const l = (0, hooks_6.useContext)(appVar_8.LayoutContext);
+            const recentEmojis = (0, hooks_6.useContext)(appVar_8.ConfigContext).recent;
+            const keys = (0, hooks_6.useMemo)(() => ({
+                [41]: new key_3.ExitRecentKey(),
+                [15]: new key_3.SearchKey(),
+                [58]: new key_3.ExitRecentKey(),
+                ...(0, utils_3.mapKeysToSlots)(l.free, recentEmojis.map(r => new RecentClusterKey(r.symbol)))
+            }), [l, recentEmojis]);
+            return (0, preact_7.h)(utils_3.Keys, { keys: keys });
+        };
+    }
+    exports.RecentBoard = RecentBoard;
+    function useUseCount(cluster) {
+        const recent = (0, hooks_6.useContext)(appVar_8.ConfigContext).recent;
+        return (0, hooks_6.useMemo)(() => recent.find(r => r.symbol == cluster)?.useCount ?? 0, [cluster, recent]);
+    }
+    class RecentClusterKey extends base_4.Key {
+        cluster;
+        constructor(cluster) {
+            const useCount = useUseCount(cluster);
+            const name = (0, unicodeInterface_5.clusterName)(cluster);
+            super({
+                name: `${name}, score: ${useCount >= 100 ? "★" : useCount}`,
+                symbol: cluster,
+                keyType: "char",
+            });
+            this.cluster = cluster;
+        }
+        act() {
+            (0, appVar_8.app)().send(this.cluster, { noRecent: true });
         }
         actAlternate() {
-            (0, appVar_2.app)().setMode(2);
+            (0, appVar_8.app)().setBoard(new RecentSettingsBoard(this.cluster));
+        }
+    }
+    exports.RecentClusterKey = RecentClusterKey;
+    class RecentSettingsBoard extends board_2.Board {
+        cluster;
+        constructor(cluster) {
+            super({
+                name: `Settings for ${cluster}`,
+                symbol: cluster,
+            });
+            this.cluster = cluster;
+        }
+        Contents = () => {
+            (0, hooks_6.useEffect)(() => (0, appVar_8.app)().updateStatus(), []);
+            const useCount = useUseCount(this.cluster);
+            const keys = {
+                [41]: new key_3.BackKey(),
+                ...(0, utils_3.mapKeysToSlots)(layout_3.DigitsRow, [
+                    new key_3.ConfigToggleKey({
+                        name: "Favorite",
+                        symbol: "⭐",
+                        active: useCount >= recentsActions_1.FAVORITE_SCORE,
+                        action: () => (0, recentsActions_1.toggleFavorite)(this.cluster)
+                    }),
+                    new key_3.ConfigActionKey({
+                        name: "Remove", symbol: "🗑", action: () => {
+                            (0, recentsActions_1.removeRecent)(this.cluster);
+                            (0, appVar_8.app)().back();
+                        }
+                    })
+                ]),
+                [16]: new key_3.ConfigLabelKey(`Score: ${useCount}, +${recentsActions_1.SCORE_INCR} when used, -${recentsActions_1.SCORE_DECR} when others used`),
+                [30]: new key_3.ConfigLabelKey(`Favorite when score ≥ ${recentsActions_1.FAVORITE_SCORE}`),
+            };
+            return (0, preact_7.h)(utils_3.Keys, { keys: keys });
+        };
+    }
+    exports.RecentSettingsBoard = RecentSettingsBoard;
+});
+define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView", "recentsView", "recentsActions"], function (require, exports, preact_8, layout_4, board_3, osversion_2, ahk_2, emojis_2, config_1, helpers_6, appVar_9, hooks_7, searchView_1, recentsView_1, recentsActions_2) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.AppMode = void 0;
+    var AppMode;
+    (function (AppMode) {
+        AppMode[AppMode["MAIN"] = 0] = "MAIN";
+        AppMode[AppMode["SEARCH"] = 1] = "SEARCH";
+        AppMode[AppMode["SETTINGS"] = 2] = "SETTINGS";
+        AppMode[AppMode["RECENTS"] = 3] = "RECENTS";
+    })(AppMode = exports.AppMode || (exports.AppMode = {}));
+    const AppModes = [0, 1, 2, 3];
+    class App extends preact_8.Component {
+        keyHandlers = {};
+        state = {
+            mode: 0,
+            searchText: '',
+            layout: layout_4.SystemLayoutUS,
+            config: { ...config_1.DefaultConfig, opacity: 1 },
+            boardState: {},
+            os: new osversion_2.Version('99'),
+            currentBoard: {
+                [0]: (0, board_3.getMainBoard)(),
+                [1]: new searchView_1.SearchBoard(),
+                [2]: new config_1.ConfigBoard(),
+                [3]: new recentsView_1.RecentBoard(),
+            },
+            parentBoards: (0, helpers_6.fromEntries)(AppModes.map(m => [m, []])),
+            building: false,
+        };
+        constructor(props) {
+            super(props);
+            (0, appVar_9.setApp)(this);
+            window.document.ahk = this;
+            window.s = emojis_2.search;
+            window.chrome?.webview?.addEventListener('message', (e) => {
+                if (Array.isArray(e.data)) {
+                    switch (e.data[0]) {
+                        case 'input':
+                            this.input(e.data[1], e.data[2]);
+                            break;
+                        case 'layout':
+                            this.setSystemLayout(e.data[1]);
+                            break;
+                        case 'possize':
+                            this.updateConfig({ x: e.data[1], y: e.data[2], width: e.data[3], height: e.data[4] });
+                            break;
+                        default:
+                            console.log("message", e.data[0], e.data);
+                    }
+                }
+                else if (typeof e.data === 'string') {
+                    const command = e.data.split(',', 1)[0];
+                    const rest = e.data.slice(command.length + 1);
+                    switch (command) {
+                        case 'config':
+                            this.setConfig(rest).catch(console.error);
+                            break;
+                        case 'defaultConfig':
+                            this.defaultConfig();
+                            break;
+                        case 'os':
+                            this.setOS(rest);
+                            break;
+                        case 'done':
+                        case 'error':
+                            console.log("async callback", command, rest);
+                            break;
+                        default:
+                            console.log("message", command, rest);
+                    }
+                }
+                else {
+                    console.log("message", e.data);
+                }
+            });
+        }
+        render() {
+            const s = this.state;
+            const Board = s.currentBoard[s.mode];
+            const c = (0, preact_8.h)(Board.Contents, { state: s.boardState[Board.name] });
+            const l = (0, hooks_7.useMemo)(() => {
+                const base = s.config.isoKeyboard ? layout_4.IsoLayout : layout_4.AnsiLayout;
+                return { ...base, sys: s.layout };
+            }, [s.config.isoKeyboard, s.layout]);
+            return (0, preact_8.h)(appVar_9.LayoutContext.Provider, { value: l },
+                (0, preact_8.h)(appVar_9.OSContext.Provider, { value: s.os },
+                    (0, preact_8.h)(appVar_9.ConfigContext.Provider, { value: s.config },
+                        (0, preact_8.h)(appVar_9.ConfigBuildingContext.Provider, { value: s.building },
+                            (0, preact_8.h)(appVar_9.SearchContext.Provider, { value: s.searchText },
+                                (0, preact_8.h)("div", { className: `root ${s.config.themeMode}-color-scheme ${l.cssClass}` }, c))))));
+        }
+        setMode(mode) {
+            this.setState((s) => {
+                if (s.mode != mode) {
+                    if (mode == 1 && !s.parentBoards[1].length)
+                        (0, ahk_2.ahkSetSearch)(true);
+                    else
+                        (0, ahk_2.ahkSetSearch)(false);
+                }
+                return { mode };
+            }, () => {
+                this.updateStatus();
+            });
+        }
+        updateStatus(text) {
+            const s = this.state;
+            switch (s.mode) {
+                case 0:
+                case 3:
+                    const board = s.currentBoard[s.mode];
+                    (0, ahk_2.ahkTitle)('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : ''));
+                    break;
+                case 1:
+                    (0, ahk_2.ahkTitle)('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
+                    break;
+                case 2:
+                    (0, ahk_2.ahkTitle)('Emoji Keyboard - ' + (text?.length ? text : 'Settings'));
+                    break;
+                default:
+                    return (0, helpers_6.unreachable)(s.mode);
+            }
+        }
+        input(key, shift = false) {
+            const s = this.state;
+            switch (s.mode) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    var keydiv = document.querySelector('[data-keycode="' + key + '"]');
+                    var symboldiv = keydiv?.getElementsByClassName("symbol")[0];
+                    symboldiv?.classList.add("keypress");
+                    setTimeout(() => {
+                        symboldiv?.classList.remove("keypress");
+                    }, 100);
+                    const k = this.keyHandlers[key];
+                    if (k) {
+                        if (shift)
+                            k.actAlternate();
+                        else
+                            k.act();
+                    }
+                    break;
+                default:
+                    return (0, helpers_6.unreachable)(s.mode);
+            }
+        }
+        async setConfig(config) {
+            await this.updateConfig(JSON.parse(config), false);
+            (0, ahk_2.ahkReady)();
+        }
+        defaultConfig() {
+            (0, ahk_2.ahkSaveConfig)(this.state.config);
+            (0, ahk_2.ahkSetOpacity)(this.state.config.opacity);
+            (0, ahk_2.ahkReady)();
+        }
+        updateConfig(config, save = true) {
+            return new Promise((resolve) => {
+                this.setState((s) => {
+                    if (typeof config === 'function')
+                        config = config(s.config);
+                    if (config.theme && s.config.theme != config.theme) {
+                        const link = document.getElementById('themeCSS');
+                        link.href = config_1.ThemesMap.get(config.theme)?.url ?? config_1.DefaultThemeUrl;
+                    }
+                    if (config.openAt) {
+                        (0, ahk_2.ahkSetOpenAt)(config.openAt);
+                    }
+                    if ((config.x != undefined && config.y != undefined &&
+                        config.width != undefined && config.height != undefined)) {
+                        (0, ahk_2.ahkSetPosSize)(config.x, config.y, config.width, config.height);
+                    }
+                    if (config.opacity && s.config.opacity != config.opacity) {
+                        (0, ahk_2.ahkSetOpacity)(config.opacity);
+                    }
+                    if (config.devTools && !s.config.devTools) {
+                        (0, ahk_2.ahkOpenDevTools)();
+                    }
+                    return { config: { ...s.config, ...config } };
+                }, () => {
+                    if (save)
+                        (0, ahk_2.ahkSaveConfig)(this.state.config);
+                    resolve();
+                });
+            });
+        }
+        setOS(os) {
+            os = os.replace(/^WIN_/, '');
+            this.setState({ os: new osversion_2.Version(os) });
+        }
+        setSystemLayout(layout) {
+            this.setState({ layout: { ...layout_4.SystemLayoutUS, ...layout } });
+        }
+        setSearchText(searchText) {
+            this.setState({ searchText }, () => this.updateStatus());
+        }
+        setBoard(board) {
+            this.setState((s) => {
+                if (s.mode == 1)
+                    (0, ahk_2.ahkSetSearch)(false);
+                return {
+                    currentBoard: { ...s.currentBoard, [s.mode]: board },
+                    parentBoards: { ...s.parentBoards, [s.mode]: [s.currentBoard[s.mode], ...s.parentBoards[s.mode]] },
+                };
+            }, () => this.updateStatus());
+        }
+        setPage(page) {
+            this.setState((s) => {
+                const board = s.currentBoard[s.mode];
+                return {
+                    boardState: {
+                        ...s.boardState,
+                        [board.name]: { page }
+                    }
+                };
+            });
+        }
+        setBuilding(building) {
+            this.setState({ building });
+        }
+        back() {
+            this.setState((s) => {
+                if (s.parentBoards[s.mode].length) {
+                    if (s.mode == 1)
+                        (0, ahk_2.ahkSetSearch)(s.parentBoards[s.mode].length == 1);
+                    const [board, ...parents] = s.parentBoards[s.mode];
+                    return {
+                        parentBoards: { ...s.parentBoards, [s.mode]: parents },
+                        currentBoard: { ...s.currentBoard, [s.mode]: board },
+                    };
+                }
+                return {};
+            });
+        }
+        main() {
+            this.setState(s => ({
+                mode: 0,
+                currentBoard: {
+                    ...s.currentBoard,
+                    [0]: s.parentBoards[0][s.parentBoards[0].length - 1] ?? s.currentBoard[0]
+                },
+                parentBoards: {
+                    ...s.parentBoards,
+                    [0]: []
+                }
+            }));
+        }
+        send(cluster, p) {
+            (0, ahk_2.ahkSend)(cluster);
+            if (!p.noRecent)
+                (0, recentsActions_2.increaseRecent)(cluster);
+            if (this.state.config.hideAfterInput)
+                (0, ahk_2.ahkHide)();
+            if (this.state.config.mainAfterInput) {
+                if (this.state.mode == 3 || this.state.mode == 0)
+                    this.main();
+            }
+        }
+    }
+    const main = document.querySelector('main');
+    preact_8.options.debounceRendering = f => setTimeout(f, 0);
+    (0, preact_8.render)((0, preact_8.h)(App, null), main);
+    setTimeout(() => (0, ahk_2.ahkLoaded)(), 0);
+});
+define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "unicodeInterface", "builder/builder", "preact/hooks", "chars", "keys/base", "keys/symbol"], function (require, exports, preact_9, board_4, appVar_10, helpers_7, unicodeInterface_6, builder_5, hooks_8, chars_4, base_5, symbol_2) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ExitRecentKey = exports.RecentKey = exports.ClusterKey = exports.ExitSearchKey = exports.SearchKey = exports.PageKey = exports.KeyboardKey = exports.BackKey = exports.ConfigBuildKey = exports.ConfigLabelKey = exports.ConfigToggleKey = exports.ConfigActionKey = exports.ConfigKey = void 0;
+    class ConfigKey extends base_5.Key {
+        constructor() {
+            super({ name: "Settings", symbol: "🛠️" + chars_4.VarSel15, clickAlwaysAlternate: true, keyNamePrefix: "⇧" });
+        }
+        actAlternate() {
+            (0, appVar_10.app)().setMode(2);
         }
     }
     exports.ConfigKey = ConfigKey;
-    class ConfigActionKey extends Key {
+    class ConfigActionKey extends base_5.Key {
         action;
-        constructor({ active, action, name, symbol }) {
-            super({ name, symbol, active });
+        constructor({ action, ...p }) {
+            super(p);
             this.action = action;
         }
         act() {
@@ -4188,78 +5088,78 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
     }
     exports.ConfigActionKey = ConfigActionKey;
     class ConfigToggleKey extends ConfigActionKey {
-        constructor({ active, action, name, symbol }) {
+        constructor({ active, ...p }) {
             active = active ?? false;
             super({
-                name: name ?? (active ? "On" : "Off"),
-                symbol: symbol ?? (active ? "✔️" : "❌"),
-                active, action,
+                name: active ? "On" : "Off",
+                symbol: active ? "✔️" : "❌",
+                active,
+                ...p,
             });
         }
     }
     exports.ConfigToggleKey = ConfigToggleKey;
-    class ConfigLabelKey extends Key {
+    class ConfigLabelKey extends base_5.Key {
         text;
         constructor(text) {
             super({ name: "", symbol: "" });
             this.text = text;
         }
         Contents = ({ code }) => {
-            return (0, preact_1.h)("div", { class: `key label` },
-                (0, preact_1.h)("div", { class: "keyname" },
-                    (0, preact_1.h)(KeyName, { code: code })),
-                (0, preact_1.h)("div", { class: "symbol" }, this.text));
+            return (0, preact_9.h)("div", { className: `key label` },
+                (0, preact_9.h)("div", { className: "keyname" },
+                    (0, preact_9.h)(base_5.KeyName, { code: code })),
+                (0, preact_9.h)("div", { className: "symbol" }, this.text));
         };
     }
     exports.ConfigLabelKey = ConfigLabelKey;
-    class ConfigBuildKey extends Key {
+    class ConfigBuildKey extends base_5.Key {
         constructor() {
             super({ name: "Build", symbol: "🏗️" });
         }
         act() {
-            (0, builder_2.makeBuild)();
+            (0, builder_5.makeBuild)();
         }
         Contents = ({ code }) => {
-            const active = (0, hooks_1.useContext)(appVar_2.ConfigBuildingContext);
-            return (0, preact_1.h)("div", { className: (0, helpers_1.cl)('key action', { active }), onClick: (e) => {
+            const active = (0, hooks_8.useContext)(appVar_10.ConfigBuildingContext);
+            return (0, preact_9.h)("div", { className: (0, helpers_7.cl)('key action', { active }), onClick: (e) => {
                     e.preventDefault();
                     e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
                 }, onContextMenu: (e) => {
                     e.preventDefault();
                     this.actAlternate();
-                }, onMouseOver: () => (0, appVar_2.app)().updateStatus(this.name) },
-                (0, preact_1.h)("div", { className: "keyname" },
-                    (0, preact_1.h)(KeyName, { code: code })),
-                (0, preact_1.h)("div", { className: "name" }, this.name),
-                (0, preact_1.h)(Symbol, { symbol: this.symbol }));
+                }, onMouseOver: () => (0, appVar_10.app)().updateStatus(this.name) },
+                (0, preact_9.h)("div", { className: "keyname" },
+                    (0, preact_9.h)(base_5.KeyName, { code: code })),
+                (0, preact_9.h)("div", { className: "name" }, this.name),
+                (0, preact_9.h)(symbol_2.Symbol, { symbol: this.symbol }));
         };
     }
     exports.ConfigBuildKey = ConfigBuildKey;
-    exports.BlankKey = new Key({ name: '', symbol: '' });
-    class BackKey extends Key {
+    class BackKey extends base_5.Key {
         constructor() {
-            super({ name: 'back/🛠️', symbol: '←' });
+            super({ name: 'Back/🛠️', symbol: '←', keyType: "back" });
         }
         act() {
-            (0, appVar_2.app)().back();
+            (0, appVar_10.app)().back();
         }
         actAlternate() {
-            (0, appVar_2.app)().setMode(2);
+            (0, appVar_10.app)().setMode(2);
         }
     }
     exports.BackKey = BackKey;
-    class KeyboardKey extends Key {
+    class KeyboardKey extends base_5.Key {
         target;
         constructor(target) {
             super({ name: target.name, symbol: target.symbol });
             this.target = target;
         }
         act() {
-            (0, appVar_2.app)().setBoard(this.target);
+            (0, appVar_10.app)().setBoard(this.target);
         }
     }
     exports.KeyboardKey = KeyboardKey;
-    class PageKey extends Key {
+    class PageKey extends base_5.Key {
         page;
         constructor(page, active, name, symbol) {
             super({ name: name ?? `page ${page + 1}`, symbol: symbol ?? '' + (page + 1), active });
@@ -4267,61 +5167,82 @@ define("key", ["require", "exports", "preact", "board", "ahk", "appVar", "helper
         }
         act() {
             if (!this.active)
-                (0, appVar_2.app)().setPage(this.page);
+                (0, appVar_10.app)().setPage(this.page);
         }
     }
     exports.PageKey = PageKey;
-    class SearchKey extends Key {
+    class SearchKey extends base_5.Key {
         constructor() {
-            super({ name: 'search', symbol: '🔎' });
+            super({ name: 'search', symbol: '🔎' + chars_4.VarSel15 });
         }
         act() {
-            (0, appVar_2.app)().setMode(1);
+            (0, appVar_10.app)().setMode(1);
         }
     }
     exports.SearchKey = SearchKey;
-    class ExitSearchKey extends Key {
+    class ExitSearchKey extends base_5.Key {
         constructor() {
             super({ name: 'back', symbol: '←' });
         }
         act() {
-            (0, appVar_2.app)().setMode(0);
+            (0, appVar_10.app)().setMode(0);
         }
     }
     exports.ExitSearchKey = ExitSearchKey;
-    class ClusterKey extends Key {
+    class ClusterKey extends base_5.Key {
         cluster;
         variants;
-        constructor(cluster, variants) {
-            const name = (0, unicodeInterface_2.clusterName)(cluster);
-            variants ??= (0, unicodeInterface_2.clusterVariants)(cluster);
+        noRecent;
+        constructor(cluster, p) {
+            const name = (0, unicodeInterface_6.clusterName)(cluster);
+            const variants = p?.variants ?? (0, unicodeInterface_6.clusterVariants)(cluster);
             super({
                 name,
                 upperName: variants?.length == 2 ? variants[1] : "",
                 symbol: cluster,
                 alt: !!variants && variants.length > 2,
                 lu: variants?.length === 2,
+                keyType: "char",
             });
             this.cluster = cluster;
+            this.noRecent = p?.noRecent ?? false;
             this.variants = variants;
         }
         act() {
-            (0, ahk_2.ahkSend)(this.cluster);
+            (0, appVar_10.app)().send(this.cluster, { noRecent: this.noRecent });
         }
         actAlternate() {
             if (this.alt) {
-                (0, appVar_2.app)().setBoard(board_1.Board.clusterAlternates(this.cluster, this.variants));
+                (0, appVar_10.app)().setBoard(board_4.Board.clusterAlternates(this.cluster, this.variants, { noRecent: this.noRecent }));
             }
             else if (this.lu) {
-                (0, ahk_2.ahkSend)(this.variants[1]);
+                (0, appVar_10.app)().send(this.variants[1], { noRecent: this.noRecent });
             }
             else
                 return this.act();
         }
     }
     exports.ClusterKey = ClusterKey;
+    class RecentKey extends base_5.Key {
+        constructor() {
+            super({ name: 'Recent', symbol: '↺' });
+        }
+        act() {
+            (0, appVar_10.app)().setMode(3);
+        }
+    }
+    exports.RecentKey = RecentKey;
+    class ExitRecentKey extends base_5.Key {
+        constructor() {
+            super({ name: 'Back', symbol: '←', keyType: "back" });
+        }
+        act() {
+            (0, appVar_10.app)().setMode(0);
+        }
+    }
+    exports.ExitRecentKey = ExitRecentKey;
 });
-define("config", ["require", "exports", "preact", "layout", "key", "board", "preact/hooks", "appVar"], function (require, exports, preact_2, layout_1, key_1, board_2, hooks_2, appVar_3) {
+define("config", ["require", "exports", "preact", "layout", "key", "board", "preact/hooks", "appVar", "boards/utils", "keys/base"], function (require, exports, preact_10, layout_5, key_4, board_5, hooks_9, appVar_11, utils_4, base_6) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConfigBoard = exports.DefaultConfigPage = exports.DefaultThemeUrl = exports.ThemesMap = exports.DefaultConfig = exports.DefaultOpacity = exports.Themes = exports.DefaultTheme = void 0;
@@ -4392,11 +5313,17 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
         isoKeyboard: false,
         theme: exports.DefaultTheme,
         themeMode: "system",
+        x: -1,
+        y: -1,
         width: 764,
         height: 240,
         devTools: false,
+        openAt: "bottom",
         opacity: exports.DefaultOpacity,
         skinTone: 0,
+        recent: [],
+        hideAfterInput: false,
+        mainAfterInput: false,
     };
     exports.ThemesMap = new Map(exports.Themes.map((t) => [t.name, t]));
     exports.DefaultThemeUrl = exports.ThemesMap.get(exports.DefaultTheme).url;
@@ -4406,17 +5333,20 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
             symbol: "🛠️",
             keys(config) {
                 return {
-                    [16]: new key_1.ConfigToggleKey({
+                    [16]: new key_4.ConfigToggleKey({
                         active: config.isoKeyboard,
+                        statusName: `ISO layout: ${config.isoKeyboard ? 'on' : 'off'}`,
                         action() {
-                            (0, appVar_3.app)().updateConfig({ isoKeyboard: !config.isoKeyboard });
+                            (0, appVar_11.app)().updateConfig({ isoKeyboard: !config.isoKeyboard });
                         }
                     }),
-                    [17]: new key_1.ConfigLabelKey((0, preact_2.h)(preact_2.Fragment, null,
-                        "ISO layout (additional key between ",
-                        (0, preact_2.h)(key_1.KeyName, { code: 42 }),
+                    [17]: new key_4.ConfigLabelKey((0, preact_10.h)(preact_10.Fragment, null,
+                        "ISO layout (",
+                        (0, preact_10.h)(base_6.KeyName, { code: 86 }),
+                        " between ",
+                        (0, preact_10.h)(base_6.KeyName, { code: 42 }),
                         " and ",
-                        (0, preact_2.h)(key_1.KeyName, { code: 44 }),
+                        (0, preact_10.h)(base_6.KeyName, { code: 44 }),
                         ")")),
                 };
             }
@@ -4426,24 +5356,25 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
             symbol: "🎨",
             keys(config) {
                 return {
-                    ...(0, board_2.mapKeysToSlots)(layout_1.FirstRow, exports.Themes.map((t) => new key_1.ConfigActionKey({
+                    ...(0, utils_4.mapKeysToSlots)(layout_5.FirstRow, exports.Themes.map((t) => new key_4.ConfigActionKey({
                         active: config.theme == t.name,
-                        name: t.name,
+                        name: t.name, statusName: `Theme: ${t.name}`,
                         symbol: t.symbol,
                         action() {
-                            (0, appVar_3.app)().updateConfig({ theme: t.name });
+                            (0, appVar_11.app)().updateConfig({ theme: t.name });
                         }
                     }))),
-                    ...(0, board_2.mapKeysToSlots)(layout_1.SecondRow, [
+                    ...(0, utils_4.mapKeysToSlots)(layout_5.SecondRow, [
                         ...[
                             ["light", "🌞"],
                             ["dark", "🌚"],
                             ["system", "📟"]
-                        ].map(([mode, symbol]) => new key_1.ConfigActionKey({
+                        ].map(([mode, symbol]) => new key_4.ConfigActionKey({
                             active: config.themeMode == mode,
                             name: mode, symbol: symbol,
+                            statusName: `Theme variant: ${mode}`,
                             action() {
-                                (0, appVar_3.app)().updateConfig({ themeMode: mode });
+                                (0, appVar_11.app)().updateConfig({ themeMode: mode });
                             }
                         }))
                     ])
@@ -4453,45 +5384,73 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
         {
             name: "Display",
             symbol: "🖥️",
-            keys(config) {
+            keys(config, l) {
                 return {
-                    ...(0, board_2.mapKeysToSlots)(layout_1.FirstRow, [
-                        new key_1.ConfigActionKey({
-                            symbol: "--", name: "-10", action() {
-                                (0, appVar_3.app)().updateConfig({ opacity: Math.max(config.opacity - .1, .2) });
+                    ...(0, utils_4.mapKeysToSlots)(l.freeRows[1], [
+                        new key_4.ConfigActionKey({
+                            symbol: "⏬", name: "-10", statusName: 'Opacity -10', action() {
+                                (0, appVar_11.app)().updateConfig({ opacity: Math.max(config.opacity - .1, .2) });
                             }
                         }),
-                        new key_1.ConfigActionKey({
-                            symbol: "-", name: "-1", action() {
-                                (0, appVar_3.app)().updateConfig({ opacity: Math.max(config.opacity - .01, .2) });
+                        new key_4.ConfigActionKey({
+                            symbol: "🔽", name: "-1", statusName: 'Opacity -1', action() {
+                                (0, appVar_11.app)().updateConfig({ opacity: Math.max(config.opacity - .01, .2) });
                             }
                         }),
-                        new key_1.ConfigActionKey({
-                            symbol: "+", name: "+1", action() {
-                                (0, appVar_3.app)().updateConfig({ opacity: Math.min(config.opacity + .01, 1) });
+                        new key_4.ConfigActionKey({
+                            symbol: "🔼", name: "+1", statusName: 'Opacity +1', action() {
+                                (0, appVar_11.app)().updateConfig({ opacity: Math.min(config.opacity + .01, 1) });
                             }
                         }),
-                        new key_1.ConfigActionKey({
-                            symbol: "++", name: "+10", action() {
-                                (0, appVar_3.app)().updateConfig({ opacity: Math.min(config.opacity + .1, 1) });
+                        new key_4.ConfigActionKey({
+                            symbol: "⏫", name: "+10", statusName: 'Opacity +10', action() {
+                                (0, appVar_11.app)().updateConfig({ opacity: Math.min(config.opacity + .1, 1) });
                             }
                         }),
-                        new key_1.ConfigActionKey({
-                            symbol: `${Math.round(config.opacity * 100)}`, name: "reset", action() {
-                                (0, appVar_3.app)().updateConfig({ opacity: exports.DefaultOpacity });
-                            }
-                        }),
-                        new key_1.ConfigLabelKey("Opacity")
-                    ]),
-                    ...(0, board_2.mapKeysToSlots)(layout_1.SecondRow, [
-                        new key_1.ConfigToggleKey({
-                            active: config.devTools,
+                        new key_4.ConfigActionKey({
+                            symbol: `${Math.round(config.opacity * 100)}`,
+                            name: "reset",
+                            statusName: 'Reset opacity',
                             action() {
-                                (0, appVar_3.app)().updateConfig({ devTools: !config.devTools });
+                                (0, appVar_11.app)().updateConfig({ opacity: exports.DefaultOpacity });
                             }
                         }),
-                        new key_1.ConfigLabelKey("Open DevTools")
+                        new key_4.ConfigLabelKey("Opacity")
                     ]),
+                    ...(0, utils_4.mapKeysToSlots)(l.freeRows[2], [
+                        ...[
+                            ["last position", "🗿", "last-position"],
+                            ["bottom", "👇", "bottom"],
+                            ["caret (beta)", "⌨️", "text-caret"],
+                            ["mouse", "🖱️", "mouse"]
+                        ].map(([name, symbol, mode]) => new key_4.ConfigActionKey({
+                            active: config.openAt == mode,
+                            name, statusName: `Open at ${name}`, symbol,
+                            action() {
+                                (0, appVar_11.app)().updateConfig({ openAt: mode });
+                            }
+                        })),
+                        new key_4.ConfigLabelKey("Open At")
+                    ]),
+                    ...(0, utils_4.mapKeysToSlots)(l.freeRows[3], [
+                        new key_4.ConfigToggleKey({
+                            active: config.hideAfterInput,
+                            name: 'Hide', statusName: `Hide after input: ${config.hideAfterInput ? 'on' : 'off'}`,
+                            symbol: '🫥',
+                            action() {
+                                (0, appVar_11.app)().updateConfig({ hideAfterInput: !config.hideAfterInput });
+                            }
+                        }),
+                        new key_4.ConfigToggleKey({
+                            active: config.mainAfterInput,
+                            name: 'Go Home',
+                            symbol: '🏠', statusName: `Go home after input: ${config.hideAfterInput ? 'on' : 'off'}`,
+                            action() {
+                                (0, appVar_11.app)().updateConfig({ mainAfterInput: !config.mainAfterInput });
+                            }
+                        }),
+                        new key_4.ConfigLabelKey('After Input')
+                    ])
                 };
             }
         },
@@ -4500,624 +5459,168 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
             symbol: "🔨",
             keys(config) {
                 return {
-                    ...(0, board_2.mapKeysToSlots)(layout_1.FirstRow, [
-                        new key_1.ConfigBuildKey(),
+                    ...(0, utils_4.mapKeysToSlots)(layout_5.FirstRow, [
+                        new key_4.ConfigBuildKey(),
+                    ]),
+                    ...(0, utils_4.mapKeysToSlots)(layout_5.SecondRow, [
+                        new key_4.ConfigToggleKey({
+                            active: config.devTools, statusName: `Open DevTools: ${config.devTools ? 'on' : 'off'}`,
+                            action() {
+                                (0, appVar_11.app)().updateConfig({ devTools: !config.devTools });
+                            }
+                        }),
+                        new key_4.ConfigLabelKey("Open DevTools")
                     ]),
                 };
             }
         }
     ];
     exports.DefaultConfigPage = ConfigPages[0];
-    class ConfigBoard extends board_2.Board {
+    class ConfigBoard extends board_5.Board {
         constructor() {
             super({ name: '__config', symbol: '🛠️' });
         }
         Contents({ state }) {
             const page = Math.min(state?.page ?? 0, ConfigPages.length - 1);
-            const config = (0, hooks_2.useContext)(appVar_3.ConfigContext);
-            const pageKeys = ConfigPages.map((c, n) => new key_1.PageKey(n, n === page, c.name, c.symbol));
+            const config = (0, hooks_9.useContext)(appVar_11.ConfigContext);
+            const l = (0, hooks_9.useContext)(appVar_11.LayoutContext);
+            const pageKeys = ConfigPages.map((c, n) => new key_4.PageKey(n, n === page, c.name, c.symbol));
             const keys = {
-                [41]: new key_1.ExitSearchKey(),
-                ...(0, board_2.mapKeysToSlots)(layout_1.DigitsRow, pageKeys),
-                ...ConfigPages[page].keys(config),
+                [41]: new key_4.ExitSearchKey(),
+                ...(0, utils_4.mapKeysToSlots)(layout_5.DigitsRow, pageKeys),
+                ...ConfigPages[page].keys(config, l),
             };
-            return (0, preact_2.h)(board_2.Keys, { keys: keys });
+            return (0, preact_10.h)(utils_4.Keys, { keys: keys });
         }
     }
     exports.ConfigBoard = ConfigBoard;
 });
-define("osversion", ["require", "exports"], function (require, exports) {
+define("ahk", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Version = void 0;
-    class Version {
-        version;
-        known = new Set();
-        knownLesser = new Set();
-        knownGreater = new Set();
-        knownSame = new Set();
-        constructor(version) {
-            this.version = Version.parse(version);
-        }
-        static parse(v) {
-            if (!/^[.0-9]+$/.test(v.trim())) {
-                console.error("Invalid version", v);
-                return [0];
-            }
-            return v.split(/\./).map(part => parseInt(part, 10));
-        }
-        static compare(a, b) {
-            for (let i = 0; i < a.length; i++) {
-                if (i >= b.length)
-                    return a.slice(i).some((p) => p > 0) ? 1 : 0;
-                if (a[i] > b[i])
-                    return 1;
-                if (a[i] < b[i])
-                    return -1;
-            }
-            if (a.length == b.length)
-                return 0;
-            return b.slice(a.length).some((p) => p > 0) ? -1 : 0;
-        }
-        add(other) {
-            const cmp = Version.compare(this.version, Version.parse(other));
-            this.known.add(other);
-            if (cmp > 0)
-                this.knownLesser.add(other);
-            else if (cmp < 0)
-                this.knownGreater.add(other);
-            else
-                this.knownSame.add(other);
-        }
-        lt(other) {
-            if (!this.known.has(other))
-                this.add(other);
-            return this.knownGreater.has(other);
-        }
-        gt(other) {
-            if (!this.known.has(other))
-                this.add(other);
-            return this.knownLesser.has(other);
-        }
-        ge(other) {
-            return !this.lt(other);
-        }
-        le(other) {
-            return !this.gt(other);
-        }
-        eq(other) {
-            if (!this.known.has(other))
-                this.add(other);
-            return this.knownSame.has(other);
-        }
+    exports.ahkOpenDevTools = exports.ahkSetOpacity = exports.ahkSetOpenAt = exports.ahkSetPosSize = exports.ahkSaveUnicodeData = exports.ahkSaveConfig = exports.ahkSetSearch = exports.ahkSend = exports.ahkReady = exports.ahkLoaded = exports.ahkTitle = exports.ahkHide = exports.ahkDownloadUnicode = void 0;
+    let AHK = null;
+    window.chrome?.webview?.hostObjects?.ahk.then((ahk) => AHK = ahk);
+    function isAHK() {
+        return AHK !== null;
     }
-    exports.Version = Version;
-});
-define("appVar", ["require", "exports", "preact", "layout", "osversion"], function (require, exports, preact_3, layout_2, osversion_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.SearchContext = exports.ConfigBuildingContext = exports.ConfigContext = exports.OSContext = exports.LayoutContext = exports.app = exports.setApp = void 0;
-    let appVar;
-    function setApp(app) {
-        appVar = app;
-    }
-    exports.setApp = setApp;
-    function app() {
-        return appVar;
-    }
-    exports.app = app;
-    exports.LayoutContext = (0, preact_3.createContext)({ ...layout_2.AnsiLayout, sys: layout_2.SystemLayoutUS });
-    exports.OSContext = (0, preact_3.createContext)(new osversion_1.Version('99'));
-    exports.ConfigContext = (0, preact_3.createContext)(undefined);
-    exports.ConfigBuildingContext = (0, preact_3.createContext)(true);
-    exports.SearchContext = (0, preact_3.createContext)('');
-});
-define("board", ["require", "exports", "preact", "ahk", "preact/hooks", "builder/titleCase", "config/boards", "appVar", "key", "memoize-one", "unicodeInterface", "helpers", "builder/builder"], function (require, exports, preact_4, ahk_3, hooks_3, titleCase_2, boards_1, appVar_4, key_2, memoize_one_1, unicodeInterface_3, helpers_2, builder_3) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.StaticBoard = exports.Board = exports.mapKeysToSlots = exports.Keys = exports.getMainBoard = void 0;
-    function getMainBoard() {
-        return Board.fromEmoji(boards_1.MAIN_BOARD);
-    }
-    exports.getMainBoard = getMainBoard;
-    const MAX_PAGE_KEYS = 9;
-    function Keys({ keys }) {
-        const l = (0, hooks_3.useContext)(appVar_4.LayoutContext);
-        (0, appVar_4.app)().keyHandlers = keys;
-        return (0, preact_4.h)("div", { className: "keyboard" }, l.all.map((code) => {
-            const K = (keys[code] ?? key_2.BlankKey);
-            return (0, preact_4.h)(K.Contents, { code: code, key: code });
-        }));
-    }
-    exports.Keys = Keys;
-    function mapKeysToSlots(codes, keys) {
-        const mapped = {};
-        for (const [index, code] of Array.from(codes.entries())) {
-            if (keys[index])
-                mapped[code] = keys[index];
-        }
-        return mapped;
-    }
-    exports.mapKeysToSlots = mapKeysToSlots;
-    function range(stop) {
-        return Array.from((new Array(stop)).keys());
-    }
-    class Board {
-        constructor(p) {
-            this.name = p.name;
-            this.symbol = p.symbol;
-        }
-        name;
-        symbol;
-        showStatus(str) {
-            if (!str.length)
-                return this.hideStatus();
-            (0, ahk_3.ahkTitle)(this.name + ": " + (0, titleCase_2.toTitleCase)(str));
-        }
-        hideStatus() {
-            (0, ahk_3.ahkTitle)(this.name);
-        }
-        static fromKeys({ name, symbol, keys, top, bySC, byVK }) {
-            return new StaticBoard({
-                name, symbol, keys: (layout) => {
-                    let freeKeys = layout.free;
-                    const fixedKeys = {
-                        [41]: top ? new key_2.ConfigKey() : new key_2.BackKey(),
-                        [15]: new key_2.SearchKey(),
-                    };
-                    if (bySC) {
-                        Object.assign(fixedKeys, bySC);
-                        freeKeys = freeKeys.filter(sc => !fixedKeys[sc]);
-                    }
-                    if (byVK) {
-                        for (const sc of freeKeys) {
-                            const vk = layout.sys[sc].vk;
-                            if (byVK[vk]) {
-                                fixedKeys[sc] = byVK[vk];
-                            }
+    let nextNumber = 0;
+    function waitForCallback() {
+        const c = nextNumber++;
+        return [c, new Promise((resolve, reject) => {
+                const ok = `done,${c},`;
+                const error = `error,${c},`;
+                const listener = (e) => {
+                    if (typeof e.data === 'string') {
+                        if (e.data.startsWith(ok)) {
+                            resolve();
+                            window.chrome?.webview?.removeEventListener('message', listener);
                         }
-                        freeKeys = freeKeys.filter(sc => !fixedKeys[sc]);
-                    }
-                    if (keys.length > freeKeys.length) {
-                        let pages = 1;
-                        while (keys.length > pages * (freeKeys.length - Math.min(pages, MAX_PAGE_KEYS))) {
-                            pages++;
+                        if (e.data.startsWith(error)) {
+                            reject(e.data.substring(error.length));
+                            window.chrome?.webview?.removeEventListener('message', listener);
                         }
-                        const pageKeys = Math.min(pages, MAX_PAGE_KEYS);
-                        const perPage = freeKeys.length - pageKeys;
-                        return range(pages).map((i) => {
-                            const pagesStart = i <= 4;
-                            const pagesEnd = i >= pages - 5;
-                            const page = []
-                                .concat(range(pageKeys).map((j) => {
-                                if (pages == pageKeys)
-                                    return new key_2.PageKey(j, i == j);
-                                else
-                                    switch (j) {
-                                        case 0:
-                                            return new key_2.PageKey(0, i == 0);
-                                        case 1:
-                                            if (pagesStart)
-                                                return new key_2.PageKey(1, i == 1);
-                                            if (pagesEnd)
-                                                return new key_2.PageKey(pages - 8, i == pages - 8);
-                                            return new key_2.PageKey(i - 3, false);
-                                        case 2:
-                                            if (pagesStart)
-                                                return new key_2.PageKey(2, i == 2);
-                                            if (pagesEnd)
-                                                return new key_2.PageKey(pages - 7, i == pages - 7);
-                                            return new key_2.PageKey(i - 2, false);
-                                        case 3:
-                                            if (pagesStart)
-                                                return new key_2.PageKey(3, i == 3);
-                                            if (pagesEnd)
-                                                return new key_2.PageKey(pages - 6, i == pages - 6);
-                                            return new key_2.PageKey(i - 1, false);
-                                        case 4:
-                                            if (pagesStart)
-                                                return new key_2.PageKey(4, i == 4);
-                                            if (pagesEnd)
-                                                return new key_2.PageKey(pages - 5, i == pages - 5);
-                                            return new key_2.PageKey(i, true);
-                                        case 5:
-                                            if (pagesStart)
-                                                return new key_2.PageKey(5, i == 5);
-                                            if (pagesEnd)
-                                                return new key_2.PageKey(pages - 4, i == pages - 4);
-                                            return new key_2.PageKey(i + 1, false);
-                                        case 6:
-                                            if (pagesStart)
-                                                return new key_2.PageKey(6, i == 6);
-                                            if (pagesEnd)
-                                                return new key_2.PageKey(pages - 3, i == pages - 3);
-                                            return new key_2.PageKey(i + 2, false);
-                                        case 7:
-                                            if (pagesStart)
-                                                return new key_2.PageKey(7, i == 7);
-                                            if (pagesEnd)
-                                                return new key_2.PageKey(pages - 2, i == pages - 2);
-                                            return new key_2.PageKey(i + 3, false);
-                                        case 8:
-                                            return new key_2.PageKey(pages - 1, i == pages - 1);
-                                        default:
-                                            return key_2.BlankKey;
-                                    }
-                            }))
-                                .concat(keys.slice(i * perPage, i * perPage + perPage));
-                            return { ...fixedKeys, ...mapKeysToSlots(freeKeys, page) };
-                        });
-                    }
-                    else {
-                        return [{ ...fixedKeys, ...mapKeysToSlots(freeKeys, keys) }];
-                    }
-                }
-            });
-        }
-        static fromItem(item) {
-            if (item === null) {
-                return key_2.BlankKey;
-            }
-            else if (typeof item === 'string') {
-                return new key_2.ClusterKey(item);
-            }
-            else if (Array.isArray(item)) {
-                if (item.length) {
-                    return new key_2.ClusterKey(item[0], item);
-                }
-                return key_2.BlankKey;
-            }
-            else {
-                return new key_2.KeyboardKey(Board.fromEmoji(item));
-            }
-        }
-        static fromContents(contents) {
-            const keys = [];
-            for (const item of contents) {
-                if (item === null || typeof item === 'string' || Array.isArray(item)) {
-                    keys.push(this.fromItem(item));
-                }
-                else if (item.group) {
-                    keys.push(...(0, unicodeInterface_3.emojiGroup)(item).map(c => new key_2.ClusterKey(c)));
-                }
-                else if (typeof item.from !== 'undefined') {
-                    const from = typeof item.from === 'number' ? item.from : (0, builder_3.toCodePoints)(item.from)[0];
-                    const to = typeof item.to === 'number' ? item.to : (0, builder_3.toCodePoints)(item.to)[0];
-                    if (from && to && to > from) {
-                        for (let i = from; i <= to; ++i)
-                            keys.push(new key_2.ClusterKey(String.fromCodePoint(i)));
-                    }
-                }
-                else {
-                    keys.push(this.fromItem(item));
-                }
-            }
-            return keys;
-        }
-        static fromEmoji(k) {
-            const keys = this.fromContents(k.content ?? []);
-            const bySC = (0, helpers_2.fromEntries)(k.bySC ? Object.entries(k.bySC).map(([k, v]) => [k, this.fromItem(v)]) : []);
-            const byVK = (0, helpers_2.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v)]) : []);
-            return this.fromKeys({ name: k.name, symbol: k.symbol, top: k.top, keys, bySC, byVK });
-        }
-        static clusterAlternates(cluster, variants) {
-            const keys = variants.map((c) => new key_2.ClusterKey(c, []));
-            return this.fromKeys({ name: (0, unicodeInterface_3.clusterName)(cluster), symbol: cluster, keys });
-        }
-    }
-    exports.Board = Board;
-    class StaticBoard extends Board {
-        keys;
-        constructor({ keys, ...p }) {
-            super(p);
-            this.keys = (0, memoize_one_1.default)(keys);
-        }
-        Contents = ({ state }) => {
-            const l = (0, hooks_3.useContext)(appVar_4.LayoutContext);
-            const pages = (0, hooks_3.useMemo)(() => this.keys(l), [l]);
-            const keys = pages[state?.page ?? 0] ?? pages[0];
-            return (0, preact_4.h)(Keys, { keys: keys });
-        };
-    }
-    exports.StaticBoard = StaticBoard;
-});
-define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "helpers"], function (require, exports, unicodeInterface_4, builder_4, helpers_3) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.search = void 0;
-    const u = unicodeInterface_4.UnicodeData;
-    const ESCAPE_REGEX = new RegExp('(\\' + ['/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\', '$', '^', '-'].join('|\\') + ')', 'g');
-    const SEPARATOR = '%';
-    const SEPARATOR_REGEX_G = /%/g;
-    const SEARCH_ID = SEPARATOR + '([\\d,]+)' + SEPARATOR + '[^' + SEPARATOR + ']*';
-    const index = new Map();
-    for (const c of Object.values(u.clusters)) {
-        if (!c.parent) {
-            index.set((0, builder_4.toCodePoints)(c.cluster).join(',').toString(), `${c.name} ${c.alias?.join(' ') ?? ''}`);
-        }
-    }
-    for (const c of Object.values(u.chars)) {
-        if (!c.reserved && !c.notACharacter) {
-            index.set(c.code.toString(), `${c.n} ${c.alias?.join(' ') ?? ''} ${c.falias?.join(' ') ?? ''}`);
-        }
-    }
-    console.log(index);
-    const searchHaystack = Array.from(index.entries()).map(([k, v]) => `${SEPARATOR}${k}${SEPARATOR}${v.replace(SEPARATOR_REGEX_G, '')}`).join('');
-    function escapeRegex(str) {
-        return str.replace(ESCAPE_REGEX, '\\$1');
-    }
-    function search(needle) {
-        let result = [];
-        needle.split(/\s+/g).forEach((n, k) => {
-            let filter = [];
-            if (!n.length)
-                return;
-            const re = new RegExp(SEARCH_ID + escapeRegex(n.replace(SEPARATOR_REGEX_G, '')), 'ig');
-            for (let m; (m = re.exec(searchHaystack));) {
-                filter.push(m[1]);
-            }
-            if (k == 0)
-                result = filter;
-            else {
-                const f = new Set(filter);
-                result = result.filter(v => f.has(v));
-            }
-        });
-        const scores = (0, helpers_3.fromEntries)(result.map(v => [v, 0]));
-        for (const n of needle.split(/\s+/g)) {
-            if (!n.length)
-                continue;
-            const re1 = new RegExp('(?:[^a-z]|^)' + escapeRegex(n) + '(?:[^a-z]|$)', 'i');
-            const re2 = new RegExp('(?:[^a-z]|^)' + escapeRegex(n), 'i');
-            for (const r of result) {
-                if (re1.test(index.get(r)))
-                    scores[r]++;
-                else if (!re2.test(index.get(r)))
-                    scores[r]--;
-            }
-        }
-        result.sort((a, b) => scores[b] - scores[a]);
-        return result.map(v => String.fromCodePoint(...v.split(',').map(v => parseInt(v, 10))));
-    }
-    exports.search = search;
-});
-define("searchView", ["require", "exports", "preact", "layout", "board", "emojis", "preact/hooks", "key", "appVar"], function (require, exports, preact_5, layout_3, board_3, emojis_1, hooks_4, key_3, appVar_5) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.SearchBoard = void 0;
-    class SearchBoard extends board_3.Board {
-        constructor() {
-            super({ name: "Search", symbol: "🔎" });
-        }
-        Contents() {
-            const searchText = (0, hooks_4.useContext)(appVar_5.SearchContext);
-            const onInput = (0, hooks_4.useCallback)((e) => (0, appVar_5.app)().setSearchText(e.target.value), []);
-            (0, hooks_4.useEffect)(() => document.querySelector('input[type="search"]')?.focus(), []);
-            const keys = (0, hooks_4.useMemo)(() => ({
-                [41]: new key_3.ExitSearchKey(),
-                [15]: new key_3.ExitSearchKey(),
-                ...(0, board_3.mapKeysToSlots)(layout_3.SearchKeyCodes, (0, emojis_1.search)(searchText).map((c) => new key_3.ClusterKey(c)))
-            }), [searchText]);
-            (0, appVar_5.app)().keyHandlers = keys;
-            return (0, preact_5.h)("div", { class: "keyboard" },
-                (0, preact_5.h)("input", { type: "search", value: searchText, onInput: onInput }),
-                layout_3.SearchKeyCodesTable.map((code) => {
-                    const K = (keys[code] ?? key_3.BlankKey);
-                    return (0, preact_5.h)(K.Contents, { code: code, key: code });
-                }));
-        }
-    }
-    exports.SearchBoard = SearchBoard;
-});
-define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "builder/titleCase", "appVar", "preact/hooks", "searchView"], function (require, exports, preact_6, layout_4, board_4, osversion_2, ahk_4, emojis_2, config_1, helpers_4, titleCase_3, appVar_6, hooks_5, searchView_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.AppMode = void 0;
-    var AppMode;
-    (function (AppMode) {
-        AppMode[AppMode["MAIN"] = 0] = "MAIN";
-        AppMode[AppMode["SEARCH"] = 1] = "SEARCH";
-        AppMode[AppMode["SETTINGS"] = 2] = "SETTINGS";
-    })(AppMode = exports.AppMode || (exports.AppMode = {}));
-    const AppModes = [0, 1, 2];
-    class App extends preact_6.Component {
-        keyHandlers = {};
-        state = {
-            mode: 0,
-            searchText: '',
-            layout: layout_4.SystemLayoutUS,
-            config: { ...config_1.DefaultConfig, opacity: 1 },
-            boardState: {},
-            os: new osversion_2.Version('99'),
-            currentBoard: {
-                [0]: (0, board_4.getMainBoard)(),
-                [1]: new searchView_1.SearchBoard(),
-                [2]: new config_1.ConfigBoard(),
-            },
-            parentBoards: (0, helpers_4.fromEntries)(AppModes.map(m => [m, []])),
-            building: false,
-        };
-        constructor(props) {
-            super(props);
-            (0, appVar_6.setApp)(this);
-            window.document.ahk = this;
-            window.s = emojis_2.search;
-            window.chrome?.webview?.addEventListener('message', (e) => {
-                if (Array.isArray(e.data)) {
-                    switch (e.data[0]) {
-                        case 'input':
-                            this.input(e.data[1], e.data[2]);
-                            break;
-                        case 'layout':
-                            this.setSystemLayout(e.data[1]);
-                            break;
-                        case 'size':
-                            this.updateConfig({ width: e.data[1], height: e.data[2] });
-                            break;
-                        default:
-                            console.log("message", e.data[0], e.data);
-                    }
-                }
-                else if (typeof e.data === 'string') {
-                    const command = e.data.split(',', 1)[0];
-                    const rest = e.data.slice(command.length + 1);
-                    switch (command) {
-                        case 'config':
-                            this.setConfig(rest);
-                            break;
-                        case 'defaultConfig':
-                            this.defaultConfig();
-                            break;
-                        case 'os':
-                            this.setOS(rest);
-                            break;
-                        case 'done':
-                        case 'error':
-                            console.log("async callback", command, rest);
-                            break;
-                        default:
-                            console.log("message", command, rest);
-                    }
-                }
-                else {
-                    console.log("message", e.data);
-                }
-            });
-        }
-        render() {
-            const s = this.state;
-            const Board = s.currentBoard[s.mode];
-            const c = (0, preact_6.h)(Board.Contents, { state: s.boardState[Board.name] });
-            const l = (0, hooks_5.useMemo)(() => {
-                const base = s.config.isoKeyboard ? layout_4.IsoLayout : layout_4.AnsiLayout;
-                return { ...base, sys: s.layout };
-            }, [s.config.isoKeyboard, s.layout]);
-            return (0, preact_6.h)(appVar_6.LayoutContext.Provider, { value: l },
-                (0, preact_6.h)(appVar_6.OSContext.Provider, { value: s.os },
-                    (0, preact_6.h)(appVar_6.ConfigContext.Provider, { value: s.config },
-                        (0, preact_6.h)(appVar_6.ConfigBuildingContext.Provider, { value: s.building },
-                            (0, preact_6.h)(appVar_6.SearchContext.Provider, { value: s.searchText },
-                                (0, preact_6.h)("div", { className: `root ${s.config.themeMode}-color-scheme ${l.cssClass}` }, c))))));
-        }
-        setMode(mode) {
-            this.setState((s) => {
-                if (s.mode != mode) {
-                    if (mode == 1)
-                        (0, ahk_4.ahkSetSearch)(true);
-                    if (s.mode == 1)
-                        (0, ahk_4.ahkSetSearch)(false);
-                }
-                return { mode };
-            }, () => {
-                this.updateStatus();
-            });
-        }
-        updateStatus(text) {
-            const s = this.state;
-            switch (s.mode) {
-                case 0:
-                    const board = s.currentBoard[s.mode];
-                    (0, ahk_4.ahkTitle)(board.name + (text?.length ? `: ${(0, titleCase_3.toTitleCase)(text)}` : ''));
-                    break;
-                case 1:
-                    (0, ahk_4.ahkTitle)('Emoji Keyboard - Search' + (s.searchText.length ? `: ${(0, titleCase_3.toTitleCase)(s.searchText)}` : '') + (text ? ': ' + text : ''));
-                    break;
-                case 2:
-                    (0, ahk_4.ahkTitle)('Emoji Keyboard - Settings');
-                    break;
-                default:
-                    return (0, helpers_4.unreachable)(s.mode);
-            }
-        }
-        input(key, shift = false) {
-            const s = this.state;
-            switch (s.mode) {
-                case 0:
-                case 1:
-                case 2:
-                    const k = this.keyHandlers[key];
-                    if (k) {
-                        if (shift)
-                            k.actAlternate();
-                        else
-                            k.act();
-                    }
-                    break;
-                default:
-                    return (0, helpers_4.unreachable)(s.mode);
-            }
-        }
-        setConfig(config) {
-            this.updateConfig(JSON.parse(config), false);
-        }
-        defaultConfig() {
-            (0, ahk_4.ahkSaveConfig)(JSON.stringify(this.state.config));
-            (0, ahk_4.ahkSetOpacity)(this.state.config.opacity);
-        }
-        updateConfig(config, save = true) {
-            this.setState((s) => {
-                if (config.theme && s.config.theme != config.theme) {
-                    const link = document.getElementById('themeCSS');
-                    link.href = config_1.ThemesMap.get(config.theme)?.url ?? config_1.DefaultThemeUrl;
-                }
-                if (config.opacity && s.config.opacity != config.opacity) {
-                    (0, ahk_4.ahkSetOpacity)(config.opacity);
-                }
-                if (config.devTools && !s.config.devTools) {
-                    (0, ahk_4.ahkOpenDevTools)();
-                }
-                return { config: { ...s.config, ...config } };
-            }, () => {
-                if (save)
-                    (0, ahk_4.ahkSaveConfig)(JSON.stringify(this.state.config));
-            });
-        }
-        setOS(os) {
-            os = os.replace(/^WIN_/, '');
-            this.setState({ os: new osversion_2.Version(os) });
-        }
-        setSystemLayout(layout) {
-            this.setState({ layout: { ...layout_4.SystemLayoutUS, ...layout } });
-        }
-        setSearchText(searchText) {
-            this.setState({ searchText }, () => this.updateStatus());
-        }
-        setBoard(board) {
-            this.setState((s) => ({
-                currentBoard: { ...s.currentBoard, [s.mode]: board },
-                parentBoards: { ...s.parentBoards, [s.mode]: [s.currentBoard[s.mode], ...s.parentBoards[s.mode]] },
-            }), () => this.updateStatus());
-        }
-        setPage(page) {
-            this.setState((s) => {
-                const board = s.currentBoard[s.mode];
-                return {
-                    boardState: {
-                        ...s.boardState,
-                        [board.name]: { page }
                     }
                 };
-            });
-        }
-        setBuilding(building) {
-            this.setState({ building });
-        }
-        back() {
-            this.setState((s) => {
-                if (s.parentBoards[s.mode].length) {
-                    const [board, ...parents] = s.parentBoards[s.mode];
-                    return {
-                        parentBoards: { ...s.parentBoards, [s.mode]: parents },
-                        currentBoard: { ...s.currentBoard, [s.mode]: board },
-                    };
-                }
-                return {};
-            });
-        }
+                window.chrome?.webview?.addEventListener('message', listener);
+                AHK.downloadUnicode(c);
+            })];
     }
-    const main = document.querySelector('main');
-    preact_6.options.debounceRendering = f => setTimeout(f, 0);
-    (0, preact_6.render)((0, preact_6.h)(App, null), main);
-    setTimeout(() => (0, ahk_4.ahkReady)(), 0);
+    async function ahkDownloadUnicode() {
+        if (isAHK()) {
+            const [c, p] = waitForCallback();
+            setTimeout(() => AHK.downloadUnicode(c), 10);
+            43;
+            return p;
+        }
+        else
+            console.log("DownloadUnicode");
+    }
+    exports.ahkDownloadUnicode = ahkDownloadUnicode;
+    function ahkHide() {
+        if (isAHK())
+            AHK.hide();
+        else
+            console.log("Hide");
+    }
+    exports.ahkHide = ahkHide;
+    function ahkTitle(title) {
+        if (isAHK())
+            AHK.setTitle(title);
+        else
+            document.title = title;
+    }
+    exports.ahkTitle = ahkTitle;
+    function ahkLoaded() {
+        if (isAHK())
+            AHK.loaded();
+        else
+            console.log("Loaded");
+    }
+    exports.ahkLoaded = ahkLoaded;
+    function ahkReady() {
+        if (isAHK())
+            AHK.ready();
+        else
+            console.log("Ready");
+    }
+    exports.ahkReady = ahkReady;
+    function ahkSend(text) {
+        if (isAHK())
+            AHK.send(text);
+        else
+            console.log("Send", text);
+    }
+    exports.ahkSend = ahkSend;
+    function ahkSetSearch(state) {
+        if (isAHK())
+            AHK.setSearch(state);
+        else
+            console.log("SetSearch", state);
+    }
+    exports.ahkSetSearch = ahkSetSearch;
+    function ahkSaveConfig(config) {
+        if (isAHK())
+            AHK.saveConfig(JSON.stringify(config, null, 4));
+        else
+            console.log("SaveConfig", config);
+    }
+    exports.ahkSaveConfig = ahkSaveConfig;
+    function ahkSaveUnicodeData(data) {
+        if (isAHK()) {
+            AHK.saveUnicodeData(JSON.stringify(data), 'export type UnicodeEmojiGroup = \n\t' + data.groups.flatMap(g => g.sub.flatMap(s => `{group: ${JSON.stringify(g.name)}, subGroup: ${JSON.stringify(s.name)}}`)).join('\n\t| ') + ';\n');
+        }
+        else
+            console.log("SaveUnicodeData", data);
+    }
+    exports.ahkSaveUnicodeData = ahkSaveUnicodeData;
+    function ahkSetPosSize(x, y, width, height) {
+        if (isAHK())
+            AHK.setPosSize(x, y, width, height);
+        else
+            console.log("SetPosSize", x, y, width, height);
+    }
+    exports.ahkSetPosSize = ahkSetPosSize;
+    function ahkSetOpenAt(at) {
+        if (isAHK())
+            AHK.setOpenAt(at);
+        else
+            console.log("SetOpenAt", at);
+    }
+    exports.ahkSetOpenAt = ahkSetOpenAt;
+    function ahkSetOpacity(opacity) {
+        if (isAHK())
+            AHK.setOpacity(opacity);
+        else
+            console.log("SetOpacity", opacity);
+    }
+    exports.ahkSetOpacity = ahkSetOpacity;
+    function ahkOpenDevTools() {
+        if (isAHK())
+            AHK.openDevTools();
+        else
+            console.log("OpenDevTools");
+    }
+    exports.ahkOpenDevTools = ahkOpenDevTools;
 });
 //# sourceMappingURL=script.js.map

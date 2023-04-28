@@ -1,103 +1,19 @@
 import {AppMode} from "./app";
-import {ComponentChild, Fragment, h} from "preact";
+import {ComponentChild, h} from "preact";
 import {Board} from "./board";
-import {ahkSend} from "./ahk";
-import {app, ConfigBuildingContext, LayoutContext, OSContext} from "./appVar";
+import {app, ConfigBuildingContext} from "./appVar";
 import {cl} from "./helpers";
-import {charInfo, clusterName, clusterVariants, requiredOS} from "./unicodeInterface";
-import {makeBuild, toCodePoints} from "./builder/builder";
-import {GeneralCategory} from "./builder/unicode";
-import {useContext, useMemo} from "preact/hooks";
+import {clusterName, clusterVariants} from "./unicodeInterface";
+import {makeBuild} from "./builder/builder";
+import {useContext} from "preact/hooks";
 import {SC} from "./layout/sc";
-
-function Symbol({symbol}: { symbol: string }) {
-	const os = useContext(OSContext);
-	return useMemo(() => {
-		if ([...symbol].length == 1) {
-			const info = charInfo(toCodePoints(symbol)[0]);
-			if (info?.ca === GeneralCategory.Space_Separator || info?.ca === GeneralCategory.Format || info?.ca === GeneralCategory.Control) {
-				return <div className="symbol s-space">{info.n}</div>
-			} else if (info?.ca === GeneralCategory.Nonspacing_Mark) {
-				symbol = '◌' + symbol;
-			}
-		}
-		const req = requiredOS(symbol);
-		const fallback = os.lt(req);
-		return <div className={cl(`symbol`, {fallback})}>
-			{symbol}
-		</div>
-	}, [symbol, os]);
-}
-
-export function KeyName({code}: { code: SC }) {
-	const layout = useContext(LayoutContext);
-	return <Fragment>{layout.sys[code]?.name ?? ''}</Fragment>;
-}
-
-export class Key {
-	public readonly name: string;
-	public readonly upperName: string;
-	public readonly symbol: string;
-	public readonly active: boolean;
-	protected readonly clickAlwaysAlternate: boolean;
-	private readonly keyNamePrefix: string;
-	protected readonly alt: boolean;
-	protected readonly lu: boolean;
-
-	constructor(
-		p: { name: string, upperName?: string, symbol: string, active?: boolean, clickAlwaysAlternate?: boolean, keyNamePrefix?: string, alt?: boolean, lu?: boolean }
-	) {
-		this.name = p.name;
-		this.upperName = p.upperName ?? '';
-		this.symbol = p.symbol;
-		this.active = p.active ?? false;
-		this.clickAlwaysAlternate = p.clickAlwaysAlternate ?? false;
-		this.keyNamePrefix = p.keyNamePrefix ?? '';
-		this.alt = p.alt ?? false;
-		this.lu = p.lu ?? false;
-	}
-
-	Contents = ({code}: { code: SC }) => {
-		let keyType = "action";
-		if (!this.name.length) {
-			keyType = "empty";
-		} else if (this instanceof ClusterKey) {
-			keyType = "char";
-		} else if (this instanceof BackKey) {
-			keyType = "back";
-		}
-
-		return <div
-			className={cl('key', keyType, {alt: this.alt, lu: this.lu, active: this.active})}
-			onClick={(e) => {
-				e.preventDefault();
-				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
-			}}
-			onContextMenu={(e) => {
-				e.preventDefault();
-				this.actAlternate();
-			}}
-			onMouseOver={() => app().updateStatus(this.name)}
-		>
-			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
-			<div className="name">{this.name}</div>
-			<div className="uname">{this.upperName}</div>
-			<Symbol symbol={this.symbol}/>
-		</div>;
-	}
-
-	act(): void {
-		// Default: do nothing
-	}
-
-	actAlternate(): void {
-		this.act();
-	}
-}
+import {VarSel15} from "./chars";
+import {Key, KeyName} from "./keys/base";
+import {Symbol} from "./keys/symbol";
 
 export class ConfigKey extends Key {
 	constructor() {
-		super({name: "Settings", symbol: "🛠️", clickAlwaysAlternate: true, keyNamePrefix: "⇧"});
+		super({name: "Settings", symbol: "🛠️" + VarSel15, clickAlwaysAlternate: true, keyNamePrefix: "⇧"});
 	}
 
 	actAlternate(): void {
@@ -108,8 +24,14 @@ export class ConfigKey extends Key {
 export class ConfigActionKey extends Key {
 	protected action: () => void;
 
-	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name: string, symbol: string }) {
-		super({name, symbol, active});
+	constructor({action, ...p}: {
+		active?: boolean,
+		action(): void,
+		name: string,
+		statusName?: string,
+		symbol: string
+	}) {
+		super(p);
 		this.action = action;
 	}
 
@@ -119,12 +41,19 @@ export class ConfigActionKey extends Key {
 }
 
 export class ConfigToggleKey extends ConfigActionKey {
-	constructor({active, action, name, symbol}: { active?: boolean, action(): void, name?: string, symbol?: string }) {
+	constructor({active, ...p}: {
+		active?: boolean,
+		action(): void,
+		name?: string,
+		statusName?: string,
+		symbol?: string
+	}) {
 		active = active ?? false;
 		super({
-			name: name ?? (active ? "On" : "Off"),
-			symbol: symbol ?? (active ? "✔️" : "❌"),
-			active, action,
+			name: active ? "On" : "Off",
+			symbol: active ? "✔️" : "❌",
+			active,
+			...p,
 		});
 	}
 }
@@ -135,9 +64,9 @@ export class ConfigLabelKey extends Key {
 	}
 
 	Contents = ({code}: { code: SC }) => {
-		return <div class={`key label`}>
-			<div class="keyname"><KeyName code={code}/></div>
-			<div class="symbol">{this.text}</div>
+		return <div className={`key label`}>
+			<div className="keyname"><KeyName code={code}/></div>
+			<div className="symbol">{this.text}</div>
 		</div>;
 	}
 }
@@ -172,11 +101,9 @@ export class ConfigBuildKey extends Key {
 	}
 }
 
-export const BlankKey = new Key({name: '', symbol: ''});
-
 export class BackKey extends Key {
 	constructor() {
-		super({name: 'back/🛠️', symbol: '←'});
+		super({name: 'Back/🛠️', symbol: '←', keyType: "back"});
 	}
 
 	act() {
@@ -210,7 +137,7 @@ export class PageKey extends Key {
 
 export class SearchKey extends Key {
 	constructor() {
-		super({name: 'search', symbol: '🔎'});
+		super({name: 'search', symbol: '🔎' + VarSel15});
 	}
 
 	act() {
@@ -230,28 +157,52 @@ export class ExitSearchKey extends Key {
 
 export class ClusterKey extends Key {
 	private readonly variants: string[] | undefined;
-	constructor(private cluster: string, variants?: string[]) {
+	private readonly noRecent: boolean;
+
+	constructor(private cluster: string, p?: { variants?: string[], noRecent?: boolean }) {
 		const name = clusterName(cluster);
-		variants ??= clusterVariants(cluster);
+		const variants = p?.variants ?? clusterVariants(cluster);
 		super({
 			name,
 			upperName: variants?.length == 2 ? variants[1] : "",
 			symbol: cluster,
 			alt: !!variants && variants.length > 2,
 			lu: variants?.length === 2,
+			keyType: "char",
 		});
+		this.noRecent = p?.noRecent ?? false;
 		this.variants = variants;
 	}
 
 	act() {
-		ahkSend(this.cluster);
+		app().send(this.cluster, {noRecent: this.noRecent});
 	}
 
 	actAlternate() {
 		if (this.alt) {
-			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!));
+			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!, {noRecent: this.noRecent}));
 		} else if (this.lu) {
-			ahkSend(this.variants![1]);
+			app().send(this.variants![1], {noRecent: this.noRecent});
 		} else return this.act();
+	}
+}
+
+export class RecentKey extends Key {
+	constructor() {
+		super({name: 'Recent', symbol: '↺'});
+	}
+
+	act() {
+		app().setMode(AppMode.RECENTS);
+	}
+}
+
+export class ExitRecentKey extends Key {
+	constructor() {
+		super({name: 'Back', symbol: '←', keyType: "back"});
+	}
+
+	act() {
+		app().setMode(AppMode.MAIN);
 	}
 }

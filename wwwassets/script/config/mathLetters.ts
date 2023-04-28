@@ -8,6 +8,7 @@ import {VK} from "../layout/vk";
 export const LatinBold: EmojiKeyboard = {
 	name: "Latin Bold",
 	symbol: "𝐚",
+	noRecent: true,
 	byVK: {
 		[VK.Digit0]: "𝟎", // \mbfzero	mathematical bold digit 0
 		[VK.Digit1]: "𝟏", // \mbfone	mathematical bold digit 1
@@ -50,6 +51,7 @@ export const LatinBold: EmojiKeyboard = {
 export const LatinItalic: EmojiKeyboard = {
 	name: "Latin Italic",
 	symbol: "𝑎",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝑎", "𝐴"],
 		[VK.B]: ["𝑏", "𝐵"],
@@ -87,6 +89,7 @@ export const LatinItalic: EmojiKeyboard = {
 export const LatinBoldItalic: EmojiKeyboard = {
 	name: "Latin Bold Italic",
 	symbol: "𝒂",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝒂", "𝑨"],
 		[VK.B]: ["𝒃", "𝑩"],
@@ -120,6 +123,7 @@ export const LatinBoldItalic: EmojiKeyboard = {
 export const LatinSans: EmojiKeyboard = {
 	name: "Latin Sans-Serif",
 	symbol: "𝖺",
+	noRecent: true,
 	byVK: {
 		[VK.Digit0]: "𝟢", // \msanszero	mathematical sans-serif digit 0
 		[VK.Digit1]: "𝟣", // \msansone	mathematical sans-serif digit 1
@@ -163,6 +167,7 @@ export const LatinSans: EmojiKeyboard = {
 export const LatinSansBold: EmojiKeyboard = {
 	name: "Latin Sans-Serif Bold",
 	symbol: "𝗮",
+	noRecent: true,
 	byVK: {
 		[VK.Digit0]: "𝟬", // \mbfsanszero	mathematical sans-serif bold digit 0
 		[VK.Digit1]: "𝟭", // \mbfsansone	mathematical sans-serif bold digit 1
@@ -206,6 +211,7 @@ export const LatinSansBold: EmojiKeyboard = {
 export const LatinSansItalic: EmojiKeyboard = {
 	name: "Latin Sans Italic",
 	symbol: "𝘢",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝘢", "𝘈"],
 		[VK.B]: ["𝘣", "𝘉"],
@@ -239,6 +245,7 @@ export const LatinSansItalic: EmojiKeyboard = {
 export const LatinSansBoldItalic: EmojiKeyboard = {
 	name: "Latin Sans Bold Italic",
 	symbol: "𝙖",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝙖", "𝘼"],
 		[VK.B]: ["𝙗", "𝘽"],
@@ -272,6 +279,7 @@ export const LatinSansBoldItalic: EmojiKeyboard = {
 export const LatinScript: EmojiKeyboard = {
 	name: "Latin Script",
 	symbol: "𝒶",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝒶", "𝒜"],
 		[VK.B]: ["𝒷", "ℬ"],
@@ -305,6 +313,7 @@ export const LatinScript: EmojiKeyboard = {
 export const LatinScriptBold: EmojiKeyboard = {
 	name: "Latin Script Bold",
 	symbol: "𝓪",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝓪", "𝓐"],
 		[VK.B]: ["𝓫", "𝓑"],
@@ -338,6 +347,7 @@ export const LatinScriptBold: EmojiKeyboard = {
 export const LatinFraktur: EmojiKeyboard = {
 	name: "Latin Fraktur",
 	symbol: "𝔞",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝔞", "𝔄"],
 		[VK.B]: ["𝔟", "𝔅"],
@@ -371,6 +381,7 @@ export const LatinFraktur: EmojiKeyboard = {
 export const LatinFrakturBold: EmojiKeyboard = {
 	name: "Latin Fraktur Bold",
 	symbol: "𝖆",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝖆", "𝕬"],
 		[VK.B]: ["𝖇", "𝕭"],
@@ -404,6 +415,7 @@ export const LatinFrakturBold: EmojiKeyboard = {
 export const LatinMono: EmojiKeyboard = {
 	name: "Latin Mono",
 	symbol: "𝚊",
+	noRecent: true,
 	byVK: {
 		[VK.Digit0]: "𝟶", // \mttzero	mathematical monospace digit 0
 		[VK.Digit1]: "𝟷", // \mttone	mathematical monospace digit 1
@@ -447,6 +459,7 @@ export const LatinMono: EmojiKeyboard = {
 export const LatinDoubleStruck: EmojiKeyboard = {
 	name: "Double-Struck",
 	symbol: "𝕒",
+	noRecent: true,
 	byVK: {
 		[VK.Digit0]: "𝟘", // \Bbbzero	mathematical double-struck digit 0
 		[VK.Digit1]: "𝟙", // \Bbbone	mathematical double-struck digit 1
@@ -490,6 +503,7 @@ export const LatinDoubleStruck: EmojiKeyboard = {
 export const GreekBold: EmojiKeyboard = {
 	name: "Greek Bold",
 	symbol: "𝛂",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝛂", "𝚨"],
 		[VK.B]: ["𝛃", "𝚩"],
@@ -522,6 +536,7 @@ export const GreekBold: EmojiKeyboard = {
 export const GreekItalic: EmojiKeyboard = {
 	name: "Greek Italic",
 	symbol: "𝛼",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝛼", "𝛢"],
 		[VK.B]: ["𝛽", "𝛣"],
@@ -554,6 +569,7 @@ export const GreekItalic: EmojiKeyboard = {
 export const GreekBoldItalic: EmojiKeyboard = {
 	name: "Greek Bold Italic",
 	symbol: "𝜶",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝜶", "𝜜"],
 		[VK.B]: ["𝜷", "𝜝"],
@@ -586,6 +602,7 @@ export const GreekBoldItalic: EmojiKeyboard = {
 export const GreekSansBold: EmojiKeyboard = {
 	name: "Greek Sans Bold",
 	symbol: "𝝰",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝝰", "𝝖"],
 		[VK.B]: ["𝝱", "𝝗"],
@@ -618,6 +635,7 @@ export const GreekSansBold: EmojiKeyboard = {
 export const GreekSansBoldItalic: EmojiKeyboard = {
 	name: "Greek Sans Bold Italic",
 	symbol: "𝞪",
+	noRecent: true,
 	byVK: {
 		[VK.A]: ["𝞪", "𝞐"],
 		[VK.B]: ["𝞫", "𝞑"],

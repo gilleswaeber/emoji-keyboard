@@ -1,15 +1,19 @@
 import {ConsolidatedUnicodeData} from "./builder/consolidated";
+import {AppConfig} from "./config";
 
 type HostObject = {
 	downloadUnicode(callbackNumber: number): void;
+	hide(): void;
+	loaded(): void;
 	openDevTools(): void;
 	saveConfig(config: string): void;
 	saveUnicodeData(data: string, types: string): void;
 	send(text: string): void;
+	setOpenAt(at: string): void;
 	setOpacity(opacity: number): void;
 	setTitle(title: string): void;
 	setSearch(enable: boolean): void;
-	setSize(width: number, height: number): void;
+	setPosSize(x: number, y: number, width: number, height: number): void;
 	ready(): void;
 };
 let AHK: HostObject | null = null;
@@ -50,10 +54,15 @@ function waitForCallback(): [number, Promise<void>] {
 export async function ahkDownloadUnicode() {
 	if (isAHK()) {
 		const [c, p] = waitForCallback();
-		setTimeout(() => AHK!.downloadUnicode(c), 10);43
+		setTimeout(() => AHK!.downloadUnicode(c), 10);
+		43
 		return p;
-	}
-	else console.log("DownloadUnicode");
+	} else console.log("DownloadUnicode");
+}
+
+export function ahkHide() {
+	if (isAHK()) AHK!.hide();
+	else console.log("Hide");
 }
 
 export function ahkTitle(title: string) {
@@ -61,14 +70,19 @@ export function ahkTitle(title: string) {
 	else document.title = title;
 }
 
+export function ahkLoaded() {
+	if (isAHK()) AHK!.loaded();
+	else console.log("Loaded");
+}
+
 export function ahkReady() {
 	if (isAHK()) AHK!.ready();
 	else console.log("Ready");
 }
 
-export function ahkSend(symbol: string) {
-	if (isAHK()) AHK!.send(symbol);
-	else console.log("Send", symbol);
+export function ahkSend(text: string) {
+	if (isAHK()) AHK!.send(text);
+	else console.log("Send", text);
 }
 
 export function ahkSetSearch(state: boolean) {
@@ -76,8 +90,8 @@ export function ahkSetSearch(state: boolean) {
 	else console.log("SetSearch", state);
 }
 
-export function ahkSaveConfig(config: string) {
-	if (isAHK()) AHK!.saveConfig(config);
+export function ahkSaveConfig(config: AppConfig) {
+	if (isAHK()) AHK!.saveConfig(JSON.stringify(config, null, 4));
 	else console.log("SaveConfig", config);
 }
 
@@ -93,9 +107,14 @@ export function ahkSaveUnicodeData(data: ConsolidatedUnicodeData) {
 	else console.log("SaveUnicodeData", data);
 }
 
-export function ahkSetSize(width: number, height: number) {
-	if (isAHK()) AHK!.setSize(width, height);
-	else console.log("SetSize", width, height);
+export function ahkSetPosSize(x: number, y: number, width: number, height: number) {
+	if (isAHK()) AHK!.setPosSize(x, y, width, height);
+	else console.log("SetPosSize", x, y, width, height);
+}
+
+export function ahkSetOpenAt(at: string) {
+	if (isAHK()) AHK!.setOpenAt(at);
+	else console.log("SetOpenAt", at);
 }
 
 export function ahkSetOpacity(opacity: number) {

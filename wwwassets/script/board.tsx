@@ -1,49 +1,20 @@
 import {h, VNode} from "preact";
-import {KeyCodesList, Layout} from "./layout";
-import {ahkTitle} from "./ahk";
-import {useContext, useMemo} from "preact/hooks";
-import {toTitleCase} from "./builder/titleCase";
+import {Layout} from "./layout";
+import {useContext, useEffect, useMemo} from "preact/hooks";
 import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
-import {BackKey, BlankKey, ClusterKey, ConfigKey, Key, KeyboardKey, PageKey, SearchKey} from "./key";
+import {BackKey, ClusterKey, ConfigKey, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
 import {clusterName, emojiGroup} from "./unicodeInterface";
 import {fromEntries} from "./helpers";
 import {toCodePoints} from "./builder/builder";
 import {VK} from "./layout/vk";
 import {SC} from "./layout/sc";
-
-export interface BoardState {
-	page?: number;
-}
+import {BoardState, Keys, mapKeysToSlots, MAX_PAGE_KEYS, SlottedKeys} from "./boards/utils";
+import {BlankKey, Key} from "./keys/base";
 
 export function getMainBoard(): Board {
 	return Board.fromEmoji(MAIN_BOARD);
-}
-
-const MAX_PAGE_KEYS = 9;
-
-export function Keys({keys}: { keys: SlottedKeys }) {
-	const l = useContext(LayoutContext);
-	app().keyHandlers = keys;
-	return <div className="keyboard">
-		{l.all.map((code) => {
-			const K = (keys[code] ?? BlankKey);
-			return <K.Contents code={code} key={code}/>;
-		})}
-	</div>
-}
-
-export type SlottedKeys = {
-	[key in SC]?: Key
-}
-
-export function mapKeysToSlots(codes: KeyCodesList, keys: Key[]): SlottedKeys {
-	const mapped: SlottedKeys = {}
-	for (const [index, code] of Array.from(codes.entries())) {
-		if (keys[index]) mapped[code] = keys[index];
-	}
-	return mapped;
 }
 
 function range(stop: number): number[] {
@@ -62,46 +33,63 @@ export abstract class Board {
 
 	public abstract Contents(p: { state: BoardState | undefined }): VNode;
 
-	showStatus(str: string): void {
-		if (!str.length) return this.hideStatus();
-		ahkTitle(this.name + ": " + toTitleCase(str));
-	}
-
-	private hideStatus(): void {
-		ahkTitle(this.name);
-	}
-
 	private static fromKeys(
-		{name, symbol, keys, top, bySC, byVK}:
-			{ name: string, symbol: string, keys: Key[], bySC?: SlottedKeys, byVK?: { [vk in VK]?: Key }, top?: boolean }): Board {
+		{name, symbol, keys, top, noRecent, byRow, byVK}:
+			{
+				name: string,
+				symbol: string,
+				keys: Key[],
+				byRow?: Key[][],
+				byVK?: { [vk in VK]?: Key },
+				top?: boolean,
+				noRecent?: boolean
+			}): Board {
 		return new StaticBoard({
-			name, symbol, keys: (layout) => {
-				let freeKeys: readonly SC[] = layout.free;
+			name, symbol, noRecent, keys: (layout) => {
+				let freeKeys = new Set<SC>(layout.free);
 				const fixedKeys: SlottedKeys = {
 					[SC.Backtick]: top ? new ConfigKey() : new BackKey(),
 					[SC.Tab]: new SearchKey(),
+					[SC.CapsLock]: new RecentKey(),
 				};
-				if (bySC) {
-					Object.assign(fixedKeys, bySC);
-					freeKeys = freeKeys.filter(sc => !fixedKeys[sc]);
+				const notPlaceable: Key[] = [];
+				if (byRow) {
+					const f = layout.freeRows;
+					for (const [r, row] of byRow.entries()) {
+						for (const [c, key] of row.entries()) {
+							if (key.blank) continue;
+							if (r < f.length && c < f[r].length && freeKeys.has(f[r][c])) {
+								fixedKeys[f[r][c]] = key;
+								freeKeys.delete(f[r][c]);
+							} else {
+								notPlaceable.push(key);
+							}
+						}
+					}
 				}
 				if (byVK) {
+					const vkPlaced = new Set<VK>();
 					for (const sc of freeKeys) {
 						const vk = layout.sys[sc].vk;
 						if (byVK[vk]) {
 							fixedKeys[sc] = byVK[vk];
+							vkPlaced.add(vk);
+							freeKeys.delete(sc);
 						}
 					}
-					freeKeys = freeKeys.filter(sc => !fixedKeys[sc]);
+					for (const [vk, key] of Object.entries(byVK)) {
+						if (!vkPlaced.has(parseInt(vk, 10))) notPlaceable.push(key);
+					}
 				}
+				if (notPlaceable.length) keys.unshift(...notPlaceable);
 
-				if (keys.length > freeKeys.length) {
+				if (keys.length > freeKeys.size) {
 					let pages = 1;
-					while (keys.length > pages * (freeKeys.length - Math.min(pages, MAX_PAGE_KEYS))) {
+					while (keys.length > pages * (freeKeys.size - Math.min(pages, MAX_PAGE_KEYS))) {
 						pages++;
 					}
 					const pageKeys = Math.min(pages, MAX_PAGE_KEYS);
-					const perPage = freeKeys.length - pageKeys;
+					const perPage = freeKeys.size - pageKeys;
 
 					return range(pages).map((i) => {
 						const pagesStart = i <= 4;
@@ -147,23 +135,23 @@ export abstract class Board {
 								}
 							}))
 							.concat(keys.slice(i * perPage, i * perPage + perPage))
-						return {...fixedKeys, ...mapKeysToSlots(freeKeys, page)}
+						return {...fixedKeys, ...mapKeysToSlots([...freeKeys], page)}
 					});
 				} else {
-					return [{...fixedKeys, ...mapKeysToSlots(freeKeys, keys)}];
+					return [{...fixedKeys, ...mapKeysToSlots([...freeKeys], keys)}];
 				}
 			}
 		});
 	}
 
-	private static fromItem(item: KeyboardItem): Key {
+	private static fromItem(item: KeyboardItem, p: { noRecent?: boolean }): Key {
 		if (item === null) {
 			return BlankKey;
 		} else if (typeof item === 'string') {
-			return new ClusterKey(item);
+			return new ClusterKey(item, p);
 		} else if (Array.isArray(item)) {
 			if (item.length) {
-				return new ClusterKey(item[0], item);
+				return new ClusterKey(item[0], {variants: item, ...p});
 			}
 			return BlankKey;
 		} else {
@@ -171,36 +159,37 @@ export abstract class Board {
 		}
 	}
 
-	private static fromContents(contents: KeyboardContent[]): Key[] {
+	private static fromContents(contents: KeyboardContent[], p: { noRecent?: boolean }): Key[] {
 		const keys: Key[] = [];
 		for (const item of contents) {
 			if (item === null || typeof item === 'string' || Array.isArray(item)) {
-				keys.push(this.fromItem(item));
+				keys.push(this.fromItem(item, p));
 			} else if (item.group) {
-				keys.push(...emojiGroup(item).map(c => new ClusterKey(c)));
+				keys.push(...emojiGroup(item).map(c => new ClusterKey(c, p)));
 			} else if (typeof item.from !== 'undefined') {
 				const from = typeof item.from === 'number' ? item.from : toCodePoints(item.from)[0];
 				const to = typeof item.to === 'number' ? item.to : toCodePoints(item.to)[0];
 				if (from && to && to > from) {
-					for (let i = from; i <= to; ++i) keys.push(new ClusterKey(String.fromCodePoint(i)));
+					for (let i = from; i <= to; ++i) keys.push(new ClusterKey(String.fromCodePoint(i), p));
 				}
 			} else {
-				keys.push(this.fromItem(item));
+				keys.push(this.fromItem(item, p));
 			}
 		}
 		return keys;
 	}
 
 	static fromEmoji(k: EmojiKeyboard): Board {
-		const keys = this.fromContents(k.content ?? []);
-		const bySC = fromEntries(k.bySC ? Object.entries(k.bySC).map(([k, v]) => [k, this.fromItem(v)] as const) : []);
-		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v)] as const) : []);
+		const p = {noRecent: k.noRecent};
+		const keys = this.fromContents(k.content ?? [], p);
+		const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key, p)));
+		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)] as const) : []);
 
-		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, keys, bySC, byVK});
+		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, noRecent: k.noRecent, keys, byRow, byVK});
 	}
 
-	static clusterAlternates(cluster: string, variants: string[]) {
-		const keys = variants.map((c) => new ClusterKey(c, []));
+	static clusterAlternates(cluster: string, variants: string[], k?: { noRecent?: boolean }) {
+		const keys = variants.map((c) => new ClusterKey(c, {variants: [], ...k}));
 		return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
 	}
 
@@ -215,6 +204,7 @@ export class StaticBoard extends Board {
 			name: string;
 			symbol: string;
 			keys: (layout: Layout) => SlottedKeys[];
+			noRecent?: boolean;
 		}
 	) {
 		super(p);
@@ -224,6 +214,7 @@ export class StaticBoard extends Board {
 	Contents = ({state}: { state: BoardState | undefined }) => {
 		const l = useContext(LayoutContext);
 		const pages = useMemo(() => this.keys(l), [l]);
+		useEffect(() => app().updateStatus(), []);
 		const keys = pages[state?.page ?? 0] ?? pages[0];
 		return <Keys keys={keys}/>;
 	}

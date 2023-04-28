@@ -6,6 +6,7 @@
 	--c-text2: #BBB;
 	--c-text-active: #000;
 	--c-empty: #BBB;
+	--c-shadow: rgba(255, 255, 255, .5);
 
 	--dark-c-background: #222;
 	--dark-c-key: #333;
@@ -13,6 +14,7 @@
 	--dark-c-text2: #888;
 	--dark-c-text-active: #000;
 	--dark-c-empty: #888;
+	--dark-c-shadow: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +25,7 @@
 		--c-text2: var(--dark-c-text2);
 		--c-text-active: var(--dark-c-text-active);
 		--c-empty: var(--dark-c-empty);
+		--c-shadow: var(--dark-c-shadow);
 	}
 }
 
@@ -33,6 +36,7 @@
 	--c-text2: var(--dark-c-text2);
 	--c-text-active: var(--dark-c-text-active);
 	--c-empty: var(--dark-c-empty);
+	--c-shadow: var(--dark-c-shadow);
 }
 
 .keyboard {
@@ -50,7 +54,7 @@
 }
 
 .key .symbol {
-	color: #FFF;
+	color: var(--c-text);
 }
 
 .key.empty {

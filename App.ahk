@@ -3,6 +3,7 @@
 
 #Include lib/thqby/WebView2/WebView2.ahk
 #Include lib/monitor.ahk
+#Include lib/caret.ahk
 #Include lib/keyboard_layout.ahk
 
 #Warn
@@ -21,277 +22,370 @@ A_TrayMenu.Add()
 A_TrayMenu.Add("E&xit", ActExit)
 A_TrayMenu.Default := "&Show"
 
+clamp(val, min, max) {
+    if (val < min) {
+        return min
+    }
+    if (val > max) {
+        return max
+    }
+    return val
+}
+
 class EmojiKeyboard {
-	isVisible := false
-	isSearch := false
-	isInitialized := false
-	width := 764
-	height := 240
-	main := Gui("+E0x08000000 +AlwaysOnTop +Resize -MaximizeBox -MinimizeBox", "Emoji Keyboard")
-	wvKeyboard := ""
+    isVisible := false
+    isSearch := false
+    isInitialized := 0 ; 0=not yet invoked, 1=webview loading, 2=settings loaded
+    openAt := "bottom"
+    x := -1
+    y := -1
+    width := 764
+    height := 240
+    main := Gui("+E0x08000000 +AlwaysOnTop -DPIScale +Resize -MaximizeBox -MinimizeBox", "Emoji Keyboard")
+    wvKeyboard := ""
 
-	isClipSaved := false
-	clipSaved := unset
+    isClipSaved := false
+    clipSaved := unset
 
-	__New() {
-		this.text := this.main.AddText(, "Please wait...")
-		onClose(*) {
-			this.Hide()
-		}
-		onSize(obj, minMax, width, height) {
-			if (minMax >= 0 and width > 0 and height > 0 and !this.text.Visible) {
-				if (this.width != width or this.height != height) {
-					this.width := width
-					this.height := height
-					this.Redraw()
-					this.wv.PostWebMessageAsJson('["size", ' width ',' height ']')
-				}
-			}
-		}
-		onSysCommand(wParam, *) {
-			if (wParam = 0xF060 and this.isVisible)	; SC_CLOSE hide instead of closing
-			{
-				this.Hide()
-				return 0
-			}
-		}
-		onInputLangChange(*) {
-			CheckLayout()
-		}
-		this.main.OnEvent("Close", onClose)
-		this.main.OnEvent("Size", onSize)
-		OnMessage(0x112, onSysCommand)	; WM_SYSCOMMAND
-		OnMessage(0x51, onInputLangChange)	; WM_INPUTLANGCHANGE
-	}
+    __New() {
+        this.text := this.main.AddText(, "Please wait...")
+        onClose(*) {
+            this.Hide()
+        }
+        onSize(obj, minMax, width, height) {
+            w := Round(width / A_Scaling)
+            h := Round(height / A_Scaling)
+            if (minMax >= 0 and width > 0 and height > 0 and this.isInitialized == 2) {
+                if (this.width != w or this.height != h) {
+                    this.width := w
+                    this.height := h
+                    this.Redraw()
+                }
+            }
+        }
+        onSysCommand(wParam, *) {
+            if (wParam = 0xF060 and this.isVisible)	; SC_CLOSE hide instead of closing
+            {
+                this.Hide()
+                return 0
+            }
+        }
+        onInputLangChange(*) {
+            CheckLayout()
+        }
+        this.main.OnEvent("Close", onClose)
+        this.main.OnEvent("Size", onSize)
+        OnMessage(0x112, onSysCommand)	; WM_SYSCOMMAND
+        OnMessage(0x51, onInputLangChange)	; WM_INPUTLANGCHANGE
+    }
 
-	Redraw() {
-		this.wvc.Fill()
-	}
+    Redraw() {
+        this.wvc.Fill()
+    }
 
-	DataUnicode(path) {
-		localPath := "res/data/" path
-		url := "https://unicode.org/Public/" path
-		if (!FileExist(localPath)) {
-			dir := RegExReplace(localPath, "[\\/][^\\/]+$", "")
-			if (!DirExist(dir)) {
-				DirCreate(dir)
-			}
-			Download(url, localPath ".tmp")
-			FileMove(localPath ".tmp", localPath)
-		}
-	}
+    DataUnicode(path) {
+        localPath := "res/data/" path
+        url := "https://unicode.org/Public/" path
+        if (!FileExist(localPath)) {
+            dir := RegExReplace(localPath, "[\\/][^\\/]+$", "")
+            if (!DirExist(dir)) {
+                DirCreate(dir)
+            }
+            Download(url, localPath ".tmp")
+            FileMove(localPath ".tmp", localPath)
+        }
+    }
 
-	DataCLDR(path) {
-		localPath := "res/data/cldr-json/" path
-		url := "https://raw.githubusercontent.com/unicode-org/cldr-json/" path
-		if (!FileExist(localPath)) {
-			dir := RegExReplace(localPath, "[\\/][^\\/]+$", "")
-			if (!DirExist(dir)) {
-				DirCreate(dir)
-			}
-			Download(url, localPath ".tmp")
-			FileMove(localPath ".tmp", localPath)
-		}
-	}
+    DataCLDR(path) {
+        localPath := "res/data/cldr-json/" path
+        url := "https://raw.githubusercontent.com/unicode-org/cldr-json/" path
+        if (!FileExist(localPath)) {
+            dir := RegExReplace(localPath, "[\\/][^\\/]+$", "")
+            if (!DirExist(dir)) {
+                DirCreate(dir)
+            }
+            Download(url, localPath ".tmp")
+            FileMove(localPath ".tmp", localPath)
+        }
+    }
 
-	Initialize() {
-		NewWindowRequestedHandler(handler, wv2, arg) {
-			argp := WebView2.NewWindowRequestedEventArgs(arg)
-			deferral := argp.GetDeferral()
-			argp.NewWindow := wv2
-			deferral.Complete()
+    Initialize() {
+        if (this.isInitialized != 0) {
+            Return
+        }
+        this.isInitialized := 1
+        NewWindowRequestedHandler(handler, wv2, arg) {
+            argp := WebView2.NewWindowRequestedEventArgs(arg)
+            deferral := argp.GetDeferral()
+            argp.NewWindow := wv2
+            deferral.Complete()
+        }
+        onLoaded() {
+            ; WebApp is loaded and can receive messages
+            this.wv.PostWebMessageAsString("os," A_OSVersion)
+            if (FileExist("config.json")) {
+                config := FileRead("config.json")
+                this.wv.PostWebMessageAsString("config," config)
+            } else {
+                this.wv.PostWebMessageAsString("defaultConfig,")
+            }
+            this.wvKeyboard := ""
+            CheckLayout()
+        }
+        onDownloadUnicode(num) {
+            try {
+                this.DataUnicode('emoji/15.0/emoji-test.txt')
+                this.DataUnicode('15.0.0/ucd/emoji/emoji-data.txt')
+                this.DataUnicode('15.0.0/ucd/UnicodeData.txt')
+                this.DataUnicode('15.0.0/ucd/NamesList.txt')
+                this.DataCLDR('42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
+            } catch as e {
+                this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)
+            } else {
+                this.wv.PostWebMessageAsString('done,' num ',')
+            }
+        }
+        onHide() {
+        	this.Hide()
 		}
-		onDownloadUnicode(num) {
-			try {
-				this.DataUnicode('emoji/15.0/emoji-test.txt')
-				this.DataUnicode('15.0.0/ucd/emoji/emoji-data.txt')
-				this.DataUnicode('15.0.0/ucd/UnicodeData.txt')
-				this.DataUnicode('15.0.0/ucd/NamesList.txt')
-				this.DataCLDR('42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
-			} catch as e {
-				this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)
-			} else {
-				this.wv.PostWebMessageAsString('done,' num ',')
-			}
-		}
-		onOpenDevTools() {
-			this.wv.OpenDevToolsWindow()
-		}
-		onReady() {
-			this.wv.PostWebMessageAsString("os," A_OSVersion)
-			if (FileExist("config.json")) {
-				config := FileRead("config.json")
-				this.wv.PostWebMessageAsString("config," config)
-			} else {
-				this.wv.PostWebMessageAsString("defaultConfig,")
-			}
-			this.wvKeyboard := ""
-			CheckLayout()
-		}
-		onSaveConfig(config) {
-			fh := FileOpen("config.tmp.json", "w", "UTF-8")
-			fh.Write(config)
-			fh.Close()
-			FileMove("config.tmp.json", "config.json", true)
-		}
-		onSaveUnicodeData(data, types) {
-			fh := FileOpen("wwwassets/script/dist/unidata.tmp.js", "w", "UTF-8")
-			fh.Write(
-				"// This file is generated by the builder script. Do not edit.`r`n"
-				"// To rebuild, enable the dev tools in the settings, then press the build button`r`n"
-				"var unicodeData = "
-			)
-			fh.Write(data)
-			fh.Close()
-			fh := FileOpen("wwwassets/script/unidata.tmp.d.ts", "w", "UTF-8")
-			fh.Write(
-				"// This file is generated by the builder script. Do not edit.`r`n"
-				"// To rebuild, enable the dev tools in the settings, then press the build button`r`n"
-			)
-			fh.Write(types)
-			fh.Close()
-			FileMove("wwwassets/script/dist/unidata.tmp.js", "wwwassets/script/dist/unidata.js", true)
-			FileMove("wwwassets/script/unidata.tmp.d.ts", "wwwassets/script/unidata.d.ts", true)
-		}
-		onSend(text) {
-			SetTimer(RestoreClipboard,0)
-			if (this.isSearch) {
-				this.Hide()
-			}
-			if(!this.isClipSaved) {
-				this.clipSaved := ClipboardAll()
-				this.isClipSaved := True
-			}
-			A_Clipboard := text
-			Sleep(10)
-			Send("^v")
-			SetTimer(RestoreClipboard,200)
-			if (this.isSearch) {
-				this.Show()
-			}
-		}
-		onSetOpacity(opacity) {
-			if (opacity > .99) {
-				WinSetTransparent("Off", this.main)
-			} else if(opacity > .2) {
-				WinSetTransparent(Round(255 * opacity), this.main)
-			} else {
-				WinSetTransparent(Round(255 * .2), this.main)
-			}
-		}
-		onSetSearch(enable) {
-			if (this.isSearch != enable) {
-				this.isSearch := enable
-				if (enable) {
-					this.main.Opt("-E0x08000000")
-					this.main.Show()
-				} else {
-					if (WinActive(this.main)) {
-						Send("!{Esc}")
-					}
-					this.main.Opt("+E0x08000000")
-				}
-			}
-		}
-		onSetSize(width, height) {
-			if (width != this.width or height != this.height) {
-				this.width := width
-				this.height := height
-				if (this.isVisible) {
-					this.Show()
-				}
-			}
-		}
-		onSetTitle(title) {
-			this.main.Title := title
-		}
+        onOpenDevTools() {
+            this.wv.OpenDevToolsWindow()
+        }
+        onReady() {
+            ; WebApp has interpreted the config and is fully initialized
+            this.isInitialized := 2
+            this.text.Visible := false
+            this.main.Hide()
+            this.Show()
+        }
+        onSaveConfig(config) {
+            fh := FileOpen("config.tmp.json", "w", "UTF-8")
+            fh.Write(config)
+            fh.Close()
+            FileMove("config.tmp.json", "config.json", true)
+        }
+        onSaveUnicodeData(data, types) {
+            fh := FileOpen("wwwassets/script/dist/unidata.tmp.js", "w", "UTF-8")
+            fh.Write(
+            "// This file is generated by the builder script. Do not edit.`r`n"
+            "// To rebuild, enable the dev tools in the settings, then press the build button`r`n"
+            "var unicodeData = "
+            )
+            fh.Write(data)
+            fh.Close()
+            fh := FileOpen("wwwassets/script/unidata.tmp.d.ts", "w", "UTF-8")
+            fh.Write(
+            "// This file is generated by the builder script. Do not edit.`r`n"
+            "// To rebuild, enable the dev tools in the settings, then press the build button`r`n"
+            )
+            fh.Write(types)
+            fh.Close()
+            FileMove("wwwassets/script/dist/unidata.tmp.js", "wwwassets/script/dist/unidata.js", true)
+            FileMove("wwwassets/script/unidata.tmp.d.ts", "wwwassets/script/unidata.d.ts", true)
+        }
+        onSend(text) {
+            SetTimer(RestoreClipboard,0)
+            isActive := WinActive(this.main)
+            if (isActive) {
+                this.Hide()
+            }
+            if(!this.isClipSaved) {
+                this.clipSaved := ClipboardAll()
+                this.isClipSaved := True
+            }
+            A_Clipboard := text
+            Sleep(10)
+            Send("^v")
+            SetTimer(RestoreClipboard,500)
+            if (isActive) {
+                this.Show()
+            }
+        }
+        onSetOpacity(opacity) {
+            if (opacity > .99) {
+                WinSetTransparent("Off", this.main)
+            } else if(opacity > .2) {
+                WinSetTransparent(Round(255 * opacity), this.main)
+            } else {
+                WinSetTransparent(Round(255 * .2), this.main)
+            }
+        }
+        onSetOpenAt(at) {
+            this.openAt := at
+        }
+        onSetPosSize(x, y, width, height) {
+            this.x := x
+            this.y := y
+            this.width := width
+            this.height := height
+        }
+        onSetSearch(enable) {
+            if (this.isSearch != enable) {
+                this.isSearch := enable
+                if (enable) {
+                    this.main.Opt("-E0x08000000")
+                    this.main.Show()
+                } else {
+                    if (WinActive(this.main)) {
+                        Send("!{Esc}")
+                    }
+                    this.main.Opt("+E0x08000000")
+                }
+            }
+        }
+        onSetTitle(title) {
+            this.main.Title := title
+        }
 
-		this.isInitialized := true
-		; --disable-web-security to allow fetching data files from e.g. unicode.org
-		this.wvc := WebView2.create(this.main.Hwnd, unset, 0, '', '', {AdditionalBrowserArguments: '--disable-web-security'})
-		this.wv := this.wvc.CoreWebView2
-		nwr := this.wv.NewWindowRequested(NewWindowRequestedHandler)
-		this.wv.Navigate('file:///' A_ScriptDir '\wwwassets\index.html')
-		this.wv.AddHostObjectToScript('ahk', {
-			downloadUnicode: onDownloadUnicode,
-			openDevTools: onOpenDevTools,
-			ready: onReady, reload: ActReload,
-			saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,
-			setOpacity: onSetOpacity, setSearch: onSetSearch, setSize: onSetSize, setTitle: onSetTitle,
-		})
-		this.text.Visible := false
-	}
+        monitor := GetMouseMonitor()
+        MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
+        w := 200 * A_Scaling
+        h := 100 * A_Scaling
+        x := left + (right - left - w) / 2
+        y := top + (bottom - top - h) / 2
+        this.main.Title := "Emoji Keyboard - Starting up ..."
+        this.main.Show(Format("x{} y{} W{} H{}", x, y, w, h))
+        ; --disable-web-security to allow fetching data files from e.g. local res folder
+        ; this could be avoided by adding functions to read the unincode data files and the pegjs file
+        this.wvc := WebView2.create(this.main.Hwnd, unset, 0, '', '', {AdditionalBrowserArguments: '--disable-web-security'})
+        this.wv := this.wvc.CoreWebView2
+        nwr := this.wv.NewWindowRequested(NewWindowRequestedHandler)
+        this.wv.Navigate('file:///' A_ScriptDir '\wwwassets\index.html')
+        this.wv.AddHostObjectToScript('ahk', {
+            downloadUnicode: onDownloadUnicode,
+        	hide: onHide,
+            loaded: onLoaded,
+            openDevTools: onOpenDevTools,
+            ready: onReady, reload: ActReload,
+            saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,
+            setOpenAt: onSetOpenAt,
+            setOpacity: onSetOpacity, setSearch: onSetSearch, setPosSize: onSetPosSize, setTitle: onSetTitle,
+        })
+    }
 
-	Show() {
-		this.isVisible := true
-		monitor := GetMouseMonitor()
-		MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
-		x := left + (right - left - (this.width + 13) * A_Scaling) / 2	; 13px = shadow
-		y := bottom - (this.height + 30) * A_Scaling	; 32 = titlebar + shadow
+    Show() {
+        if (this.isInitialized < 2) {
+            this.Initialize()
+            Return
+        }
 
-		this.main.Show(Format("{} W{} H{} x{} y{}", this.isSearch ? "" : "NA", this.width, this.height, x, y))
-		if (!this.isInitialized) {
-			this.Initialize()
-		} else {
-			this.wvc.Fill()
-			CheckLayout()
-		}
-	}
+        w := this.width * A_Scaling
+        h := this.height * A_Scaling
 
-	Hide(*) {
-		if (this.isVisible and this.text.Visible) {
-			Return
-		}
-		this.isVisible := false
-		this.main.Hide()
-		SetTimer(CheckLayout, 0)
-	}
+        this.main.GetPos(&xp, &yp, &wp, &hp)
+        this.main.GetClientPos(&xcp, &ycp, &wcp, &hcp)
+        ; offset in top left corner
+        xo := xcp - xp
+        yo := ycp - yp
+        ; dimensions of window decorations 
+        wo := wp - wcp
+        ho := yo ; better than hp - hcp in practice
+        ; active monitor boundaries
+        monitor := GetMouseMonitor()
+        MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
+        minx := left + xo
+        maxx := right - (w + wo)
+        miny := top + yo
+        maxy := bottom - (h + ho)
+        caretDistance := 10 * A_Scaling
 
-	Toggle() {
-		If (this.isVisible) {
-			this.Hide()
-		} Else {
-			this.Show()
-		}
-	}
+        switch this.openAt
+        {
+        case "mouse":
+            MouseGetPos(&xm, &ym)
+            x := clamp(xm - (w + wo) / 2, minx, maxx)
+            y := clamp(ym - h / 2, miny, maxy)
+        case "bottom":
+            x := left + (right - left - w - wo) / 2
+            y := maxy
+        case "text-caret":
+            gc := GetCaretPosition(&xc, &yc, &wc, &hc)
+            if (gc > 0 and xc >= left and xc <= right and yc >= top and yc <= bottom) {
+                x := clamp(xc - (w + wo) / 2, minx, maxx)
+                ; place over the caret
+                if (yc > top + h + ho + caretDistance) {
+                    y := yc - h - ho - caretDistance
+                }
+                ; place under the caret
+                else if (yc + hc < bottom - h - ho - caretDistance) {
+                    y := yc + hc + caretDistance
+                }
+                else {
+                    y := this.y
+                }
+            } else {
+                x := this.x
+                y := this.y
+            }
+        default: ; last position
+            x := this.x
+            y := this.y
+        }
 
-	Input(scanCode, shift := false) {
-		this.wv.PostWebMessageAsJson('["input",' scanCode ',' (shift ? 'true' : 'false') ']')
-	}
+        this.main.Show(Format("{} X{} Y{} W{} H{}", this.isSearch ? "" : "NA", x, y, w, h))
 
-	SendLayout() {
-		layout := KeyboardLayoutJson()
-		this.wv.PostWebMessageAsJson('["layout",' layout ']')
-	}
+        this.wvc.Fill()
+        CheckLayout()
+
+        this.isVisible := true
+    }
+
+    Hide(*) {
+        if (this.isVisible and this.text.Visible) {
+            return false
+        }
+        this.main.GetPos(&x, &y, &_w, &_h)
+        this.wv.PostWebMessageAsJson('["possize", ' x ',' y ',' this.width ',' this.height ']')
+        this.main.Hide()
+        SetTimer(CheckLayout, 0)
+        this.isVisible := false
+    }
+
+    Toggle() {
+        If (this.isVisible) {
+            this.Hide()
+        } Else {
+            this.Show()
+        }
+    }
+
+    Input(scanCode, shift := false) {
+        this.wv.PostWebMessageAsJson('["input",' scanCode ',' (shift ? 'true' : 'false') ']')
+    }
+
+    SendLayout() {
+        layout := KeyboardLayoutJson()
+        this.wv.PostWebMessageAsJson('["layout",' layout ']')
+    }
 }
 KB := EmojiKeyboard()
 ;EmojiKeyboard.main.Hide()
 RestoreClipboard() {
-	SetTimer(RestoreClipboard, 0)
-	A_Clipboard := KB.clipSaved
-	KB.clipSaved := unset
-	KB.isClipSaved := False
+    SetTimer(RestoreClipboard, 0)
+    A_Clipboard := KB.clipSaved
+    KB.clipSaved := unset
+    KB.isClipSaved := False
 }
 
 CheckLayout() {	
-	cKeyboard := CurrentKeyboardLayout()
-	If (cKeyboard != KB.wvKeyboard and cKeyboard != "" and cKeyboard != 0 and ! KB.text.Visible) {
-		KB.wvKeyboard := cKeyboard
-		KB.SendLayout()
-	}
+    cKeyboard := CurrentKeyboardLayout()
+    If (cKeyboard != KB.wvKeyboard and cKeyboard != "" and cKeyboard != 0 and ! KB.text.Visible) {
+        KB.wvKeyboard := cKeyboard
+        KB.SendLayout()
+    }
 }
 
 ActToggle(*) {
-	KB.Toggle()
+    KB.Toggle()
 }
 ActReload(*) {
-	Reload
+    Reload
 }
 ActExit(*) {
-	ExitApp
+    ExitApp
 }
 ActCredits(*) {
-	Run("https://github.com/romligCH/emoji-keyboard")
+    Run("https://github.com/romligCH/emoji-keyboard")
 }
 
 ; Change Hotkey here
@@ -328,6 +422,7 @@ SC00D:: KB.Input(13, False)	; =    ^
 Tab:: KB.Input(15, False)
 +Tab:: KB.Input(15, True)
 Esc:: KB.Hide()
+Capslock::KB.Input(58, False)
 #HotIf KB.isVisible and !KB.isSearch
 ; Corresponding keys          US   CH
 ;SC001::KB.Input(01, False) ; ESC  ESC

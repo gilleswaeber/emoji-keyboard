@@ -7,6 +7,9 @@
 	--c-label: #f8f8f8;
 	--c-primary: #FFC83D;
 	--border-key: solid .1vw #888;
+	--c-shadow: rgba(255, 255, 255, .5);
+
+	--dark-c-shadow: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +22,8 @@
 		--c-label: #252525;
 		--c-primary: #FFC83D;
 		--border-key: none;
+
+		--c-shadow: var(--dark-c-shadow);
 	}
 }
 
@@ -31,6 +36,8 @@
 	--c-label: #252525;
 	--c-primary: #FFC83D;
 	--border-key: none;
+
+	--c-shadow: var(--dark-c-shadow);
 }
 
 .keyboard {
@@ -44,7 +51,7 @@
 }
 
 .key .symbol {
-	color: #FFF;
+	color: var(--c-text);
 }
 
 .key.empty{
