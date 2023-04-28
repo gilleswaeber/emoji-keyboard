@@ -12,15 +12,18 @@ Since the Windows 10 April 2018 Update update, you can open the built-in emoji p
 
 How to use
 ----------
-Install [Autohotkey](https://autohotkey.com/), download the whole project, and then launch App.ahk. It will then stay in system tray until you call it.
+Install [Autohotkey](https://autohotkey.com/), download the whole project, and then launch App.ahk. It will then stay in
+system tray until you call it.
 
 Open it with the <kbd>⇧ Shift</kbd>+<kbd>Caps Lock</kbd> combination.
 You can also use a double click on the tray icon. (Look for `+Capslock` in the *App.ahk* file to change the shortcut).
 
 Use the shown keyboard keys to navigate between the categories and type the Emojis. You can also use the mouse. You can move the window and resize it as you wish.
-Keymap should match the one of your system.
+Keymap matches the one of your system automatically.
 
-The recent list opens with <kbd>Caps Lock</kbd> and shows a list of recent Emojis sorted on opening by their "useCount". Inserting an Emoji increments its "useCount" by 11, all others will decrement "useCount" by 1. Emojis with a "useCount" greater than 99 are sticky and will not change anymore. Minimum "useCount" is 0. Edit config.json before starting the app to make Emojis sticky in a specific order or remove some.
+The recent list opens with <kbd>Caps Lock</kbd> and shows a list of recent Emojis sorted on opening by their *score*. Inserting an Emoji increments its *score* and decrement other's.
+A *score* ≥ 100 makes it a favorite that'll stay in the list.
+Emojis can be removed and marked as favorites with a right click or <kbd>⇧ Shift</kbd> when in the recent tab.
 
 To exit completely, do a right click on the tray icon and choose Exit.
 
@@ -57,6 +60,9 @@ Unicode data is generated from several sources:
 
 A rebuild of the Unicode database can be triggered in the app settings. It will download parts of the Unicode spec when
 necessary.
+Data for CJK ideographs is not present in the app since Unicode provides it separately and the main dev is not able to
+provide a proper integration, PR welcome.
+Boards for scripts other than Latin and monotonic Greek are not provided either but can be added manually, PR welcome.
 
 Additionally, math symbols and aliases were manually imported from the [unicode-math](https://wspr.io/unicode-math/)
 XeLaTeX/LuaLaTeX package and the [UTN #28: UnicodeMath](https://www.unicode.org/notes/tn28/) specification.
