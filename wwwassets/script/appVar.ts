@@ -13,6 +13,9 @@ export interface AppActions {
 
 	setSearchText(searchText: string): void;
 
+	/** Get current config. Inside Preact, use useContext(ConfigContext) instead. */
+	getConfig(): AppConfig;
+
 	updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save?: boolean): void;
 
 	setPage(page: number): void;
@@ -25,7 +28,7 @@ export interface AppActions {
 
 	setBuilding(building: boolean): void;
 
-	send(cluster: string, p: { noRecent?: boolean, parent?: string }): void;
+	send(cluster: string, p: { noRecent?: boolean, variantOf?: string }): void;
 }
 
 let appVar: AppActions;

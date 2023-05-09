@@ -95,8 +95,9 @@ export interface AppConfig {
 	devTools: boolean;
 	openAt: OpenAt;
 	opacity: number;
-	skinTone: SkinTone;
 	recent: RecentEmoji[];
+	skinTone: SkinTone;
+	preferredVariant: Record<string, string | undefined>;
 	hideAfterInput: boolean;
 	mainAfterInput: boolean;
 }
@@ -115,6 +116,7 @@ export const DefaultConfig: AppConfig = {
 	openAt: "bottom",
 	opacity: DefaultOpacity,
 	skinTone: 0,
+	preferredVariant: {},
 	recent: [],
 	hideAfterInput: false,
 	mainAfterInput: false,
@@ -145,17 +147,26 @@ const ConfigPages: ConfigPage[] = [
 				}),
 				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (<KeyName code={SC.LessThan}/> between <KeyName
 					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
-				// ...mapKeysToSlots(SecondRow, [
-				// 	...SkinTones.map((s, i) => new ConfigActionKey({
-				// 		active: i == config.skinTone,
-				// 		action() {
-				// 			p.app.updateConfig({skinTone: i});
-				// 		},
-				// 		name: s.name,
-				// 		symbol: s.symbol
-				// 	})),
-				// 	new ConfigLabelKey("Default skin tone")
-				// ])
+				...mapKeysToSlots(SecondRow, [
+					// 	...SkinTones.map((s, i) => new ConfigActionKey({
+					// 		active: i == config.skinTone,
+					// 		action() {
+					// 			p.app.updateConfig({skinTone: i});
+					// 		},
+					// 		name: s.name,
+					// 		symbol: s.symbol
+					// 	})),
+					new ConfigActionKey({
+						action() {
+							app().updateConfig({preferredVariant: {}})
+						},
+						active: !Object.keys(config.preferredVariant).length,
+						name: "Reset Variants",
+						statusName: "Clear variant preferences for all symbols",
+						symbol: "🥷"
+					})
+					// 	new ConfigLabelKey("Default skin tone")
+				])
 			}
 		}
 	},

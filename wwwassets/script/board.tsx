@@ -189,10 +189,9 @@ export abstract class Board {
 	}
 
 	static clusterAlternates(cluster: string, variants: string[], k?: { noRecent?: boolean }) {
-		const keys = variants.map((c) => new ClusterKey(c, {variants: [], ...k}));
+		const keys = variants.map((c) => new ClusterKey(c, {variants: [], variantOf: cluster, ...k}));
 		return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
 	}
-
 }
 
 /** On a static board the keys and their locations depend only on the layout */

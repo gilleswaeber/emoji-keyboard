@@ -19,6 +19,7 @@ import {search} from "./emojis";
 import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
 import {
+	app,
 	AppActions,
 	ConfigBuildingContext,
 	ConfigContext,
@@ -212,10 +213,19 @@ class App extends Component<{}, AppState> implements AppActions {
 		ahkReady();
 	}
 
+	public getConfig(): AppConfig {
+		return this.state.config;
+	}
+
 	public updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save = true): Promise<void> {
 		return new Promise((resolve) => {
+			let noop = false;
 			this.setState((s) => {
 				if (typeof config === 'function') config = config(s.config);
+				if (!Object.keys(config).length) {
+					noop = true;
+					return {};
+				}
 				if (config.theme && s.config.theme != config.theme) {
 					const link = document.getElementById('themeCSS') as HTMLLinkElement;
 					link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
@@ -236,7 +246,7 @@ class App extends Component<{}, AppState> implements AppActions {
 				}
 				return {config: {...s.config, ...config}};
 			}, () => {
-				if (save) ahkSaveConfig(this.state.config);
+				if (save && !noop) ahkSaveConfig(this.state.config);
 				resolve();
 			});
 		})
@@ -311,9 +321,18 @@ class App extends Component<{}, AppState> implements AppActions {
 		}));
 	}
 
-	public send(cluster: string, p: { noRecent?: boolean, parent?: string }): void {
+	public send(cluster: string, {noRecent, variantOf}: { noRecent?: boolean, variantOf?: string }): void {
 		ahkSend(cluster);
-		if (!p.noRecent) increaseRecent(cluster);
+		if (!noRecent) increaseRecent(cluster);
+		if (variantOf) app().updateConfig(c => {
+			if (c.preferredVariant[variantOf] != cluster) return {
+				preferredVariant: {
+					...c.preferredVariant,
+					[variantOf]: cluster
+				}
+			};
+			else return {};
+		})
 		if (this.state.config.hideAfterInput) ahkHide();
 		if (this.state.config.mainAfterInput) {
 			if (this.state.mode == AppMode.RECENTS || this.state.mode == AppMode.MAIN) this.main();
