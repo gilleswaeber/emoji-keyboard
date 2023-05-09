@@ -190,7 +190,18 @@ export abstract class Board {
 
 	static clusterAlternates(cluster: string, variants: string[], k?: { noRecent?: boolean }) {
 		const keys = variants.map((c) => new ClusterKey(c, {variants: [], variantOf: cluster, ...k}));
-		return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
+		if (keys.length == 6) {
+			// place on home row
+			const byRow = [[], [], keys];
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys: [], byRow});
+		} else if (keys.length == 18) {
+			// center on home row
+			const byRow = [[], keys.slice(0, 6), keys.slice(6, 12), keys.slice(12)];
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys: [], byRow});
+		}
+		{
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
+		}
 	}
 }
 

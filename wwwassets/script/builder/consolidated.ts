@@ -156,7 +156,7 @@ export function consolidateUnicodeData(
 				};
 
 				if (char.alias || a?.default) {
-					c.alias = [...(char.alias ?? []), ...(a?.default ?? [])];
+					c.alias = [...(char.alias ?? []), ...(a?.default ?? [])]
 				}
 				if (char.falias) c.falias = char.falias;
 				if (char.ref) c.ref = char.ref;
@@ -323,13 +323,76 @@ export function getUnicodeData(): ExtendedUnicodeData {
 			}
 		}
 	}
+
+	// Additional folding pass
+	const clustersByName = new Map(Object.values(clusters).map(c => [c.name, c] as const));
+	for (const c of Object.values(clusters)) {
+		if (!c.parent) {
+			let variants: string[] = [];
+			if (c.name.match(/^People /) && !c.name.match(/ Holding Hands$/)) {
+				const baseName = c.name.replace(/^People /, '');
+				variants = [
+					`Men ${baseName}`,
+					`Women ${baseName}`,
+				]
+			} else if (c.name.match(/ (?:Man|Woman|Person)$/) && !c.name.match(/^Old/)) {
+				const baseName = c.name.replace(/ (?:Man|Woman|Person)$/, '');
+				variants = [
+					`${baseName} Person`,
+					`${baseName} Man`,
+					`${baseName} Woman`,
+				]
+			} else if (c.name == 'Merperson') {
+				const baseName = c.name.replace(/person$/, '');
+				variants = [
+					`${baseName}man`,
+					`${baseName}maid`,
+				]
+			} else if (c.name == 'Person With Crown') {
+				variants = [
+					`Prince`,
+					`Princess`,
+				]
+			} else {
+				const baseName = c.name.replace(/^Person /, '');
+				variants = [
+					`Man ${baseName}`,
+					`Woman ${baseName}`,
+				]
+			}
+			for (const v of variants) {
+				if (v != c.name && clustersByName.has(v)) {
+					const sc = clustersByName.get(v)!;
+					if (!sc.parent) {
+						sc.parent = c.cluster;
+						if (!c.variants) c.variants = [c.cluster];
+						if (sc.variants) {
+							c.variants.push(...sc.variants);
+							delete sc.variants;
+						} else c.variants.push(sc.cluster);
+						if (sc.alias) {
+							c.alias ??= [];
+							for (const a in sc.alias) if (!c.alias.includes(a)) c.alias.push(a);
+							delete sc.alias;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// For some reason, woman variants place bearded woman first...
+	clusters["👩"].variants?.sort((a, b) => +clusters[a]!.name.includes('Beard') - +clusters[b]!.name.includes('Beard'))
+
+	// Extend group information
 	for (const group of u.groups) {
 		const g: ExtendedGroupInformation = {...group, sub: {}};
 		groups[group.name] = g;
 		for (const sub of group.sub) {
 			const s: ExtendedSubGroupInformation = {...sub, group: new WeakRef(g)};
 			g.sub[sub.name] = s;
-			for (const cluster of sub.clusters) {
+			s.clusters = s.clusters.filter(c => !clusters[c] || !clusters[c].parent);
+			for (const cluster of s.clusters) {
 				if (!clusters[cluster]) continue;
 				clusters[cluster].group = g;
 				clusters[cluster].subGroup = s;

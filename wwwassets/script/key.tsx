@@ -203,6 +203,7 @@ export class ClusterKey extends Key {
 	Contents = ({code}: { code: SC }) => {
 		const config = useContext(ConfigContext);
 		const cluster = this.alt ? config.preferredVariant[this.cluster] ?? this.cluster : this.cluster;
+		const status = this.alt ? clusterName(config.preferredVariant[this.cluster] ?? this.cluster) : this.name;
 		return <div
 			className={cl('key', this.keyType, {alt: this.alt, lu: this.lu, active: this.active})}
 			onClick={(e) => {
@@ -213,7 +214,7 @@ export class ClusterKey extends Key {
 				e.preventDefault();
 				this.actAlternate(config);
 			}}
-			onMouseOver={() => app().updateStatus(this.statusName)}
+			onMouseOver={() => app().updateStatus(status)}
 			data-keycode={code}
 		>
 			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
