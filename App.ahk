@@ -4,6 +4,7 @@
 #Include lib/thqby/WebView2/WebView2.ahk
 #Include lib/monitor.ahk
 #Include lib/caret.ahk
+#Include lib/clipboard.ahk
 #Include lib/keyboard_layout.ahk
 
 #Warn
@@ -193,7 +194,7 @@ class EmojiKeyboard {
                 this.clipSaved := ClipboardAll()
                 this.isClipSaved := True
             }
-            A_Clipboard := text
+            SetClipboardPrivate(text)
             Sleep(10)
             Send("^v")
             SetTimer(RestoreClipboard,500)
