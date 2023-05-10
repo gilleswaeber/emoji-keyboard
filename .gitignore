@@ -3,6 +3,9 @@
 !/res/data/.gitkeep
 /config.json
 /wwwassets/node_modules
+/wwwassets/script/dist/*
+!/wwwassets/script/dist/script.dist.js
+!/wwwassets/script/dist/unidata.dist.js
 *.js.map
 # IDE-specific
 .idea

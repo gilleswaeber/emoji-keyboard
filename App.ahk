@@ -238,6 +238,14 @@ class EmojiKeyboard {
             this.main.Title := title
         }
 
+		; Update JS files if they changed (e.g. after a pull)
+		if (!FileExist("wwwassets/script/dist/script.js") or FileGetTime("wwwassets/script/dist/script.dist.js") > FileGetTime("wwwassets/script/dist/script.js")) {
+			FileCopy("wwwassets/script/dist/script.dist.js", "wwwassets/script/dist/script.js", True)
+		}
+		if (!FileExist("wwwassets/script/dist/unidata.js") or FileGetTime("wwwassets/script/dist/unidata.dist.js") > FileGetTime("wwwassets/script/dist/unidata.js")) {
+			FileCopy("wwwassets/script/dist/unidata.dist.js", "wwwassets/script/dist/unidata.js", True)
+		}
+
         monitor := GetMouseMonitor()
         MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
         w := 200 * A_Scaling
