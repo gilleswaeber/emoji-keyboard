@@ -7,6 +7,7 @@ import {app, ConfigContext, LayoutContext} from "./appVar";
 import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./boards/utils";
 import {KeyName} from "./keys/base";
+import {ahkReload} from "./ahk";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 // noinspection JSUnusedLocalSymbols
@@ -280,6 +281,11 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(FirstRow, [
 					new ConfigBuildKey(),
+					new ConfigActionKey({
+						action: ahkReload,
+						name: 'Reload',
+						symbol: '🔄'
+					}),
 				]),
 				...mapKeysToSlots(SecondRow, [
 					new ConfigToggleKey({
