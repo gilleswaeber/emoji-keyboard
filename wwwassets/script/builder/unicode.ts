@@ -1,4 +1,3 @@
-import {Paths} from "./config";
 import * as peggy from "peggy";
 import {Dictionary} from "../helpers";
 
@@ -238,6 +237,15 @@ export type UnicodeDataChar = {
 }
 export type UnicodeData = Record<number, UnicodeDataChar>;
 
+export type Paths = {
+	emojiTestPath: string;
+	emojiDataPath: string;
+	unicodeDataPath: string;
+	namedSequencesPath: string;
+	namesListPath: string;
+	annotationsPath: string;
+}
+
 export async function parseUnicodeData(p: Paths): Promise<UnicodeData> {
 	const data: UnicodeData = {};
 
@@ -331,7 +339,7 @@ export type EmojiTestData = {
 	sequences: Dictionary<EmojiSequence|undefined>,
 };
 
-export async function parseEmojiTest(p: { emojiTestPath: string }): Promise<EmojiTestData> {
+export async function parseEmojiTest(p: Paths): Promise<EmojiTestData> {
 	const groups: EmojiGroup[] = [];
 	const sequences: Dictionary<EmojiSequence> = {};
 
@@ -364,6 +372,28 @@ export async function parseEmojiTest(p: { emojiTestPath: string }): Promise<Emoj
 	return {groups, sequences};
 }
 
+export type NamedSequencesData = {
+	cluster: string;
+	name: string;
+}[];
+
+export async function parseNamedSequences(p: Paths): Promise<NamedSequencesData> {
+	const data = await fetch(p.namedSequencesPath).then(f => f.text());
+	const namedSequences: NamedSequencesData = [];
+	for (const line of data.split('\n')) {
+		if (!line.length || line.startsWith('#')) continue;
+		const m = line.match(/^(?<name>[^#;]+[^#;\s])\s*;\s*(?<code>[0-9A-F][0-9A-F ]+[0-9A-F])\s*(?:#|$)/)?.groups;
+		if (m) {
+			const cluster = String.fromCodePoint(...m['code'].split(/\s+/).map(c => parseInt(c, 16)));
+			namedSequences.push({
+				cluster,
+				name: m['name']
+			});
+		} else console.warn('[parseNamedSequences] failed to parse', line);
+	}
+	return namedSequences;
+}
+
 export type AnnotationsData = {
 	identity: {
 		version: {
@@ -371,7 +401,7 @@ export type AnnotationsData = {
 		};
 		language: string;
 	};
-	annotations: Record<string, undefined|{
+	annotations: Record<string, undefined | {
 		default?: string[];
 		tts?: string;
 	}>;

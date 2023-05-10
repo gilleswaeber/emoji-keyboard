@@ -139,6 +139,7 @@ class EmojiKeyboard {
                 this.DataUnicode('15.0.0/ucd/emoji/emoji-data.txt')
                 this.DataUnicode('15.0.0/ucd/UnicodeData.txt')
                 this.DataUnicode('15.0.0/ucd/NamesList.txt')
+                this.DataUnicode('15.0.0/ucd/NamedSequences.txt')
                 this.DataCLDR('42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
             } catch as e {
                 this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)

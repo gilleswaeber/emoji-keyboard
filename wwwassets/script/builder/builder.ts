@@ -1,29 +1,15 @@
-import {ConfigAddon, Paths} from "./config";
 import {
 	parseAnnotations,
 	parseEmojiTest,
 	parseEmojiVersions,
+	parseNamedSequences,
 	parseNamesList,
 	parseUnicodeData,
-	UnicodeData
+	Paths
 } from "./unicode";
 import {consolidateUnicodeData, UnicodeDataSource} from "./consolidated";
 import {ahkDownloadUnicode, ahkSaveUnicodeData} from "../ahk";
-import {IgnoreForName} from "../unicodeInterface";
 import {app} from "../appVar";
-
-function getFullName(code: number[], ctx: { unicodeData: UnicodeData }): string {
-	const parts: string[] = [];
-	for (const c of code) {
-		if (IgnoreForName.includes(c)) continue;
-		if (c >= 19968 && c <= 40956) {
-			parts.push(`CJK UNIFIED IDEOGRAPH-${c.toString(16)}`);
-		} else {
-			parts.push(ctx.unicodeData[c].name ?? `U+${c.toString(16)}`);
-		}
-	}
-	return parts.join(", ");
-}
 
 export function toCodePoints(s: string): number[] {
 	return [...s].map(c => c.codePointAt(0)!);
@@ -40,39 +26,6 @@ type FirstPassEmoji = {
 	alternates?: FirstPassEmoji[];
 	style?: "space" | null;
 	show?: string;
-}
-
-function getEmoji(addon: ConfigAddon, symbol: string | string[] | null, ctx: { unicodeData: UnicodeData }): FirstPassEmoji {
-	let blank = 0;
-	if (symbol === null) {
-		return {
-			symbol: "",
-			group: addon.group,
-			subGroup: addon.subGroup,
-			name: "BLANK " + blank++
-		};
-	} else if (typeof symbol === "string") {
-		const code = toCodePoints(symbol);
-		const fullName = getFullName(code, ctx);
-		const name = fullName.toLocaleLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-		return {
-			symbol,
-			group: addon.group,
-			subGroup: addon.subGroup,
-			fullName,
-			name,
-			code
-		};
-	} else if (Array.isArray(symbol)) {
-		const emoji = getEmoji(addon, symbol[0], ctx);
-		emoji.alternates = [];
-		for (const sym of symbol) {
-			emoji.alternates.push(getEmoji(addon, sym, ctx));
-		}
-		return emoji;
-	} else {
-		throw new Error("Unexpected value: " + symbol);
-	}
 }
 
 let building = false;
@@ -97,6 +50,7 @@ async function build() {
 		emojiTestPath: '../res/data/emoji/15.0/emoji-test.txt',
 		emojiDataPath: '../res/data/15.0.0/ucd/emoji/emoji-data.txt',
 		unicodeDataPath: '../res/data/15.0.0/ucd/UnicodeData.txt',
+		namedSequencesPath: '../res/data/15.0.0/ucd/NamedSequences.txt',
 		namesListPath: '../res/data/15.0.0/ucd/NamesList.txt',
 		annotationsPath: '../res/data/cldr-json/42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json',
 	};
@@ -105,6 +59,7 @@ async function build() {
 		unicodeData: await parseUnicodeData(paths),
 		emojiVersion: await parseEmojiVersions(paths.emojiDataPath),
 		emojiTest: await parseEmojiTest(paths),
+		namedSequences: await parseNamedSequences(paths),
 		namesList: await parseNamesList(paths),
 		annotations: await parseAnnotations(paths),
 	};

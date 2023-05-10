@@ -49,7 +49,9 @@ Unicode data is generated from several sources:
 - The [Unicode® Emoji Resources](http://unicode.org/emoji/) which contain information about emoji attributes and emoji
   ordering
 - The [UnicodeData](http://unicode.org/Public/3.0-Update/UnicodeData-3.0.0.html) file which contain character names
-- The [Unicode NamesList](https://unicode.org/Public/UNIDATA/NamesList.txt) file which used to generate the code charts
+- The [Unicode NamesList](https://unicode.org/Public/UNIDATA/NamesList.txt)
+  and [NamedSequences](https://unicode.org/Public/UNIDATA/NamedSequences.txt) files which are used to generate the code
+  charts
   and contains aliases used in search, and additional information not yet used
 - The [Unicode CLDR](https://cldr.unicode.org/) annotations for aliases used in search
 

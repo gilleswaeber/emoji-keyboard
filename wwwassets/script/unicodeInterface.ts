@@ -13,7 +13,7 @@ export const UnicodeData = u;
 
 function charName(code: number): string {
 	if (code >= 19968 && code <= 40956) {
-		return `CJK UNIFIED IDEOGRAPH-${code.toString(16)}`;
+		return `CJK Unified Ideograph ${code.toString(16)}`;
 	} else {
 		return u.chars[code]?.n ?? `U+${code.toString(16)}`;
 	}
@@ -46,7 +46,7 @@ export function emojiGroup(g: {group: string, subGroup: string}): string[] {
 export function requiredOS(cluster: string): string {
 	const info = u.clusters[cluster];
 	for (const f of IconFallback) {
-		if (info && f.version && info.version >= f.version) return f.windows;
+		if (info && f.version && info.version && info.version >= f.version) return f.windows;
 		if (f.clusters && f.clusters.has(cluster)) return f.windows;
 		if (f.ranges) for (const r of f.ranges) {
 			if (cluster >= r.from && cluster <= r.to) return f.windows;
