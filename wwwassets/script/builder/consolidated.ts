@@ -11,6 +11,8 @@ import {
 } from "./unicode";
 import {toTitleCase} from "./titleCase";
 import {ZeroWidthJoiner} from "../chars";
+import {EXTEND_ALIASES} from "../config/aliases";
+import {toCodePoints} from "./builder";
 
 type BlockInformation = {
 	start: number;
@@ -444,5 +446,21 @@ export function getUnicodeData(): ExtendedUnicodeData {
 		}
 	}
 
+	for (const [k, v] of Object.entries(EXTEND_ALIASES)) {
+		const code = toCodePoints(k);
+		if (code.length == 1) {
+			const info = chars[code[0]];
+			if (info) {
+				info.alias ??= [];
+				info.alias.push(...v);
+			}
+		} else {
+			const info = clusters[k];
+			if (info) {
+				info.alias ??= [];
+				info.alias.push(...v);
+			}
+		}
+	}
 	return {blocks, chars, groups, clusters};
 }

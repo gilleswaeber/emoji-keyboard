@@ -8,8 +8,10 @@ import {MathKeyboard} from "./math";
  * An item that will be placed on one key, either:
  * - a symbol
  * - a blank key
- * - a symbol with alternatives
- * - a keyboard key
+ * - array of 1 symbol: symbol without variants (atm. only emoji skin color)
+ * - array of 2 symbols: the second symbols is accessed with shift or right-click, e.g. for small and capital letters
+ * - array of 3+ symbols: least-recently used symbol on left click, other symbols on right click
+ * - a keyboard key (can be nested)
  */
 export type KeyboardItem = string | null | string[] | EmojiKeyboard;
 /**
@@ -476,8 +478,8 @@ export const MAIN_BOARD: EmojiKeyboard = {
 				"–", "—", "―", // Hyphens
 				"“", "”", "‟", "„", "«", "»", "‹", "›", "‘", "’", "‛", "‚", // Quotes
 				"¿", "¡", "‽", "‼", "°", "¦", // Punctuation
-				"·", // \cdotp(p)	/centerdot b: middle dot
-				"•", // \smblkcircle	/bullet b: round bullet, filled
+				"·",
+				"•",
 			]
 		},
 		{

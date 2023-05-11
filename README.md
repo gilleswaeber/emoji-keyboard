@@ -58,6 +58,9 @@ Unicode data is generated from several sources:
 A rebuild of the Unicode database can be triggered in the app settings. It will download parts of the Unicode spec when
 necessary.
 
+Additionally, math symbols and aliases were manually imported from the [unicode-math](https://wspr.io/unicode-math/)
+XeLaTeX/LuaLaTeX package and the [UTN #28: UnicodeMath](https://www.unicode.org/notes/tn28/) specification.
+
 Dependencies
 ------------
 AutoHotkey libs:

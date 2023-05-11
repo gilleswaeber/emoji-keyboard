@@ -323,7 +323,6 @@ const MathBinary: EmojiKeyboard = {
 			content: [
 				"⨹", // \triangleplus	plus sign in triangle
 				"⨺", // \triangleminus	minus sign in triangle
-				"⟠", // \lozengeminus	lozenge divided by horizontal rule
 				"◬", // \trianglecdot	triangle with centered dot
 				"⨻", // \triangletimes	multiplication sign in triangle
 			]
@@ -558,7 +557,6 @@ const MathSymbols: EmojiKeyboard = {
 		],
 		"∆", // \increment	laplacian (delta; nabla^2)
 		"∎", // \QED	end of proof
-		"√", // \surd(p)	radical
 		[
 			"∞", // \infty(p)	infinity
 			"⧜", // \iinfin	incomplete infinity
@@ -622,8 +620,6 @@ const MathSymbols: EmojiKeyboard = {
 		"⎶", // \bbrktbrk	bottom square bracket over top square bracket
 		"⎸", // \lvboxline	left vertical box line
 		"⎹", // \rvboxline	right vertical box line
-		"⏠", // \obrbrak	top tortoise shell bracket (mathematical use)
-		"⏡", // \ubrbrak	bottom tortoise shell bracket (mathematical use)
 		"⏤", // \strns	straightness
 		"⏧", // \elinters	electrical intersection
 		"␢", // \blanksymbol	blank symbol
