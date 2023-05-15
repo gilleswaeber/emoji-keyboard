@@ -118,7 +118,7 @@ export class BackKey extends Key {
 
 export class KeyboardKey extends Key {
 	constructor(private target: Board) {
-		super({name: target.name, symbol: target.symbol});
+		super({name: target.name, statusName: target.statusName, symbol: target.symbol});
 	}
 
 	act() {

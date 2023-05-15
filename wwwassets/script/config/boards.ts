@@ -1,10 +1,20 @@
-import {UnicodeEmojiGroup} from "../unidata";
 import {SoftHyphen, ZeroWidthJoiner} from "../chars";
 import {VK} from "../layout/vk";
 import {ArrowsKeyboard} from "./arrows";
 import {MathKeyboard} from "./math";
-import {charInfo, UnicodeData} from "../unicodeInterface";
-import {GeneralCategory} from "../builder/unicode";
+import {emojiGroup} from "../unicodeInterface";
+import {UnicodeKeyboard} from "./unicodeBoard";
+import {toCodePoints} from "../builder/builder";
+
+function unicodeRange(from: string | number, to: string | number): string[] {
+	const result: string[] = [];
+	const codeFrom = typeof from === 'number' ? from : toCodePoints(from)[0];
+	const codeTo = typeof to === 'number' ? to : toCodePoints(to)[0];
+	if (codeFrom && codeTo && codeTo > codeFrom) {
+		for (let i = codeFrom; i <= codeTo; ++i) result.push(String.fromCodePoint(i));
+	}
+	return result;
+}
 
 /**
  * An item that will be placed on one key, either:
@@ -16,28 +26,18 @@ import {GeneralCategory} from "../builder/unicode";
  * - a keyboard key (can be nested)
  */
 export type KeyboardItem = string | null | string[] | EmojiKeyboard;
-/**
- * One or more items to be placed on the keyboard, either:
- * - a single item as defined in KeyboardItem
- * - an emoji subgroup
- * - a range of codepoints
- */
-export type KeyboardContent =
-	KeyboardItem
-	| (UnicodeEmojiGroup & { from?: undefined })
-	| { group?: undefined, from: string | number, to: string | number };
 export type EmojiKeyboard = {
 	/** Name must be unique */
 	name: string;
+	/** Name as shown in the status bar */
+	statusName?: string;
 	symbol: string;
 	/** Only set to true on the main keyboard */
 	top?: true;
 	/** Do not add to recently used */
 	noRecent?: true;
-	group?: undefined;
-	from?: undefined;
 	/** Place the items on the free keys, paging when necessary */
-	content?: KeyboardContent[];
+	content?: KeyboardItem[];
 	/** Place the items according the Virtual Key code i.e. based on the symbols on the keys */
 	byVK?: { [vk in VK]?: KeyboardItem }
 	/** Place the items by row */
@@ -52,277 +52,277 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			name: "Happy",
 			symbol: "😀",
 			content: [
-				{group: "Smileys & Emotion", subGroup: "face-smiling"},
-				{group: "Smileys & Emotion", subGroup: "face-affection"},
-				{group: "Smileys & Emotion", subGroup: "face-tongue"},
-				{group: "Smileys & Emotion", subGroup: "face-hand"},
-				{group: "Smileys & Emotion", subGroup: "face-neutral-skeptical"},
-				{group: "Smileys & Emotion", subGroup: "face-hat"},
-				{group: "Smileys & Emotion", subGroup: "face-glasses"},
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-smiling"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-affection"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-tongue"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-hand"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-neutral-skeptical"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-hat"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-glasses"}),
 			]
 		},
 		{
 			name: "Unwell",
 			symbol: "😱",
 			content: [
-				{group: "Smileys & Emotion", subGroup: "face-sleepy"},
-				{group: "Smileys & Emotion", subGroup: "face-unwell"},
-				{group: "Smileys & Emotion", subGroup: "face-concerned"},
-				{group: "Smileys & Emotion", subGroup: "face-negative"},
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-sleepy"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-unwell"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-concerned"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-negative"}),
 			]
 		},
 		{
 			name: "Roles",
 			symbol: "👻",
 			content: [
-				{group: "Smileys & Emotion", subGroup: "face-costume"},
-				{group: "People & Body", subGroup: "person-fantasy"}
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "face-costume"}),
+				...emojiGroup({group: "People & Body", subGroup: "person-fantasy"}),
 			]
 		},
 		{
 			name: "Body",
 			symbol: "👍",
 			content: [
-				{group: "People & Body", subGroup: "hand-fingers-open"},
-				{group: "People & Body", subGroup: "hand-fingers-partial"},
-				{group: "People & Body", subGroup: "hand-single-finger"},
-				{group: "People & Body", subGroup: "hand-fingers-closed"},
-				{group: "People & Body", subGroup: "hands"},
-				{group: "People & Body", subGroup: "hand-prop"},
-				{group: "People & Body", subGroup: "body-parts"},
+				...emojiGroup({group: "People & Body", subGroup: "hand-fingers-open"}),
+				...emojiGroup({group: "People & Body", subGroup: "hand-fingers-partial"}),
+				...emojiGroup({group: "People & Body", subGroup: "hand-single-finger"}),
+				...emojiGroup({group: "People & Body", subGroup: "hand-fingers-closed"}),
+				...emojiGroup({group: "People & Body", subGroup: "hands"}),
+				...emojiGroup({group: "People & Body", subGroup: "hand-prop"}),
+				...emojiGroup({group: "People & Body", subGroup: "body-parts"}),
 			]
 		},
 		{
 			name: "Gestures & activities",
 			symbol: "💃",
 			content: [
-				{group: "People & Body", subGroup: "person-gesture"},
-				{group: "People & Body", subGroup: "person-activity"},
-				{group: "People & Body", subGroup: "person-resting"}
+				...emojiGroup({group: "People & Body", subGroup: "person-gesture"}),
+				...emojiGroup({group: "People & Body", subGroup: "person-activity"}),
+				...emojiGroup({group: "People & Body", subGroup: "person-resting"}),
 			]
 		},
 		{
 			name: "Persons",
 			symbol: "👤",
 			content: [
-				{group: "People & Body", subGroup: "person"},
-				{group: "People & Body", subGroup: "person-role"},
-				{group: "People & Body", subGroup: "person-symbol"}
+				...emojiGroup({group: "People & Body", subGroup: "person"}),
+				...emojiGroup({group: "People & Body", subGroup: "person-role"}),
+				...emojiGroup({group: "People & Body", subGroup: "person-symbol"}),
 			]
 		},
 		{
 			name: "Emotions",
 			symbol: "😺",
 			content: [
-				{group: "Smileys & Emotion", subGroup: "cat-face"},
-				{group: "Smileys & Emotion", subGroup: "monkey-face"},
-				{group: "Smileys & Emotion", subGroup: "heart"},
-				{group: "Smileys & Emotion", subGroup: "emotion"}
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "cat-face"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "monkey-face"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "heart"}),
+				...emojiGroup({group: "Smileys & Emotion", subGroup: "emotion"}),
 			]
 		},
 		{
 			name: "Families",
 			symbol: "👪",
 			content: [
-				{group: "People & Body", subGroup: "family"}
+				...emojiGroup({group: "People & Body", subGroup: "family"}),
 			]
 		},
 		{
 			name: "Clothing",
 			symbol: "👖",
 			content: [
-				{group: "Objects", subGroup: "clothing"}
+				...emojiGroup({group: "Objects", subGroup: "clothing"}),
 			]
 		},
 		{
 			name: "Animals",
 			symbol: "🐦",
 			content: [
-				{group: "Animals & Nature", subGroup: "animal-mammal"},
-				{group: "Animals & Nature", subGroup: "animal-bird"},
-				{group: "Animals & Nature", subGroup: "animal-amphibian"},
-				{group: "Animals & Nature", subGroup: "animal-reptile"},
-				{group: "Animals & Nature", subGroup: "animal-marine"},
-				{group: "Animals & Nature", subGroup: "animal-bug"}
+				...emojiGroup({group: "Animals & Nature", subGroup: "animal-mammal"}),
+				...emojiGroup({group: "Animals & Nature", subGroup: "animal-bird"}),
+				...emojiGroup({group: "Animals & Nature", subGroup: "animal-amphibian"}),
+				...emojiGroup({group: "Animals & Nature", subGroup: "animal-reptile"}),
+				...emojiGroup({group: "Animals & Nature", subGroup: "animal-marine"}),
+				...emojiGroup({group: "Animals & Nature", subGroup: "animal-bug"}),
 			]
 		},
 		{
 			name: "Plants",
 			symbol: "🌹",
 			content: [
-				{group: "Animals & Nature", subGroup: "plant-flower"},
-				{group: "Animals & Nature", subGroup: "plant-other"}
+				...emojiGroup({group: "Animals & Nature", subGroup: "plant-flower"}),
+				...emojiGroup({group: "Animals & Nature", subGroup: "plant-other"}),
 			]
 		},
 		{
 			name: "Raw food",
 			symbol: "🥝",
 			content: [
-				{group: "Food & Drink", subGroup: "food-fruit"},
-				{group: "Food & Drink", subGroup: "food-vegetable"},
-				{group: "Food & Drink", subGroup: "food-marine"},
-				{group: "Food & Drink", subGroup: "drink"},
-				{group: "Food & Drink", subGroup: "dishware"}
+				...emojiGroup({group: "Food & Drink", subGroup: "food-fruit"}),
+				...emojiGroup({group: "Food & Drink", subGroup: "food-vegetable"}),
+				...emojiGroup({group: "Food & Drink", subGroup: "food-marine"}),
+				...emojiGroup({group: "Food & Drink", subGroup: "drink"}),
+				...emojiGroup({group: "Food & Drink", subGroup: "dishware"}),
 			]
 		},
 		{
 			name: "Cooked",
 			symbol: "🌭",
 			content: [
-				{group: "Food & Drink", subGroup: "food-prepared"},
-				{group: "Food & Drink", subGroup: "food-asian"},
-				{group: "Food & Drink", subGroup: "food-sweet"}
+				...emojiGroup({group: "Food & Drink", subGroup: "food-prepared"}),
+				...emojiGroup({group: "Food & Drink", subGroup: "food-asian"}),
+				...emojiGroup({group: "Food & Drink", subGroup: "food-sweet"}),
 			]
 		},
 		{
 			name: "Places",
 			symbol: "🏡",
 			content: [
-				{group: "Travel & Places", subGroup: "place-map"},
-				{group: "Travel & Places", subGroup: "place-geographic"},
-				{group: "Travel & Places", subGroup: "place-building"},
-				{group: "Travel & Places", subGroup: "place-religious"},
-				{group: "Travel & Places", subGroup: "place-other"},
-				{group: "Travel & Places", subGroup: "hotel"}
+				...emojiGroup({group: "Travel & Places", subGroup: "place-map"}),
+				...emojiGroup({group: "Travel & Places", subGroup: "place-geographic"}),
+				...emojiGroup({group: "Travel & Places", subGroup: "place-building"}),
+				...emojiGroup({group: "Travel & Places", subGroup: "place-religious"}),
+				...emojiGroup({group: "Travel & Places", subGroup: "place-other"}),
+				...emojiGroup({group: "Travel & Places", subGroup: "hotel"}),
 			]
 		},
 		{
 			name: "Vehicles",
 			symbol: "🚗",
 			content: [
-				{group: "Travel & Places", subGroup: "transport-ground"}
+				...emojiGroup({group: "Travel & Places", subGroup: "transport-ground"}),
 			]
 		},
 		{
 			name: "Ships",
 			symbol: "✈",
 			content: [
-				{group: "Travel & Places", subGroup: "transport-air"},
-				{group: "Travel & Places", subGroup: "transport-water"}
+				...emojiGroup({group: "Travel & Places", subGroup: "transport-air"}),
+				...emojiGroup({group: "Travel & Places", subGroup: "transport-water"}),
 			]
 		},
 		{
 			name: "Time",
 			symbol: "⌛",
 			content: [
-				{group: "Travel & Places", subGroup: "time"}
+				...emojiGroup({group: "Travel & Places", subGroup: "time"})
 			]
 		},
 		{
 			name: "Weather",
 			symbol: "⛅",
 			content: [
-				{group: "Travel & Places", subGroup: "sky & weather"}
+				...emojiGroup({group: "Travel & Places", subGroup: "sky & weather"})
 			]
 		},
 		{
 			name: "Sports",
 			symbol: "🎽",
 			content: [
-				{group: "Activities", subGroup: "sport"},
-				{group: "People & Body", subGroup: "person-sport"}
+				...emojiGroup({group: "Activities", subGroup: "sport"}),
+				...emojiGroup({group: "People & Body", subGroup: "person-sport"})
 			]
 		},
 		{
 			name: "Activities",
 			symbol: "🎮",
 			content: [
-				{group: "Activities", subGroup: "event"},
-				{group: "Activities", subGroup: "award-medal"},
-				{group: "Activities", subGroup: "game"},
-				{group: "Activities", subGroup: "arts & crafts"}
+				...emojiGroup({group: "Activities", subGroup: "event"}),
+				...emojiGroup({group: "Activities", subGroup: "award-medal"}),
+				...emojiGroup({group: "Activities", subGroup: "game"}),
+				...emojiGroup({group: "Activities", subGroup: "arts & crafts"})
 			]
 		},
 		{
 			name: "Sound & light",
 			symbol: "🎥",
 			content: [
-				{group: "Objects", subGroup: "sound"},
-				{group: "Objects", subGroup: "music"},
-				{group: "Objects", subGroup: "musical-instrument"},
-				{group: "Objects", subGroup: "light & video"}
+				...emojiGroup({group: "Objects", subGroup: "sound"}),
+				...emojiGroup({group: "Objects", subGroup: "music"}),
+				...emojiGroup({group: "Objects", subGroup: "musical-instrument"}),
+				...emojiGroup({group: "Objects", subGroup: "light & video"})
 			]
 		},
 		{
 			name: "Tech",
 			symbol: "💻",
 			content: [
-				{group: "Objects", subGroup: "phone"},
-				{group: "Objects", subGroup: "computer"},
-				{group: "Objects", subGroup: "mail"},
+				...emojiGroup({group: "Objects", subGroup: "phone"}),
+				...emojiGroup({group: "Objects", subGroup: "computer"}),
+				...emojiGroup({group: "Objects", subGroup: "mail"}),
 			]
 		},
 		{
 			name: "Paper & things",
 			symbol: "📜",
 			content: [
-				{group: "Objects", subGroup: "book-paper"},
-				{group: "Objects", subGroup: "money"},
-				{group: "Objects", subGroup: "writing"},
-				{group: "Objects", subGroup: "science"},
-				{group: "Objects", subGroup: "medical"},
-				{group: "Objects", subGroup: "household"},
-				{group: "Objects", subGroup: "other-object"},
+				...emojiGroup({group: "Objects", subGroup: "book-paper"}),
+				...emojiGroup({group: "Objects", subGroup: "money"}),
+				...emojiGroup({group: "Objects", subGroup: "writing"}),
+				...emojiGroup({group: "Objects", subGroup: "science"}),
+				...emojiGroup({group: "Objects", subGroup: "medical"}),
+				...emojiGroup({group: "Objects", subGroup: "household"}),
+				...emojiGroup({group: "Objects", subGroup: "other-object"}),
 			]
 		},
 		{
 			name: "Work",
 			symbol: "💼",
 			content: [
-				{group: "Objects", subGroup: "office"},
-				{group: "Objects", subGroup: "lock"},
-				{group: "Objects", subGroup: "tool"}
+				...emojiGroup({group: "Objects", subGroup: "office"}),
+				...emojiGroup({group: "Objects", subGroup: "lock"}),
+				...emojiGroup({group: "Objects", subGroup: "tool"})
 			]
 		},
 		{
 			name: "Signs",
 			symbol: "⛔",
 			content: [
-				{group: "Symbols", subGroup: "transport-sign"},
-				{group: "Symbols", subGroup: "warning"},
-				{group: "Symbols", subGroup: "zodiac"}
+				...emojiGroup({group: "Symbols", subGroup: "transport-sign"}),
+				...emojiGroup({group: "Symbols", subGroup: "warning"}),
+				...emojiGroup({group: "Symbols", subGroup: "zodiac"})
 			]
 		},
 		{
 			name: "Symbols",
 			symbol: "⚜",
 			content: [
-				{group: "Symbols", subGroup: "religion"},
-				{group: "Symbols", subGroup: "gender"},
-				{group: "Symbols", subGroup: "punctuation"},
-				{group: "Symbols", subGroup: "currency"},
-				{group: "Symbols", subGroup: "other-symbol"}
+				...emojiGroup({group: "Symbols", subGroup: "religion"}),
+				...emojiGroup({group: "Symbols", subGroup: "gender"}),
+				...emojiGroup({group: "Symbols", subGroup: "punctuation"}),
+				...emojiGroup({group: "Symbols", subGroup: "currency"}),
+				...emojiGroup({group: "Symbols", subGroup: "other-symbol"})
 			]
 		},
 		{
 			name: "Alphanum",
 			symbol: "🔤",
 			content: [
-				{group: "Symbols", subGroup: "alphanum"}
+				...emojiGroup({group: "Symbols", subGroup: "alphanum"})
 			]
 		},
 		{
 			name: "Geometric & keys",
 			symbol: "🔷",
 			content: [
-				{group: "Symbols", subGroup: "keycap"},
-				{group: "Symbols", subGroup: "geometric"},
-				{group: "Symbols", subGroup: "av-symbol"}
+				...emojiGroup({group: "Symbols", subGroup: "keycap"}),
+				...emojiGroup({group: "Symbols", subGroup: "geometric"}),
+				...emojiGroup({group: "Symbols", subGroup: "av-symbol"})
 			]
 		},
 		{
 			name: "Country Flags",
 			symbol: "🌐",
 			content: [
-				{group: "Flags", subGroup: "country-flag"}
+				...emojiGroup({group: "Flags", subGroup: "country-flag"})
 			]
 		},
 		{
 			name: "Flags",
 			symbol: "🏁",
 			content: [
-				{group: "Flags", subGroup: "subdivision-flag"},
-				{group: "Flags", subGroup: "flag"}
+				...emojiGroup({group: "Flags", subGroup: "subdivision-flag"}),
+				...emojiGroup({group: "Flags", subGroup: "flag"})
 			]
 		},
 		{
@@ -541,31 +541,6 @@ export const MAIN_BOARD: EmojiKeyboard = {
 				/* Yuan 2 */ "圓",
 			]
 		},
-		{
-			name: "Unicode Blocks",
-			symbol: "∪",
-			content: UnicodeData.blocks.filter(b => b.sub.some(s => s.char?.some(validCode))).map(block => {
-				const codes = block.sub.map(sub => sub.char).flat().filter(validCode);
-				let symbol = String.fromCodePoint(codes[0]);
-				for (const code of codes) {
-					const info = charInfo(code);
-					if (info?.ca?.startsWith(GeneralCategory.Letter)) {
-						symbol = String.fromCodePoint(code);
-						break;
-					}
-				}
-				return {
-					name: block.name,
-					symbol,
-					content: codes.map(c => String.fromCodePoint(c)),
-				} as EmojiKeyboard;
-			})
-		},
+		UnicodeKeyboard,
 	]
 };
-
-function validCode(code: number): boolean {
-	const info = charInfo(code);
-	if (!info) return false;
-	return !info.control && !info.reserved && !info.notACharacter;
-}

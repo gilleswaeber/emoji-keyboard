@@ -1,13 +1,12 @@
 import {h, VNode} from "preact";
 import {Layout} from "./layout";
 import {useContext, useEffect, useMemo} from "preact/hooks";
-import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
+import {EmojiKeyboard, KeyboardItem, MAIN_BOARD} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
 import {BackKey, ClusterKey, ConfigKey, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
-import {clusterName, emojiGroup} from "./unicodeInterface";
+import {clusterName} from "./unicodeInterface";
 import {fromEntries} from "./helpers";
-import {toCodePoints} from "./builder/builder";
 import {VK} from "./layout/vk";
 import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, MAX_PAGE_KEYS, SlottedKeys} from "./boards/utils";
@@ -23,20 +22,23 @@ function range(stop: number): number[] {
 
 /** A board has several pages of keys */
 export abstract class Board {
-	protected constructor(p: { name: string, symbol: string }) {
+	protected constructor(p: { name: string, statusName?: string | undefined, symbol: string }) {
 		this.name = p.name;
+		this.statusName = p.statusName ?? p.name;
 		this.symbol = p.symbol;
 	}
 
 	public readonly name: string;
+	public readonly statusName: string;
 	public readonly symbol: string;
 
 	public abstract Contents(p: { state: BoardState | undefined }): VNode;
 
 	private static fromKeys(
-		{name, symbol, keys, top, noRecent, byRow, byVK}:
+		{name, statusName, symbol, keys, top, noRecent, byRow, byVK}:
 			{
 				name: string,
+				statusName?: string | undefined,
 				symbol: string,
 				keys: Key[],
 				byRow?: Key[][],
@@ -45,7 +47,7 @@ export abstract class Board {
 				noRecent?: boolean
 			}): Board {
 		return new StaticBoard({
-			name, symbol, noRecent, keys: (layout) => {
+			name, statusName, symbol, noRecent, keys: (layout) => {
 				let freeKeys = new Set<SC>(layout.free);
 				const fixedKeys: SlottedKeys = {
 					[SC.Backtick]: top ? new ConfigKey() : new BackKey(),
@@ -159,19 +161,11 @@ export abstract class Board {
 		}
 	}
 
-	private static fromContents(contents: KeyboardContent[], p: { noRecent?: boolean }): Key[] {
+	private static fromContents(contents: KeyboardItem[], p: { noRecent?: boolean }): Key[] {
 		const keys: Key[] = [];
 		for (const item of contents) {
 			if (item === null || typeof item === 'string' || Array.isArray(item)) {
 				keys.push(this.fromItem(item, p));
-			} else if (item.group) {
-				keys.push(...emojiGroup(item).map(c => new ClusterKey(c, p)));
-			} else if (typeof item.from !== 'undefined') {
-				const from = typeof item.from === 'number' ? item.from : toCodePoints(item.from)[0];
-				const to = typeof item.to === 'number' ? item.to : toCodePoints(item.to)[0];
-				if (from && to && to > from) {
-					for (let i = from; i <= to; ++i) keys.push(new ClusterKey(String.fromCodePoint(i), p));
-				}
 			} else {
 				keys.push(this.fromItem(item, p));
 			}
@@ -185,7 +179,16 @@ export abstract class Board {
 		const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key, p)));
 		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)] as const) : []);
 
-		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, noRecent: k.noRecent, keys, byRow, byVK});
+		return this.fromKeys({
+			name: k.name,
+			statusName: k.statusName,
+			symbol: k.symbol,
+			top: k.top,
+			noRecent: k.noRecent,
+			keys,
+			byRow,
+			byVK
+		});
 	}
 
 	static clusterAlternates(cluster: string, variants: string[], k?: { noRecent?: boolean }) {
@@ -212,6 +215,7 @@ export class StaticBoard extends Board {
 	constructor(
 		{keys, ...p}: {
 			name: string;
+			statusName?: string;
 			symbol: string;
 			keys: (layout: Layout) => SlottedKeys[];
 			noRecent?: boolean;

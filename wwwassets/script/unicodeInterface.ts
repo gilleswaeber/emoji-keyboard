@@ -1,6 +1,7 @@
 import {ExtendedCharInformation, getUnicodeData} from "./builder/consolidated";
 import {toCodePoints} from "./builder/builder";
 import {IconFallback} from "./config/fallback";
+import {UnicodeEmojiGroup} from "./unidata";
 
 export const IgnoreForName = [
 	8205, // Zero Width Joiner,
@@ -39,7 +40,7 @@ export function clusterVariants(cluster: string): string[]|undefined {
 	return u.clusters[cluster]?.variants;
 }
 
-export function emojiGroup(g: {group: string, subGroup: string}): string[] {
+export function emojiGroup(g: UnicodeEmojiGroup): string[] {
 	return u.groups[g.group]?.sub[g.subGroup]?.clusters ?? [];
 }
 
