@@ -28,16 +28,27 @@ function clusterFullName(cluster: string): string {
 		.join(', ');
 }
 
-export function charInfo(code: number): ExtendedCharInformation|undefined {
+export function charInfo(code: number): ExtendedCharInformation | undefined {
 	return u.chars[code];
+}
+
+function charAliases(code: number): string[] {
+	const info = charInfo(code);
+	return [...info?.falias ?? [], ...info?.alias ?? []];
 }
 
 export function clusterName(cluster: string): string {
 	return u.clusters[cluster]?.name ?? clusterFullName(cluster);
 }
 
-export function clusterVariants(cluster: string): string[]|undefined {
+export function clusterVariants(cluster: string): string[] | undefined {
 	return u.clusters[cluster]?.variants;
+}
+
+export function clusterAliases(cluster: string): string[] {
+	const cp = toCodePoints(cluster);
+	if (cp.length === 1) return charAliases(cp[0]!);
+	return u.clusters[cluster]?.alias ?? [];
 }
 
 export function emojiGroup(g: UnicodeEmojiGroup): string[] {

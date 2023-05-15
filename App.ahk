@@ -153,6 +153,9 @@ class EmojiKeyboard {
         onOpenDevTools() {
             this.wv.OpenDevToolsWindow()
         }
+        onOpenLink(url) {
+			Run(url)
+		}
         onReady() {
             ; WebApp has interpreted the config and is fully initialized
             this.isInitialized := 2
@@ -265,7 +268,7 @@ class EmojiKeyboard {
             downloadUnicode: onDownloadUnicode,
         	hide: onHide,
             loaded: onLoaded,
-            openDevTools: onOpenDevTools,
+            openDevTools: onOpenDevTools, openLink: onOpenLink,
             ready: onReady, reload: ActReload,
             saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,
             setOpenAt: onSetOpenAt,

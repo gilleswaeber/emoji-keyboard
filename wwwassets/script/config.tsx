@@ -7,7 +7,7 @@ import {app, ConfigContext, LayoutContext} from "./appVar";
 import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./boards/utils";
 import {KeyName} from "./keys/base";
-import {ahkReload} from "./ahk";
+import {ahkOpenLink, ahkReload} from "./ahk";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 // noinspection JSUnusedLocalSymbols
@@ -101,6 +101,8 @@ export interface AppConfig {
 	preferredVariant: Record<string, string | undefined>;
 	hideAfterInput: boolean;
 	mainAfterInput: boolean;
+	showAliases: boolean;
+	showCharCodes: boolean;
 }
 
 export const DefaultOpacity = .90;
@@ -121,6 +123,8 @@ export const DefaultConfig: AppConfig = {
 	recent: [],
 	hideAfterInput: false,
 	mainAfterInput: false,
+	showAliases: false,
+	showCharCodes: false,
 };
 
 export const ThemesMap = new Map(Themes.map((t) => [t.name, t]));
@@ -298,9 +302,60 @@ const ConfigPages: ConfigPage[] = [
 				]),
 			}
 		}
+	},
+	{
+		name: "Details",
+		symbol: "🔬",
+		keys(config: AppConfig) {
+			return {
+				...mapKeysToSlots(FirstRow, [
+					new ConfigToggleKey({
+						active: config.showAliases,
+						statusName: `Show aliases in status bar: ${config.showAliases ? 'on' : 'off'}`,
+						action: () => app().updateConfig({showAliases: !config.showAliases}),
+						name: 'Aliases',
+						symbol: '📛',
+					}),
+					new ConfigToggleKey({
+						active: config.showCharCodes,
+						statusName: `Show char codes in status bar: ${config.showCharCodes ? 'on' : 'off'}`,
+						action: () => app().updateConfig({showCharCodes: !config.showCharCodes}),
+						name: 'Codes',
+						symbol: '🔢',
+					}),
+					new ConfigLabelKey('in Status Bar')
+				]),
+			}
+		}
+	},
+	{
+		name: "About",
+		symbol: "📜",
+		keys(config: AppConfig) {
+			return {
+				...mapKeysToSlots(FirstRow, [
+					new ConfigActionKey({
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard'),
+						name: 'GitHub',
+						symbol: '🐙'
+					}),
+					new ConfigActionKey({
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard/blob/master/LICENSE'),
+						name: 'MIT License',
+						symbol: '⚖️'
+					}),
+					new ConfigActionKey({
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard#dependencies'),
+						name: 'Deps',
+						statusName: 'Dependencies',
+						symbol: '🪃',
+					}),
+					new ConfigLabelKey('Emoji Keyboard by Gilles Waeber')
+				])
+			}
+		}
 	}
-]
-export const DefaultConfigPage = ConfigPages[0];
+];
 
 export class ConfigBoard extends Board {
 	constructor() {

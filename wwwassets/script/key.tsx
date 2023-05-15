@@ -3,14 +3,15 @@ import {ComponentChild, h} from "preact";
 import {Board} from "./board";
 import {app, ConfigBuildingContext, ConfigContext} from "./appVar";
 import {cl} from "./helpers";
-import {clusterName, clusterVariants} from "./unicodeInterface";
-import {makeBuild} from "./builder/builder";
+import {clusterAliases, clusterName, clusterVariants} from "./unicodeInterface";
+import {makeBuild, toCodePoints} from "./builder/builder";
 import {useContext} from "preact/hooks";
 import {SC} from "./layout/sc";
 import {VarSel15} from "./chars";
 import {Key, KeyName} from "./keys/base";
 import {Symbol} from "./keys/symbol";
 import {AppConfig} from "./config";
+import {toHex} from "./builder/consolidated";
 
 export class ConfigKey extends Key {
 	constructor() {
@@ -203,7 +204,14 @@ export class ClusterKey extends Key {
 	Contents = ({code}: { code: SC }) => {
 		const config = useContext(ConfigContext);
 		const cluster = this.alt ? config.preferredVariant[this.cluster] ?? this.cluster : this.cluster;
-		const status = this.alt ? clusterName(config.preferredVariant[this.cluster] ?? this.cluster) : this.name;
+		let status = this.alt ? clusterName(config.preferredVariant[this.cluster] ?? this.cluster) : this.name;
+		if (config.showAliases) {
+			const aliases = clusterAliases(this.cluster);
+			if (aliases.length) status += ` (${aliases.join(', ')})`;
+		}
+		if (config.showCharCodes) {
+			status += ` [${toCodePoints(cluster).map(toHex).join(' ')}]`
+		}
 		return <div
 			className={cl('key', this.keyType, {alt: this.alt, lu: this.lu, active: this.active})}
 			onClick={(e) => {

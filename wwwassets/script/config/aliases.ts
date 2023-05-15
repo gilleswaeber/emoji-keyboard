@@ -1034,4 +1034,8 @@ export const EXTEND_ALIASES: Record<string, string[]> = {
 	"⎮": ["\\intextender"],
 	"⌡": ["\\intbottom"],
 	"⎷": ["\\sqrtbottom"],
+
+	"円": ["yen"],
+	"元": ["yuan"],
+	"圓": ["yuan"],
 };
