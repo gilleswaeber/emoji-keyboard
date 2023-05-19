@@ -546,24 +546,34 @@ const MathSymbols: EmojiKeyboard = {
 			"∃", // \exists(p)	at least one exists
 			"∄", // \nexists(a)	negated exists
 		],
-		[
-			"∅", // \varnothing(a) /emptyset	circle, slash
-			"⌀", // \diameter	diameter sign
-			"⦰", // \revemptyset	reversed empty set
-			"⦱", // \emptysetobar	empty set with overbar
-			"⦲", // \emptysetocirc	empty set with small circle above
-			"⦳", // \emptysetoarr	empty set with right arrow above
-			"⦴", // \emptysetoarrl	empty set with left arrow above
-		],
+		"ℵ",
+		"ℶ",
+		"∅",
+		{
+			name: "Var Empty Set",
+			symbol: "⦳",
+			content: [
+				"⌀",
+				"⦰",
+				"⦱",
+				"⦲",
+				"⦳",
+				"⦴",
+			],
+		},
 		"∆", // \increment	laplacian (delta; nabla^2)
 		"∎", // \QED	end of proof
-		[
-			"∞", // \infty(p)	infinity
-			"⧜", // \iinfin	incomplete infinity
-			"⧝", // \tieinfty	tie over infinity
-			"⧞", // \nvinfty	infinity negated with vertical bar
-			"♾", // \acidfree	permanent paper sign
-		],
+		"∞",
+		{
+			name: "Var Infinity",
+			symbol: "⧞",
+			content: [
+				"⧜",
+				"⧝",
+				"⧞",
+				"♾",
+			],
+		},
 		{
 			name: "Angle Symbols",
 			symbol: "∡",
@@ -625,16 +635,14 @@ const MathSymbols: EmojiKeyboard = {
 		"␢", // \blanksymbol	blank symbol
 		"␣", // \mathvisiblespace	open box
 		"┆", // \bdtriplevdash	doubly broken vert
-		[
-			"▀", // \blockuphalf	upper half block
-			"▄", // \blocklowhalf	lower half block
-			"█", // \blockfull	full block
-			"▌", // \blocklefthalf	left half block
-			"▐", // \blockrighthalf	right half block
-			"░", // \blockqtrshaded	25% shaded block
-			"▒", // \blockhalfshaded	50% shaded block
-			"▓", // \blockthreeqtrshaded	75% shaded block
-		],
+		"▀",
+		"▄",
+		"█",
+		"▌",
+		"▐",
+		"░",
+		"▒",
+		"▓",
 	]
 };
 const MathShapes: EmojiKeyboard = {
