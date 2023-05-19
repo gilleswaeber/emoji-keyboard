@@ -1,10 +1,11 @@
 import {SoftHyphen, ZeroWidthJoiner} from "../chars";
-import {VK} from "../layout/vk";
+import {VK, VKAbbr} from "../layout/vk";
 import {ArrowsKeyboard} from "./arrows";
 import {MathKeyboard} from "./math";
 import {emojiGroup} from "../unicodeInterface";
 import {UnicodeKeyboard} from "./unicodeBoard";
 import {toCodePoints} from "../builder/builder";
+import {ExtendedLatin} from "./extendedLatin";
 
 function unicodeRange(from: string | number, to: string | number): string[] {
 	const result: string[] = [];
@@ -39,7 +40,7 @@ export type EmojiKeyboard = {
 	/** Place the items on the free keys, paging when necessary */
 	content?: KeyboardItem[];
 	/** Place the items according the Virtual Key code i.e. based on the symbols on the keys */
-	byVK?: { [vk in VK]?: KeyboardItem }
+	byVK?: { [vk in VK | VKAbbr]?: KeyboardItem }
 	/** Place the items by row */
 	byRow?: KeyboardItem[][]
 }
@@ -342,32 +343,32 @@ export const MAIN_BOARD: EmojiKeyboard = {
 				"∇",
 			],
 			byVK: {
-				[VK.A]: ["α", "Α"],
-				[VK.B]: ["β", "Β"],
-				[VK.C]: ["ψ", "Ψ"],
-				[VK.D]: ["δ", "Δ"],
-				[VK.E]: ["ε", "Ε"],
-				[VK.F]: ["φ", "Φ"],
-				[VK.G]: ["γ", "Γ"],
-				[VK.H]: ["η", "Η"],
-				[VK.I]: ["ι", "Ι"],
-				[VK.J]: ["ξ", "Ξ"],
-				[VK.K]: ["κ", "Κ"],
-				[VK.L]: ["λ", "Λ"],
-				[VK.M]: ["μ", "Μ"],
-				[VK.N]: ["ν", "Ν"],
-				[VK.O]: ["ο", "Ο"],
-				[VK.P]: ["π", "Π"],
-				[VK.Q]: ";",
-				[VK.R]: ["ρ", "Ρ"],
-				[VK.S]: ["σ", "Σ"],
-				[VK.T]: ["τ", "Τ"],
-				[VK.U]: ["θ", "Θ"],
-				[VK.V]: ["ω", "Ω"],
-				[VK.W]: "ς",
-				[VK.X]: ["χ", "Χ"],
-				[VK.Y]: ["υ", "Υ"],
-				[VK.Z]: ["ζ", "Ζ"],
+				a: ["α", "Α"],
+				b: ["β", "Β"],
+				c: ["ψ", "Ψ"],
+				d: ["δ", "Δ"],
+				e: ["ε", "Ε"],
+				f: ["φ", "Φ"],
+				g: ["γ", "Γ"],
+				h: ["η", "Η"],
+				i: ["ι", "Ι"],
+				j: ["ξ", "Ξ"],
+				k: ["κ", "Κ"],
+				l: ["λ", "Λ"],
+				m: ["μ", "Μ"],
+				n: ["ν", "Ν"],
+				o: ["ο", "Ο"],
+				p: ["π", "Π"],
+				q: ";",
+				r: ["ρ", "Ρ"],
+				s: ["σ", "Σ"],
+				t: ["τ", "Τ"],
+				u: ["θ", "Θ"],
+				v: ["ω", "Ω"],
+				w: "ς",
+				x: ["χ", "Χ"],
+				y: ["υ", "Υ"],
+				z: ["ζ", "Ζ"],
 				[VK.Period]: "·",
 			}
 		},
@@ -452,7 +453,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 				]
 			],
 		},
-		MathKeyboard,
+		ExtendedLatin,
 		ArrowsKeyboard,
 		{
 			name: `Typo${SoftHyphen}graphy`,
@@ -541,6 +542,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 				/* Yuan 2 */ "圓",
 			]
 		},
+		MathKeyboard,
 		UnicodeKeyboard,
 	]
 };
