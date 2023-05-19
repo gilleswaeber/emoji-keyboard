@@ -7,7 +7,7 @@ import {BackKey, ClusterKey, ConfigKey, KeyboardKey, PageKey, RecentKey, SearchK
 import memoizeOne from "memoize-one";
 import {clusterName} from "./unicodeInterface";
 import {fromEntries} from "./helpers";
-import {VK} from "./layout/vk";
+import {VK, VKAbbr, vkLookup} from "./layout/vk";
 import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, MAX_PAGE_KEYS, SlottedKeys} from "./boards/utils";
 import {BlankKey, Key} from "./keys/base";
@@ -42,7 +42,7 @@ export abstract class Board {
 				symbol: string,
 				keys: Key[],
 				byRow?: Key[][],
-				byVK?: { [vk in VK]?: Key },
+				byVK?: { [vk in VK | VKAbbr]?: Key },
 				top?: boolean,
 				noRecent?: boolean
 			}): Board {
@@ -70,17 +70,19 @@ export abstract class Board {
 					}
 				}
 				if (byVK) {
-					const vkPlaced = new Set<VK>();
+					const vkPlaced = new Set<string>();
 					for (const sc of freeKeys) {
 						const vk = layout.sys[sc].vk;
-						if (byVK[vk]) {
-							fixedKeys[sc] = byVK[vk];
-							vkPlaced.add(vk);
-							freeKeys.delete(sc);
+						for (const k of vkLookup(vk)) {
+							if (byVK[k]) {
+								fixedKeys[sc] = byVK[k];
+								vkPlaced.add(k.toString());
+								freeKeys.delete(sc);
+							}
 						}
 					}
-					for (const [vk, key] of Object.entries(byVK)) {
-						if (!vkPlaced.has(parseInt(vk, 10))) notPlaceable.push(key);
+					for (const [k, key] of Object.entries(byVK)) {
+						if (!vkPlaced.has(k)) notPlaceable.push(key);
 					}
 				}
 				if (notPlaceable.length) keys.unshift(...notPlaceable);
