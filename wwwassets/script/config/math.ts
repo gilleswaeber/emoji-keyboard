@@ -73,9 +73,9 @@ const MathGroups = {
 		"⟮", // \lgroup(p)	mathematical left flattened parenthesis
 		"⟯", // \rgroup(p)	mathematical right flattened parenthesis
 		"❲", // \lbrbrak	light left tortoise shell bracket ornament
-		"⦘", // \rblkbrbrak	right black tortoise shell bracket
-		"⦗", // \lblkbrbrak	left black tortoise shell bracket
 		"❳", // \rbrbrak	light right tortoise shell bracket ornament
+		"⦗", // \lblkbrbrak	left black tortoise shell bracket
+		"⦘", // \rblkbrbrak	right black tortoise shell bracket
 		"⦋", // \lbrackubar	left square bracket with underbar
 		"⦌", // \rbrackubar	right square bracket with underbar
 		"⦍", // \lbrackultick	left square bracket with tick in top corner

@@ -141,7 +141,7 @@ const ConfigPages: ConfigPage[] = [
 	{
 		name: "General",
 		symbol: "🛠️",
-		keys(config: AppConfig) {
+		keys(config: AppConfig, l) {
 			return {
 				[SC.Q]: new ConfigToggleKey({
 					active: config.isoKeyboard,
@@ -152,7 +152,7 @@ const ConfigPages: ConfigPage[] = [
 				}),
 				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (<KeyName code={SC.LessThan}/> between <KeyName
 					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
-				...mapKeysToSlots(SecondRow, [
+				...mapKeysToSlots(l.freeRows[2], [
 					// 	...SkinTones.map((s, i) => new ConfigActionKey({
 					// 		active: i == config.skinTone,
 					// 		action() {
@@ -171,7 +171,19 @@ const ConfigPages: ConfigPage[] = [
 						symbol: "🥷"
 					})
 					// 	new ConfigLabelKey("Default skin tone")
-				])
+				]),
+				...mapKeysToSlots(l.freeRows[3], [
+					new ConfigActionKey({
+						name: 'Fallback Fonts',
+						symbol: '🔣',
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard#fallback-fonts'),
+					}),
+					new ConfigActionKey({
+						name: 'Font Folder',
+						symbol: '📂',
+						action: () => ahkOpenLink('.\\wwwassets\\fallback_fonts'),
+					}),
+				]),
 			}
 		}
 	},
@@ -362,7 +374,7 @@ export class ConfigBoard extends Board {
 		super({name: '__config', symbol: '🛠️'});
 	}
 
-	Contents({state}: { state: BoardState | undefined }) {
+	Contents = ({state}: { state: BoardState | undefined }) => {
 		const page = Math.min(state?.page ?? 0, ConfigPages.length - 1);
 		const config = useContext(ConfigContext);
 		const l = useContext(LayoutContext);

@@ -27,12 +27,17 @@ function unicodeRange(from: string | number, to: string | number): string[] {
  * - a keyboard key (can be nested)
  */
 export type KeyboardItem = string | null | string[] | EmojiKeyboard;
+export type Sprite = {
+	map: string;
+	id: string;
+};
+export type Symbol = string;
 export type EmojiKeyboard = {
 	/** Name must be unique */
 	name: string;
 	/** Name as shown in the status bar */
 	statusName?: string;
-	symbol: string;
+	symbol: Symbol;
 	/** Only set to true on the main keyboard */
 	top?: true;
 	/** Do not add to recently used */
@@ -43,6 +48,11 @@ export type EmojiKeyboard = {
 	byVK?: { [vk in VK | VKAbbr]?: KeyboardItem }
 	/** Place the items by row */
 	byRow?: KeyboardItem[][]
+};
+export type Cluster = {
+	cluster: string;
+	name: string;
+	symbol?: Symbol;
 }
 export const MAIN_BOARD: EmojiKeyboard = {
 	name: 'Main Board',

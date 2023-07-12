@@ -6,6 +6,8 @@
 /wwwassets/script/dist/*
 !/wwwassets/script/dist/script.dist.js
 !/wwwassets/script/dist/unidata.dist.js
+/wwwassets/fallback_fonts/*
+!/wwwassets/fallback_fonts/.gitkeep
 *.js.map
 # IDE-specific
 .idea
