@@ -1,7 +1,7 @@
 import {h, VNode} from "preact";
 import {Layout} from "./layout";
 import {useContext, useEffect, useMemo} from "preact/hooks";
-import {EmojiKeyboard, KeyboardItem, MAIN_BOARD} from "./config/boards";
+import {EmojiKeyboard, isCluster, KeyboardItem, KeyCap, MAIN_BOARD, PluginData} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
 import {BackKey, ClusterKey, ConfigKey, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
@@ -12,8 +12,15 @@ import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, MAX_PAGE_KEYS, SlottedKeys} from "./boards/utils";
 import {BlankKey, Key} from "./keys/base";
 
-export function getMainBoard(): Board {
-	return Board.fromEmoji(MAIN_BOARD);
+export function getMainBoard(plugins: PluginData[]): Board {
+	const b = {...MAIN_BOARD};
+	for (const p of plugins) {
+		if (p.boards) {
+			b.content = [...(b.content ?? []), ...p.boards];
+		}
+	}
+	console.log(b);
+	return Board.fromEmoji(b);
 }
 
 function range(stop: number): number[] {
@@ -22,7 +29,7 @@ function range(stop: number): number[] {
 
 /** A board has several pages of keys */
 export abstract class Board {
-	protected constructor(p: { name: string, statusName?: string | undefined, symbol: string }) {
+	protected constructor(p: { name: string, statusName?: string | undefined, symbol: KeyCap }) {
 		this.name = p.name;
 		this.statusName = p.statusName ?? p.name;
 		this.symbol = p.symbol;
@@ -30,7 +37,7 @@ export abstract class Board {
 
 	public readonly name: string;
 	public readonly statusName: string;
-	public readonly symbol: string;
+	public readonly symbol: KeyCap;
 
 	public abstract Contents(p: { state: BoardState | undefined }): VNode;
 
@@ -39,7 +46,7 @@ export abstract class Board {
 			{
 				name: string,
 				statusName?: string | undefined,
-				symbol: string,
+				symbol: KeyCap,
 				keys: Key[],
 				byRow?: Key[][],
 				byVK?: { [vk in VK | VKAbbr]?: Key },
@@ -158,6 +165,8 @@ export abstract class Board {
 				return new ClusterKey(item[0], {variants: item, ...p});
 			}
 			return BlankKey;
+		} else if (isCluster(item)) {
+			return new ClusterKey(item.cluster, {symbol: item.symbol, name: item.name, noRecent: true});
 		} else {
 			return new KeyboardKey(Board.fromEmoji(item));
 		}
@@ -218,7 +227,7 @@ export class StaticBoard extends Board {
 		{keys, ...p}: {
 			name: string;
 			statusName?: string;
-			symbol: string;
+			symbol: KeyCap;
 			keys: (layout: Layout) => SlottedKeys[];
 			noRecent?: boolean;
 		}

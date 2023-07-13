@@ -67,6 +67,11 @@ Boards for scripts other than Latin and monotonic Greek are not provided either 
 Additionally, math symbols and aliases were manually imported from the [unicode-math](https://wspr.io/unicode-math/)
 XeLaTeX/LuaLaTeX package and the [UTN #28: UnicodeMath](https://www.unicode.org/notes/tn28/) specification.
 
+See also:
+
+- [🔣 Fallback Fonts](https://github.com/gilleswaeber/emoji-keyboard/wiki/Fallback-Fonts)
+- [🪇 Plugins](https://github.com/gilleswaeber/emoji-keyboard/wiki/Plugins)
+
 Dependencies
 ------------
 AutoHotkey libs:
@@ -86,24 +91,3 @@ Emoji Fonts:
 - <del>[Twemoji](https://github.com/twitter/twemoji), Twitter, CC-BY 4.0</del>
   , removed, [Unicode 15 support not released](https://github.com/twitter/twemoji/issues/570)
 
-Fallback Fonts
---------------
-Full Emoji coverage is provided with the built-in fonts. For additional characters, some system fonts will be used by
-the webview. Additional fonts can be added in the `wwwassets\fallback_fonts` folder. They are automatically loaded when
-the keyboard is shown again and used in alphabetical order.
-
-Some fonts with an extended Unicode coverage (choose the TTF/OTF variants):
-
-- [Code2001](https://www.code2001.com/), extended coverage
-- [GNU Unifont](http://unifoundry.com/unifont/index.html), bitmap, significant coverage, incl. CSUR
-- [UNSCII](http://viznut.fi/unscii/), pseudographic characters
-- [Last Resort](https://github.com/unicode-org/last-resort-font), placeholder glyphs that indicate the block, HE variant
-  won't work
-
-Additional resources:
-
-- [WAZU JAPAN's Gallery of Unicode Fonts](http://www.wazu.jp/), fonts by script
-- [FileFormat.info font list](https://www.fileformat.info/resource/software/font.htm)
-- [ConScript Unicode Registry](https://www.evertype.com/standards/csur/)
-  and [Under-ConScript Unicode Registry](https://www.kreativekorp.com/ucsur/), assignment of blocks in the Private Use
-  Area for constructed/artificial scripts

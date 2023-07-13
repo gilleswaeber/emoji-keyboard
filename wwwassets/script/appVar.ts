@@ -5,6 +5,7 @@ import type {AppConfig} from "./config";
 import {AnsiLayout, Layout, SystemLayoutUS} from "./layout";
 import {Version} from "./osversion";
 import {SlottedKeys} from "./boards/utils";
+import {PluginData} from "./config/boards";
 
 export interface AppActions {
 	keyHandlers: SlottedKeys;
@@ -46,3 +47,4 @@ export const OSContext = createContext<Version>(new Version('99'));
 export const ConfigContext = createContext<AppConfig>(undefined as any);
 export const ConfigBuildingContext = createContext<boolean>(true);
 export const SearchContext = createContext<string>('');
+export const PluginsContext = createContext<PluginData[]>([]);

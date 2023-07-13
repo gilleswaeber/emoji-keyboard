@@ -12,6 +12,7 @@ import {Key, KeyName} from "./keys/base";
 import {Symbol} from "./keys/symbol";
 import {AppConfig} from "./config";
 import {toHex} from "./builder/consolidated";
+import {KeyCap} from "./config/boards";
 
 export class ConfigKey extends Key {
 	constructor() {
@@ -165,12 +166,12 @@ export class ClusterKey extends Key {
 	private readonly lu: boolean;
 	private readonly upperName: string;
 
-	constructor(private cluster: string, p?: { variants?: string[], variantOf?: string, noRecent?: boolean }) {
-		const name = clusterName(cluster);
+	constructor(private cluster: string, p?: { variants?: string[], variantOf?: string, noRecent?: boolean, symbol?: KeyCap, name?: string }) {
+		const name = p?.name ?? clusterName(cluster);
 		const variants = p?.variants ?? clusterVariants(cluster);
 		super({
 			name,
-			symbol: cluster,
+			symbol: p?.symbol ?? cluster,
 			keyType: "char",
 		});
 		this.alt = !!variants && variants.length > 2;
@@ -204,6 +205,7 @@ export class ClusterKey extends Key {
 	Contents = ({code}: { code: SC }) => {
 		const config = useContext(ConfigContext);
 		const cluster = this.alt ? config.preferredVariant[this.cluster] ?? this.cluster : this.cluster;
+		const symbol = this.alt ? cluster : this.symbol;
 		let status = this.alt ? clusterName(config.preferredVariant[this.cluster] ?? this.cluster) : this.name;
 		if (config.showAliases) {
 			const aliases = clusterAliases(this.cluster);
@@ -227,7 +229,7 @@ export class ClusterKey extends Key {
 		>
 			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
 			<div className="uname">{this.upperName}</div>
-			<Symbol symbol={cluster}/>
+			<Symbol symbol={symbol}/>
 		</div>;
 	}
 }

@@ -4,6 +4,7 @@ import {app, LayoutContext} from "../appVar";
 import {Fragment, h} from "preact";
 import {cl} from "../helpers";
 import {Symbol} from "./symbol";
+import {KeyCap} from "../config/boards";
 
 export function KeyName({code}: { code: SC }) {
 	const layout = useContext(LayoutContext);
@@ -16,7 +17,7 @@ export class Key {
 	public readonly name: string;
 	/** Name used in the title bar */
 	protected readonly statusName: string;
-	public readonly symbol: string;
+	public readonly symbol: KeyCap;
 	public readonly active: boolean;
 	public readonly blank: boolean;
 	public readonly keyType: KeyType;
@@ -28,7 +29,7 @@ export class Key {
 		p: {
 			name: string,
 			statusName?: string,
-			symbol: string,
+			symbol: KeyCap,
 			active?: boolean,
 			clickAlwaysAlternate?: boolean,
 			keyNamePrefix?: string,

@@ -176,12 +176,22 @@ const ConfigPages: ConfigPage[] = [
 					new ConfigActionKey({
 						name: 'Fallback Fonts',
 						symbol: '🔣',
-						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard#fallback-fonts'),
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard/wiki/Fallback-Fonts'),
 					}),
 					new ConfigActionKey({
 						name: 'Font Folder',
 						symbol: '📂',
 						action: () => ahkOpenLink('.\\wwwassets\\fallback_fonts'),
+					}),
+					new ConfigActionKey({
+						name: 'Plugins',
+						symbol: '🪇',
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard/wiki/Plugins'),
+					}),
+					new ConfigActionKey({
+						name: 'Plugins Folder',
+						symbol: '📂',
+						action: () => ahkOpenLink('.\\wwwassets\\plugins'),
 					}),
 				]),
 			}

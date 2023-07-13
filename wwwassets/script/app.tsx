@@ -25,6 +25,7 @@ import {
 	ConfigContext,
 	LayoutContext,
 	OSContext,
+	PluginsContext,
 	SearchContext,
 	setApp
 } from "./appVar";
@@ -34,6 +35,7 @@ import {SearchBoard} from "./searchView";
 import {BoardState, SlottedKeys} from "./boards/utils";
 import {RecentBoard} from "./recentsView";
 import {increaseRecent} from "./recentsActions";
+import {PluginData} from "./config/boards";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -56,6 +58,7 @@ type AppState = {
 	parentBoards: { [mode in AppMode]: Board[] };
 	/** building in progress */
 	building: boolean;
+	plugins: PluginData[];
 }
 
 class App extends Component<{}, AppState> implements AppActions {
@@ -68,13 +71,14 @@ class App extends Component<{}, AppState> implements AppActions {
 		boardState: {},
 		os: new Version('99'),
 		currentBoard: {
-			[AppMode.MAIN]: getMainBoard(),
+			[AppMode.MAIN]: getMainBoard([]),
 			[AppMode.SEARCH]: new SearchBoard(),
 			[AppMode.SETTINGS]: new ConfigBoard(),
 			[AppMode.RECENTS]: new RecentBoard(),
 		},
 		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
 		building: false,
+		plugins: [],
 	}
 
 	constructor(props: {}) {
@@ -110,6 +114,9 @@ class App extends Component<{}, AppState> implements AppActions {
 					case 'os':
 						this.setOS(rest);
 						break;
+					case 'plugin':
+						this.loadPlugin(rest);
+						break;
 					case 'done':
 					case 'error':
 						console.log("async callback", command, rest);
@@ -134,11 +141,13 @@ class App extends Component<{}, AppState> implements AppActions {
 		return <LayoutContext.Provider value={l}>
 			<OSContext.Provider value={s.os}>
 				<ConfigContext.Provider value={s.config}>
-					<ConfigBuildingContext.Provider value={s.building}>
-						<SearchContext.Provider value={s.searchText}>
-							<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
-						</SearchContext.Provider>
-					</ConfigBuildingContext.Provider>
+					<PluginsContext.Provider value={s.plugins}>
+						<ConfigBuildingContext.Provider value={s.building}>
+							<SearchContext.Provider value={s.searchText}>
+								<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
+							</SearchContext.Provider>
+						</ConfigBuildingContext.Provider>
+					</PluginsContext.Provider>
 				</ConfigContext.Provider>
 			</OSContext.Provider>
 		</LayoutContext.Provider>;
@@ -337,6 +346,25 @@ class App extends Component<{}, AppState> implements AppActions {
 		if (this.state.config.mainAfterInput) {
 			if (this.state.mode == AppMode.RECENTS || this.state.mode == AppMode.MAIN) this.main();
 		}
+	}
+
+	private loadPlugin(rest: string) {
+		const data = JSON.parse(rest) as PluginData;
+		this.setState((s) => {
+			const plugins = [...s.plugins, data];
+			const mainBoard = getMainBoard(plugins);
+			return {
+				plugins,
+				currentBoard: {
+					...s.currentBoard,
+					[AppMode.MAIN]: mainBoard,
+				},
+				parentBoards: {
+					...s.parentBoards,
+					[AppMode.MAIN]: [],
+				}
+			}
+		});
 	}
 }
 

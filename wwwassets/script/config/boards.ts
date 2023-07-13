@@ -26,18 +26,18 @@ function unicodeRange(from: string | number, to: string | number): string[] {
  * - array of 3+ symbols: least-recently used symbol on left click, other symbols on right click
  * - a keyboard key (can be nested)
  */
-export type KeyboardItem = string | null | string[] | EmojiKeyboard;
-export type Sprite = {
-	map: string;
-	id: string;
+export type KeyboardItem = string | null | string[] | EmojiKeyboard | Cluster;
+export type SpriteRef = {
+	spriteMap: string;
+	sprite: string;
 };
-export type Symbol = string;
+export type KeyCap = string | SpriteRef;
 export type EmojiKeyboard = {
 	/** Name must be unique */
 	name: string;
 	/** Name as shown in the status bar */
 	statusName?: string;
-	symbol: Symbol;
+	symbol: KeyCap;
 	/** Only set to true on the main keyboard */
 	top?: true;
 	/** Do not add to recently used */
@@ -52,8 +52,28 @@ export type EmojiKeyboard = {
 export type Cluster = {
 	cluster: string;
 	name: string;
-	symbol?: Symbol;
+	symbol?: KeyCap;
+};
+
+export function isCluster(item: KeyboardItem): item is Cluster {
+	return typeof item === 'object' && (item?.hasOwnProperty('cluster') ?? false);
 }
+
+export type SpriteMap = {
+	path: string,
+	width: number,
+	height: number,
+	cols: number;
+	rows: number;
+	index: Record<string, { row: number, col: number }>
+}
+export type PluginData = {
+	name: string;
+	symbol: KeyCap;
+	boards?: EmojiKeyboard[];
+	spriteMaps?: Record<string, SpriteMap>;
+}
+
 export const MAIN_BOARD: EmojiKeyboard = {
 	name: 'Main Board',
 	top: true,

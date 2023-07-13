@@ -130,6 +130,13 @@ class EmojiKeyboard {
             } else {
                 this.wv.PostWebMessageAsString("defaultConfig,")
             }
+            ; Load plugins
+            Loop Files "wwwassets/plugins/*.json", "FR"
+            {
+                ; read file and send contents
+                contents := FileRead(A_LoopFilePath)
+                this.wv.PostWebMessageAsString('plugin,' contents)
+            }
             this.wvKeyboard := ""
             CheckLayout()
         }

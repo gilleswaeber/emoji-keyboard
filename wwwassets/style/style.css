@@ -170,11 +170,19 @@ main > section{
 	box-sizing: border-box;
 }
 
-.searchpane input{
+.searchpane input {
 	display: block;
 	height: 100%;
 	border: none;
 	width: 100%;
 	box-sizing: border-box;
 	padding: 1vw;
+}
+
+div.sprite {
+	margin: 0 auto;
+	height: 3.6vw;
+	width: 3.6vw;
+	position: relative;
+	top: .3vw;
 }

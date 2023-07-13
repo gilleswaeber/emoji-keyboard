@@ -8,6 +8,8 @@
 !/wwwassets/script/dist/unidata.dist.js
 /wwwassets/fallback_fonts/*
 !/wwwassets/fallback_fonts/.gitkeep
+/wwwassets/plugins/*
+!/wwwassets/plugins/.gitkeep
 *.js.map
 # IDE-specific
 .idea
