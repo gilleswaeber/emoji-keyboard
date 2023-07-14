@@ -73,9 +73,9 @@ const MathGroups = {
 		"⟮", // \lgroup(p)	mathematical left flattened parenthesis
 		"⟯", // \rgroup(p)	mathematical right flattened parenthesis
 		"❲", // \lbrbrak	light left tortoise shell bracket ornament
-		"⦘", // \rblkbrbrak	right black tortoise shell bracket
-		"⦗", // \lblkbrbrak	left black tortoise shell bracket
 		"❳", // \rbrbrak	light right tortoise shell bracket ornament
+		"⦗", // \lblkbrbrak	left black tortoise shell bracket
+		"⦘", // \rblkbrbrak	right black tortoise shell bracket
 		"⦋", // \lbrackubar	left square bracket with underbar
 		"⦌", // \rbrackubar	right square bracket with underbar
 		"⦍", // \lbrackultick	left square bracket with tick in top corner
@@ -323,7 +323,6 @@ const MathBinary: EmojiKeyboard = {
 			content: [
 				"⨹", // \triangleplus	plus sign in triangle
 				"⨺", // \triangleminus	minus sign in triangle
-				"⟠", // \lozengeminus	lozenge divided by horizontal rule
 				"◬", // \trianglecdot	triangle with centered dot
 				"⨻", // \triangletimes	multiplication sign in triangle
 			]
@@ -547,25 +546,34 @@ const MathSymbols: EmojiKeyboard = {
 			"∃", // \exists(p)	at least one exists
 			"∄", // \nexists(a)	negated exists
 		],
-		[
-			"∅", // \varnothing(a) /emptyset	circle, slash
-			"⌀", // \diameter	diameter sign
-			"⦰", // \revemptyset	reversed empty set
-			"⦱", // \emptysetobar	empty set with overbar
-			"⦲", // \emptysetocirc	empty set with small circle above
-			"⦳", // \emptysetoarr	empty set with right arrow above
-			"⦴", // \emptysetoarrl	empty set with left arrow above
-		],
+		"ℵ",
+		"ℶ",
+		"∅",
+		{
+			name: "Var Empty Set",
+			symbol: "⦳",
+			content: [
+				"⌀",
+				"⦰",
+				"⦱",
+				"⦲",
+				"⦳",
+				"⦴",
+			],
+		},
 		"∆", // \increment	laplacian (delta; nabla^2)
 		"∎", // \QED	end of proof
-		"√", // \surd(p)	radical
-		[
-			"∞", // \infty(p)	infinity
-			"⧜", // \iinfin	incomplete infinity
-			"⧝", // \tieinfty	tie over infinity
-			"⧞", // \nvinfty	infinity negated with vertical bar
-			"♾", // \acidfree	permanent paper sign
-		],
+		"∞",
+		{
+			name: "Var Infinity",
+			symbol: "⧞",
+			content: [
+				"⧜",
+				"⧝",
+				"⧞",
+				"♾",
+			],
+		},
 		{
 			name: "Angle Symbols",
 			symbol: "∡",
@@ -622,23 +630,19 @@ const MathSymbols: EmojiKeyboard = {
 		"⎶", // \bbrktbrk	bottom square bracket over top square bracket
 		"⎸", // \lvboxline	left vertical box line
 		"⎹", // \rvboxline	right vertical box line
-		"⏠", // \obrbrak	top tortoise shell bracket (mathematical use)
-		"⏡", // \ubrbrak	bottom tortoise shell bracket (mathematical use)
 		"⏤", // \strns	straightness
 		"⏧", // \elinters	electrical intersection
 		"␢", // \blanksymbol	blank symbol
 		"␣", // \mathvisiblespace	open box
 		"┆", // \bdtriplevdash	doubly broken vert
-		[
-			"▀", // \blockuphalf	upper half block
-			"▄", // \blocklowhalf	lower half block
-			"█", // \blockfull	full block
-			"▌", // \blocklefthalf	left half block
-			"▐", // \blockrighthalf	right half block
-			"░", // \blockqtrshaded	25% shaded block
-			"▒", // \blockhalfshaded	50% shaded block
-			"▓", // \blockthreeqtrshaded	75% shaded block
-		],
+		"▀",
+		"▄",
+		"█",
+		"▌",
+		"▐",
+		"░",
+		"▒",
+		"▓",
 	]
 };
 const MathShapes: EmojiKeyboard = {

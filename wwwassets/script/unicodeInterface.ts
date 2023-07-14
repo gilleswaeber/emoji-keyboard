@@ -1,6 +1,7 @@
 import {ExtendedCharInformation, getUnicodeData} from "./builder/consolidated";
 import {toCodePoints} from "./builder/builder";
 import {IconFallback} from "./config/fallback";
+import {UnicodeEmojiGroup} from "./unidata";
 
 export const IgnoreForName = [
 	8205, // Zero Width Joiner,
@@ -13,7 +14,7 @@ export const UnicodeData = u;
 
 function charName(code: number): string {
 	if (code >= 19968 && code <= 40956) {
-		return `CJK UNIFIED IDEOGRAPH-${code.toString(16)}`;
+		return `CJK Unified Ideograph ${code.toString(16)}`;
 	} else {
 		return u.chars[code]?.n ?? `U+${code.toString(16)}`;
 	}
@@ -27,26 +28,37 @@ function clusterFullName(cluster: string): string {
 		.join(', ');
 }
 
-export function charInfo(code: number): ExtendedCharInformation|undefined {
+export function charInfo(code: number): ExtendedCharInformation | undefined {
 	return u.chars[code];
+}
+
+function charAliases(code: number): string[] {
+	const info = charInfo(code);
+	return [...info?.falias ?? [], ...info?.alias ?? []];
 }
 
 export function clusterName(cluster: string): string {
 	return u.clusters[cluster]?.name ?? clusterFullName(cluster);
 }
 
-export function clusterVariants(cluster: string): string[]|undefined {
+export function clusterVariants(cluster: string): string[] | undefined {
 	return u.clusters[cluster]?.variants;
 }
 
-export function emojiGroup(g: {group: string, subGroup: string}): string[] {
+export function clusterAliases(cluster: string): string[] {
+	const cp = toCodePoints(cluster);
+	if (cp.length === 1) return charAliases(cp[0]!);
+	return u.clusters[cluster]?.alias ?? [];
+}
+
+export function emojiGroup(g: UnicodeEmojiGroup): string[] {
 	return u.groups[g.group]?.sub[g.subGroup]?.clusters ?? [];
 }
 
 export function requiredOS(cluster: string): string {
 	const info = u.clusters[cluster];
 	for (const f of IconFallback) {
-		if (info && f.version && info.version >= f.version) return f.windows;
+		if (info && f.version && info.version && info.version >= f.version) return f.windows;
 		if (f.clusters && f.clusters.has(cluster)) return f.windows;
 		if (f.ranges) for (const r of f.ranges) {
 			if (cluster >= r.from && cluster <= r.to) return f.windows;

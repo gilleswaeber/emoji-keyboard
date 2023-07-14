@@ -4,6 +4,7 @@ import {app, LayoutContext} from "../appVar";
 import {Fragment, h} from "preact";
 import {cl} from "../helpers";
 import {Symbol} from "./symbol";
+import {KeyCap} from "../config/boards";
 
 export function KeyName({code}: { code: SC }) {
 	const layout = useContext(LayoutContext);
@@ -14,50 +15,41 @@ export type KeyType = "action" | "empty" | "char" | "back";
 
 export class Key {
 	public readonly name: string;
-	public readonly upperName: string;
 	/** Name used in the title bar */
-	private readonly statusName: string;
-	public readonly symbol: string;
+	protected readonly statusName: string;
+	public readonly symbol: KeyCap;
 	public readonly active: boolean;
 	public readonly blank: boolean;
 	public readonly keyType: KeyType;
 	protected readonly clickAlwaysAlternate: boolean;
-	private readonly keyNamePrefix: string;
-	protected readonly alt: boolean;
-	protected readonly lu: boolean;
+	protected readonly keyNamePrefix: string;
 
 
 	constructor(
 		p: {
 			name: string,
-			upperName?: string,
 			statusName?: string,
-			symbol: string,
+			symbol: KeyCap,
 			active?: boolean,
 			clickAlwaysAlternate?: boolean,
 			keyNamePrefix?: string,
-			alt?: boolean,
-			lu?: boolean,
 			blank?: boolean,
 			keyType?: KeyType
 		}
 	) {
 		this.name = p.name;
-		this.upperName = p.upperName ?? '';
 		this.statusName = p.statusName ?? p.name;
 		this.symbol = p.symbol;
 		this.active = p.active ?? false;
 		this.clickAlwaysAlternate = p.clickAlwaysAlternate ?? false;
 		this.keyNamePrefix = p.keyNamePrefix ?? '';
-		this.alt = p.alt ?? false;
-		this.lu = p.lu ?? false;
 		this.blank = p.blank ?? false;
 		this.keyType = !p.name.length ? "empty" : p.keyType ?? "action";
 	}
 
 	Contents = ({code}: { code: SC }) => {
 		return <div
-			className={cl('key', this.keyType, {alt: this.alt, lu: this.lu, active: this.active})}
+			className={cl('key', this.keyType, {active: this.active})}
 			onClick={(e) => {
 				e.preventDefault();
 				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
@@ -71,7 +63,6 @@ export class Key {
 		>
 			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
 			<div className="name">{this.name}</div>
-			<div className="uname">{this.upperName}</div>
 			<Symbol symbol={this.symbol}/>
 		</div>;
 	}

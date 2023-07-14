@@ -19,11 +19,13 @@ import {search} from "./emojis";
 import {AppConfig, ConfigBoard, DefaultConfig, DefaultThemeUrl, ThemesMap} from "./config";
 import {fromEntries, unreachable} from "./helpers";
 import {
+	app,
 	AppActions,
 	ConfigBuildingContext,
 	ConfigContext,
 	LayoutContext,
 	OSContext,
+	PluginsContext,
 	SearchContext,
 	setApp
 } from "./appVar";
@@ -33,6 +35,7 @@ import {SearchBoard} from "./searchView";
 import {BoardState, SlottedKeys} from "./boards/utils";
 import {RecentBoard} from "./recentsView";
 import {increaseRecent} from "./recentsActions";
+import {PluginData} from "./config/boards";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -55,6 +58,7 @@ type AppState = {
 	parentBoards: { [mode in AppMode]: Board[] };
 	/** building in progress */
 	building: boolean;
+	plugins: PluginData[];
 }
 
 class App extends Component<{}, AppState> implements AppActions {
@@ -67,13 +71,14 @@ class App extends Component<{}, AppState> implements AppActions {
 		boardState: {},
 		os: new Version('99'),
 		currentBoard: {
-			[AppMode.MAIN]: getMainBoard(),
+			[AppMode.MAIN]: getMainBoard([]),
 			[AppMode.SEARCH]: new SearchBoard(),
 			[AppMode.SETTINGS]: new ConfigBoard(),
 			[AppMode.RECENTS]: new RecentBoard(),
 		},
 		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
 		building: false,
+		plugins: [],
 	}
 
 	constructor(props: {}) {
@@ -109,6 +114,12 @@ class App extends Component<{}, AppState> implements AppActions {
 					case 'os':
 						this.setOS(rest);
 						break;
+					case 'plugin':
+						this.loadPlugin(rest);
+						break;
+					case 'fonts':
+						this.loadFallbackFonts(rest);
+						break;
 					case 'done':
 					case 'error':
 						console.log("async callback", command, rest);
@@ -133,11 +144,13 @@ class App extends Component<{}, AppState> implements AppActions {
 		return <LayoutContext.Provider value={l}>
 			<OSContext.Provider value={s.os}>
 				<ConfigContext.Provider value={s.config}>
-					<ConfigBuildingContext.Provider value={s.building}>
-						<SearchContext.Provider value={s.searchText}>
-							<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
-						</SearchContext.Provider>
-					</ConfigBuildingContext.Provider>
+					<PluginsContext.Provider value={s.plugins}>
+						<ConfigBuildingContext.Provider value={s.building}>
+							<SearchContext.Provider value={s.searchText}>
+								<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
+							</SearchContext.Provider>
+						</ConfigBuildingContext.Provider>
+					</PluginsContext.Provider>
 				</ConfigContext.Provider>
 			</OSContext.Provider>
 		</LayoutContext.Provider>;
@@ -212,10 +225,19 @@ class App extends Component<{}, AppState> implements AppActions {
 		ahkReady();
 	}
 
+	public getConfig(): AppConfig {
+		return this.state.config;
+	}
+
 	public updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save = true): Promise<void> {
 		return new Promise((resolve) => {
+			let noop = false;
 			this.setState((s) => {
 				if (typeof config === 'function') config = config(s.config);
+				if (!Object.keys(config).length) {
+					noop = true;
+					return {};
+				}
 				if (config.theme && s.config.theme != config.theme) {
 					const link = document.getElementById('themeCSS') as HTMLLinkElement;
 					link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
@@ -236,7 +258,7 @@ class App extends Component<{}, AppState> implements AppActions {
 				}
 				return {config: {...s.config, ...config}};
 			}, () => {
-				if (save) ahkSaveConfig(this.state.config);
+				if (save && !noop) ahkSaveConfig(this.state.config);
 				resolve();
 			});
 		})
@@ -311,13 +333,70 @@ class App extends Component<{}, AppState> implements AppActions {
 		}));
 	}
 
-	public send(cluster: string, p: { noRecent?: boolean, parent?: string }): void {
+	public send(cluster: string, {noRecent, variantOf}: { noRecent?: boolean, variantOf?: string }): void {
 		ahkSend(cluster);
-		if (!p.noRecent) increaseRecent(cluster);
+		if (!noRecent) increaseRecent(cluster);
+		if (variantOf) app().updateConfig(c => {
+			if (c.preferredVariant[variantOf] != cluster) return {
+				preferredVariant: {
+					...c.preferredVariant,
+					[variantOf]: cluster
+				}
+			};
+			else return {};
+		})
 		if (this.state.config.hideAfterInput) ahkHide();
 		if (this.state.config.mainAfterInput) {
 			if (this.state.mode == AppMode.RECENTS || this.state.mode == AppMode.MAIN) this.main();
 		}
+	}
+
+	private loadPlugin(rest: string) {
+		const name = rest.split('\n', 1)[0];
+		const contents = rest.slice(name.length + 1);
+		const data = JSON.parse(contents) as PluginData;
+		this.setState((s) => {
+			const plugins = [...s.plugins, data];
+			const mainBoard = getMainBoard(plugins);
+			return {
+				plugins,
+				currentBoard: {
+					...s.currentBoard,
+					[AppMode.MAIN]: mainBoard,
+				},
+				parentBoards: {
+					...s.parentBoards,
+					[AppMode.MAIN]: [],
+				}
+			}
+		});
+	}
+
+	private loadFallbackFonts(rest: string) {
+		const fonts = rest.split('\n')
+			.filter(f => f.length && f.match(/.*\.(otf|ttf|woff2?|eot|svg)$/i));
+		const usedNames = new Set<string>();
+		const faces = fonts.map(f => {
+			let fontName = f.replace(/.*[\\\/]([^\\\/]+)$/, '$1').replace(/[^a-z0-9]/ig, '_');
+			if (usedNames.has(fontName)) {
+				let i = 1;
+				while (usedNames.has(fontName + i)) i++;
+				fontName = fontName + i;
+			}
+			usedNames.add(fontName);
+			return `@font-face {
+	font-family: "${fontName}";
+	src: url("${f.replace(/([\\"])/g, '\\$1')}");
+}`;
+		});
+		const fFonts = [...usedNames].map(f => `${f}, `).join('');
+		const style = document.createElement('style');
+		style.textContent = faces.join('\n\n') + `
+:root {
+	--f-fallback: ${fFonts} 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
+}`;
+		document.head.appendChild(style);
+		console.log(style);
 	}
 }
 

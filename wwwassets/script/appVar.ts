@@ -5,6 +5,7 @@ import type {AppConfig} from "./config";
 import {AnsiLayout, Layout, SystemLayoutUS} from "./layout";
 import {Version} from "./osversion";
 import {SlottedKeys} from "./boards/utils";
+import {PluginData} from "./config/boards";
 
 export interface AppActions {
 	keyHandlers: SlottedKeys;
@@ -12,6 +13,9 @@ export interface AppActions {
 	setBoard(board: Board): void;
 
 	setSearchText(searchText: string): void;
+
+	/** Get current config. Inside Preact, use useContext(ConfigContext) instead. */
+	getConfig(): AppConfig;
 
 	updateConfig(config: Partial<AppConfig> | ((prev: AppConfig) => Partial<AppConfig>), save?: boolean): void;
 
@@ -25,7 +29,7 @@ export interface AppActions {
 
 	setBuilding(building: boolean): void;
 
-	send(cluster: string, p: { noRecent?: boolean, parent?: string }): void;
+	send(cluster: string, p: { noRecent?: boolean, variantOf?: string }): void;
 }
 
 let appVar: AppActions;
@@ -43,3 +47,4 @@ export const OSContext = createContext<Version>(new Version('99'));
 export const ConfigContext = createContext<AppConfig>(undefined as any);
 export const ConfigBuildingContext = createContext<boolean>(true);
 export const SearchContext = createContext<string>('');
+export const PluginsContext = createContext<PluginData[]>([]);

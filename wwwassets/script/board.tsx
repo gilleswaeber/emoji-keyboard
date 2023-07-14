@@ -1,20 +1,25 @@
 import {h, VNode} from "preact";
 import {Layout} from "./layout";
 import {useContext, useEffect, useMemo} from "preact/hooks";
-import {EmojiKeyboard, KeyboardContent, KeyboardItem, MAIN_BOARD} from "./config/boards";
+import {EmojiKeyboard, isCluster, KeyboardItem, KeyCap, MAIN_BOARD, PluginData} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
 import {BackKey, ClusterKey, ConfigKey, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
-import {clusterName, emojiGroup} from "./unicodeInterface";
+import {clusterName} from "./unicodeInterface";
 import {fromEntries} from "./helpers";
-import {toCodePoints} from "./builder/builder";
-import {VK} from "./layout/vk";
+import {VK, VKAbbr, vkLookup} from "./layout/vk";
 import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, MAX_PAGE_KEYS, SlottedKeys} from "./boards/utils";
 import {BlankKey, Key} from "./keys/base";
 
-export function getMainBoard(): Board {
-	return Board.fromEmoji(MAIN_BOARD);
+export function getMainBoard(plugins: PluginData[]): Board {
+	const b = {...MAIN_BOARD};
+	for (const p of plugins) {
+		if (p.boards) {
+			b.content = [...(b.content ?? []), ...p.boards];
+		}
+	}
+	return Board.fromEmoji(b);
 }
 
 function range(stop: number): number[] {
@@ -23,29 +28,32 @@ function range(stop: number): number[] {
 
 /** A board has several pages of keys */
 export abstract class Board {
-	protected constructor(p: { name: string, symbol: string }) {
+	protected constructor(p: { name: string, statusName?: string | undefined, symbol: KeyCap }) {
 		this.name = p.name;
+		this.statusName = p.statusName ?? p.name;
 		this.symbol = p.symbol;
 	}
 
 	public readonly name: string;
-	public readonly symbol: string;
+	public readonly statusName: string;
+	public readonly symbol: KeyCap;
 
 	public abstract Contents(p: { state: BoardState | undefined }): VNode;
 
 	private static fromKeys(
-		{name, symbol, keys, top, noRecent, byRow, byVK}:
+		{name, statusName, symbol, keys, top, noRecent, byRow, byVK}:
 			{
 				name: string,
-				symbol: string,
+				statusName?: string | undefined,
+				symbol: KeyCap,
 				keys: Key[],
 				byRow?: Key[][],
-				byVK?: { [vk in VK]?: Key },
+				byVK?: { [vk in VK | VKAbbr]?: Key },
 				top?: boolean,
 				noRecent?: boolean
 			}): Board {
 		return new StaticBoard({
-			name, symbol, noRecent, keys: (layout) => {
+			name, statusName, symbol, noRecent, keys: (layout) => {
 				let freeKeys = new Set<SC>(layout.free);
 				const fixedKeys: SlottedKeys = {
 					[SC.Backtick]: top ? new ConfigKey() : new BackKey(),
@@ -68,17 +76,19 @@ export abstract class Board {
 					}
 				}
 				if (byVK) {
-					const vkPlaced = new Set<VK>();
+					const vkPlaced = new Set<string>();
 					for (const sc of freeKeys) {
 						const vk = layout.sys[sc].vk;
-						if (byVK[vk]) {
-							fixedKeys[sc] = byVK[vk];
-							vkPlaced.add(vk);
-							freeKeys.delete(sc);
+						for (const k of vkLookup(vk)) {
+							if (byVK[k]) {
+								fixedKeys[sc] = byVK[k];
+								vkPlaced.add(k.toString());
+								freeKeys.delete(sc);
+							}
 						}
 					}
-					for (const [vk, key] of Object.entries(byVK)) {
-						if (!vkPlaced.has(parseInt(vk, 10))) notPlaceable.push(key);
+					for (const [k, key] of Object.entries(byVK)) {
+						if (!vkPlaced.has(k)) notPlaceable.push(key);
 					}
 				}
 				if (notPlaceable.length) keys.unshift(...notPlaceable);
@@ -154,24 +164,18 @@ export abstract class Board {
 				return new ClusterKey(item[0], {variants: item, ...p});
 			}
 			return BlankKey;
+		} else if (isCluster(item)) {
+			return new ClusterKey(item.cluster, {symbol: item.symbol, name: item.name, noRecent: true});
 		} else {
 			return new KeyboardKey(Board.fromEmoji(item));
 		}
 	}
 
-	private static fromContents(contents: KeyboardContent[], p: { noRecent?: boolean }): Key[] {
+	private static fromContents(contents: KeyboardItem[], p: { noRecent?: boolean }): Key[] {
 		const keys: Key[] = [];
 		for (const item of contents) {
 			if (item === null || typeof item === 'string' || Array.isArray(item)) {
 				keys.push(this.fromItem(item, p));
-			} else if (item.group) {
-				keys.push(...emojiGroup(item).map(c => new ClusterKey(c, p)));
-			} else if (typeof item.from !== 'undefined') {
-				const from = typeof item.from === 'number' ? item.from : toCodePoints(item.from)[0];
-				const to = typeof item.to === 'number' ? item.to : toCodePoints(item.to)[0];
-				if (from && to && to > from) {
-					for (let i = from; i <= to; ++i) keys.push(new ClusterKey(String.fromCodePoint(i), p));
-				}
 			} else {
 				keys.push(this.fromItem(item, p));
 			}
@@ -185,14 +189,33 @@ export abstract class Board {
 		const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key, p)));
 		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)] as const) : []);
 
-		return this.fromKeys({name: k.name, symbol: k.symbol, top: k.top, noRecent: k.noRecent, keys, byRow, byVK});
+		return this.fromKeys({
+			name: k.name,
+			statusName: k.statusName,
+			symbol: k.symbol,
+			top: k.top,
+			noRecent: k.noRecent,
+			keys,
+			byRow,
+			byVK
+		});
 	}
 
 	static clusterAlternates(cluster: string, variants: string[], k?: { noRecent?: boolean }) {
-		const keys = variants.map((c) => new ClusterKey(c, {variants: [], ...k}));
-		return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
+		const keys = variants.map((c) => new ClusterKey(c, {variants: [], variantOf: cluster, ...k}));
+		if (keys.length == 6) {
+			// place on home row
+			const byRow = [[], [], keys];
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys: [], byRow});
+		} else if (keys.length == 18) {
+			// center on home row
+			const byRow = [[], keys.slice(0, 6), keys.slice(6, 12), keys.slice(12)];
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys: [], byRow});
+		}
+		{
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
+		}
 	}
-
 }
 
 /** On a static board the keys and their locations depend only on the layout */
@@ -202,7 +225,8 @@ export class StaticBoard extends Board {
 	constructor(
 		{keys, ...p}: {
 			name: string;
-			symbol: string;
+			statusName?: string;
+			symbol: KeyCap;
 			keys: (layout: Layout) => SlottedKeys[];
 			noRecent?: boolean;
 		}

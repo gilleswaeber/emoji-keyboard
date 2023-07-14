@@ -7,7 +7,7 @@ export function unreachable(x: never): never {
 }
 
 /** CSS class builder, e.g. for React */
-export function cl(...args: (null|undefined|string|Dictionary<any>)[]) {
+export function cl(...args: (null|undefined|string|Dictionary<any>)[]): string {
 	return args.flatMap(a => {
 		if (typeof a === "string") return a;
 		if (a === null || a === undefined) return "";

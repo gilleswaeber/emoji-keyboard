@@ -3,6 +3,13 @@
 !/res/data/.gitkeep
 /config.json
 /wwwassets/node_modules
+/wwwassets/script/dist/*
+!/wwwassets/script/dist/script.dist.js
+!/wwwassets/script/dist/unidata.dist.js
+/wwwassets/fallback_fonts/*
+!/wwwassets/fallback_fonts/.gitkeep
+/wwwassets/plugins/*
+!/wwwassets/plugins/.gitkeep
 *.js.map
 # IDE-specific
 .idea

@@ -7,6 +7,7 @@ import {app, ConfigContext, LayoutContext} from "./appVar";
 import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, SlottedKeys} from "./boards/utils";
 import {KeyName} from "./keys/base";
+import {ahkOpenLink, ahkReload} from "./ahk";
 
 // Backslash and Enter appears on the first or the second row resp. second or both, so they're listed in both
 // noinspection JSUnusedLocalSymbols
@@ -95,10 +96,13 @@ export interface AppConfig {
 	devTools: boolean;
 	openAt: OpenAt;
 	opacity: number;
-	skinTone: SkinTone;
 	recent: RecentEmoji[];
+	skinTone: SkinTone;
+	preferredVariant: Record<string, string | undefined>;
 	hideAfterInput: boolean;
 	mainAfterInput: boolean;
+	showAliases: boolean;
+	showCharCodes: boolean;
 }
 
 export const DefaultOpacity = .90;
@@ -115,9 +119,12 @@ export const DefaultConfig: AppConfig = {
 	openAt: "bottom",
 	opacity: DefaultOpacity,
 	skinTone: 0,
+	preferredVariant: {},
 	recent: [],
 	hideAfterInput: false,
 	mainAfterInput: false,
+	showAliases: false,
+	showCharCodes: false,
 };
 
 export const ThemesMap = new Map(Themes.map((t) => [t.name, t]));
@@ -134,7 +141,7 @@ const ConfigPages: ConfigPage[] = [
 	{
 		name: "General",
 		symbol: "🛠️",
-		keys(config: AppConfig) {
+		keys(config: AppConfig, l) {
 			return {
 				[SC.Q]: new ConfigToggleKey({
 					active: config.isoKeyboard,
@@ -145,17 +152,48 @@ const ConfigPages: ConfigPage[] = [
 				}),
 				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (<KeyName code={SC.LessThan}/> between <KeyName
 					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
-				// ...mapKeysToSlots(SecondRow, [
-				// 	...SkinTones.map((s, i) => new ConfigActionKey({
-				// 		active: i == config.skinTone,
-				// 		action() {
-				// 			p.app.updateConfig({skinTone: i});
-				// 		},
-				// 		name: s.name,
-				// 		symbol: s.symbol
-				// 	})),
-				// 	new ConfigLabelKey("Default skin tone")
-				// ])
+				...mapKeysToSlots(l.freeRows[2], [
+					// 	...SkinTones.map((s, i) => new ConfigActionKey({
+					// 		active: i == config.skinTone,
+					// 		action() {
+					// 			p.app.updateConfig({skinTone: i});
+					// 		},
+					// 		name: s.name,
+					// 		symbol: s.symbol
+					// 	})),
+					new ConfigActionKey({
+						action() {
+							app().updateConfig({preferredVariant: {}})
+						},
+						active: !Object.keys(config.preferredVariant).length,
+						name: "Reset Variants",
+						statusName: "Clear variant preferences for all symbols",
+						symbol: "🥷"
+					})
+					// 	new ConfigLabelKey("Default skin tone")
+				]),
+				...mapKeysToSlots(l.freeRows[3], [
+					new ConfigActionKey({
+						name: 'Fallback Fonts',
+						symbol: '🔣',
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard/wiki/Fallback-Fonts'),
+					}),
+					new ConfigActionKey({
+						name: 'Font Folder',
+						symbol: '📂',
+						action: () => ahkOpenLink('.\\wwwassets\\fallback_fonts'),
+					}),
+					new ConfigActionKey({
+						name: 'Plugins',
+						symbol: '🪇',
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard/wiki/Plugins'),
+					}),
+					new ConfigActionKey({
+						name: 'Plugins Folder',
+						symbol: '📂',
+						action: () => ahkOpenLink('.\\wwwassets\\plugins'),
+					}),
+				]),
 			}
 		}
 	},
@@ -269,6 +307,11 @@ const ConfigPages: ConfigPage[] = [
 			return {
 				...mapKeysToSlots(FirstRow, [
 					new ConfigBuildKey(),
+					new ConfigActionKey({
+						action: ahkReload,
+						name: 'Reload',
+						symbol: '🔄'
+					}),
 				]),
 				...mapKeysToSlots(SecondRow, [
 					new ConfigToggleKey({
@@ -281,16 +324,67 @@ const ConfigPages: ConfigPage[] = [
 				]),
 			}
 		}
+	},
+	{
+		name: "Details",
+		symbol: "🔬",
+		keys(config: AppConfig) {
+			return {
+				...mapKeysToSlots(FirstRow, [
+					new ConfigToggleKey({
+						active: config.showAliases,
+						statusName: `Show aliases in status bar: ${config.showAliases ? 'on' : 'off'}`,
+						action: () => app().updateConfig({showAliases: !config.showAliases}),
+						name: 'Aliases',
+						symbol: '📛',
+					}),
+					new ConfigToggleKey({
+						active: config.showCharCodes,
+						statusName: `Show char codes in status bar: ${config.showCharCodes ? 'on' : 'off'}`,
+						action: () => app().updateConfig({showCharCodes: !config.showCharCodes}),
+						name: 'Codes',
+						symbol: '🔢',
+					}),
+					new ConfigLabelKey('in Status Bar')
+				]),
+			}
+		}
+	},
+	{
+		name: "About",
+		symbol: "📜",
+		keys(config: AppConfig) {
+			return {
+				...mapKeysToSlots(FirstRow, [
+					new ConfigActionKey({
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard'),
+						name: 'GitHub',
+						symbol: '🐙'
+					}),
+					new ConfigActionKey({
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard/blob/master/LICENSE'),
+						name: 'MIT License',
+						symbol: '⚖️'
+					}),
+					new ConfigActionKey({
+						action: () => ahkOpenLink('https://github.com/gilleswaeber/emoji-keyboard#dependencies'),
+						name: 'Deps',
+						statusName: 'Dependencies',
+						symbol: '🪃',
+					}),
+					new ConfigLabelKey('Emoji Keyboard by Gilles Waeber')
+				])
+			}
+		}
 	}
-]
-export const DefaultConfigPage = ConfigPages[0];
+];
 
 export class ConfigBoard extends Board {
 	constructor() {
 		super({name: '__config', symbol: '🛠️'});
 	}
 
-	Contents({state}: { state: BoardState | undefined }) {
+	Contents = ({state}: { state: BoardState | undefined }) => {
 		const page = Math.min(state?.page ?? 0, ConfigPages.length - 1);
 		const config = useContext(ConfigContext);
 		const l = useContext(LayoutContext);

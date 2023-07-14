@@ -5,11 +5,14 @@ import {
 	EmojiTestData,
 	EmojiVersion,
 	GeneralCategory,
+	NamedSequencesData,
 	NamesListData,
 	UnicodeData
 } from "./unicode";
 import {toTitleCase} from "./titleCase";
 import {ZeroWidthJoiner} from "../chars";
+import {EXTEND_ALIASES} from "../config/aliases";
+import {toCodePoints} from "./builder";
 
 type BlockInformation = {
 	start: number;
@@ -73,12 +76,12 @@ export type ExtendedCharInformation = CharInformation & {
 type ClusterInformation = {
 	cluster: string;
 	name: string;
-	version: number;
+	version?: number;
 	parent?: string;
 	variants?: string[];
 	alias?: string[];
 };
-type ExtendedClusterInformation = ClusterInformation & {
+export type ExtendedClusterInformation = ClusterInformation & {
 	group?: ExtendedGroupInformation;
 	subGroup?: ExtendedSubGroupInformation;
 }
@@ -98,6 +101,7 @@ type ExtendedSubGroupInformation = SubGroupInformation & {
 	group: WeakRef<ExtendedGroupInformation>;
 }
 export type UnicodeDataSource = {
+	namedSequences: NamedSequencesData;
 	namesList: NamesListData;
 	unicodeData: UnicodeData;
 	emojiVersion: EmojiVersion;
@@ -118,11 +122,19 @@ export function toHex(code: number) {
 }
 
 export function consolidateUnicodeData(
-	{annotations, namesList, unicodeData, emojiVersion, emojiTest}: UnicodeDataSource): ConsolidatedUnicodeData {
+	{
+		annotations,
+		namedSequences,
+		namesList,
+		unicodeData,
+		emojiVersion,
+		emojiTest
+	}: UnicodeDataSource): ConsolidatedUnicodeData {
 	const blocks: BlockInformation[] = [];
 	const chars: CharInformation[] = [];
 	const groups: GroupInformation[] = [];
 	const clusters: ClusterInformation[] = [];
+	const knownClusters = new Set<string>();
 
 	for (const block of namesList.block) {
 		const b: BlockInformation = {
@@ -156,7 +168,7 @@ export function consolidateUnicodeData(
 				};
 
 				if (char.alias || a?.default) {
-					c.alias = [...(char.alias ?? []), ...(a?.default ?? [])];
+					c.alias = [...(char.alias ?? []), ...(a?.default ?? [])]
 				}
 				if (char.falias) c.falias = char.falias;
 				if (char.ref) c.ref = char.ref;
@@ -236,6 +248,7 @@ export function consolidateUnicodeData(
 						};
 						if (a?.default) c2.alias = a.default;
 						clusters.push(c2);
+						knownClusters.add(cluster);
 						delete c.variants;
 						c.parent = cluster;
 						s.clusters[s.clusters.indexOf(c.cluster)] = cluster;
@@ -248,6 +261,7 @@ export function consolidateUnicodeData(
 							version: info.version,
 							parent: c.cluster,
 						});
+						knownClusters.add(cluster);
 					}
 				} else {
 					const c: ClusterInformation = {
@@ -258,9 +272,19 @@ export function consolidateUnicodeData(
 					if (a?.default) c.alias = a.default;
 					stems.set(stem, c);
 					clusters.push(c);
+					knownClusters.add(cluster);
 					s.clusters.push(cluster);
 				}
 			}
+		}
+	}
+	for (const ns of namedSequences) {
+		if (!knownClusters.has(ns.cluster)) {
+			clusters.push({
+				cluster: ns.cluster,
+				name: ns.name,
+			});
+			knownClusters.add(ns.cluster);
 		}
 	}
 	return {blocks, chars, groups, clusters, name: namesList.title.title};
@@ -275,7 +299,7 @@ export type ExtendedUnicodeData = {
 	blocks: ExtendedBlockInformation[];
 	chars: Record<number, ExtendedCharInformation>;
 	groups: Record<string, ExtendedGroupInformation>;
-	clusters: Record<string, ClusterInformation>;
+	clusters: Record<string, ExtendedClusterInformation>;
 };
 
 const SKIN_TONES = ["🏻", "🏼", "🏽", "🏾", "🏿"] as const;
@@ -323,13 +347,76 @@ export function getUnicodeData(): ExtendedUnicodeData {
 			}
 		}
 	}
+
+	// Additional folding pass
+	const clustersByName = new Map(Object.values(clusters).map(c => [c.name, c] as const));
+	for (const c of Object.values(clusters)) {
+		if (!c.parent) {
+			let variants: string[] = [];
+			if (c.name.match(/^People /) && !c.name.match(/ Holding Hands$/)) {
+				const baseName = c.name.replace(/^People /, '');
+				variants = [
+					`Men ${baseName}`,
+					`Women ${baseName}`,
+				]
+			} else if (c.name.match(/ (?:Man|Woman|Person)$/) && !c.name.match(/^Old/)) {
+				const baseName = c.name.replace(/ (?:Man|Woman|Person)$/, '');
+				variants = [
+					`${baseName} Person`,
+					`${baseName} Man`,
+					`${baseName} Woman`,
+				]
+			} else if (c.name == 'Merperson') {
+				const baseName = c.name.replace(/person$/, '');
+				variants = [
+					`${baseName}man`,
+					`${baseName}maid`,
+				]
+			} else if (c.name == 'Person With Crown') {
+				variants = [
+					`Prince`,
+					`Princess`,
+				]
+			} else {
+				const baseName = c.name.replace(/^Person /, '');
+				variants = [
+					`Man ${baseName}`,
+					`Woman ${baseName}`,
+				]
+			}
+			for (const v of variants) {
+				if (v != c.name && clustersByName.has(v)) {
+					const sc = clustersByName.get(v)!;
+					if (!sc.parent) {
+						sc.parent = c.cluster;
+						if (!c.variants) c.variants = [c.cluster];
+						if (sc.variants) {
+							c.variants.push(...sc.variants);
+							delete sc.variants;
+						} else c.variants.push(sc.cluster);
+						if (sc.alias) {
+							c.alias ??= [];
+							for (const a in sc.alias) if (!c.alias.includes(a)) c.alias.push(a);
+							delete sc.alias;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// For some reason, woman variants place bearded woman first...
+	clusters["👩"].variants?.sort((a, b) => +clusters[a]!.name.includes('Beard') - +clusters[b]!.name.includes('Beard'))
+
+	// Extend group information
 	for (const group of u.groups) {
 		const g: ExtendedGroupInformation = {...group, sub: {}};
 		groups[group.name] = g;
 		for (const sub of group.sub) {
 			const s: ExtendedSubGroupInformation = {...sub, group: new WeakRef(g)};
 			g.sub[sub.name] = s;
-			for (const cluster of sub.clusters) {
+			s.clusters = s.clusters.filter(c => !clusters[c] || !clusters[c].parent);
+			for (const cluster of s.clusters) {
 				if (!clusters[cluster]) continue;
 				clusters[cluster].group = g;
 				clusters[cluster].subGroup = s;
@@ -359,5 +446,21 @@ export function getUnicodeData(): ExtendedUnicodeData {
 		}
 	}
 
+	for (const [k, v] of Object.entries(EXTEND_ALIASES)) {
+		const code = toCodePoints(k);
+		if (code.length == 1) {
+			const info = chars[code[0]];
+			if (info) {
+				info.alias ??= [];
+				info.alias.push(...v);
+			}
+		} else {
+			const info = clusters[k];
+			if (info) {
+				info.alias ??= [];
+				info.alias.push(...v);
+			}
+		}
+	}
 	return {blocks, chars, groups, clusters};
 }

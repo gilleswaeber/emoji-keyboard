@@ -1,6 +1,12 @@
 /**
  * Windows Virtual Key codes
  * Note that e.g. wherever the letter A is placed on the keyboard, it'll have the same VK but may have a different SC
+ * ```
+ * ` 1 2 3 4 5 6 7 8 9 0 - +
+ * Q W E R T Y U I O P [ ] \
+ *   A S D F G H J K L ; '
+ *   < Z X C V B N M , . /
+ * ```
  */
 export const enum VK {
 	None = 0,
@@ -109,3 +115,54 @@ export const enum VK {
 	Apostrophe = 222,
 	LessThan = 226,
 }
+
+export const VKMap = {
+	a: VK.A,
+	b: VK.B,
+	c: VK.C,
+	d: VK.D,
+	e: VK.E,
+	f: VK.F,
+	g: VK.G,
+	h: VK.H,
+	i: VK.I,
+	j: VK.J,
+	k: VK.K,
+	l: VK.L,
+	m: VK.M,
+	n: VK.N,
+	o: VK.O,
+	p: VK.P,
+	q: VK.Q,
+	r: VK.R,
+	s: VK.S,
+	t: VK.T,
+	u: VK.U,
+	v: VK.V,
+	w: VK.W,
+	x: VK.X,
+	y: VK.Y,
+	z: VK.Z,
+
+	d0: VK.Digit0,
+	d1: VK.Digit1,
+	d2: VK.Digit2,
+	d3: VK.Digit3,
+	d4: VK.Digit4,
+	d5: VK.Digit5,
+	d6: VK.Digit6,
+	d7: VK.Digit7,
+	d8: VK.Digit8,
+	d9: VK.Digit9,
+} as const;
+const ReverseVkMap = new Map<VK, VKAbbr[]>();
+for (const [k, vk] of Object.entries(VKMap)) {
+	if (!ReverseVkMap.has(vk)) ReverseVkMap.set(vk, []);
+	ReverseVkMap.get(vk)!.push(k as VKAbbr);
+}
+
+export function vkLookup(vk: VK): (VK | VKAbbr)[] {
+	return [vk, ...(ReverseVkMap.get(vk) ?? [])];
+}
+
+export type VKAbbr = keyof typeof VKMap;

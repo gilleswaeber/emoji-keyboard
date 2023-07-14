@@ -1,6 +1,7 @@
 import {UnicodeData} from "./unicodeInterface";
 import {toCodePoints} from "./builder/builder";
 import {fromEntries} from "./helpers";
+import type {ExtendedClusterInformation} from "./builder/consolidated";
 
 const u = UnicodeData
 
@@ -9,18 +10,27 @@ const SEPARATOR = '%';
 const SEPARATOR_REGEX_G = /%/g;
 const SEARCH_ID = SEPARATOR + '([\\d,]+)' + SEPARATOR + '[^' + SEPARATOR + ']*';
 
+// Map preserves insertion order
 const index = new Map<string, string>();
-for (const c of Object.values(u.clusters)) {
-	if (!c.parent) {
-		index.set(toCodePoints(c.cluster).join(',').toString(), `${c.name} ${c.alias?.join(' ') ?? ''}`);
+(function () {
+	/** named sequences to be put after emojis and unicode tables */
+	const endClusters: ExtendedClusterInformation[] = [];
+	for (const c of Object.values(u.clusters)) {
+		if (!c.parent) {
+			if (c.version) index.set(toCodePoints(c.cluster).join(','), `${c.name} ${c.alias?.join(' ') ?? ''}`);
+			else endClusters.push(c);
+		}
 	}
-}
-for (const c of Object.values(u.chars)) {
-	if (!c.reserved && !c.notACharacter) {
-		index.set(c.code.toString(), `${c.n} ${c.alias?.join(' ') ?? ''} ${c.falias?.join(' ') ?? ''}`);
+	for (const c of Object.values(u.chars)) {
+		if (!c.reserved && !c.notACharacter) {
+			index.set(c.code.toString(), `${c.n} ${c.alias?.join(' ') ?? ''} ${c.falias?.join(' ') ?? ''}`);
+		}
 	}
-}
-console.log(index);
+	for (const c of endClusters) {
+		index.set(toCodePoints(c.cluster).join(','), `${c.name} ${c.alias?.join(' ') ?? ''}`);
+	}
+	console.log(index);
+})();
 const searchHaystack = Array.from(index.entries()).map(([k, v]) => `${SEPARATOR}${k}${SEPARATOR}${v.replace(SEPARATOR_REGEX_G, '')}`).join('');
 
 function escapeRegex(str: string): string {

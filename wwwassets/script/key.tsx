@@ -1,15 +1,18 @@
 import {AppMode} from "./app";
 import {ComponentChild, h} from "preact";
 import {Board} from "./board";
-import {app, ConfigBuildingContext} from "./appVar";
+import {app, ConfigBuildingContext, ConfigContext} from "./appVar";
 import {cl} from "./helpers";
-import {clusterName, clusterVariants} from "./unicodeInterface";
-import {makeBuild} from "./builder/builder";
+import {clusterAliases, clusterName, clusterVariants} from "./unicodeInterface";
+import {makeBuild, toCodePoints} from "./builder/builder";
 import {useContext} from "preact/hooks";
 import {SC} from "./layout/sc";
 import {VarSel15} from "./chars";
 import {Key, KeyName} from "./keys/base";
 import {Symbol} from "./keys/symbol";
+import {AppConfig} from "./config";
+import {toHex} from "./builder/consolidated";
+import {KeyCap} from "./config/boards";
 
 export class ConfigKey extends Key {
 	constructor() {
@@ -117,7 +120,7 @@ export class BackKey extends Key {
 
 export class KeyboardKey extends Key {
 	constructor(private target: Board) {
-		super({name: target.name, symbol: target.symbol});
+		super({name: target.name, statusName: target.statusName, symbol: target.symbol});
 	}
 
 	act() {
@@ -157,33 +160,77 @@ export class ExitSearchKey extends Key {
 
 export class ClusterKey extends Key {
 	private readonly variants: string[] | undefined;
+	private readonly variantOf: string | undefined;
 	private readonly noRecent: boolean;
+	private readonly alt: boolean;
+	private readonly lu: boolean;
+	private readonly upperName: string;
 
-	constructor(private cluster: string, p?: { variants?: string[], noRecent?: boolean }) {
-		const name = clusterName(cluster);
+	constructor(private cluster: string, p?: { variants?: string[], variantOf?: string, noRecent?: boolean, symbol?: KeyCap, name?: string }) {
+		const name = p?.name ?? clusterName(cluster);
 		const variants = p?.variants ?? clusterVariants(cluster);
 		super({
 			name,
-			upperName: variants?.length == 2 ? variants[1] : "",
-			symbol: cluster,
-			alt: !!variants && variants.length > 2,
-			lu: variants?.length === 2,
+			symbol: p?.symbol ?? cluster,
 			keyType: "char",
 		});
+		this.alt = !!variants && variants.length > 2;
+		this.lu = variants?.length === 2;
+		this.upperName = variants?.length == 2 ? variants[1] : "";
 		this.noRecent = p?.noRecent ?? false;
 		this.variants = variants;
+		this.variantOf = p?.variantOf;
 	}
 
-	act() {
-		app().send(this.cluster, {noRecent: this.noRecent});
+	act(config?: AppConfig) {
+		if (this.alt) {
+			config ??= app().getConfig();
+			const cluster = config.preferredVariant[this.cluster] ?? this.cluster;
+			app().send(cluster, {noRecent: this.noRecent, variantOf: this.variantOf});
+		} else {
+			app().send(this.cluster, {noRecent: this.noRecent, variantOf: this.variantOf});
+		}
 	}
 
-	actAlternate() {
+	actAlternate(config?: AppConfig) {
 		if (this.alt) {
 			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!, {noRecent: this.noRecent}));
 		} else if (this.lu) {
 			app().send(this.variants![1], {noRecent: this.noRecent});
-		} else return this.act();
+		} else {
+			app().send(this.cluster, {noRecent: this.noRecent});  // no variant change
+		}
+	}
+
+	Contents = ({code}: { code: SC }) => {
+		const config = useContext(ConfigContext);
+		const cluster = this.alt ? config.preferredVariant[this.cluster] ?? this.cluster : this.cluster;
+		const symbol = this.alt ? cluster : this.symbol;
+		let status = this.alt ? clusterName(config.preferredVariant[this.cluster] ?? this.cluster) : this.name;
+		if (config.showAliases) {
+			const aliases = clusterAliases(this.cluster);
+			if (aliases.length) status += ` (${aliases.join(', ')})`;
+		}
+		if (config.showCharCodes) {
+			status += ` [${toCodePoints(cluster).map(toHex).join(' ')}]`
+		}
+		return <div
+			className={cl('key', this.keyType, {alt: this.alt, lu: this.lu, active: this.active})}
+			onClick={(e) => {
+				e.preventDefault();
+				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate(config) : this.act(config);
+			}}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				this.actAlternate(config);
+			}}
+			onMouseOver={() => app().updateStatus(status)}
+			data-keycode={code}
+		>
+			<div className="keyname">{this.keyNamePrefix}<KeyName code={code}/></div>
+			<div className="uname">{this.upperName}</div>
+			<Symbol symbol={symbol}/>
+		</div>;
 	}
 }
 

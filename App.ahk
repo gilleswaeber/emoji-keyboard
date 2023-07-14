@@ -130,6 +130,22 @@ class EmojiKeyboard {
             } else {
                 this.wv.PostWebMessageAsString("defaultConfig,")
             }
+            ; Load fallback fonts
+            fonts := "`n"
+            Loop Files "wwwassets/fallback_fonts/*", "FR"
+            {
+                fonts .= StrReplace(A_LoopFilePath, "wwwassets/",,,,1) "`n"
+            }
+            this.wv.PostWebMessageAsString('fonts,' fonts)
+            ; Load plugins
+            Loop Files "wwwassets/plugins/*.json", "FR"
+            {
+                ; read file and send contents
+                contents := FileRead(A_LoopFilePath)
+                this.wv.PostWebMessageAsString('plugin,' A_LoopFilePath "`n" contents)
+            }
+            ; Load fallback fonts
+
             this.wvKeyboard := ""
             CheckLayout()
         }
@@ -139,6 +155,7 @@ class EmojiKeyboard {
                 this.DataUnicode('15.0.0/ucd/emoji/emoji-data.txt')
                 this.DataUnicode('15.0.0/ucd/UnicodeData.txt')
                 this.DataUnicode('15.0.0/ucd/NamesList.txt')
+                this.DataUnicode('15.0.0/ucd/NamedSequences.txt')
                 this.DataCLDR('42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
             } catch as e {
                 this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)
@@ -152,6 +169,9 @@ class EmojiKeyboard {
         onOpenDevTools() {
             this.wv.OpenDevToolsWindow()
         }
+        onOpenLink(url) {
+			Run(url)
+		}
         onReady() {
             ; WebApp has interpreted the config and is fully initialized
             this.isInitialized := 2
@@ -238,6 +258,14 @@ class EmojiKeyboard {
             this.main.Title := title
         }
 
+		; Update JS files if they changed (e.g. after a pull)
+		if (!FileExist("wwwassets/script/dist/script.js") or FileGetTime("wwwassets/script/dist/script.dist.js") > FileGetTime("wwwassets/script/dist/script.js")) {
+			FileCopy("wwwassets/script/dist/script.dist.js", "wwwassets/script/dist/script.js", True)
+		}
+		if (!FileExist("wwwassets/script/dist/unidata.js") or FileGetTime("wwwassets/script/dist/unidata.dist.js") > FileGetTime("wwwassets/script/dist/unidata.js")) {
+			FileCopy("wwwassets/script/dist/unidata.dist.js", "wwwassets/script/dist/unidata.js", True)
+		}
+
         monitor := GetMouseMonitor()
         MonitorGetWorkArea(monitor, &left, &top, &right, &bottom)
         w := 200 * A_Scaling
@@ -256,7 +284,7 @@ class EmojiKeyboard {
             downloadUnicode: onDownloadUnicode,
         	hide: onHide,
             loaded: onLoaded,
-            openDevTools: onOpenDevTools,
+            openDevTools: onOpenDevTools, openLink: onOpenLink,
             ready: onReady, reload: ActReload,
             saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,
             setOpenAt: onSetOpenAt,

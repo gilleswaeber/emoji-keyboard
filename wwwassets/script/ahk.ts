@@ -6,6 +6,8 @@ type HostObject = {
 	hide(): void;
 	loaded(): void;
 	openDevTools(): void;
+	openLink(url: string): void;
+	reload(): void;
 	saveConfig(config: string): void;
 	saveUnicodeData(data: string, types: string): void;
 	send(text: string): void;
@@ -55,7 +57,6 @@ export async function ahkDownloadUnicode() {
 	if (isAHK()) {
 		const [c, p] = waitForCallback();
 		setTimeout(() => AHK!.downloadUnicode(c), 10);
-		43
 		return p;
 	} else console.log("DownloadUnicode");
 }
@@ -78,6 +79,11 @@ export function ahkLoaded() {
 export function ahkReady() {
 	if (isAHK()) AHK!.ready();
 	else console.log("Ready");
+}
+
+export function ahkReload() {
+	if (isAHK()) AHK!.reload();
+	else document.location.reload();
 }
 
 export function ahkSend(text: string) {
@@ -125,4 +131,9 @@ export function ahkSetOpacity(opacity: number) {
 export function ahkOpenDevTools() {
 	if (isAHK()) AHK!.openDevTools();
 	else console.log("OpenDevTools")
+}
+
+export function ahkOpenLink(url: string) {
+	if (isAHK()) AHK!.openLink(url);
+	else window.open(url);
 }
