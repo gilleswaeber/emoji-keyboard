@@ -134,7 +134,7 @@ class EmojiKeyboard {
             fonts := "`n"
             Loop Files "wwwassets/fallback_fonts/*", "FR"
             {
-                fonts .= A_LoopFilePath "`n"
+                fonts .= StrReplace(A_LoopFilePath, "wwwassets/",,,,1) "`n"
             }
             this.wv.PostWebMessageAsString('fonts,' fonts)
             ; Load plugins
@@ -142,7 +142,7 @@ class EmojiKeyboard {
             {
                 ; read file and send contents
                 contents := FileRead(A_LoopFilePath)
-                this.wv.PostWebMessageAsString('plugin,' contents)
+                this.wv.PostWebMessageAsString('plugin,' A_LoopFilePath "`n" contents)
             }
             ; Load fallback fonts
 

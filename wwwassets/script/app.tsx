@@ -117,6 +117,9 @@ class App extends Component<{}, AppState> implements AppActions {
 					case 'plugin':
 						this.loadPlugin(rest);
 						break;
+					case 'fonts':
+						this.loadFallbackFonts(rest);
+						break;
 					case 'done':
 					case 'error':
 						console.log("async callback", command, rest);
@@ -349,7 +352,9 @@ class App extends Component<{}, AppState> implements AppActions {
 	}
 
 	private loadPlugin(rest: string) {
-		const data = JSON.parse(rest) as PluginData;
+		const name = rest.split('\n', 1)[0];
+		const contents = rest.slice(name.length + 1);
+		const data = JSON.parse(contents) as PluginData;
 		this.setState((s) => {
 			const plugins = [...s.plugins, data];
 			const mainBoard = getMainBoard(plugins);
@@ -365,6 +370,33 @@ class App extends Component<{}, AppState> implements AppActions {
 				}
 			}
 		});
+	}
+
+	private loadFallbackFonts(rest: string) {
+		const fonts = rest.split('\n')
+			.filter(f => f.length && f.match(/.*\.(otf|ttf|woff2?|eot|svg)$/i));
+		const usedNames = new Set<string>();
+		const faces = fonts.map(f => {
+			let fontName = f.replace(/.*[\\\/]([^\\\/]+)$/, '$1').replace(/[^a-z0-9]/ig, '_');
+			if (usedNames.has(fontName)) {
+				let i = 1;
+				while (usedNames.has(fontName + i)) i++;
+				fontName = fontName + i;
+			}
+			usedNames.add(fontName);
+			return `@font-face {
+	font-family: "${fontName}";
+	src: url("${f.replace(/([\\"])/g, '\\$1')}");
+}`;
+		});
+		const fFonts = [...usedNames].map(f => `${f}, `).join('');
+		const style = document.createElement('style');
+		style.textContent = faces.join('\n\n') + `
+:root {
+	--f-fallback: ${fFonts} 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
+}`;
+		document.head.appendChild(style);
+		console.log(style);
 	}
 }
 

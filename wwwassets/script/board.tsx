@@ -19,7 +19,6 @@ export function getMainBoard(plugins: PluginData[]): Board {
 			b.content = [...(b.content ?? []), ...p.boards];
 		}
 	}
-	console.log(b);
 	return Board.fromEmoji(b);
 }
 
