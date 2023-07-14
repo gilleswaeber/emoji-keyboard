@@ -130,6 +130,13 @@ class EmojiKeyboard {
             } else {
                 this.wv.PostWebMessageAsString("defaultConfig,")
             }
+            ; Load fallback fonts
+            fonts := "`n"
+            Loop Files "wwwassets/fallback_fonts/*", "FR"
+            {
+                fonts .= A_LoopFilePath "`n"
+            }
+            this.wv.PostWebMessageAsString('fonts,' fonts)
             ; Load plugins
             Loop Files "wwwassets/plugins/*.json", "FR"
             {
@@ -137,6 +144,8 @@ class EmojiKeyboard {
                 contents := FileRead(A_LoopFilePath)
                 this.wv.PostWebMessageAsString('plugin,' contents)
             }
+            ; Load fallback fonts
+
             this.wvKeyboard := ""
             CheckLayout()
         }
