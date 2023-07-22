@@ -38,13 +38,14 @@ export function Symbol({symbol}: { symbol: KeyCap }) {
 export function Sprite({symbol}: { symbol: SpriteRef }) {
 	const plugins = useContext(PluginsContext);
 	for (const plugin of plugins) {
-		const spriteMap = plugin.spriteMaps?.[symbol.spriteMap];
+		const spriteMap = plugin.data.spriteMaps?.[symbol.spriteMap];
 		if (spriteMap && spriteMap.index[symbol.sprite]) {
+			const scale = (spriteMap.width + 2 * (spriteMap.padding ?? 0)) / spriteMap.width;
 			return <div className="sprite" style={{
 				backgroundImage: `url("plugins/${spriteMap.path}")`,
-				backgroundSize: `${spriteMap.cols}00%`,
+				backgroundSize: `${spriteMap.cols * 100}%`,
 				backgroundPosition: `${spriteMap.index[symbol.sprite].col / (spriteMap.cols - 1) * 100}% ${spriteMap.index[symbol.sprite].row / (spriteMap.rows - 1) * 100}%`,
-				transform: `scale(--calc(3.6vw / ${spriteMap.height}px))`,
+				transform: `scale(${scale})`,
 			}}/>
 		}
 	}

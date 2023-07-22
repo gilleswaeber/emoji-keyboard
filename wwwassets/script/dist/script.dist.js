@@ -6062,14 +6062,15 @@ define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeI
     function Sprite({ symbol }) {
         const plugins = (0, hooks_1.useContext)(appVar_1.PluginsContext);
         for (const plugin of plugins) {
-            const spriteMap = plugin.spriteMaps?.[symbol.spriteMap];
+            const spriteMap = plugin.data.spriteMaps?.[symbol.spriteMap];
             if (spriteMap && spriteMap.index[symbol.sprite]) {
+				const scale = (spriteMap.width + 2 * (spriteMap.padding ?? 0)) / spriteMap.width;
                 return (0, preact_1.h)("div", { className: "sprite", style: {
-                        backgroundImage: `url("plugins/${spriteMap.path}")`,
-                        backgroundSize: `${spriteMap.cols}00%`,
-                        backgroundPosition: `${spriteMap.index[symbol.sprite].col / (spriteMap.cols - 1) * 100}% ${spriteMap.index[symbol.sprite].row / (spriteMap.rows - 1) * 100}%`,
-                        transform: `scale(--calc(3.6vw / ${spriteMap.height}px))`,
-                    } });
+						backgroundImage: `url("plugins/${spriteMap.path}")`,
+						backgroundSize: `${spriteMap.cols * 100}%`,
+						backgroundPosition: `${spriteMap.index[symbol.sprite].col / (spriteMap.cols - 1) * 100}% ${spriteMap.index[symbol.sprite].row / (spriteMap.rows - 1) * 100}%`,
+						transform: `scale(${scale})`,
+					} });
             }
         }
         return (0, preact_1.h)(preact_1.Fragment, null, "?");
@@ -6721,10 +6722,10 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
     function getMainBoard(plugins) {
         const b = { ...boards_1.MAIN_BOARD };
         for (const p of plugins) {
-            if (p.boards) {
-                b.content = [...(b.content ?? []), ...p.boards];
-            }
-        }
+			if (p.data.boards) {
+				b.content = [...(b.content ?? []), ...p.data.boards];
+			}
+		}
         return Board.fromEmoji(b);
     }
     exports.getMainBoard = getMainBoard;
@@ -6895,9 +6896,9 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
         }
         static fromEmoji(k) {
             const p = { noRecent: k.noRecent };
-            const keys = this.fromContents(k.content ?? [], p);
-            const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key, p)));
-            const byVK = (0, helpers_5.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
+			const keys = this.fromContents(k.content ?? [], p);
+			const byRow = (k.byRow ?? []).map(row => Array.isArray(row) ? row.map(key => this.fromItem(key, p)) : []);
+			const byVK = (0, helpers_5.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
             return this.fromKeys({
                 name: k.name,
                 statusName: k.statusName,
@@ -7235,27 +7236,60 @@ define("recentsView", ["require", "exports", "preact/hooks", "appVar", "key", "b
                             (0, recentsActions_1.removeRecent)(this.cluster);
                             (0, appVar_9.app)().back();
                         }
-                    })
-                ]),
-                [16]: new key_4.ConfigLabelKey(`Score: ${useCount}, +${recentsActions_1.SCORE_INCR} when used, -${recentsActions_1.SCORE_DECR} when others used`),
-                [30]: new key_4.ConfigLabelKey(`Favorite when score ≥ ${recentsActions_1.FAVORITE_SCORE}`),
-            };
-            return (0, preact_8.h)(utils_4.Keys, { keys: keys });
-        };
-    }
-    exports.RecentSettingsBoard = RecentSettingsBoard;
+					})
+				]),
+				[16]: new key_4.ConfigLabelKey(`Score: ${useCount}, +${recentsActions_1.SCORE_INCR} when used, -${recentsActions_1.SCORE_DECR} when others used`),
+				[30]: new key_4.ConfigLabelKey(`Favorite when score ≥ ${recentsActions_1.FAVORITE_SCORE}`),
+			};
+			return (0, preact_8.h)(utils_4.Keys, {keys: keys});
+		};
+	}
+
+	exports.RecentSettingsBoard = RecentSettingsBoard;
 });
-define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView", "recentsView", "recentsActions"], function (require, exports, preact_9, layout_4, board_5, osversion_1, ahk_2, emojis_2, config_1, helpers_7, appVar_10, hooks_9, searchView_1, recentsView_1, recentsActions_2) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.AppMode = void 0;
-    var AppMode;
-    (function (AppMode) {
-        AppMode[AppMode["MAIN"] = 0] = "MAIN";
-        AppMode[AppMode["SEARCH"] = 1] = "SEARCH";
-        AppMode[AppMode["SETTINGS"] = 2] = "SETTINGS";
-        AppMode[AppMode["RECENTS"] = 3] = "RECENTS";
-    })(AppMode = exports.AppMode || (exports.AppMode = {}));
+define("utils/compare", ["require", "exports"], function (require, exports) {
+	"use strict";
+	Object.defineProperty(exports, "__esModule", {value: true});
+	exports.naturalCompare = void 0;
+
+	function naturalCompare(a, b) {
+		if (!a || !b)
+			return +!!a - +!!b;
+		const aParts = a.match(/[0-9]+|[^0-9]+/g);
+		const bParts = b.match(/[0-9]+|[^0-9]+/g);
+		for (const i of aParts.keys()) {
+			if (bParts.length <= i)
+				return 1;
+			const aText = !/^[0-9]/.test(aParts[i]);
+			const bText = !/^[0-9]/.test(bParts[i]);
+			if (aText !== bText)
+				return +aText - +bText;
+			if (aText) {
+				const cmp = aParts[i].localeCompare(bParts[i]);
+				if (cmp !== 0)
+					return cmp;
+			} else {
+				const cmp = parseInt(aParts[i], 10) - parseInt(bParts[i], 10);
+				if (cmp !== 0)
+					return cmp;
+			}
+		}
+		return -1;
+	}
+
+	exports.naturalCompare = naturalCompare;
+});
+define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView", "recentsView", "recentsActions", "utils/compare"], function (require, exports, preact_9, layout_4, board_5, osversion_1, ahk_2, emojis_2, config_1, helpers_7, appVar_10, hooks_9, searchView_1, recentsView_1, recentsActions_2, compare_1) {
+	"use strict";
+	Object.defineProperty(exports, "__esModule", {value: true});
+	exports.AppMode = void 0;
+	var AppMode;
+	(function (AppMode) {
+		AppMode[AppMode["MAIN"] = 0] = "MAIN";
+		AppMode[AppMode["SEARCH"] = 1] = "SEARCH";
+		AppMode[AppMode["SETTINGS"] = 2] = "SETTINGS";
+		AppMode[AppMode["RECENTS"] = 3] = "RECENTS";
+	})(AppMode = exports.AppMode || (exports.AppMode = {}));
     const AppModes = [0, 1, 2, 3];
     class App extends preact_9.Component {
         keyHandlers = {};
@@ -7364,7 +7398,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 case 0:
                 case 3:
                     const board = s.currentBoard[s.mode];
-                    (0, ahk_2.ahkTitle)('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : ''));
+					(0, ahk_2.ahkTitle)(('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : '')).replace(/[\s\n]+/g, ' '));
                     break;
                 case 1:
                     (0, ahk_2.ahkTitle)('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
@@ -7533,21 +7567,26 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
             }
         }
         loadPlugin(rest) {
-            const name = rest.split('\n', 1)[0];
-            const contents = rest.slice(name.length + 1);
-            const data = JSON.parse(contents);
-            this.setState((s) => {
-                const plugins = [...s.plugins, data];
-                const mainBoard = (0, board_5.getMainBoard)(plugins);
-                return {
-                    plugins,
-                    currentBoard: {
-                        ...s.currentBoard,
-                        [0]: mainBoard,
-                    },
-                    parentBoards: {
-                        ...s.parentBoards,
-                        [0]: [],
+			const name = rest.split('\n', 1)[0];
+			const contents = rest.slice(name.length + 1);
+			const data = JSON.parse(contents);
+			const plugin = {
+				name,
+				data
+			};
+			this.setState((s) => {
+				const plugins = [...s.plugins, plugin];
+				plugins.sort((a, b) => (0, compare_1.naturalCompare)(a.name, b.name));
+				const mainBoard = (0, board_5.getMainBoard)(plugins);
+				return {
+					plugins,
+					currentBoard: {
+						...s.currentBoard,
+						[0]: mainBoard,
+					},
+					parentBoards: {
+						...s.parentBoards,
+						[0]: [],
                     }
                 };
             });
@@ -8144,36 +8183,5 @@ define("ahk", ["require", "exports"], function (require, exports) {
             window.open(url);
     }
     exports.ahkOpenLink = ahkOpenLink;
-});
-define("utils/compare", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.naturalCompare = void 0;
-    function naturalCompare(a, b) {
-        if (!a || !b)
-            return +!!a - +!!b;
-        const aParts = a.match(/[0-9]+|[^0-9]+/g);
-        const bParts = b.match(/[0-9]+|[^0-9]+/g);
-        for (const i of aParts.keys()) {
-            if (bParts.length <= i)
-                return 1;
-            const aText = !/^[0-9]/.test(aParts[i]);
-            const bText = !/^[0-9]/.test(bParts[i]);
-            if (aText !== bText)
-                return +aText - +bText;
-            if (aText) {
-                const cmp = aParts[i].localeCompare(bParts[i]);
-                if (cmp !== 0)
-                    return cmp;
-            }
-            else {
-                const cmp = parseInt(aParts[i], 10) - parseInt(bParts[i], 10);
-                if (cmp !== 0)
-                    return cmp;
-            }
-        }
-        return -1;
-    }
-    exports.naturalCompare = naturalCompare;
 });
 //# sourceMappingURL=script.js.map

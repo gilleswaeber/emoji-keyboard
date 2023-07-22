@@ -47,7 +47,7 @@ export type EmojiKeyboard = {
 	/** Place the items according the Virtual Key code i.e. based on the symbols on the keys */
 	byVK?: { [vk in VK | VKAbbr]?: KeyboardItem }
 	/** Place the items by row */
-	byRow?: KeyboardItem[][]
+	byRow?: (KeyboardItem[] | Record<string, never>)[]
 };
 export type Cluster = {
 	cluster: string;
@@ -63,9 +63,14 @@ export type SpriteMap = {
 	path: string,
 	width: number,
 	height: number,
+	padding?: number;
 	cols: number;
 	rows: number;
 	index: Record<string, { row: number, col: number }>
+}
+export type Plugin = {
+	name: string;
+	data: PluginData;
 }
 export type PluginData = {
 	name: string;

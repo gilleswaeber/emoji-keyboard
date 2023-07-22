@@ -1,7 +1,7 @@
 import {h, VNode} from "preact";
 import {Layout} from "./layout";
 import {useContext, useEffect, useMemo} from "preact/hooks";
-import {EmojiKeyboard, isCluster, KeyboardItem, KeyCap, MAIN_BOARD, PluginData} from "./config/boards";
+import {EmojiKeyboard, isCluster, KeyboardItem, KeyCap, MAIN_BOARD, Plugin} from "./config/boards";
 import {app, LayoutContext} from "./appVar";
 import {BackKey, ClusterKey, ConfigKey, KeyboardKey, PageKey, RecentKey, SearchKey} from "./key";
 import memoizeOne from "memoize-one";
@@ -12,11 +12,11 @@ import {SC} from "./layout/sc";
 import {BoardState, Keys, mapKeysToSlots, MAX_PAGE_KEYS, SlottedKeys} from "./boards/utils";
 import {BlankKey, Key} from "./keys/base";
 
-export function getMainBoard(plugins: PluginData[]): Board {
+export function getMainBoard(plugins: Plugin[]): Board {
 	const b = {...MAIN_BOARD};
 	for (const p of plugins) {
-		if (p.boards) {
-			b.content = [...(b.content ?? []), ...p.boards];
+		if (p.data.boards) {
+			b.content = [...(b.content ?? []), ...p.data.boards];
 		}
 	}
 	return Board.fromEmoji(b);
@@ -186,8 +186,8 @@ export abstract class Board {
 	static fromEmoji(k: EmojiKeyboard): Board {
 		const p = {noRecent: k.noRecent};
 		const keys = this.fromContents(k.content ?? [], p);
-		const byRow = (k.byRow ?? []).map(row => row.map(key => this.fromItem(key, p)));
-		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)] as const) : []);
+		const byRow = (k.byRow ?? []).map(row => Array.isArray(row) ? row.map(key => this.fromItem(key, p)) : []);
+		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k as (VK | VKAbbr), this.fromItem(v, p)] as const) : []);
 
 		return this.fromKeys({
 			name: k.name,

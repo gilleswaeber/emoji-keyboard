@@ -35,7 +35,8 @@ import {SearchBoard} from "./searchView";
 import {BoardState, SlottedKeys} from "./boards/utils";
 import {RecentBoard} from "./recentsView";
 import {increaseRecent} from "./recentsActions";
-import {PluginData} from "./config/boards";
+import {Plugin, PluginData} from "./config/boards";
+import {naturalCompare} from "./utils/compare";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -58,7 +59,7 @@ type AppState = {
 	parentBoards: { [mode in AppMode]: Board[] };
 	/** building in progress */
 	building: boolean;
-	plugins: PluginData[];
+	plugins: Plugin[];
 }
 
 class App extends Component<{}, AppState> implements AppActions {
@@ -174,7 +175,7 @@ class App extends Component<{}, AppState> implements AppActions {
 			case AppMode.MAIN:
 			case AppMode.RECENTS:
 				const board = s.currentBoard[s.mode];
-				ahkTitle('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : ''));
+				ahkTitle(('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : '')).replace(/[\s\n]+/g, ' '));
 				break;
 			case AppMode.SEARCH:
 				ahkTitle('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
@@ -355,8 +356,13 @@ class App extends Component<{}, AppState> implements AppActions {
 		const name = rest.split('\n', 1)[0];
 		const contents = rest.slice(name.length + 1);
 		const data = JSON.parse(contents) as PluginData;
+		const plugin: Plugin = {
+			name,
+			data
+		}
 		this.setState((s) => {
-			const plugins = [...s.plugins, data];
+			const plugins = [...s.plugins, plugin];
+			plugins.sort((a, b) => naturalCompare(a.name, b.name));
 			const mainBoard = getMainBoard(plugins);
 			return {
 				plugins,
