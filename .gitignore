@@ -11,6 +11,8 @@
 /wwwassets/plugins/*
 !/wwwassets/plugins/.gitkeep
 *.js.map
+/emoji-keyboard.zip
+/local
 # IDE-specific
 .idea
 .vscode

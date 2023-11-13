@@ -1,5 +1,10 @@
 Emoji Keyboard (Emoji 15)
 ==============
+[💾 Download](https://github.com/gilleswaeber/emoji-keyboard/releases/latest/download/emoji-keyboard.zip) or
+clone `https://github.com/gilleswaeber/emoji-keyboard.git`
+
+*do not use the Download ZIP button since some files would be missing (Git LFS // #19)*
+
 <img alt="Screenshot" src="https://i.imgur.com/rJFlKDm.png" width="766" />
 
 Packed with thousands of Emojis!
@@ -8,7 +13,8 @@ and [WebView2](https://go.microsoft.com/fwlink/p/?LinkId=2124703) (comes with Wi
 
 Alternatives
 ------------
-Since the Windows 10 April 2018 Update update, you can open the built-in emoji picker with <kbd>Win</kbd>+<kbd>.</kbd>. It is missing support for flags and emojis newer than the OS.
+Since the Windows 10 April 2018 Update update, you can open the built-in emoji picker with <kbd>Win</kbd>+<kbd>.</kbd>.
+It is missing support for flags and emojis newer than the OS.
 
 How to use
 ----------
