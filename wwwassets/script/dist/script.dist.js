@@ -4426,20 +4426,20 @@ define("config/fallback", ["require", "exports"], function (require, exports) {
         },
         {
             windows: "10.0.16226",
-            version: 5,
-        },
-        {
-            windows: "10.0.15063",
-            version: 4,
-        },
-        {
-            windows: "10.0.14393",
-        },
-        {
-            windows: "10",
-            version: 0,
-        },
-    ];
+			version: 5,
+		},
+		{
+			windows: "10.0.15063",
+			version: 4,
+		},
+		{
+			windows: "10.0.14393",
+		},
+		{
+			windows: "10",
+			version: 0.01,
+		},
+	];
 });
 define("unicodeInterface", ["require", "exports", "builder/consolidated", "builder/builder", "config/fallback"], function (require, exports, consolidated_1, builder_1, fallback_1) {
     "use strict";
@@ -5667,34 +5667,34 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "place-building" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "place-religious" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "place-other" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "hotel" }),
-                ]
-            },
-            {
-                name: "Vehicles",
-                symbol: "🚗",
-                content: [
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "transport-ground" }),
-                ]
-            },
-            {
-                name: "Ships",
-                symbol: "✈",
-                content: [
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "transport-air" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "transport-water" }),
-                ]
-            },
-            {
-                name: "Time",
-                symbol: "⌛",
-                content: [
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "time" })
-                ]
-            },
-            {
-                name: "Weather",
-                symbol: "⛅",
+					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "hotel"}),
+				]
+			},
+			{
+				name: "Vehicles",
+				symbol: "🚗",
+				content: [
+					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "transport-ground"}),
+				]
+			},
+			{
+				name: "Ships",
+				symbol: "✈️",
+				content: [
+					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "transport-air"}),
+					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "transport-water"}),
+				]
+			},
+			{
+				name: "Time",
+				symbol: "⌛",
+				content: [
+					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "time"})
+				]
+			},
+			{
+				name: "Weather",
+				symbol: "⛅",
                 content: [
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "sky & weather" })
                 ]
@@ -5757,37 +5757,37 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Objects", subGroup: "lock" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Objects", subGroup: "tool" })
                 ]
-            },
-            {
-                name: "Signs",
-                symbol: "⛔",
-                content: [
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "transport-sign" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "warning" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "zodiac" })
-                ]
-            },
-            {
-                name: "Symbols",
-                symbol: "⚜",
-                content: [
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "religion" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "gender" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "punctuation" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "currency" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "other-symbol" })
-                ]
-            },
-            {
-                name: "Alphanum",
-                symbol: "🔤",
-                content: [
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "alphanum" })
-                ]
-            },
-            {
-                name: "Geometric & keys",
-                symbol: "🔷",
+			},
+			{
+				name: "Signs",
+				symbol: "⛔",
+				content: [
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "transport-sign"}),
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "warning"}),
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "zodiac"})
+				]
+			},
+			{
+				name: "Symbols",
+				symbol: "⚜️",
+				content: [
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "religion"}),
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "gender"}),
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "punctuation"}),
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "currency"}),
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "other-symbol"})
+				]
+			},
+			{
+				name: "Alphanum",
+				symbol: "🔤",
+				content: [
+					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "alphanum"})
+				]
+			},
+			{
+				name: "Geometric & keys",
+				symbol: "🔷",
                 content: [
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "keycap" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "geometric" }),
@@ -6065,13 +6065,15 @@ define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeI
             const spriteMap = plugin.data.spriteMaps?.[symbol.spriteMap];
             if (spriteMap && spriteMap.index[symbol.sprite]) {
 				const scale = (spriteMap.width + 2 * (spriteMap.padding ?? 0)) / spriteMap.width;
-                return (0, preact_1.h)("div", { className: "sprite", style: {
+				return (0, preact_1.h)("div", {
+					className: "sprite", style: {
 						backgroundImage: `url("plugins/${spriteMap.path}")`,
 						backgroundSize: `${spriteMap.cols * 100}%`,
 						backgroundPosition: `${spriteMap.index[symbol.sprite].col / (spriteMap.cols - 1) * 100}% ${spriteMap.index[symbol.sprite].row / (spriteMap.rows - 1) * 100}%`,
 						transform: `scale(${scale})`,
-					} });
-            }
+					}
+				});
+			}
         }
         return (0, preact_1.h)(preact_1.Fragment, null, "?");
     }
@@ -6895,21 +6897,21 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
             return keys;
         }
         static fromEmoji(k) {
-            const p = { noRecent: k.noRecent };
+			const p = {noRecent: k.noRecent};
 			const keys = this.fromContents(k.content ?? [], p);
 			const byRow = (k.byRow ?? []).map(row => Array.isArray(row) ? row.map(key => this.fromItem(key, p)) : []);
 			const byVK = (0, helpers_5.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
-            return this.fromKeys({
-                name: k.name,
-                statusName: k.statusName,
-                symbol: k.symbol,
-                top: k.top,
-                noRecent: k.noRecent,
-                keys,
-                byRow,
-                byVK
-            });
-        }
+			return this.fromKeys({
+				name: k.name,
+				statusName: k.statusName,
+				symbol: k.symbol,
+				top: k.top,
+				noRecent: k.noRecent,
+				keys,
+				byRow,
+				byVK
+			});
+		}
         static clusterAlternates(cluster, variants, k) {
             const keys = variants.map((c) => new key_2.ClusterKey(c, { variants: [], variantOf: cluster, ...k }));
             if (keys.length == 6) {
@@ -7225,17 +7227,17 @@ define("recentsView", ["require", "exports", "preact/hooks", "appVar", "key", "b
             const keys = {
                 [41]: new key_4.BackKey(),
                 ...(0, utils_4.mapKeysToSlots)(layout_3.DigitsRow, [
-                    new key_4.ConfigToggleKey({
-                        name: "Favorite",
-                        symbol: "⭐",
-                        active: useCount >= recentsActions_1.FAVORITE_SCORE,
-                        action: () => (0, recentsActions_1.toggleFavorite)(this.cluster)
-                    }),
-                    new key_4.ConfigActionKey({
-                        name: "Remove", symbol: "🗑", action: () => {
-                            (0, recentsActions_1.removeRecent)(this.cluster);
-                            (0, appVar_9.app)().back();
-                        }
+					new key_4.ConfigToggleKey({
+						name: "Favorite",
+						symbol: "⭐",
+						active: useCount >= recentsActions_1.FAVORITE_SCORE,
+						action: () => (0, recentsActions_1.toggleFavorite)(this.cluster)
+					}),
+					new key_4.ConfigActionKey({
+						name: "Remove", symbol: "🗑️", action: () => {
+							(0, recentsActions_1.removeRecent)(this.cluster);
+							(0, appVar_9.app)().back();
+						}
 					})
 				]),
 				[16]: new key_4.ConfigLabelKey(`Score: ${useCount}, +${recentsActions_1.SCORE_INCR} when used, -${recentsActions_1.SCORE_DECR} when others used`),
@@ -7290,26 +7292,27 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
 		AppMode[AppMode["SETTINGS"] = 2] = "SETTINGS";
 		AppMode[AppMode["RECENTS"] = 3] = "RECENTS";
 	})(AppMode = exports.AppMode || (exports.AppMode = {}));
-    const AppModes = [0, 1, 2, 3];
-    class App extends preact_9.Component {
-        keyHandlers = {};
-        state = {
-            mode: 0,
-            searchText: '',
-            layout: layout_4.SystemLayoutUS,
-            config: { ...config_1.DefaultConfig, opacity: 1 },
-            boardState: {},
-            os: new osversion_1.Version('99'),
-            currentBoard: {
-                [0]: (0, board_5.getMainBoard)([]),
-                [1]: new searchView_1.SearchBoard(),
-                [2]: new config_1.ConfigBoard(),
-                [3]: new recentsView_1.RecentBoard(),
-            },
-            parentBoards: (0, helpers_7.fromEntries)(AppModes.map(m => [m, []])),
-            building: false,
-            plugins: [],
-        };
+	const AppModes = [0, 1, 2, 3];
+
+	class App extends preact_9.Component {
+		keyHandlers = {};
+		state = {
+			mode: 0,
+			searchText: '',
+			layout: layout_4.SystemLayoutUS,
+			config: {...config_1.DefaultConfig, opacity: 1},
+			boardState: {},
+			os: new osversion_1.Version('99'),
+			currentBoard: {
+				[0]: (0, board_5.getMainBoard)([]),
+				[1]: new searchView_1.SearchBoard(),
+				[2]: new config_1.ConfigBoard(),
+				[3]: new recentsView_1.RecentBoard(),
+			},
+			parentBoards: (0, helpers_7.fromEntries)(AppModes.map(m => [m, []])),
+			building: false,
+			plugins: [],
+		};
         constructor(props) {
             super(props);
             (0, appVar_10.setApp)(this);
@@ -7587,10 +7590,10 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
 					parentBoards: {
 						...s.parentBoards,
 						[0]: [],
-                    }
-                };
-            });
-        }
+					}
+				};
+			});
+		}
         loadFallbackFonts(rest) {
             const fonts = rest.split('\n')
                 .filter(f => f.length && f.match(/.*\.(otf|ttf|woff2?|eot|svg)$/i));
