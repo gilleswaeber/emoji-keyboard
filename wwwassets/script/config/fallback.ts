@@ -109,7 +109,7 @@ export const IconFallback: {
 	},
 	{
 		windows: "10",
-		version: 0,
+		version: 0.01,
 		// version: 5
 	},
 ];

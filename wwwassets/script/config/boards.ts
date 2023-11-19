@@ -231,7 +231,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 		},
 		{
 			name: "Ships",
-			symbol: "✈",
+			symbol: "✈️",
 			content: [
 				...emojiGroup({group: "Travel & Places", subGroup: "transport-air"}),
 				...emojiGroup({group: "Travel & Places", subGroup: "transport-water"}),
@@ -321,7 +321,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 		},
 		{
 			name: "Symbols",
-			symbol: "⚜",
+			symbol: "⚜️",
 			content: [
 				...emojiGroup({group: "Symbols", subGroup: "religion"}),
 				...emojiGroup({group: "Symbols", subGroup: "gender"}),

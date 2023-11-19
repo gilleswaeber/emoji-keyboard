@@ -75,7 +75,7 @@ export class RecentSettingsBoard extends Board {
 					action: () => toggleFavorite(this.cluster)
 				}),
 				new ConfigActionKey({
-					name: "Remove", symbol: "🗑", action: () => {
+					name: "Remove", symbol: "🗑️", action: () => {
 						removeRecent(this.cluster);
 						app().back();
 					}
