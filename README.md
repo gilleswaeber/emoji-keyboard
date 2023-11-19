@@ -8,8 +8,9 @@ clone `https://github.com/gilleswaeber/emoji-keyboard.git`
 <img alt="Screenshot" src="https://i.imgur.com/rJFlKDm.png" width="766" />
 
 Packed with thousands of Emojis!
-Requires Windows 7
-and [WebView2](https://go.microsoft.com/fwlink/p/?LinkId=2124703) (comes with Windows 10+)
+Requires Windows 7+
+, [WebView2](https://go.microsoft.com/fwlink/p/?LinkId=2124703) (comes with Windows 10+)
+, and [Autohotkey](https://autohotkey.com/).
 
 Alternatives
 ------------
@@ -18,11 +19,12 @@ It is missing support for flags and emojis newer than the OS.
 
 How to use
 ----------
-Install [Autohotkey](https://autohotkey.com/), download the whole project, and then launch App.ahk. It will then stay in
+Install [Autohotkey](https://autohotkey.com/), download using the link at the top, and then launch App.ahk. It will then stay in
 system tray until you call it.
 
 Open it with the <kbd>⇧ Shift</kbd>+<kbd>Caps Lock</kbd> combination.
-You can also use a double click on the tray icon. (Look for `+Capslock` in the *App.ahk* file to change the shortcut).
+You can also use a double click on the tray icon.
+To change the shortcut, edit *hotkey.ahk* which is created the first time you start the program.
 
 Use the shown keyboard keys to navigate between the categories and type the Emojis. You can also use the mouse. You can move the window and resize it as you wish.
 Keymap matches the one of your system automatically.

@@ -6,6 +6,7 @@
 #Include lib/caret.ahk
 #Include lib/clipboard.ahk
 #Include lib/keyboard_layout.ahk
+#Include *i hotkey.ahk
 
 #Warn
 SetWorkingDir(A_ScriptDir)	; Ensures a consistent starting directory
@@ -22,6 +23,12 @@ A_TrayMenu.Add("&Reload", ActReload)
 A_TrayMenu.Add()
 A_TrayMenu.Add("E&xit", ActExit)
 A_TrayMenu.Default := "&Show"
+
+if (!FileExist("hotkey.ahk")) {
+    MsgBox("Once you press OK, you'll be able to show the Emoji Keyboard by pressing Shift+Caps Lock`nEdit hotkey.ahk to change the shortcut.")
+    Reload
+    FileCopy("lib/hotkey.ahk", "hotkey.ahk", False)
+}
 
 clamp(val, min, max) {
     if (val < min) {
@@ -417,8 +424,7 @@ ActCredits(*) {
     Run("https://github.com/romligCH/emoji-keyboard")
 }
 
-; Change Hotkey here
-+Capslock:: KB.Toggle()
+; To change the activation hotkey, edit hotkey.ahk
 
 #HotIf KB.isVisible
 ; Corresponding keys          US   CH

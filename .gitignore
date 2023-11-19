@@ -1,7 +1,6 @@
 /res/data/*
 !/res/data/data.exp.js
 !/res/data/.gitkeep
-/config.json
 /wwwassets/node_modules
 /wwwassets/script/dist/*
 !/wwwassets/script/dist/script.dist.js
@@ -13,6 +12,9 @@
 *.js.map
 /emoji-keyboard.zip
 /local
+# User configuration
+/config.json
+/hotkey.ahk
 # IDE-specific
 .idea
 .vscode
