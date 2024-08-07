@@ -1,11 +1,11 @@
-Emoji Keyboard (Emoji 15)
+Emoji Keyboard (Emoji 15.1)
 ==============
 [💾 Download](https://github.com/gilleswaeber/emoji-keyboard/releases/latest/download/emoji-keyboard.zip) or
 clone `https://github.com/gilleswaeber/emoji-keyboard.git`
 
 *do not use the Download ZIP button since some files would be missing (Git LFS // #19)*
 
-<img alt="Screenshot" src="https://i.imgur.com/rJFlKDm.png" width="766" />
+<img alt="Screenshot" src="https://i.imgur.com/qpVBhXt.png" width="786" />
 
 Packed with thousands of Emojis!
 Requires Windows 7+

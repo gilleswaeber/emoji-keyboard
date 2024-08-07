@@ -24,6 +24,13 @@ A_TrayMenu.Add()
 A_TrayMenu.Add("E&xit", ActExit)
 A_TrayMenu.Default := "&Show"
 
+; Folder in https://unicode.org/Public/
+UCD_VERSION := "15.1.0"
+; Folder in https://unicode.org/Public/emoji/
+EMOJI_VERSION := "15.1"
+; Tag in https://github.com/unicode-org/cldr-json/tags
+CLDR_VERSION := "45.0.0"
+
 if (!FileExist("hotkey.ahk")) {
     MsgBox("Once you press OK, you'll be able to show the Emoji Keyboard by pressing Shift+Caps Lock`nEdit hotkey.ahk to change the shortcut.")
     Reload
@@ -158,18 +165,25 @@ class EmojiKeyboard {
         }
         onDownloadUnicode(num) {
             try {
-                this.DataUnicode('emoji/15.0/emoji-test.txt')
-                this.DataUnicode('15.0.0/ucd/emoji/emoji-data.txt')
-                this.DataUnicode('15.0.0/ucd/UnicodeData.txt')
-                this.DataUnicode('15.0.0/ucd/NamesList.txt')
-                this.DataUnicode('15.0.0/ucd/NamedSequences.txt')
-                this.DataCLDR('42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
+                this.DataUnicode('emoji/' EMOJI_VERSION '/emoji-test.txt')
+                this.DataUnicode(UCD_VERSION '/ucd/emoji/emoji-data.txt')
+                this.DataUnicode(UCD_VERSION '/ucd/UnicodeData.txt')
+                this.DataUnicode(UCD_VERSION '/ucd/NamesList.txt')
+                this.DataUnicode(UCD_VERSION '/ucd/NamedSequences.txt')
+                this.DataCLDR(CLDR_VERSION '/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
             } catch as e {
                 this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)
             } else {
                 this.wv.PostWebMessageAsString('done,' num ',')
             }
         }
+		onVersions() {
+			return {
+				ucd: UCD_VERSION,
+				emoji: EMOJI_VERSION,
+				cldr: CLDR_VERSION,
+			}
+		}
         onHide() {
         	this.Hide()
 		}
@@ -296,6 +310,7 @@ class EmojiKeyboard {
             saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,
             setOpenAt: onSetOpenAt,
             setOpacity: onSetOpacity, setSearch: onSetSearch, setPosSize: onSetPosSize, setTitle: onSetTitle,
+			versions: onVersions
         })
     }
 

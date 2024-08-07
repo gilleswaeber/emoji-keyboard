@@ -8,7 +8,7 @@ import {
 	Paths
 } from "./unicode";
 import {consolidateUnicodeData, UnicodeDataSource} from "./consolidated";
-import {ahkDownloadUnicode, ahkSaveUnicodeData} from "../ahk";
+import {ahkDownloadUnicode, ahkSaveUnicodeData, ahkVersions} from "../ahk";
 import {app} from "../appVar";
 
 export function toCodePoints(s: string): number[] {
@@ -29,6 +29,7 @@ type FirstPassEmoji = {
 }
 
 let building = false;
+
 export async function makeBuild() {
 	if (building) return;
 	try {
@@ -46,13 +47,14 @@ export async function makeBuild() {
 
 async function build() {
 	await ahkDownloadUnicode();
+	const v = await ahkVersions();
 	const paths: Paths = {
-		emojiTestPath: '../res/data/emoji/15.0/emoji-test.txt',
-		emojiDataPath: '../res/data/15.0.0/ucd/emoji/emoji-data.txt',
-		unicodeDataPath: '../res/data/15.0.0/ucd/UnicodeData.txt',
-		namedSequencesPath: '../res/data/15.0.0/ucd/NamedSequences.txt',
-		namesListPath: '../res/data/15.0.0/ucd/NamesList.txt',
-		annotationsPath: '../res/data/cldr-json/42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json',
+		emojiTestPath: `../res/data/emoji/${v.emoji}/emoji-test.txt`,
+		emojiDataPath: `../res/data/${v.ucd}/ucd/emoji/emoji-data.txt`,
+		unicodeDataPath: `../res/data/${v.ucd}/ucd/UnicodeData.txt`,
+		namedSequencesPath: `../res/data/${v.ucd}/ucd/NamedSequences.txt`,
+		namesListPath: `../res/data/${v.ucd}/ucd/NamesList.txt`,
+		annotationsPath: `../res/data/cldr-json/${v.cldr}/cldr-json/cldr-annotations-full/annotations/en/annotations.json`,
 	};
 
 	const ctx: UnicodeDataSource = {
@@ -78,4 +80,26 @@ async function build() {
 		`Reload the app to load the new data file`
 	)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

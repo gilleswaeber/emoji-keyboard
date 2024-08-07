@@ -405,8 +405,21 @@ export function getUnicodeData(): ExtendedUnicodeData {
 		}
 	}
 
-	// For some reason, woman variants place bearded woman first...
+	// Fix woman variants list to place bearded woman last
 	clusters["👩"].variants?.sort((a, b) => +clusters[a]!.name.includes('Beard') - +clusters[b]!.name.includes('Beard'))
+
+	// Fix People & Body group s.t. families are all in the family sub-group
+	const people = u.groups.find(g => g.name == 'People & Body');
+	if (people) {
+		const personSymbol = people.sub.find(s => s.name == 'person-symbol');
+		const family = people.sub.find(s => s.name == 'family');
+		if (personSymbol && family) {
+			const isFamily = (c: string) => clusters[c]?.name.startsWith('Family');
+			const toMove = personSymbol?.clusters.filter(isFamily) ?? [];
+			family.clusters.push(...toMove);
+			personSymbol.clusters = personSymbol.clusters.filter(c => !isFamily(c));
+		}
+	}
 
 	// Extend group information
 	for (const group of u.groups) {
@@ -425,7 +438,7 @@ export function getUnicodeData(): ExtendedUnicodeData {
 	}
 
 	// Add skin tone variants to family sequences
-	for (const c of ["👨‍👩‍👦", "👨‍👩‍👧", "👨‍👩‍👧‍👦", "👨‍👩‍👦‍👦", "👨‍👩‍👧‍👧", "👨‍👨‍👦", "👨‍👨‍👧", "👨‍👨‍👧‍👦", "👨‍👨‍👦‍👦", "👨‍👨‍👧‍👧", "👩‍👩‍👦", "👩‍👩‍👧", "👩‍👩‍👧‍👦", "👩‍👩‍👦‍👦", "👩‍👩‍👧‍👧", "👨‍👦", "👨‍👦‍👦", "👨‍👧", "👨‍👧‍👦", "👨‍👧‍👧", "👩‍👦", "👩‍👦‍👦", "👩‍👧", "👩‍👧‍👦", "👩‍👧‍👧"]) {
+	for (const c of ["👨‍👩‍👦", "👨‍👩‍👧", "👨‍👩‍👧‍👦", "👨‍👩‍👦‍👦", "👨‍👩‍👧‍👧", "👨‍👨‍👦", "👨‍👨‍👧", "👨‍👨‍👧‍👦", "👨‍👨‍👦‍👦", "👨‍👨‍👧‍👧", "👩‍👩‍👦", "👩‍👩‍👧", "👩‍👩‍👧‍👦", "👩‍👩‍👦‍👦", "👩‍👩‍👧‍👧", "👨‍👦", "👨‍👦‍👦", "👨‍👧", "👨‍👧‍👦", "👨‍👧‍👧", "👩‍👦", "👩‍👦‍👦", "👩‍👧", "👩‍👧‍👦", "👩‍👧‍👧", "🧑‍🧑‍🧒", "🧑‍🧑‍🧒‍🧒", "🧑‍🧒", "🧑‍🧒‍🧒"]) {
 		if (clusters[c] && !clusters[c].variants) {
 			const parts = c.split(ZeroWidthJoiner);
 			for (let i = 1; i < parts.length; ++i) parts[i] = ZeroWidthJoiner + parts[i];

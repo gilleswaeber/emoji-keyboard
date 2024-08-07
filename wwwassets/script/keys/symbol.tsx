@@ -1,12 +1,25 @@
 import {useContext, useMemo} from "preact/hooks";
 import {OSContext, PluginsContext} from "../appVar";
-import {charInfo, requiredOS} from "../unicodeInterface";
+import {charInfo, symbolRequirements} from "../unicodeInterface";
 import {toCodePoints} from "../builder/builder";
 import {GeneralCategory} from "../builder/unicode";
 import {VarSel15} from "../chars";
 import {cl} from "../helpers";
 import {KeyCap, SpriteRef} from "../config/boards";
 import {Fragment, h} from "preact";
+import {Version} from "../osversion";
+import {hiddenBox, supportsZWJ} from "../utils/zwjTest";
+
+hiddenBox.style.position = 'absolute';
+hiddenBox.style.left = '-1000px';
+hiddenBox.style.top = '-1000px';
+document.body.appendChild(hiddenBox);
+
+function meetsRequirements(symbol: string, os: Version) {
+	const req = symbolRequirements(symbol);
+	if (typeof req.windows === "string") return os.gte(req.windows);
+	return supportsZWJ(req.zwj);
+}
 
 export function Symbol({symbol}: { symbol: KeyCap }) {
 	const os = useContext(OSContext);
@@ -20,11 +33,10 @@ export function Symbol({symbol}: { symbol: KeyCap }) {
 					symbol = '◌' + symbol;
 				}
 			}
-			const req = requiredOS(symbol);
 			// here we consider that symbol = 1 grapheme cluster
 			// note that the browser doesn't apply the text-style selector by itself since the chars are in different fonts
 			// also, we may need a fallback for a sequence so font-family fallback won't work either
-			const fallbackFont = os.lt(req);
+			const fallbackFont = !meetsRequirements(symbol, os);
 			const textStyle = symbol.endsWith(VarSel15);
 			return <div className={cl(`symbol`, {fallbackFont, textStyle})}>
 				{symbol}

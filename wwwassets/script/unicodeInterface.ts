@@ -1,6 +1,6 @@
 import {ExtendedCharInformation, getUnicodeData} from "./builder/consolidated";
 import {toCodePoints} from "./builder/builder";
-import {IconFallback} from "./config/fallback";
+import {IconFallback, IconRequirement} from "./config/fallback";
 import {UnicodeEmojiGroup} from "./unidata";
 
 export const IgnoreForName = [
@@ -19,6 +19,7 @@ function charName(code: number): string {
 		return u.chars[code]?.n ?? `U+${code.toString(16)}`;
 	}
 }
+
 function clusterFullName(cluster: string): string {
 	const c = toCodePoints(cluster);
 	if (c.length === 1) return charName(c[0]!);
@@ -55,14 +56,14 @@ export function emojiGroup(g: UnicodeEmojiGroup): string[] {
 	return u.groups[g.group]?.sub[g.subGroup]?.clusters ?? [];
 }
 
-export function requiredOS(cluster: string): string {
+export function symbolRequirements(cluster: string): IconRequirement {
 	const info = u.clusters[cluster];
 	for (const f of IconFallback) {
-		if (info && f.version && info.version && info.version >= f.version) return f.windows;
-		if (f.clusters && f.clusters.has(cluster)) return f.windows;
+		if (info && f.version && info.version && f.version.lte(info.version)) return f.requirement;
+		if (f.clusters && f.clusters.has(cluster)) return f.requirement;
 		if (f.ranges) for (const r of f.ranges) {
-			if (cluster >= r.from && cluster <= r.to) return f.windows;
+			if (cluster >= r.from && cluster <= r.to) return f.requirement;
 		}
 	}
-	return "0";
+	return {windows: "0"};
 }

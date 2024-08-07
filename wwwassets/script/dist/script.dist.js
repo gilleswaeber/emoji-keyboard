@@ -4349,13 +4349,85 @@ define("config/math", ["require", "exports", "config/mathLetters"], function (re
         "⎷",
     ];
 });
-define("config/fallback", ["require", "exports"], function (require, exports) {
+define("osversion", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Version = void 0;
+    class Version {
+        version;
+        known = new Set();
+        knownLesser = new Set();
+        knownGreater = new Set();
+        knownSame = new Set();
+        constructor(version) {
+            this.version = Version.parse(version);
+        }
+        static parse(v) {
+            if (typeof v === "number") {
+                return [Math.floor(v), Math.floor((v % 1) * 10)];
+            }
+            else {
+                if (!/^[.0-9]+$/.test(v.trim())) {
+                    console.error("Invalid version", v);
+                    return [0];
+                }
+                return v.split(/\./).map(part => parseInt(part, 10));
+            }
+        }
+        static compare(a, b) {
+            for (let i = 0; i < a.length; i++) {
+                if (i >= b.length)
+                    return a.slice(i).some((p) => p > 0) ? 1 : 0;
+                if (a[i] > b[i])
+                    return 1;
+                if (a[i] < b[i])
+                    return -1;
+            }
+            if (a.length == b.length)
+                return 0;
+            return b.slice(a.length).some((p) => p > 0) ? -1 : 0;
+        }
+        add(other) {
+            const cmp = Version.compare(this.version, Version.parse(other));
+            this.known.add(other);
+            if (cmp > 0)
+                this.knownLesser.add(other);
+            else if (cmp < 0)
+                this.knownGreater.add(other);
+            else
+                this.knownSame.add(other);
+        }
+        lt(other) {
+            if (!this.known.has(other))
+                this.add(other);
+            return this.knownGreater.has(other);
+        }
+        gt(other) {
+            if (!this.known.has(other))
+                this.add(other);
+            return this.knownLesser.has(other);
+        }
+        gte(other) {
+            return !this.lt(other);
+        }
+        lte(other) {
+            return !this.gt(other);
+        }
+        eq(other) {
+            if (!this.known.has(other))
+                this.add(other);
+            return this.knownSame.has(other);
+        }
+    }
+    exports.Version = Version;
+});
+define("config/fallback", ["require", "exports", "osversion"], function (require, exports, osversion_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.IconFallback = void 0;
     exports.IconFallback = [
         {
-            windows: "99",
+            requirement: { windows: "99" },
             ranges: [
                 { from: "🇦", to: "🇿🇿" },
                 {
@@ -4365,16 +4437,20 @@ define("config/fallback", ["require", "exports"], function (require, exports) {
             ]
         },
         {
-            windows: "10.0.25300",
-            version: 15,
+            requirement: { zwj: "🐦‍🔥" },
+            version: new osversion_1.Version("15.1"),
         },
         {
-            windows: "10.0.22563",
-            version: 14,
+            requirement: { zwj: "🐦‍⬛" },
+            version: new osversion_1.Version("15"),
         },
         {
-            windows: "10.0.21277",
-            version: 13,
+            requirement: { zwj: "🫱‍🫲" },
+            version: new osversion_1.Version("14"),
+        },
+        {
+            requirement: { windows: "10.0.21277" },
+            version: new osversion_1.Version("13"),
             clusters: new Set([
                 "*️⃣",
                 "🧑‍🦰", "🧑🏻‍🦰", "🧑🏼‍🦰", "🧑🏽‍🦰", "🧑🏾‍🦰", "🧑🏿‍🦰",
@@ -4403,8 +4479,8 @@ define("config/fallback", ["require", "exports"], function (require, exports) {
             ]),
         },
         {
-            windows: "10.0.18277",
-            version: 12,
+            requirement: { windows: "10.0.18277" },
+            version: new osversion_1.Version("12"),
             clusters: new Set([
                 "🏴‍☠️",
                 "#\ufe0f\u20e3",
@@ -4421,30 +4497,30 @@ define("config/fallback", ["require", "exports"], function (require, exports) {
             ])
         },
         {
-            windows: "10.0.17723",
-            version: 11
+            requirement: { windows: "10.0.17723" },
+            version: new osversion_1.Version("11"),
         },
         {
-            windows: "10.0.16226",
-			version: 5,
-		},
-		{
-			windows: "10.0.15063",
-			version: 4,
-		},
-		{
-			windows: "10.0.14393",
-		},
-		{
-			windows: "10",
-			version: 0.01,
-		},
-	];
+            requirement: { windows: "10.0.16226" },
+            version: new osversion_1.Version("5"),
+        },
+        {
+            requirement: { windows: "10.0.15063" },
+            version: new osversion_1.Version("4"),
+        },
+        {
+            requirement: { windows: "10.0.14393" },
+        },
+        {
+            requirement: { windows: "10" },
+            version: new osversion_1.Version("0.01"),
+        },
+    ];
 });
 define("unicodeInterface", ["require", "exports", "builder/consolidated", "builder/builder", "config/fallback"], function (require, exports, consolidated_1, builder_1, fallback_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.requiredOS = exports.emojiGroup = exports.clusterAliases = exports.clusterVariants = exports.clusterName = exports.charInfo = exports.UnicodeData = exports.IgnoreForName = void 0;
+    exports.symbolRequirements = exports.emojiGroup = exports.clusterAliases = exports.clusterVariants = exports.clusterName = exports.charInfo = exports.UnicodeData = exports.IgnoreForName = void 0;
     exports.IgnoreForName = [
         8205,
         65039,
@@ -4496,22 +4572,22 @@ define("unicodeInterface", ["require", "exports", "builder/consolidated", "build
         return u.groups[g.group]?.sub[g.subGroup]?.clusters ?? [];
     }
     exports.emojiGroup = emojiGroup;
-    function requiredOS(cluster) {
+    function symbolRequirements(cluster) {
         const info = u.clusters[cluster];
         for (const f of fallback_1.IconFallback) {
-            if (info && f.version && info.version && info.version >= f.version)
-                return f.windows;
+            if (info && f.version && info.version && f.version.lte(info.version))
+                return f.requirement;
             if (f.clusters && f.clusters.has(cluster))
-                return f.windows;
+                return f.requirement;
             if (f.ranges)
                 for (const r of f.ranges) {
                     if (cluster >= r.from && cluster <= r.to)
-                        return f.windows;
+                        return f.requirement;
                 }
         }
-        return "0";
+        return { windows: "0" };
     }
-    exports.requiredOS = requiredOS;
+    exports.symbolRequirements = symbolRequirements;
 });
 define("config/unicodeBoard", ["require", "exports", "unicodeInterface", "builder/consolidated"], function (require, exports, unicodeInterface_1, consolidated_2) {
     "use strict";
@@ -5667,34 +5743,34 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "place-building" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "place-religious" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "place-other" }),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "hotel"}),
-				]
-			},
-			{
-				name: "Vehicles",
-				symbol: "🚗",
-				content: [
-					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "transport-ground"}),
-				]
-			},
-			{
-				name: "Ships",
-				symbol: "✈️",
-				content: [
-					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "transport-air"}),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "transport-water"}),
-				]
-			},
-			{
-				name: "Time",
-				symbol: "⌛",
-				content: [
-					...(0, unicodeInterface_2.emojiGroup)({group: "Travel & Places", subGroup: "time"})
-				]
-			},
-			{
-				name: "Weather",
-				symbol: "⛅",
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "hotel" }),
+                ]
+            },
+            {
+                name: "Vehicles",
+                symbol: "🚗",
+                content: [
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "transport-ground" }),
+                ]
+            },
+            {
+                name: "Ships",
+                symbol: "✈️",
+                content: [
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "transport-air" }),
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "transport-water" }),
+                ]
+            },
+            {
+                name: "Time",
+                symbol: "⌛",
+                content: [
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "time" })
+                ]
+            },
+            {
+                name: "Weather",
+                symbol: "⛅",
                 content: [
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Travel & Places", subGroup: "sky & weather" })
                 ]
@@ -5757,37 +5833,37 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Objects", subGroup: "lock" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Objects", subGroup: "tool" })
                 ]
-			},
-			{
-				name: "Signs",
-				symbol: "⛔",
-				content: [
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "transport-sign"}),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "warning"}),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "zodiac"})
-				]
-			},
-			{
-				name: "Symbols",
-				symbol: "⚜️",
-				content: [
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "religion"}),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "gender"}),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "punctuation"}),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "currency"}),
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "other-symbol"})
-				]
-			},
-			{
-				name: "Alphanum",
-				symbol: "🔤",
-				content: [
-					...(0, unicodeInterface_2.emojiGroup)({group: "Symbols", subGroup: "alphanum"})
-				]
-			},
-			{
-				name: "Geometric & keys",
-				symbol: "🔷",
+            },
+            {
+                name: "Signs",
+                symbol: "⛔",
+                content: [
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "transport-sign" }),
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "warning" }),
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "zodiac" })
+                ]
+            },
+            {
+                name: "Symbols",
+                symbol: "⚜️",
+                content: [
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "religion" }),
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "gender" }),
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "punctuation" }),
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "currency" }),
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "other-symbol" })
+                ]
+            },
+            {
+                name: "Alphanum",
+                symbol: "🔤",
+                content: [
+                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "alphanum" })
+                ]
+            },
+            {
+                name: "Geometric & keys",
+                symbol: "🔷",
                 content: [
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "keycap" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Symbols", subGroup: "geometric" }),
@@ -6030,10 +6106,43 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
         ]
     };
 });
-define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeInterface", "builder/builder", "chars", "helpers", "preact"], function (require, exports, hooks_1, appVar_1, unicodeInterface_3, builder_3, chars_2, helpers_2, preact_1) {
+define("utils/zwjTest", ["require", "exports", "chars"], function (require, exports, chars_2) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.supportsZWJ = exports.hiddenBox = void 0;
+    exports.hiddenBox = document.createElement('div');
+    const knownZWJ = new Map();
+    function supportsZWJ(sequence) {
+        if (!knownZWJ.has(sequence)) {
+            const el = document.createElement('span');
+            el.className = 'symbol';
+            exports.hiddenBox.appendChild(el);
+            el.textContent = sequence;
+            const len1 = el.offsetWidth;
+            el.textContent = sequence.replace(chars_2.ZeroWidthJoiner, '');
+            const len2 = el.offsetWidth;
+            exports.hiddenBox.removeChild(el);
+            const supported = len1 < len2;
+            knownZWJ.set(sequence, supported);
+        }
+        return knownZWJ.get(sequence);
+    }
+    exports.supportsZWJ = supportsZWJ;
+});
+define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeInterface", "builder/builder", "chars", "helpers", "preact", "utils/zwjTest"], function (require, exports, hooks_1, appVar_1, unicodeInterface_3, builder_3, chars_3, helpers_2, preact_1, zwjTest_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Sprite = exports.Symbol = void 0;
+    zwjTest_1.hiddenBox.style.position = 'absolute';
+    zwjTest_1.hiddenBox.style.left = '-1000px';
+    zwjTest_1.hiddenBox.style.top = '-1000px';
+    document.body.appendChild(zwjTest_1.hiddenBox);
+    function meetsRequirements(symbol, os) {
+        const req = (0, unicodeInterface_3.symbolRequirements)(symbol);
+        if (typeof req.windows === "string")
+            return os.gte(req.windows);
+        return (0, zwjTest_1.supportsZWJ)(req.zwj);
+    }
     function Symbol({ symbol }) {
         const os = (0, hooks_1.useContext)(appVar_1.OSContext);
         return (0, hooks_1.useMemo)(() => {
@@ -6047,9 +6156,8 @@ define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeI
                         symbol = '◌' + symbol;
                     }
                 }
-                const req = (0, unicodeInterface_3.requiredOS)(symbol);
-                const fallbackFont = os.lt(req);
-                const textStyle = symbol.endsWith(chars_2.VarSel15);
+                const fallbackFont = !meetsRequirements(symbol, os);
+                const textStyle = symbol.endsWith(chars_3.VarSel15);
                 return (0, preact_1.h)("div", { className: (0, helpers_2.cl)(`symbol`, { fallbackFont, textStyle }) }, symbol);
             }
             else {
@@ -6064,16 +6172,14 @@ define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeI
         for (const plugin of plugins) {
             const spriteMap = plugin.data.spriteMaps?.[symbol.spriteMap];
             if (spriteMap && spriteMap.index[symbol.sprite]) {
-				const scale = (spriteMap.width + 2 * (spriteMap.padding ?? 0)) / spriteMap.width;
-				return (0, preact_1.h)("div", {
-					className: "sprite", style: {
-						backgroundImage: `url("plugins/${spriteMap.path}")`,
-						backgroundSize: `${spriteMap.cols * 100}%`,
-						backgroundPosition: `${spriteMap.index[symbol.sprite].col / (spriteMap.cols - 1) * 100}% ${spriteMap.index[symbol.sprite].row / (spriteMap.rows - 1) * 100}%`,
-						transform: `scale(${scale})`,
-					}
-				});
-			}
+                const scale = (spriteMap.width + 2 * (spriteMap.padding ?? 0)) / spriteMap.width;
+                return (0, preact_1.h)("div", { className: "sprite", style: {
+                        backgroundImage: `url("plugins/${spriteMap.path}")`,
+                        backgroundSize: `${spriteMap.cols * 100}%`,
+                        backgroundPosition: `${spriteMap.index[symbol.sprite].col / (spriteMap.cols - 1) * 100}% ${spriteMap.index[symbol.sprite].row / (spriteMap.rows - 1) * 100}%`,
+                        transform: `scale(${scale})`,
+                    } });
+            }
         }
         return (0, preact_1.h)(preact_1.Fragment, null, "?");
     }
@@ -6499,13 +6605,13 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
     }
     exports.ConfigBoard = ConfigBoard;
 });
-define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "unicodeInterface", "builder/builder", "preact/hooks", "chars", "keys/base", "keys/symbol", "builder/consolidated"], function (require, exports, preact_5, board_2, appVar_5, helpers_4, unicodeInterface_4, builder_4, hooks_5, chars_3, base_3, symbol_2, consolidated_3) {
+define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "unicodeInterface", "builder/builder", "preact/hooks", "chars", "keys/base", "keys/symbol", "builder/consolidated"], function (require, exports, preact_5, board_2, appVar_5, helpers_4, unicodeInterface_4, builder_4, hooks_5, chars_4, base_3, symbol_2, consolidated_3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExitRecentKey = exports.RecentKey = exports.ClusterKey = exports.ExitSearchKey = exports.SearchKey = exports.PageKey = exports.KeyboardKey = exports.BackKey = exports.ConfigBuildKey = exports.ConfigLabelKey = exports.ConfigToggleKey = exports.ConfigActionKey = exports.ConfigKey = void 0;
     class ConfigKey extends base_3.Key {
         constructor() {
-            super({ name: "Settings", symbol: "🛠️" + chars_3.VarSel15, clickAlwaysAlternate: true, keyNamePrefix: "⇧" });
+            super({ name: "Settings", symbol: "🛠️" + chars_4.VarSel15, clickAlwaysAlternate: true, keyNamePrefix: "⇧" });
         }
         actAlternate() {
             (0, appVar_5.app)().setMode(2);
@@ -6609,7 +6715,7 @@ define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "un
     exports.PageKey = PageKey;
     class SearchKey extends base_3.Key {
         constructor() {
-            super({ name: 'search', symbol: '🔎' + chars_3.VarSel15 });
+            super({ name: 'search', symbol: '🔎' + chars_4.VarSel15 });
         }
         act() {
             (0, appVar_5.app)().setMode(1);
@@ -6724,10 +6830,10 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
     function getMainBoard(plugins) {
         const b = { ...boards_1.MAIN_BOARD };
         for (const p of plugins) {
-			if (p.data.boards) {
-				b.content = [...(b.content ?? []), ...p.data.boards];
-			}
-		}
+            if (p.data.boards) {
+                b.content = [...(b.content ?? []), ...p.data.boards];
+            }
+        }
         return Board.fromEmoji(b);
     }
     exports.getMainBoard = getMainBoard;
@@ -6897,21 +7003,21 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
             return keys;
         }
         static fromEmoji(k) {
-			const p = {noRecent: k.noRecent};
-			const keys = this.fromContents(k.content ?? [], p);
-			const byRow = (k.byRow ?? []).map(row => Array.isArray(row) ? row.map(key => this.fromItem(key, p)) : []);
-			const byVK = (0, helpers_5.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
-			return this.fromKeys({
-				name: k.name,
-				statusName: k.statusName,
-				symbol: k.symbol,
-				top: k.top,
-				noRecent: k.noRecent,
-				keys,
-				byRow,
-				byVK
-			});
-		}
+            const p = { noRecent: k.noRecent };
+            const keys = this.fromContents(k.content ?? [], p);
+            const byRow = (k.byRow ?? []).map(row => Array.isArray(row) ? row.map(key => this.fromItem(key, p)) : []);
+            const byVK = (0, helpers_5.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
+            return this.fromKeys({
+                name: k.name,
+                statusName: k.statusName,
+                symbol: k.symbol,
+                top: k.top,
+                noRecent: k.noRecent,
+                keys,
+                byRow,
+                byVK
+            });
+        }
         static clusterAlternates(cluster, variants, k) {
             const keys = variants.map((c) => new key_2.ClusterKey(c, { variants: [], variantOf: cluster, ...k }));
             if (keys.length == 6) {
@@ -6943,73 +7049,6 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
         };
     }
     exports.StaticBoard = StaticBoard;
-});
-define("osversion", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Version = void 0;
-    class Version {
-        version;
-        known = new Set();
-        knownLesser = new Set();
-        knownGreater = new Set();
-        knownSame = new Set();
-        constructor(version) {
-            this.version = Version.parse(version);
-        }
-        static parse(v) {
-            if (!/^[.0-9]+$/.test(v.trim())) {
-                console.error("Invalid version", v);
-                return [0];
-            }
-            return v.split(/\./).map(part => parseInt(part, 10));
-        }
-        static compare(a, b) {
-            for (let i = 0; i < a.length; i++) {
-                if (i >= b.length)
-                    return a.slice(i).some((p) => p > 0) ? 1 : 0;
-                if (a[i] > b[i])
-                    return 1;
-                if (a[i] < b[i])
-                    return -1;
-            }
-            if (a.length == b.length)
-                return 0;
-            return b.slice(a.length).some((p) => p > 0) ? -1 : 0;
-        }
-        add(other) {
-            const cmp = Version.compare(this.version, Version.parse(other));
-            this.known.add(other);
-            if (cmp > 0)
-                this.knownLesser.add(other);
-            else if (cmp < 0)
-                this.knownGreater.add(other);
-            else
-                this.knownSame.add(other);
-        }
-        lt(other) {
-            if (!this.known.has(other))
-                this.add(other);
-            return this.knownGreater.has(other);
-        }
-        gt(other) {
-            if (!this.known.has(other))
-                this.add(other);
-            return this.knownLesser.has(other);
-        }
-        ge(other) {
-            return !this.lt(other);
-        }
-        le(other) {
-            return !this.gt(other);
-        }
-        eq(other) {
-            if (!this.known.has(other))
-                this.add(other);
-            return this.knownSame.has(other);
-        }
-    }
-    exports.Version = Version;
 });
 define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "helpers"], function (require, exports, unicodeInterface_6, builder_5, helpers_6) {
     "use strict";
@@ -7227,92 +7266,89 @@ define("recentsView", ["require", "exports", "preact/hooks", "appVar", "key", "b
             const keys = {
                 [41]: new key_4.BackKey(),
                 ...(0, utils_4.mapKeysToSlots)(layout_3.DigitsRow, [
-					new key_4.ConfigToggleKey({
-						name: "Favorite",
-						symbol: "⭐",
-						active: useCount >= recentsActions_1.FAVORITE_SCORE,
-						action: () => (0, recentsActions_1.toggleFavorite)(this.cluster)
-					}),
-					new key_4.ConfigActionKey({
-						name: "Remove", symbol: "🗑️", action: () => {
-							(0, recentsActions_1.removeRecent)(this.cluster);
-							(0, appVar_9.app)().back();
-						}
-					})
-				]),
-				[16]: new key_4.ConfigLabelKey(`Score: ${useCount}, +${recentsActions_1.SCORE_INCR} when used, -${recentsActions_1.SCORE_DECR} when others used`),
-				[30]: new key_4.ConfigLabelKey(`Favorite when score ≥ ${recentsActions_1.FAVORITE_SCORE}`),
-			};
-			return (0, preact_8.h)(utils_4.Keys, {keys: keys});
-		};
-	}
-
-	exports.RecentSettingsBoard = RecentSettingsBoard;
+                    new key_4.ConfigToggleKey({
+                        name: "Favorite",
+                        symbol: "⭐",
+                        active: useCount >= recentsActions_1.FAVORITE_SCORE,
+                        action: () => (0, recentsActions_1.toggleFavorite)(this.cluster)
+                    }),
+                    new key_4.ConfigActionKey({
+                        name: "Remove", symbol: "🗑️", action: () => {
+                            (0, recentsActions_1.removeRecent)(this.cluster);
+                            (0, appVar_9.app)().back();
+                        }
+                    })
+                ]),
+                [16]: new key_4.ConfigLabelKey(`Score: ${useCount}, +${recentsActions_1.SCORE_INCR} when used, -${recentsActions_1.SCORE_DECR} when others used`),
+                [30]: new key_4.ConfigLabelKey(`Favorite when score ≥ ${recentsActions_1.FAVORITE_SCORE}`),
+            };
+            return (0, preact_8.h)(utils_4.Keys, { keys: keys });
+        };
+    }
+    exports.RecentSettingsBoard = RecentSettingsBoard;
 });
 define("utils/compare", ["require", "exports"], function (require, exports) {
-	"use strict";
-	Object.defineProperty(exports, "__esModule", {value: true});
-	exports.naturalCompare = void 0;
-
-	function naturalCompare(a, b) {
-		if (!a || !b)
-			return +!!a - +!!b;
-		const aParts = a.match(/[0-9]+|[^0-9]+/g);
-		const bParts = b.match(/[0-9]+|[^0-9]+/g);
-		for (const i of aParts.keys()) {
-			if (bParts.length <= i)
-				return 1;
-			const aText = !/^[0-9]/.test(aParts[i]);
-			const bText = !/^[0-9]/.test(bParts[i]);
-			if (aText !== bText)
-				return +aText - +bText;
-			if (aText) {
-				const cmp = aParts[i].localeCompare(bParts[i]);
-				if (cmp !== 0)
-					return cmp;
-			} else {
-				const cmp = parseInt(aParts[i], 10) - parseInt(bParts[i], 10);
-				if (cmp !== 0)
-					return cmp;
-			}
-		}
-		return -1;
-	}
-
-	exports.naturalCompare = naturalCompare;
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.naturalCompare = void 0;
+    function naturalCompare(a, b) {
+        if (!a || !b)
+            return +!!a - +!!b;
+        const aParts = a.match(/[0-9]+|[^0-9]+/g);
+        const bParts = b.match(/[0-9]+|[^0-9]+/g);
+        for (const i of aParts.keys()) {
+            if (bParts.length <= i)
+                return 1;
+            const aText = !/^[0-9]/.test(aParts[i]);
+            const bText = !/^[0-9]/.test(bParts[i]);
+            if (aText !== bText)
+                return +aText - +bText;
+            if (aText) {
+                const cmp = aParts[i].localeCompare(bParts[i]);
+                if (cmp !== 0)
+                    return cmp;
+            }
+            else {
+                const cmp = parseInt(aParts[i], 10) - parseInt(bParts[i], 10);
+                if (cmp !== 0)
+                    return cmp;
+            }
+        }
+        return -1;
+    }
+    exports.naturalCompare = naturalCompare;
 });
-define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView", "recentsView", "recentsActions", "utils/compare"], function (require, exports, preact_9, layout_4, board_5, osversion_1, ahk_2, emojis_2, config_1, helpers_7, appVar_10, hooks_9, searchView_1, recentsView_1, recentsActions_2, compare_1) {
-	"use strict";
-	Object.defineProperty(exports, "__esModule", {value: true});
-	exports.AppMode = void 0;
-	var AppMode;
-	(function (AppMode) {
-		AppMode[AppMode["MAIN"] = 0] = "MAIN";
-		AppMode[AppMode["SEARCH"] = 1] = "SEARCH";
-		AppMode[AppMode["SETTINGS"] = 2] = "SETTINGS";
-		AppMode[AppMode["RECENTS"] = 3] = "RECENTS";
-	})(AppMode = exports.AppMode || (exports.AppMode = {}));
-	const AppModes = [0, 1, 2, 3];
-
-	class App extends preact_9.Component {
-		keyHandlers = {};
-		state = {
-			mode: 0,
-			searchText: '',
-			layout: layout_4.SystemLayoutUS,
-			config: {...config_1.DefaultConfig, opacity: 1},
-			boardState: {},
-			os: new osversion_1.Version('99'),
-			currentBoard: {
-				[0]: (0, board_5.getMainBoard)([]),
-				[1]: new searchView_1.SearchBoard(),
-				[2]: new config_1.ConfigBoard(),
-				[3]: new recentsView_1.RecentBoard(),
-			},
-			parentBoards: (0, helpers_7.fromEntries)(AppModes.map(m => [m, []])),
-			building: false,
-			plugins: [],
-		};
+define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView", "recentsView", "recentsActions", "utils/compare"], function (require, exports, preact_9, layout_4, board_5, osversion_2, ahk_2, emojis_2, config_1, helpers_7, appVar_10, hooks_9, searchView_1, recentsView_1, recentsActions_2, compare_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.AppMode = void 0;
+    var AppMode;
+    (function (AppMode) {
+        AppMode[AppMode["MAIN"] = 0] = "MAIN";
+        AppMode[AppMode["SEARCH"] = 1] = "SEARCH";
+        AppMode[AppMode["SETTINGS"] = 2] = "SETTINGS";
+        AppMode[AppMode["RECENTS"] = 3] = "RECENTS";
+    })(AppMode = exports.AppMode || (exports.AppMode = {}));
+    const AppModes = [0, 1, 2, 3];
+    class App extends preact_9.Component {
+        keyHandlers = {};
+        state = {
+            mode: 0,
+            searchText: '',
+            layout: layout_4.SystemLayoutUS,
+            config: { ...config_1.DefaultConfig, opacity: 1 },
+            boardState: {},
+            os: new osversion_2.Version('99'),
+            currentBoard: {
+                [0]: (0, board_5.getMainBoard)([]),
+                [1]: new searchView_1.SearchBoard(),
+                [2]: new config_1.ConfigBoard(),
+                [3]: new recentsView_1.RecentBoard(),
+            },
+            parentBoards: (0, helpers_7.fromEntries)(AppModes.map(m => [m, []])),
+            building: false,
+            plugins: [],
+        };
         constructor(props) {
             super(props);
             (0, appVar_10.setApp)(this);
@@ -7401,7 +7437,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 case 0:
                 case 3:
                     const board = s.currentBoard[s.mode];
-					(0, ahk_2.ahkTitle)(('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : '')).replace(/[\s\n]+/g, ' '));
+                    (0, ahk_2.ahkTitle)(('Emoji Keyboard - ' + board.name + (text?.length ? ': ' + text : '')).replace(/[\s\n]+/g, ' '));
                     break;
                 case 1:
                     (0, ahk_2.ahkTitle)('Emoji Keyboard - ' + (text?.length ? text : 'Search'));
@@ -7487,7 +7523,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
         }
         setOS(os) {
             os = os.replace(/^WIN_/, '');
-            this.setState({ os: new osversion_1.Version(os) });
+            this.setState({ os: new osversion_2.Version(os) });
         }
         setSystemLayout(layout) {
             this.setState({ layout: { ...layout_4.SystemLayoutUS, ...layout } });
@@ -7570,30 +7606,30 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
             }
         }
         loadPlugin(rest) {
-			const name = rest.split('\n', 1)[0];
-			const contents = rest.slice(name.length + 1);
-			const data = JSON.parse(contents);
-			const plugin = {
-				name,
-				data
-			};
-			this.setState((s) => {
-				const plugins = [...s.plugins, plugin];
-				plugins.sort((a, b) => (0, compare_1.naturalCompare)(a.name, b.name));
-				const mainBoard = (0, board_5.getMainBoard)(plugins);
-				return {
-					plugins,
-					currentBoard: {
-						...s.currentBoard,
-						[0]: mainBoard,
-					},
-					parentBoards: {
-						...s.parentBoards,
-						[0]: [],
-					}
-				};
-			});
-		}
+            const name = rest.split('\n', 1)[0];
+            const contents = rest.slice(name.length + 1);
+            const data = JSON.parse(contents);
+            const plugin = {
+                name,
+                data
+            };
+            this.setState((s) => {
+                const plugins = [...s.plugins, plugin];
+                plugins.sort((a, b) => (0, compare_1.naturalCompare)(a.name, b.name));
+                const mainBoard = (0, board_5.getMainBoard)(plugins);
+                return {
+                    plugins,
+                    currentBoard: {
+                        ...s.currentBoard,
+                        [0]: mainBoard,
+                    },
+                    parentBoards: {
+                        ...s.parentBoards,
+                        [0]: [],
+                    }
+                };
+            });
+        }
         loadFallbackFonts(rest) {
             const fonts = rest.split('\n')
                 .filter(f => f.length && f.match(/.*\.(otf|ttf|woff2?|eot|svg)$/i));
@@ -7627,7 +7663,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
     (0, preact_9.render)((0, preact_9.h)(App, null), main);
     setTimeout(() => (0, ahk_2.ahkLoaded)(), 0);
 });
-define("appVar", ["require", "exports", "preact", "layout", "osversion"], function (require, exports, preact_10, layout_5, osversion_2) {
+define("appVar", ["require", "exports", "preact", "layout", "osversion"], function (require, exports, preact_10, layout_5, osversion_3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PluginsContext = exports.SearchContext = exports.ConfigBuildingContext = exports.ConfigContext = exports.OSContext = exports.LayoutContext = exports.app = exports.setApp = void 0;
@@ -7641,7 +7677,7 @@ define("appVar", ["require", "exports", "preact", "layout", "osversion"], functi
     }
     exports.app = app;
     exports.LayoutContext = (0, preact_10.createContext)({ ...layout_5.AnsiLayout, sys: layout_5.SystemLayoutUS });
-    exports.OSContext = (0, preact_10.createContext)(new osversion_2.Version('99'));
+    exports.OSContext = (0, preact_10.createContext)(new osversion_3.Version('99'));
     exports.ConfigContext = (0, preact_10.createContext)(undefined);
     exports.ConfigBuildingContext = (0, preact_10.createContext)(true);
     exports.SearchContext = (0, preact_10.createContext)('');
@@ -7676,13 +7712,14 @@ define("builder/builder", ["require", "exports", "builder/unicode", "builder/con
     exports.makeBuild = makeBuild;
     async function build() {
         await (0, ahk_3.ahkDownloadUnicode)();
+        const v = await (0, ahk_3.ahkVersions)();
         const paths = {
-            emojiTestPath: '../res/data/emoji/15.0/emoji-test.txt',
-            emojiDataPath: '../res/data/15.0.0/ucd/emoji/emoji-data.txt',
-            unicodeDataPath: '../res/data/15.0.0/ucd/UnicodeData.txt',
-            namedSequencesPath: '../res/data/15.0.0/ucd/NamedSequences.txt',
-            namesListPath: '../res/data/15.0.0/ucd/NamesList.txt',
-            annotationsPath: '../res/data/cldr-json/42.0.0/cldr-json/cldr-annotations-full/annotations/en/annotations.json',
+            emojiTestPath: `../res/data/emoji/${v.emoji}/emoji-test.txt`,
+            emojiDataPath: `../res/data/${v.ucd}/ucd/emoji/emoji-data.txt`,
+            unicodeDataPath: `../res/data/${v.ucd}/ucd/UnicodeData.txt`,
+            namedSequencesPath: `../res/data/${v.ucd}/ucd/NamedSequences.txt`,
+            namesListPath: `../res/data/${v.ucd}/ucd/NamesList.txt`,
+            annotationsPath: `../res/data/cldr-json/${v.cldr}/cldr-json/cldr-annotations-full/annotations/en/annotations.json`,
         };
         const ctx = {
             unicodeData: await (0, unicode_1.parseUnicodeData)(paths),
@@ -7703,7 +7740,7 @@ define("builder/builder", ["require", "exports", "builder/unicode", "builder/con
             `Reload the app to load the new data file`);
     }
 });
-define("builder/consolidated", ["require", "exports", "builder/titleCase", "chars", "config/aliases", "builder/builder"], function (require, exports, titleCase_1, chars_4, aliases_1, builder_6) {
+define("builder/consolidated", ["require", "exports", "builder/titleCase", "chars", "config/aliases", "builder/builder"], function (require, exports, titleCase_1, chars_5, aliases_1, builder_6) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getUnicodeData = exports.consolidateUnicodeData = exports.toHex = void 0;
@@ -7989,6 +8026,17 @@ define("builder/consolidated", ["require", "exports", "builder/titleCase", "char
             }
         }
         clusters["👩"].variants?.sort((a, b) => +clusters[a].name.includes('Beard') - +clusters[b].name.includes('Beard'));
+        const people = u.groups.find(g => g.name == 'People & Body');
+        if (people) {
+            const personSymbol = people.sub.find(s => s.name == 'person-symbol');
+            const family = people.sub.find(s => s.name == 'family');
+            if (personSymbol && family) {
+                const isFamily = (c) => clusters[c]?.name.startsWith('Family');
+                const toMove = personSymbol?.clusters.filter(isFamily) ?? [];
+                family.clusters.push(...toMove);
+                personSymbol.clusters = personSymbol.clusters.filter(c => !isFamily(c));
+            }
+        }
         for (const group of u.groups) {
             const g = { ...group, sub: {} };
             groups[group.name] = g;
@@ -8004,11 +8052,11 @@ define("builder/consolidated", ["require", "exports", "builder/titleCase", "char
                 }
             }
         }
-        for (const c of ["👨‍👩‍👦", "👨‍👩‍👧", "👨‍👩‍👧‍👦", "👨‍👩‍👦‍👦", "👨‍👩‍👧‍👧", "👨‍👨‍👦", "👨‍👨‍👧", "👨‍👨‍👧‍👦", "👨‍👨‍👦‍👦", "👨‍👨‍👧‍👧", "👩‍👩‍👦", "👩‍👩‍👧", "👩‍👩‍👧‍👦", "👩‍👩‍👦‍👦", "👩‍👩‍👧‍👧", "👨‍👦", "👨‍👦‍👦", "👨‍👧", "👨‍👧‍👦", "👨‍👧‍👧", "👩‍👦", "👩‍👦‍👦", "👩‍👧", "👩‍👧‍👦", "👩‍👧‍👧"]) {
+        for (const c of ["👨‍👩‍👦", "👨‍👩‍👧", "👨‍👩‍👧‍👦", "👨‍👩‍👦‍👦", "👨‍👩‍👧‍👧", "👨‍👨‍👦", "👨‍👨‍👧", "👨‍👨‍👧‍👦", "👨‍👨‍👦‍👦", "👨‍👨‍👧‍👧", "👩‍👩‍👦", "👩‍👩‍👧", "👩‍👩‍👧‍👦", "👩‍👩‍👦‍👦", "👩‍👩‍👧‍👧", "👨‍👦", "👨‍👦‍👦", "👨‍👧", "👨‍👧‍👦", "👨‍👧‍👧", "👩‍👦", "👩‍👦‍👦", "👩‍👧", "👩‍👧‍👦", "👩‍👧‍👧", "🧑‍🧑‍🧒", "🧑‍🧑‍🧒‍🧒", "🧑‍🧒", "🧑‍🧒‍🧒"]) {
             if (clusters[c] && !clusters[c].variants) {
-                const parts = c.split(chars_4.ZeroWidthJoiner);
+                const parts = c.split(chars_5.ZeroWidthJoiner);
                 for (let i = 1; i < parts.length; ++i)
-                    parts[i] = chars_4.ZeroWidthJoiner + parts[i];
+                    parts[i] = chars_5.ZeroWidthJoiner + parts[i];
                 let variants = [""];
                 for (const p of parts) {
                     variants = variants.flatMap(v => SKIN_TONES.map(k => v + p + k));
@@ -8049,7 +8097,7 @@ define("builder/consolidated", ["require", "exports", "builder/titleCase", "char
 define("ahk", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ahkOpenLink = exports.ahkOpenDevTools = exports.ahkSetOpacity = exports.ahkSetOpenAt = exports.ahkSetPosSize = exports.ahkSaveUnicodeData = exports.ahkSaveConfig = exports.ahkSetSearch = exports.ahkSend = exports.ahkReload = exports.ahkReady = exports.ahkLoaded = exports.ahkTitle = exports.ahkHide = exports.ahkDownloadUnicode = void 0;
+    exports.ahkOpenLink = exports.ahkOpenDevTools = exports.ahkSetOpacity = exports.ahkSetOpenAt = exports.ahkSetPosSize = exports.ahkSaveUnicodeData = exports.ahkSaveConfig = exports.ahkSetSearch = exports.ahkSend = exports.ahkReload = exports.ahkReady = exports.ahkLoaded = exports.ahkVersions = exports.ahkTitle = exports.ahkHide = exports.ahkDownloadUnicode = void 0;
     let AHK = null;
     window.chrome?.webview?.hostObjects?.ahk.then((ahk) => AHK = ahk);
     function isAHK() {
@@ -8101,6 +8149,21 @@ define("ahk", ["require", "exports"], function (require, exports) {
             document.title = title;
     }
     exports.ahkTitle = ahkTitle;
+    async function ahkVersions() {
+        if (isAHK()) {
+            const v = AHK.versions();
+            return {
+                cldr: await v.cldr,
+                emoji: await v.emoji,
+                ucd: await v.ucd,
+            };
+        }
+        else {
+            console.log("Versions");
+            return Promise.reject("Not in AHK");
+        }
+    }
+    exports.ahkVersions = ahkVersions;
     function ahkLoaded() {
         if (isAHK())
             AHK.loaded();

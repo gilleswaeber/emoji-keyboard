@@ -17,6 +17,16 @@ type HostObject = {
 	setSearch(enable: boolean): void;
 	setPosSize(x: number, y: number, width: number, height: number): void;
 	ready(): void;
+	versions(): {
+		cldr: Promise<string>;
+		emoji: Promise<string>;
+		ucd: Promise<string>;
+	}
+};
+export type AhkVersions = {
+	cldr: string;
+	emoji: string;
+	ucd: string;
 };
 let AHK: HostObject | null = null;
 (window as any).chrome?.webview?.hostObjects?.ahk.then((ahk: HostObject) => AHK = ahk);
@@ -69,6 +79,20 @@ export function ahkHide() {
 export function ahkTitle(title: string) {
 	if (isAHK()) AHK!.setTitle(title);
 	else document.title = title;
+}
+
+export async function ahkVersions(): Promise<AhkVersions> {
+	if (isAHK()) {
+		const v = AHK!.versions();
+		return {
+			cldr: await v.cldr,
+			emoji: await v.emoji,
+			ucd: await v.ucd,
+		};
+	} else {
+		console.log("Versions");
+		return Promise.reject("Not in AHK");
+	}
 }
 
 export function ahkLoaded() {
