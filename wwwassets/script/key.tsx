@@ -19,7 +19,7 @@ export class ConfigKey extends Key {
 		super({name: "Settings", symbol: "🛠️" + VarSel15, clickAlwaysAlternate: true, keyNamePrefix: "⇧"});
 	}
 
-	actAlternate(): void {
+	actSecondary(): void {
 		app().setMode(AppMode.SETTINGS);
 	}
 }
@@ -89,11 +89,11 @@ export class ConfigBuildKey extends Key {
 			className={cl('key action', {active})}
 			onClick={(e) => {
 				e.preventDefault();
-				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
+				e.shiftKey || this.clickAlwaysAlternate ? this.actSecondary(e.altKey) : this.act();
 			}}
 			onContextMenu={(e) => {
 				e.preventDefault();
-				this.actAlternate();
+				this.actSecondary(e.altKey);
 			}}
 			onMouseOver={() => app().updateStatus(this.name)}
 		>
@@ -113,7 +113,7 @@ export class BackKey extends Key {
 		app().back();
 	}
 
-	actAlternate() {
+	actSecondary() {
 		app().setMode(AppMode.SETTINGS);
 	}
 }
@@ -182,23 +182,23 @@ export class ClusterKey extends Key {
 		this.variantOf = p?.variantOf;
 	}
 
-	act(config?: AppConfig) {
+	act(alt: boolean, config?: AppConfig) {
 		if (this.alt) {
 			config ??= app().getConfig();
 			const cluster = config.preferredVariant[this.cluster] ?? this.cluster;
-			app().send(cluster, {noRecent: this.noRecent, variantOf: this.variantOf});
+			app().send(cluster, {noRecent: this.noRecent, variantOf: this.variantOf, alt});
 		} else {
-			app().send(this.cluster, {noRecent: this.noRecent, variantOf: this.variantOf});
+			app().send(this.cluster, {noRecent: this.noRecent, variantOf: this.variantOf, alt});
 		}
 	}
 
-	actAlternate(config?: AppConfig) {
+	actSecondary(alt: boolean, config?: AppConfig) {
 		if (this.alt) {
 			app().setBoard(Board.clusterAlternates(this.cluster, this.variants!, {noRecent: this.noRecent}));
 		} else if (this.lu) {
-			app().send(this.variants![1], {noRecent: this.noRecent});
+			app().send(this.variants![1], {noRecent: this.noRecent, alt});
 		} else {
-			app().send(this.cluster, {noRecent: this.noRecent});  // no variant change
+			app().send(this.cluster, {noRecent: this.noRecent, alt});  // no variant change
 		}
 	}
 
@@ -218,11 +218,11 @@ export class ClusterKey extends Key {
 			className={cl('key', this.keyType, {alt: this.alt, lu: this.lu, active: this.active})}
 			onClick={(e) => {
 				e.preventDefault();
-				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate(config) : this.act(config);
+				e.shiftKey || this.clickAlwaysAlternate ? this.actSecondary(e.altKey, config) : this.act(e.altKey, config);
 			}}
 			onContextMenu={(e) => {
 				e.preventDefault();
-				this.actAlternate(config);
+				this.actSecondary(e.altKey, config);
 			}}
 			onMouseOver={() => app().updateStatus(status)}
 			data-keycode={code}
