@@ -4,11 +4,11 @@ import {charInfo, symbolRequirements} from "../unicodeInterface";
 import {toCodePoints} from "../builder/builder";
 import {GeneralCategory} from "../builder/unicode";
 import {VarSel15} from "../chars";
-import {cl} from "../helpers";
+import {cl, unreachable} from "../helpers";
 import {KeyCap, SpriteRef} from "../config/boards";
 import {Fragment, h} from "preact";
 import {Version} from "../osversion";
-import {hiddenBox, supportsZWJ} from "../utils/zwjTest";
+import {hiddenBox, supportsRequirements} from "../utils/emojiSupportTest";
 
 hiddenBox.style.position = 'absolute';
 hiddenBox.style.left = '-1000px';
@@ -17,8 +17,7 @@ document.body.appendChild(hiddenBox);
 
 function meetsRequirements(symbol: string, os: Version) {
 	const req = symbolRequirements(symbol);
-	if (typeof req.windows === "string") return os.gte(req.windows);
-	return supportsZWJ(req.zwj);
+	return supportsRequirements(req, os);
 }
 
 export function Symbol({symbol}: { symbol: KeyCap }) {

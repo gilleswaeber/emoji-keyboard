@@ -1,12 +1,17 @@
 import {Version} from "../osversion";
 
 export type IconRequirement = {
+	type: "windows";
 	/** Windows version in which the elements are supported */
 	windows: string;
 } | {
-	windows?: undefined;
+	type: "zwjEmoji";
 	/** Sequence with ZWJ to check: supported if the ZWJ sequence is shorter than the sequence with the ZWJs removed */
-	zwj: string;
+	zwjEmoji: string;
+} | {
+	type: "emoji";
+	/** Emoji to check: supported if the width is non-zero with a fallback on a zero-width font */
+	emoji: string;
 };
 /** Fallback configuration: for each sequence we look for the first item matching and then use the fallback font if the conditions don't match. */
 export const IconFallback: {
@@ -25,7 +30,7 @@ export const IconFallback: {
 }[] = [
 	{
 		// Not supported on Windows
-		requirement: {windows: "99"},
+		requirement: {type: "windows", windows: "99"},
 		ranges: [
 			{from: "🇦", to: "🇿🇿"},
 			{
@@ -35,21 +40,25 @@ export const IconFallback: {
 		]
 	},
 	{
-		requirement: {zwj: "🐦‍🔥"},  // Phoenix
+		requirement: {type: "emoji", emoji: "🪉"},  // Harp
+		version: new Version("16"),
+	},
+	{
+		requirement: {type:"zwjEmoji", zwjEmoji: "🐦‍🔥"},  // Phoenix
 		version: new Version("15.1"),
 	},
 	{
-		requirement: {zwj: "🐦‍⬛"},  // Black Bird
+		requirement: {type:"zwjEmoji", zwjEmoji: "🐦‍⬛"},  // Black Bird
 		version: new Version("15"),
 	},
 	{
 		// Windows 11 Fluent emoji font
-		requirement: {zwj: "🫱‍🫲"},  // Handshake
+		requirement: {type:"zwjEmoji", zwjEmoji: "🫱‍🫲"},  // Handshake
 		version: new Version("14"),
 	},
 	{
 		// Windows 11 Preview
-		requirement: {windows: "10.0.21277"},
+		requirement: {type: "windows", windows: "10.0.21277"},
 		version: new Version("13"),
 		clusters: new Set([
 			"*️⃣",
@@ -81,7 +90,7 @@ export const IconFallback: {
 	},
 	{
 		// Windows 19H1
-		requirement: {windows: "10.0.18277"},
+		requirement: {type: "windows", windows: "10.0.18277"},
 		version: new Version("12"),
 		clusters: new Set([
 			"🏴‍☠️",
@@ -100,29 +109,29 @@ export const IconFallback: {
 	},
 	{
 		// Redstone 5
-		requirement: {windows: "10.0.17723"},
+		requirement: {type: "windows", windows: "10.0.17723"},
 		version: new Version("11"),
 	},
 	{
 		// Windows Fall Creator Update
-		requirement: {windows: "10.0.16226"},
+		requirement: {type: "windows", windows: "10.0.16226"},
 		version: new Version("5"),
 		// emojiVersion: 5,
 		// version: 10
 	},
 	{
 		// Windows Creator Update
-		requirement: {windows: "10.0.15063"},
+		requirement: {type: "windows", windows: "10.0.15063"},
 		version: new Version("4"),
 		// emojiVersion: 4
 	},
 	{
 		// Windows Anniversary Update
-		requirement: {windows: "10.0.14393"},
+		requirement: {type: "windows", windows: "10.0.14393"},
 		// version: 9
 	},
 	{
-		requirement: {windows: "10"},
+		requirement: {type: "windows", windows: "10"},
 		version: new Version("0.01"),
 		// version: 5
 	},

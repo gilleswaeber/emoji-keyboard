@@ -47,7 +47,6 @@ export type UnicodeEmojiGroup =
 	| {group: "Food & Drink", subGroup: "food-vegetable"}
 	| {group: "Food & Drink", subGroup: "food-prepared"}
 	| {group: "Food & Drink", subGroup: "food-asian"}
-	| {group: "Food & Drink", subGroup: "food-marine"}
 	| {group: "Food & Drink", subGroup: "food-sweet"}
 	| {group: "Food & Drink", subGroup: "drink"}
 	| {group: "Food & Drink", subGroup: "dishware"}

@@ -1,4 +1,4 @@
-Emoji Keyboard (Emoji 15.1)
+Emoji Keyboard (Emoji 16)
 ==============
 [💾 Download](https://github.com/gilleswaeber/emoji-keyboard/releases/latest/download/emoji-keyboard.zip) or
 clone `https://github.com/gilleswaeber/emoji-keyboard.git`

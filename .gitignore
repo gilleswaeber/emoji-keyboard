@@ -9,6 +9,8 @@
 !/wwwassets/fallback_fonts/.gitkeep
 /wwwassets/plugins/*
 !/wwwassets/plugins/.gitkeep
+/wwwassets/fonts/*
+!/wwwassets/fonts/AdobeBlank.otf
 *.js.map
 /emoji-keyboard.zip
 /local

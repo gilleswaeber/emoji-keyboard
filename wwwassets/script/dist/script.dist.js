@@ -4427,7 +4427,7 @@ define("config/fallback", ["require", "exports", "osversion"], function (require
     exports.IconFallback = void 0;
     exports.IconFallback = [
         {
-            requirement: { windows: "99" },
+            requirement: { type: "windows", windows: "99" },
             ranges: [
                 { from: "🇦", to: "🇿🇿" },
                 {
@@ -4437,19 +4437,23 @@ define("config/fallback", ["require", "exports", "osversion"], function (require
             ]
         },
         {
-            requirement: { zwj: "🐦‍🔥" },
+            requirement: { type: "emoji", emoji: "🪉" },
+            version: new osversion_1.Version("16"),
+        },
+        {
+            requirement: { type: "zwjEmoji", zwjEmoji: "🐦‍🔥" },
             version: new osversion_1.Version("15.1"),
         },
         {
-            requirement: { zwj: "🐦‍⬛" },
+            requirement: { type: "zwjEmoji", zwjEmoji: "🐦‍⬛" },
             version: new osversion_1.Version("15"),
         },
         {
-            requirement: { zwj: "🫱‍🫲" },
+            requirement: { type: "zwjEmoji", zwjEmoji: "🫱‍🫲" },
             version: new osversion_1.Version("14"),
         },
         {
-            requirement: { windows: "10.0.21277" },
+            requirement: { type: "windows", windows: "10.0.21277" },
             version: new osversion_1.Version("13"),
             clusters: new Set([
                 "*️⃣",
@@ -4479,7 +4483,7 @@ define("config/fallback", ["require", "exports", "osversion"], function (require
             ]),
         },
         {
-            requirement: { windows: "10.0.18277" },
+            requirement: { type: "windows", windows: "10.0.18277" },
             version: new osversion_1.Version("12"),
             clusters: new Set([
                 "🏴‍☠️",
@@ -4497,22 +4501,22 @@ define("config/fallback", ["require", "exports", "osversion"], function (require
             ])
         },
         {
-            requirement: { windows: "10.0.17723" },
+            requirement: { type: "windows", windows: "10.0.17723" },
             version: new osversion_1.Version("11"),
         },
         {
-            requirement: { windows: "10.0.16226" },
+            requirement: { type: "windows", windows: "10.0.16226" },
             version: new osversion_1.Version("5"),
         },
         {
-            requirement: { windows: "10.0.15063" },
+            requirement: { type: "windows", windows: "10.0.15063" },
             version: new osversion_1.Version("4"),
         },
         {
-            requirement: { windows: "10.0.14393" },
+            requirement: { type: "windows", windows: "10.0.14393" },
         },
         {
-            requirement: { windows: "10" },
+            requirement: { type: "windows", windows: "10" },
             version: new osversion_1.Version("0.01"),
         },
     ];
@@ -4585,7 +4589,7 @@ define("unicodeInterface", ["require", "exports", "builder/consolidated", "build
                         return f.requirement;
                 }
         }
-        return { windows: "0" };
+        return { type: "windows", windows: "0" };
     }
     exports.symbolRequirements = symbolRequirements;
 });
@@ -5720,7 +5724,6 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
                 content: [
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Food & Drink", subGroup: "food-fruit" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Food & Drink", subGroup: "food-vegetable" }),
-                    ...(0, unicodeInterface_2.emojiGroup)({ group: "Food & Drink", subGroup: "food-marine" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Food & Drink", subGroup: "drink" }),
                     ...(0, unicodeInterface_2.emojiGroup)({ group: "Food & Drink", subGroup: "dishware" }),
                 ]
@@ -6106,42 +6109,68 @@ define("config/boards", ["require", "exports", "chars", "config/arrows", "config
         ]
     };
 });
-define("utils/zwjTest", ["require", "exports", "chars"], function (require, exports, chars_2) {
+define("utils/emojiSupportTest", ["require", "exports", "chars", "helpers"], function (require, exports, chars_2, helpers_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.supportsZWJ = exports.hiddenBox = void 0;
+    exports.supportsRequirements = exports.hiddenBox = void 0;
     exports.hiddenBox = document.createElement('div');
+    document.body.appendChild(exports.hiddenBox);
+    exports.hiddenBox.style.position = 'absolute';
+    exports.hiddenBox.style.left = '-1000px';
+    exports.hiddenBox.style.top = '-1000px';
     const knownZWJ = new Map();
+    const knownEmoji = new Map();
+    function supportsRequirements(req, os) {
+        if (req.type === "windows")
+            return os.gte(req.windows);
+        else if (req.type === "zwjEmoji")
+            return supportsZWJ(req.zwjEmoji);
+        else if (req.type === "emoji")
+            return supportsEmoji(req.emoji);
+        else
+            return (0, helpers_2.unreachable)(req);
+    }
+    exports.supportsRequirements = supportsRequirements;
     function supportsZWJ(sequence) {
-        if (!knownZWJ.has(sequence)) {
-            const el = document.createElement('span');
-            el.className = 'symbol';
-            exports.hiddenBox.appendChild(el);
-            el.textContent = sequence;
-            const len1 = el.offsetWidth;
-            el.textContent = sequence.replace(chars_2.ZeroWidthJoiner, '');
-            const len2 = el.offsetWidth;
-            exports.hiddenBox.removeChild(el);
-            const supported = len1 < len2;
-            knownZWJ.set(sequence, supported);
-        }
+        const el = document.createElement('span');
+        exports.hiddenBox.appendChild(el);
+        el.textContent = sequence;
+        const len1 = el.offsetWidth;
+        el.textContent = sequence.replace(chars_2.ZeroWidthJoiner, '');
+        const len2 = el.offsetWidth;
+        exports.hiddenBox.removeChild(el);
+        const supported = len1 > 0 && len1 < len2;
+        knownZWJ.set(sequence, supported);
         return knownZWJ.get(sequence);
     }
-    exports.supportsZWJ = supportsZWJ;
+    document.fonts.load("16px AdobeBlank");
+    function supportsEmoji(emoji) {
+        if (!knownEmoji.has(emoji)) {
+            const el = document.createElement('span');
+            el.style.fontFamily = '"Segoe UI Emoji", "Segoe UI", AdobeBlank';
+            exports.hiddenBox.appendChild(el);
+            el.textContent = 'a' + emoji;
+            const len1 = el.offsetWidth;
+            el.textContent = 'a';
+            const len2 = el.offsetWidth;
+            exports.hiddenBox.removeChild(el);
+            const supported = len1 > 0 && len1 > len2;
+            knownEmoji.set(emoji, supported);
+        }
+        return knownEmoji.get(emoji);
+    }
 });
-define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeInterface", "builder/builder", "chars", "helpers", "preact", "utils/zwjTest"], function (require, exports, hooks_1, appVar_1, unicodeInterface_3, builder_3, chars_3, helpers_2, preact_1, zwjTest_1) {
+define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeInterface", "builder/builder", "chars", "helpers", "preact", "utils/emojiSupportTest"], function (require, exports, hooks_1, appVar_1, unicodeInterface_3, builder_3, chars_3, helpers_3, preact_1, emojiSupportTest_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Sprite = exports.Symbol = void 0;
-    zwjTest_1.hiddenBox.style.position = 'absolute';
-    zwjTest_1.hiddenBox.style.left = '-1000px';
-    zwjTest_1.hiddenBox.style.top = '-1000px';
-    document.body.appendChild(zwjTest_1.hiddenBox);
+    emojiSupportTest_1.hiddenBox.style.position = 'absolute';
+    emojiSupportTest_1.hiddenBox.style.left = '-1000px';
+    emojiSupportTest_1.hiddenBox.style.top = '-1000px';
+    document.body.appendChild(emojiSupportTest_1.hiddenBox);
     function meetsRequirements(symbol, os) {
         const req = (0, unicodeInterface_3.symbolRequirements)(symbol);
-        if (typeof req.windows === "string")
-            return os.gte(req.windows);
-        return (0, zwjTest_1.supportsZWJ)(req.zwj);
+        return (0, emojiSupportTest_1.supportsRequirements)(req, os);
     }
     function Symbol({ symbol }) {
         const os = (0, hooks_1.useContext)(appVar_1.OSContext);
@@ -6158,7 +6187,7 @@ define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeI
                 }
                 const fallbackFont = !meetsRequirements(symbol, os);
                 const textStyle = symbol.endsWith(chars_3.VarSel15);
-                return (0, preact_1.h)("div", { className: (0, helpers_2.cl)(`symbol`, { fallbackFont, textStyle }) }, symbol);
+                return (0, preact_1.h)("div", { className: (0, helpers_3.cl)(`symbol`, { fallbackFont, textStyle }) }, symbol);
             }
             else {
                 return (0, preact_1.h)("div", { className: "symbol" },
@@ -6185,7 +6214,7 @@ define("keys/symbol", ["require", "exports", "preact/hooks", "appVar", "unicodeI
     }
     exports.Sprite = Sprite;
 });
-define("keys/base", ["require", "exports", "preact/hooks", "appVar", "preact", "helpers", "keys/symbol"], function (require, exports, hooks_2, appVar_2, preact_2, helpers_3, symbol_1) {
+define("keys/base", ["require", "exports", "preact/hooks", "appVar", "preact", "helpers", "keys/symbol"], function (require, exports, hooks_2, appVar_2, preact_2, helpers_4, symbol_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.BlankKey = exports.Key = exports.KeyName = void 0;
@@ -6214,7 +6243,7 @@ define("keys/base", ["require", "exports", "preact/hooks", "appVar", "preact", "
             this.keyType = !p.name.length ? "empty" : p.keyType ?? "action";
         }
         Contents = ({ code }) => {
-            return (0, preact_2.h)("div", { className: (0, helpers_3.cl)('key', this.keyType, { active: this.active }), onClick: (e) => {
+            return (0, preact_2.h)("div", { className: (0, helpers_4.cl)('key', this.keyType, { active: this.active }), onClick: (e) => {
                     e.preventDefault();
                     e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
                 }, onContextMenu: (e) => {
@@ -6605,7 +6634,7 @@ define("config", ["require", "exports", "preact", "layout", "key", "board", "pre
     }
     exports.ConfigBoard = ConfigBoard;
 });
-define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "unicodeInterface", "builder/builder", "preact/hooks", "chars", "keys/base", "keys/symbol", "builder/consolidated"], function (require, exports, preact_5, board_2, appVar_5, helpers_4, unicodeInterface_4, builder_4, hooks_5, chars_4, base_3, symbol_2, consolidated_3) {
+define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "unicodeInterface", "builder/builder", "preact/hooks", "chars", "keys/base", "keys/symbol", "builder/consolidated"], function (require, exports, preact_5, board_2, appVar_5, helpers_5, unicodeInterface_4, builder_4, hooks_5, chars_4, base_3, symbol_2, consolidated_3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExitRecentKey = exports.RecentKey = exports.ClusterKey = exports.ExitSearchKey = exports.SearchKey = exports.PageKey = exports.KeyboardKey = exports.BackKey = exports.ConfigBuildKey = exports.ConfigLabelKey = exports.ConfigToggleKey = exports.ConfigActionKey = exports.ConfigKey = void 0;
@@ -6664,7 +6693,7 @@ define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "un
         }
         Contents = ({ code }) => {
             const active = (0, hooks_5.useContext)(appVar_5.ConfigBuildingContext);
-            return (0, preact_5.h)("div", { className: (0, helpers_4.cl)('key action', { active }), onClick: (e) => {
+            return (0, preact_5.h)("div", { className: (0, helpers_5.cl)('key action', { active }), onClick: (e) => {
                     e.preventDefault();
                     e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
                 }, onContextMenu: (e) => {
@@ -6789,7 +6818,7 @@ define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "un
             if (config.showCharCodes) {
                 status += ` [${(0, builder_4.toCodePoints)(cluster).map(consolidated_3.toHex).join(' ')}]`;
             }
-            return (0, preact_5.h)("div", { className: (0, helpers_4.cl)('key', this.keyType, { alt: this.alt, lu: this.lu, active: this.active }), onClick: (e) => {
+            return (0, preact_5.h)("div", { className: (0, helpers_5.cl)('key', this.keyType, { alt: this.alt, lu: this.lu, active: this.active }), onClick: (e) => {
                     e.preventDefault();
                     e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate(config) : this.act(config);
                 }, onContextMenu: (e) => {
@@ -6823,7 +6852,7 @@ define("key", ["require", "exports", "preact", "board", "appVar", "helpers", "un
     }
     exports.ExitRecentKey = ExitRecentKey;
 });
-define("board", ["require", "exports", "preact", "preact/hooks", "config/boards", "appVar", "key", "memoize-one", "unicodeInterface", "helpers", "layout/vk", "boards/utils", "keys/base"], function (require, exports, preact_6, hooks_6, boards_1, appVar_6, key_2, memoize_one_1, unicodeInterface_5, helpers_5, vk_1, utils_2, base_4) {
+define("board", ["require", "exports", "preact", "preact/hooks", "config/boards", "appVar", "key", "memoize-one", "unicodeInterface", "helpers", "layout/vk", "boards/utils", "keys/base"], function (require, exports, preact_6, hooks_6, boards_1, appVar_6, key_2, memoize_one_1, unicodeInterface_5, helpers_6, vk_1, utils_2, base_4) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.StaticBoard = exports.Board = exports.getMainBoard = void 0;
@@ -7006,7 +7035,7 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
             const p = { noRecent: k.noRecent };
             const keys = this.fromContents(k.content ?? [], p);
             const byRow = (k.byRow ?? []).map(row => Array.isArray(row) ? row.map(key => this.fromItem(key, p)) : []);
-            const byVK = (0, helpers_5.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
+            const byVK = (0, helpers_6.fromEntries)(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k, this.fromItem(v, p)]) : []);
             return this.fromKeys({
                 name: k.name,
                 statusName: k.statusName,
@@ -7050,7 +7079,7 @@ define("board", ["require", "exports", "preact", "preact/hooks", "config/boards"
     }
     exports.StaticBoard = StaticBoard;
 });
-define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "helpers"], function (require, exports, unicodeInterface_6, builder_5, helpers_6) {
+define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "helpers"], function (require, exports, unicodeInterface_6, builder_5, helpers_7) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.search = void 0;
@@ -7078,7 +7107,7 @@ define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "
         for (const c of endClusters) {
             index.set((0, builder_5.toCodePoints)(c.cluster).join(','), `${c.name} ${c.alias?.join(' ') ?? ''}`);
         }
-        console.log(index);
+        console.log("Unicode index built", index);
     })();
     const searchHaystack = Array.from(index.entries()).map(([k, v]) => `${SEPARATOR}${k}${SEPARATOR}${v.replace(SEPARATOR_REGEX_G, '')}`).join('');
     function escapeRegex(str) {
@@ -7101,7 +7130,7 @@ define("emojis", ["require", "exports", "unicodeInterface", "builder/builder", "
                 result = result.filter(v => f.has(v));
             }
         });
-        const scores = (0, helpers_6.fromEntries)(result.map(v => [v, 0]));
+        const scores = (0, helpers_7.fromEntries)(result.map(v => [v, 0]));
         for (const n of needle.split(/\s+/g)) {
             if (!n.length)
                 continue;
@@ -7318,7 +7347,7 @@ define("utils/compare", ["require", "exports"], function (require, exports) {
     }
     exports.naturalCompare = naturalCompare;
 });
-define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView", "recentsView", "recentsActions", "utils/compare"], function (require, exports, preact_9, layout_4, board_5, osversion_2, ahk_2, emojis_2, config_1, helpers_7, appVar_10, hooks_9, searchView_1, recentsView_1, recentsActions_2, compare_1) {
+define("app", ["require", "exports", "preact", "layout", "board", "osversion", "ahk", "emojis", "config", "helpers", "appVar", "preact/hooks", "searchView", "recentsView", "recentsActions", "utils/compare", "config/fallback", "utils/emojiSupportTest"], function (require, exports, preact_9, layout_4, board_5, osversion_2, ahk_2, emojis_2, config_1, helpers_8, appVar_10, hooks_9, searchView_1, recentsView_1, recentsActions_2, compare_1, fallback_2, emojiSupportTest_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AppMode = void 0;
@@ -7345,7 +7374,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 [2]: new config_1.ConfigBoard(),
                 [3]: new recentsView_1.RecentBoard(),
             },
-            parentBoards: (0, helpers_7.fromEntries)(AppModes.map(m => [m, []])),
+            parentBoards: (0, helpers_8.fromEntries)(AppModes.map(m => [m, []])),
             building: false,
             plugins: [],
         };
@@ -7446,7 +7475,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                     (0, ahk_2.ahkTitle)('Emoji Keyboard - ' + (text?.length ? text : 'Settings'));
                     break;
                 default:
-                    return (0, helpers_7.unreachable)(s.mode);
+                    return (0, helpers_8.unreachable)(s.mode);
             }
         }
         input(key, shift = false) {
@@ -7471,7 +7500,7 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                     }
                     break;
                 default:
-                    return (0, helpers_7.unreachable)(s.mode);
+                    return (0, helpers_8.unreachable)(s.mode);
             }
         }
         async setConfig(config) {
@@ -7521,9 +7550,10 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
                 });
             });
         }
-        setOS(os) {
-            os = os.replace(/^WIN_/, '');
-            this.setState({ os: new osversion_2.Version(os) });
+        setOS(osString) {
+            const os = new osversion_2.Version(osString.replace(/^WIN_/, ''));
+            this.setState({ os });
+            console.log("OS Set", os, fallback_2.IconFallback.map(f => ({ ...f, supported: (0, emojiSupportTest_2.supportsRequirements)(f.requirement, os) })));
         }
         setSystemLayout(layout) {
             this.setState({ layout: { ...layout_4.SystemLayoutUS, ...layout } });
@@ -7634,28 +7664,28 @@ define("app", ["require", "exports", "preact", "layout", "board", "osversion", "
             const fonts = rest.split('\n')
                 .filter(f => f.length && f.match(/.*\.(otf|ttf|woff2?|eot|svg)$/i));
             const usedNames = new Set();
-            const faces = fonts.map(f => {
-                let fontName = f.replace(/.*[\\\/]([^\\\/]+)$/, '$1').replace(/[^a-z0-9]/ig, '_');
-                if (usedNames.has(fontName)) {
+            const faces = fonts.map(font => {
+                let alias = font.replace(/.*[\\\/]([^\\\/]+)$/, '$1').replace(/[^a-z0-9]/ig, '_');
+                if (usedNames.has(alias)) {
                     let i = 1;
-                    while (usedNames.has(fontName + i))
+                    while (usedNames.has(alias + i))
                         i++;
-                    fontName = fontName + i;
+                    alias = alias + i;
                 }
-                usedNames.add(fontName);
-                return `@font-face {
-	font-family: "${fontName}";
-	src: url("${f.replace(/([\\"])/g, '\\$1')}");
-}`;
+                usedNames.add(alias);
+                return { alias, font };
             });
-            const fFonts = [...usedNames].map(f => `${f}, `).join('');
+            const fFonts = faces.map(({ alias }) => `${alias}, `).join('');
             const style = document.createElement('style');
-            style.textContent = faces.join('\n\n') + `
+            style.textContent = faces.map(({ alias, font }) => `@font-face {
+    font-family: "${alias}";
+    src: url("${font.replace(/([\\"])/g, '\\$1')}");
+}`).join('\n\n') + `
 :root {
-	--f-fallback: ${fFonts} 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
+    --f-fallback: ${fFonts} 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }`;
             document.head.appendChild(style);
-            console.log(style);
+            console.log("Fallback fonts loaded", faces, style);
         }
     }
     const main = document.querySelector('main');

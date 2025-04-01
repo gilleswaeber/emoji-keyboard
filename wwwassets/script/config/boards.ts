@@ -196,7 +196,6 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			content: [
 				...emojiGroup({group: "Food & Drink", subGroup: "food-fruit"}),
 				...emojiGroup({group: "Food & Drink", subGroup: "food-vegetable"}),
-				...emojiGroup({group: "Food & Drink", subGroup: "food-marine"}),
 				...emojiGroup({group: "Food & Drink", subGroup: "drink"}),
 				...emojiGroup({group: "Food & Drink", subGroup: "dishware"}),
 			]

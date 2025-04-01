@@ -65,5 +65,5 @@ export function symbolRequirements(cluster: string): IconRequirement {
 			if (cluster >= r.from && cluster <= r.to) return f.requirement;
 		}
 	}
-	return {windows: "0"};
+	return {type: "windows", windows: "0"};
 }

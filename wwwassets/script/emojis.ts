@@ -29,7 +29,7 @@ const index = new Map<string, string>();
 	for (const c of endClusters) {
 		index.set(toCodePoints(c.cluster).join(','), `${c.name} ${c.alias?.join(' ') ?? ''}`);
 	}
-	console.log(index);
+	console.log("Unicode index built", index);
 })();
 const searchHaystack = Array.from(index.entries()).map(([k, v]) => `${SEPARATOR}${k}${SEPARATOR}${v.replace(SEPARATOR_REGEX_G, '')}`).join('');
 
