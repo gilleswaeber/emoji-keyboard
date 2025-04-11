@@ -14,12 +14,16 @@ import {BlankKey, Key} from "./keys/base";
 
 export function getMainBoard(plugins: Plugin[]): Board {
 	const b = {...MAIN_BOARD};
+	const content = [];
+	if (typeof b.content == 'function') content.push(...b.content());
+	else content.push(...(b.content ?? []));
+
 	for (const p of plugins) {
 		if (p.data.boards) {
-			b.content = [...(b.content ?? []), ...p.data.boards];
+			content.push(...p.data.boards);
 		}
 	}
-	return Board.fromEmoji(b);
+	return Board.fromEmoji({...b, content});
 }
 
 function range(stop: number): number[] {
@@ -41,12 +45,12 @@ export abstract class Board {
 	public abstract Contents(p: { state: BoardState | undefined }): VNode;
 
 	private static fromKeys(
-		{name, statusName, symbol, keys, top, noRecent, byRow, byVK}:
+		{name, statusName, symbol, content, top, noRecent, byRow, byVK}:
 			{
 				name: string,
 				statusName?: string | undefined,
 				symbol: KeyCap,
-				keys: Key[],
+				content: () => Key[],
 				byRow?: Key[][],
 				byVK?: { [vk in VK | VKAbbr]?: Key },
 				top?: boolean,
@@ -91,6 +95,7 @@ export abstract class Board {
 						if (!vkPlaced.has(k)) notPlaceable.push(key);
 					}
 				}
+				const keys = content();
 				if (notPlaceable.length) keys.unshift(...notPlaceable);
 
 				if (keys.length > freeKeys.size) {
@@ -183,22 +188,16 @@ export abstract class Board {
 		return keys;
 	}
 
-	static fromEmoji(k: EmojiKeyboard): Board {
-		const p = {noRecent: k.noRecent};
-		const keys = this.fromContents(k.content ?? [], p);
+	static fromEmoji({name, statusName, symbol, top, noRecent, content: contentDef, ...k}: EmojiKeyboard): Board {
+		const p = {noRecent};
+		const keys = this.fromContents(Array.isArray(contentDef) ? contentDef : [], p);
+		const content = typeof contentDef == 'function'
+			? () => this.fromContents(contentDef(), p)
+			: () => keys;
 		const byRow = (k.byRow ?? []).map(row => Array.isArray(row) ? row.map(key => this.fromItem(key, p)) : []);
 		const byVK = fromEntries(k.byVK ? Object.entries(k.byVK).map(([k, v]) => [k as (VK | VKAbbr), this.fromItem(v, p)] as const) : []);
 
-		return this.fromKeys({
-			name: k.name,
-			statusName: k.statusName,
-			symbol: k.symbol,
-			top: k.top,
-			noRecent: k.noRecent,
-			keys,
-			byRow,
-			byVK
-		});
+		return this.fromKeys({name, statusName, symbol, top, noRecent, content, byRow, byVK});
 	}
 
 	static clusterAlternates(cluster: string, variants: string[], k?: { noRecent?: boolean }) {
@@ -206,14 +205,14 @@ export abstract class Board {
 		if (keys.length == 6) {
 			// place on home row
 			const byRow = [[], [], keys];
-			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys: [], byRow});
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, content: () => [], byRow});
 		} else if (keys.length == 18) {
 			// center on home row
 			const byRow = [[], keys.slice(0, 6), keys.slice(6, 12), keys.slice(12)];
-			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys: [], byRow});
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, content: () => [], byRow});
 		}
 		{
-			return this.fromKeys({name: clusterName(cluster), symbol: cluster, keys});
+			return this.fromKeys({name: clusterName(cluster), symbol: cluster, content: () => keys});
 		}
 	}
 }

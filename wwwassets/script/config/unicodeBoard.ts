@@ -21,9 +21,11 @@ function validCode(code: number): boolean {
 export const UnicodeKeyboard: EmojiKeyboard = {
 	name: "Unicode Blocks",
 	symbol: "∪",
-	content: UnicodeData.blocks.filter(b => b.sub.some(s => s.char?.some(validCode))).map(block => {
+	content: UnicodeData.blocks.filter(
+		b => b.sub.some(s => s.char?.some(validCode)) || b.isCJKUnifiedIdeographs
+	).map(block => {
 		const codes = block.sub.map(sub => sub.char).flat().filter(validCode);
-		let symbol = String.fromCodePoint(codes[0]);
+		let symbol = String.fromCodePoint(codes[0] ?? block.start);
 		for (const code of codes) {
 			const info = charInfo(code);
 			if (info?.ca?.startsWith(GeneralCategory.Letter)) {
@@ -32,11 +34,22 @@ export const UnicodeKeyboard: EmojiKeyboard = {
 			}
 		}
 		if (BlockSymbolOverride[block.start]) symbol = BlockSymbolOverride[block.start];
+		const statusName = `${block.name} ${toHex(block.start)}–${toHex(block.end)}`;
 		return {
 			name: block.name,
-			statusName: `${block.name} ${toHex(block.start)}–${toHex(block.end)}`,
+			statusName,
 			symbol,
-			content: codes.map(c => String.fromCodePoint(c)),
+			dynamicContent: () => {
+				if (codes.length || !block.isCJKUnifiedIdeographs) {
+					return codes.map(c => String.fromCodePoint(c));
+				} else {
+					const content = [];
+					for (let i = block.start; i <= block.end; i++) {
+						content.push(String.fromCodePoint(i));
+					}
+					return content;
+				}
+			},
 		} as EmojiKeyboard;
 	})
 };

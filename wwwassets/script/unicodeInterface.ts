@@ -13,11 +13,13 @@ export const UnicodeData = u;
 (window as any).u = u;
 
 function charName(code: number): string {
-	if (code >= 19968 && code <= 40956) {
-		return `CJK Unified Ideograph ${code.toString(16)}`;
-	} else {
-		return u.chars[code]?.n ?? `U+${code.toString(16)}`;
+	if (u.chars[code]) return u.chars[code]!.n;
+	for (const b of u.blocks) {
+		if (code >= b.start && code <= b.end) {
+			return `${b.name}: U+${code.toString(16)}`;
+		}
 	}
+	return `U+${code.toString(16)}`;
 }
 
 function clusterFullName(cluster: string): string {

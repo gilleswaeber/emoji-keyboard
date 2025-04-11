@@ -27,6 +27,7 @@ type SubBlockInformation = {
 }
 type ExtendedBlockInformation = BlockInformation & {
 	sub: ExtendedSubBlockInformation[];
+	isCJKUnifiedIdeographs: boolean;
 }
 type ExtendedSubBlockInformation = SubBlockInformation & {
 	block: WeakRef<ExtendedBlockInformation>;
@@ -71,7 +72,7 @@ type CharInformation = {
 }
 export type ExtendedCharInformation = CharInformation & {
 	block: ExtendedBlockInformation;
-	sub: ExtendedSubBlockInformation;
+	sub: ExtendedSubBlockInformation | null;
 }
 type ClusterInformation = {
 	cluster: string;
@@ -332,7 +333,11 @@ export function getUnicodeData(): ExtendedUnicodeData {
 	}]));
 
 	for (const block of u.blocks) {
-		const b: ExtendedBlockInformation = {...block, sub: []};
+		const b: ExtendedBlockInformation = {
+			...block,
+			sub: [],
+			isCJKUnifiedIdeographs: block.name.startsWith("CJK Unified Ideographs") && !block.sub.length,
+		};
 		b.sub = block.sub.map(s => ({...s, block: new WeakRef(b)}));
 		blocks.push(b);
 		for (const s of b.sub) {
@@ -466,6 +471,16 @@ export function getUnicodeData(): ExtendedUnicodeData {
 			if (info) {
 				info.alias ??= [];
 				info.alias.push(...v);
+			} else {
+				const block = blocks.find(b => b.start <= code[0] && b.end >= code[0]);
+				if (!block) continue;
+				chars[code[0]] = {
+					n: `${block.name}: U+${code[0].toString(16)}`,
+					code: code[0],
+					alias: v,
+					block: block,
+					sub: null,
+				}
 			}
 		} else {
 			const info = clusters[k];

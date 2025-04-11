@@ -43,7 +43,7 @@ export type EmojiKeyboard = {
 	/** Do not add to recently used */
 	noRecent?: true;
 	/** Place the items on the free keys, paging when necessary */
-	content?: KeyboardItem[];
+	content?: KeyboardItem[] | (() => KeyboardItem[]);
 	/** Place the items according the Virtual Key code i.e. based on the symbols on the keys */
 	byVK?: { [vk in VK | VKAbbr]?: KeyboardItem }
 	/** Place the items by row */
