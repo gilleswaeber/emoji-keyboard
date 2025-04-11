@@ -1,9 +1,6 @@
 Emoji Keyboard (Emoji 16)
 ==============
-[💾 Download](https://github.com/gilleswaeber/emoji-keyboard/releases/latest/download/emoji-keyboard.zip) or
-clone `https://github.com/gilleswaeber/emoji-keyboard.git`
-
-*do not use the Download ZIP button since some files would be missing (Git LFS // #19)*
+[💾 Download](https://github.com/gilleswaeber/emoji-keyboard/releases/latest/download/emoji-keyboard.zip) *or see instructions below for cloning*
 
 <img alt="Screenshot" src="https://i.imgur.com/qpVBhXt.png" width="786" />
 
@@ -14,7 +11,7 @@ Requires Windows 7+
 
 Alternatives
 ------------
-Since the Windows 10 April 2018 Update update, you can open the built-in emoji picker with <kbd>Win</kbd>+<kbd>.</kbd>.
+Since Windows 10 April 2018 Update, you can open the built-in emoji picker with <kbd>Win</kbd>+<kbd>.</kbd>.
 It is missing support for flags and emojis newer than the OS.
 
 How to use
@@ -46,13 +43,44 @@ Flags are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, be
 
 Customize
 ---------
-Some settings are available in the app.
+Many settings are accessible in the app:
+- Enable the *ISO layout* setting if you have a narrow left shift key
+- The *Reset variants* setting will clear the preferred skin/gender variants for all emojis
+- Two themes are available, both available in light and dark variants
+- Change the opacity of the window
+- The position where the keyboard opens, note that *Caret* is still experimental
+- Whether to hide the keyboard and/or return to the main page after inserting an emoji
+- Show the aliases or the code points in the title bar when hovering a key
+
+To change the keyboard shortcut, open the *hotkey.ahk* file in a text editor and change the expression before
+`::KB.Toggle()`. See the [Hotkeys Expressions](https://www.autohotkey.com/docs/v2/Hotkeys.htm) and
+[Key List](https://www.autohotkey.com/docs/v2/KeyList.htm) documentation for AutoHotkey for more information.
+After changing, reload script using a right click on the tray icon or the command in Settings > Tools
+
+See also:
+
+- [🔣 Fallback Fonts](https://github.com/gilleswaeber/emoji-keyboard/wiki/Fallback-Fonts)
+- [🪇 Plugins](https://github.com/gilleswaeber/emoji-keyboard/wiki/Plugins)
+
+Develop
+-------
 The keyboard view is realized using an embedded WebView2 control, as native AHK controls do not support Emojis at the
 moment.
 Some characters may use a fallback image because they are not rendered properly, but they are supported by the OS.
 
+Requirements:
+- a [Node.js](https://nodejs.org/en/download/) installation to build the web-app part
+- Git with the [Git LFS](https://git-lfs.com/) plugin to clone the repository (otherwise the dll will be missing)
+
+
+When cloning the repository, you will additionally need to:
+- Build the JS bundles: `cd wwwassets; npm install; npm run build`
+- Build the Unicode data: `cd wwwassets; npm run build-unidata`, or with Settings > Tools > Build in the app
+- Download Noto Color Emoji: you'll be prompted to do so when running the app for the first time
+
+
 The web-app part is written in Typescript.
-In the *wwwassets*, run `yarn install; yarn watch` to get started.
+In the *wwwassets*, run `npm install; npm run dev` to get started.
 The boards configuration is done in *wwwassets/script/config*.
 
 Unicode data is generated from several sources:
@@ -66,19 +94,14 @@ Unicode data is generated from several sources:
   and contains aliases used in search, and additional information not yet used
 - The [Unicode CLDR](https://cldr.unicode.org/) annotations for aliases used in search
 
-A rebuild of the Unicode database can be triggered in the app settings. It will download parts of the Unicode spec when
+A rebuild of the Unicode database can be triggered in the app settings or by running `npm run build-unidata`. It will download parts of the Unicode spec when
 necessary.
-Data for CJK ideographs is not present in the app since Unicode provides it separately and the main dev is not able to
-provide a proper integration, PR welcome.
+Data for CJK ideographs is not present in the app since Unicode provides it separately and I don't know enough about it
+to provide a proper integration, PR welcome.
 Boards for scripts other than Latin and monotonic Greek are not provided either but can be added manually, PR welcome.
 
 Additionally, math symbols and aliases were manually imported from the [unicode-math](https://wspr.io/unicode-math/)
 XeLaTeX/LuaLaTeX package and the [UTN #28: UnicodeMath](https://www.unicode.org/notes/tn28/) specification.
-
-See also:
-
-- [🔣 Fallback Fonts](https://github.com/gilleswaeber/emoji-keyboard/wiki/Fallback-Fonts)
-- [🪇 Plugins](https://github.com/gilleswaeber/emoji-keyboard/wiki/Plugins)
 
 Dependencies
 ------------
@@ -91,7 +114,6 @@ JavaScript libs:
 - [memoize-one](https://github.com/alexreardon/memoize-one.git), Alex Reardon, MIT License
 - [Peggy](https://peggyjs.org/), David Majda, MIT License
 - [Preact](https://preactjs.com/), Jason Miller, MIT License
-- [RequireJS](https://github.com/requirejs/requirejs), jQuery Foundation and other contributors, MIT License
 
 Emoji Fonts:
 

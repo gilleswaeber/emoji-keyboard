@@ -1,9 +1,8 @@
 /res/data/*
-!/res/data/data.exp.js
 !/res/data/.gitkeep
 /wwwassets/node_modules
-/wwwassets/script/dist/*
-!/wwwassets/script/dist/.gitkeep
+/wwwassets/dist
+/wwwassets/data
 /wwwassets/fallback_fonts/*
 !/wwwassets/fallback_fonts/.gitkeep
 /wwwassets/plugins/*

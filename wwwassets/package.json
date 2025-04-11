@@ -1,17 +1,23 @@
 {
-  "name": "emoji-keyboard",
-  "version": "1.0.0",
-  "author": "Gilles Waeber",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
-    "memoize-one": "^6.0.0",
-    "peggy": "^3.0.2",
-    "typescript": "^5.0.4"
-  },
-  "scripts": {
-    "watch": "tsc --watch",
-    "build": "tsc"
-  }
+	"name": "emoji-keyboard",
+	"version": "1.0.0",
+	"author": "Gilles Waeber",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "^19.1.1",
+		"@types/react-dom": "^19.1.2",
+		"typescript": "^5.8.3",
+		"vite": "^6.2.6"
+	},
+	"dependencies": {
+		"memoize-one": "^6.0.0",
+		"peggy": "^4.2.0",
+		"preact": "^10.26.5"
+	},
+	"scripts": {
+		"dev": "vite build --watch --sourcemap inline",
+		"build": "vite build",
+		"build-unidata": "node build-unidata.js"
+	},
+	"type": "module"
 }

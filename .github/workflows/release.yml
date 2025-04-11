@@ -1,0 +1,40 @@
+name: Build and Release
+
+on:
+    push:
+        tags:
+            - 'v*.*'
+
+jobs:
+    build-and-release:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+
+            -   name: Set up Node.js
+                uses: actions/setup-node@v4
+                with:
+                    node-version: '22'
+                    cache: npm
+                    cache-dependency-path: wwwassets/package-lock.json
+
+            -   name: Install dependencies and build
+                working-directory: wwwassets
+                run: |
+                    npm install
+                    npm run build
+                    npm run build-unidata
+
+            -   name: Download Noto Emoji font
+                run: |
+                    curl --location --output wwwassets/fonts/NotoColorEmoji-Regular https://github.com/google/fonts/raw/refs/heads/main/ofl/notocoloremoji/NotoColorEmoji-Regular.ttf
+
+            -   name: Create release ZIP (excluding node_modules)
+                run: |
+                    zip -r emoji-keyboard.zip . -x 'wwwassets/node_modules/*' -x '.git/*' -x 'res/data/*'
+
+            -   name: Create GitHub Release
+                uses: softprops/action-gh-release@v2
+                with:
+                    files: emoji-keyboard.zip

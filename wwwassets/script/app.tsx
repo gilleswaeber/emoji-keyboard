@@ -39,6 +39,7 @@ import {Plugin, PluginData} from "./config/boards";
 import {naturalCompare} from "./utils/compare";
 import {IconFallback} from './config/fallback';
 import {supportsRequirements} from './utils/emojiSupportTest';
+import {UnicodeData} from "./unicodeInterface";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -409,8 +410,11 @@ class App extends Component<{}, AppState> implements AppActions {
 	}
 }
 
-const main = document.querySelector('main') as HTMLElement;
-options.debounceRendering = f => setTimeout(f, 0);  // Use setTimeout for debounce to avoid the use of the Promise polyfill, which causes issues with IE
+export function startApp() {
+	const main = document.querySelector('main') as HTMLElement;
+	options.debounceRendering = f => setTimeout(f, 0);  // Use setTimeout for debounce to avoid the use of the Promise polyfill, which causes issues with IE
+	(window as any).u = UnicodeData;
 
-render(<App/>, main);
-setTimeout(() => ahkLoaded(), 0);
+	render(<App/>, main);
+	setTimeout(() => ahkLoaded(), 0);
+}

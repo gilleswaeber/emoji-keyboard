@@ -9,8 +9,6 @@ export const IgnoreForName = [
 ]
 const u = getUnicodeData();
 export const UnicodeData = u;
-// Make it accessible in the DevTools
-(window as any).u = u;
 
 function charName(code: number): string {
 	if (u.chars[code]) return u.chars[code]!.n;

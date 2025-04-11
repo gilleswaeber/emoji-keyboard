@@ -4,16 +4,11 @@ import {charInfo, symbolRequirements} from "../unicodeInterface";
 import {toCodePoints} from "../builder/builder";
 import {GeneralCategory} from "../builder/unicode";
 import {VarSel15} from "../chars";
-import {cl, unreachable} from "../helpers";
+import {cl} from "../helpers";
 import {KeyCap, SpriteRef} from "../config/boards";
 import {Fragment, h} from "preact";
 import {Version} from "../osversion";
-import {hiddenBox, supportsRequirements} from "../utils/emojiSupportTest";
-
-hiddenBox.style.position = 'absolute';
-hiddenBox.style.left = '-1000px';
-hiddenBox.style.top = '-1000px';
-document.body.appendChild(hiddenBox);
+import {supportsRequirements} from "../utils/emojiSupportTest";
 
 function meetsRequirements(symbol: string, os: Version) {
 	const req = symbolRequirements(symbol);

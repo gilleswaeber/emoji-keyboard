@@ -12,8 +12,6 @@
 		  "preact/index"
 		]
 	  },
-	  "outFile": "script/dist/script.js",
-	  "sourceMap": true,
 	  "target": "es2022",
 	  "jsx": "react",
 	  "jsxFactory": "h",

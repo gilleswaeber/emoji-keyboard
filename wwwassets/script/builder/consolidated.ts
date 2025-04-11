@@ -320,7 +320,7 @@ const SKIN_TONES_NAMES = {
 const SKIN_TONE_REGEX = new RegExp(`(?:${SKIN_TONES.join('|')})`, 'g');
 
 export function getUnicodeData(): ExtendedUnicodeData {
-	const u: ConsolidatedUnicodeData = window.unicodeData ?? {
+	const u: ConsolidatedUnicodeData = (typeof window != 'undefined' ? window.unicodeData : null) ?? {
 		name: "No Unicode Data Available",
 		blocks: [],
 		chars: [],
@@ -417,7 +417,7 @@ export function getUnicodeData(): ExtendedUnicodeData {
 	}
 
 	// Fix woman variants list to place bearded woman last
-	clusters["👩"].variants?.sort((a, b) => +clusters[a]!.name.includes('Beard') - +clusters[b]!.name.includes('Beard'))
+	clusters["👩"]?.variants?.sort((a, b) => +clusters[a]!.name.includes('Beard') - +clusters[b]!.name.includes('Beard'))
 
 	// Fix People & Body group s.t. families are all in the family sub-group
 	const people = u.groups.find(g => g.name == 'People & Body');

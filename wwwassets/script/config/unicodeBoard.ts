@@ -39,7 +39,7 @@ export const UnicodeKeyboard: EmojiKeyboard = {
 			name: block.name,
 			statusName,
 			symbol,
-			dynamicContent: () => {
+			content: () => {
 				if (codes.length || !block.isCJKUnifiedIdeographs) {
 					return codes.map(c => String.fromCodePoint(c));
 				} else {
