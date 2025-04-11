@@ -1,6 +1,7 @@
 import {VK} from "../layout/vk";
 import {EmojiKeyboard} from "./boards";
 
+// location for the uncommon latin letters so that they don't move around
 const ae = VK.Digit1;
 const alpha = VK.Digit2;
 const turnedV = VK.Digit3;

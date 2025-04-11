@@ -531,7 +531,7 @@ export const GreekBold: EmojiKeyboard = {
 		[VK.Y]: ["𝛖", "𝚼"],
 		[VK.Z]: ["𝛇", "𝚭"],
 	},
-	content: ["𝛛", "𝛜", "𝛝", "𝛞", "𝛟", "𝛠", "𝛡", "𝚹", "𝛁"]
+	content: ["𝛛", "𝛜", "𝛝", "𝚹", "𝛞", "𝛡", "𝛠", "𝛟", "𝛁"]
 };
 export const GreekItalic: EmojiKeyboard = {
 	name: "Greek Italic",
@@ -564,7 +564,7 @@ export const GreekItalic: EmojiKeyboard = {
 		[VK.Y]: ["𝜐", "𝛶"],
 		[VK.Z]: ["𝜁", "𝛧"],
 	},
-	content: ["𝜕", "𝜖", "𝜗", "𝜘", "𝜙", "𝜚", "𝜛", "𝛳", "𝛻"]
+	content: ["𝜕", "𝜖", "𝜗", "𝛳", "𝜘", "𝜛", "𝜚", "𝜙", "𝛻"]
 };
 export const GreekBoldItalic: EmojiKeyboard = {
 	name: "Greek Bold Italic",
@@ -597,7 +597,7 @@ export const GreekBoldItalic: EmojiKeyboard = {
 		[VK.Y]: ["𝝊", "𝜰"],
 		[VK.Z]: ["𝜻", "𝜡"],
 	},
-	content: ["𝝏", "𝝐", "𝝑", "𝝒", "𝝓", "𝝔", "𝝕", "𝜭", "𝜵"]
+	content: ["𝝏", "𝝐", "𝝑", "𝜭", "𝝒", "𝝕", "𝝔", "𝝓", "𝜵"]
 };
 export const GreekSansBold: EmojiKeyboard = {
 	name: "Greek Sans Bold",
@@ -630,7 +630,7 @@ export const GreekSansBold: EmojiKeyboard = {
 		[VK.Y]: ["𝞄", "𝝪"],
 		[VK.Z]: ["𝝵", "𝝛"],
 	},
-	content: ["𝞉", "𝞊", "𝞋", "𝞌", "𝞍", "𝞎", "𝞏", "𝝧", "𝝯"]
+	content: ["𝞉", "𝞊", "𝞋", "𝝧", "𝞌", "𝞏", "𝞎", "𝞍", "𝝯"]
 };
 export const GreekSansBoldItalic: EmojiKeyboard = {
 	name: "Greek Sans Bold Italic",
@@ -663,5 +663,5 @@ export const GreekSansBoldItalic: EmojiKeyboard = {
 		[VK.Y]: ["𝞾", "𝞤"],
 		[VK.Z]: ["𝞯", "𝞕"],
 	},
-	content: ["𝟃", "𝟄", "𝟅", "𝟆", "𝟇", "𝟈", "𝟉", "𝞡", "𝞩"]
+	content: ["𝟃", "𝟄", "𝟅", "𝞡", "𝟆", "𝟉", "𝟈", "𝟇", "𝞩"]
 };

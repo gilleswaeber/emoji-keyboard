@@ -10,7 +10,13 @@ import {
 	UnicodeData
 } from "./unicode";
 import {toTitleCase} from "./titleCase";
-import {ZeroWidthJoiner} from "../chars";
+import {
+	CancelTag,
+	RegionalIndicatorSymbolLetterACode,
+	TagLatinSmallLetterACode,
+	TagLatinSmallLetterZCode,
+	ZeroWidthJoiner
+} from "../chars";
 import {EXTEND_ALIASES} from "../config/aliases";
 import {toCodePoints} from "./builder";
 
@@ -424,6 +430,28 @@ export function getUnicodeData(): ExtendedUnicodeData {
 			family.clusters.push(...toMove);
 			personSymbol.clusters = personSymbol.clusters.filter(c => !isFamily(c));
 		}
+	}
+
+	// Fold subdivision flags into the corresponding country flags
+	const subdivisionFlags = u.groups.find(g => g.name == 'Flags')?.sub.find(s => s.name == 'subdivision-flag');
+	if (subdivisionFlags) {
+		const toRemove = new Set<string>();
+		for (const c of subdivisionFlags.clusters) {
+			const chars = [...c];
+			if (chars.length < 5 || chars[0] != '🏴' || chars[chars.length - 1] != CancelTag) continue;
+			for (let i = 1; i < chars.length - 1; ++i) {
+				if (chars[i].codePointAt(0)! < TagLatinSmallLetterACode || chars[i].codePointAt(0)! > TagLatinSmallLetterZCode) continue;
+			}
+			const base = String.fromCodePoint(
+				chars[1].codePointAt(0)! - TagLatinSmallLetterACode + RegionalIndicatorSymbolLetterACode,
+				chars[2].codePointAt(0)! - TagLatinSmallLetterACode + RegionalIndicatorSymbolLetterACode,
+			);
+			if (!clusters[base]) continue;
+			if (!clusters[base].variants) clusters[base].variants = [base];
+			clusters[base]!.variants!.push(c);
+			toRemove.add(c);
+		};
+		subdivisionFlags.clusters = subdivisionFlags.clusters.filter(c => !toRemove.has(c)) ?? [];
 	}
 
 	// Extend group information
