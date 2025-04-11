@@ -1,31 +1,11 @@
-import {
-	parseAnnotations,
-	parseEmojiTest,
-	parseEmojiVersions,
-	parseNamedSequences,
-	parseNamesList,
-	parseUnicodeData,
-	Paths
-} from "./unicode";
-import {consolidateUnicodeData, UnicodeDataSource} from "./consolidated";
+import {parseUnicodeResources, Paths, UnicodeResources} from "./unicode";
+import {consolidateUnicodeData} from "./consolidated";
 import {ahkDownloadUnicode, ahkSaveUnicodeData, ahkVersions} from "../ahk";
 import {app} from "../appVar";
+import memoizeOne from "memoize-one";
 
 export function toCodePoints(s: string): number[] {
 	return [...s].map(c => c.codePointAt(0)!);
-}
-
-type FirstPassEmoji = {
-	keywords?: string[];
-	symbol: string;
-	group: string;
-	subGroup: string;
-	name: string;
-	fullName?: string;
-	code?: number[];
-	alternates?: FirstPassEmoji[];
-	style?: "space" | null;
-	show?: string;
 }
 
 let building = false;
@@ -35,7 +15,7 @@ export async function makeBuild() {
 	try {
 		app().setBuilding(true);
 		building = true;
-		await build();
+		await buildAhk();
 	} catch (e) {
 		console.error(e);
 		alert(`Build failed: ${e}`)
@@ -45,7 +25,7 @@ export async function makeBuild() {
 	}
 }
 
-async function build() {
+async function buildAhk() {
 	await ahkDownloadUnicode();
 	const v = await ahkVersions();
 	const paths: Paths = {
@@ -57,14 +37,16 @@ async function build() {
 		annotationsPath: `../res/data/cldr-json/${v.cldr}/cldr-json/cldr-annotations-full/annotations/en/annotations.json`,
 	};
 
-	const ctx: UnicodeDataSource = {
-		unicodeData: await parseUnicodeData(paths),
-		emojiVersion: await parseEmojiVersions(paths.emojiDataPath),
-		emojiTest: await parseEmojiTest(paths),
-		namedSequences: await parseNamedSequences(paths),
-		namesList: await parseNamesList(paths),
-		annotations: await parseAnnotations(paths),
-	};
+	const resources: UnicodeResources = {
+		emojiTest: memoizeOne(() => fetch(paths.emojiTestPath).then(r => r.text())),
+		emojiData: memoizeOne(() => fetch(paths.emojiDataPath).then(r => r.text())),
+		unicodeData: memoizeOne(() => fetch(paths.unicodeDataPath).then(r => r.text())),
+		namedSequences: memoizeOne(() => fetch(paths.namedSequencesPath).then(r => r.text())),
+		namesList: memoizeOne(() => fetch(paths.namesListPath).then(r => r.text())),
+		annotations: memoizeOne(() => fetch(paths.annotationsPath).then(r => r.text())),
+	}
+
+	const ctx = await parseUnicodeResources(resources);
 
 	const u = consolidateUnicodeData(ctx);
 	console.log(u);

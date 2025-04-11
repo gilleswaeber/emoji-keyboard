@@ -8,17 +8,11 @@ import {cl} from "../helpers";
 import {KeyCap, SpriteRef} from "../config/boards";
 import {Fragment, h} from "preact";
 import {Version} from "../osversion";
-import {hiddenBox, supportsZWJ} from "../utils/zwjTest";
-
-hiddenBox.style.position = 'absolute';
-hiddenBox.style.left = '-1000px';
-hiddenBox.style.top = '-1000px';
-document.body.appendChild(hiddenBox);
+import {supportsRequirements} from "../utils/emojiSupportTest";
 
 function meetsRequirements(symbol: string, os: Version) {
 	const req = symbolRequirements(symbol);
-	if (typeof req.windows === "string") return os.gte(req.windows);
-	return supportsZWJ(req.zwj);
+	return supportsRequirements(req, os);
 }
 
 export function Symbol({symbol}: { symbol: KeyCap }) {

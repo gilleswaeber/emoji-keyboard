@@ -1,5 +1,6 @@
 import * as peggy from "peggy";
 import {Dictionary} from "../helpers";
+import {UnicodeDataSource} from "./consolidated";
 
 /*
  * Parsers for Unicode data files
@@ -11,9 +12,9 @@ const EmojiDataRegex = new RegExp(
 
 export type EmojiVersion = Record<number, number|undefined>;
 
-export async function parseEmojiVersions(emojiDataPath: string): Promise<EmojiVersion> {
+export async function parseEmojiVersions(resources: UnicodeResources): Promise<EmojiVersion> {
 	const emojiVersion: EmojiVersion = {};
-	const text = await fetch(emojiDataPath).then(r => r.text());
+	const text = await resources.emojiData();
 
 	for (const line of text.split('\n')) {
 		if (!line.length || line.startsWith('#')) continue;
@@ -246,10 +247,30 @@ export type Paths = {
 	annotationsPath: string;
 }
 
-export async function parseUnicodeData(p: Paths): Promise<UnicodeData> {
+export type UnicodeResources = {
+	emojiTest(): Promise<string>;
+	emojiData(): Promise<string>;
+	unicodeData(): Promise<string>;
+	namedSequences(): Promise<string>;
+	namesList(): Promise<string>;
+	annotations(): Promise<string>;
+}
+
+export async function parseUnicodeResources(resources: UnicodeResources): Promise<UnicodeDataSource> {
+	return {
+		unicodeData: await parseUnicodeData(resources),
+		emojiVersion: await parseEmojiVersions(resources),
+		emojiTest: await parseEmojiTest(resources),
+		namedSequences: await parseNamedSequences(resources),
+		namesList: await parseNamesList(resources),
+		annotations: await parseAnnotations(resources),
+	};
+}
+
+export async function parseUnicodeData(p: UnicodeResources): Promise<UnicodeData> {
 	const data: UnicodeData = {};
 
-	const text = await fetch(p.unicodeDataPath).then(r => r.text());
+	const text = await p.unicodeData();
 	for (const line of text.split('\n')) {
 		if (!line.length) continue;
 		const [hex, name, category, combining, bidiClass, decomposition, decimalDigit, digit, numeric, bidiMirrored, unicode1, comment, uppercase, lowercase, titlecase] = line.split(';');
@@ -313,9 +334,9 @@ export type NamesListData = {
 	}[]
 }
 
-export async function parseNamesList(p: Paths): Promise<NamesListData> {
-	const text = await fetch(p.namesListPath).then(r => r.text());
-	const parser = peggy.generate(await fetch('./script/namesList.pegjs').then(r => r.text()));
+export async function parseNamesList(resources: UnicodeResources): Promise<NamesListData> {
+	const text = await resources.namesList();
+	const parser = peggy.generate((await import('./namesList.pegjs?raw')).default);
 	return parser.parse(text);
 }
 
@@ -339,14 +360,14 @@ export type EmojiTestData = {
 	sequences: Dictionary<EmojiSequence|undefined>,
 };
 
-export async function parseEmojiTest(p: Paths): Promise<EmojiTestData> {
+export async function parseEmojiTest(resources: UnicodeResources): Promise<EmojiTestData> {
 	const groups: EmojiGroup[] = [];
 	const sequences: Dictionary<EmojiSequence> = {};
 
 	let g: EmojiGroup = {name: '', sub: []};
 	let s: EmojiSubGroup = {name: '', clusters: []};
 
-	const data = await fetch(p.emojiTestPath).then(f => f.text());
+	const data = await resources.emojiTest();
 	for (const line of data.split('\n')) {
 		const m = line.match(/^# group: (?<group>.+)$|^# subgroup: (?<subGroup>.+)$|^(?<code>[0-9a-f]+(?: [0-9a-f]+)*) +; +(?<type>[a-z-]+) +# (?<symbol>[^ ]+) E(?<version>[\d.]+) (?<name>.+)$/i)?.groups;
 		if (m) {
@@ -377,8 +398,8 @@ export type NamedSequencesData = {
 	name: string;
 }[];
 
-export async function parseNamedSequences(p: Paths): Promise<NamedSequencesData> {
-	const data = await fetch(p.namedSequencesPath).then(f => f.text());
+export async function parseNamedSequences(resources: UnicodeResources): Promise<NamedSequencesData> {
+	const data = await resources.namedSequences();
 	const namedSequences: NamedSequencesData = [];
 	for (const line of data.split('\n')) {
 		if (!line.length || line.startsWith('#')) continue;
@@ -407,7 +428,7 @@ export type AnnotationsData = {
 	}>;
 }
 
-export async function parseAnnotations(paths: Paths): Promise<AnnotationsData> {
-	const data = await fetch(paths.annotationsPath).then(f => f.json());
+export async function parseAnnotations(resources: UnicodeResources): Promise<AnnotationsData> {
+	const data = await (resources.annotations()).then(f => JSON.parse(f));
 	return (data.annotations) as AnnotationsData;
 }

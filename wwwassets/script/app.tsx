@@ -37,6 +37,9 @@ import {RecentBoard} from "./recentsView";
 import {increaseRecent} from "./recentsActions";
 import {Plugin, PluginData} from "./config/boards";
 import {naturalCompare} from "./utils/compare";
+import {IconFallback} from './config/fallback';
+import {supportsRequirements} from './utils/emojiSupportTest';
+import {UnicodeData} from "./unicodeInterface";
 
 export const enum AppMode {
 	MAIN = 0,
@@ -265,9 +268,10 @@ class App extends Component<{}, AppState> implements AppActions {
 		})
 	}
 
-	public setOS(os: string) {
-		os = os.replace(/^WIN_/, '');
-		this.setState({os: new Version(os)})
+	public setOS(osString: string) {
+		const os = new Version(osString.replace(/^WIN_/, ''));
+		this.setState({os})
+		console.log("OS Set", os, IconFallback.map(f => ({...f, supported: supportsRequirements(f.requirement, os)})));
 	}
 
 	public setSystemLayout(layout: SystemLayout) {
@@ -382,32 +386,35 @@ class App extends Component<{}, AppState> implements AppActions {
 		const fonts = rest.split('\n')
 			.filter(f => f.length && f.match(/.*\.(otf|ttf|woff2?|eot|svg)$/i));
 		const usedNames = new Set<string>();
-		const faces = fonts.map(f => {
-			let fontName = f.replace(/.*[\\\/]([^\\\/]+)$/, '$1').replace(/[^a-z0-9]/ig, '_');
-			if (usedNames.has(fontName)) {
+		const faces = fonts.map(font => {
+			let alias = font.replace(/.*[\\\/]([^\\\/]+)$/, '$1').replace(/[^a-z0-9]/ig, '_');
+			if (usedNames.has(alias)) {
 				let i = 1;
-				while (usedNames.has(fontName + i)) i++;
-				fontName = fontName + i;
+				while (usedNames.has(alias + i)) i++;
+				alias = alias + i;
 			}
-			usedNames.add(fontName);
-			return `@font-face {
-	font-family: "${fontName}";
-	src: url("${f.replace(/([\\"])/g, '\\$1')}");
-}`;
+			usedNames.add(alias);
+			return {alias, font};
 		});
-		const fFonts = [...usedNames].map(f => `${f}, `).join('');
+		const fFonts = faces.map(({alias}) => `${alias}, `).join('');
 		const style = document.createElement('style');
-		style.textContent = faces.join('\n\n') + `
+		style.textContent = faces.map(({alias, font}) => `@font-face {
+	font-family: "${alias}";
+	src: url("${font.replace(/([\\"])/g, '\\$1')}");
+}`).join('\n\n') + `
 :root {
 	--f-fallback: ${fFonts} 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }`;
 		document.head.appendChild(style);
-		console.log(style);
+		console.log("Fallback fonts loaded", faces, style);
 	}
 }
 
-const main = document.querySelector('main') as HTMLElement;
-options.debounceRendering = f => setTimeout(f, 0);  // Use setTimeout for debounce to avoid the use of the Promise polyfill, which causes issues with IE
+export function startApp() {
+	const main = document.querySelector('main') as HTMLElement;
+	options.debounceRendering = f => setTimeout(f, 0);  // Use setTimeout for debounce to avoid the use of the Promise polyfill, which causes issues with IE
+	(window as any).u = UnicodeData;
 
-render(<App/>, main);
-setTimeout(() => ahkLoaded(), 0);
+	render(<App/>, main);
+	setTimeout(() => ahkLoaded(), 0);
+}

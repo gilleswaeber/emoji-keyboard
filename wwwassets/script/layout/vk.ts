@@ -154,6 +154,21 @@ export const VKMap = {
 	d7: VK.Digit7,
 	d8: VK.Digit8,
 	d9: VK.Digit9,
+
+	"0": VK.Digit0,
+	"1": VK.Digit1,
+	"2": VK.Digit2,
+	"3": VK.Digit3,
+	"4": VK.Digit4,
+	"5": VK.Digit5,
+	"6": VK.Digit6,
+	"7": VK.Digit7,
+	"8": VK.Digit8,
+	"9": VK.Digit9,
+
+	",": VK.Comma,
+	"-": VK.Minus,
+	".": VK.Period,
 } as const;
 const ReverseVkMap = new Map<VK, VKAbbr[]>();
 for (const [k, vk] of Object.entries(VKMap)) {

@@ -10,7 +10,13 @@ import {
 	UnicodeData
 } from "./unicode";
 import {toTitleCase} from "./titleCase";
-import {ZeroWidthJoiner} from "../chars";
+import {
+	CancelTag,
+	RegionalIndicatorSymbolLetterACode,
+	TagLatinSmallLetterACode,
+	TagLatinSmallLetterZCode,
+	ZeroWidthJoiner
+} from "../chars";
 import {EXTEND_ALIASES} from "../config/aliases";
 import {toCodePoints} from "./builder";
 
@@ -27,6 +33,7 @@ type SubBlockInformation = {
 }
 type ExtendedBlockInformation = BlockInformation & {
 	sub: ExtendedSubBlockInformation[];
+	isCJKUnifiedIdeographs: boolean;
 }
 type ExtendedSubBlockInformation = SubBlockInformation & {
 	block: WeakRef<ExtendedBlockInformation>;
@@ -71,7 +78,7 @@ type CharInformation = {
 }
 export type ExtendedCharInformation = CharInformation & {
 	block: ExtendedBlockInformation;
-	sub: ExtendedSubBlockInformation;
+	sub: ExtendedSubBlockInformation | null;
 }
 type ClusterInformation = {
 	cluster: string;
@@ -313,7 +320,7 @@ const SKIN_TONES_NAMES = {
 const SKIN_TONE_REGEX = new RegExp(`(?:${SKIN_TONES.join('|')})`, 'g');
 
 export function getUnicodeData(): ExtendedUnicodeData {
-	const u: ConsolidatedUnicodeData = window.unicodeData ?? {
+	const u: ConsolidatedUnicodeData = (typeof window != 'undefined' ? window.unicodeData : null) ?? {
 		name: "No Unicode Data Available",
 		blocks: [],
 		chars: [],
@@ -332,7 +339,11 @@ export function getUnicodeData(): ExtendedUnicodeData {
 	}]));
 
 	for (const block of u.blocks) {
-		const b: ExtendedBlockInformation = {...block, sub: []};
+		const b: ExtendedBlockInformation = {
+			...block,
+			sub: [],
+			isCJKUnifiedIdeographs: block.name.startsWith("CJK Unified Ideographs") && !block.sub.length,
+		};
 		b.sub = block.sub.map(s => ({...s, block: new WeakRef(b)}));
 		blocks.push(b);
 		for (const s of b.sub) {
@@ -406,7 +417,7 @@ export function getUnicodeData(): ExtendedUnicodeData {
 	}
 
 	// Fix woman variants list to place bearded woman last
-	clusters["👩"].variants?.sort((a, b) => +clusters[a]!.name.includes('Beard') - +clusters[b]!.name.includes('Beard'))
+	clusters["👩"]?.variants?.sort((a, b) => +clusters[a]!.name.includes('Beard') - +clusters[b]!.name.includes('Beard'))
 
 	// Fix People & Body group s.t. families are all in the family sub-group
 	const people = u.groups.find(g => g.name == 'People & Body');
@@ -419,6 +430,28 @@ export function getUnicodeData(): ExtendedUnicodeData {
 			family.clusters.push(...toMove);
 			personSymbol.clusters = personSymbol.clusters.filter(c => !isFamily(c));
 		}
+	}
+
+	// Fold subdivision flags into the corresponding country flags
+	const subdivisionFlags = u.groups.find(g => g.name == 'Flags')?.sub.find(s => s.name == 'subdivision-flag');
+	if (subdivisionFlags) {
+		const toRemove = new Set<string>();
+		for (const c of subdivisionFlags.clusters) {
+			const chars = [...c];
+			if (chars.length < 5 || chars[0] != '🏴' || chars[chars.length - 1] != CancelTag) continue;
+			for (let i = 1; i < chars.length - 1; ++i) {
+				if (chars[i].codePointAt(0)! < TagLatinSmallLetterACode || chars[i].codePointAt(0)! > TagLatinSmallLetterZCode) continue;
+			}
+			const base = String.fromCodePoint(
+				chars[1].codePointAt(0)! - TagLatinSmallLetterACode + RegionalIndicatorSymbolLetterACode,
+				chars[2].codePointAt(0)! - TagLatinSmallLetterACode + RegionalIndicatorSymbolLetterACode,
+			);
+			if (!clusters[base]) continue;
+			if (!clusters[base].variants) clusters[base].variants = [base];
+			clusters[base]!.variants!.push(c);
+			toRemove.add(c);
+		};
+		subdivisionFlags.clusters = subdivisionFlags.clusters.filter(c => !toRemove.has(c)) ?? [];
 	}
 
 	// Extend group information
@@ -466,6 +499,16 @@ export function getUnicodeData(): ExtendedUnicodeData {
 			if (info) {
 				info.alias ??= [];
 				info.alias.push(...v);
+			} else {
+				const block = blocks.find(b => b.start <= code[0] && b.end >= code[0]);
+				if (!block) continue;
+				chars[code[0]] = {
+					n: `${block.name}: U+${code[0].toString(16)}`,
+					code: code[0],
+					alias: v,
+					block: block,
+					sub: null,
+				}
 			}
 		} else {
 			const info = clusters[k];

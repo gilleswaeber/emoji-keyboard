@@ -1,7 +1,6 @@
 :root {
 	--s-gap: 4px;
 	--c-shadow: #000;
-	/*--f-fallback: unifont1, unifont2;*/
 	--f-fallback: 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -32,6 +31,16 @@ input {
 @font-face {
 	font-family: NotoEmoji;
 	src: url("../fonts/NotoColorEmoji-Regular.ttf");
+}
+
+@font-face {
+	/*
+	 * Adobe Blank is a special font that maps all unicode codepoints to non-spacing non-marking glyphs.
+	 * The can be used to determine whether a character is supported by the previous fonts in a font stack.
+	 * See https://github.com/adobe-fonts/adobe-blank.
+	 */
+	font-family: AdobeBlank;
+	src: url("../fonts/AdobeBlank.otf");
 }
 
 main{

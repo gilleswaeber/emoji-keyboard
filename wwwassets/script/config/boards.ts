@@ -43,7 +43,7 @@ export type EmojiKeyboard = {
 	/** Do not add to recently used */
 	noRecent?: true;
 	/** Place the items on the free keys, paging when necessary */
-	content?: KeyboardItem[];
+	content?: KeyboardItem[] | (() => KeyboardItem[]);
 	/** Place the items according the Virtual Key code i.e. based on the symbols on the keys */
 	byVK?: { [vk in VK | VKAbbr]?: KeyboardItem }
 	/** Place the items by row */
@@ -196,7 +196,6 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			content: [
 				...emojiGroup({group: "Food & Drink", subGroup: "food-fruit"}),
 				...emojiGroup({group: "Food & Drink", subGroup: "food-vegetable"}),
-				...emojiGroup({group: "Food & Drink", subGroup: "food-marine"}),
 				...emojiGroup({group: "Food & Drink", subGroup: "drink"}),
 				...emojiGroup({group: "Food & Drink", subGroup: "dishware"}),
 			]
@@ -289,7 +288,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			]
 		},
 		{
-			name: "Paper & things",
+			name: "Objects",
 			symbol: "📜",
 			content: [
 				...emojiGroup({group: "Objects", subGroup: "book-paper"}),
@@ -316,7 +315,8 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			content: [
 				...emojiGroup({group: "Symbols", subGroup: "transport-sign"}),
 				...emojiGroup({group: "Symbols", subGroup: "warning"}),
-				...emojiGroup({group: "Symbols", subGroup: "zodiac"})
+				...emojiGroup({group: "Symbols", subGroup: "zodiac"}),
+				...emojiGroup({group: "Flags", subGroup: "flag"}),
 			]
 		},
 		{
@@ -347,18 +347,11 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			]
 		},
 		{
-			name: "Country Flags",
+			name: "World Flags",
 			symbol: "🌐",
 			content: [
-				...emojiGroup({group: "Flags", subGroup: "country-flag"})
-			]
-		},
-		{
-			name: "Flags",
-			symbol: "🏁",
-			content: [
+				...emojiGroup({group: "Flags", subGroup: "country-flag"}),
 				...emojiGroup({group: "Flags", subGroup: "subdivision-flag"}),
-				...emojiGroup({group: "Flags", subGroup: "flag"})
 			]
 		},
 		{
@@ -366,16 +359,16 @@ export const MAIN_BOARD: EmojiKeyboard = {
 			symbol: "π",
 			noRecent: true,
 			content: [
-				"ϐ",
 				"∂",
 				"ϵ",
 				"ϑ",
+				"ϴ",
 				"ϰ",
-				"ϕ", "ϴ",
-				"ϱ",
 				"ϖ",
-				"ϝ", "Ϝ",
+				"ϱ",
+				"ϕ",
 				"∇",
+				["ϝ", "Ϝ"],
 			],
 			byVK: {
 				a: ["α", "Α"],
@@ -405,6 +398,7 @@ export const MAIN_BOARD: EmojiKeyboard = {
 				y: ["υ", "Υ"],
 				z: ["ζ", "Ζ"],
 				[VK.Period]: "·",
+				[VK.Comma]: "ϐ",
 			}
 		},
 		{

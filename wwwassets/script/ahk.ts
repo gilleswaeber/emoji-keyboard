@@ -29,7 +29,9 @@ export type AhkVersions = {
 	ucd: string;
 };
 let AHK: HostObject | null = null;
-(window as any).chrome?.webview?.hostObjects?.ahk.then((ahk: HostObject) => AHK = ahk);
+if (typeof window !== "undefined") {
+	(window as any).chrome?.webview?.hostObjects?.ahk.then((ahk: HostObject) => AHK = ahk);
+}
 
 function isAHK(): boolean {
 	return AHK !== null;
