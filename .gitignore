@@ -3,8 +3,7 @@
 !/res/data/.gitkeep
 /wwwassets/node_modules
 /wwwassets/script/dist/*
-!/wwwassets/script/dist/script.dist.js
-!/wwwassets/script/dist/unidata.dist.js
+!/wwwassets/script/dist/.gitkeep
 /wwwassets/fallback_fonts/*
 !/wwwassets/fallback_fonts/.gitkeep
 /wwwassets/plugins/*
