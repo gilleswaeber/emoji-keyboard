@@ -172,6 +172,10 @@ export const enum SC {
 	Extra47 = 1047,
 	Extra48 = 1048,
 	Extra49 = 1049,
+	EndRow0 = 2000,
+	EndRow1 = 2001,
+	EndRow2 = 2002,
+	EndRow3 = 2003,
 }
 
 export const ExtraSC = [
@@ -180,4 +184,5 @@ export const ExtraSC = [
 	SC.Extra20, SC.Extra21, SC.Extra22, SC.Extra23, SC.Extra24, SC.Extra25, SC.Extra26, SC.Extra27, SC.Extra28, SC.Extra29,
 	SC.Extra30, SC.Extra31, SC.Extra32, SC.Extra33, SC.Extra34, SC.Extra35, SC.Extra36, SC.Extra37, SC.Extra38, SC.Extra39,
 	SC.Extra40, SC.Extra41, SC.Extra42, SC.Extra43, SC.Extra44, SC.Extra45, SC.Extra46, SC.Extra47, SC.Extra48, SC.Extra49,
+	SC.EndRow0, SC.EndRow1, SC.EndRow2, SC.EndRow3,
 ] as const;

@@ -63,6 +63,12 @@
 	color: var(--c-text);
 }
 
+.key.empty {
+	&[data-keycode="2000"], &[data-keycode="2001"], &[data-keycode="2002"], &[data-keycode="2003"], &[data-keycode="1000"], &[data-keycode="1001"] {
+		background: none;
+	}
+}
+
 .key.alt{
 	box-shadow: 0 .5vw var(--c-primary) inset;
 }
@@ -74,8 +80,4 @@
 .key.char .symbol img{
 	box-shadow: 0 0 .2em var(--c-text);
 	background: var(--c-background);
-}
-
-.searchpane input{
-	border: solid .1vw #888;
 }

@@ -49,10 +49,6 @@
 	color: var(--c-text);
 }
 
-.row {
-	/*! padding: .2vw 0; */
-}
-
 .key .symbol {
 	color: var(--c-text);
 }
@@ -82,8 +78,4 @@
 .key:not(.empty):not(.label):hover {
 	color: var(--c-text);
 	box-shadow: 0 .2vw .4vw #444;
-}
-
-.searchpane input {
-	border: solid .1vw #888;
 }

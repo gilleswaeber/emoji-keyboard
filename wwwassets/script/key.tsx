@@ -44,7 +44,7 @@ export class ConfigActionKey extends Key {
 }
 
 export class ConfigToggleKey extends ConfigActionKey {
-	constructor({active, ...p}: {
+	constructor({active, name, ...p}: {
 		active?: boolean,
 		action(): void,
 		name?: string,
@@ -53,7 +53,7 @@ export class ConfigToggleKey extends ConfigActionKey {
 	}) {
 		active = active ?? false;
 		super({
-			name: active ? "On" : "Off",
+			name: name ?? (active ? "On" : "Off"),
 			symbol: active ? "✔️" : "❌",
 			active,
 			...p,
