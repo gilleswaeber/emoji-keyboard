@@ -1,5 +1,5 @@
 import {Fragment, h} from "preact";
-import {DigitsRow, FirstRow, Layout, SecondRow} from "./layout";
+import {DigitsRow, FirstRow, Layout} from "./layout";
 import {ConfigActionKey, ConfigBuildKey, ConfigLabelKey, ConfigToggleKey, ExitSearchKey, PageKey} from "./key";
 import {Board} from "./board";
 import {useContext} from "preact/hooks";
@@ -87,7 +87,10 @@ export interface RecentEmoji {
 }
 
 export interface AppConfig {
-	isoKeyboard: boolean;  // has an additional key next to left shift
+	/** has an additional `<>` key next to left shift */
+	isoKeyboard: boolean;
+	/** keys are disposed in a grid layout */
+	ortholinear: boolean;
 	theme: string;
 	themeMode: ThemeMode;
 	x: number;
@@ -111,6 +114,7 @@ export const DefaultOpacity = .90;
 
 export const DefaultConfig: AppConfig = {
 	isoKeyboard: false,
+	ortholinear: true,
 	theme: DefaultTheme,
 	themeMode: "system",
 	x: -1,
@@ -146,15 +150,26 @@ const ConfigPages: ConfigPage[] = [
 		symbol: "🛠️",
 		keys(config: AppConfig, l) {
 			return {
-				[SC.Q]: new ConfigToggleKey({
-					active: config.isoKeyboard,
-					statusName: `ISO layout: ${config.isoKeyboard ? 'on' : 'off'}`,
-					action() {
-						app().updateConfig({isoKeyboard: !config.isoKeyboard});
-					}
-				}),
-				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (<KeyName code={SC.LessThan}/> between <KeyName
-					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
+				...mapKeysToSlots(l.freeRows[1], [
+					new ConfigToggleKey({
+						active: config.isoKeyboard,
+						statusName: `ISO layout: ${config.isoKeyboard ? 'on' : 'off'}`,
+						name: 'ISO',
+						action() {
+							app().updateConfig({isoKeyboard: !config.isoKeyboard});
+						}
+					}),
+					new ConfigToggleKey({
+						active: config.ortholinear,
+						statusName: `Ortholinear (grid) layout: ${config.isoKeyboard ? 'on' : 'off'}`,
+						name: 'Ortho',
+						action() {
+							app().updateConfig({ortholinear: !config.ortholinear});
+						}
+					}),
+					new ConfigLabelKey(<Fragment>ISO layout: <KeyName code={SC.LessThan}/> key between <KeyName
+						code={SC.Shift}/> and <KeyName code={SC.Z}/></Fragment>),
+				]),
 				...mapKeysToSlots(l.freeRows[2], [
 					// 	...SkinTones.map((s, i) => new ConfigActionKey({
 					// 		active: i == config.skinTone,

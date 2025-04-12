@@ -1,5 +1,6 @@
 :root {
 	--s-gap: 4px;
+	--xs-gap: 2px;
 	--c-shadow: #000;
 	--f-fallback: 'Cambria Math', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -57,19 +58,18 @@ main > section{
 .keyboard{
 	display: grid;
 	box-sizing: border-box;
-	grid-template-columns: repeat(13, 1fr);
+	grid-template-columns: repeat(13, 1fr) max-content;
 	grid-template-rows: repeat(4, 1fr);
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 100vh;
 	width: 100vw;
-	grid-gap: var(--s-gap);
 	padding: var(--s-gap);
 }
 
 .keyboard input[type="search"] {
-	grid-column: 1 / 14;
+	grid-column: 1 / 15;
 	font-size: 4vw;
 }
 
@@ -81,11 +81,46 @@ main > section{
 	position: relative;
 	align-items: center;
 	transition: background ease .05s;
+	margin: var(--xs-gap);
+	box-sizing: border-box;
 }
 
-.row{
-	display: inline-flex;
+.key[data-keycode="41"],
+.key[data-keycode="15"],
+.key[data-keycode="58"],
+.key[data-keycode="42"] {
+	grid-column: span 1;
 }
+
+.keyboard.ortholinear.iso-layout .key[data-keycode="42"] {display: none;}
+.keyboard.ortholinear.iso-layout .key[data-keycode="2003"] {grid-column: span 2;}
+
+.key[data-keycode="2000"], .key[data-keycode="2001"], .key[data-keycode="2002"], .key[data-keycode="2003"] {
+	padding: 0;
+	margin: 0;
+	grid-column: span 1;
+}
+
+.keyboard.staggered {
+	grid-template-columns: 1fr .25fr .25fr .25fr repeat(48, .25fr) repeat(6, max-content);
+}
+
+.keyboard.staggered .key {
+	grid-column: span 4;
+}
+
+.keyboard.staggered .key[data-keycode="2000"] {grid-column: span 8;}
+.keyboard.staggered .key[data-keycode="2001"] {grid-column: span 6;}
+.keyboard.staggered .key[data-keycode="2002"] {grid-column: span 5;}
+.keyboard.staggered .key[data-keycode="2003"] {grid-column: span 7;}
+.keyboard.staggered .key[data-keycode="41"] {grid-column: span 1;}
+.keyboard.staggered .key[data-keycode="15"] {grid-column: span 3;}
+.keyboard.staggered .key[data-keycode="58"] {grid-column: span 4;}
+.keyboard.staggered .key[data-keycode="42"] {grid-column: span 2;}
+
+.keyboard.staggered.ansi-layout .key[data-keycode="2003"] {grid-column: span 3;}
+.keyboard.staggered.ansi-layout .key[data-keycode="42"] {grid-column: span 6;}
+
 
 .key .symbol{
 	font-size: 3.6vw;
@@ -171,21 +206,6 @@ main > section{
 	overflow: visible;
 	min-width: 0;
 	z-index: 10;
-}
-
-.searchpane{
-	padding: .2vh 2.05vw;
-	height: 25vh;
-	box-sizing: border-box;
-}
-
-.searchpane input {
-	display: block;
-	height: 100%;
-	border: none;
-	width: 100%;
-	box-sizing: border-box;
-	padding: 1vw;
 }
 
 div.sprite {
