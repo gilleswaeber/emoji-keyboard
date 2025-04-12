@@ -260,22 +260,38 @@ class EmojiKeyboard {
             FileMove("wwwassets/data/unidata.tmp.js", "wwwassets/data/unidata.js", true)
             FileMove("wwwassets/script/unidata.tmp.d.ts", "wwwassets/script/unidata.d.ts", true)
         }
-        onSend(text) {
-            SetTimer(RestoreClipboard,0)
-            isActive := WinActive(this.main)
-            if (isActive) {
-                this.Hide()
-            }
-            if(!this.isClipSaved) {
-                this.clipSaved := ClipboardAll()
-                this.isClipSaved := True
-            }
-            SetClipboardPrivate(text)
-            Sleep(10)
-            Send("^v")
-            SetTimer(RestoreClipboard,500)
-            if (isActive) {
-                this.Show()
+        onSend(text, mode := "shift+insert") {
+            ; Input the text
+            ; Modes:
+            ; - clipboard: set clipboard
+            ; - raw: use SendText
+            ; - ctrl+v/shift+insert: copy to clipboard then send using ctrl+v or shift+insert
+
+            if (mode = "clipboard") {
+                A_Clipboard := text
+            } else if (mode = "raw") {
+                SendText(text)
+            } else {
+                SetTimer(RestoreClipboard, 0)
+                isActive := WinActive(this.main)
+                if (isActive) {
+                    this.Hide()
+                }
+                if(!this.isClipSaved) {
+                    this.clipSaved := ClipboardAll()
+                    this.isClipSaved := True
+                }
+                SetClipboardPrivate(text)
+                Sleep(10)
+                if (mode = "ctrl+v") {
+                    Send("^v")
+                } else {
+                    Send("+{Insert}")
+                }
+                SetTimer(RestoreClipboard,500)
+                if (isActive) {
+                    this.Show()
+                }
             }
         }
         onSetOpacity(opacity) {
@@ -427,8 +443,8 @@ class EmojiKeyboard {
         }
     }
 
-    Input(scanCode, shift := false) {
-        this.wv.PostWebMessageAsJson('["input",' scanCode ',' (shift ? 'true' : 'false') ']')
+    Input(scanCode, shift := false, alt := false) {
+        this.wv.PostWebMessageAsJson('["input",' scanCode ',' (shift ? 'true' : 'false') ',' (alt ? 'true' : 'false') ']')
     }
 
     SendLayout() {
@@ -469,120 +485,224 @@ ActCredits(*) {
 ; To change the activation hotkey, edit hotkey.ahk
 
 #HotIf KB.isVisible
-; Corresponding keys          US   CH
-SC029:: KB.Input(41, False)	; `    §
-SC002:: KB.Input(02, False)	; 1    1
-SC003:: KB.Input(03, False)	; 2    2
-SC004:: KB.Input(04, False)	; 3    3
-SC005:: KB.Input(05, False)	; 4    4
-SC006:: KB.Input(06, False)	; 5    5
-SC007:: KB.Input(07, False)	; 6    6
-SC008:: KB.Input(08, False)	; 7    7
-SC009:: KB.Input(09, False)	; 8    8
-SC00A:: KB.Input(10, False)	; 9    9
-SC00B:: KB.Input(11, False)	; 0    0
-SC00C:: KB.Input(12, False)	; -    '
-SC00D:: KB.Input(13, False)	; =    ^
-+SC029:: KB.Input(41, True)	; `    §
-+SC002:: KB.Input(02, True)	; 1    1
-+SC003:: KB.Input(03, True)	; 2    2
-+SC004:: KB.Input(04, True)	; 3    3
-+SC005:: KB.Input(05, True)	; 4    4
-+SC006:: KB.Input(06, True)	; 5    5
-+SC007:: KB.Input(07, True)	; 6    6
-+SC008:: KB.Input(08, True)	; 7    7
-+SC009:: KB.Input(09, True)	; 8    8
-+SC00A:: KB.Input(10, True)	; 9    9
-+SC00B:: KB.Input(11, True)	; 0    0
-+SC00C:: KB.Input(12, True)	; -    '
-+SC00D:: KB.Input(13, True)	; =    ^
-Tab:: KB.Input(15, False)
-+Tab:: KB.Input(15, True)
-Esc:: KB.Hide()
+; Base                              US   CH
+SC029::KB.Input(41, False)        ; `    §
+SC002::KB.Input(02, False)        ; 1    1
+SC003::KB.Input(03, False)        ; 2    2
+SC004::KB.Input(04, False)        ; 3    3
+SC005::KB.Input(05, False)        ; 4    4
+SC006::KB.Input(06, False)        ; 5    5
+SC007::KB.Input(07, False)        ; 6    6
+SC008::KB.Input(08, False)        ; 7    7
+SC009::KB.Input(09, False)        ; 8    8
+SC00A::KB.Input(10, False)        ; 9    9
+SC00B::KB.Input(11, False)        ; 0    0
+SC00C::KB.Input(12, False)        ; -    '
+SC00D::KB.Input(13, False)        ; =    ^
+; Shift                             US   CH
++SC029::KB.Input(41, True)        ; `    §
++SC002::KB.Input(02, True)        ; 1    1
++SC003::KB.Input(03, True)        ; 2    2
++SC004::KB.Input(04, True)        ; 3    3
++SC005::KB.Input(05, True)        ; 4    4
++SC006::KB.Input(06, True)        ; 5    5
++SC007::KB.Input(07, True)        ; 6    6
++SC008::KB.Input(08, True)        ; 7    7
++SC009::KB.Input(09, True)        ; 8    8
++SC00A::KB.Input(10, True)        ; 9    9
++SC00B::KB.Input(11, True)        ; 0    0
++SC00C::KB.Input(12, True)        ; -    '
++SC00D::KB.Input(13, True)        ; =    ^
+; Alt                               US   CH
+!SC029::KB.Input(41, False, True) ; `    §
+!SC002::KB.Input(02, False, True) ; 1    1
+!SC003::KB.Input(03, False, True) ; 2    2
+!SC004::KB.Input(04, False, True) ; 3    3
+!SC005::KB.Input(05, False, True) ; 4    4
+!SC006::KB.Input(06, False, True) ; 5    5
+!SC007::KB.Input(07, False, True) ; 6    6
+!SC008::KB.Input(08, False, True) ; 7    7
+!SC009::KB.Input(09, False, True) ; 8    8
+!SC00A::KB.Input(10, False, True) ; 9    9
+!SC00B::KB.Input(11, False, True) ; 0    0
+!SC00C::KB.Input(12, False, True) ; -    '
+!SC00D::KB.Input(13, False, True) ; =    ^
+; Alt+Shift                         US   CH
+!+SC029::KB.Input(41, True, True) ; `    §
+!+SC002::KB.Input(02, True, True) ; 1    1
+!+SC003::KB.Input(03, True, True) ; 2    2
+!+SC004::KB.Input(04, True, True) ; 3    3
+!+SC005::KB.Input(05, True, True) ; 4    4
+!+SC006::KB.Input(06, True, True) ; 5    5
+!+SC007::KB.Input(07, True, True) ; 6    6
+!+SC008::KB.Input(08, True, True) ; 7    7
+!+SC009::KB.Input(09, True, True) ; 8    8
+!+SC00A::KB.Input(10, True, True) ; 9    9
+!+SC00B::KB.Input(11, True, True) ; 0    0
+!+SC00C::KB.Input(12, True, True) ; -    '
+!+SC00D::KB.Input(13, True, True) ; =    ^
+
+Tab::KB.Input(15, False)
++Tab::KB.Input(15, True)
+Esc::KB.Hide()
 Capslock::KB.Input(58, False)
 #HotIf KB.isVisible and !KB.isSearch
-; Corresponding keys          US   CH
-;SC001::KB.Input(01, False) ; ESC  ESC
-;SC03B::KB.Input(59, False) ; F1   F1
-;SC03C::KB.Input(60, False) ; F2   F2
-;SC03D::KB.Input(61, False) ; F3   F3
-;SC03E::KB.Input(62, False) ; F4   F4
-;SC03F::KB.Input(63, False) ; F5   F5
-;SC040::KB.Input(64, False) ; F6   F6
-;SC041::KB.Input(65, False) ; F7   F7
-;SC042::KB.Input(66, False) ; F8   F8
-;SC043::KB.Input(67, False) ; F9   F9
-;SC044::KB.Input(68, False) ; F10  F10
-;SC057::KB.Input(87, False) ; F11  F11
-;SC058::KB.Input(88, False) ; F12  F12
-SC010:: KB.Input(16, False)	; q    q
-SC011:: KB.Input(17, False)	; w    w
-SC012:: KB.Input(18, False)	; e    e
-SC013:: KB.Input(19, False)	; r    r
-SC014:: KB.Input(20, False)	; t    t
-SC015:: KB.Input(21, False)	; y    z
-SC016:: KB.Input(22, False)	; u    u
-SC017:: KB.Input(23, False)	; i    i
-SC018:: KB.Input(24, False)	; o    o
-SC019:: KB.Input(25, False)	; p    p
-SC01A:: KB.Input(26, False)	; [    èü
-SC01B:: KB.Input(27, False)	; ]    ¨
-SC01E:: KB.Input(30, False)	; a    a
-SC01F:: KB.Input(31, False)	; s    s
-SC020:: KB.Input(32, False)	; d    d
-SC021:: KB.Input(33, False)	; f    f
-SC022:: KB.Input(34, False)	; g    g
-SC023:: KB.Input(35, False)	; h    h
-SC024:: KB.Input(36, False)	; j    j
-SC025:: KB.Input(37, False)	; k    k
-SC026:: KB.Input(38, False)	; l    l
-SC027:: KB.Input(39, False)	; ;    éö
-SC028:: KB.Input(40, False)	; '    àä
-SC02B:: KB.Input(43, False)	; \    $
-SC056:: KB.Input(86, False)	; N/A  <
-SC02C:: KB.Input(44, False)	; z    y
-SC02D:: KB.Input(45, False)	; x    x
-SC02E:: KB.Input(46, False)	; c    c
-SC02F:: KB.Input(47, False)	; v    v
-SC030:: KB.Input(48, False)	; b    b
-SC031:: KB.Input(49, False)	; n    n
-SC032:: KB.Input(50, False)	; m    m
-SC033:: KB.Input(51, False)	; ,    ,
-SC034:: KB.Input(52, False)	; .    .
-SC035:: KB.Input(53, False)	; /    -
-+SC010:: KB.Input(16, True)	; q    q
-+SC011:: KB.Input(17, True)	; w    w
-+SC012:: KB.Input(18, True)	; e    e
-+SC013:: KB.Input(19, True)	; r    r
-+SC014:: KB.Input(20, True)	; t    t
-+SC015:: KB.Input(21, True)	; y    z
-+SC016:: KB.Input(22, True)	; u    u
-+SC017:: KB.Input(23, True)	; i    i
-+SC018:: KB.Input(24, True)	; o    o
-+SC019:: KB.Input(25, True)	; p    p
-+SC01A:: KB.Input(26, True)	; [    èü
-+SC01B:: KB.Input(27, True)	; ]    ¨
-+SC01E:: KB.Input(30, True)	; a    a
-+SC01F:: KB.Input(31, True)	; s    s
-+SC020:: KB.Input(32, True)	; d    d
-+SC021:: KB.Input(33, True)	; f    f
-+SC022:: KB.Input(34, True)	; g    g
-+SC023:: KB.Input(35, True)	; h    h
-+SC024:: KB.Input(36, True)	; j    j
-+SC025:: KB.Input(37, True)	; k    k
-+SC026:: KB.Input(38, True)	; l    l
-+SC027:: KB.Input(39, True)	; ;    éö
-+SC028:: KB.Input(40, True)	; '    àä
-+SC02B:: KB.Input(43, True)	; \    $
-+SC056:: KB.Input(86, True)	; N/A  <
-+SC02C:: KB.Input(44, True)	; z    y
-+SC02D:: KB.Input(45, True)	; x    x
-+SC02E:: KB.Input(46, True)	; c    c
-+SC02F:: KB.Input(47, True)	; v    v
-+SC030:: KB.Input(48, True)	; b    b
-+SC031:: KB.Input(49, True)	; n    n
-+SC032:: KB.Input(50, True)	; m    m
-+SC033:: KB.Input(51, True)	; ,    ,
-+SC034:: KB.Input(52, True)	; .    .
-+SC035:: KB.Input(53, True)	; /    -
+; Corresponding keys                 US   CH
+;SC001::KB.Input(01, False)        ; ESC  ESC
+;SC03B::KB.Input(59, False)        ; F1   F1
+;SC03C::KB.Input(60, False)        ; F2   F2
+;SC03D::KB.Input(61, False)        ; F3   F3
+;SC03E::KB.Input(62, False)        ; F4   F4
+;SC03F::KB.Input(63, False)        ; F5   F5
+;SC040::KB.Input(64, False)        ; F6   F6
+;SC041::KB.Input(65, False)        ; F7   F7
+;SC042::KB.Input(66, False)        ; F8   F8
+;SC043::KB.Input(67, False)        ; F9   F9
+;SC044::KB.Input(68, False)        ; F10  F10
+;SC057::KB.Input(87, False)        ; F11  F11
+;SC058::KB.Input(88, False)        ; F12  F12
+; Base                               US   CH
+SC010::KB.Input(16, False)         ; q    q
+SC011::KB.Input(17, False)         ; w    w
+SC012::KB.Input(18, False)         ; e    e
+SC013::KB.Input(19, False)         ; r    r
+SC014::KB.Input(20, False)         ; t    t
+SC015::KB.Input(21, False)         ; y    z
+SC016::KB.Input(22, False)         ; u    u
+SC017::KB.Input(23, False)         ; i    i
+SC018::KB.Input(24, False)         ; o    o
+SC019::KB.Input(25, False)         ; p    p
+SC01A::KB.Input(26, False)         ; [    èü
+SC01B::KB.Input(27, False)         ; ]    ¨
+SC01E::KB.Input(30, False)         ; a    a
+SC01F::KB.Input(31, False)         ; s    s
+SC020::KB.Input(32, False)         ; d    d
+SC021::KB.Input(33, False)         ; f    f
+SC022::KB.Input(34, False)         ; g    g
+SC023::KB.Input(35, False)         ; h    h
+SC024::KB.Input(36, False)         ; j    j
+SC025::KB.Input(37, False)         ; k    k
+SC026::KB.Input(38, False)         ; l    l
+SC027::KB.Input(39, False)         ; ;    éö
+SC028::KB.Input(40, False)         ; '    àä
+SC02B::KB.Input(43, False)         ; \    $
+SC056::KB.Input(86, False)         ; N/A  <
+SC02C::KB.Input(44, False)         ; z    y
+SC02D::KB.Input(45, False)         ; x    x
+SC02E::KB.Input(46, False)         ; c    c
+SC02F::KB.Input(47, False)         ; v    v
+SC030::KB.Input(48, False)         ; b    b
+SC031::KB.Input(49, False)         ; n    n
+SC032::KB.Input(50, False)         ; m    m
+SC033::KB.Input(51, False)         ; ,    ,
+SC034::KB.Input(52, False)         ; .    .
+SC035::KB.Input(53, False)         ; /    -
+; Shift                              US   CH
++SC010::KB.Input(16, True)         ; q    q
++SC011::KB.Input(17, True)         ; w    w
++SC012::KB.Input(18, True)         ; e    e
++SC013::KB.Input(19, True)         ; r    r
++SC014::KB.Input(20, True)         ; t    t
++SC015::KB.Input(21, True)         ; y    z
++SC016::KB.Input(22, True)         ; u    u
++SC017::KB.Input(23, True)         ; i    i
++SC018::KB.Input(24, True)         ; o    o
++SC019::KB.Input(25, True)         ; p    p
++SC01A::KB.Input(26, True)         ; [    èü
++SC01B::KB.Input(27, True)         ; ]    ¨
++SC01E::KB.Input(30, True)         ; a    a
++SC01F::KB.Input(31, True)         ; s    s
++SC020::KB.Input(32, True)         ; d    d
++SC021::KB.Input(33, True)         ; f    f
++SC022::KB.Input(34, True)         ; g    g
++SC023::KB.Input(35, True)         ; h    h
++SC024::KB.Input(36, True)         ; j    j
++SC025::KB.Input(37, True)         ; k    k
++SC026::KB.Input(38, True)         ; l    l
++SC027::KB.Input(39, True)         ; ;    éö
++SC028::KB.Input(40, True)         ; '    àä
++SC02B::KB.Input(43, True)         ; \    $
++SC056::KB.Input(86, True)         ; N/A  <
++SC02C::KB.Input(44, True)         ; z    y
++SC02D::KB.Input(45, True)         ; x    x
++SC02E::KB.Input(46, True)         ; c    c
++SC02F::KB.Input(47, True)         ; v    v
++SC030::KB.Input(48, True)         ; b    b
++SC031::KB.Input(49, True)         ; n    n
++SC032::KB.Input(50, True)         ; m    m
++SC033::KB.Input(51, True)         ; ,    ,
++SC034::KB.Input(52, True)         ; .    .
++SC035::KB.Input(53, True)         ; /    -
+; Alt                                US   CH
+!SC010::KB.Input(16, False, False) ; q    q
+!SC011::KB.Input(17, False, False) ; w    w
+!SC012::KB.Input(18, False, False) ; e    e
+!SC013::KB.Input(19, False, False) ; r    r
+!SC014::KB.Input(20, False, False) ; t    t
+!SC015::KB.Input(21, False, False) ; y    z
+!SC016::KB.Input(22, False, False) ; u    u
+!SC017::KB.Input(23, False, False) ; i    i
+!SC018::KB.Input(24, False, False) ; o    o
+!SC019::KB.Input(25, False, False) ; p    p
+!SC01A::KB.Input(26, False, False) ; [    èü
+!SC01B::KB.Input(27, False, False) ; ]    ¨
+!SC01E::KB.Input(30, False, False) ; a    a
+!SC01F::KB.Input(31, False, False) ; s    s
+!SC020::KB.Input(32, False, False) ; d    d
+!SC021::KB.Input(33, False, False) ; f    f
+!SC022::KB.Input(34, False, False) ; g    g
+!SC023::KB.Input(35, False, False) ; h    h
+!SC024::KB.Input(36, False, False) ; j    j
+!SC025::KB.Input(37, False, False) ; k    k
+!SC026::KB.Input(38, False, False) ; l    l
+!SC027::KB.Input(39, False, False) ; ;    éö
+!SC028::KB.Input(40, False, False) ; '    àä
+!SC02B::KB.Input(43, False, False) ; \    $
+!SC056::KB.Input(86, False, False) ; N/A  <
+!SC02C::KB.Input(44, False, False) ; z    y
+!SC02D::KB.Input(45, False, False) ; x    x
+!SC02E::KB.Input(46, False, False) ; c    c
+!SC02F::KB.Input(47, False, False) ; v    v
+!SC030::KB.Input(48, False, False) ; b    b
+!SC031::KB.Input(49, False, False) ; n    n
+!SC032::KB.Input(50, False, False) ; m    m
+!SC033::KB.Input(51, False, False) ; ,    ,
+!SC034::KB.Input(52, False, False) ; .    .
+!SC035::KB.Input(53, False, False) ; /    -
+; Alt+Shift                          US   CH
+!+SC010::KB.Input(16, True, True)  ; q    q
+!+SC011::KB.Input(17, True, True)  ; w    w
+!+SC012::KB.Input(18, True, True)  ; e    e
+!+SC013::KB.Input(19, True, True)  ; r    r
+!+SC014::KB.Input(20, True, True)  ; t    t
+!+SC015::KB.Input(21, True, True)  ; y    z
+!+SC016::KB.Input(22, True, True)  ; u    u
+!+SC017::KB.Input(23, True, True)  ; i    i
+!+SC018::KB.Input(24, True, True)  ; o    o
+!+SC019::KB.Input(25, True, True)  ; p    p
+!+SC01A::KB.Input(26, True, True)  ; [    èü
+!+SC01B::KB.Input(27, True, True)  ; ]    ¨
+!+SC01E::KB.Input(30, True, True)  ; a    a
+!+SC01F::KB.Input(31, True, True)  ; s    s
+!+SC020::KB.Input(32, True, True)  ; d    d
+!+SC021::KB.Input(33, True, True)  ; f    f
+!+SC022::KB.Input(34, True, True)  ; g    g
+!+SC023::KB.Input(35, True, True)  ; h    h
+!+SC024::KB.Input(36, True, True)  ; j    j
+!+SC025::KB.Input(37, True, True)  ; k    k
+!+SC026::KB.Input(38, True, True)  ; l    l
+!+SC027::KB.Input(39, True, True)  ; ;    éö
+!+SC028::KB.Input(40, True, True)  ; '    àä
+!+SC02B::KB.Input(43, True, True)  ; \    $
+!+SC056::KB.Input(86, True, True)  ; N/A  <
+!+SC02C::KB.Input(44, True, True)  ; z    y
+!+SC02D::KB.Input(45, True, True)  ; x    x
+!+SC02E::KB.Input(46, True, True)  ; c    c
+!+SC02F::KB.Input(47, True, True)  ; v    v
+!+SC030::KB.Input(48, True, True)  ; b    b
+!+SC031::KB.Input(49, True, True)  ; n    n
+!+SC032::KB.Input(50, True, True)  ; m    m
+!+SC033::KB.Input(51, True, True)  ; ,    ,
+!+SC034::KB.Input(52, True, True)  ; .    .
+!+SC035::KB.Input(53, True, True)  ; /    -
 #HotIf

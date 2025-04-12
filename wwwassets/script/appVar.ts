@@ -29,7 +29,7 @@ export interface AppActions {
 
 	setBuilding(building: boolean): void;
 
-	send(cluster: string, p: { noRecent?: boolean, variantOf?: string }): void;
+	send(cluster: string, p: { noRecent?: boolean, variantOf?: string, alt: boolean }): void;
 }
 
 let appVar: AppActions;

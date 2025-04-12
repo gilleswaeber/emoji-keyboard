@@ -94,7 +94,7 @@ class App extends Component<{}, AppState> implements AppActions {
 			if (Array.isArray(e.data)) {
 				switch (e.data[0]) {
 					case 'input':
-						this.input(e.data[1], e.data[2]);
+						this.input(e.data[1], e.data[2], e.data[3] ?? false);
 						break;
 					case 'layout':
 						this.setSystemLayout(e.data[1]);
@@ -192,7 +192,7 @@ class App extends Component<{}, AppState> implements AppActions {
 
 	}
 
-	public input(key: number, shift: boolean = false) {
+	public input(key: number, shift: boolean = false, alt: boolean = false) {
 		const s = this.state;
 		switch (s.mode) {
 			case AppMode.MAIN:
@@ -209,8 +209,8 @@ class App extends Component<{}, AppState> implements AppActions {
 
 				const k = this.keyHandlers[key as SC];
 				if (k) {
-					if (shift) k.actAlternate();
-					else k.act();
+					if (shift) k.actSecondary(alt);
+					else k.act(alt);
 				}
 				break;
 			default:
@@ -338,8 +338,10 @@ class App extends Component<{}, AppState> implements AppActions {
 		}));
 	}
 
-	public send(cluster: string, {noRecent, variantOf}: { noRecent?: boolean, variantOf?: string }): void {
-		ahkSend(cluster);
+	public send(cluster: string, {noRecent, variantOf, alt}: { noRecent?: boolean, variantOf?: string, alt?: boolean }): void {
+		let inputMode = this.state.config.inputMode;
+		if (alt) inputMode = inputMode == 'clipboard' ? 'shift+insert' : 'clipboard';
+		ahkSend(cluster, inputMode);
 		if (!noRecent) increaseRecent(cluster);
 		if (variantOf) app().updateConfig(c => {
 			if (c.preferredVariant[variantOf] != cluster) return {

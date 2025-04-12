@@ -87,6 +87,7 @@ export const ArrowsKeyboard: EmojiKeyboard = {
 				content: [
 					"↱", // \Rsh(a)	/rsh a:
 					"⤤", // \hknearrow	north east arrow with hook
+					"⤯", // \fdiagovnearrow	falling diagonal crossing north east arrow
 				]
 			}
 		],
@@ -329,6 +330,7 @@ export const ArrowsKeyboard: EmojiKeyboard = {
 					"⤷", // \rightdowncurvedarrow	arrow pointing downwards then curving rightwards
 					"⤹", // \acwleftarcarrow	left-side arc anticlockwise arrow
 					"↴", // \linefeed	rightwards arrow with corner downwards
+					"⤰", // \rdiagovsearrow	rising diagonal crossing south east arrow
 				]
 			}
 		],
@@ -410,8 +412,6 @@ export const ArrowsKeyboard: EmojiKeyboard = {
 		"⤩", // \tosa	south east arrow and south west arrow
 		"⤪", // \towa	south west arrow and north west arrow
 
-		"⤯", // \fdiagovnearrow	falling diagonal crossing north east arrow
-		"⤰", // \rdiagovsearrow	rising diagonal crossing south east arrow
 		"⤴", // \uprightcurvearrow	arrow pointing rightwards then curving upwards
 		"⤵", // \downrightcurvedarrow	arrow pointing rightwards then curving downwards
 		[

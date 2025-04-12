@@ -10,7 +10,7 @@ type HostObject = {
 	reload(): void;
 	saveConfig(config: string): void;
 	saveUnicodeData(data: string, types: string): void;
-	send(text: string): void;
+	send(text: string, mode: "clipboard" | "ctrl+v" | "shift+insert" | "raw"): void;
 	setOpenAt(at: string): void;
 	setOpacity(opacity: number): void;
 	setTitle(title: string): void;
@@ -112,9 +112,9 @@ export function ahkReload() {
 	else document.location.reload();
 }
 
-export function ahkSend(text: string) {
-	if (isAHK()) AHK!.send(text);
-	else console.log("Send", text);
+export function ahkSend(text: string, mode: "clipboard" | "ctrl+v" | "shift+insert" | "raw") {
+	if (isAHK()) AHK!.send(text, mode);
+	else console.log("Send", text, mode);
 }
 
 export function ahkSetSearch(state: boolean) {

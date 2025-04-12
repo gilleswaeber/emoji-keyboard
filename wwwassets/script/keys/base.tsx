@@ -52,11 +52,11 @@ export class Key {
 			className={cl('key', this.keyType, {active: this.active})}
 			onClick={(e) => {
 				e.preventDefault();
-				e.shiftKey || this.clickAlwaysAlternate ? this.actAlternate() : this.act();
+				e.shiftKey || this.clickAlwaysAlternate ? this.actSecondary(e.altKey) : this.act(e.altKey);
 			}}
 			onContextMenu={(e) => {
 				e.preventDefault();
-				this.actAlternate();
+				this.actSecondary(e.altKey);
 			}}
 			onMouseOver={() => app().updateStatus(this.statusName)}
 			data-keycode={code}
@@ -67,12 +67,12 @@ export class Key {
 		</div>;
 	}
 
-	act(): void {
+	act(alt: boolean): void {
 		// Default: do nothing
 	}
 
-	actAlternate(): void {
-		this.act();
+	actSecondary(alt: boolean): void {
+		this.act(alt);
 	}
 }
 

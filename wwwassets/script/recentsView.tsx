@@ -45,11 +45,11 @@ export class RecentClusterKey extends Key {
 		});
 	}
 
-	act() {
-		app().send(this.cluster, {noRecent: true});
+	act(alt: boolean) {
+		app().send(this.cluster, {noRecent: true, alt});
 	}
 
-	actAlternate() {
+	actSecondary() {
 		app().setBoard(new RecentSettingsBoard(this.cluster));
 	}
 }

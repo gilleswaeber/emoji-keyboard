@@ -1,5 +1,5 @@
 import {Fragment, h} from "preact";
-import {DigitsRow, FirstRow, Layout, SecondRow} from "./layout";
+import {DigitsRow, FirstRow, Layout} from "./layout";
 import {ConfigActionKey, ConfigBuildKey, ConfigLabelKey, ConfigToggleKey, ExitSearchKey, PageKey} from "./key";
 import {Board} from "./board";
 import {useContext} from "preact/hooks";
@@ -79,6 +79,7 @@ export const Themes: { name: string, url: string, symbol: string }[] = [
 ];
 type ThemeMode = "light" | "dark" | "system";
 type OpenAt = "last-position" | "bottom" | "text-caret" | "mouse";
+type InputMode = "clipboard" | "ctrl+v" | "shift+insert" | "raw";
 
 export interface RecentEmoji {
 	symbol: string;
@@ -86,7 +87,10 @@ export interface RecentEmoji {
 }
 
 export interface AppConfig {
-	isoKeyboard: boolean;  // has an additional key next to left shift
+	/** has an additional `<>` key next to left shift */
+	isoKeyboard: boolean;
+	/** keys are disposed in a grid layout */
+	ortholinear: boolean;
 	theme: string;
 	themeMode: ThemeMode;
 	x: number;
@@ -103,12 +107,14 @@ export interface AppConfig {
 	mainAfterInput: boolean;
 	showAliases: boolean;
 	showCharCodes: boolean;
+	inputMode: InputMode;
 }
 
 export const DefaultOpacity = .90;
 
 export const DefaultConfig: AppConfig = {
 	isoKeyboard: false,
+	ortholinear: true,
 	theme: DefaultTheme,
 	themeMode: "system",
 	x: -1,
@@ -125,6 +131,7 @@ export const DefaultConfig: AppConfig = {
 	mainAfterInput: false,
 	showAliases: false,
 	showCharCodes: false,
+	inputMode: "shift+insert",
 };
 
 export const ThemesMap = new Map(Themes.map((t) => [t.name, t]));
@@ -143,15 +150,26 @@ const ConfigPages: ConfigPage[] = [
 		symbol: "🛠️",
 		keys(config: AppConfig, l) {
 			return {
-				[SC.Q]: new ConfigToggleKey({
-					active: config.isoKeyboard,
-					statusName: `ISO layout: ${config.isoKeyboard ? 'on' : 'off'}`,
-					action() {
-						app().updateConfig({isoKeyboard: !config.isoKeyboard});
-					}
-				}),
-				[SC.W]: new ConfigLabelKey(<Fragment>ISO layout (<KeyName code={SC.LessThan}/> between <KeyName
-					code={SC.Shift}/> and <KeyName code={SC.Z}/>)</Fragment>),
+				...mapKeysToSlots(l.freeRows[1], [
+					new ConfigToggleKey({
+						active: config.isoKeyboard,
+						statusName: `ISO layout: ${config.isoKeyboard ? 'on' : 'off'}`,
+						name: 'ISO',
+						action() {
+							app().updateConfig({isoKeyboard: !config.isoKeyboard});
+						}
+					}),
+					new ConfigToggleKey({
+						active: config.ortholinear,
+						statusName: `Ortholinear (grid) layout: ${config.isoKeyboard ? 'on' : 'off'}`,
+						name: 'Ortho',
+						action() {
+							app().updateConfig({ortholinear: !config.ortholinear});
+						}
+					}),
+					new ConfigLabelKey(<Fragment>ISO layout: <KeyName code={SC.LessThan}/> key between <KeyName
+						code={SC.Shift}/> and <KeyName code={SC.Z}/></Fragment>),
+				]),
 				...mapKeysToSlots(l.freeRows[2], [
 					// 	...SkinTones.map((s, i) => new ConfigActionKey({
 					// 		active: i == config.skinTone,
@@ -200,9 +218,9 @@ const ConfigPages: ConfigPage[] = [
 	{
 		name: "Theme",
 		symbol: "🎨",
-		keys(config: AppConfig) {
+		keys(config: AppConfig, l) {
 			return {
-				...mapKeysToSlots(FirstRow, Themes.map((t) => new ConfigActionKey({
+				...mapKeysToSlots(l.freeRows[1], Themes.map((t) => new ConfigActionKey({
 					active: config.theme == t.name,
 					name: t.name, statusName: `Theme: ${t.name}`,
 					symbol: t.symbol,
@@ -210,7 +228,7 @@ const ConfigPages: ConfigPage[] = [
 						app().updateConfig({theme: t.name});
 					}
 				}))),
-				...mapKeysToSlots(SecondRow, [
+				...mapKeysToSlots(l.freeRows[2], [
 					...([
 						["light", "🌞"],
 						["dark", "🌚"],
@@ -223,7 +241,7 @@ const ConfigPages: ConfigPage[] = [
 							app().updateConfig({themeMode: mode})
 						}
 					}))
-				])
+				]),
 			}
 		}
 	},
@@ -303,9 +321,9 @@ const ConfigPages: ConfigPage[] = [
 	{
 		name: "Tools",
 		symbol: "🔨",
-		keys(config: AppConfig) {
+		keys(config: AppConfig, l) {
 			return {
-				...mapKeysToSlots(FirstRow, [
+				...mapKeysToSlots(l.freeRows[1], [
 					new ConfigBuildKey(),
 					new ConfigActionKey({
 						action: ahkReload,
@@ -313,7 +331,7 @@ const ConfigPages: ConfigPage[] = [
 						symbol: '🔄'
 					}),
 				]),
-				...mapKeysToSlots(SecondRow, [
+				...mapKeysToSlots(l.freeRows[2], [
 					new ConfigToggleKey({
 						active: config.devTools, statusName: `Open DevTools: ${config.devTools ? 'on' : 'off'}`,
 						action() {
@@ -321,6 +339,41 @@ const ConfigPages: ConfigPage[] = [
 						}
 					}),
 					new ConfigLabelKey("Open DevTools")
+				]),
+				...mapKeysToSlots(l.freeRows[3], [
+					new ConfigToggleKey({
+						active: config.inputMode == "shift+insert",
+						name: '⇧Ins', statusName: `Input by storing the sequence in the clipboard and sending Shift+Insert (recommended)`,
+						symbol: '📗',
+						action() {
+							app().updateConfig({inputMode: "shift+insert"})
+						}
+					}),
+					new ConfigToggleKey({
+						active: config.inputMode == "ctrl+v",
+						name: 'Ctrl+V', statusName: `Input by storing the sequence in the clipboard and sending Ctrl+V`,
+						symbol: '📘',
+						action() {
+							app().updateConfig({inputMode: "ctrl+v"})
+						}
+					}),
+					new ConfigToggleKey({
+						active: config.inputMode == "clipboard",
+						name: 'Clipboard', statusName: `Copy to clipboard`,
+						symbol: '📋',
+						action() {
+							app().updateConfig({inputMode: "clipboard"})
+						}
+					}),
+					new ConfigToggleKey({
+						active: config.inputMode == "raw",
+						name: 'Raw', statusName: `Send raw sequence to the active window`,
+						symbol: '📨',
+						action() {
+							app().updateConfig({inputMode: "raw"})
+						}
+					}),
+					new ConfigLabelKey('Input Mode')
 				]),
 			}
 		}

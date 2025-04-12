@@ -43,8 +43,11 @@ Flags are sorted by ISO code, meaning you'll find Switzerland (CH) on page 2, be
 
 Customize
 ---------
+The layout of the keyboard, i.e. which key is what is automatically detected from the active keyboard in Windows.
+
 Many settings are accessible in the app:
 - Enable the *ISO layout* setting if you have a narrow left shift key
+- Disable the ortholinear (grid) mode to make the keyboard display in a staggering way
 - The *Reset variants* setting will clear the preferred skin/gender variants for all emojis
 - Two themes are available, both available in light and dark variants
 - Change the opacity of the window

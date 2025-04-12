@@ -163,9 +163,9 @@ export const ThirdRow = [
 	SC.Slash,
 ] as const;
 export const SearchKeyCodesTable: KeyCodesList = [
-	SC.Backtick, ...DigitsRow,
-	SC.CapsLock, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012,
-	SC.Shift, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024
+	SC.Backtick, ...DigitsRow, SC.EndRow0,
+	SC.CapsLock, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, SC.EndRow1,
+	SC.Shift, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024 , SC.EndRow2,
 ];
 export type BaseLayout = {
 	all: KeyCodesList;
@@ -178,10 +178,10 @@ export type Layout = BaseLayout & {
 }
 export const AnsiLayout: BaseLayout = {
 	all: [
-		SC.Backtick, ...DigitsRow, //, 59, 60, 61
-		SC.Tab, ...FirstRow, //, 62, 63, 64
-		SC.CapsLock, ...SecondRow, //, 65, 66, 67
-		SC.Shift, ...ThirdRow, SC.Extra00, SC.Extra01  //, 68, 87, 88
+		SC.Backtick, ...DigitsRow, SC.EndRow0, // 59, 60, 61,
+		SC.Tab, ...FirstRow, SC.EndRow1, // 62, 63, 64,
+		SC.CapsLock, ...SecondRow, SC.EndRow2, // 65, 66, 67,
+		SC.Shift, ...ThirdRow, SC.Extra00, SC.Extra01, SC.EndRow3,  // 68, 87, 88,
 	],
 	free: [...DigitsRow, ...FirstRow, ...SecondRow, ...ThirdRow],
 	freeRows: [DigitsRow, FirstRow, SecondRow, ThirdRow],
@@ -189,13 +189,13 @@ export const AnsiLayout: BaseLayout = {
 };
 export const IsoLayout: BaseLayout = {
 	all: [
-		SC.Backtick, ...DigitsRow, //, 59, 60, 61
-		SC.Tab, ...FirstRow, //, 62, 63, 64
-		SC.CapsLock, ...SecondRow, //, 65, 66, 67
-		SC.Shift, SC.LessThan, ...ThirdRow, SC.Extra00 //, 68, 87, 88
+		SC.Backtick, ...DigitsRow, SC.EndRow0, //, 59, 60, 61
+		SC.Tab, ...FirstRow, SC.EndRow1, //, 62, 63, 64
+		SC.CapsLock, ...SecondRow, SC.EndRow2, //, 65, 66, 67
+		SC.Shift, SC.LessThan, ...ThirdRow, SC.Extra00, SC.EndRow3, //, 68, 87, 88
 	],
 	free: [...DigitsRow, ...FirstRow, ...SecondRow, SC.LessThan, ...ThirdRow],
-	freeRows: [DigitsRow, FirstRow, SecondRow, [SC.LessThan, ...ThirdRow]],
+	freeRows: [DigitsRow, FirstRow, SecondRow, ThirdRow],
 	cssClass: 'iso-layout',
 };
 export const SearchKeyCodes: number[] = [
