@@ -355,7 +355,7 @@ class EmojiKeyboard {
         ; offset in top left corner
         xo := xcp - xp
         yo := ycp - yp
-        ; dimensions of window decorations 
+        ; dimensions of window decorations
         wo := wp - wcp
         ho := yo ; better than hp - hcp in practice
         ; active monitor boundaries
@@ -371,34 +371,38 @@ class EmojiKeyboard {
         {
         case "mouse":
             MouseGetPos(&xm, &ym)
-            x := clamp(xm - (w + wo) / 2, minx, maxx)
-            y := clamp(ym - h / 2, miny, maxy)
+            x := xm - (w + wo) / 2
+            y := ym - h / 2
         case "bottom":
             x := left + (right - left - w - wo) / 2
             y := maxy
         case "text-caret":
+            ; default is last position
+            x := this.x
+            y := this.y
+            ; check if caret can be determined and is on screen
             gc := GetCaretPosition(&xc, &yc, &wc, &hc)
             if (gc > 0 and xc >= left and xc <= right and yc >= top and yc <= bottom) {
-                x := clamp(xc - (w + wo) / 2, minx, maxx)
-                ; place over the caret
-                if (yc > top + h + ho + caretDistance) {
+                ; center around caret
+                x := xc - (w + wo) / 2
+                ; place over the caret if there is enough space
+                if (yc > top + yo + h + ho + caretDistance) {
                     y := yc - h - ho - caretDistance
                 }
-                ; place under the caret
-                else if (yc + hc < bottom - h - ho - caretDistance) {
+                ; place under the caret if there is enough space
+                else if (yc + hc < bottom - yo - h - ho - caretDistance) {
                     y := yc + hc + caretDistance
                 }
-                else {
-                    y := this.y
-                }
-            } else {
-                x := this.x
-                y := this.y
             }
-        default: ; last position
+        ; last position
+        default:
             x := this.x
             y := this.y
         }
+
+        ; ensure we are always on screen
+        x := clamp(x, minx, maxx)
+        y := clamp(y, miny, maxy)
 
         this.main.Show(Format("{} X{} Y{} W{} H{}", this.isSearch ? "" : "NA", x, y, w, h))
 
@@ -445,7 +449,7 @@ RestoreClipboard() {
     KB.isClipSaved := False
 }
 
-CheckLayout() {	
+CheckLayout() {
     cKeyboard := CurrentKeyboardLayout()
     If (cKeyboard != KB.wvKeyboard and cKeyboard != "" and cKeyboard != 0 and ! KB.text.Visible) {
         KB.wvKeyboard := cKeyboard
