@@ -55,6 +55,14 @@ main > section{
 	overflow: auto;
 }
 
+.root {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
 .keyboard{
 	display: grid;
 	box-sizing: border-box;
@@ -214,4 +222,10 @@ div.sprite {
 	width: 3.6vw;
 	position: relative;
 	top: .3vw;
+}
+
+.tooltip {
+	position: absolute;
+	right: 1vw;
+	bottom: 1vw;
 }

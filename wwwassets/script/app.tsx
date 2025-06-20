@@ -63,6 +63,8 @@ type AppState = {
 	/** building in progress */
 	building: boolean;
 	plugins: Plugin[];
+	tooltipKey: number;
+	tooltip: string | null;
 }
 
 class App extends Component<{}, AppState> implements AppActions {
@@ -83,6 +85,8 @@ class App extends Component<{}, AppState> implements AppActions {
 		parentBoards: fromEntries(AppModes.map(m => [m, []] as const)),
 		building: false,
 		plugins: [],
+		tooltipKey: 0,
+		tooltip: null,
 	}
 
 	constructor(props: {}) {
@@ -140,7 +144,6 @@ class App extends Component<{}, AppState> implements AppActions {
 	render() {
 		const s = this.state;
 		const Board = s.currentBoard[s.mode];
-		const c = <Board.Contents state={s.boardState[Board.name]}/>;
 		const l: Layout = useMemo(() => {
 			const base = s.config.isoKeyboard ? IsoLayout : AnsiLayout;
 			return {...base, sys: s.layout};
@@ -151,7 +154,10 @@ class App extends Component<{}, AppState> implements AppActions {
 					<PluginsContext.Provider value={s.plugins}>
 						<ConfigBuildingContext.Provider value={s.building}>
 							<SearchContext.Provider value={s.searchText}>
-								<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>{c}</div>
+								<div className={`root ${s.config.themeMode}-color-scheme ${l.cssClass}`}>
+									<Board.Contents state={s.boardState[Board.name]}/>
+									{s.tooltip && <div className="tooltip" key={s.tooltipKey}>{s.tooltip}</div>}
+								</div>
 							</SearchContext.Provider>
 						</ConfigBuildingContext.Provider>
 					</PluginsContext.Provider>
@@ -338,12 +344,21 @@ class App extends Component<{}, AppState> implements AppActions {
 		}));
 	}
 
+	public setTooltip(tooltip: string, duration: number = 2000): void {
+		const tooltipKey = +new Date();
+		this.setState({tooltipKey, tooltip});
+		setTimeout(() => {
+			this.setState(s => s.tooltipKey == tooltipKey ? {tooltip: null} : {});
+		}, duration);
+	}
+
 	public send(cluster: string, {noRecent, variantOf, alt}: { noRecent?: boolean, variantOf?: string, alt?: boolean }): void {
 		let inputMode = this.state.config.inputMode;
 		if (alt) inputMode = inputMode == 'clipboard' ? 'shift+insert' : 'clipboard';
 		ahkSend(cluster, inputMode);
+		if (inputMode == 'clipboard') this.setTooltip(`Copied: ${cluster}`);
 		if (!noRecent) increaseRecent(cluster);
-		if (variantOf) app().updateConfig(c => {
+		if (variantOf) this.updateConfig(c => {
 			if (c.preferredVariant[variantOf] != cluster) return {
 				preferredVariant: {
 					...c.preferredVariant,

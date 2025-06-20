@@ -79,3 +79,12 @@
 	color: var(--c-text);
 	box-shadow: 0 .2vw .4vw #444;
 }
+
+.tooltip {
+	background: var(--c-background);
+	color: var(--c-text);
+	border: .1vw solid var(--c-text2);
+	padding: .5vw;
+	border-radius: .5vw;
+	box-shadow: 0 .2vw .4vw var(--c-shadow);
+}

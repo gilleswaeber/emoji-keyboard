@@ -57,6 +57,7 @@
 .key.empty{
 	background-color: var(--c-empty);
 	color: var(--c-empty-text);
+	border: none;
 }
 .key.label{
 	background-color: var(--c-empty);
@@ -80,4 +81,12 @@
 .key.char .symbol img{
 	box-shadow: 0 0 .2em var(--c-text);
 	background: var(--c-background);
+}
+
+.tooltip {
+	background: var(--c-key);
+	color: var(--c-text);
+	border: .1vw solid var(--c-text);
+	padding: .5vw;
+	box-shadow: 0 .2vw .4vw var(--c-shadow);
 }
