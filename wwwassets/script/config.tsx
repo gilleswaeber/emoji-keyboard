@@ -340,21 +340,21 @@ const ConfigPages: ConfigPage[] = [
 					}),
 					new ConfigLabelKey("Open DevTools")
 				]),
-				...mapKeysToSlots(l.freeRows[3], [
+			}
+		}
+	},
+	{
+		name: "Input",
+		symbol: "⌨️",
+		keys(config: AppConfig, l) {
+			return {
+				...mapKeysToSlots(l.freeRows[1], [
 					new ConfigToggleKey({
 						active: config.inputMode == "shift+insert",
-						name: '⇧Ins', statusName: `Input by storing the sequence in the clipboard and sending Shift+Insert (recommended)`,
-						symbol: '📗',
+						name: 'Send', statusName: `Send the input to the application (Paste with Shift+Insert)`,
+						symbol: '📨',
 						action() {
 							app().updateConfig({inputMode: "shift+insert"})
-						}
-					}),
-					new ConfigToggleKey({
-						active: config.inputMode == "ctrl+v",
-						name: 'Ctrl+V', statusName: `Input by storing the sequence in the clipboard and sending Ctrl+V`,
-						symbol: '📘',
-						action() {
-							app().updateConfig({inputMode: "ctrl+v"})
 						}
 					}),
 					new ConfigToggleKey({
@@ -366,16 +366,29 @@ const ConfigPages: ConfigPage[] = [
 						}
 					}),
 					new ConfigToggleKey({
+						active: config.inputMode == "ctrl+v",
+						name: 'Variant B', statusName: `Use an alternative method to send the input to the application (Paste with Ctrl+V)`,
+						symbol: '📘',
+						action() {
+							app().updateConfig({inputMode: "ctrl+v"})
+						}
+					}),
+					new ConfigToggleKey({
 						active: config.inputMode == "raw",
-						name: 'Raw', statusName: `Send raw sequence to the active window`,
-						symbol: '📨',
+						name: 'Variant C', statusName: `Use another alternative method to send the input to the application (AHK SendRaw)`,
+						symbol: '📗',
 						action() {
 							app().updateConfig({inputMode: "raw"})
 						}
 					}),
 					new ConfigLabelKey('Input Mode')
 				]),
-			}
+				...mapKeysToSlots(l.freeRows[2], [
+					new ConfigLabelKey("Use Alt+Key/Click to " + (
+						config.inputMode != "clipboard" ? "copy to clipboard" : "send input directly")
+					),
+				]),
+			};
 		}
 	},
 	{
