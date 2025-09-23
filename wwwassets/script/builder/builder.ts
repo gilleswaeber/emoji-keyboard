@@ -29,7 +29,7 @@ async function buildAhk() {
 	await ahkDownloadUnicode();
 	const v = await ahkVersions();
 	const paths: Paths = {
-		emojiTestPath: `../res/data/emoji/${v.emoji}/emoji-test.txt`,
+		emojiTestPath: `../res/data/${v.ucd}/emoji/emoji-test.txt`,
 		emojiDataPath: `../res/data/${v.ucd}/ucd/emoji/emoji-data.txt`,
 		unicodeDataPath: `../res/data/${v.ucd}/ucd/UnicodeData.txt`,
 		namedSequencesPath: `../res/data/${v.ucd}/ucd/NamedSequences.txt`,

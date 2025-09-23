@@ -33,9 +33,7 @@ A_TrayMenu.Add("E&xit", ActExit)
 A_TrayMenu.Default := "&Show"
 
 ; Folder in https://unicode.org/Public/
-UCD_VERSION := "16.0.0"
-; Folder in https://unicode.org/Public/emoji/
-EMOJI_VERSION := "16.0"
+UCD_VERSION := "17.0.0"
 ; Tag in https://github.com/unicode-org/cldr-json/tags
 CLDR_VERSION := "47.0.0"
 
@@ -46,7 +44,7 @@ if (!FileExist("hotkey.ahk")) {
 }
 
 LOCAL_FALLBACK_FONT_PATH := "wwwassets/fonts/NotoColorEmoji-Regular.ttf"
-LOCAL_FALLBACK_FONT_SIZE := 24274080  ; v2.047
+LOCAL_FALLBACK_FONT_SIZE := 25096376  ; v2.051
 if (!FileExist(LOCAL_FALLBACK_FONT_PATH)) {
     ans := MsgBox("The Noto Color Emoji font is not present in the wwwassets\fonts folder.`nIt is required to display emoji that are not available on your system.`n`nDo you want to download it now?", "Fallback font missing", "YesNo")
     if (ans = "Yes") {
@@ -57,6 +55,7 @@ if (!FileExist(LOCAL_FALLBACK_FONT_PATH)) {
 } else if (FileGetSize(LOCAL_FALLBACK_FONT_PATH) < LOCAL_FALLBACK_FONT_SIZE) {
     ans := MsgBox("It seems that you are using an old version of the Noto Color Emoji font in the wwwassets\fonts folder.`nIt is required to display emoji that are not available on your system.`n`nDo you want to download it now?", "Outdated fallback font", "YesNo")
     if (ans = "Yes") {
+        FileDelete(LOCAL_FALLBACK_FONT_PATH)
 		Download("https://github.com/google/fonts/raw/refs/heads/main/ofl/notocoloremoji/NotoColorEmoji-Regular.ttf", LOCAL_FALLBACK_FONT_PATH ".tmp")
 		FileMove(LOCAL_FALLBACK_FONT_PATH ".tmp", LOCAL_FALLBACK_FONT_PATH)
         MsgBox("The font has been downloaded successfully!", "Outdated fallback font")
@@ -199,7 +198,7 @@ class EmojiKeyboard {
         }
         onDownloadUnicode(num) {
             try {
-                this.DataUnicode('emoji/' EMOJI_VERSION '/emoji-test.txt')
+                this.DataUnicode(UCD_VERSION '/emoji/emoji-test.txt')
                 this.DataUnicode(UCD_VERSION '/ucd/emoji/emoji-data.txt')
                 this.DataUnicode(UCD_VERSION '/ucd/UnicodeData.txt')
                 this.DataUnicode(UCD_VERSION '/ucd/NamesList.txt')
@@ -214,7 +213,6 @@ class EmojiKeyboard {
 		onVersions() {
 			return {
 				ucd: UCD_VERSION,
-				emoji: EMOJI_VERSION,
 				cldr: CLDR_VERSION,
 			}
 		}

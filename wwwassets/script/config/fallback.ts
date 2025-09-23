@@ -40,6 +40,10 @@ export const IconFallback: {
 		]
 	},
 	{
+		requirement: {type: "emoji", emoji: "🫈"},  // Hairy Creature
+		version: new Version("17"),
+	},
+	{
 		requirement: {type: "emoji", emoji: "🪉"},  // Harp
 		version: new Version("16"),
 	},
