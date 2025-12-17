@@ -28,7 +28,7 @@ jobs:
 
             -   name: Download Noto Emoji font
                 run: |
-                    curl --location --output wwwassets/fonts/NotoColorEmoji-Regular.ttf https://github.com/google/fonts/raw/refs/heads/main/ofl/notocoloremoji/NotoColorEmoji-Regular.ttf
+                    curl --location --output wwwassets/fonts/NotoColorEmoji-Regular.ttf https://github.com/googlefonts/noto-emoji/raw/refs/heads/main/fonts/Noto-COLRv1.ttf
 
             -   name: Create release ZIP (excluding node_modules)
                 run: |

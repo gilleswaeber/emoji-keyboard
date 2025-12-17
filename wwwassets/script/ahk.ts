@@ -25,7 +25,6 @@ type HostObject = {
 };
 export type AhkVersions = {
 	cldr: string;
-	emoji: string;
 	ucd: string;
 };
 let AHK: HostObject | null = null;
@@ -88,7 +87,6 @@ export async function ahkVersions(): Promise<AhkVersions> {
 		const v = AHK!.versions();
 		return {
 			cldr: await v.cldr,
-			emoji: await v.emoji,
 			ucd: await v.ucd,
 		};
 	} else {
