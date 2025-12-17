@@ -12,6 +12,7 @@
 *.js.map
 /emoji-keyboard.zip
 /local
+*.tmp.*
 # User configuration
 /config.json
 /hotkey.ahk

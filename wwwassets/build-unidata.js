@@ -2,16 +2,14 @@ import {nodeBuild} from "./dist/emoji-keyboard.js";
 import {promises as fs} from "fs";
 
 const ahk_file = await fs.readFile("../App.ahk", 'utf8');
-const ucdVersion = /\nUCD_VERSION := "([^"]+)"[\r\n]/.exec(ahk_file)[1];
-const emojiVersion = /\nEMOJI_VERSION := "([^"]+)"[\r\n]/.exec(ahk_file)[1];
+const unicodeVersion = /\nUNICODE_VERSION := "([^"]+)"[\r\n]/.exec(ahk_file)[1];
 const cldrVersion = /\nCLDR_VERSION := "([^"]+)"[\r\n]/.exec(ahk_file)[1];
 
 console.log("Building unidata using");
-console.log("  UCD:", ucdVersion);
-console.log("  EMOJI:", emojiVersion);
+console.log("  UNICODE:", unicodeVersion);
 console.log("  CLDR:", cldrVersion);
 
-const u = await nodeBuild({ucdVersion, emojiVersion, cldrVersion});
+const u = await nodeBuild({unicodeVersion, cldrVersion});
 const emojiCount = u.groups.map(g => g.sub.reduce((v, s) => v + (s.clusters?.length ?? 0), 0)).reduce((a, b) => a + b, 0);
 console.log(
 	`Finished building “${u.name}”\n` +

@@ -34,7 +34,7 @@ A_TrayMenu.Add("E&xit", ActExit)
 A_TrayMenu.Default := "&Show"
 
 ; Folder in https://unicode.org/Public/
-UCD_VERSION := "17.0.0"
+UNICODE_VERSION := "17.0.0"
 ; Tag in https://github.com/unicode-org/cldr-json/tags
 CLDR_VERSION := "47.0.0"
 
@@ -218,11 +218,11 @@ class EmojiKeyboard {
         }
         onDownloadUnicode(num) {
             try {
-                this.DataUnicode(UCD_VERSION '/emoji/emoji-test.txt')
-                this.DataUnicode(UCD_VERSION '/ucd/emoji/emoji-data.txt')
-                this.DataUnicode(UCD_VERSION '/ucd/UnicodeData.txt')
-                this.DataUnicode(UCD_VERSION '/ucd/NamesList.txt')
-                this.DataUnicode(UCD_VERSION '/ucd/NamedSequences.txt')
+                this.DataUnicode(UNICODE_VERSION '/emoji/emoji-test.txt')
+                this.DataUnicode(UNICODE_VERSION '/ucd/emoji/emoji-data.txt')
+                this.DataUnicode(UNICODE_VERSION '/ucd/UnicodeData.txt')
+                this.DataUnicode(UNICODE_VERSION '/ucd/NamesList.txt')
+                this.DataUnicode(UNICODE_VERSION '/ucd/NamedSequences.txt')
                 this.DataCLDR(CLDR_VERSION '/cldr-json/cldr-annotations-full/annotations/en/annotations.json')
             } catch as e {
                 this.wv.PostWebMessageAsString('error,' num ',' e.What ' failed: ' e.Message)
@@ -232,7 +232,7 @@ class EmojiKeyboard {
         }
 		onVersions() {
 			return {
-				ucd: UCD_VERSION,
+				ucd: UNICODE_VERSION,
 				cldr: CLDR_VERSION,
 			}
 		}
