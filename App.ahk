@@ -14,6 +14,7 @@ if (!FileExist("lib/thqby/WebView2/64bit/WebView2Loader.dll")) {
 #Include lib/caret.ahk
 #Include lib/clipboard.ahk
 #Include lib/keyboard_layout.ahk
+#Include lib/opentype.ahk
 #Include *i hotkey.ahk
 
 #Warn
@@ -43,22 +44,41 @@ if (!FileExist("hotkey.ahk")) {
     Reload
 }
 
-LOCAL_FALLBACK_FONT_PATH := "wwwassets/fonts/NotoColorEmoji-Regular.ttf"
-LOCAL_FALLBACK_FONT_SIZE := 25096376  ; v2.051
-if (!FileExist(LOCAL_FALLBACK_FONT_PATH)) {
+FALLBACK_FONT_LOCAL_PATH := "wwwassets/fonts/NotoColorEmoji-Regular.ttf"
+FALLBACK_FONT_MAJOR := 1
+FALLBACK_FONT_MINOR := 0
+FALLBACK_FONT_REVISION := Round(2.051, 3)
+FALLBACK_FONT_DOWNLOAD_URL := "https://github.com/googlefonts/noto-emoji/raw/refs/heads/main/fonts/Noto-COLRv1.ttf"
+if (!FileExist(FALLBACK_FONT_LOCAL_PATH)) {
     ans := MsgBox("The Noto Color Emoji font is not present in the wwwassets\fonts folder.`nIt is required to display emoji that are not available on your system.`n`nDo you want to download it now?", "Fallback font missing", "YesNo")
     if (ans = "Yes") {
-		Download("https://github.com/google/fonts/raw/refs/heads/main/ofl/notocoloremoji/NotoColorEmoji-Regular.ttf", LOCAL_FALLBACK_FONT_PATH ".tmp")
-		FileMove(LOCAL_FALLBACK_FONT_PATH ".tmp", LOCAL_FALLBACK_FONT_PATH)
+		Download(FALLBACK_FONT_DOWNLOAD_URL, FALLBACK_FONT_LOCAL_PATH ".tmp")
+		FileMove(FALLBACK_FONT_LOCAL_PATH ".tmp", FALLBACK_FONT_LOCAL_PATH)
         MsgBox("The font has been downloaded successfully!", "Fallback font missing")
     }
-} else if (FileGetSize(LOCAL_FALLBACK_FONT_PATH) < LOCAL_FALLBACK_FONT_SIZE) {
-    ans := MsgBox("It seems that you are using an old version of the Noto Color Emoji font in the wwwassets\fonts folder.`nIt is required to display emoji that are not available on your system.`n`nDo you want to download it now?", "Outdated fallback font", "YesNo")
-    if (ans = "Yes") {
-        FileDelete(LOCAL_FALLBACK_FONT_PATH)
-		Download("https://github.com/google/fonts/raw/refs/heads/main/ofl/notocoloremoji/NotoColorEmoji-Regular.ttf", LOCAL_FALLBACK_FONT_PATH ".tmp")
-		FileMove(LOCAL_FALLBACK_FONT_PATH ".tmp", LOCAL_FALLBACK_FONT_PATH)
-        MsgBox("The font has been downloaded successfully!", "Outdated fallback font")
+} else {
+    ; Check version of the fallback font
+    fontVersion := GetFontVersion(FALLBACK_FONT_LOCAL_PATH)
+    if (fontVersion["success"] and (
+        fontVersion["major"] > FALLBACK_FONT_MAJOR
+        or (fontVersion["major"] = FALLBACK_FONT_MAJOR and fontVersion["minor"] > FALLBACK_FONT_MINOR)
+        or (fontVersion["major"] = FALLBACK_FONT_MAJOR and fontVersion["minor"] = FALLBACK_FONT_MINOR and fontVersion["revision"] >= FALLBACK_FONT_REVISION))
+    ) {
+        ; up to date
+    } else {
+        msg := ""
+        if (!fontVersion["success"]) {
+            msg := "Could not determine the version of the installed fallback font.`n" . fontVersion["error"] . "`n"
+        } else {
+            msg := "The installed fallback font version is " . fontVersion["major"] . "." . fontVersion["minor"] . " revision " . fontVersion["revision"] . " but the expected version is " . FALLBACK_FONT_MAJOR . "." . FALLBACK_FONT_MINOR . " revision " . FALLBACK_FONT_REVISION . ".`n"
+        }
+        msg := msg . "`nIt is required to display emoji that are not available on your system.`n`nDo you want to download the latest version now?"
+        if (MsgBox(msg, "Outdated fallback font", "YesNo") = "Yes") {
+            FileDelete(FALLBACK_FONT_LOCAL_PATH)
+            Download(FALLBACK_FONT_DOWNLOAD_URL, FALLBACK_FONT_LOCAL_PATH ".tmp")
+            FileMove(FALLBACK_FONT_LOCAL_PATH ".tmp", FALLBACK_FONT_LOCAL_PATH)
+            MsgBox("The font has been downloaded successfully!", "Outdated fallback font")
+        }
     }
 }
 
