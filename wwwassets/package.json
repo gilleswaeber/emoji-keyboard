@@ -12,7 +12,7 @@
 	"dependencies": {
 		"memoize-one": "^6.0.0",
 		"peggy": "^5.0.6",
-		"preact": "^10.28.0"
+		"preact": "^10.28.2"
 	},
 	"scripts": {
 		"dev": "vite build --watch --sourcemap inline",
