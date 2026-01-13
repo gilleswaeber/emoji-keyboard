@@ -10,11 +10,14 @@
 /wwwassets/fonts/*
 !/wwwassets/fonts/AdobeBlank.otf
 *.js.map
+package-lock.json
+package.json
+wwwassets/script/unidata.tmp.d.ts
 /emoji-keyboard.zip
 /local
 *.tmp.*
 # User configuration
-/config.json
+/config*.json
 /hotkey.ahk
 # IDE-specific
 .idea

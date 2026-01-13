@@ -13,6 +13,7 @@ if (!FileExist("lib/thqby/WebView2/64bit/WebView2Loader.dll")) {
 #Include lib/monitor.ahk
 #Include lib/caret.ahk
 #Include lib/clipboard.ahk
+#Include lib/darkmode.ahk
 #Include lib/keyboard_layout.ahk
 #Include lib/opentype.ahk
 #Include *i hotkey.ahk
@@ -22,7 +23,7 @@ SetWorkingDir(A_ScriptDir)	; Ensures a consistent starting directory
 SendMode("Input")
 
 ; Setup tray menu
-TraySetIcon("lib/keyboard.ico")
+TraySetIcon("lib/emoji-keyboard.ico")
 A_IconTip := "Emoji Keyboard"
 A_TrayMenu.Delete()
 A_TrayMenu.Add("&Show", ActToggle)
@@ -114,6 +115,8 @@ class EmojiKeyboard {
 
     isClipSaved := false
     clipSaved := unset
+
+    WindowActiveOnShow := 0
 
     __New() {
         this.text := this.main.AddText(, "Please wait...")
@@ -287,14 +290,18 @@ class EmojiKeyboard {
 
             if (mode = "clipboard") {
                 A_Clipboard := text
-            } else if (mode = "raw") {
+                return
+            }
+
+            ; if we have received focus give it back
+            if (WinActive(this.main)) {
+                ControlFocus(this.WindowActiveOnShow)
+            }
+
+            if (mode = "raw") {
                 SendText(text)
             } else {
                 SetTimer(RestoreClipboard, 0)
-                isActive := WinActive(this.main)
-                if (isActive) {
-                    this.Hide()
-                }
                 if(!this.isClipSaved) {
                     this.clipSaved := ClipboardAll()
                     this.isClipSaved := True
@@ -307,9 +314,6 @@ class EmojiKeyboard {
                     Send("+{Insert}")
                 }
                 SetTimer(RestoreClipboard,500)
-                if (isActive) {
-                    this.Show()
-                }
             }
         }
         onSetOpacity(opacity) {
@@ -319,6 +323,18 @@ class EmojiKeyboard {
                 WinSetTransparent(Round(255 * opacity), this.main)
             } else {
                 WinSetTransparent(Round(255 * .2), this.main)
+            }
+        }
+        onSetThemeMode(mode) {
+            if (mode == "dark") {
+                SetDarkMode(this.main, 1)
+            }
+            else if (mode == "light") {
+                SetDarkMode(this.main, 0)
+            }
+            else if (mode == "system") {
+                mode := IsWindowsDarkModeActive()
+                SetDarkMode(this.main, mode)
             }
         }
         onSetOpenAt(at) {
@@ -331,18 +347,7 @@ class EmojiKeyboard {
             this.height := height
         }
         onSetSearch(enable) {
-            if (this.isSearch != enable) {
-                this.isSearch := enable
-                if (enable) {
-                    this.main.Opt("-E0x08000000")
-                    this.main.Show()
-                } else {
-                    if (WinActive(this.main)) {
-                        Send("!{Esc}")
-                    }
-                    this.main.Opt("+E0x08000000")
-                }
-            }
+            this.isSearch := enable
         }
         onSetTitle(title) {
             this.main.Title := title
@@ -354,6 +359,7 @@ class EmojiKeyboard {
         h := 100 * A_Scaling
         x := left + (right - left - w) / 2
         y := top + (bottom - top - h) / 2
+        onSetThemeMode("system")
         this.main.Title := "Emoji Keyboard - Starting up ..."
         this.main.Show(Format("x{} y{} W{} H{}", x, y, w, h))
         ; --disable-web-security to allow fetching data files from e.g. local res folder
@@ -369,6 +375,7 @@ class EmojiKeyboard {
             openDevTools: onOpenDevTools, openLink: onOpenLink,
             ready: onReady, reload: ActReload,
             saveConfig: onSaveConfig, saveUnicodeData: onSaveUnicodeData, send: onSend,
+            SetThemeMode: onSetThemeMode,
             setOpenAt: onSetOpenAt,
             setOpacity: onSetOpacity, setSearch: onSetSearch, setPosSize: onSetPosSize, setTitle: onSetTitle,
 			versions: onVersions
@@ -380,6 +387,9 @@ class EmojiKeyboard {
             this.Initialize()
             Return
         }
+
+        ; save active window - we may need to give focus back to it in onSend()
+        this.WindowActiveOnShow := WinActive("A")
 
         w := this.width * A_Scaling
         h := this.height * A_Scaling
@@ -438,7 +448,7 @@ class EmojiKeyboard {
         x := clamp(x, minx, maxx)
         y := clamp(y, miny, maxy)
 
-        this.main.Show(Format("{} X{} Y{} W{} H{}", this.isSearch ? "" : "NA", x, y, w, h))
+        this.main.Show(Format("NA X{} Y{} W{} H{}", x, y, w, h))
 
         this.wvc.Fill()
         CheckLayout()
@@ -506,7 +516,21 @@ ActCredits(*) {
 
 ; To change the activation hotkey, edit hotkey.ahk
 
+#HotIf KB.isVisible and KB.isSearch and !WinActive(KB.main)
+Tab::WinActivate(KB.main)
+BackSpace::KB.Input(14, False)
+Space::KB.Input(57, False)
+
+#HotIf KB.isVisible and KB.isSearch and WinActive(KB.main)
+Tab::WinActivate(KB.WindowActiveOnShow)
+
+#HotIf KB.isVisible and !KB.isSearch
+Tab:: KB.Input(15, False)
+
 #HotIf KB.isVisible
+Esc:: KB.Hide()
+CapsLock::KB.Input(58, False)
+
 ; Base                              US   CH
 SC029::KB.Input(41, False)        ; `    §
 SC002::KB.Input(02, False)        ; 1    1
@@ -564,11 +588,6 @@ SC00D::KB.Input(13, False)        ; =    ^
 !+SC00C::KB.Input(12, True, True) ; -    '
 !+SC00D::KB.Input(13, True, True) ; =    ^
 
-Tab::KB.Input(15, False)
-+Tab::KB.Input(15, True)
-Esc::KB.Hide()
-Capslock::KB.Input(58, False)
-#HotIf KB.isVisible and !KB.isSearch
 ; Corresponding keys                 US   CH
 ;SC001::KB.Input(01, False)        ; ESC  ESC
 ;SC03B::KB.Input(59, False)        ; F1   F1
@@ -583,6 +602,8 @@ Capslock::KB.Input(58, False)
 ;SC044::KB.Input(68, False)        ; F10  F10
 ;SC057::KB.Input(87, False)        ; F11  F11
 ;SC058::KB.Input(88, False)        ; F12  F12
+
+#HotIf KB.isVisible and (!KB.isSearch or !WinActive(KB.main))
 ; Base                               US   CH
 SC010::KB.Input(16, False)         ; q    q
 SC011::KB.Input(17, False)         ; w    w

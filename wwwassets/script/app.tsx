@@ -10,6 +10,7 @@ import {
 	ahkSaveConfig,
 	ahkSend,
 	ahkSetOpacity,
+	ahkSetThemeMode,
 	ahkSetOpenAt,
 	ahkSetPosSize,
 	ahkSetSearch,
@@ -31,7 +32,7 @@ import {
 } from "./appVar";
 import {useMemo} from "preact/hooks";
 import {SC} from "./layout/sc";
-import {SearchBoard} from "./searchView";
+import {handleSearchInput, SearchBoard} from "./searchView";
 import {BoardState, SlottedKeys} from "./boards/utils";
 import {RecentBoard} from "./recentsView";
 import {increaseRecent} from "./recentsActions";
@@ -201,23 +202,30 @@ class App extends Component<{}, AppState> implements AppActions {
 	public input(key: number, shift: boolean = false, alt: boolean = false) {
 		const s = this.state;
 		switch (s.mode) {
-			case AppMode.MAIN:
 			case AppMode.SEARCH:
+				const needle = handleSearchInput(this.state.layout, key)
+				if (needle != undefined && needle != this.state.searchText) {
+					this.setSearchText(needle)
+					break
+				}
+			case AppMode.MAIN:
 			case AppMode.SETTINGS:
 			case AppMode.RECENTS:
-				// animate keypress
-				var keydiv = document.querySelector('[data-keycode="' + key + '"]')
-				var symboldiv = keydiv?.getElementsByClassName("symbol")[0]
-				symboldiv?.classList.add("keypress")
-				setTimeout(() => {
-					symboldiv?.classList.remove("keypress")
-				}, 100)
-
 				const k = this.keyHandlers[key as SC];
 				if (k) {
 					if (shift) k.actSecondary(alt);
 					else k.act(alt);
 				}
+				// animate keypress after potential state update, since it is lost otherwise,
+				// e.g. when changing the score of recent items selected in recent board.
+				requestAnimationFrame(() => {
+					var keydiv = document.querySelector('[data-keycode="' + key + '"]')
+					var symboldiv = keydiv?.getElementsByClassName("symbol")[0]
+					symboldiv?.classList.add("keypress")
+					setTimeout(() => {
+						symboldiv?.classList.remove("keypress")
+					}, 100 /* be >= style.css: transition: ease .1s */)
+				})
 				break;
 			default:
 				return unreachable(s.mode);
@@ -225,6 +233,8 @@ class App extends Component<{}, AppState> implements AppActions {
 	}
 
 	public async setConfig(config: string) {
+		// migrate config poor man style
+		config = config.replace(/^            "useCount":/gm, '            "score":');
 		await this.updateConfig(JSON.parse(config), false);
 		ahkReady();
 	}
@@ -248,11 +258,11 @@ class App extends Component<{}, AppState> implements AppActions {
 					noop = true;
 					return {};
 				}
-				if (config.theme && s.config.theme != config.theme) {
+				if (config.theme != undefined && s.config.theme != config.theme) {
 					const link = document.getElementById('themeCSS') as HTMLLinkElement;
 					link.href = ThemesMap.get(config.theme)?.url ?? DefaultThemeUrl;
 				}
-				if (config.openAt) {
+				if (config.openAt != undefined && s.config.openAt != config.openAt) {
 					ahkSetOpenAt(config.openAt);
 				}
 				// must check explicitly as 0 is false
@@ -260,7 +270,7 @@ class App extends Component<{}, AppState> implements AppActions {
 					config.width != undefined && config.height != undefined)) {
 					ahkSetPosSize(config.x, config.y, config.width, config.height);
 				}
-				if (config.opacity && s.config.opacity != config.opacity) {
+				if (config.opacity != undefined && s.config.opacity != config.opacity) {
 					ahkSetOpacity(config.opacity);
 				}
 				if (config.devTools && !s.config.devTools) {
@@ -357,7 +367,7 @@ class App extends Component<{}, AppState> implements AppActions {
 		if (alt) inputMode = inputMode == 'clipboard' ? 'shift+insert' : 'clipboard';
 		ahkSend(cluster, inputMode);
 		if (inputMode == 'clipboard') this.setTooltip(`Copied: ${cluster}`);
-		if (!noRecent) increaseRecent(cluster);
+		increaseRecent(cluster);
 		if (variantOf) this.updateConfig(c => {
 			if (c.preferredVariant[variantOf] != cluster) return {
 				preferredVariant: {

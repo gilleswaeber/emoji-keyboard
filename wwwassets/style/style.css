@@ -83,6 +83,7 @@ main > section{
 
 .key{
 	display: flex;
+	container-type: size;
 	list-style: none;
 	padding: .3vw;
 	overflow: hidden;
@@ -129,17 +130,15 @@ main > section{
 .keyboard.staggered.ansi-layout .key[data-keycode="2003"] {grid-column: span 3;}
 .keyboard.staggered.ansi-layout .key[data-keycode="42"] {grid-column: span 6;}
 
-
 .key .symbol{
-	font-size: 3.6vw;
+	font-size: 60cqmin;
 	text-align: center;
 	flex: 1;
-	transition: ease .1s;
 	white-space: pre;
 	text-shadow: var(--c-shadow) 0 0 .1em, var(--c-shadow) 0 0 .1em, var(--c-shadow) 0 0 .1em, var(--c-shadow) 0 0 .1em;
 }
 .key.char .symbol.s-space{
-	font-size: 1.2vw;
+	font-size: 60cqmin;
 	font-variant: small-caps;
 	font-weight: bold;
 	max-width: 100%;
@@ -170,31 +169,45 @@ main > section{
 	right: .2vw;
 	left: .2vw;
 	font-variant: small-caps;
-	transition: ease .05s;
+	z-index: 1;
 }
 
 .key.char .name{
 	display: none;
 }
 
-.key.char .symbol{
-	transform: scale(1.2);
-}
-
 .key:hover .name{
 	opacity: .8;
 }
 
-.key:not(.label):hover .symbol{
-	transform: translateY(-4px) scale(1.8) rotate(0deg);
+/* make the actual emoji keys a bit larger */
+.key.recent .symbol,
+.key.char .symbol{
+	font-size: 70cqmin;
+}
+
+/* animations for keypress and mouse click */
+.key .symbol{
+	transform: translateY(0) scale(1) rotate(0deg);
+	transition: transform ease .1s;
+}
+
+.key.action:hover .symbol{
+	transform: translateY(-0.1vw) scale(1.7) rotate(0deg);
+}
+
+.key:not(.action):hover .symbol{
+	transform: translateY(-0.1vw) scale(1.4) rotate(0deg);
 }
 
 .key:not(.label):active .symbol{
-	transform: translateY(-2px) scale(1.4) rotate(7deg);
+	transition: transform ease .05s;
+	transform: scale(0.8) rotate(7deg);
 }
 
-.key.char .keypress {
-	transform: scale(1) rotate(7deg);
+.key.recent .symbol.keypress,
+.key.char .symbol.keypress {
+	transform: scale(0.8) rotate(7deg);
 }
 
 .key:not(.lu) .uname{

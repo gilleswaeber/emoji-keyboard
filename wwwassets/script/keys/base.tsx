@@ -11,7 +11,7 @@ export function KeyName({code}: { code: SC }) {
 	return <Fragment>{layout.sys[code]?.name ?? ''}</Fragment>;
 }
 
-export type KeyType = "action" | "empty" | "char" | "back";
+export type KeyType = "action" | "empty" | "char" | "recent" | "back";
 
 export class Key {
 	public readonly name: string;

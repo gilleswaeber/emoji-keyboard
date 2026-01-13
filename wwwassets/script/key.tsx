@@ -13,6 +13,7 @@ import {Symbol} from "./keys/symbol";
 import {AppConfig} from "./config";
 import {toHex} from "./builder/consolidated";
 import {KeyCap} from "./config/boards";
+import {sortRecent} from "./recentsActions";
 
 export class ConfigKey extends Key {
 	constructor() {
@@ -206,13 +207,14 @@ export class ClusterKey extends Key {
 		const config = useContext(ConfigContext);
 		const cluster = this.alt ? config.preferredVariant[this.cluster] ?? this.cluster : this.cluster;
 		const symbol = this.alt ? cluster : this.symbol;
-		let status = this.alt ? clusterName(config.preferredVariant[this.cluster] ?? this.cluster) : this.name;
+		let status = ' '
+		if (config.showCharCodes) {
+			status += `[U+${toCodePoints(cluster).map(toHex).join(', U+')}] `
+		}
+		status += this.alt ? clusterName(config.preferredVariant[this.cluster] ?? this.cluster) : this.name;
 		if (config.showAliases) {
 			const aliases = clusterAliases(this.cluster);
 			if (aliases.length) status += ` (${aliases.join(', ')})`;
-		}
-		if (config.showCharCodes) {
-			status += ` [${toCodePoints(cluster).map(toHex).join(' ')}]`
 		}
 		return <div
 			className={cl('key', this.keyType, {alt: this.alt, lu: this.lu, active: this.active})}
@@ -240,6 +242,8 @@ export class RecentKey extends Key {
 	}
 
 	act() {
+		// sort recent list only when opening to avoid items jumping around
+		sortRecent(app().getConfig().recent)
 		app().setMode(AppMode.RECENTS);
 	}
 }

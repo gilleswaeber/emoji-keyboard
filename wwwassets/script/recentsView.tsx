@@ -6,9 +6,11 @@ import {Keys, mapKeysToSlots, SlottedKeys} from "./boards/utils";
 import {h} from "preact";
 import {Board} from "./board";
 import {Key} from "./keys/base";
-import {clusterName} from "./unicodeInterface";
+import {clusterAliases, clusterName} from "./unicodeInterface";
 import {DigitsRow} from "./layout";
 import {FAVORITE_SCORE, removeRecent, SCORE_DECR, SCORE_INCR, toggleFavorite} from "./recentsActions";
+import {toCodePoints} from "./builder/builder";
+import {toHex} from "./builder/consolidated";
 
 export class RecentBoard extends Board {
 	constructor() {
@@ -29,19 +31,30 @@ export class RecentBoard extends Board {
 	}
 }
 
-function useUseCount(cluster: string) {
+function getScore(cluster: string) {
 	const recent = useContext(ConfigContext).recent;
-	return useMemo(() => recent.find(r => r.symbol == cluster)?.useCount ?? 0, [cluster, recent]);
+	return useMemo(() => recent.find(r => r.symbol == cluster)?.score ?? 0, [cluster, recent]);
 }
 
 export class RecentClusterKey extends Key {
 	constructor(private cluster: string) {
-		const useCount = useUseCount(cluster);
+		const score = getScore(cluster);
 		const name = clusterName(cluster);
+		let sName = ""
+		if (app().getConfig().showCharCodes) {
+			sName += `[U+${toCodePoints(cluster).map(toHex).join(', U+')}] `
+		}
+		sName += `${name}`
+		if (app().getConfig().showAliases) {
+			const aliases = clusterAliases(cluster);
+			if (aliases.length) sName += ` (${aliases.join(', ')})`;
+		}
+
 		super({
-			name: `${name}, score: ${useCount >= 100 ? "★" : useCount}`,
+			name: `${score >= 100 ? "★" : score}`,
+			statusName: sName,
 			symbol: cluster,
-			keyType: "char",
+			keyType: "recent",
 		});
 	}
 
@@ -64,14 +77,14 @@ export class RecentSettingsBoard extends Board {
 
 	Contents = () => {
 		useEffect(() => app().updateStatus(), []);
-		const useCount = useUseCount(this.cluster);
+		const score = getScore(this.cluster);
 		const keys: SlottedKeys = {
 			[SC.Backtick]: new BackKey(),
 			...mapKeysToSlots(DigitsRow, [
 				new ConfigToggleKey({
 					name: "Favorite",
 					symbol: "⭐",
-					active: useCount >= FAVORITE_SCORE,
+					active: score >= FAVORITE_SCORE,
 					action: () => toggleFavorite(this.cluster)
 				}),
 				new ConfigActionKey({
@@ -81,7 +94,7 @@ export class RecentSettingsBoard extends Board {
 					}
 				})
 			]),
-			[SC.Q]: new ConfigLabelKey(`Score: ${useCount}, +${SCORE_INCR} when used, -${SCORE_DECR} when others used`),
+			[SC.Q]: new ConfigLabelKey(`Score: ${score}, +${SCORE_INCR} when used, -${SCORE_DECR} when others used`),
 			[SC.A]: new ConfigLabelKey(`Favorite when score ≥ ${FAVORITE_SCORE}`),
 		}
 		return <Keys keys={keys}/>

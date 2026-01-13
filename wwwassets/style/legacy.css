@@ -8,6 +8,7 @@
 	--c-primary: #FFC83D;
 	--border-key: solid .1vw #888;
 	--c-shadow: rgba(255, 255, 255, .5);
+	--c-accented: #007FD4;
 
 	--dark-c-shadow: #000;
 }
@@ -89,4 +90,16 @@
 	border: .1vw solid var(--c-text);
 	padding: .5vw;
 	box-shadow: 0 .2vw .4vw var(--c-shadow);
+}
+
+input{
+	background-color: var(--c-background);
+	color: var(--c-text);
+ 	border: solid .1vw #888;
+	outline: none;
+}
+
+input:focus{
+	border-color: var(--c-accented);
+	outline: none;
 }

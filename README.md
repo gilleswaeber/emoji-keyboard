@@ -1,34 +1,69 @@
 Emoji Keyboard (Emoji 17)
-==============
-[💾 Download](https://github.com/gilleswaeber/emoji-keyboard/releases/latest/download/emoji-keyboard.zip) *or see instructions below for cloning*
+=========================
 
-<img alt="Screenshot" src="https://i.imgur.com/qpVBhXt.png" width="786" />
+- Includes thousands of emojis 😀
+- Lightning-fast operation using only keyboard ⌨️ strokes 👆
+- Powerful and efficient search 🔍
+- Combined favorites ⭐ and recently ↺ used list
+- Highly customizable with many settings 🛠
+- ...
 
-Packed with thousands of Emojis!
+[💾 Download](https://github.com/gilleswaeber/emoji-keyboard/releases/latest/download/emoji-keyboard.zip) *or see instructions below for cloning*.
+
 Requires Windows 7+
+, and [Autohotkey v2](https://autohotkey.com/).
 , [WebView2](https://go.microsoft.com/fwlink/p/?LinkId=2124703) (comes with Windows 10+)
-, and [Autohotkey](https://autohotkey.com/).
+
+Demo
+----
+
+<img alt="emoji-keyboard-demo" src="https://github.com/user-attachments/assets/bbec2487-2aff-497d-b692-106e79acbe83" width="700" />
 
 Alternatives
 ------------
+
+Basically there is none! 😉
+
 Since Windows 10 April 2018 Update, you can open the built-in emoji picker with <kbd>Win</kbd>+<kbd>.</kbd>.
-It is missing support for flags and emojis newer than the OS.
+It is missing support for flags and emojis newer than the OS. In Windows 11 it got worse with the new picker
+recently used list is much shorter and using it just by keyboard is a pain.
+
+Issues
+------
+There are three methods for inserting the emoji with different pros and cons:
+- Copy to clipboard and send <kbd>Ctrl-V</kbd> to app:
+  - Relies on <kbd>Ctrl-V</kbd> being bound in the receiving app. For terminals you may not want this as it is already bound by shells, vim etc.
+  - Inserting by key repeat eventually will insert the key itself instead of the emoji and may also make the app to lose the hotkey bindings.
+- Copy to clipboard and send <kbd>Ctrl-Insert</kbd> to app: Same like last one, just older binding.
+- Raw direct sending of the emoji as text:
+  - Is fast and does not have the issues of the other methods.
+  - Some apps may not handle the inserted emoji correctly, e.g.:
+    - WhatsApp Web does not show emojis skin tone until you send the message.
+    - Google Keep Web saves the emoji as "??" - you basically lose it. Workaround before saving: <kbd>Ctrl-A Ctrl-C Ctrl-V</kbd>, i.e. copy and paste from clipboard.
+
+You can switch between the methods in the configuration.
 
 How to use
 ----------
-Install [Autohotkey](https://autohotkey.com/), download using the link at the top, and then launch App.ahk. It will then stay in
-system tray until you call it.
+Install [Autohotkey v2](https://autohotkey.com/), download using the link at the top, and then launch App.ahk. It will then stay in system tray until you call it.
 
-Open it with the <kbd>⇧ Shift</kbd>+<kbd>Caps Lock</kbd> combination.
+Open it with the <kbd>⇧ Shift</kbd>+<kbd>⇪ Caps Lock</kbd> combination.
 You can also use a double click on the tray icon.
 To change the shortcut, edit *hotkey.ahk* which is created the first time you start the program.
 
 Use the shown keyboard keys to navigate between the categories and type the Emojis. You can also use the mouse. You can move the window and resize it as you wish.
 Keymap matches the one of your system automatically.
 
-The recent list opens with <kbd>Caps Lock</kbd> and shows a list of recent Emojis sorted on opening by their *score*. Inserting an Emoji increments its *score* and decrement other's.
+<kbd>↹ Tab</kbd> opens the keyword search for emojis.
+It scores the entries, +1 for full word match, -1 for a match not at the start of a word.
+You can only enter letters, <kbd>␣ Space</kbd> and <kbd>⌫ Backspace</kbd>.
+Pressing <kbd>↹ Tab</kbd> again will toggle focus between the current window and the Emoji Keyboard's search field, allowing you to further edit your search term.
+Selecting a search result will bring you back to the original window.
+
+The recent list opens with <kbd>⇪ Caps Lock</kbd> and shows a list of recent Emojis sorted on opening by their *score*. Inserting an Emoji increments its *score* and decrement other's.
 A *score* ≥ 100 makes it a favorite that'll stay in the list.
 Emojis can be removed and marked as favorites with a right click or <kbd>⇧ Shift</kbd> when in the recent tab.
+To reorder or modify the recent list items directly, exit the app and edit the *config.json* in a text editor.
 
 To exit completely, do a right click on the tray icon and choose Exit.
 
